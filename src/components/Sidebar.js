@@ -1,36 +1,31 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
-import { rgba } from "polished";
+import {darken, rgba} from "polished";
 
-import { NavLink as RouterNavLink, withRouter } from "react-router-dom";
-import { darken } from "polished";
+import {NavLink as RouterNavLink, withRouter} from "react-router-dom";
 
 import PerfectScrollbar from "react-perfect-scrollbar";
 import "../vendor/perfect-scrollbar.css";
 
-import { spacing } from "@material-ui/system";
+import {spacing} from "@material-ui/system";
 
 import {
-  Avatar,
-  Badge,
   Box as MuiBox,
   Chip,
   Collapse,
   Drawer as MuiDrawer,
-  Grid,
   List as MuiList,
   ListItem,
-  ListItemText,
-  Typography
+  ListItemText
 } from "@material-ui/core";
 
-import { ExpandLess, ExpandMore } from "@material-ui/icons";
+import {ExpandLess, ExpandMore} from "@material-ui/icons";
 
-import { green } from "@material-ui/core/colors";
+import {green} from "@material-ui/core/colors";
 
-import { sidebarRoutes as routes } from "../routes/index";
+import {sidebarRoutes as routes} from "../routes/index";
 
-import { Layers } from "react-feather";
+import {Layers} from "react-feather";
 
 const NavLink = React.forwardRef((props, ref) => (
   <RouterNavLink innerRef={ref} {...props} />
@@ -131,6 +126,7 @@ const Category = styled(ListItem)`
 
 const CategoryText = styled(ListItemText)`
   margin: 0;
+
   span {
     color: ${props => props.theme.sidebar.color};
     font-size: ${props => props.theme.typography.body1.fontSize}px;
@@ -171,9 +167,11 @@ const Link = styled(ListItem)`
 
 const LinkText = styled(ListItemText)`
   color: ${props => props.theme.sidebar.color};
+
   span {
     font-size: ${props => props.theme.typography.body1.fontSize}px;
   }
+
   margin-top: 0;
   margin-bottom: 0;
 `;
@@ -200,87 +198,46 @@ const CategoryBadge = styled(LinkBadge)`
   top: 12px;
 `;
 
-const SidebarSection = styled(Typography)`
-  color: ${props => props.theme.sidebar.color};
-  padding: ${props => props.theme.spacing(4)}px
-    ${props => props.theme.spacing(6)}px ${props => props.theme.spacing(1)}px;
-  opacity: 0.9;
-  display: block;
-`;
-
-const SidebarFooter = styled.div`
-  background-color: ${props =>
-    props.theme.sidebar.footer.background} !important;
-  padding: ${props => props.theme.spacing(2.75)}px
-    ${props => props.theme.spacing(4)}px;
-  border-right: 1px solid rgba(0, 0, 0, 0.12);
-`;
-
-const SidebarFooterText = styled(Typography)`
-  color: ${props => props.theme.sidebar.footer.color};
-`;
-
-const SidebarFooterSubText = styled(Typography)`
-  color: ${props => props.theme.sidebar.footer.color};
-  font-size: .725rem;
-  display: block;
-  padding: 1px;
-`;
-
-const StyledBadge = styled(Badge)`
-  margin-right: ${props => props.theme.spacing(1)}px;
-
-  span {
-    background-color: ${props => props.theme.sidebar.footer.online.background};
-    border: 1.5px solid ${props => props.theme.palette.common.white};
-    height: 12px;
-    width: 12px;
-    border-radius: 50%;
+const SidebarCategory = (
+  {
+    name,
+    icon,
+    classes,
+    isOpen,
+    isCollapsable,
+    badge,
+    ...rest
   }
-`
+) => (
+  <Category {...rest}>
+    {icon}
+    <CategoryText>{name}</CategoryText>
+    {isCollapsable ? (
+      isOpen ? (
+        <CategoryIconMore/>
+      ) : (
+        <CategoryIconLess/>
+      )
+    ) : null}
+    {badge ? <CategoryBadge label={badge}/> : ""}
+  </Category>
+);
 
-function SidebarCategory({
-  name,
-  icon,
-  classes,
-  isOpen,
-  isCollapsable,
-  badge,
-  ...rest
-}) {
-  return (
-    <Category {...rest}>
-      {icon}
-      <CategoryText>{name}</CategoryText>
-      {isCollapsable ? (
-        isOpen ? (
-          <CategoryIconMore />
-        ) : (
-          <CategoryIconLess />
-        )
-      ) : null}
-      {badge ? <CategoryBadge label={badge} /> : ""}
-    </Category>
-  );
-}
+const SidebarLink = ({name, to, badge}) => (
+  <Link
+    button
+    dense
+    component={NavLink}
+    exact
+    to={to}
+    activeClassName="active"
+  >
+    <LinkText>{name}</LinkText>
+    {badge ? <LinkBadge label={badge}/> : ""}
+  </Link>
+);
 
-function SidebarLink({ name, to, badge }) {
-  return (
-    <Link
-      button
-      dense
-      component={NavLink}
-      exact
-      to={to}
-      activeClassName="active"
-    >
-      <LinkText>{name}</LinkText>
-      {badge ? <LinkBadge label={badge} /> : ""}
-    </Link>
-  );
-}
-
-function Sidebar({ classes, staticContext, location, ...rest }) {
+const Sidebar = ({classes, staticContext, location, ...rest}) => {
   const initOpenRoutes = () => {
     /* Open collapse element that matches current url */
     const pathName = location.pathname;
@@ -290,7 +247,7 @@ function Sidebar({ classes, staticContext, location, ...rest }) {
     routes.forEach((route, index) => {
       const isActive = pathName.indexOf(route.path) === 0;
       const isOpen = route.open;
-      const isHome = route.containsHome && pathName === "/" ? true : false;
+      const isHome = route.containsHome && pathName === "/";
 
       _routes = Object.assign({}, _routes, {[index]: isActive || isOpen || isHome})
     });
@@ -305,7 +262,7 @@ function Sidebar({ classes, staticContext, location, ...rest }) {
     Object.keys(openRoutes).forEach(
       item => openRoutes[index] || setOpenRoutes(openRoutes => Object.assign({}, openRoutes, {[item]: false}))
     )
-    
+
     // Toggle selected element
     setOpenRoutes(openRoutes => Object.assign({}, openRoutes, {[index]: !openRoutes[index]}));
   }
@@ -313,17 +270,13 @@ function Sidebar({ classes, staticContext, location, ...rest }) {
   return (
     <Drawer variant="permanent" {...rest}>
       <Brand>
-        <BrandIcon /> <Box ml={1}>Material App <BrandChip label="PRO" /></Box> 
+        <BrandIcon/> <Box ml={1}>Material App <BrandChip label="PRO"/></Box>
       </Brand>
       <Scrollbar>
         <List disablePadding>
           <Items>
             {routes.map((category, index) => (
               <React.Fragment key={index}>
-                {category.header ? (
-                  <SidebarSection>{category.header}</SidebarSection>
-                ) : null}
-
                 {category.children ? (
                   <React.Fragment key={index}>
                     <SidebarCategory
@@ -368,30 +321,6 @@ function Sidebar({ classes, staticContext, location, ...rest }) {
           </Items>
         </List>
       </Scrollbar>
-      <SidebarFooter>
-        <Grid container spacing={2}>
-          <Grid item>
-            <StyledBadge
-              overlap="circle"
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'right',
-              }}
-              variant="dot"
-            >
-              <Avatar alt="Lucy Lavender" src="/static/img/avatars/avatar-1.jpg" />
-            </StyledBadge>
-          </Grid>
-          <Grid item>
-            <SidebarFooterText variant="body2">
-              Lucy Lavender
-            </SidebarFooterText>
-            <SidebarFooterSubText variant="caption">
-              UX Designer
-            </SidebarFooterSubText>
-          </Grid>
-        </Grid>
-      </SidebarFooter>
     </Drawer>
   );
 }
