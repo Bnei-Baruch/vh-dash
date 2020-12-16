@@ -4,13 +4,12 @@ import async from '../components/Async';
 
 import {Sliders} from 'react-feather';
 
-const Blank = async(() => import("../pages/pages/Blank"));
+const Welcome = async(() => import('../pages/pages/Welcome'));
 
 const homeRoutes = {
-  id: 'Blank',
+  id: 'Welcome',
   path: '/',
-  header: 'Blank',
-  component: Blank,
+  component: Welcome,
   children: null
 };
 
