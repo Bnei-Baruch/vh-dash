@@ -1,21 +1,21 @@
-import React from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import Helmet from 'react-helmet';
 
-import { Button as MuiButton, Typography } from "@material-ui/core";
-import { spacing } from "@material-ui/system";
+import { Button as MuiButton, Typography } from '@material-ui/core';
+import { spacing } from '@material-ui/system';
 
 const Button = styled(MuiButton)(spacing);
 
 const Wrapper = styled.div`
-  padding: ${props => props.theme.spacing(6)}px;
+  padding: ${(props) => props.theme.spacing(6)}px;
   text-align: center;
   background: transparent;
 
-  ${props => props.theme.breakpoints.up("md")} {
-    padding: ${props => props.theme.spacing(10)}px;
+  ${(props) => props.theme.breakpoints.up('md')} {
+    padding: ${(props) => props.theme.spacing(10)}px;
   }
 `;
 

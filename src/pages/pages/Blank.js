@@ -1,20 +1,20 @@
-import React from "react";
-import styled from "styled-components";
-import { NavLink as RouterNavLink } from "react-router-dom";
+import React from 'react';
+import styled from 'styled-components';
+import {NavLink as RouterNavLink} from 'react-router-dom';
 
 import Helmet from 'react-helmet';
 
 import {
-  CardContent,
-  Grid,
-  Link,
   Breadcrumbs as MuiBreadcrumbs,
   Card as MuiCard,
+  CardContent,
   Divider as MuiDivider,
+  Grid,
+  Link,
   Typography
-} from "@material-ui/core";
+} from '@material-ui/core';
 
-import { spacing } from "@material-ui/system";
+import {spacing} from '@material-ui/system';
 
 const NavLink = React.forwardRef((props, ref) => (
   <RouterNavLink innerRef={ref} {...props} />
@@ -41,33 +41,31 @@ function EmptyCard() {
   );
 }
 
-function Blank() {
-  return (
-    <React.Fragment>
-      <Helmet title="Blank" />
-      <Typography variant="h3" gutterBottom display="inline">
-        Blank
-      </Typography>
+const Blank = () => (
+  <>
+    <Helmet title="Blank"/>
+    <Typography variant="h3" gutterBottom display="inline">
+      Blank
+    </Typography>
 
-      <Breadcrumbs aria-label="Breadcrumb" mt={2}>
-        <Link component={NavLink} exact to="/">
-          Dashboard
-        </Link>
-        <Link component={NavLink} exact to="/">
-          Pages
-        </Link>
-        <Typography>Blank</Typography>
-      </Breadcrumbs>
+    <Breadcrumbs aria-label="Breadcrumb" mt={2}>
+      <Link component={NavLink} exact to="/">
+        Dashboard
+      </Link>
+      <Link component={NavLink} exact to="/">
+        Pages
+      </Link>
+      <Typography>Blank</Typography>
+    </Breadcrumbs>
 
-      <Divider my={6} />
+    <Divider my={6}/>
 
-      <Grid container spacing={6}>
-        <Grid item xs={12}>
-          <EmptyCard />
-        </Grid>
+    <Grid container spacing={6}>
+      <Grid item xs={12}>
+        <EmptyCard/>
       </Grid>
-    </React.Fragment>
-  );
-}
+    </Grid>
+  </>
+);
 
 export default Blank;

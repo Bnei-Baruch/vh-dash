@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import Loader from "./Loader";
+import Loader from './Loader';
 
-const sleep = m => new Promise(r => setTimeout(r, m));
+const sleep = (m) => new Promise((r) => setTimeout(r, m));
 
 export default function asyncComponent(importComponent) {
   class AsyncComponent extends React.Component {
@@ -10,7 +10,7 @@ export default function asyncComponent(importComponent) {
       super(props);
 
       this.state = {
-        component: null
+        component: null,
       };
     }
 
@@ -20,14 +20,14 @@ export default function asyncComponent(importComponent) {
       const { default: component } = await importComponent();
 
       this.setState({
-        component: component
+        component,
       });
     }
 
     render() {
       const C = this.state.component;
 
-      return C ? <C {...this.props} /> : <Loader />
+      return C ? <C {...this.props} /> : <Loader />;
     }
   }
 

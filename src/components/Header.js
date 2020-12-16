@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import styled, { withTheme } from "styled-components";
-import { connect } from "react-redux";
-import { darken } from "polished";
+import React, { useState } from 'react';
+import styled, { withTheme } from 'styled-components';
+import { connect } from 'react-redux';
+import { darken } from 'polished';
 
 import {
   Badge,
@@ -12,22 +12,22 @@ import {
   MenuItem,
   AppBar as MuiAppBar,
   IconButton as MuiIconButton,
-  Toolbar
-} from "@material-ui/core";
+  Toolbar,
+} from '@material-ui/core';
 
-import { Menu as MenuIcon } from "@material-ui/icons";
+import { Menu as MenuIcon } from '@material-ui/icons';
 
 import {
   Bell,
   MessageSquare,
   Search as SearchIcon,
-  Power
-} from "react-feather";
+  Power,
+} from 'react-feather';
 
 const AppBar = styled(MuiAppBar)`
-  background: ${props => props.theme.header.background};
-  color: ${props => props.theme.header.color};
-  box-shadow: ${props => props.theme.shadows[1]};
+  background: ${(props) => props.theme.header.background};
+  color: ${(props) => props.theme.header.color};
+  box-shadow: ${(props) => props.theme.shadows[1]};
 `;
 
 const IconButton = styled(MuiIconButton)`
@@ -39,23 +39,23 @@ const IconButton = styled(MuiIconButton)`
 
 const Indicator = styled(Badge)`
   .MuiBadge-badge {
-    background: ${props => props.theme.header.indicator.background};
-    color: ${props => props.theme.palette.common.white};
+    background: ${(props) => props.theme.header.indicator.background};
+    color: ${(props) => props.theme.palette.common.white};
   }
 `;
 
 const Search = styled.div`
   border-radius: 2px;
-  background-color: ${props => props.theme.header.background};
+  background-color: ${(props) => props.theme.header.background};
   display: none;
   position: relative;
   width: 100%;
 
   &:hover {
-    background-color: ${props => darken(0.05, props.theme.header.background)};
+    background-color: ${(props) => darken(0.05, props.theme.header.background)};
   }
 
-  ${props => props.theme.breakpoints.up("md")} {
+  ${(props) => props.theme.breakpoints.up('md')} {
     display: block;
   }
 `;
@@ -80,11 +80,11 @@ const Input = styled(InputBase)`
   width: 100%;
 
   > input {
-    color: ${props => props.theme.header.search.color};
-    padding-top: ${props => props.theme.spacing(2.5)}px;
-    padding-right: ${props => props.theme.spacing(2.5)}px;
-    padding-bottom: ${props => props.theme.spacing(2.5)}px;
-    padding-left: ${props => props.theme.spacing(12)}px;
+    color: ${(props) => props.theme.header.search.color};
+    padding-top: ${(props) => props.theme.spacing(2.5)}px;
+    padding-right: ${(props) => props.theme.spacing(2.5)}px;
+    padding-bottom: ${(props) => props.theme.spacing(2.5)}px;
+    padding-left: ${(props) => props.theme.spacing(12)}px;
     width: 160px;
   }
 `;
@@ -98,7 +98,7 @@ const Flag = styled.img`
 function LanguageMenu() {
   const [anchorMenu, setAnchorMenu] = useState(null);
 
-  const toggleMenu = event => {
+  const toggleMenu = (event) => {
     setAnchorMenu(event.currentTarget);
   };
 
@@ -107,9 +107,9 @@ function LanguageMenu() {
   };
 
   return (
-    <React.Fragment>
+    <>
       <IconButton
-        aria-owns={Boolean(anchorMenu) ? "menu-appbar" : undefined}
+        aria-owns={anchorMenu ? 'menu-appbar' : undefined}
         aria-haspopup="true"
         onClick={toggleMenu}
         color="inherit"
@@ -135,14 +135,14 @@ function LanguageMenu() {
           Dutch
         </MenuItem>
       </Menu>
-    </React.Fragment>
-  )
+    </>
+  );
 }
 
 function UserMenu() {
   const [anchorMenu, setAnchorMenu] = useState(null);
 
-  const toggleMenu = event => {
+  const toggleMenu = (event) => {
     setAnchorMenu(event.currentTarget);
   };
 
@@ -151,9 +151,9 @@ function UserMenu() {
   };
 
   return (
-    <React.Fragment>
+    <>
       <IconButton
-        aria-owns={Boolean(anchorMenu) ? "menu-appbar" : undefined}
+        aria-owns={anchorMenu ? 'menu-appbar' : undefined}
         aria-haspopup="true"
         onClick={toggleMenu}
         color="inherit"
@@ -173,12 +173,12 @@ function UserMenu() {
           Sign out
         </MenuItem>
       </Menu>
-    </React.Fragment>
+    </>
   );
 }
 
 const Header = ({ onDrawerToggle }) => (
-  <React.Fragment>
+  <>
     <AppBar position="sticky" elevation={0}>
       <Toolbar>
         <Grid container alignItems="center">
@@ -219,7 +219,7 @@ const Header = ({ onDrawerToggle }) => (
         </Grid>
       </Toolbar>
     </AppBar>
-  </React.Fragment>
+  </>
 );
 
 export default connect()(withTheme(Header));

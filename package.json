@@ -1,12 +1,13 @@
 {
-  "name": "material-app",
-  "version": "1.2.0",
-  "description": "Material App Pro - React Admin & Dashboard Template",
-  "author": "Paul Laros <support@bootlab.io>",
+  "name": "virtual-home",
+  "version": "1.0.0",
+  "description": "Our virtual home",
+  "author": "bb",
   "private": true,
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build"
+    "build": "react-scripts build",
+    "lint": "eslint ."
   },
   "eslintConfig": {
     "extends": "react-app"

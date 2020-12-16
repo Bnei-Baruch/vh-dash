@@ -1,20 +1,17 @@
-import React, { useState } from "react";
-import styled, { createGlobalStyle } from "styled-components";
+import React, { useState } from 'react';
+import styled, { createGlobalStyle } from 'styled-components';
 
-import Sidebar from "../components/Sidebar";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import Settings from "../components/Settings";
-
-import { spacing } from "@material-ui/system";
+import { spacing } from '@material-ui/system';
 import {
   Hidden,
   CssBaseline,
   Paper as MuiPaper,
-  withWidth
-} from "@material-ui/core";
-
-import { isWidthUp } from "@material-ui/core/withWidth";
+  withWidth,
+} from '@material-ui/core';
+import { isWidthUp } from '@material-ui/core/withWidth';
+import Sidebar from '../components/Sidebar';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 const drawerWidth = 260;
 
@@ -26,7 +23,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background: ${props => props.theme.body.background};
+    background: ${(props) => props.theme.body.background};
   }
 
   .MuiCardHeader-action .MuiIconButton-root {
@@ -42,7 +39,7 @@ const Root = styled.div`
 `;
 
 const Drawer = styled.div`
-  ${props => props.theme.breakpoints.up("md")} {
+  ${(props) => props.theme.breakpoints.up('md')} {
     width: ${drawerWidth}px;
     flex-shrink: 0;
   }
@@ -58,7 +55,7 @@ const Paper = styled(MuiPaper)(spacing);
 
 const MainContent = styled(Paper)`
   flex: 1;
-  background: ${props => props.theme.body.background};
+  background: ${(props) => props.theme.body.background};
 
   @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
     flex: none;
@@ -69,7 +66,7 @@ const MainContent = styled(Paper)`
   }
 `;
 
-const Dashboard = ({children, routes, width}) => {
+const Dashboard = ({ children, routes, width }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleDrawerToggle = () => {
@@ -99,14 +96,13 @@ const Dashboard = ({children, routes, width}) => {
       </Drawer>
       <AppContent>
         <Header onDrawerToggle={handleDrawerToggle} />
-        <MainContent p={isWidthUp("lg", width) ? 10 : 5}>
+        <MainContent p={isWidthUp('lg', width) ? 10 : 5}>
           {children}
         </MainContent>
         <Footer />
       </AppContent>
-      <Settings />
     </Root>
-  )
-}
+  );
+};
 
 export default withWidth()(Dashboard);

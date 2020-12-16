@@ -1,10 +1,10 @@
 const props = {
   MuiButtonBase: {
-    disableRipple: true
+    disableRipple: true,
   },
   MuiCardHeader: {
-    titleTypographyProps: { variant: "h6" }
-  }
+    titleTypographyProps: { variant: 'h6' },
+  },
 };
 
 export default props;

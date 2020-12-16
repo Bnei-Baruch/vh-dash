@@ -1,18 +1,19 @@
-import { Chart as ChartJS } from "react-chartjs-2";
+import { Chart as ChartJS } from 'react-chartjs-2';
 
-ChartJS.elements.Rectangle.prototype.draw = function() {
-  const ctx = this._chart.ctx;
+ChartJS.elements.Rectangle.prototype.draw = function () {
+  const { ctx } = this._chart;
   const vm = this._view;
-  let left, right, top, bottom, signX, signY, borderSkipped;
-  let borderWidth = vm.borderWidth;
+  let left; let right; let top; let bottom; let signX; let signY; let
+    borderSkipped;
+  let { borderWidth } = vm;
 
   // If radius is less than 0 or is large enough to cause drawing errors a max
   // radius is imposed. If cornerRadius is not defined set it to 0.
-  let cornerRadius = this._chart.config.options.cornerRadius;
+  let { cornerRadius } = this._chart.config.options;
   if (cornerRadius < 0) {
     cornerRadius = 0;
   }
-  if (typeof cornerRadius == "undefined") {
+  if (typeof cornerRadius === 'undefined') {
     cornerRadius = 0;
   }
 
@@ -23,7 +24,7 @@ ChartJS.elements.Rectangle.prototype.draw = function() {
     bottom = vm.base;
     signX = 1;
     signY = bottom > top ? 1 : -1;
-    borderSkipped = vm.borderSkipped || "bottom";
+    borderSkipped = vm.borderSkipped || 'bottom';
   }
 
   // Canvas doesn't allow us to stroke inside the width so we can
@@ -34,13 +35,10 @@ ChartJS.elements.Rectangle.prototype.draw = function() {
     borderWidth = borderWidth > barSize ? barSize : borderWidth;
     const halfStroke = borderWidth / 2;
     // Adjust borderWidth when bar top position is near vm.base(zero).
-    const borderLeft =
-      left + (borderSkipped !== "left" ? halfStroke * signX : 0);
-    const borderRight =
-      right + (borderSkipped !== "right" ? -halfStroke * signX : 0);
-    const borderTop = top + (borderSkipped !== "top" ? halfStroke * signY : 0);
-    const borderBottom =
-      bottom + (borderSkipped !== "bottom" ? -halfStroke * signY : 0);
+    const borderLeft = left + (borderSkipped !== 'left' ? halfStroke * signX : 0);
+    const borderRight = right + (borderSkipped !== 'right' ? -halfStroke * signX : 0);
+    const borderTop = top + (borderSkipped !== 'top' ? halfStroke * signY : 0);
+    const borderBottom = bottom + (borderSkipped !== 'bottom' ? -halfStroke * signY : 0);
     // not become a vertical line?
     if (borderLeft !== borderRight) {
       top = borderTop;
@@ -65,11 +63,11 @@ ChartJS.elements.Rectangle.prototype.draw = function() {
     [left, bottom],
     [left, top],
     [right, top],
-    [right, bottom]
+    [right, bottom],
   ];
 
   // Find first (starting) corner with fallback to 'bottom'
-  const borders = ["bottom", "left", "top", "right"];
+  const borders = ['bottom', 'left', 'top', 'right'];
   let startCorner = borders.indexOf(borderSkipped, 0);
   if (startCorner === -1) {
     startCorner = 0;

@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import { CircularProgress } from "@material-ui/core";
+import { CircularProgress } from '@material-ui/core';
 
 const Root = styled.div`
   justify-content: center;

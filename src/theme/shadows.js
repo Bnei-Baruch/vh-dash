@@ -3,7 +3,7 @@ function createShadow(px) {
 }
 
 const shadows = [
-  "none",
+  'none',
   createShadow(14),
   createShadow(14),
   createShadow(14),
@@ -27,7 +27,7 @@ const shadows = [
   createShadow(14),
   createShadow(14),
   createShadow(14),
-  createShadow(14)
+  createShadow(14),
 ];
 
 export default shadows;
