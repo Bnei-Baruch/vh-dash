@@ -13,7 +13,7 @@ const homeRoutes = {
   children: null
 };
 
-const dashboardsRoutes = {
+const dashboardRoutes = {
   id: 'Dashboard',
   path: '/dashboard',
   icon: <Sliders/>,
@@ -25,10 +25,10 @@ const dashboardsRoutes = {
 // Routes using the Dashboard layout
 export const dashboardLayoutRoutes = [
   homeRoutes,
-  dashboardsRoutes
+  dashboardRoutes
 ];
 
 // Routes visible in the sidebar
 export const sidebarRoutes = [
-  // dashboardsRoutes
+  dashboardRoutes
 ];
