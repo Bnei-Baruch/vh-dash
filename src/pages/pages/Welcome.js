@@ -11,21 +11,6 @@ const Card = styled(MuiCard)(spacing);
 
 const Divider = styled(MuiDivider)(spacing);
 
-function EmptyCard() {
-  return (
-    <Card mb={6}>
-      <CardContent>
-        <Typography variant="h6" gutterBottom>
-          Empty card
-        </Typography>
-        <Typography variant="body2" gutterBottom>
-          Empty card
-        </Typography>
-      </CardContent>
-    </Card>
-  );
-}
-
 const Welcome = () => (
   <>
     <Helmet title="Welcome"/>
@@ -37,7 +22,16 @@ const Welcome = () => (
 
     <Grid container spacing={6}>
       <Grid item xs={12}>
-        <EmptyCard/>
+        <Card mb={6}>
+          <CardContent>
+            <Typography variant="h6" gutterBottom>
+              Empty card
+            </Typography>
+            <Typography variant="body2" gutterBottom>
+              Empty card
+            </Typography>
+          </CardContent>
+        </Card>
       </Grid>
     </Grid>
   </>
