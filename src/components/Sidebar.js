@@ -249,7 +249,7 @@ const Sidebar = ({classes, staticContext, location, ...rest}) => {
         <Avatar alt="Logo" src="/static/img/bb-logo.png"/>
         {' '}
         <Box ml={1}>
-          VIRTUAL HOME
+          <b>BNEI BARUCH</b>
         </Box>
       </Brand>
       <Scrollbar>
