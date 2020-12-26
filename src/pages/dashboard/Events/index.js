@@ -1,43 +1,49 @@
-import React from 'react';
-
+import React, {createRef, useRef, useState} from 'react';
 import styled, {withTheme} from 'styled-components';
 import {Helmet} from 'react-helmet/es/Helmet';
-import {Breadcrumbs, Divider as MuiDivider, Grid, Typography as MuiTypography} from '@material-ui/core';
+import {Button, Divider as MuiDivider, Grid, IconButton, Typography as MuiTypography} from '@material-ui/core';
+import {RefreshCw} from 'react-feather';
 import {spacing} from '@material-ui/system';
 import Arvut from './Arvut';
 import Calendar from './Calendar';
+import {DAY_NAMES, MONTH_NAMES} from '../../../shared/constants';
 
 const Typography = styled(MuiTypography)(spacing);
+
 const Divider = styled(MuiDivider)(spacing);
 
 const Events = () => {
   const now = new Date();
-  const dayNames = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-  const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September',
-    'October', 'November', 'December'];
+
+  const [liveEvent, setLiveEvent] = useState();
+  const calendarRef = createRef();
+
   return (
     <>
       <Helmet title="Events"/>
-      <Typography variant="h3" gutterBottom display="inline">
-        Welcome back
-      </Typography>
-      <Typography variant="body2" ml={2} display="inline">
-        {`${dayNames[now.getDay()]}, ${now.getDate()} ${monthNames[now.getMonth()]} ${now.getFullYear()}`}
-      </Typography>
 
-      <Breadcrumbs aria-label="Breadcrumb" mt={2}>
-        <Typography>Dashboard</Typography>
-        <Typography>Events</Typography>
-      </Breadcrumbs>
+      <Grid>
+        <Typography variant="h3" display="inline">
+          Welcome back, Lucy
+        </Typography>
+        <Typography variant="body2" ml={2} display="inline">
+          {`${DAY_NAMES[now.getDay()]}, ${now.getDate()} ${MONTH_NAMES[now.getMonth()]} ${now.getFullYear()}`}
+        </Typography>
+      </Grid>
+
+      {/*<Breadcrumbs aria-label="Breadcrumb" mt={2}>*/}
+      {/*  <Typography>Dashboard</Typography>*/}
+      {/*  <Typography>Events</Typography>*/}
+      {/*</Breadcrumbs>*/}
 
       <Divider my={6}/>
 
       <Grid container spacing={6}>
         <Grid item xs={12} lg={6}>
-          <Arvut/>
+          <Arvut liveEvent={liveEvent}/>
         </Grid>
         <Grid item xs={12} lg={6}>
-          <Calendar/>
+          <Calendar onLiveEvent={(event) => setLiveEvent(event)}/>
         </Grid>
       </Grid>
     </>
