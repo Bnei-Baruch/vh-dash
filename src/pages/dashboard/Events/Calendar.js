@@ -8,6 +8,7 @@ import {
   CardHeader,
   Chip,
   CircularProgress,
+  Icon,
   IconButton,
   Table,
   TableBody,
@@ -21,17 +22,17 @@ const TODAY = 0;
 const TOMORROW = 1;
 const YESTERDAY = -1;
 
-const CalendarButton = styled(IconButton)`
+const StaticIcon = styled(Icon)`
   color: ${grey[500]};
+`;
 
-  svg {
-    width: 18px;
-    height: 18px;
-  }
+const CardActionHeader = styled.div`
+  display: flex;
+  align-items: center;
 `;
 
 const CalendarButtonGroup = styled(ButtonGroup)`
-  margin: 0 12px;
+  margin: 0 16px;
 `;
 
 const Spinner = styled.div`
@@ -76,11 +77,11 @@ const Calendar = ({onLiveEvent}) => {
       const now = new Date();
       const date = new Date(now.setDate(now.getDate() + newDay));
       setCurrentDate(date);
-      getEvents(date).catch(err => console.error('Error getting calendar events', err))
+      getEvents(date, newDay).catch(err => console.error('Error getting calendar events', err))
     }
   };
 
-  const getEvents = async (date) => {
+  const getEvents = async (date, selectedDay = day) => {
     const {result} = await window.gapi.client.calendar.events.list({
       // calendarId: 'noubve6l8fhi83iu4qucd2ekok@group.calendar.google.com',
       calendarId: '4ntftm9sqt1jid8jasjgsjb7n0@group.calendar.google.com',
@@ -97,7 +98,7 @@ const Calendar = ({onLiveEvent}) => {
         const start = new Date(i.start.dateTime);
         const timeStartMs = toMs(start);
         const timeEndMs = toMs(new Date(i.end.dateTime));
-        const live = timeNowMs >= timeStartMs && timeNowMs < timeEndMs;
+        const live = timeNowMs >= timeStartMs && timeNowMs < timeEndMs && selectedDay === TODAY;
         const timeStart = `${padDate(start.getHours())}:${padDate(start.getMinutes())}`;
 
         return {id: i.id, start: start, timeStart, timeStartMs, live, title: i.summary};
@@ -139,10 +140,10 @@ const Calendar = ({onLiveEvent}) => {
     <Card mb={6}>
       <CardHeader
         action={
-          <>
-            <CalendarButton aria-label="open calendar">
+          <CardActionHeader>
+            <StaticIcon aria-label="calendar">
               <CalendarIcon/>
-            </CalendarButton>
+            </StaticIcon>
 
             <CalendarButtonGroup color="primary" onClick={onDayChange} aria-label="primary button group">
               <Button variant={day === TODAY ? 'contained' : 'outlined'}
@@ -156,10 +157,10 @@ const Calendar = ({onLiveEvent}) => {
                       value={YESTERDAY}>Yesterday</Button>
             </CalendarButtonGroup>
 
-            <CalendarButton aria-label="refresh" onClick={() => getEvents(currentDate)}>
+            <IconButton aria-label="refresh" color="primary" onClick={() => getEvents(currentDate)}>
               <RefreshCw/>
-            </CalendarButton>
-          </>
+            </IconButton>
+          </CardActionHeader>
         }
         title="Events"
       />
