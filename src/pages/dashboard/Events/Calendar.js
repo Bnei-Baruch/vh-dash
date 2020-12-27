@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import styled from "styled-components";
 import {
   Button,
@@ -13,7 +13,8 @@ import {
   Table,
   TableBody,
   TableCell,
-  TableRow
+  TableRow,
+  Typography
 } from '@material-ui/core';
 import {Calendar as CalendarIcon, RefreshCw} from 'react-feather';
 import {grey, red} from '@material-ui/core/colors';
@@ -21,6 +22,7 @@ import {grey, red} from '@material-ui/core/colors';
 const TODAY = 0;
 const TOMORROW = 1;
 const YESTERDAY = -1;
+const ERROR_MESSAGE = 'Could not load events';
 
 const StaticIcon = styled(Icon)`
   color: ${grey[500]};
@@ -47,21 +49,27 @@ const LiveChip = styled(Chip)`
 
 const TableWrapper = styled.div`
   overflow-y: auto;
-  max-width: calc(100vw - ${props => props.theme.spacing(12)}px);
+  max-height: 502px;
+  background-color: #F7F9FC;
+  border: 1px solid #E0E0E0;
+  border-radius: 4px;
 `;
 
 const TimeCell = styled(TableCell)`
   width: 52px;
+  padding: 12px 8px;
+  border: none;
 `;
 
 const TitleCell = styled(TableCell)`
   font-size: 18px;
-  padding-left: 8px;
-  padding-right: 8px;
+  padding: 12px 8px;
+  border: none;
 `;
 
 const Calendar = ({onLiveEvent}) => {
   const [loading, setLoading] = useState(true);
+  const [errorMessage, setErrorMessage] = useState('');
   const [day, setDay] = useState(TODAY);
   const [events, setEvents] = useState([]);
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -81,7 +89,9 @@ const Calendar = ({onLiveEvent}) => {
     }
   };
 
-  const getEvents = async (date, selectedDay = day) => {
+  const getEvents = useCallback(async (date, selectedDay = day) => {
+    setErrorMessage('');
+
     const {result} = await window.gapi.client.calendar.events.list({
       // calendarId: 'noubve6l8fhi83iu4qucd2ekok@group.calendar.google.com',
       calendarId: '4ntftm9sqt1jid8jasjgsjb7n0@group.calendar.google.com',
@@ -90,18 +100,21 @@ const Calendar = ({onLiveEvent}) => {
       timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone
     });
 
+    const now = new Date();
     const toMs = (d) => ((d.getHours() * 60) + d.getMinutes()) * 6000;
-    const timeNowMs = toMs(new Date());
+    const timeNowMs = toMs(now);
     const items = result.items
       .filter(i => i.summary)
       .map(i => {
         const start = new Date(i.start.dateTime);
+        const originalEnd = new Date(i.end.dateTime);
+        const end = new Date(now.getFullYear(), now.getMonth(), now.getDate(), originalEnd.getHours(), originalEnd.getMinutes());
         const timeStartMs = toMs(start);
-        const timeEndMs = toMs(new Date(i.end.dateTime));
+        const timeEndMs = toMs(end);
         const live = timeNowMs >= timeStartMs && timeNowMs < timeEndMs && selectedDay === TODAY;
         const timeStart = `${padDate(start.getHours())}:${padDate(start.getMinutes())}`;
 
-        return {id: i.id, start: start, timeStart, timeStartMs, live, title: i.summary};
+        return {id: i.id, start: start, end, timeStart, timeStartMs, live, title: i.summary, originalEnd: i.end.dateTime};
       })
       .sort((a, b) => b.start - a.start)
       .reduce((accumulator, currentValue) => {
@@ -114,11 +127,7 @@ const Calendar = ({onLiveEvent}) => {
       .sort((a, b) => a.timeStartMs - b.timeStartMs);
 
     setEvents(items);
-
-    const liveEvent = items.find((item) => item.live);
-    liveEvent && onLiveEvent(liveEvent);
-    setLoading(false);
-  };
+  }, []);
 
   useEffect(() => {
     const gapi = window.gapi;
@@ -132,9 +141,45 @@ const Calendar = ({onLiveEvent}) => {
         await getEvents(currentDate);
       };
 
-      initClient().catch((err) => console.error('Error loading GAPI client for API', err));
+      initClient()
+        .then(() => setLoading(false))
+        .catch((err) => {
+          setLoading(false);
+          setErrorMessage(ERROR_MESSAGE);
+          console.error('Error loading GAPI client for API', err);
+        });
     });
   }, []);
+
+  useEffect(() => {
+    let timer;
+
+    const liveEvent = events.find((item) => item.live);
+
+    if (liveEvent) {
+
+      // Scroll to the live event
+      setTimeout(() => {
+        const el = document.getElementById(liveEvent.id)
+        el && el.scrollIntoView({behavior: 'smooth', block: 'end'});
+      }, 0);
+
+      onLiveEvent(liveEvent);
+
+      const timeoutMS = liveEvent.end.getTime() - new Date().getTime();
+      console.log(timeoutMS);
+      timer = setTimeout(() => {
+        getEvents(currentDate).catch(err => {
+          setErrorMessage(ERROR_MESSAGE);
+          console.error(err);
+        });
+      }, timeoutMS);
+    }
+
+    return () => {
+      timer && clearTimeout(timer);
+    };
+  }, [events]);
 
   return (
     <Card mb={6}>
@@ -171,24 +216,27 @@ const Calendar = ({onLiveEvent}) => {
             <Spinner>
               <CircularProgress/>
             </Spinner>
-            :
+            : events.length ?
             <TableWrapper>
               <Table>
                 <TableBody>
                   {events.map(event => (
-                    <TableRow key={event.id}>
+                    <TableRow key={event.id} id={event.id}>
                       <TimeCell>{event.live ?
                         <LiveChip size="small" label="Live"/> :
                         <Chip size="small" label={event.timeStart}/>}
                       </TimeCell>
-                      <TitleCell>{event.title}</TitleCell>
+                      <TitleCell>{event.live ? <b>{event.title}</b> : event.title}</TitleCell>
                     </TableRow>
                   ))}
                 </TableBody>
               </Table>
             </TableWrapper>
+            :
+            <Typography variant="h3">No events</Typography>
         }
 
+        <Typography variant="h3">{errorMessage}</Typography>
       </CardContent>
     </Card>
   );

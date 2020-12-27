@@ -46,10 +46,18 @@ const Arvut = ({liveEvent}) => {
   const [clock, setClock] = useState('');
 
   useEffect(() => {
-    setInterval(() => {
-      const now = new Date();
-      setClock(`${now.getHours()}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`);
-    }, 1000);
+    let interval;
+
+    if (liveEvent) {
+      interval = setInterval(() => {
+        const now = new Date();
+        setClock(`${now.getHours()}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`);
+      }, 1000);
+    }
+
+    return () => {
+      interval && clearInterval(interval);
+    };
   }, [liveEvent]);
 
   return (
