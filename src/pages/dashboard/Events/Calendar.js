@@ -107,6 +107,7 @@ const Calendar = ({onLiveEvent, settings: {language}}) => {
 
   const getEvents = useCallback(async () => {
     setErrorMessage('');
+    setRefreshing(true);
 
     const padDate = (date) => date.toString().padStart(2, '0');
     const parseDate = (date) => `${date.getFullYear()}-${padDate(date.getMonth() + 1)}-${padDate(date.getDate())}`;
@@ -137,14 +138,8 @@ const Calendar = ({onLiveEvent, settings: {language}}) => {
     });
 
     setEvents(calendarEvents);
+    setRefreshing(false);
   }, [day, currentDate, language]);
-
-  const refreshEvents = useCallback(() => {
-    setRefreshing(true);
-    getEvents()
-      .then(() => setRefreshing(false))
-      .catch(eventsErr);
-  }, [getEvents]);
 
   useEffect(() => {
     const gapi = window.gapi;
@@ -169,9 +164,9 @@ const Calendar = ({onLiveEvent, settings: {language}}) => {
           });
       });
     } else {
-      refreshEvents();
+      getEvents().catch(eventsErr)
     }
-  }, [authenticated, refreshEvents, getEvents]);
+  }, [authenticated, getEvents]);
 
   useEffect(() => {
     let timer;
@@ -191,14 +186,14 @@ const Calendar = ({onLiveEvent, settings: {language}}) => {
       const timeoutMS = liveEvent.end.getTime() - new Date().getTime();
 
       timer = setTimeout(() => {
-        refreshEvents();
+        getEvents().catch(eventsErr);
       }, timeoutMS);
     }
 
     return () => {
       timer && clearTimeout(timer);
     };
-  }, [events, refreshEvents, onLiveEvent]);
+  }, [events, getEvents, onLiveEvent]);
 
   return (
     <Card mb={6}>
@@ -221,7 +216,8 @@ const Calendar = ({onLiveEvent, settings: {language}}) => {
                       value={YESTERDAY}>Yesterday</Button>
             </CalendarButtonGroup>
 
-            <IconButton aria-label="refresh" color="primary" disabled={loading || refreshing} onClick={refreshEvents}>
+            <IconButton aria-label="refresh" color="primary" disabled={loading || refreshing}
+                        onClick={() => getEvents().catch(eventsErr)}>
               <RefreshCw/>
             </IconButton>
           </CardActionHeader>
