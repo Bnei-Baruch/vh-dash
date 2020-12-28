@@ -81,8 +81,9 @@ const CALENDAR_LANGUAGE = {
   es: GOOGLE_CALENDAR_ES
 };
 
+let authenticated = false;
+
 const Calendar = ({onLiveEvent, settings: {language}}) => {
-  const [authenticated, setAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -151,7 +152,8 @@ const Calendar = ({onLiveEvent, settings: {language}}) => {
 
           setApiKey(GOOGLE_CALENDAR_API_KEY);
           await load('https://content.googleapis.com/discovery/v1/apis/calendar/v3/rest');
-          setAuthenticated(true);
+
+          authenticated = true;
 
           await getEvents();
         };
@@ -164,9 +166,14 @@ const Calendar = ({onLiveEvent, settings: {language}}) => {
           });
       });
     } else {
-      getEvents().catch(eventsErr)
+      getEvents()
+        .then(() => setLoading(false))
+        .catch((err) => {
+          setLoading(false);
+          eventsErr(err);
+        });
     }
-  }, [authenticated, getEvents]);
+  }, [getEvents]);
 
   useEffect(() => {
     let timer;
