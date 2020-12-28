@@ -8,10 +8,13 @@ import {
   Divider as MuiDivider,
   Typography as MuiTypography
 } from '@material-ui/core';
-import {ARVUT_URL} from '../../../shared/constants';
 import {spacing} from '@material-ui/system';
 import styled from 'styled-components';
 import {Mic} from 'react-feather';
+import axios from 'axios';
+import {connect} from 'react-redux';
+import parsePrometheusTextFormat from 'parse-prometheus-text-format';
+import {ARVUT_URL} from '../../../shared/constants';
 
 const Divider = styled(MuiDivider)(spacing);
 
@@ -42,23 +45,50 @@ const ConnectionsContainer = styled.div`
 `;
 
 
-const Arvut = ({liveEvent}) => {
+const Arvut = ({liveEvent, profile}) => {
   const [clock, setClock] = useState('');
+  const [totalConnections, setTotalConnections] = useState(0);
+  const [tensConnected, setTensConnected] = useState(0);
+  const [friendsFromTen, setFriendsFromTen] = useState(0);
 
   useEffect(() => {
-    let interval;
-
-    if (liveEvent) {
-      interval = setInterval(() => {
-        const now = new Date();
-        setClock(`${now.getHours()}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`);
-      }, 1000);
+    if (!liveEvent) {
+      return;
     }
 
+    // TODO: Change url ones new API is ready & npm un parse-prometheus-text-format
+    axios('https://gxydb.kli.one/galaxy/metrics')
+      .then(({data}) => {
+        const parsed = parsePrometheusTextFormat(data);
+        const participants = parsed.find(n => n.name === 'galaxy_api_participants');
+
+        if (participants && participants.metrics && participants.metrics.length) {
+          const {metrics} = participants;
+
+          setTensConnected(metrics.length);
+
+          const total = metrics.reduce((accumulator, currentValue) => accumulator + +currentValue.value, 0);
+          setTotalConnections(total);
+
+          const friendTen = metrics.find(m => m.labels.name === profile.tenName);
+          if (friendTen) {
+            setFriendsFromTen(+friendTen.value);
+          }
+        }
+      })
+      .catch(err => console.log(err));
+  }, [liveEvent, profile]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const now = new Date();
+      setClock(`${now.getHours()}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`);
+    }, 1000);
+
     return () => {
-      interval && clearInterval(interval);
+      clearInterval(interval);
     };
-  }, [liveEvent]);
+  }, []);
 
   return (
     <Card mb={6}>
@@ -96,7 +126,7 @@ const Arvut = ({liveEvent}) => {
             <ConnectionsContainer>
               <div>
                 <Typography variant="h2">
-                  <Box fontWeight="fontWeightBold">4000</Box>
+                  <Box fontWeight="fontWeightBold">{totalConnections}</Box>
                 </Typography>
                 <Typography variant="subtitle1" mt={2} color="textSecondary">
                   Total connections
@@ -104,7 +134,7 @@ const Arvut = ({liveEvent}) => {
               </div>
               <div>
                 <Typography variant="h2">
-                  <Box fontWeight="fontWeightBold">300</Box>
+                  <Box fontWeight="fontWeightBold">{tensConnected}</Box>
                 </Typography>
                 <Typography variant="subtitle1" mt={2} color="textSecondary">
                   Number of tens connected
@@ -112,7 +142,7 @@ const Arvut = ({liveEvent}) => {
               </div>
               <div>
                 <Typography variant="h2">
-                  <Box fontWeight="fontWeightBold">8</Box>
+                  <Box fontWeight="fontWeightBold">{friendsFromTen}</Box>
                 </Typography>
                 <Typography variant="subtitle1" mt={2} color="textSecondary">
                   Friends from your ten
@@ -128,4 +158,4 @@ const Arvut = ({liveEvent}) => {
   );
 };
 
-export default Arvut;
+export default connect(store => ({profile: store.profileReducer}))(Arvut);

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import {withTheme} from 'styled-components';
 import {Grid} from '@material-ui/core';
 import Arvut from './Arvut';
@@ -7,6 +7,10 @@ import Header from '../components/Header';
 
 const Events = () => {
   const [liveEvent, setLiveEvent] = useState();
+
+  const onLiveEvent = useCallback((event) => {
+    setLiveEvent(event)
+  }, []);
 
   return (
     <>
@@ -17,7 +21,7 @@ const Events = () => {
           <Arvut liveEvent={liveEvent}/>
         </Grid>
         <Grid item xs={12} lg={6}>
-          <Calendar onLiveEvent={(event) => setLiveEvent(event)}/>
+          <Calendar onLiveEvent={onLiveEvent}/>
         </Grid>
       </Grid>
     </>
