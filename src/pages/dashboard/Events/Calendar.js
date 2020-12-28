@@ -18,7 +18,13 @@ import {
 } from '@material-ui/core';
 import {Calendar as CalendarIcon, RefreshCw} from 'react-feather';
 import {grey, red} from '@material-ui/core/colors';
-import {GOOGLE_CALENDAR_API_KEY, GOOGLE_CALENDAR_EN} from '../../../shared/constants';
+import {
+  GOOGLE_CALENDAR_API_KEY,
+  GOOGLE_CALENDAR_EN, GOOGLE_CALENDAR_ES,
+  GOOGLE_CALENDAR_HE,
+  GOOGLE_CALENDAR_RU
+} from '../../../shared/constants';
+import {connect} from 'react-redux';
 
 const TODAY = 0;
 const TOMORROW = 1;
@@ -67,11 +73,14 @@ const TitleCell = styled(TableCell)`
   border: none;
 `;
 
-const padDate = (date) => date.toString().padStart(2, '0');
+const CALENDAR_LANGUAGE = {
+  en: GOOGLE_CALENDAR_EN,
+  he: GOOGLE_CALENDAR_HE,
+  ru: GOOGLE_CALENDAR_RU,
+  es: GOOGLE_CALENDAR_ES
+};
 
-const parseDate = (date) => `${date.getFullYear()}-${padDate(date.getMonth() + 1)}-${padDate(date.getDate())}`;
-
-const Calendar = ({onLiveEvent}) => {
+const Calendar = ({onLiveEvent, settings: {language}}) => {
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -98,8 +107,11 @@ const Calendar = ({onLiveEvent}) => {
   const getEvents = useCallback(async (date = currentDate, selectedDay = day) => {
     setErrorMessage('');
 
-    const {result} = await window.gapi.client.calendar.events.list({
-      calendarId: GOOGLE_CALENDAR_EN,
+    const padDate = (date) => date.toString().padStart(2, '0');
+    const parseDate = (date) => `${date.getFullYear()}-${padDate(date.getMonth() + 1)}-${padDate(date.getDate())}`;
+
+    const {result: {items}} = await window.gapi.client.calendar.events.list({
+      calendarId: CALENDAR_LANGUAGE[language] || GOOGLE_CALENDAR_EN,
       timeMin: `${parseDate(date)}T00:00:00Z`,
       timeMax: `${parseDate(date)}T23:59:59Z`,
       timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
@@ -108,25 +120,23 @@ const Calendar = ({onLiveEvent}) => {
     });
 
     const nowMs = new Date().getTime();
-    const items = result.items
-      .filter(i => i.summary)
-      .map(i => {
-        const start = new Date(i.start.dateTime);
-        const end = new Date(i.end.dateTime);
-        const live = nowMs >= start.getTime() && nowMs < end.getTime() && selectedDay === TODAY;
-        const timeStart = `${padDate(start.getHours())}:${padDate(start.getMinutes())}`;
+    const calendarEvents = items.map(i => {
+      const start = new Date(i.start.dateTime);
+      const end = new Date(i.end.dateTime);
+      const live = nowMs >= start.getTime() && nowMs < end.getTime() && selectedDay === TODAY;
+      const timeStart = `${padDate(start.getHours())}:${padDate(start.getMinutes())}`;
 
-        return {
-          id: i.id,
-          title: i.summary,
-          timeStart,
-          end,
-          live
-        };
-      });
+      return {
+        id: i.id,
+        title: i.summary,
+        timeStart,
+        end,
+        live
+      };
+    });
 
-    setEvents(items);
-  }, [day, currentDate]);
+    setEvents(calendarEvents);
+  }, [day, currentDate, language]);
 
   const refreshEvents = () => {
     setRefreshing(true);
@@ -245,4 +255,4 @@ const Calendar = ({onLiveEvent}) => {
   );
 };
 
-export default Calendar;
+export default connect(store => ({settings: store.settingsReducer}))(Calendar);

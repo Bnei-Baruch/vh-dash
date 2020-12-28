@@ -1,13 +1,13 @@
 import * as types from '../constants';
 
 const INITIAL_STATE = {
-  tenName: 'Hebrew 10'
+  language: 'en'
 };
 
 export default function reducer(state = INITIAL_STATE, actions) {
   switch (actions.type) {
 
-    case types.SET_PROFILE:
+    case types.SET_SETTINGS:
       return {
         ...state,
         ...actions.payload

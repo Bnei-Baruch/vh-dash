@@ -44,8 +44,7 @@ const ConnectionsContainer = styled.div`
   justify-content: space-between;
 `;
 
-
-const Arvut = ({liveEvent, profile}) => {
+const Arvut = ({liveEvent, profile: {tenName}}) => {
   const [clock, setClock] = useState('');
   const [totalConnections, setTotalConnections] = useState(0);
   const [tensConnected, setTensConnected] = useState(0);
@@ -70,14 +69,14 @@ const Arvut = ({liveEvent, profile}) => {
           const total = metrics.reduce((accumulator, currentValue) => accumulator + +currentValue.value, 0);
           setTotalConnections(total);
 
-          const friendTen = metrics.find(m => m.labels.name === profile.tenName);
+          const friendTen = metrics.find(m => m.labels.name === tenName);
           if (friendTen) {
             setFriendsFromTen(+friendTen.value);
           }
         }
       })
       .catch(err => console.log(err));
-  }, [liveEvent, profile]);
+  }, [liveEvent, tenName]);
 
   useEffect(() => {
     const interval = setInterval(() => {
