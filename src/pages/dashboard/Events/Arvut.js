@@ -55,27 +55,39 @@ const Arvut = ({liveEvent, profile: {tenName}}) => {
       return;
     }
 
-    // TODO: Change url ones new API is ready & npm un parse-prometheus-text-format
-    axios('https://gxydb.kli.one/galaxy/metrics')
-      .then(({data}) => {
-        const parsed = parsePrometheusTextFormat(data);
-        const participants = parsed.find(n => n.name === 'galaxy_api_participants');
+    const fetch = () => {
+      // TODO: Change url ones new API is ready & npm un parse-prometheus-text-format
+      axios('https://gxydb.kli.one/galaxy/metrics')
+        .then(({data}) => {
+          const parsed = parsePrometheusTextFormat(data);
+          const participants = parsed.find(n => n.name === 'galaxy_api_participants');
 
-        if (participants && participants.metrics && participants.metrics.length) {
-          const {metrics} = participants;
+          if (participants && participants.metrics && participants.metrics.length) {
+            const {metrics} = participants;
 
-          setTensConnected(metrics.length);
+            setTensConnected(metrics.length);
 
-          const total = metrics.reduce((accumulator, currentValue) => accumulator + +currentValue.value, 0);
-          setTotalConnections(total);
+            const total = metrics.reduce((accumulator, currentValue) => accumulator + +currentValue.value, 0);
+            setTotalConnections(total);
 
-          const friendTen = metrics.find(m => m.labels.name === tenName);
-          if (friendTen) {
-            setFriendsFromTen(+friendTen.value);
+            const friendTen = metrics.find(m => m.labels.name === tenName);
+            if (friendTen) {
+              setFriendsFromTen(+friendTen.value);
+            }
           }
-        }
-      })
-      .catch(err => console.log(err));
+        })
+        .catch(err => console.log(err));
+    };
+
+    fetch();
+
+    const interval = setInterval(() => {
+      fetch();
+    }, 30000);
+
+    return () => {
+      clearInterval(interval);
+    };
   }, [liveEvent, tenName]);
 
   useEffect(() => {

@@ -190,11 +190,15 @@ const Calendar = ({onLiveEvent, settings: {language}}) => {
 
       onLiveEvent(liveEvent);
 
-      const timeoutMS = liveEvent.end.getTime() - new Date().getTime();
+      const timeoutMs = liveEvent.end.getTime() - new Date().getTime();
 
-      timer = setTimeout(() => {
-        getEvents().catch(eventsErr);
-      }, timeoutMS);
+      if (timeoutMs >= 0) {
+        timer = setTimeout(() => {
+          getEvents().catch(eventsErr);
+        }, timeoutMs);
+      }
+    } else {
+      onLiveEvent(null);
     }
 
     return () => {
