@@ -20,7 +20,8 @@ import {Calendar as CalendarIcon, RefreshCw} from 'react-feather';
 import {grey, red} from '@material-ui/core/colors';
 import {
   GOOGLE_CALENDAR_API_KEY,
-  GOOGLE_CALENDAR_EN, GOOGLE_CALENDAR_ES,
+  GOOGLE_CALENDAR_EN,
+  GOOGLE_CALENDAR_ES,
   GOOGLE_CALENDAR_HE,
   GOOGLE_CALENDAR_RU
 } from '../../../shared/constants';
@@ -81,12 +82,18 @@ const CALENDAR_LANGUAGE = {
 };
 
 const Calendar = ({onLiveEvent, settings: {language}}) => {
+  const [authenticated, setAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [day, setDay] = useState(TODAY);
   const [events, setEvents] = useState([]);
   const [currentDate, setCurrentDate] = useState(new Date());
+
+  const eventsErr = (err) => {
+    setErrorMessage('Could not load events');
+    console.error(err);
+  };
 
   const onDayChange = ({target}) => {
     const newDay = parseInt(target.tagName === 'SPAN' ? target.parentNode.value : target.value);
@@ -95,16 +102,10 @@ const Calendar = ({onLiveEvent, settings: {language}}) => {
       const now = new Date();
       const date = new Date(now.setDate(now.getDate() + newDay));
       setCurrentDate(date);
-      getEvents(date, newDay).catch(err => console.error('Error getting calendar events', err))
     }
   };
 
-  const eventsErr = (err) => {
-    setErrorMessage('Could not load events');
-    console.error(err);
-  };
-
-  const getEvents = useCallback(async (date = currentDate, selectedDay = day) => {
+  const getEvents = useCallback(async () => {
     setErrorMessage('');
 
     const padDate = (date) => date.toString().padStart(2, '0');
@@ -112,8 +113,8 @@ const Calendar = ({onLiveEvent, settings: {language}}) => {
 
     const {result: {items}} = await window.gapi.client.calendar.events.list({
       calendarId: CALENDAR_LANGUAGE[language] || GOOGLE_CALENDAR_EN,
-      timeMin: `${parseDate(date)}T00:00:00Z`,
-      timeMax: `${parseDate(date)}T23:59:59Z`,
+      timeMin: `${parseDate(currentDate)}T00:00:00Z`,
+      timeMax: `${parseDate(currentDate)}T23:59:59Z`,
       timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
       singleEvents: true,
       orderBy: 'startTime'
@@ -123,7 +124,7 @@ const Calendar = ({onLiveEvent, settings: {language}}) => {
     const calendarEvents = items.map(i => {
       const start = new Date(i.start.dateTime);
       const end = new Date(i.end.dateTime);
-      const live = nowMs >= start.getTime() && nowMs < end.getTime() && selectedDay === TODAY;
+      const live = nowMs >= start.getTime() && nowMs < end.getTime() && day === TODAY;
       const timeStart = `${padDate(start.getHours())}:${padDate(start.getMinutes())}`;
 
       return {
@@ -138,33 +139,39 @@ const Calendar = ({onLiveEvent, settings: {language}}) => {
     setEvents(calendarEvents);
   }, [day, currentDate, language]);
 
-  const refreshEvents = () => {
+  const refreshEvents = useCallback(() => {
     setRefreshing(true);
     getEvents()
       .then(() => setRefreshing(false))
       .catch(eventsErr);
-  };
+  }, [getEvents]);
 
   useEffect(() => {
     const gapi = window.gapi;
 
-    gapi.load('client:auth2', () => {
-      const initClient = async () => {
-        const {client: {load, setApiKey}} = gapi;
+    if (!authenticated) {
+      gapi.load('client:auth2', () => {
+        const initClient = async () => {
+          const {client: {load, setApiKey}} = gapi;
 
-        setApiKey(GOOGLE_CALENDAR_API_KEY);
-        await load('https://content.googleapis.com/discovery/v1/apis/calendar/v3/rest');
-        await getEvents();
-      };
+          setApiKey(GOOGLE_CALENDAR_API_KEY);
+          await load('https://content.googleapis.com/discovery/v1/apis/calendar/v3/rest');
+          setAuthenticated(true);
 
-      initClient()
-        .then(() => setLoading(false))
-        .catch((err) => {
-          setLoading(false);
-          eventsErr(err);
-        });
-    });
-  }, [getEvents]);
+          await getEvents();
+        };
+
+        initClient()
+          .then(() => setLoading(false))
+          .catch((err) => {
+            setLoading(false);
+            eventsErr(err);
+          });
+      });
+    } else {
+      refreshEvents();
+    }
+  }, [authenticated, refreshEvents, getEvents]);
 
   useEffect(() => {
     let timer;
@@ -184,14 +191,14 @@ const Calendar = ({onLiveEvent, settings: {language}}) => {
       const timeoutMS = liveEvent.end.getTime() - new Date().getTime();
 
       timer = setTimeout(() => {
-        getEvents().catch(eventsErr);
+        refreshEvents();
       }, timeoutMS);
     }
 
     return () => {
       timer && clearTimeout(timer);
     };
-  }, [events, getEvents, onLiveEvent]);
+  }, [events, refreshEvents, onLiveEvent]);
 
   return (
     <Card mb={6}>
