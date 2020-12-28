@@ -102,43 +102,28 @@ const Calendar = ({onLiveEvent}) => {
       calendarId: GOOGLE_CALENDAR_EN,
       timeMin: `${parseDate(date)}T00:00:00Z`,
       timeMax: `${parseDate(date)}T23:59:59Z`,
-      timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone
+      timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+      singleEvents: true,
+      orderBy: 'startTime'
     });
 
-    const now = new Date();
-    const toMs = (d) => ((d.getHours() * 60) + d.getMinutes()) * 6000;
-    const timeNowMs = toMs(now);
+    const nowMs = new Date().getTime();
     const items = result.items
       .filter(i => i.summary)
       .map(i => {
         const start = new Date(i.start.dateTime);
-        const originalEnd = new Date(i.end.dateTime);
-        const end = new Date(now.getFullYear(), now.getMonth(), now.getDate(), originalEnd.getHours(), originalEnd.getMinutes());
-        const timeStartMs = toMs(start);
-        const timeEndMs = toMs(end);
-        const live = timeNowMs >= timeStartMs && timeNowMs < timeEndMs && selectedDay === TODAY;
+        const end = new Date(i.end.dateTime);
+        const live = nowMs >= start.getTime() && nowMs < end.getTime() && selectedDay === TODAY;
         const timeStart = `${padDate(start.getHours())}:${padDate(start.getMinutes())}`;
 
         return {
           id: i.id,
-          start: start,
-          end,
-          timeStart,
-          timeStartMs,
-          live,
           title: i.summary,
-          originalEnd: i.end.dateTime
+          timeStart,
+          end,
+          live
         };
-      })
-      .sort((a, b) => b.start - a.start)
-      .reduce((accumulator, currentValue) => {
-        if (!accumulator.find(i => i.timeStart === currentValue.timeStart)) {
-          accumulator.push(currentValue);
-        }
-
-        return accumulator;
-      }, [])
-      .sort((a, b) => a.timeStartMs - b.timeStartMs);
+      });
 
     setEvents(items);
   }, [day, currentDate]);
