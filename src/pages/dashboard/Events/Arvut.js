@@ -37,6 +37,7 @@ const EventContainer = styled.div`
 
 const EventName = styled.div`
   display: flex;
+  margin-inline-end: 20px;
 `;
 
 const ConnectionsContainer = styled.div`
@@ -120,8 +121,8 @@ const Arvut = ({liveEvent, profile: {tenName}}) => {
                 </Icon>
 
                 <div>
-                  <Typography variant="h2">
-                    <Box fontWeight="fontWeightBold">{liveEvent.title}</Box>
+                  <Typography variant="h2" fontWeight="fontWeightBold">
+                    {liveEvent.title}
                   </Typography>
                   <Typography variant="subtitle1" mt={2}>
                     Current event
@@ -129,36 +130,30 @@ const Arvut = ({liveEvent, profile: {tenName}}) => {
                 </div>
               </EventName>
 
-              <Typography variant="h2">{clock}</Typography>
+              <Box fontSize="h2.fontSize" fontWeight="fontWeightMedium">{clock}</Box>
             </EventContainer>
 
             <Divider my={6}/>
 
             <ConnectionsContainer>
-              <div>
-                <Typography variant="h2">
-                  <Box fontWeight="fontWeightBold">{totalConnections}</Box>
-                </Typography>
+              <Box>
+                <Box fontSize="h2.fontSize" fontWeight="fontWeightMedium">{totalConnections}</Box>
                 <Typography variant="subtitle1" mt={2} color="textSecondary">
                   Total connections
                 </Typography>
-              </div>
-              <div>
-                <Typography variant="h2">
-                  <Box fontWeight="fontWeightBold">{tensConnected}</Box>
-                </Typography>
+              </Box>
+              <Box>
+                <Box fontSize="h2.fontSize" fontWeight="fontWeightMedium">{tensConnected}</Box>
                 <Typography variant="subtitle1" mt={2} color="textSecondary">
                   Number of tens connected
                 </Typography>
-              </div>
-              <div>
-                <Typography variant="h2">
-                  <Box fontWeight="fontWeightBold">{friendsFromTen}</Box>
-                </Typography>
+              </Box>
+              <Box>
+                <Box fontSize="h2.fontSize" fontWeight="fontWeightMedium">{friendsFromTen}</Box>
                 <Typography variant="subtitle1" mt={2} color="textSecondary">
                   Friends from your ten
                 </Typography>
-              </div>
+              </Box>
             </ConnectionsContainer>
           </>
           :
