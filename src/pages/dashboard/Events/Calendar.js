@@ -85,7 +85,7 @@ const Calendar = ({onLiveEvent, settings: {language}}) => {
   const [authenticated, setAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
   const [refresh, setRefresh] = useState(true);
-  const [nextDay, setNextDay] = useState(false);
+  const [refreshToday, setRefreshToday] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [day, setDay] = useState(TODAY);
   const [events, setEvents] = useState([]);
@@ -127,7 +127,7 @@ const Calendar = ({onLiveEvent, settings: {language}}) => {
   }, []);
 
   useEffect(() => {
-    if (!authenticated || !refresh) {
+    if (!authenticated || !(refresh || refreshToday)) {
       return;
     }
 
@@ -138,7 +138,7 @@ const Calendar = ({onLiveEvent, settings: {language}}) => {
       const parseDate = (date) => `${date.getFullYear()}-${padDate(date.getMonth() + 1)}-${padDate(date.getDate())}`;
 
       const now = new Date();
-      const currentDate = new Date(now.setDate(now.getDate() + day));
+      const currentDate = new Date(now.setDate(now.getDate() + (refreshToday ? 0 : day)));
 
       const {result: {items}} = await window.gapi.client.calendar.events.list({
         calendarId: CALENDAR_LANGUAGE[language] || GOOGLE_CALENDAR_EN,
@@ -166,27 +166,23 @@ const Calendar = ({onLiveEvent, settings: {language}}) => {
         };
       });
 
-      if (day === TODAY) {
+      if (day === TODAY || refreshToday) {
         setEventsForToday(calendarEvents);
       }
 
       setEvents(calendarEvents);
       setRefresh(false);
+      setRefreshToday(false);
       setLoading(false);
     };
 
     getEvents().catch(eventsErr);
-  }, [authenticated, refresh, day, language]);
+  }, [authenticated, refresh, refreshToday, day, language]);
 
   useEffect(() => {
-    if (!refresh) {
-      return;
-    }
-
     const nowMs = new Date().getTime();
     const liveEvent = eventsForToday.find(e => nowMs >= e.start && nowMs < e.end);
     let timeout;
-    let isNextDay = false;
 
     if (liveEvent) {
       // Scroll to the live event
@@ -209,14 +205,11 @@ const Calendar = ({onLiveEvent, settings: {language}}) => {
         const tomorrow = new Date().setDate(new Date().getDate() + 1);
         const midnightMs = new Date(tomorrow).setHours(0, 0, 0, 0);
         timeout = midnightMs - nowMs;
-        isNextDay = true;
       }
     }
 
     setEventsTimeout(timeout);
-    setNextDay(isNextDay);
-
-  }, [eventsForToday, refresh, onLiveEvent]);
+  }, [eventsForToday, onLiveEvent]);
 
   useEffect(() => {
     if (eventsTimeout < 0) {
@@ -224,14 +217,13 @@ const Calendar = ({onLiveEvent, settings: {language}}) => {
     }
 
     const timer = setTimeout(() => {
-      nextDay && setDay(TODAY);
-      setRefresh(true);
+      setRefreshToday(true);
     }, eventsTimeout);
 
     return () => {
       clearTimeout(timer);
     };
-  }, [eventsTimeout, nextDay]);
+  }, [eventsTimeout]);
 
   useEffect(() => {
     setRefresh(true);

@@ -30,6 +30,7 @@ const Icon = styled.span`
     color: ${props => props.theme.palette.primary.main};
   }
 `;
+
 const EventContainer = styled.div`
   display: flex;
   justify-content: space-between;
