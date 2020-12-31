@@ -1,6 +1,7 @@
 import * as types from '../constants';
 
 const INITIAL_STATE = {
+  name: 'Lucy',
   tenName: 'Hebrew 10'
 };
 

@@ -4,12 +4,13 @@ import {Divider as MuiDivider, Grid, Typography as MuiTypography} from '@materia
 import {DAY_NAMES, MONTH_NAMES} from '../../../shared/constants';
 import styled from 'styled-components';
 import {spacing} from '@material-ui/system';
+import {connect} from 'react-redux';
 
 const Typography = styled(MuiTypography)(spacing);
 
 const Divider = styled(MuiDivider)(spacing);
 
-const Header = () => {
+const Header = ({profile}) => {
   const now = new Date();
 
   return (
@@ -18,7 +19,7 @@ const Header = () => {
 
       <Grid>
         <Typography variant="h3" display="inline">
-          Welcome back, Lucy
+          Welcome back, {profile.name}
         </Typography>
         <Typography variant="body2" ml={2} display="inline">
           {`${DAY_NAMES[now.getDay()]}, ${now.getDate()} ${MONTH_NAMES[now.getMonth()]} ${now.getFullYear()}`}
@@ -30,4 +31,4 @@ const Header = () => {
   )
 };
 
-export default Header;
+export default connect(store => ({profile: store.profileReducer}))(Header);

@@ -75,7 +75,7 @@ const TitleCell = styled(TableCell)`
 `;
 
 const CALENDAR_LANGUAGE = {
-  en: GOOGLE_CALENDAR_EN,
+  en: 'tqlv527qvl6eb0s1p7damec8no@group.calendar.google.com',
   he: GOOGLE_CALENDAR_HE,
   ru: GOOGLE_CALENDAR_RU,
   es: GOOGLE_CALENDAR_ES
@@ -170,7 +170,10 @@ const Calendar = ({onLiveEvent, settings: {language}}) => {
         setEventsForToday(calendarEvents);
       }
 
-      setEvents(calendarEvents);
+      if (day === TODAY || (day !== TODAY && !refreshToday)) {
+        setEvents(calendarEvents);
+      }
+
       setRefresh(false);
       setRefreshToday(false);
       setLoading(false);
