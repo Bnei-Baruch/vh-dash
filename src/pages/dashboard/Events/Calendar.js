@@ -75,7 +75,7 @@ const TitleCell = styled(TableCell)`
 `;
 
 const CALENDAR_LANGUAGE = {
-  en: 'tqlv527qvl6eb0s1p7damec8no@group.calendar.google.com',
+  en: GOOGLE_CALENDAR_EN,
   he: GOOGLE_CALENDAR_HE,
   ru: GOOGLE_CALENDAR_RU,
   es: GOOGLE_CALENDAR_ES
