@@ -4,7 +4,11 @@ import async from '../components/Async';
 
 import {Sliders} from 'react-feather';
 
+// Home
 const Welcome = async(() => import('../pages/pages/Welcome'));
+
+// Dashboard components
+const Events = async(() => import('../pages/dashboard/Events'))
 
 const homeRoutes = {
   id: 'Welcome',
@@ -18,7 +22,13 @@ const dashboardRoutes = {
   path: '/dashboard',
   icon: <Sliders/>,
   containsHome: true,
-  children: [],
+  children: [
+    {
+      path: '/dashboard/events',
+      name: 'Events',
+      component: Events
+    },
+  ],
   component: null
 };
 
