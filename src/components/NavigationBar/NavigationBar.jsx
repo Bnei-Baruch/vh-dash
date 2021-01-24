@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import { Box } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import TabPanel from './TabPanel.jsx';
 import SocialContainer from '../../components/SocialContainer';
 import PersonalForm from '../Forms/PersonalForm';
@@ -20,10 +20,11 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     width: '100%',
     backgroundColor: '#F2F2F2',
-  },
-  formContainer: {
-    display: 'flex',
-    justifyContent: 'space-between',
+    '& .MuiTab-root': {
+      '@media (min-width: 600px) and (max-width: 1100px)': {
+        minWidth: '100px',
+      },
+    },
   },
   selectedTab: {
     backgroundColor: theme.palette.background.paper,
@@ -51,7 +52,6 @@ const NavigationBar = () => {
           textColor='primary'
           variant='scrollable'
           scrollButtons='auto'
-          aria-label='scrollable auto tabs example'
         >
           <Tab label='Personal' {...a11yProps(0, classes.selectedTab)} />
           <Tab label='My Framework' {...a11yProps(1, classes.selectedTab)} />
@@ -61,11 +61,17 @@ const NavigationBar = () => {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0} className={classes.tabPanel}>
-        <Box className={classes.formContainer}>
-          <PersonalForm />
-          <LoginForm />
-        </Box>
-        <SocialContainer />
+        <Grid container spacing={6}>
+          <Grid item xs={12} sm={6}>
+            <PersonalForm />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <LoginForm />
+          </Grid>
+          <Grid item xs={12}>
+            <SocialContainer />
+          </Grid>
+        </Grid>
       </TabPanel>
       <TabPanel value={value} index={1} className={classes.tabPanel}>
         Item Two

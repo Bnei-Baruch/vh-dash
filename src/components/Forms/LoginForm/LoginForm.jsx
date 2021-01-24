@@ -1,31 +1,19 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import {
-  Box,
-  Button,
-  FormControl,
-  Input,
-  InputLabel,
-  Typography,
-} from '@material-ui/core';
+import { Box, Button, Grid, TextField, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    width: '48%',
-    padding: '20px',
+    padding: theme.spacing(5),
     backgroundColor: theme.palette.background.paper,
-  },
-  inputContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-    width: '65%',
-    '& .MuiTextField-root': {
-      margin: theme.spacing(2),
-      paddingBottom: theme.spacing(3),
+    '& .MuiTypography-root': {
+      marginBottom: theme.spacing(4),
+      fontSize: '14px',
+
     },
-  },
-  label: {
-    color: '#263238',
+    '& .MuiInputLabel-root': {
+      color: '#263238',
+    },
   },
 }));
 
@@ -49,28 +37,38 @@ const LoginForm = () => {
         <Typography variant='h4' gutterBottom>
           Login Info
         </Typography>
-        <div className={classes.inputContainer}>
-          <FormControl margin='normal'>
-            <InputLabel htmlFor='email' className={classes.label} shrink>
-              Email
-            </InputLabel>
-            <Input
-              id='email'
+        <Grid container spacing={10}>
+          <Grid item xs={12} md={6}>
+            <TextField
+              data-testid='model-name'
+              type='email'
+              label='Email'
               value={inputFields.email}
+              fullWidth
+              placeholder='Enter your email'
+              InputLabelProps={{
+                shrink: true,
+              }}
               onChange={event => handleChange('email', event.target.value)}
             />
-          </FormControl>
-          <FormControl margin='normal'>
-            <InputLabel htmlFor='password' className={classes.label} shrink>
-              Password
-            </InputLabel>
-            <Input
-              id='password'
+          </Grid>
+        </Grid>
+        <Grid container spacing={10}>
+          <Grid item xs={12} md={6}>
+            <TextField
+              data-testid='model-name'
+              type='password'
+              label='Password'
               value={inputFields.password}
+              fullWidth
+              placeholder='Enter your password'
+              InputLabelProps={{
+                shrink: true,
+              }}
               onChange={event => handleChange('password', event.target.value)}
             />
-          </FormControl>
-        </div>
+          </Grid>
+        </Grid>
         <Box mt={4}>
           <Button variant='contained' color='primary' type='submit'>
             Save Changes

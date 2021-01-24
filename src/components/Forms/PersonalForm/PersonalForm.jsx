@@ -3,9 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import {
   Box,
   Button,
-  FormControl,
-  Input,
-  InputLabel,
+  Grid,
+  TextField,
   Typography,
 } from '@material-ui/core';
 import SelectElement from '../FormElements/SelectElement';
@@ -14,24 +13,15 @@ import languages from '../../../constants/languages';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    fontSize: '16px',
-    width: '48%',
-    padding: '20px',
+    padding: theme.spacing(5),
     backgroundColor: theme.palette.background.paper,
-  },
-  inputContainer: {
-    display: 'flex',
-    '& div': {
-      flexDirection: 'column',
-      display: 'flex',
-      width: '96%',
+    '& .MuiTypography-root': {
+      marginBottom: theme.spacing(4),
+      fontSize: '14px',
     },
-    '& .MuiTextField-root': {
-      width: '270px',
+    '& .MuiInputLabel-root': {
+      color: '#263238',
     },
-  },
-  label: {
-    color: '#263238',
   },
 }));
 
@@ -88,66 +78,53 @@ const PersonalForm = () => {
   return (
     <div className={classes.root}>
       <form noValidate autoComplete='off' onSubmit={onSubmit}>
-        <Typography variant='h4' gutterBottom>
+        <Typography variant='h4'>
           Personal
         </Typography>
-        <div className={classes.inputContainer}>
-          <Box>
-            <FormControl margin='normal'>
-              <InputLabel htmlFor='first-name' className={classes.label} shrink>
-                First Name
-              </InputLabel>
-              <Input
-                id='first-name'
-                value={firstName}
-                onChange={event =>
-                  handleChange('firstName', event.target.value)
-                }
-              />
-            </FormControl>
-            <FormControl margin='normal'>
-              <InputLabel
-                htmlFor='date-of-birth'
-                className={classes.label}
-                shrink
-              >
-                Date of birth
-              </InputLabel>
-              <Input
-                id='date-of-birth'
-                value={dob}
-                onChange={event => handleChange('dob', event.target.value)}
-              />
-            </FormControl>
-            <SelectElement
-              id='gender'
-              label='Gender'
-              value={gender}
-              onChange={handleChange}
-              selectData={genderData}
+        <Grid container spacing={6}>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              data-testid='model-name'
+              type='text'
+              label='First Name'
+              value={firstName}
+              fullWidth
+              placeholder='Enter your first name'
+              InputLabelProps={{
+                shrink: true,
+              }}
+              onChange={event => handleChange('firstName', event.target.value)}
             />
-            <FormControl margin='normal'>
-              <InputLabel htmlFor='full-name' className={classes.label} shrink>
-                Full name in primary language
-              </InputLabel>
-              <Input
-                id='full-name'
-                value={fullName}
-                onChange={event => handleChange('fullName', event.target.value)}
-              />
-            </FormControl>
-          </Box>
-          <Box alignItems='flex-end'>
-            <FormControl margin='normal'>
-              <InputLabel htmlFor='last-name' className={classes.label} shrink>
-                Last name
-              </InputLabel>
-              <Input
-                id='last-name'
-                value={lastName}
-                onChange={event => handleChange('lastName', event.target.value)}
-              />
-            </FormControl>
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              data-testid='model-name'
+              type='text'
+              label='Last Name'
+              value={lastName}
+              fullWidth
+              placeholder='Enter your last name'
+              InputLabelProps={{
+                shrink: true,
+              }}
+              onChange={event => handleChange('lastName', event.target.value)}
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              data-testid='model-name'
+              type='date'
+              label='Date of birth'
+              value={dob}
+              fullWidth
+              placeholder='Enter your date of birth'
+              InputLabelProps={{
+                shrink: true,
+              }}
+              onChange={event => handleChange('dob', event.target.value)}
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
             <SelectElement
               id='country'
               label='Country of origin'
@@ -155,6 +132,17 @@ const PersonalForm = () => {
               onChange={handleChange}
               selectData={countries}
             />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <SelectElement
+              id='gender'
+              label='Gender'
+              value={gender}
+              onChange={handleChange}
+              selectData={genderData}
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
             <SelectElement
               id='primaryLanguage'
               label='Primary language'
@@ -162,24 +150,36 @@ const PersonalForm = () => {
               onChange={handleChange}
               selectData={languages}
             />
-            <FormControl margin='normal'>
-              <InputLabel
-                htmlFor='phone-number'
-                className={classes.label}
-                shrink
-              >
-                Phone Number
-              </InputLabel>
-              <Input
-                id='phone-number'
-                value={phoneNumber}
-                onChange={event =>
-                  handleChange('phoneNumber', event.target.value)
-                }
-              />
-            </FormControl>
-          </Box>
-        </div>
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              data-testid='model-name'
+              type='text'
+              label='Full name in primary language'
+              value={fullName}
+              fullWidth
+              placeholder='Enter your full name'
+              InputLabelProps={{
+                shrink: true,
+              }}
+              onChange={event => handleChange('fullName', event.target.value)}
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              data-testid='model-name'
+              type='text'
+              label='Phone Numder'
+              value={phoneNumber}
+              fullWidth
+              placeholder='Enter your phone number'
+              InputLabelProps={{
+                shrink: true,
+              }}
+              onChange={event => handleChange('phoneNumber', event.target.value)}
+            />
+          </Grid>
+        </Grid>
         <Box mt={4}>
           <Button variant='contained' color='primary' type='submit'>
             Save Changes

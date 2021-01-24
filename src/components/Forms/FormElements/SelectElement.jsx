@@ -4,6 +4,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import { FormControl, InputLabel, MenuItem, Select } from '@material-ui/core';
 
 const useStyles = makeStyles({
+  root: {
+    width: '100%',
+  },
   menu: {
     maxHeight: '300px',
   },
@@ -21,7 +24,7 @@ const SelectElement = ({ id, label, value, onChange, selectData }) => {
   const classes = useStyles();
 
   return (
-    <FormControl margin='normal'>
+    <FormControl className={classes.root}>
       <InputLabel shrink htmlFor={id} className={classes.label}>
         {label}
       </InputLabel>
