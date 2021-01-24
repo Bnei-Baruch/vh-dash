@@ -38,7 +38,7 @@ const NavigationBar = () => {
   const classes = useStyles();
   const [value, setValue] = useState(0);
 
-  const handleChange = newValue => {
+  const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
