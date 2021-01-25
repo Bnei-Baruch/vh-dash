@@ -10,6 +10,7 @@ import {
 import SelectElement from '../FormElements/SelectElement';
 import countries from '../../../constants/countries';
 import languages from '../../../constants/languages';
+import validator from '../../../helpers/validator';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -21,30 +22,33 @@ const useStyles = makeStyles(theme => ({
     },
     '& .MuiInputLabel-root': {
       color: '#263238',
+      '&.Mui-error': {
+        color: '#f44336',
+      },
     },
   },
 }));
 
 const initialFields = {
-  firstName: '',
+  firstname: '',
   dob: '',
   gender: 'male',
-  fullName: '',
-  lastName: '',
+  fullname: '',
+  lastname: '',
   country: 'Germany',
   primaryLanguage: 'English',
-  phoneNumber: '',
+  phone: '',
 };
 
-const errorFields = {
-  firstName: '',
-  dob: '',
-  gender: '',
-  fullName: '',
-  lastName: '',
-  country: '',
-  primaryLanguage: '',
-  phoneNumber: '',
+const initialErrorFields = {
+  firstname: [],
+  dob: [],
+  gender: [],
+  fullname: [],
+  lastname: [],
+  country: [],
+  primaryLanguage: [],
+  phone: [],
 };
 
 const PersonalForm = () => {
@@ -54,14 +58,30 @@ const PersonalForm = () => {
     { code: 'female', label: 'female' },
   ];
   const [inputFields, setInputFields] = useState(initialFields);
+  const [errorFields, setErrorFields] = useState(initialErrorFields);
 
   const handleChange = (field, value) => {
     setInputFields(prevState => ({ ...prevState, [field]: value }));
   };
 
+  const onInputBlur = field => {
+    validator.extendErrorFields(
+      errorFields,
+      field,
+      validator.fieldTypes[field],
+      inputFields[field],
+    );
+
+    setErrorFields({...errorFields});
+  };
+
   const onSubmit = event => {
     event.preventDefault();
-    console.log('Submit');
+    const { fieldsetHasValues, fieldsetHasErrors } = validator;
+
+    if (!fieldsetHasErrors(errorFields) && fieldsetHasValues(inputFields)) {
+      console.log('Submit', inputFields);
+    }
   };
 
   const {
@@ -90,10 +110,13 @@ const PersonalForm = () => {
               value={firstName}
               fullWidth
               placeholder='Enter your first name'
+              error={!!errorFields.firstname.length}
+              helperText={errorFields.firstname}
               InputLabelProps={{
                 shrink: true,
               }}
-              onChange={event => handleChange('firstName', event.target.value)}
+              onChange={event => handleChange('firstname', event.target.value)}
+              onBlur={() => onInputBlur('firstname')}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -104,10 +127,13 @@ const PersonalForm = () => {
               value={lastName}
               fullWidth
               placeholder='Enter your last name'
+              error={!!errorFields.lastname.length}
+              helperText={errorFields.lastname}
               InputLabelProps={{
                 shrink: true,
               }}
-              onChange={event => handleChange('lastName', event.target.value)}
+              onChange={event => handleChange('lastname', event.target.value)}
+              onBlur={() => onInputBlur('lastname')}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -118,10 +144,13 @@ const PersonalForm = () => {
               value={dob}
               fullWidth
               placeholder='Enter your date of birth'
+              error={!!errorFields.dob.length}
+              helperText={errorFields.dob}
               InputLabelProps={{
                 shrink: true,
               }}
               onChange={event => handleChange('dob', event.target.value)}
+              onBlur={() => onInputBlur('dob')}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -159,10 +188,13 @@ const PersonalForm = () => {
               value={fullName}
               fullWidth
               placeholder='Enter your full name'
+              error={!!errorFields.fullname.length}
+              helperText={errorFields.fullname}
               InputLabelProps={{
                 shrink: true,
               }}
-              onChange={event => handleChange('fullName', event.target.value)}
+              onChange={event => handleChange('fullname', event.target.value)}
+              onBlur={() => onInputBlur('fullname')}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -173,10 +205,13 @@ const PersonalForm = () => {
               value={phoneNumber}
               fullWidth
               placeholder='Enter your phone number'
+              error={!!errorFields.phone.length}
+              helperText={errorFields.phone}
               InputLabelProps={{
                 shrink: true,
               }}
-              onChange={event => handleChange('phoneNumber', event.target.value)}
+              onChange={event => handleChange('phone', event.target.value)}
+              onBlur={() => onInputBlur('phone')}
             />
           </Grid>
         </Grid>
