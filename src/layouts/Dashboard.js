@@ -11,7 +11,6 @@ import {
 import { isWidthUp } from '@material-ui/core/withWidth';
 import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
-import Footer from '../components/Footer';
 
 const drawerWidth = 260;
 
@@ -49,13 +48,14 @@ const AppContent = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
+  width: 100%;
 `;
 
 const Paper = styled(MuiPaper)(spacing);
 
 const MainContent = styled(Paper)`
   flex: 1;
-  background: ${(props) => props.theme.body.background};
+  background: #F2F2F2;
 
   @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
     flex: none;
@@ -99,7 +99,6 @@ const Dashboard = ({ children, routes, width }) => {
         <MainContent p={isWidthUp('lg', width) ? 10 : 5}>
           {children}
         </MainContent>
-        <Footer />
       </AppContent>
     </Root>
   );

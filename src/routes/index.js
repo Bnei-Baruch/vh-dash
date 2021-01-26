@@ -8,7 +8,8 @@ import {Sliders} from 'react-feather';
 const Welcome = async(() => import('../pages/pages/Welcome'));
 
 // Dashboard components
-const Events = async(() => import('../pages/dashboard/Events'))
+const Events = async(() => import('../pages/dashboard/Events'));
+const MyProfile = async(() => import('../components/MyProfile'));
 
 const homeRoutes = {
   id: 'Welcome',
@@ -27,6 +28,11 @@ const dashboardRoutes = {
       path: '/dashboard/events',
       name: 'Events',
       component: Events
+    },
+    {
+      path: '/dashboard/profile',
+      name: 'Profile',
+      component: MyProfile
     },
   ],
   component: null
