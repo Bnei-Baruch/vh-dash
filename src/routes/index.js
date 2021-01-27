@@ -2,7 +2,8 @@ import React from 'react';
 
 import async from '../components/Async';
 
-import {Sliders} from 'react-feather';
+import { Sliders } from 'react-feather';
+import { DASHBOARD_ROOT, DASHBOARD_ROUTES } from './dashboardRoutes';
 
 // Home
 const Welcome = async(() => import('../pages/pages/Welcome'));
@@ -15,36 +16,34 @@ const homeRoutes = {
   id: 'Welcome',
   path: '/',
   component: Welcome,
-  children: null
+  children: null,
 };
 
 const dashboardRoutes = {
   id: 'Dashboard',
-  path: '/dashboard',
-  icon: <Sliders/>,
+  path: DASHBOARD_ROOT,
+  icon: <Sliders />,
   containsHome: true,
   children: [
     {
-      path: '/dashboard/events',
+      path: DASHBOARD_ROUTES.Events,
       name: 'Events',
-      component: Events
+      component: Events,
     },
     {
-      path: '/dashboard/profile',
+      path: DASHBOARD_ROUTES.Profile,
       name: 'Profile',
-      component: MyProfile
+      enableHeader: true,
+      title: 'My Profile',
+      breadcrumbs: [{ name: 'Profile', path: DASHBOARD_ROUTES.Profile }],
+      component: MyProfile,
     },
   ],
-  component: null
+  component: null,
 };
 
 // Routes using the Dashboard layout
-export const dashboardLayoutRoutes = [
-  homeRoutes,
-  dashboardRoutes
-];
+export const dashboardLayoutRoutes = [homeRoutes, dashboardRoutes];
 
 // Routes visible in the sidebar
-export const sidebarRoutes = [
-  dashboardRoutes
-];
+export const sidebarRoutes = [dashboardRoutes];

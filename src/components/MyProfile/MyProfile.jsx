@@ -1,9 +1,11 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
-import { useSelector } from 'react-redux';
-import { Breadcrumbs, Link, Typography } from '@material-ui/core';
 import NavigationBar from '../NavigationBar';
+import { Grid } from '@material-ui/core';
+import PersonalForm from '../Forms/PersonalForm';
+import LoginForm from '../Forms/LoginForm';
+import SocialContainer from '../SocialContainer';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -17,30 +19,53 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+const MyProfileContent = () => (
+  <Grid container spacing={6}>
+    <Grid item xs={12} sm={6}>
+      <PersonalForm />
+    </Grid>
+    <Grid item xs={12} sm={6}>
+      <LoginForm />
+    </Grid>
+    <Grid item xs={12}>
+      <SocialContainer />
+    </Grid>
+  </Grid>
+);
+
 const MyProfile = () => {
   const classes = useStyles();
-  const profile = useSelector(state => state.profileReducer);
-  console.log('Contact Info', profile);
-
-  const handleClick = event => event.preventDefault();
+  const tabs = [
+    {
+      id: 0,
+      tab: 'Personal',
+      component: <MyProfileContent />,
+    },
+    {
+      id: 1,
+      tab: 'My Framework',
+      component: 'Item Two',
+    },
+    {
+      id: 2,
+      tab: 'My Ten',
+      component: 'Item Three',
+    },
+    {
+      id: 3,
+      tab: 'My Skills',
+      component: 'Item Four',
+    },
+    {
+      id: 4,
+      tab: 'Notification',
+      component: 'Item Five',
+    },
+  ];
 
   return (
     <div className={classes.root}>
-      <Typography variant='h3'>My profile</Typography>
-      <Breadcrumbs aria-label='breadcrumb' className={classes.breadcrumbs}>
-        <Link color='inherit' href='/' onClick={handleClick}>
-          Dashboard
-        </Link>
-        <Link
-          color='textPrimary'
-          href='/'
-          onClick={handleClick}
-          aria-current='page'
-        >
-          Profile
-        </Link>
-      </Breadcrumbs>
-      <NavigationBar />
+      <NavigationBar tabs={tabs} />
     </div>
   );
 };
