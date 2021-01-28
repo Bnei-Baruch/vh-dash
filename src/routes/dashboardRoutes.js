@@ -1,4 +1,5 @@
 export const DASHBOARD_ROOT = '/dashboard';
+export const ROOT = '/';
 
 export const DASHBOARD_ROUTES = {
     Profile: `${DASHBOARD_ROOT}/profile`,

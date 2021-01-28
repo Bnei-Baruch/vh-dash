@@ -1,9 +1,10 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 
 import { Breadcrumbs, Link, Typography } from '@material-ui/core';
-import { DASHBOARD_ROOT } from '../../routes/dashboardRoutes';
+import { DASHBOARD_ROOT, ROOT } from '../../routes/dashboardRoutes';
 
 const useStyles = makeStyles(theme => ({
   breadcrumbs: {
@@ -16,15 +17,19 @@ const useStyles = makeStyles(theme => ({
 
 const DashboardHeader = ({ title, breadcrumbs }) => {
   const classes = useStyles();
+  const history = useHistory();
 
-  const handleClick = event => event.preventDefault();
+  const handleClick = (event, path) => {
+    event.preventDefault();
+    history.push(path);
+  };
 
   return (
     <div>
       <Typography variant='h3'>{title}</Typography>
       {breadcrumbs.length ? (
         <Breadcrumbs aria-label='breadcrumb' className={classes.breadcrumbs}>
-          <Link color={'inherit'} href={DASHBOARD_ROOT} onClick={handleClick}>
+          <Link color={'inherit'} href={DASHBOARD_ROOT} onClick={event => handleClick(event, ROOT)}>
             Dashboard
           </Link>
           {breadcrumbs.map(item => (
@@ -32,7 +37,7 @@ const DashboardHeader = ({ title, breadcrumbs }) => {
               key={item.name}
               color='textPrimary'
               href={item.path}
-              onClick={handleClick}
+              onClick={event => handleClick(event, item.path)}
               aria-current='page'
             >
               {item.name}
