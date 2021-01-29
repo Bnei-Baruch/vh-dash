@@ -1,0 +1,36 @@
+stages:
+  - publish
+  - deploy
+
+variables:
+  IMAGE: $CI_REGISTRY/vh/vh-dash:$CI_COMMIT_SHORT_SHA
+
+publish:
+  image: docker:latest
+  stage: publish
+  tags:
+    - dockerbuild
+  services:
+    - docker:19.03.12-dind
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker build -t $CI_REGISTRY/vh/vh-dash:$CI_COMMIT_SHORT_SHA .
+    - docker push $IMAGE
+
+deploy:
+  image: docker:latest
+  stage: deploy
+  tags:
+    - dockerbuild
+  script:
+    - chmod og= $ID_RSA
+    - apk update && apk add openssh-client
+    - ssh -i $ID_RSA -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY"
+    - ssh -i $ID_RSA -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "docker pull $IMAGE"
+    - ssh -i $ID_RSA -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "docker container rm -f vh-dash"
+    - ssh -i $ID_RSA -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "docker run -d --net=vh --name vh-front --memory="200m" --cpus="0.5" --restart always -p 80:80 $IMAGE "
+  environment:
+    name: development
+    url: http://51.15.238.1
+  only:
+    - development
