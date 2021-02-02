@@ -24,6 +24,12 @@ const useStyles = makeStyles(theme => ({
   },
   selectedTab: {
     backgroundColor: theme.palette.background.paper,
+    '&.Mui-selected': {
+      color: '#000000',
+    },
+  },
+  tabElement: {
+    fontSize: '17px',
   },
   tabPanel: {
     margin: theme.spacing(0, -3),
@@ -52,6 +58,7 @@ const NavigationBar = ({ tabs }) => {
           <Tab
             key={item.id}
             label={`${item.tab}`}
+            className={classes.tabElement}
             {...a11yProps(item.id, classes.selectedTab)}
           />
         ))}

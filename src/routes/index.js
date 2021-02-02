@@ -11,6 +11,7 @@ const Welcome = async(() => import('../pages/pages/Welcome'));
 // Dashboard components
 const Events = async(() => import('../pages/dashboard/Events'));
 const MyProfile = async(() => import('../components/MyProfile'));
+const MyAccount = async(() => import('../components/MyAccount'));
 
 const homeRoutes = {
   id: 'Welcome',
@@ -37,6 +38,14 @@ const dashboardRoutes = {
       title: 'My Profile',
       breadcrumbs: [{ name: 'Profile', path: DASHBOARD_ROUTES.Profile }],
       component: MyProfile,
+    },
+    {
+      path: DASHBOARD_ROUTES.Account,
+      name: 'Account',
+      enableHeader: true,
+      title: 'My Account',
+      breadcrumbs: [{ name: 'Account', path: DASHBOARD_ROUTES.Account }],
+      component: MyAccount,
     },
   ],
   component: null,
