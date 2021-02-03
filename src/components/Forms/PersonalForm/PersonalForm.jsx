@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import { useTranslation } from 'react-i18next';
 import {
   Box,
   Button,
@@ -53,9 +54,10 @@ const initialErrorFields = {
 
 const PersonalForm = () => {
   const classes = useStyles();
+  const { t } = useTranslation();
   const genderData = [
-    { code: 'male', label: 'male' },
-    { code: 'female', label: 'female' },
+    { code: 'male', label: t('Dashboard.Profile.PersonalForm.gender.male') },
+    { code: 'female', label: t('Dashboard.Profile.PersonalForm.gender.female') },
   ];
   const [inputFields, setInputFields] = useState(initialFields);
   const [errorFields, setErrorFields] = useState(initialErrorFields);
@@ -99,17 +101,17 @@ const PersonalForm = () => {
     <div className={classes.root}>
       <form noValidate autoComplete='off' onSubmit={onSubmit}>
         <Typography variant='h4'>
-          Personal
+          {t('Dashboard.Profile.PersonalForm.name')}
         </Typography>
         <Grid container spacing={6}>
           <Grid item xs={12} sm={6}>
             <TextField
               data-testid='model-name'
               type='text'
-              label='First Name'
+              label={t('Dashboard.Profile.PersonalForm.firstName')}
               value={firstName}
               fullWidth
-              placeholder='Enter your first name'
+              placeholder={t('Dashboard.Profile.PersonalForm.firstNamePlaceholder')}
               error={!!errorFields.firstname.length}
               helperText={errorFields.firstname}
               InputLabelProps={{
@@ -123,10 +125,10 @@ const PersonalForm = () => {
             <TextField
               data-testid='model-name'
               type='text'
-              label='Last Name'
+              label={t('Dashboard.Profile.PersonalForm.lastName')}
               value={lastName}
               fullWidth
-              placeholder='Enter your last name'
+              placeholder={t('Dashboard.Profile.PersonalForm.lastNamePlaceholder')}
               error={!!errorFields.lastname.length}
               helperText={errorFields.lastname}
               InputLabelProps={{
@@ -140,10 +142,10 @@ const PersonalForm = () => {
             <TextField
               data-testid='model-name'
               type='date'
-              label='Date of birth'
+              label={t('Dashboard.Profile.PersonalForm.dateOfBirth')}
               value={dob}
               fullWidth
-              placeholder='Enter your date of birth'
+              placeholder={t('Dashboard.Profile.PersonalForm.dateOfBirthPlaceholder')}
               error={!!errorFields.dob.length}
               helperText={errorFields.dob}
               InputLabelProps={{
@@ -156,7 +158,7 @@ const PersonalForm = () => {
           <Grid item xs={12} sm={6}>
             <SelectElement
               id='country'
-              label='Country of origin'
+              label={t('Dashboard.Profile.PersonalForm.country')}
               value={country}
               onChange={handleChange}
               selectData={countries}
@@ -165,7 +167,7 @@ const PersonalForm = () => {
           <Grid item xs={12} sm={6}>
             <SelectElement
               id='gender'
-              label='Gender'
+              label={t('Dashboard.Profile.PersonalForm.gender.label')}
               value={gender}
               onChange={handleChange}
               selectData={genderData}
@@ -174,7 +176,7 @@ const PersonalForm = () => {
           <Grid item xs={12} sm={6}>
             <SelectElement
               id='primaryLanguage'
-              label='Primary language'
+              label={t('Dashboard.Profile.PersonalForm.primaryLanguage')}
               value={primaryLanguage}
               onChange={handleChange}
               selectData={languages}
@@ -184,10 +186,10 @@ const PersonalForm = () => {
             <TextField
               data-testid='model-name'
               type='text'
-              label='Full name in primary language'
+              label={t('Dashboard.Profile.PersonalForm.fullName')}
               value={fullName}
               fullWidth
-              placeholder='Enter your full name'
+              placeholder={t('Dashboard.Profile.PersonalForm.fullNamePlaceholder')}
               error={!!errorFields.fullname.length}
               helperText={errorFields.fullname}
               InputLabelProps={{
@@ -201,10 +203,10 @@ const PersonalForm = () => {
             <TextField
               data-testid='model-name'
               type='text'
-              label='Phone Numder'
+              label={t('Dashboard.Profile.PersonalForm.phoneNumber')}
               value={phoneNumber}
               fullWidth
-              placeholder='Enter your phone number'
+              placeholder={t('Dashboard.Profile.PersonalForm.phoneNumberPlaceholder')}
               error={!!errorFields.phone.length}
               helperText={errorFields.phone}
               InputLabelProps={{
@@ -217,7 +219,7 @@ const PersonalForm = () => {
         </Grid>
         <Box mt={4}>
           <Button variant='contained' color='primary' type='submit'>
-            Save Changes
+          {t('Dashboard.Profile.PersonalForm.saveBtn')}
           </Button>
         </Box>
       </form>

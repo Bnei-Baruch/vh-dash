@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -100,6 +101,8 @@ mockData.sort((a, b) => new Date(b.paidOn) - new Date(a.paidOn));
 
 const TransactionTable = () => {
   const classes = useStyles();
+  const { t } = useTranslation();
+
   const [data, setData] = useState(mockData);
   const [isSorted, setIsSorted] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
@@ -160,7 +163,7 @@ const TransactionTable = () => {
                 onClick={() => sortPaidOn(!isSorted)}
                 className={classes.sortedCell}
               >
-                Paid on
+                {t('Dashboard.Account.paidOn')}
                 <ArrowDownwardIcon
                   className={`${classes.arrowDown} ${
                     isSorted ? classes.rotateUp : classes.rotateDown
@@ -168,13 +171,13 @@ const TransactionTable = () => {
                 />
               </span>
             </TableCell>
-            <TableCell>Purpose</TableCell>
-            <TableCell>Payment Method</TableCell>
-            <TableCell>Payment Type</TableCell>
-            <TableCell>Amount</TableCell>
-            <TableCell>Currency</TableCell>
-            <TableCell>Status</TableCell>
-            <TableCell align='center'>Action</TableCell>
+            <TableCell>{t('Dashboard.Account.purpose')}</TableCell>
+            <TableCell>{t('Dashboard.Account.paymentMethod')}</TableCell>
+            <TableCell>{t('Dashboard.Account.paymentType')}</TableCell>
+            <TableCell>{t('Dashboard.Account.amount')}</TableCell>
+            <TableCell>{t('Dashboard.Account.currency')}</TableCell>
+            <TableCell>{t('Dashboard.Account.status')}</TableCell>
+            <TableCell align='center'>{t('Dashboard.Account.action')}</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -212,10 +215,10 @@ const TransactionTable = () => {
                 >
                   <List>
                     <MenuItem onClick={handleMenuClose}>
-                      Cancel payment
+                      {t('Dashboard.Account.cancelPayment')}
                     </MenuItem>
                     <MenuItem onClick={handleMenuClose}>
-                      Download invoice as PDF
+                      {t('Dashboard.Account.downloadInvoice')}
                     </MenuItem>
                   </List>
                 </Popover>

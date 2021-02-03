@@ -13,7 +13,7 @@ const childRoutes = (Layout, routes) =>
       // Route item with children
       children.map(
         (
-          { path, title, enableHeader, breadcrumbs, component: Component },
+          { path, name, enableHeader, breadcrumbs, component: Component },
           index,
         ) => (
           <Route
@@ -23,7 +23,7 @@ const childRoutes = (Layout, routes) =>
             render={props => (
               <Layout>
                 {enableHeader && (
-                  <DashboardHeader title={title} breadcrumbs={breadcrumbs} />
+                  <DashboardHeader name={name} breadcrumbs={breadcrumbs} />
                 )}
                 <Component {...props} />
               </Layout>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import { useTranslation } from 'react-i18next';
 
 import NavigationBar from '../NavigationBar';
 import { Grid } from '@material-ui/core';
@@ -35,31 +36,27 @@ const MyProfileContent = () => (
 
 const MyProfile = () => {
   const classes = useStyles();
+  const { t } = useTranslation();
   const tabs = [
     {
       id: 0,
-      tab: 'Personal',
+      tab: t('Dashboard.Profile.Tabs.personal'),
       component: <MyProfileContent />,
     },
     {
       id: 1,
-      tab: 'My Framework',
+      tab: t('Dashboard.Profile.Tabs.framework'),
       component: 'Item Two',
     },
     {
       id: 2,
-      tab: 'My Ten',
+      tab: t('Dashboard.Profile.Tabs.skills'),
       component: 'Item Three',
     },
     {
       id: 3,
-      tab: 'My Skills',
+      tab: t('Dashboard.Profile.Tabs.notification'),
       component: 'Item Four',
-    },
-    {
-      id: 4,
-      tab: 'Notification',
-      component: 'Item Five',
     },
   ];
 

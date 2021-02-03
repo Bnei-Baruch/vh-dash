@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
-
+import { useTranslation} from 'react-i18next';
 import { Breadcrumbs, Link, Typography } from '@material-ui/core';
 import { DASHBOARD_ROOT, ROOT } from '../../routes/dashboardRoutes';
 
@@ -15,9 +15,10 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const DashboardHeader = ({ title, breadcrumbs }) => {
+const DashboardHeader = ({ name, breadcrumbs }) => {
   const classes = useStyles();
   const history = useHistory();
+  const { t } = useTranslation();
 
   const handleClick = (event, path) => {
     event.preventDefault();
@@ -26,11 +27,11 @@ const DashboardHeader = ({ title, breadcrumbs }) => {
 
   return (
     <div>
-      <Typography variant='h3'>{title}</Typography>
+      <Typography variant='h3'>{t(`Dashboard.${name}.title`)}</Typography>
       {breadcrumbs.length ? (
         <Breadcrumbs aria-label='breadcrumb' className={classes.breadcrumbs}>
           <Link color={'inherit'} href={DASHBOARD_ROOT} onClick={event => handleClick(event, ROOT)}>
-            Dashboard
+            {t('Dashboard.name')}
           </Link>
           {breadcrumbs.map(item => (
             <Link
@@ -40,7 +41,7 @@ const DashboardHeader = ({ title, breadcrumbs }) => {
               onClick={event => handleClick(event, item.path)}
               aria-current='page'
             >
-              {item.name}
+              {t(`Dashboard.${item.name}.name`)}
             </Link>
           ))}
         </Breadcrumbs>
@@ -50,7 +51,7 @@ const DashboardHeader = ({ title, breadcrumbs }) => {
 };
 
 DashboardHeader.propTypes = {
-  title: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   breadcrumbs: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,

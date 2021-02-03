@@ -1,5 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import { useTranslation } from 'react-i18next';
 
 import NavigationBar from '../NavigationBar';
 import TransactionTable from './TransactionTable';
@@ -19,15 +20,16 @@ const useStyles = makeStyles(theme => ({
 
 const MyAccount = () => {
   const classes = useStyles();
+  const { t } = useTranslation();
   const tabs = [
     {
       id: 0,
-      tab: 'All Transaction',
+      tab: t('Dashboard.Account.Tabs.transaction'),
       component: <TransactionTable />,
     },
     {
       id: 1,
-      tab: 'Payments',
+      tab: t('Dashboard.Account.Tabs.payment'),
       component: <PaymentMethodsTable />,
     },
   ];

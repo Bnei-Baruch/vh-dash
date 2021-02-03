@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -36,6 +37,7 @@ const mockData = [
 
 const PaymentMethodsTable = () => {
   const classes = useStyles();
+  const { t } = useTranslation();
 
   const showLastFour = str => {
     const replacedSymbols = str.length - 4;
@@ -50,9 +52,9 @@ const PaymentMethodsTable = () => {
       <Table className={classes.table} aria-label='transaction table'>
         <TableHead>
           <TableRow>
-            <TableCell>Card</TableCell>
-            <TableCell>Number</TableCell>
-            <TableCell>Expiration Date</TableCell>
+            <TableCell>{t('Dashboard.Account.card')}</TableCell>
+            <TableCell>{t('Dashboard.Account.cardNumber')}</TableCell>
+            <TableCell>{t('Dashboard.Account.expirationDate')}</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
