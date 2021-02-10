@@ -13,6 +13,7 @@ const fieldTypes = {
   email: 'email',
   phone: 'phone',
   password: 'password',
+  question: 'question',
 };
 
 const emailRex = /^[\w-']+(\.[\w-']+)*@([a-zA-Z0-9]+[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*?\.[a-zA-Z]{2,6}|(\d{1,3}\.){3}\d{1,3})(:\d{4})?$/;
@@ -190,6 +191,13 @@ const instructions = {
     {
       validationMethod: methods.laterThen1900,
       errorMsg: 'You cannot enter a year earlier than 1900',
+    },
+  ],
+  [fieldTypes.question]: [
+    {
+      validationMethod: methods.nonZeroLength,
+      errorMsg: 'Please enter your question',
+      break: true,
     },
   ],
 };

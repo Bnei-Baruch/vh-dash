@@ -4,6 +4,7 @@ import async from '../components/Async';
 
 import { Sliders } from 'react-feather';
 import { DASHBOARD_ROOT, DASHBOARD_ROUTES } from './dashboardRoutes';
+import CongressArea from '../components/CongressArea';
 
 // Home
 const Welcome = async(() => import('../pages/pages/Welcome'));
@@ -44,6 +45,13 @@ const dashboardRoutes = {
       enableHeader: true,
       breadcrumbs: [{ name: 'Account', path: DASHBOARD_ROUTES.Account }],
       component: MyAccount,
+    },
+    {
+      path: DASHBOARD_ROUTES.CongressArea,
+      name: 'CongressArea',
+      enableHeader: true,
+      breadcrumbs: [{ name: 'CongressArea', path: DASHBOARD_ROUTES.CongressArea }],
+      component: CongressArea,
     },
   ],
   component: null,

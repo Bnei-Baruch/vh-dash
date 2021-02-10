@@ -97,6 +97,32 @@ const Flag = styled.img`
   height: 22px;
 `;
 
+const languages = [
+  { code: 'eng', name: 'English' },
+  { code: 'rus', name: 'Russian' },
+  { code: 'bul', name: 'Bulgarian' },
+  { code: 'dut', name: 'Dutch' },
+  { code: 'fre', name: 'French' },
+  { code: 'geo', name: 'Georgian' },
+  { code: 'ger', name: 'German' },
+  { code: 'heb', name: 'Hebrew' },
+  { code: 'hrv', name: 'Croatian' },
+  { code: 'hun', name: 'Hungarian' },
+  { code: 'ita', name: 'Italian' },
+  { code: 'jpn', name: 'Japanese' },
+  { code: 'lav', name: 'Latvian' },
+  { code: 'lit', name: 'Lithuanian' },
+  { code: 'nor', name: 'Norwegian' },
+  { code: 'pol', name: 'Polish' },
+  { code: 'por', name: 'Portuguese' },
+  { code: 'rum', name: 'Romanian' },
+  { code: 'slv', name: 'Slovene' },
+  { code: 'spa', name: 'Spanish' },
+  { code: 'swe', name: 'Swedish' },
+  { code: 'tur', name: 'Turkish' },
+  { code: 'ukr', name: 'Ukrainian' },
+];
+
 function LanguageMenu() {
   const { t, i18n } = useTranslation();
   const [anchorMenu, setAnchorMenu] = useState(null);
@@ -104,7 +130,7 @@ function LanguageMenu() {
   const toggleMenu = event => {
     setAnchorMenu(event.currentTarget);
   };
-  
+
   const closeMenu = lng => {
     setAnchorMenu(null);
     _.isString(lng) && i18n.changeLanguage(lng);
@@ -125,11 +151,13 @@ function LanguageMenu() {
         anchorEl={anchorMenu}
         open={Boolean(anchorMenu)}
         onClose={closeMenu}
+        style={{ maxHeight: 350 }}
       >
-        <MenuItem onClick={() => closeMenu('en')}>{t('Languages.english')}</MenuItem>
-        <MenuItem onClick={() => closeMenu('fr')}>{t('Languages.french')}</MenuItem>
-        <MenuItem onClick={() => closeMenu('de')}>{t('Languages.german')}</MenuItem>
-        <MenuItem onClick={() => closeMenu('ru')}>{t('Languages.russian')}</MenuItem>
+        {languages.map(item => (
+          <MenuItem key={item.code} onClick={() => closeMenu(item.code)}>
+            {t(`Languages.${item.name}`)}
+          </MenuItem>
+        ))}
       </Menu>
     </>
   );

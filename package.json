@@ -59,6 +59,9 @@
     "react-scripts": "3.4.3",
     "react-syntax-highlighter": "13.5.0",
     "redux": "4.0.5",
-    "styled-components": "5.1.1"
+    "redux-thunk": "^2.3.0",
+    "styled-components": "5.1.1",
+    "superagent": "^6.1.0",
+    "superagent-es6-promise": "^1.0.0"
   }
 }

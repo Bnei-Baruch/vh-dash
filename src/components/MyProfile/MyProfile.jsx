@@ -43,21 +43,6 @@ const MyProfile = () => {
       tab: t('Dashboard.Profile.Tabs.personal'),
       component: <MyProfileContent />,
     },
-    {
-      id: 1,
-      tab: t('Dashboard.Profile.Tabs.framework'),
-      component: 'Item Two',
-    },
-    {
-      id: 2,
-      tab: t('Dashboard.Profile.Tabs.skills'),
-      component: 'Item Three',
-    },
-    {
-      id: 3,
-      tab: t('Dashboard.Profile.Tabs.notification'),
-      component: 'Item Four',
-    },
   ];
 
   return (
