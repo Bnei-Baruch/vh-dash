@@ -1,15 +1,36 @@
 {
   "translation": {
     "Languages": {
-      "english": "English",
-      "french": "French",
-      "russian": "Russian",
-      "german": "German"
+      "English": "English",
+      "Russian": "Russian",
+      "Hebrew": "Hebrew",
+      "Spanish": "Spanish"
+    },
+    "Home": {
+      "arvut": "Arvut",
+      "watchBtn": "Watch",
+      "noLiveEvent": "No live events",
+      "noEvent": "No events",
+      "currentEvent": "Current Event",
+      "totalConnections": "Total connections",
+      "tensNumber": "Number of tens connected",
+      "tenFriends": "Friends from your ten",
+      "today": "Today",
+      "tomorrow": "Tomorrow",
+      "yesterday": "Yesterday",
+      "events": "Events",
+      "welcomeBack": "Welcome back"
+    },
+    "UserMenu": {
+      "logOut": "Log Out",
+      "profile": "Profile",
+      "logOutText": "Do you really want to quit?",
+      "yesBtn": "Yes",
+      "cancelBtn": "Cancel"
     },
     "Dashboard": {
-      "name": "Dashboard",
-      "Events": {
-        "name": "Events"
+      "Dashboard": {
+        "name": "Dashboard"
       },
       "Profile": {
         "name": "Profile",
@@ -85,6 +106,24 @@
         "card": "Card",
         "cardNumber": "Number",
         "expirationDate": "Expiration Date"
+      },
+      "CongressArea": {
+        "name": "Congress Area",
+        "title": "Congress Area",
+        "caption": "DISCOVERING LIFE IN THE TEN",
+        "subCaption": "WORLD KABBALAH KONVENTION 2021",
+        "broadcast": "Broadcast",
+        "broadcastLanguage": "Broadcast languages",
+        "Question": {
+          "title": "Send a Question",
+          "label": "What is your question?",
+          "placeholder": "Enter your question and press the button",
+          "button": "Ask"
+        },
+        "Annoucements": {
+          "title": "Annoucements",
+          "text": "Our Virtual Home includes the physical infrastructure and manpower for maintaining our comprehensive operation and improving online systems for optimal connection during Daily Kabbalah Lessons, social gatherings, holidays, and meals. It allows each friend full interaction in their language, both with their Ten and the World Kli from 72 countries."
+        }
       }
     }
   }

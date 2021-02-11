@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { useTranslation } from 'react-i18next';
+import Helmet from 'react-helmet';
 
 import NavigationBar from '../NavigationBar';
 import TransactionTable from './TransactionTable';
@@ -36,6 +37,7 @@ const MyAccount = () => {
 
   return (
     <div className={classes.root}>
+      <Helmet title={t('Dashboard.Account.name')} />
       <NavigationBar tabs={tabs} />
     </div>
   );

@@ -3,16 +3,25 @@ import {
   RECEIVE_STREAMS,
   CHANGE_BITRATE,
   CHANGE_VOLUME,
+  CHANGE_LANGUAGE,
 } from '../constants';
 
 const initialState = {
   streams: {},
+  languages: {},
   selectedBitrate: localStorage.getItem('live.selectedBitrate') || 500,
   selectedVolume: localStorage.getItem('live.selectedVolume') || 80,
+  selectedLanguage: localStorage.getItem('live.selectedLanguage') || 'eng',
 };
 
 const streamReducer = (state = initialState, action) => {
   switch (action.type) {
+    case CHANGE_LANGUAGE:
+      localStorage.setItem('live.selectedLanguage', action.lang);
+      return {
+        ...state,
+        selectedLanguage: action.lang
+      };
     case CHANGE_BITRATE:
       localStorage.setItem('live.selectedBitrate', action.bitrate);
       return {

@@ -1,13 +1,7 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { useTranslation } from 'react-i18next';
-import {
-  Box,
-  Button,
-  Grid,
-  TextField,
-  Typography,
-} from '@material-ui/core';
+import { Box, Button, Grid, TextField, Typography } from '@material-ui/core';
 import SelectElement from '../FormElements/SelectElement';
 import countries from '../../../constants/countries';
 import languages from '../../../constants/languages';
@@ -27,6 +21,10 @@ const useStyles = makeStyles(theme => ({
         color: '#f44336',
       },
     },
+  },
+  errorMsg: {
+    position: 'absolute',
+    top: 0,
   },
 }));
 
@@ -57,13 +55,19 @@ const PersonalForm = () => {
   const { t } = useTranslation();
   const genderData = [
     { code: 'male', label: t('Dashboard.Profile.PersonalForm.gender.male') },
-    { code: 'female', label: t('Dashboard.Profile.PersonalForm.gender.female') },
+    {
+      code: 'female',
+      label: t('Dashboard.Profile.PersonalForm.gender.female'),
+    },
   ];
+
   const [inputFields, setInputFields] = useState(initialFields);
   const [errorFields, setErrorFields] = useState(initialErrorFields);
+  const [errorMsg, setErrorMsg] = useState('');
 
   const handleChange = (field, value) => {
     setInputFields(prevState => ({ ...prevState, [field]: value }));
+    setErrorMsg('');
   };
 
   const onInputBlur = field => {
@@ -74,7 +78,7 @@ const PersonalForm = () => {
       inputFields[field],
     );
 
-    setErrorFields({...errorFields});
+    setErrorFields({ ...errorFields });
   };
 
   const onSubmit = event => {
@@ -83,6 +87,8 @@ const PersonalForm = () => {
 
     if (!fieldsetHasErrors(errorFields) && fieldsetHasValues(inputFields)) {
       console.log('Submit', inputFields);
+    } else {
+      setErrorMsg('Please enter your details');
     }
   };
 
@@ -92,7 +98,6 @@ const PersonalForm = () => {
     fullName,
     dob,
     country,
-    gender,
     primaryLanguage,
     phoneNumber,
   } = inputFields;
@@ -111,7 +116,9 @@ const PersonalForm = () => {
               label={t('Dashboard.Profile.PersonalForm.firstName')}
               value={firstName}
               fullWidth
-              placeholder={t('Dashboard.Profile.PersonalForm.firstNamePlaceholder')}
+              placeholder={t(
+                'Dashboard.Profile.PersonalForm.firstNamePlaceholder',
+              )}
               error={!!errorFields.firstname.length}
               helperText={errorFields.firstname}
               InputLabelProps={{
@@ -128,7 +135,9 @@ const PersonalForm = () => {
               label={t('Dashboard.Profile.PersonalForm.lastName')}
               value={lastName}
               fullWidth
-              placeholder={t('Dashboard.Profile.PersonalForm.lastNamePlaceholder')}
+              placeholder={t(
+                'Dashboard.Profile.PersonalForm.lastNamePlaceholder',
+              )}
               error={!!errorFields.lastname.length}
               helperText={errorFields.lastname}
               InputLabelProps={{
@@ -145,7 +154,9 @@ const PersonalForm = () => {
               label={t('Dashboard.Profile.PersonalForm.dateOfBirth')}
               value={dob}
               fullWidth
-              placeholder={t('Dashboard.Profile.PersonalForm.dateOfBirthPlaceholder')}
+              placeholder={t(
+                'Dashboard.Profile.PersonalForm.dateOfBirthPlaceholder',
+              )}
               error={!!errorFields.dob.length}
               helperText={errorFields.dob}
               InputLabelProps={{
@@ -168,7 +179,7 @@ const PersonalForm = () => {
             <SelectElement
               id='gender'
               label={t('Dashboard.Profile.PersonalForm.gender.label')}
-              value={gender}
+              value={genderData[0].label}
               onChange={handleChange}
               selectData={genderData}
             />
@@ -189,7 +200,9 @@ const PersonalForm = () => {
               label={t('Dashboard.Profile.PersonalForm.fullName')}
               value={fullName}
               fullWidth
-              placeholder={t('Dashboard.Profile.PersonalForm.fullNamePlaceholder')}
+              placeholder={t(
+                'Dashboard.Profile.PersonalForm.fullNamePlaceholder',
+              )}
               error={!!errorFields.fullname.length}
               helperText={errorFields.fullname}
               InputLabelProps={{
@@ -206,7 +219,9 @@ const PersonalForm = () => {
               label={t('Dashboard.Profile.PersonalForm.phoneNumber')}
               value={phoneNumber}
               fullWidth
-              placeholder={t('Dashboard.Profile.PersonalForm.phoneNumberPlaceholder')}
+              placeholder={t(
+                'Dashboard.Profile.PersonalForm.phoneNumberPlaceholder',
+              )}
               error={!!errorFields.phone.length}
               helperText={errorFields.phone}
               InputLabelProps={{
@@ -216,10 +231,19 @@ const PersonalForm = () => {
               onBlur={() => onInputBlur('phone')}
             />
           </Grid>
+          <Grid item xs={12} style={{ position: 'relative' }}>
+            <Typography
+              component='p'
+              color='error'
+              className={classes.errorMsg}
+            >
+              {errorMsg}
+            </Typography>
+          </Grid>
         </Grid>
         <Box mt={4}>
           <Button variant='contained' color='primary' type='submit'>
-          {t('Dashboard.Profile.PersonalForm.saveBtn')}
+            {t('Dashboard.Profile.PersonalForm.saveBtn')}
           </Button>
         </Box>
       </form>

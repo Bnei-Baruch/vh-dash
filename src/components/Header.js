@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import styled, { withTheme } from 'styled-components';
 import { connect } from 'react-redux';
 import { darken } from 'polished';
+import i18next from 'i18next';
 import { useTranslation } from 'react-i18next';
+import { useHistory } from 'react-router-dom';
 import _ from 'lodash';
 
 import {
@@ -18,13 +20,11 @@ import {
 } from '@material-ui/core';
 
 import { Menu as MenuIcon } from '@material-ui/icons';
-
-import {
-  Bell,
-  MessageSquare,
-  Search as SearchIcon,
-  Power,
-} from 'react-feather';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import { Bell, MessageSquare, Search as SearchIcon } from 'react-feather';
+import { CHAT_AND_NOTIFICATION_ICONS, SEARCH_BAR } from '../shared/constants';
+import { DASHBOARD_ROUTES } from '../routes/dashboardRoutes';
+import ModalWindow from './ModalWindow/ModalWindow';
 
 const AppBar = styled(MuiAppBar)`
   background: ${props => props.theme.header.background};
@@ -36,6 +36,13 @@ const IconButton = styled(MuiIconButton)`
   svg {
     width: 22px;
     height: 22px;
+  }
+`;
+
+const UserIconButton = styled(MuiIconButton)`
+  svg {
+    width: 30px;
+    height: 30px;
   }
 `;
 
@@ -98,29 +105,10 @@ const Flag = styled.img`
 `;
 
 const languages = [
-  { code: 'eng', name: 'English' },
-  { code: 'rus', name: 'Russian' },
-  { code: 'bul', name: 'Bulgarian' },
-  { code: 'dut', name: 'Dutch' },
-  { code: 'fre', name: 'French' },
-  { code: 'geo', name: 'Georgian' },
-  { code: 'ger', name: 'German' },
+  { code: 'en', name: 'English' },
+  { code: 'ru', name: 'Russian' },
   { code: 'heb', name: 'Hebrew' },
-  { code: 'hrv', name: 'Croatian' },
-  { code: 'hun', name: 'Hungarian' },
-  { code: 'ita', name: 'Italian' },
-  { code: 'jpn', name: 'Japanese' },
-  { code: 'lav', name: 'Latvian' },
-  { code: 'lit', name: 'Lithuanian' },
-  { code: 'nor', name: 'Norwegian' },
-  { code: 'pol', name: 'Polish' },
-  { code: 'por', name: 'Portuguese' },
-  { code: 'rum', name: 'Romanian' },
-  { code: 'slv', name: 'Slovene' },
-  { code: 'spa', name: 'Spanish' },
-  { code: 'swe', name: 'Swedish' },
-  { code: 'tur', name: 'Turkish' },
-  { code: 'ukr', name: 'Ukrainian' },
+  { code: 'es', name: 'Spanish' },
 ];
 
 function LanguageMenu() {
@@ -144,7 +132,7 @@ function LanguageMenu() {
         onClick={toggleMenu}
         color='inherit'
       >
-        <Flag src='/static/img/flags/us.png' alt='English' />
+        <Flag src={`/static/img/flags/${i18next.language}.png`} alt={i18next.language} />
       </IconButton>
       <Menu
         id='menu-appbar'
@@ -164,7 +152,11 @@ function LanguageMenu() {
 }
 
 function UserMenu() {
+  const { t } = useTranslation();
+  const history = useHistory();
+
   const [anchorMenu, setAnchorMenu] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleMenu = event => {
     setAnchorMenu(event.currentTarget);
@@ -174,25 +166,40 @@ function UserMenu() {
     setAnchorMenu(null);
   };
 
+  const onProfileClick = () => {
+    closeMenu();
+    history.push(DASHBOARD_ROUTES.Profile);
+  };
+
+  const onLogOutClick = () => {
+    closeMenu();
+    setIsModalOpen(!isModalOpen);
+  }
+
+  const handleCloseModal = () => {
+    setIsModalOpen(!isModalOpen);
+  }
+
   return (
     <>
-      <IconButton
+      <UserIconButton
         aria-owns={anchorMenu ? 'menu-appbar' : undefined}
         aria-haspopup='true'
         onClick={toggleMenu}
         color='inherit'
       >
-        <Power />
-      </IconButton>
+        <AccountCircleIcon />
+      </UserIconButton>
       <Menu
         id='menu-appbar'
         anchorEl={anchorMenu}
         open={Boolean(anchorMenu)}
         onClose={closeMenu}
       >
-        <MenuItem onClick={closeMenu}>Profile</MenuItem>
-        <MenuItem onClick={closeMenu}>Sign out</MenuItem>
+        <MenuItem onClick={onProfileClick}>{t('UserMenu.profile')}</MenuItem>
+        <MenuItem onClick={onLogOutClick}>{t('UserMenu.logOut')}</MenuItem>
       </Menu>
+      <ModalWindow open={isModalOpen} handleClose={handleCloseModal} />
     </>
   );
 }
@@ -213,26 +220,32 @@ const Header = ({ onDrawerToggle }) => (
               </IconButton>
             </Grid>
           </Hidden>
-          <Grid item>
-            <Search>
-              <SearchIconWrapper>
-                <SearchIcon />
-              </SearchIconWrapper>
-              <Input placeholder='Search topics' />
-            </Search>
-          </Grid>
+          {SEARCH_BAR && (
+            <Grid item>
+              <Search>
+                <SearchIconWrapper>
+                  <SearchIcon />
+                </SearchIconWrapper>
+                <Input placeholder='Search topics' />
+              </Search>
+            </Grid>
+          )}
           <Grid item xs />
           <Grid item>
-            <IconButton color='inherit'>
-              <Indicator badgeContent={3}>
-                <MessageSquare />
-              </Indicator>
-            </IconButton>
-            <IconButton color='inherit'>
-              <Indicator badgeContent={7}>
-                <Bell />
-              </Indicator>
-            </IconButton>
+            {CHAT_AND_NOTIFICATION_ICONS && (
+              <>
+                <IconButton color='inherit'>
+                  <Indicator badgeContent={3}>
+                    <MessageSquare />
+                  </Indicator>
+                </IconButton>
+                <IconButton color='inherit'>
+                  <Indicator badgeContent={7}>
+                    <Bell />
+                  </Indicator>
+                </IconButton>
+              </>
+            )}
             <LanguageMenu />
             <UserMenu />
           </Grid>

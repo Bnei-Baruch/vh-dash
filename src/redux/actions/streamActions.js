@@ -6,10 +6,18 @@ import {
   RECEIVE_STREAMS,
   REQUEST_HEARTBEAT,
   RECEIVE_HEARTBEAT,
+  CHANGE_LANGUAGE,
 } from '../constants';
 
 const API_URL = 'http://kab.tv/live/api/';
 const TIMEOUT = 10000;
+
+export const changeLanguage = lang => {
+  return {
+      type: CHANGE_LANGUAGE,
+      lang: lang
+  }
+}
 
 export const changeBitrate = bitrate => {
   return {

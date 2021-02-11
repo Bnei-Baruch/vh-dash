@@ -290,7 +290,7 @@ const Sidebar = ({ classes, staticContext, location, ...rest }) => {
                 ) : (
                   <SidebarCategory
                     isCollapsable={false}
-                    name={t(`${category.id}.name`)}
+                    name={t(`Dashboard.${category.id}.name`)}
                     to={category.path}
                     activeClassName='active'
                     component={NavLink}

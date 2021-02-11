@@ -1,18 +1,18 @@
 import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import eng from './translations/eng.json';
-import rus from './translations/rus.json';
+import en from './translations/en.json';
+import ru from './translations/ru.json';
 import heb from './translations/heb.json';
-import spa from './translations/spa.json';
+import es from './translations/es.json';
 
 const resources = {
-  eng, //English
-  rus, //Russian
+  en, //English
+  ru, //Russian
   heb, //Hebrew
-  spa, //Spanish
+  es, //Spanish
 };
 
-const lng = process.env.REACT_APP_LANGUAGE || 'eng';
+const lng = process.env.REACT_APP_LANGUAGE || 'en';
 
 i18next
   .use(initReactI18next) // Passes i18n down to react-i18next

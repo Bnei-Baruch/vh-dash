@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { useTranslation } from 'react-i18next';
+import Helmet from 'react-helmet';
 
 import NavigationBar from '../NavigationBar';
 import { Grid } from '@material-ui/core';
@@ -47,6 +48,7 @@ const MyProfile = () => {
 
   return (
     <div className={classes.root}>
+      <Helmet title={t('Dashboard.Profile.name')} />
       <NavigationBar tabs={tabs} />
     </div>
   );

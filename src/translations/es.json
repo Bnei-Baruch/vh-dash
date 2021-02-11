@@ -1,0 +1,130 @@
+{
+  "translation": {
+    "Languages": {
+      "English": "Inglés",
+      "Russian": "Ruso",
+      "Hebrew": "Hebreo",
+      "Spanish": "Español"
+    },
+    "Home": {
+      "arvut": "Arvut",
+      "watchBtn": "Ver",
+      "noLiveEvent": "No hay eventos en vivo",
+      "noEvent": "No hay eventos",
+      "currentEvent": "Evento actual",
+      "totalConnections": "Total de conexiones",
+      "tensNumber": "Número de decenas conectadas",
+      "tenFriends": "Amigos de su decena",
+      "today": "Hoy",
+      "tomorrow": "Mañana",
+      "yesterday": "Ayer",
+      "events": "Eventos",
+      "welcomeBack": "Bienvenido de nuevo"
+    },
+    "UserMenu": {
+      "logOut": "Cerrar la sesión",
+      "profile": "Perfil",
+      "logOutText": "¿Realmente quiere dejar de fumar?",
+      "yesBtn": "Sí",
+      "cancelBtn": "Cancelar"
+    },
+    "Dashboard": {
+      "Dashboard": {
+        "name": "Tablero de mandos"
+      },
+      "Profile": {
+        "name": "Perfil",
+        "title": "Mi perfil",
+        "Tabs": {
+          "personal": "Personal",
+          "framework": "Mi marco de trabajo",
+          "skills": "Mis habilidades",
+          "notification": "Notificación"
+        },
+        "PersonalForm": {
+          "name": "Personal",
+          "firstName": "Nombre de pila",
+          "firstNamePlaceholder": "Introduzca su nombre de pila",
+          "dateOfBirth": "Fecha de nacimiento",
+          "gender": {
+            "label": "Género",
+            "male": "masculino",
+            "female": "mujer"
+          },
+          "fullName": "Introduzca su nombre completo en la lengua principal",
+          "fullNamePlaceholder": "Introduzca su nombre completo",
+          "lastName": "Apellido",
+          "lastNamePlaceholder": "Introduzca su apellido",
+          "country": "País de origen",
+          "primaryLanguage": "Idioma principal",
+          "phoneNumber": "Número de teléfono",
+          "phoneNumberPlaceholder": "Introduzca su número de teléfono",
+          "saveBtn": "Guarde los cambios"
+        },
+        "LoginForm": {
+          "name": "Información de acceso",
+          "email": "Correo electrónico",
+          "emailPlaceholder": "Introduzca su correo electrónico",
+          "password": "Introduzca su contraseña",
+          "passwordPlaceholder": "Introduzca su contraseña",
+          "saveBtn": "Guardar cambios"
+        },
+        "SocialForm": {
+          "name": "Mis cuentas en las redes sociales",
+          "facebook": "Tu perfil de Facebook",
+          "facebookPlaceholder": "Introducir el perfil de Facebook",
+          "youtube": "Su perfil en Youtube",
+          "youtubePlaceholder": "Introducir el perfil de Youtube",
+          "instagram": "Tu cuenta de Instagram",
+          "instagramPlaceholder": "Introduzca el nombre de Instagram",
+          "linked": "Su perfil de Linked",
+          "linkedPlaceholder": "Introduzca su perfil de Linked",
+          "twitter": "Tu nombre en Twitter",
+          "twitterPlaceholder": "Introduzca el nombre de Twitter",
+          "skype": "Tu nombre en Skype",
+          "skypePlaceholder": "Introduzca su nombre de usuario de Skype",
+          "connectBtn": "Conectar"
+        }
+      },
+      "Account": {
+        "name": "Cuenta",
+        "title": "Mi cuenta",
+        "Tabs": {
+          "transaction": "Todas las transacciones",
+          "payment": "Métodos de pago"
+        },
+        "paidOn": "Pagado en",
+        "purpose": "Propósito",
+        "paymentMethod": "Método de pago",
+        "paymentType": "Tipo de pago",
+        "amount": "Cantidad",
+        "currency": "Moneda",
+        "status": "Estado",
+        "action": "Acción",
+        "cancelPayment": "Cancelar el pago",
+        "downloadInvoice": "Descargar la factura en PDF",
+        "card": "Tarjeta",
+        "cardNumber": "Número",
+        "expirationDate": "Fecha de caducidad"
+      },
+      "CongressArea": {
+        "name": "Área del Congreso",
+        "title": "Área de Congresos",
+        "caption": "DESCUBRIENDO LA VIDA EN LOS DIEZ",
+        "subCaption": "CONVENCIÓN MUNDIAL DE CÁBALA 2021",
+        "broadcast": "Difusión",
+        "broadcastLanguage": "Idiomas de transmisión",
+        "Question": {
+          "title": "Enviar una pregunta",
+          "label": "¿Cuál es su pregunta?",
+          "placeholder": "Introduzca su pregunta y pulse el botón",
+          "button": "Pregunte a"
+        },
+        "Annoucements": {
+          "title": "Anuncios",
+          "text": "Nuestra Casa Virtual incluye la infraestructura física y la mano de obra para mantener nuestro funcionamiento integral y mejorar los sistemas en línea para una conexión óptima durante las Lecciones Diarias de Cabalá, las reuniones sociales, las vacaciones y las comidas. Permite a cada amigo la plena interacción en su idioma, tanto con sus Diez como con el Kli Mundial de 72 países."
+        }
+      }
+    }
+  }
+}

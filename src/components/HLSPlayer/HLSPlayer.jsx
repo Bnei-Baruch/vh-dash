@@ -1,5 +1,4 @@
 import { Box, makeStyles, Typography } from '@material-ui/core';
-import i18next from 'i18next';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
@@ -7,8 +6,10 @@ import {
   asyncHeartbeat,
   asyncFetchStreams,
   changeVolume,
+  changeLanguage,
 } from '../../redux/actions/streamActions';
 import { HEARTBEAT_INTERVAL } from '../../redux/constants';
+import LanguagesMenu from './LanguagesMenu';
 
 const useStyles = makeStyles({
   noBroadcast: {
@@ -45,33 +46,27 @@ const HLSPlayer = () => {
   const state = useSelector(state => state.streamReducer);
 
   useEffect(() => {
-    console.log('Update current language', i18next.language);
-    onLangSelected(i18next.language);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [i18next.language]);
-
-  useEffect(() => {
     const id = setInterval(dispatchHeartbeat, HEARTBEAT_INTERVAL);
-    
+
     dispatchHeartbeat();
-    dispatch(asyncFetchStreams(i18next.language));
+    dispatch(asyncFetchStreams(state.selectedLanguage));
 
     return () => {
       clearInterval(id);
       clearPlayer();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
+  }, [state.selectedLanguage]);
 
   const dispatchHeartbeat = () => {
     const { selectedBitrate } = state;
-    dispatch(asyncHeartbeat(i18next.language, selectedBitrate));
+    dispatch(asyncHeartbeat(state.selectedLanguage, selectedBitrate));
   };
 
   const onLangSelected = lang => {
     console.info('Lang selected', lang);
     clearPlayer();
+    dispatch(changeLanguage(lang));
     dispatch(asyncFetchStreams(lang));
   };
 
@@ -90,8 +85,6 @@ const HLSPlayer = () => {
       .jwplayer('jwplayer-container')
       .setup({
         playlist: [{ sources: sources }],
-        // primary: 'flash',  -- the world is moving away from flash...
-        // androidhls: true,  -- new versions on jwplayer has this true on default
         autostart: true,
         aspectratio: '16:9',
         width: '100%',
@@ -124,19 +117,22 @@ const HLSPlayer = () => {
   const { streams, selectedBitrate, selectedVolume, broadcast } = state;
   const statusPhrase = broadcast
     ? 'Loading...'
-    : i18next.languages.hasOwnProperty(i18next.language)
-    ? i18next.languages[i18next.language].Offline
+    : state.languages.hasOwnProperty(state.selectedLanguage)
+    ? state.languages[state.selectedLanguage].Offline
     : 'No broadcast now';
 
   // Setup jwplayer if it is idle and we're broadcasting
   if (broadcast) {
     if (
       window.jwplayer &&
-      streams.hasOwnProperty(i18next.language) &&
+      streams.hasOwnProperty(state.selectedLanguage) &&
       document.getElementById('jwplayer-container') !== null &&
       window.jwplayer('jwplayer-container').getState() == null
     ) {
-      const stream = chooseStream(streams[i18next.language], selectedBitrate);
+      const stream = chooseStream(
+        streams[state.selectedLanguage],
+        selectedBitrate,
+      );
       const sources = [{ file: stream.hls }, { file: stream.rtmp }];
       setupPlayer(sources, selectedVolume);
     }
@@ -146,9 +142,15 @@ const HLSPlayer = () => {
 
   return (
     <>
-      <Typography variant='h3' className={classes.caption}>
-        {t('Dashboard.CongressArea.broadcast')}
-      </Typography>
+      <Box display='flex' justifyContent='space-between' alignItems='baseline'>
+        <Typography variant='h3' className={classes.caption}>
+          {t('Dashboard.CongressArea.broadcast')}
+        </Typography>
+        <LanguagesMenu
+          languages={state.languages}
+          onLangSelected={onLangSelected}
+        />
+      </Box>
       <Box className='player'>
         <Box id='jwplayer-container'>
           <Box className={classes.noBroadcast}>

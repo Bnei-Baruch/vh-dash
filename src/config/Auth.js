@@ -1,0 +1,56 @@
+import React, { useState, useEffect } from 'react';
+import Keycloak from 'keycloak-js';
+import keycloakConfig from './keycloak-config';
+
+import { setLoggedInUser } from '../redux/actions/userActions';
+import { useDispatch } from 'react-redux';
+
+import ErrorLogin from '../views/ErrorLogin';
+import LoadingScreen from '../views/LoadingScreen';
+
+function Auth(props) {
+  const [auth, setAuth] = useState({ keycloak: null, authenticated: false });
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    console.log(keycloakConfig);
+    const keycloak = Keycloak(keycloakConfig);
+    keycloak.init({ onLoad: 'login-required' }).then(authenticated => {
+      keycloak.loadUserProfile().then(function () {
+        const profile = {
+          username: keycloak.profile.username,
+          firstName: keycloak.profile.firstName,
+          lastName: keycloak.profile.lastName,
+          email: keycloak.profile.email,
+          // TODO: Add gender to the response
+          gender: 'male',
+        };
+        setAuth({
+          keycloak,
+          authenticated,
+          profile,
+        });
+      });
+    });
+  }, []);
+  if (auth.keycloak) {
+    if (auth.authenticated) {
+      dispatch(setLoggedInUser(auth));
+      return <>{props.children}</>;
+    } else {
+      return (
+        <>
+          <ErrorLogin />
+        </>
+      );
+    }
+  } else {
+    return (
+      <div>
+        <LoadingScreen />
+      </div>
+    );
+  }
+}
+
+export default Auth;

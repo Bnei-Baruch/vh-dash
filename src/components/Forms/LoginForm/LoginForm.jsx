@@ -19,6 +19,10 @@ const useStyles = makeStyles(theme => ({
       },
     },
   },
+  errorMsg: {
+    position: 'absolute',
+    top: 0,
+  },
 }));
 
 const LoginForm = () => {
@@ -27,9 +31,11 @@ const LoginForm = () => {
 
   const [inputFields, setInputFields] = useState({ email: '', password: '' });
   const [errorFields, setErrorFields] = useState({ email: [], password: [] });
+  const [errorMsg, setErrorMsg] = useState('');
 
   const handleChange = (field, value) => {
     setInputFields(prevState => ({ ...prevState, [field]: value }));
+    setErrorMsg('');
   };
 
   const onInputBlur = field => {
@@ -49,6 +55,8 @@ const LoginForm = () => {
 
     if (fieldsetHasValues(inputFields) && !fieldsetHasErrors(errorFields)) {
       console.log('Submit', inputFields);
+    } else {
+      setErrorMsg('Please enter your details');
     }
   };
 
@@ -94,6 +102,15 @@ const LoginForm = () => {
               onChange={event => handleChange('password', event.target.value)}
               onBlur={() => onInputBlur('password')}
             />
+          </Grid>
+          <Grid item xs={12} style={{ position: 'relative' }}>
+            <Typography
+              component='p'
+              color='error'
+              className={classes.errorMsg}
+            >
+              {errorMsg}
+            </Typography>
           </Grid>
         </Grid>
         <Box mt={4}>

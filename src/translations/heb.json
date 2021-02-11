@@ -1,103 +1,128 @@
 {
   "translation": {
     "Languages": {
-      "english": "English",
-      "french": "French",
-      "russian": "Russian",
-      "german": "German"
+      "English": "אנגלית",
+      "Russian": " רוּסִי",
+      "Hebrew": " עִברִית",
+      "Spanish": " ספרדית"
+    },
+    "Home": {
+      "arvut": " ארבות",
+      "watchBtn": " שעון",
+      "noLiveEvent": " אין אירועים חיים",
+      "noEvent": " אין אירועים",
+      "currentEvent": " אירוע נוכחי",
+      "totalConnections": " סך כל הקשרים",
+      "tensNumber": " מספר העשרות המחוברים",
+      "tenFriends": " חברים מעשרך",
+      "today": " היום",
+      "tomorrow": " מָחָר",
+      "yesterday": " אתמול",
+      "events": " אירועים",
+      "welcomeBack": " ברוך שובך"
+    },
+    "UserMenu": {
+      "logOut": " להתנתק",
+      "profile": " פּרוֹפִיל",
+      "logOutText": " האם אתה באמת רוצה לעזוב?",
+      "yesBtn": " כן",
+      "cancelBtn": " לְבַטֵל"
     },
     "Dashboard": {
-      "name": "Dashboard",
-      "Events": {
-        "name": "Events"
+      "Dashboard": {
+        "name": " לוּחַ מַחווָנִים"
       },
       "Profile": {
-        "name": "Profile",
-        "title": "My Profile",
+        "name": " פּרוֹפִיל",
+        "title": " הפרופיל שלי",
         "Tabs": {
-          "personal": "Personal",
-          "framework": "My Framework",
-          "skills": "My Skills",
-          "notification": "Notification"
+          "personal": " אישי",
+          "framework": " המסגרת שלי",
+          "skills": " הכישורים שלי",
+          "notification": " הוֹדָעָה"
         },
         "PersonalForm": {
-          "name": "Personal",
-          "firstName": "First Name",
-          "firstNamePlaceholder": "Enter your first name",
-          "dateOfBirth": "Date of birth",
+          "name": " אישי",
+          "firstName": " שם פרטי",
+          "firstNamePlaceholder": " הכנס את השם הפרטי שלך",
+          "dateOfBirth": " תאריך לידה",
           "gender": {
-            "label": "Gender",
-            "male": "male",
-            "female": "female"
+            "label": " מִין",
+            "male": " זָכָר",
+            "female": " נְקֵבָה"
           },
-          "fullName": "Enter your full name in primary language",
-          "fullNamePlaceholder": "Enter your full name",
-          "lastName": "Last Name",
-          "lastNamePlaceholder": "Enter your last name",
-          "country": "Country of origin",
-          "primaryLanguage": "Primary language",
-          "phoneNumber": "Phone number",
-          "phoneNumberPlaceholder": "Enter your phone number",
-          "saveBtn": "Save changes"
+          "fullName": " הזן את שמך המלא בשפה הראשית",
+          "fullNamePlaceholder": " הכנס את שמך המלא",
+          "lastName": " שם משפחה",
+          "lastNamePlaceholder": " הזן את שם המשפחה שלך",
+          "country": " ארץ מקור",
+          "primaryLanguage": " שפת אם",
+          "phoneNumber": " מספר טלפון",
+          "phoneNumberPlaceholder": " תכניס את מספר הטלפון שלך",
+          "saveBtn": " שמור שינויים"
         },
         "LoginForm": {
-          "name": "Login Info",
-          "email": "Email",
-          "emailPlaceholder": "Enter your email",
-          "password": "Enter your password",
-          "passwordPlaceholder": "Enter your password",
-          "saveBtn": "Save changes"
+          "name": " פרטי כניסה",
+          "email": " אימייל",
+          "emailPlaceholder": " הכנס את האימייל שלך",
+          "password": " הכנס את הסיסמה שלך",
+          "passwordPlaceholder": " הכנס את הסיסמה שלך",
+          "saveBtn": " שמור שינויים"
         },
         "SocialForm": {
-          "name": "My social media accounts",
-          "facebook": "Your Facebook profile",
-          "facebookPlaceholder": "Enter Facebook profile",
-          "youtube": "Your Youtube profile",
-          "youtubePlaceholder": "Enter Youtube profile",
-          "instagram": "Your Instagram handle",
-          "instagramPlaceholder": "Enter Instagram handle",
-          "linked": "Your Linked profile",
-          "linkedPlaceholder": "Enter Linked profile",
-          "twitter": "Your Twitter handle",
-          "twitterPlaceholder": "Enter Twitter handle",
-          "skype": "Your Skype handle",
-          "skypePlaceholder": "Enter Skype handle",
-          "connectBtn": "Connect"
+          "name": " חשבונות המדיה החברתית שלי",
+          "facebook": " פרופיל הפייסבוק שלך",
+          "facebookPlaceholder": " הזן פרופיל פייסבוק",
+          "youtube": " פרופיל YouTube שלך",
+          "youtubePlaceholder": " הזן פרופיל Youtube",
+          "instagram": " הידית שלך באינסטגרם",
+          "instagramPlaceholder": " היכנסו לידית האינסטגרם",
+          "linked": " הפרופיל המקושר שלך",
+          "linkedPlaceholder": " הזן פרופיל מקושר",
+          "twitter": " הידית שלך בטוויטר",
+          "twitterPlaceholder": " היכנס לידית הטוויטר",
+          "skype": " ידית הסקייפ שלך",
+          "skypePlaceholder": " הזן את הידית של סקייפ",
+          "connectBtn": " לְחַבֵּר"
         }
       },
       "Account": {
-        "name": "Account",
-        "title": "My account",
+        "name": " חֶשְׁבּוֹן",
+        "title": " החשבון שלי",
         "Tabs": {
-          "transaction": "All Transaction",
-          "payment": "Payment Methods"
+          "transaction": " כל העסקה",
+          "payment": " שיטות תשלום"
         },
-        "paidOn": "Paid on",
-        "purpose": "Purpose",
-        "paymentMethod": "Payment Method",
-        "paymentType": "Payment Type",
-        "amount": "Amount",
-        "currency": "Currency",
-        "status": "Status",
-        "action": "Action",
-        "cancelPayment": "Cancel payment",
-        "downloadInvoice": "Download invoice as PDF",
-        "card": "Card",
-        "cardNumber": "Number",
-        "expirationDate": "Expiration Date"
+        "paidOn": " שילם עבור",
+        "purpose": " מַטָרָה",
+        "paymentMethod": " אמצעי תשלום",
+        "paymentType": " סוג תשלום",
+        "amount": " כמות",
+        "currency": " מַטְבֵּעַ",
+        "status": " סטָטוּס",
+        "action": " פעולה",
+        "cancelPayment": " בטל את התשלום",
+        "downloadInvoice": " הורד חשבונית כ- PDF",
+        "card": " כַּרְטִיס",
+        "cardNumber": " מספר",
+        "expirationDate": " תאריך תפוגה"
       },
       "CongressArea": {
-        "name": "Congress Area",
-        "title": "Congress Area",
+        "name": " אזור הקונגרס",
+        "title": " אזור הקונגרס",
+        "caption": " גילוי החיים בעשר",
+        "subCaption": " קבלית העולם העולמית 2021",
+        "broadcast": " מִשׁדָר",
+        "broadcastLanguage": " שפות שידור",
         "Question": {
-          "title": "Send a Question",
-          "label": "What is your question?",
-          "placeholder": "Enter your question and press the button",
-          "button": "Ask"
+          "title": " שלח שאלה",
+          "label": " מה השאלה שלך?",
+          "placeholder": " הזן את השאלה שלך ולחץ על הלחצן",
+          "button": " לִשְׁאוֹל"
         },
         "Annoucements": {
-          "title": "Annoucements",
-          "text": "Our Virtual Home includes the physical infrastructure and manpower for maintaining our comprehensive operation and improving online systems for optimal connection during Daily Kabbalah Lessons, social gatherings, holidays, and meals. It allows each friend full interaction in their language, both with their Ten and the World Kli from 72 countries."
+          "title": " הודעות",
+          "text": " הבית הווירטואלי שלנו כולל תשתית פיזית וכוח אדם לשמירה על הפעילות המקיפה שלנו ולשיפור מערכות מקוונות לחיבור אופטימלי במהלך שיעורי קבלה יומיים, מפגשים חברתיים, חגים וארוחות. זה מאפשר לכל חבר אינטראקציה מלאה בשפתם, הן עם עשרת הקלי שלהם העולמי מ- 72 מדינות."
         }
       }
     }

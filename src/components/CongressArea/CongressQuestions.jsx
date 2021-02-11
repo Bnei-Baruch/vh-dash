@@ -23,13 +23,13 @@ const CongressQuestions = () => {
   const classes = useStyles();
   const { t } = useTranslation();
 
-  const user = useSelector(state => state.profileReducer);
+  const state = useSelector(state => state.userReducer.info.profile);
   const [question, setQuestion] = useState('');
   const [errorField, setErrorField] = useState({ question: [] });
 
   const sendQuestion = event => {
     event.preventDefault();
-    const { name, gender } = user;
+    const { username, gender } = state;
     const { fieldsetHasErrors, fieldsetHasValues } = validator;
 
     console.log('Send question', {
@@ -38,9 +38,9 @@ const CongressQuestions = () => {
         content: question,
       },
       user: {
-        name,
+        user: username,
         gender,
-        galaxyRoom: 'galaxy',
+        galaxyRoom: 'Congress Area',
       },
     });
 
@@ -53,9 +53,9 @@ const CongressQuestions = () => {
           content: question,
         },
         user: {
-          name,
+          user: username,
           gender,
-          galaxyRoom: 'galaxy',
+          galaxyRoom: 'Congress Area',
         },
       }),
     };

@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import { useTranslation} from 'react-i18next';
 import { Breadcrumbs, Link, Typography } from '@material-ui/core';
-import { DASHBOARD_ROOT, ROOT } from '../../routes/dashboardRoutes';
+import { ROOT } from '../../routes/dashboardRoutes';
 
 const useStyles = makeStyles(theme => ({
   breadcrumbs: {
@@ -30,8 +30,8 @@ const DashboardHeader = ({ name, breadcrumbs }) => {
       <Typography variant='h3'>{t(`Dashboard.${name}.title`)}</Typography>
       {breadcrumbs.length ? (
         <Breadcrumbs aria-label='breadcrumb' className={classes.breadcrumbs}>
-          <Link color={'inherit'} href={DASHBOARD_ROOT} onClick={event => handleClick(event, ROOT)}>
-            {t('Dashboard.name')}
+          <Link color={'inherit'} href={ROOT} onClick={event => handleClick(event, ROOT)}>
+            {t('Dashboard.Dashboard.name')}
           </Link>
           {breadcrumbs.map(item => (
             <Link
