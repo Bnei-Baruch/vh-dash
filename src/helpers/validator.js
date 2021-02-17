@@ -136,10 +136,6 @@ const instructions = {
       errorMsg: 'Full name should be more than 2 symbols',
       break: true,
     },
-    {
-      validationMethod: methods.usernameRegex,
-      errorMsg: 'Full name must only contain letters, spaces, hyphens, apostrophes or full stop symbols',
-    },
   ],
   [fieldTypes.email]: [
     {

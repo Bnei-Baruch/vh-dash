@@ -114,11 +114,15 @@
         "subCaption": "CONVENCIÓN MUNDIAL DE CÁBALA 2021",
         "broadcast": "Difusión",
         "broadcastLanguage": "Idiomas de transmisión",
+        "loading": "Cargando ...",
+        "noBroadcast": "No hay transmisión ahora",
         "Question": {
           "title": "Enviar una pregunta",
           "label": "¿Cuál es su pregunta?",
           "placeholder": "Introduzca su pregunta y pulse el botón",
-          "button": "Pregunte a"
+          "button": "Pregunte a",
+          "successMsg": "Enviado con éxito",
+          "errorMsg": "Error inesperado. ¡Inténtalo de nuevo!"
         },
         "Annoucements": {
           "title": "Anuncios",

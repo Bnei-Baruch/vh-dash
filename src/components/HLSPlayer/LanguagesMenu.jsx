@@ -38,7 +38,6 @@ const LanguagesMenu = ({ languages, onLangSelected }) => {
         keepMounted
         open={Boolean(anchorEl)}
         onClose={event => handleClose(event)}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
       >
         {languagesToArray.map(lang => (
           <MenuItem

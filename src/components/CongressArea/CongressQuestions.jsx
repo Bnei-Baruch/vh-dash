@@ -5,6 +5,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import { Box, Button, TextareaAutosize, Typography } from '@material-ui/core';
 import validator from '../../helpers/validator';
+import { QUESTION_URL } from '../../shared/constants';
+import Notifications from '../ui/Notifications';
 
 const useStyles = makeStyles(theme => ({
   textArea: {
@@ -23,50 +25,54 @@ const CongressQuestions = () => {
   const classes = useStyles();
   const { t } = useTranslation();
 
-  const state = useSelector(state => state.userReducer.info.profile);
-  const [question, setQuestion] = useState('');
+  const state = useSelector(state => state.userReducer.info);
   const [errorField, setErrorField] = useState({ question: [] });
+  const [question, setQuestion] = useState('');
+  const [open, setOpen] = useState(false);
+  const [isSentSuccessfully, setIsSentSuccessfully] = useState(true);
 
   const sendQuestion = event => {
     event.preventDefault();
-    const { username, gender } = state;
-    const { fieldsetHasErrors, fieldsetHasValues } = validator;
 
-    console.log('Send question', {
-      askForMe: true,
-      question: {
-        content: question,
-      },
-      user: {
-        user: username,
-        gender,
-        galaxyRoom: 'Congress Area',
-      },
-    });
+    const { username, lastName, firstName, gender } = state.profile;
+    const { fieldsetHasErrors, fieldsetHasValues } = validator;
 
     const requestOptions = {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${state.token}`,
+      },
       body: JSON.stringify({
         askForMe: true,
+        serialUserId: username,
         question: {
           content: question,
         },
         user: {
-          user: username,
           gender,
+          name: `${firstName} ${lastName}`,
           galaxyRoom: 'Congress Area',
         },
       }),
     };
 
-    // Check a validation error
+    // Check validation error
     onQuestionBlur();
-    
+
     if (!fieldsetHasErrors(errorField) && fieldsetHasValues(question)) {
-      fetch('/api/ask', requestOptions)
+      fetch(`${QUESTION_URL}/api/ask`, requestOptions)
         .then(response => response.json())
-        .then(data => console.log(data))
+        .then(data => {
+          console.log('Question response', data);
+          setOpen(true);
+          
+          if (data.msg) {
+            setIsSentSuccessfully(false);
+            return;
+          }
+          setIsSentSuccessfully(true);
+        })
         .finally(setQuestion(''));
     }
   };
@@ -138,6 +144,11 @@ const CongressQuestions = () => {
           </form>
         </Grid>
       </Grid>
+      <Notifications
+        open={open}
+        toggleNotifications={setOpen}
+        isSentSuccessfully={isSentSuccessfully}
+      />
     </Box>
   );
 };

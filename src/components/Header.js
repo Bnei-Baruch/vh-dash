@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled, { withTheme } from 'styled-components';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { darken } from 'polished';
 import i18next from 'i18next';
 import { useTranslation } from 'react-i18next';
@@ -25,6 +25,7 @@ import { Bell, MessageSquare, Search as SearchIcon } from 'react-feather';
 import { CHAT_AND_NOTIFICATION_ICONS, SEARCH_BAR } from '../shared/constants';
 import { DASHBOARD_ROUTES } from '../routes/dashboardRoutes';
 import ModalWindow from './ModalWindow/ModalWindow';
+import { setLoggedInUser } from '../redux/actions/userActions';
 
 const AppBar = styled(MuiAppBar)`
   background: ${props => props.theme.header.background};
@@ -107,7 +108,7 @@ const Flag = styled.img`
 const languages = [
   { code: 'en', name: 'English' },
   { code: 'ru', name: 'Russian' },
-  { code: 'heb', name: 'Hebrew' },
+  { code: 'he', name: 'Hebrew' },
   { code: 'es', name: 'Spanish' },
 ];
 
@@ -132,7 +133,10 @@ function LanguageMenu() {
         onClick={toggleMenu}
         color='inherit'
       >
-        <Flag src={`/static/img/flags/${i18next.language}.png`} alt={i18next.language} />
+        <Flag
+          src={`/static/img/flags/${i18next.language}.png`}
+          alt={i18next.language}
+        />
       </IconButton>
       <Menu
         id='menu-appbar'
@@ -153,7 +157,9 @@ function LanguageMenu() {
 
 function UserMenu() {
   const { t } = useTranslation();
+  const state = useSelector(state => state.userReducer.info);
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const [anchorMenu, setAnchorMenu] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -174,11 +180,18 @@ function UserMenu() {
   const onLogOutClick = () => {
     closeMenu();
     setIsModalOpen(!isModalOpen);
-  }
+  };
 
   const handleCloseModal = () => {
     setIsModalOpen(!isModalOpen);
-  }
+  };
+
+  
+  const onAuthLogout = () => {
+    state.keycloak.logout();
+    dispatch(setLoggedInUser(null));
+    handleCloseModal();
+  };
 
   return (
     <>
@@ -199,7 +212,11 @@ function UserMenu() {
         <MenuItem onClick={onProfileClick}>{t('UserMenu.profile')}</MenuItem>
         <MenuItem onClick={onLogOutClick}>{t('UserMenu.logOut')}</MenuItem>
       </Menu>
-      <ModalWindow open={isModalOpen} handleClose={handleCloseModal} />
+      <ModalWindow
+        open={isModalOpen}
+        handleClose={handleCloseModal}
+        onAuthLogout={onAuthLogout}
+      />
     </>
   );
 }
@@ -255,4 +272,4 @@ const Header = ({ onDrawerToggle }) => (
   </>
 );
 
-export default connect()(withTheme(Header));
+export default withTheme(Header);

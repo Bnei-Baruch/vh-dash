@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
+import { makeStyles } from '@material-ui/core/styles';
 import { Box, Button, Grid, TextField, Typography } from '@material-ui/core';
 import SelectElement from '../FormElements/SelectElement';
 import countries from '../../../constants/countries';
-import languages from '../../../constants/languages';
 import validator from '../../../helpers/validator';
 
 const useStyles = makeStyles(theme => ({
@@ -31,11 +32,11 @@ const useStyles = makeStyles(theme => ({
 const initialFields = {
   firstname: '',
   dob: '',
-  gender: 'male',
+  gender: '',
   fullname: '',
   lastname: '',
-  country: 'Germany',
-  primaryLanguage: 'English',
+  country: '',
+  primaryLanguage: '',
   phone: '',
 };
 
@@ -50,20 +51,34 @@ const initialErrorFields = {
   phone: [],
 };
 
+const genderData = [
+  { code: 'male', label: i18next.t('Dashboard.Profile.PersonalForm.gender.male') },
+  {
+    code: 'female',
+    label: i18next.t('Dashboard.Profile.PersonalForm.gender.female'),
+  },
+];
+
+const languages = [
+  { code: 'en', label: i18next.t('Languages.English') },
+  { code: 'ru', label: i18next.t('Languages.Russian') },
+  { code: 'es', label: i18next.t('Languages.Spanish') },
+  { code: 'he', label: i18next.t('Languages.Hebrew') },
+];
+
 const PersonalForm = () => {
   const classes = useStyles();
   const { t } = useTranslation();
-  const genderData = [
-    { code: 'male', label: t('Dashboard.Profile.PersonalForm.gender.male') },
-    {
-      code: 'female',
-      label: t('Dashboard.Profile.PersonalForm.gender.female'),
-    },
-  ];
 
-  const [inputFields, setInputFields] = useState(initialFields);
+
+  const state = useSelector(state => state.userReducer.info.profile);
   const [errorFields, setErrorFields] = useState(initialErrorFields);
   const [errorMsg, setErrorMsg] = useState('');
+  const [inputFields, setInputFields] = useState({
+    ...initialFields,
+    firstname: state.firstName,
+    lastname: state.lastName,
+  });
 
   const handleChange = (field, value) => {
     setInputFields(prevState => ({ ...prevState, [field]: value }));
@@ -93,13 +108,14 @@ const PersonalForm = () => {
   };
 
   const {
-    firstName,
-    lastName,
-    fullName,
+    firstname,
+    lastname,
+    fullname,
     dob,
     country,
-    primaryLanguage,
     phoneNumber,
+    gender,
+    primaryLanguage,
   } = inputFields;
 
   return (
@@ -114,7 +130,7 @@ const PersonalForm = () => {
               data-testid='model-name'
               type='text'
               label={t('Dashboard.Profile.PersonalForm.firstName')}
-              value={firstName}
+              value={firstname}
               fullWidth
               placeholder={t(
                 'Dashboard.Profile.PersonalForm.firstNamePlaceholder',
@@ -133,7 +149,7 @@ const PersonalForm = () => {
               data-testid='model-name'
               type='text'
               label={t('Dashboard.Profile.PersonalForm.lastName')}
-              value={lastName}
+              value={lastname}
               fullWidth
               placeholder={t(
                 'Dashboard.Profile.PersonalForm.lastNamePlaceholder',
@@ -179,7 +195,7 @@ const PersonalForm = () => {
             <SelectElement
               id='gender'
               label={t('Dashboard.Profile.PersonalForm.gender.label')}
-              value={genderData[0].label}
+              value={gender}
               onChange={handleChange}
               selectData={genderData}
             />
@@ -198,7 +214,7 @@ const PersonalForm = () => {
               data-testid='model-name'
               type='text'
               label={t('Dashboard.Profile.PersonalForm.fullName')}
-              value={fullName}
+              value={fullname}
               fullWidth
               placeholder={t(
                 'Dashboard.Profile.PersonalForm.fullNamePlaceholder',

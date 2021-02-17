@@ -8,13 +8,14 @@ import { useDispatch } from 'react-redux';
 import ErrorLogin from '../views/ErrorLogin';
 import LoadingScreen from '../views/LoadingScreen';
 
-function Auth(props) {
+const Auth = props => {
   const [auth, setAuth] = useState({ keycloak: null, authenticated: false });
   const dispatch = useDispatch();
 
   useEffect(() => {
     console.log(keycloakConfig);
     const keycloak = Keycloak(keycloakConfig);
+
     keycloak.init({ onLoad: 'login-required' }).then(authenticated => {
       keycloak.loadUserProfile().then(function () {
         const profile = {
@@ -22,6 +23,7 @@ function Auth(props) {
           firstName: keycloak.profile.firstName,
           lastName: keycloak.profile.lastName,
           email: keycloak.profile.email,
+          token: keycloak.token,
           // TODO: Add gender to the response
           gender: 'male',
         };
@@ -33,6 +35,7 @@ function Auth(props) {
       });
     });
   }, []);
+
   if (auth.keycloak) {
     if (auth.authenticated) {
       dispatch(setLoggedInUser(auth));

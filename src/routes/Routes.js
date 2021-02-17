@@ -56,7 +56,7 @@ const childRoutes = (Layout, routes) =>
 const Routes = () => (
   <Router>
     <Switch>
-      <Auth>{childRoutes(DashboardLayout, dashboardLayoutRoutes)}</Auth>
+      {childRoutes(DashboardLayout, dashboardLayoutRoutes)}
       <Route
         render={() => (
           <Auth>

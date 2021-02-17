@@ -116,10 +116,8 @@ const HLSPlayer = () => {
 
   const { streams, selectedBitrate, selectedVolume, broadcast } = state;
   const statusPhrase = broadcast
-    ? 'Loading...'
-    : state.languages.hasOwnProperty(state.selectedLanguage)
-    ? state.languages[state.selectedLanguage].Offline
-    : 'No broadcast now';
+    ? t('Dashboard.CongressArea.loading')
+    : t('Dashboard.CongressArea.noBroadcast');
 
   // Setup jwplayer if it is idle and we're broadcasting
   if (broadcast) {

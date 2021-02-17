@@ -7,7 +7,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import { useTranslation } from 'react-i18next';
 
-const ModalWindow = ({ open, handleClose }) => {
+const ModalWindow = ({ open, handleClose, onAuthLogout }) => {
   const { t } = useTranslation();
 
   return (
@@ -23,7 +23,7 @@ const ModalWindow = ({ open, handleClose }) => {
       </DialogContent>
       <DialogActions style={{ justifyContent: 'center' }}>
         <Button
-          onClick={handleClose}
+          onClick={onAuthLogout}
           color='primary'
           autoFocus
           variant='contained'
@@ -41,6 +41,7 @@ const ModalWindow = ({ open, handleClose }) => {
 ModalWindow.propTypes = {
   open: PropTypes.bool.isRequired,
   handleClose: PropTypes.func.isRequired,
+  onAuthLogout: PropTypes.func.isRequired,
 };
 
 export default ModalWindow;

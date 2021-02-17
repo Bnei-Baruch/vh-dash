@@ -114,11 +114,15 @@
         "subCaption": "WORLD KABBALAH KONVENTION 2021",
         "broadcast": "Broadcast",
         "broadcastLanguage": "Broadcast languages",
+        "loading": "Loading...",
+        "noBroadcast": "No broadcast now",
         "Question": {
           "title": "Send a Question",
           "label": "What is your question?",
           "placeholder": "Enter your question and press the button",
-          "button": "Ask"
+          "button": "Ask",
+          "successMsg": "Sent successfully!",
+          "errorMsg": "Unexpected error. Please, try again!"
         },
         "Annoucements": {
           "title": "Annoucements",

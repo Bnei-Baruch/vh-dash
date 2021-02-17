@@ -13,13 +13,6 @@ const MyProfile = async(() => import('../components/MyProfile'));
 const MyAccount = async(() => import('../components/MyAccount'));
 const CongressArea = async(() => import('../components/CongressArea'));
 
-const homeRoutes = {
-  id: 'Welcome',
-  path: '/',
-  component: Home,
-  children: null,
-};
-
 const dashboardRoutes = [
   {
     id: 'Dashboard',
@@ -59,7 +52,7 @@ const dashboardRoutes = [
 ];
 
 // Routes using the Dashboard layout
-export const dashboardLayoutRoutes = [homeRoutes, ...dashboardRoutes];
+export const dashboardLayoutRoutes = [...dashboardRoutes];
 
 // Routes visible in the sidebar
 export const sidebarRoutes = [...dashboardRoutes];

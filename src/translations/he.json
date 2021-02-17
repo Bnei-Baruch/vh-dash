@@ -114,11 +114,15 @@
         "subCaption": " קבלית העולם העולמית 2021",
         "broadcast": " מִשׁדָר",
         "broadcastLanguage": " שפות שידור",
+        "loading": "טוען ...",
+        "noBroadcast": "אין שידור עכשיו",
         "Question": {
           "title": " שלח שאלה",
           "label": " מה השאלה שלך?",
           "placeholder": " הזן את השאלה שלך ולחץ על הלחצן",
-          "button": " לִשְׁאוֹל"
+          "button": " לִשְׁאוֹל",
+          "successMsg": "נשלח בהצלחה!",
+          "errorMsg": "שגיאה לא צפויה. בבקשה נסה שוב!"
         },
         "Annoucements": {
           "title": " הודעות",

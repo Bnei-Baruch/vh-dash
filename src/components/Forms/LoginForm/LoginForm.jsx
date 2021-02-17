@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, Button, Grid, TextField, Typography } from '@material-ui/core';
@@ -29,7 +30,8 @@ const LoginForm = () => {
   const classes = useStyles();
   const { t } = useTranslation();
 
-  const [inputFields, setInputFields] = useState({ email: '', password: '' });
+  const state = useSelector(state => state.userReducer.info.profile);
+  const [inputFields, setInputFields] = useState({ email: state.email, password: '' });
   const [errorFields, setErrorFields] = useState({ email: [], password: [] });
   const [errorMsg, setErrorMsg] = useState('');
 
