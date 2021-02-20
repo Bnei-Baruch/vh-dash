@@ -7,7 +7,7 @@ import NavigationBar from '../NavigationBar';
 import { Grid } from '@material-ui/core';
 import PersonalForm from '../Forms/PersonalForm';
 import LoginForm from '../Forms/LoginForm';
-import SocialContainer from '../SocialContainer';
+import SocialContainer from './SocialContainer';
 
 const useStyles = makeStyles(theme => ({
   root: {

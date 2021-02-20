@@ -24,8 +24,8 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { Bell, MessageSquare, Search as SearchIcon } from 'react-feather';
 import { CHAT_AND_NOTIFICATION_ICONS, SEARCH_BAR } from '../shared/constants';
 import { DASHBOARD_ROUTES } from '../routes/dashboardRoutes';
-import ModalWindow from './ModalWindow/ModalWindow';
 import { setLoggedInUser } from '../redux/actions/userActions';
+import ModalWindow from './ui/ModalWindow';
 
 const AppBar = styled(MuiAppBar)`
   background: ${props => props.theme.header.background};
