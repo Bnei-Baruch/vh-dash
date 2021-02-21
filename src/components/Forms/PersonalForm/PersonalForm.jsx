@@ -51,25 +51,24 @@ const initialErrorFields = {
   phone: [],
 };
 
-const genderData = [
-  { code: 'male', label: i18next.t('Dashboard.Profile.PersonalForm.gender.male') },
-  {
-    code: 'female',
-    label: i18next.t('Dashboard.Profile.PersonalForm.gender.female'),
-  },
-];
-
-const languages = [
-  { code: 'en', label: i18next.t('Languages.English') },
-  { code: 'ru', label: i18next.t('Languages.Russian') },
-  { code: 'es', label: i18next.t('Languages.Spanish') },
-  { code: 'he', label: i18next.t('Languages.Hebrew') },
-];
-
 const PersonalForm = () => {
   const classes = useStyles();
   const { t } = useTranslation();
+  
+  const languages = [
+    { code: 'English', label: t('Languages.English') },
+    { code: 'Russian', label: t('Languages.Russian') },
+    { code: 'Spanish', label: t('Languages.Spanish') },
+    { code: 'Hebrew', label: t('Languages.Hebrew') },
+  ];
 
+  const genderData = [
+    { code: 'male', label: i18next.t('Dashboard.Profile.PersonalForm.gender.male') },
+    {
+      code: 'female',
+      label: i18next.t('Dashboard.Profile.PersonalForm.gender.female'),
+    },
+  ];
 
   const state = useSelector(state => state.userReducer.info.profile);
   const [errorFields, setErrorFields] = useState(initialErrorFields);
@@ -78,6 +77,9 @@ const PersonalForm = () => {
     ...initialFields,
     firstname: state.firstName,
     lastname: state.lastName,
+    country: 'Germany',
+    primaryLanguage: 'English',
+    gender: 'male',
   });
 
   const handleChange = (field, value) => {
