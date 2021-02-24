@@ -2,7 +2,8 @@ import * as types from '../constants';
 
 const INITIAL_STATE = {
   name: 'Lucy',
-  tenName: 'Hebrew 10'
+  tenName: 'Hebrew 10',
+  gender: 'female',
 };
 
 export default function reducer(state = INITIAL_STATE, actions) {
