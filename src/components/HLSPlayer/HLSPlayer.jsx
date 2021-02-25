@@ -119,8 +119,8 @@ const HLSPlayer = () => {
     ? t('Dashboard.CongressArea.loading')
     : t('Dashboard.CongressArea.noBroadcast');
 
-  // Setup jwplayer if it is idle and we're broadcasting
-  if (broadcast) {
+    // Setup jwplayer if it is idle and we're broadcasting
+  if (broadcast || Object.keys(streams).length) {
     if (
       window.jwplayer &&
       streams.hasOwnProperty(state.selectedLanguage) &&
