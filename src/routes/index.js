@@ -22,6 +22,7 @@ const dashboardRoutes = [
     children: null,
     component: Home,
   },
+  /*
   {
     path: DASHBOARD_ROUTES.Profile,
     id: 'Profile',
@@ -39,7 +40,7 @@ const dashboardRoutes = [
     breadcrumbs: [{ name: 'Account', path: DASHBOARD_ROUTES.Account }],
     component: MyAccount,
     children: null,
-  },
+  },*/
   {
     path: DASHBOARD_ROUTES.CongressArea,
     id: 'CongressArea',
