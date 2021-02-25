@@ -5,7 +5,7 @@ import Arvut from './Arvut';
 import Calendar from './Calendar';
 import Header from '../components/Header';
 
-const Events = () => {
+const Home = () => {
   const [liveEvent, setLiveEvent] = useState();
 
   const onLiveEvent = useCallback((event) => {
@@ -28,4 +28,4 @@ const Events = () => {
   );
 }
 
-export default withTheme(Events);
+export default withTheme(Home);

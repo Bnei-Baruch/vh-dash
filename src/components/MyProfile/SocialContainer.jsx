@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
@@ -47,48 +48,49 @@ const initialFields = {
 
 const SocialContainer = () => {
   const classes = useStyles();
+  const { t } = useTranslation();
+
   const [inputFields, setInputFields] = useState(initialFields);
 
-  // TODO: Change array structure
   const socialFields = [
     {
-      label: 'Your Facebook profile',
-      placeholder: 'Enter Facebook profile',
+      label: t('Dashboard.Profile.SocialForm.facebook'),
+      placeholder: t('Dashboard.Profile.SocialForm.facebookPlaceholder'),
       icon: facebook,
       id: 'facebook',
       value: inputFields['facebook'],
     },
     {
-      label: 'Your Instagram handle',
-      placeholder: 'Enter Instagram handle',
+      label: t('Dashboard.Profile.SocialForm.instagram'),
+      placeholder: t('Dashboard.Profile.SocialForm.instagramPlaceholder'),
       icon: instagram,
       id: 'instagram',
       value: inputFields['instagram'],
     },
     {
-      label: 'Your Twitter handle',
-      placeholder: 'Enter Twitter handle',
+      label: t('Dashboard.Profile.SocialForm.twitter'),
+      placeholder: t('Dashboard.Profile.SocialForm.twitterPlaceholder'),
       icon: twitter,
       id: 'twitter',
       value: inputFields['twitter'],
     },
     {
-      label: 'Your Youtube profile',
-      placeholder: 'Enter Youtube profile',
+      label: t('Dashboard.Profile.SocialForm.youtube'),
+      placeholder: t('Dashboard.Profile.SocialForm.youtubePlaceholder'),
       icon: youtube,
       id: 'youtube',
       value: inputFields['youtube'],
     },
     {
-      label: 'Your Linked profile',
-      placeholder: 'Enter Linked profile',
+      label: t('Dashboard.Profile.SocialForm.linked'),
+      placeholder: t('Dashboard.Profile.SocialForm.linkedPlaceholder'),
       icon: linkedin,
       id: 'linkedin',
       value: inputFields['linkedin'],
     },
     {
-      label: 'Your Skype handle',
-      placeholder: 'Enter Skype handle',
+      label: t('Dashboard.Profile.SocialForm.skype'),
+      placeholder: t('Dashboard.Profile.SocialForm.skypePlaceholder'),
       icon: skype,
       id: 'skype',
       value: inputFields['skype'],
@@ -104,7 +106,7 @@ const SocialContainer = () => {
   return (
     <div className={classes.root}>
       <Typography variant='h4' gutterBottom>
-        My social media accounts
+        {t('Dashboard.Profile.SocialForm.name')}
       </Typography>
       <Grid container spacing={6}>
         {socialFields.map(field => (
@@ -134,7 +136,7 @@ const SocialContainer = () => {
             </Box>
             <Box alignSelf='flex-end'>
               <Button variant='contained' disabled={field.value ? false : true}>
-                Connect
+                {t('Dashboard.Profile.SocialForm.connectBtn')}
               </Button>
             </Box>
           </Grid>

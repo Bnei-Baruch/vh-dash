@@ -18,6 +18,8 @@ import {
 } from '@material-ui/core';
 import {Calendar as CalendarIcon, RefreshCw} from 'react-feather';
 import {grey, red} from '@material-ui/core/colors';
+import { useTranslation } from 'react-i18next';
+import {connect} from 'react-redux';
 import {
   GOOGLE_CALENDAR_API_KEY,
   GOOGLE_CALENDAR_EN,
@@ -25,7 +27,6 @@ import {
   GOOGLE_CALENDAR_HE,
   GOOGLE_CALENDAR_RU
 } from '../../../shared/constants';
-import {connect} from 'react-redux';
 
 const TODAY = 0;
 const TOMORROW = 1;
@@ -82,6 +83,8 @@ const CALENDAR_LANGUAGE = {
 };
 
 const Calendar = ({onLiveEvent, settings: {language}}) => {
+  const { t } = useTranslation();
+
   const [authenticated, setAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
   const [refresh, setRefresh] = useState(true);
@@ -244,13 +247,13 @@ const Calendar = ({onLiveEvent, settings: {language}}) => {
             <CalendarButtonGroup color="primary" onClick={onDayChange} aria-label="primary button group">
               <Button variant={day === TODAY ? 'contained' : 'outlined'}
                       color={day === TODAY ? 'primary' : 'default'}
-                      value={TODAY}>Today</Button>
+                      value={TODAY}>{t('Home.today')}</Button>
               <Button variant={day === TOMORROW ? 'contained' : 'outlined'}
                       color={day === TOMORROW ? 'primary' : 'default'}
-                      value={TOMORROW}>Tomorrow</Button>
+                      value={TOMORROW}>{t('Home.tomorrow')}</Button>
               <Button variant={day === YESTERDAY ? 'contained' : 'outlined'}
                       color={day === YESTERDAY ? 'primary' : 'default'}
-                      value={YESTERDAY}>Yesterday</Button>
+                      value={YESTERDAY}>{t('Home.yesterday')}</Button>
             </CalendarButtonGroup>
 
             <IconButton aria-label="refresh" color="primary" disabled={loading || refresh}
@@ -259,7 +262,7 @@ const Calendar = ({onLiveEvent, settings: {language}}) => {
             </IconButton>
           </CardActionHeader>
         }
-        title="Events"
+        title={t('Home.events')}
       />
 
       <CardContent>
@@ -286,7 +289,7 @@ const Calendar = ({onLiveEvent, settings: {language}}) => {
               </Table>
             </TableWrapper>
             :
-            <Typography variant="h3">No events</Typography>
+            <Typography variant="h3">{t('Home.noEvent')}</Typography>
         }
 
         <Typography variant="h3">{errorMessage}</Typography>

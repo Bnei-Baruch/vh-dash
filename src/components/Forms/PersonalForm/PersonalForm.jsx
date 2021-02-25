@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
 import { makeStyles } from '@material-ui/core/styles';
-import {
-  Box,
-  Button,
-  Grid,
-  TextField,
-  Typography,
-} from '@material-ui/core';
+import { Box, Button, Grid, TextField, Typography } from '@material-ui/core';
 import SelectElement from '../FormElements/SelectElement';
 import countries from '../../../constants/countries';
-import languages from '../../../constants/languages';
 import validator from '../../../helpers/validator';
 
 const useStyles = makeStyles(theme => ({
@@ -27,16 +23,20 @@ const useStyles = makeStyles(theme => ({
       },
     },
   },
+  errorMsg: {
+    position: 'absolute',
+    top: 0,
+  },
 }));
 
 const initialFields = {
   firstname: '',
   dob: '',
-  gender: 'male',
+  gender: '',
   fullname: '',
   lastname: '',
-  country: 'Germany',
-  primaryLanguage: 'English',
+  country: '',
+  primaryLanguage: '',
   phone: '',
 };
 
@@ -53,15 +53,38 @@ const initialErrorFields = {
 
 const PersonalForm = () => {
   const classes = useStyles();
-  const genderData = [
-    { code: 'male', label: 'male' },
-    { code: 'female', label: 'female' },
+  const { t } = useTranslation();
+  
+  const languages = [
+    { code: 'English', label: t('Languages.English') },
+    { code: 'Russian', label: t('Languages.Russian') },
+    { code: 'Spanish', label: t('Languages.Spanish') },
+    { code: 'Hebrew', label: t('Languages.Hebrew') },
   ];
-  const [inputFields, setInputFields] = useState(initialFields);
+
+  const genderData = [
+    { code: 'male', label: i18next.t('Dashboard.Profile.PersonalForm.gender.male') },
+    {
+      code: 'female',
+      label: i18next.t('Dashboard.Profile.PersonalForm.gender.female'),
+    },
+  ];
+
+  const state = useSelector(state => state.userReducer.info.profile);
   const [errorFields, setErrorFields] = useState(initialErrorFields);
+  const [errorMsg, setErrorMsg] = useState('');
+  const [inputFields, setInputFields] = useState({
+    ...initialFields,
+    firstname: state.firstName,
+    lastname: state.lastName,
+    country: 'Germany',
+    primaryLanguage: 'English',
+    gender: 'male',
+  });
 
   const handleChange = (field, value) => {
     setInputFields(prevState => ({ ...prevState, [field]: value }));
+    setErrorMsg('');
   };
 
   const onInputBlur = field => {
@@ -72,7 +95,7 @@ const PersonalForm = () => {
       inputFields[field],
     );
 
-    setErrorFields({...errorFields});
+    setErrorFields({ ...errorFields });
   };
 
   const onSubmit = event => {
@@ -81,35 +104,39 @@ const PersonalForm = () => {
 
     if (!fieldsetHasErrors(errorFields) && fieldsetHasValues(inputFields)) {
       console.log('Submit', inputFields);
+    } else {
+      setErrorMsg('Please enter your details');
     }
   };
 
   const {
-    firstName,
-    lastName,
-    fullName,
+    firstname,
+    lastname,
+    fullname,
     dob,
     country,
+    phoneNumber,
     gender,
     primaryLanguage,
-    phoneNumber,
   } = inputFields;
 
   return (
     <div className={classes.root}>
       <form noValidate autoComplete='off' onSubmit={onSubmit}>
         <Typography variant='h4'>
-          Personal
+          {t('Dashboard.Profile.PersonalForm.name')}
         </Typography>
         <Grid container spacing={6}>
           <Grid item xs={12} sm={6}>
             <TextField
               data-testid='model-name'
               type='text'
-              label='First Name'
-              value={firstName}
+              label={t('Dashboard.Profile.PersonalForm.firstName')}
+              value={firstname}
               fullWidth
-              placeholder='Enter your first name'
+              placeholder={t(
+                'Dashboard.Profile.PersonalForm.firstNamePlaceholder',
+              )}
               error={!!errorFields.firstname.length}
               helperText={errorFields.firstname}
               InputLabelProps={{
@@ -123,10 +150,12 @@ const PersonalForm = () => {
             <TextField
               data-testid='model-name'
               type='text'
-              label='Last Name'
-              value={lastName}
+              label={t('Dashboard.Profile.PersonalForm.lastName')}
+              value={lastname}
               fullWidth
-              placeholder='Enter your last name'
+              placeholder={t(
+                'Dashboard.Profile.PersonalForm.lastNamePlaceholder',
+              )}
               error={!!errorFields.lastname.length}
               helperText={errorFields.lastname}
               InputLabelProps={{
@@ -140,10 +169,12 @@ const PersonalForm = () => {
             <TextField
               data-testid='model-name'
               type='date'
-              label='Date of birth'
+              label={t('Dashboard.Profile.PersonalForm.dateOfBirth')}
               value={dob}
               fullWidth
-              placeholder='Enter your date of birth'
+              placeholder={t(
+                'Dashboard.Profile.PersonalForm.dateOfBirthPlaceholder',
+              )}
               error={!!errorFields.dob.length}
               helperText={errorFields.dob}
               InputLabelProps={{
@@ -156,7 +187,7 @@ const PersonalForm = () => {
           <Grid item xs={12} sm={6}>
             <SelectElement
               id='country'
-              label='Country of origin'
+              label={t('Dashboard.Profile.PersonalForm.country')}
               value={country}
               onChange={handleChange}
               selectData={countries}
@@ -165,7 +196,7 @@ const PersonalForm = () => {
           <Grid item xs={12} sm={6}>
             <SelectElement
               id='gender'
-              label='Gender'
+              label={t('Dashboard.Profile.PersonalForm.gender.label')}
               value={gender}
               onChange={handleChange}
               selectData={genderData}
@@ -174,7 +205,7 @@ const PersonalForm = () => {
           <Grid item xs={12} sm={6}>
             <SelectElement
               id='primaryLanguage'
-              label='Primary language'
+              label={t('Dashboard.Profile.PersonalForm.primaryLanguage')}
               value={primaryLanguage}
               onChange={handleChange}
               selectData={languages}
@@ -184,10 +215,12 @@ const PersonalForm = () => {
             <TextField
               data-testid='model-name'
               type='text'
-              label='Full name in primary language'
-              value={fullName}
+              label={t('Dashboard.Profile.PersonalForm.fullName')}
+              value={fullname}
               fullWidth
-              placeholder='Enter your full name'
+              placeholder={t(
+                'Dashboard.Profile.PersonalForm.fullNamePlaceholder',
+              )}
               error={!!errorFields.fullname.length}
               helperText={errorFields.fullname}
               InputLabelProps={{
@@ -201,10 +234,12 @@ const PersonalForm = () => {
             <TextField
               data-testid='model-name'
               type='text'
-              label='Phone Numder'
+              label={t('Dashboard.Profile.PersonalForm.phoneNumber')}
               value={phoneNumber}
               fullWidth
-              placeholder='Enter your phone number'
+              placeholder={t(
+                'Dashboard.Profile.PersonalForm.phoneNumberPlaceholder',
+              )}
               error={!!errorFields.phone.length}
               helperText={errorFields.phone}
               InputLabelProps={{
@@ -214,10 +249,19 @@ const PersonalForm = () => {
               onBlur={() => onInputBlur('phone')}
             />
           </Grid>
+          <Grid item xs={12} style={{ position: 'relative' }}>
+            <Typography
+              component='p'
+              color='error'
+              className={classes.errorMsg}
+            >
+              {errorMsg}
+            </Typography>
+          </Grid>
         </Grid>
         <Box mt={4}>
           <Button variant='contained' color='primary' type='submit'>
-            Save Changes
+            {t('Dashboard.Profile.PersonalForm.saveBtn')}
           </Button>
         </Box>
       </form>

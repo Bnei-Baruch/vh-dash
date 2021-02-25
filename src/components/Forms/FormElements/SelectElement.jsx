@@ -44,7 +44,7 @@ const SelectElement = ({ id, label, value, onChange, selectData }) => {
         }}
       >
         {selectData.map(option => (
-          <MenuItem key={option.code} value={option.label}>
+          <MenuItem key={option.code} value={option.code}>
             {option.label}
           </MenuItem>
         ))}
