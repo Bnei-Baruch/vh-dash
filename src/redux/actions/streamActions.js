@@ -9,7 +9,7 @@ import {
   CHANGE_LANGUAGE,
 } from '../constants';
 
-const API_URL = 'https://kab.tv/live/api/';
+const API_URL = 'http://kab.tv/live/api/';
 const TIMEOUT = 10000;
 
 export const changeLanguage = lang => {
