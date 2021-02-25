@@ -119,8 +119,8 @@ const HLSPlayer = () => {
     ? t('Dashboard.CongressArea.loading')
     : t('Dashboard.CongressArea.noBroadcast');
 
-  // Setup jwplayer if it is idle and we're broadcasting
-  if (broadcast) {
+    // Setup jwplayer if it is idle and we're broadcasting
+  if (broadcast || Object.keys(streams).length) {
     if (
       window.jwplayer &&
       streams.hasOwnProperty(state.selectedLanguage) &&
@@ -131,7 +131,9 @@ const HLSPlayer = () => {
         streams[state.selectedLanguage],
         selectedBitrate,
       );
-      const sources = [{ file: stream.hls }, { file: stream.rtmp }];
+
+      // Hotfix for streams
+      const sources = [{ file: stream.hls.replace('http', 'https') }, { file: stream.rtmp }];
       setupPlayer(sources, selectedVolume);
     }
   } else {
