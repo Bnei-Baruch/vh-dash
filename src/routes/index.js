@@ -1,50 +1,58 @@
 import React from 'react';
 
-import async from '../components/Async';
+import { Sliders, FileText, User, Youtube } from 'react-feather';
 
-import {Sliders} from 'react-feather';
+import async from '../components/Async';
+import { DASHBOARD_ROUTES } from './dashboardRoutes';
 
 // Home
-const Welcome = async(() => import('../pages/pages/Welcome'));
+const Home = async(() => import('../pages/dashboard/Home'));
 
 // Dashboard components
-const Events = async(() => import('../pages/dashboard/Events'));
 const MyProfile = async(() => import('../components/MyProfile'));
+const MyAccount = async(() => import('../components/MyAccount'));
+const CongressArea = async(() => import('../components/CongressArea'));
 
-const homeRoutes = {
-  id: 'Welcome',
-  path: '/',
-  component: Welcome,
-  children: null
-};
-
-const dashboardRoutes = {
-  id: 'Dashboard',
-  path: '/dashboard',
-  icon: <Sliders/>,
-  containsHome: true,
-  children: [
-    {
-      path: '/dashboard/events',
-      name: 'Events',
-      component: Events
-    },
-    {
-      path: '/dashboard/profile',
-      name: 'Profile',
-      component: MyProfile
-    },
-  ],
-  component: null
-};
+const dashboardRoutes = [
+  {
+    id: 'Dashboard',
+    path: '/',
+    icon: <Sliders />,
+    containsHome: true,
+    children: null,
+    component: Home,
+  },
+  {
+    path: DASHBOARD_ROUTES.Profile,
+    id: 'Profile',
+    icon: <FileText />,
+    enableHeader: true,
+    breadcrumbs: [{ name: 'Profile', path: DASHBOARD_ROUTES.Profile }],
+    component: MyProfile,
+    children: null,
+  },
+  {
+    path: DASHBOARD_ROUTES.Account,
+    id: 'Account',
+    icon: <User />,
+    enableHeader: true,
+    breadcrumbs: [{ name: 'Account', path: DASHBOARD_ROUTES.Account }],
+    component: MyAccount,
+    children: null,
+  },
+  {
+    path: DASHBOARD_ROUTES.CongressArea,
+    id: 'CongressArea',
+    icon: <Youtube />,
+    enableHeader: true,
+    breadcrumbs: [{ name: 'CongressArea', path: DASHBOARD_ROUTES.CongressArea }],
+    component: CongressArea,
+    children: null,
+  },
+];
 
 // Routes using the Dashboard layout
-export const dashboardLayoutRoutes = [
-  homeRoutes,
-  dashboardRoutes
-];
+export const dashboardLayoutRoutes = [...dashboardRoutes];
 
 // Routes visible in the sidebar
-export const sidebarRoutes = [
-  dashboardRoutes
-];
+export const sidebarRoutes = [...dashboardRoutes];

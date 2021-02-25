@@ -1,0 +1,134 @@
+{
+  "translation": {
+    "Languages": {
+      "English": "אנגלית",
+      "Russian": " רוּסִי",
+      "Hebrew": " עִברִית",
+      "Spanish": " ספרדית"
+    },
+    "Home": {
+      "arvut": " ארבות",
+      "watchBtn": " שעון",
+      "noLiveEvent": " אין אירועים חיים",
+      "noEvent": " אין אירועים",
+      "currentEvent": " אירוע נוכחי",
+      "totalConnections": " סך כל הקשרים",
+      "tensNumber": " מספר העשרות המחוברים",
+      "tenFriends": " חברים מעשרך",
+      "today": " היום",
+      "tomorrow": " מָחָר",
+      "yesterday": " אתמול",
+      "events": " אירועים",
+      "welcomeBack": " ברוך שובך"
+    },
+    "UserMenu": {
+      "logOut": " להתנתק",
+      "profile": " פּרוֹפִיל",
+      "logOutText": " האם אתה באמת רוצה לעזוב?",
+      "yesBtn": " כן",
+      "cancelBtn": " לְבַטֵל"
+    },
+    "Dashboard": {
+      "Dashboard": {
+        "name": " לוּחַ מַחווָנִים"
+      },
+      "Profile": {
+        "name": " פּרוֹפִיל",
+        "title": " הפרופיל שלי",
+        "Tabs": {
+          "personal": " אישי",
+          "framework": " המסגרת שלי",
+          "skills": " הכישורים שלי",
+          "notification": " הוֹדָעָה"
+        },
+        "PersonalForm": {
+          "name": " אישי",
+          "firstName": " שם פרטי",
+          "firstNamePlaceholder": " הכנס את השם הפרטי שלך",
+          "dateOfBirth": " תאריך לידה",
+          "gender": {
+            "label": " מִין",
+            "male": " זָכָר",
+            "female": " נְקֵבָה"
+          },
+          "fullName": " הזן את שמך המלא בשפה הראשית",
+          "fullNamePlaceholder": " הכנס את שמך המלא",
+          "lastName": " שם משפחה",
+          "lastNamePlaceholder": " הזן את שם המשפחה שלך",
+          "country": " ארץ מקור",
+          "primaryLanguage": " שפת אם",
+          "phoneNumber": " מספר טלפון",
+          "phoneNumberPlaceholder": " תכניס את מספר הטלפון שלך",
+          "saveBtn": " שמור שינויים"
+        },
+        "LoginForm": {
+          "name": " פרטי כניסה",
+          "email": " אימייל",
+          "emailPlaceholder": " הכנס את האימייל שלך",
+          "password": " הכנס את הסיסמה שלך",
+          "passwordPlaceholder": " הכנס את הסיסמה שלך",
+          "saveBtn": " שמור שינויים"
+        },
+        "SocialForm": {
+          "name": " חשבונות המדיה החברתית שלי",
+          "facebook": " פרופיל הפייסבוק שלך",
+          "facebookPlaceholder": " הזן פרופיל פייסבוק",
+          "youtube": " פרופיל YouTube שלך",
+          "youtubePlaceholder": " הזן פרופיל Youtube",
+          "instagram": " הידית שלך באינסטגרם",
+          "instagramPlaceholder": " היכנסו לידית האינסטגרם",
+          "linked": " הפרופיל המקושר שלך",
+          "linkedPlaceholder": " הזן פרופיל מקושר",
+          "twitter": " הידית שלך בטוויטר",
+          "twitterPlaceholder": " היכנס לידית הטוויטר",
+          "skype": " ידית הסקייפ שלך",
+          "skypePlaceholder": " הזן את הידית של סקייפ",
+          "connectBtn": " לְחַבֵּר"
+        }
+      },
+      "Account": {
+        "name": " חֶשְׁבּוֹן",
+        "title": " החשבון שלי",
+        "Tabs": {
+          "transaction": " כל העסקה",
+          "payment": " שיטות תשלום"
+        },
+        "paidOn": " שילם עבור",
+        "purpose": " מַטָרָה",
+        "paymentMethod": " אמצעי תשלום",
+        "paymentType": " סוג תשלום",
+        "amount": " כמות",
+        "currency": " מַטְבֵּעַ",
+        "status": " סטָטוּס",
+        "action": " פעולה",
+        "cancelPayment": " בטל את התשלום",
+        "downloadInvoice": " הורד חשבונית כ- PDF",
+        "card": " כַּרְטִיס",
+        "cardNumber": " מספר",
+        "expirationDate": " תאריך תפוגה"
+      },
+      "CongressArea": {
+        "name": " אזור הקונגרס",
+        "title": " אזור הקונגרס",
+        "caption": " גילוי החיים בעשר",
+        "subCaption": " קבלית העולם העולמית 2021",
+        "broadcast": " מִשׁדָר",
+        "broadcastLanguage": " שפות שידור",
+        "loading": "טוען ...",
+        "noBroadcast": "אין שידור עכשיו",
+        "Question": {
+          "title": " שלח שאלה",
+          "label": " מה השאלה שלך?",
+          "placeholder": " הזן את השאלה שלך ולחץ על הלחצן",
+          "button": " לִשְׁאוֹל",
+          "successMsg": "נשלח בהצלחה!",
+          "errorMsg": "שגיאה לא צפויה. בבקשה נסה שוב!"
+        },
+        "Annoucements": {
+          "title": " הודעות",
+          "text": " הבית הווירטואלי שלנו כולל תשתית פיזית וכוח אדם לשמירה על הפעילות המקיפה שלנו ולשיפור מערכות מקוונות לחיבור אופטימלי במהלך שיעורי קבלה יומיים, מפגשים חברתיים, חגים וארוחות. זה מאפשר לכל חבר אינטראקציה מלאה בשפתם, הן עם עשרת הקלי שלהם העולמי מ- 72 מדינות."
+        }
+      }
+    }
+  }
+}
