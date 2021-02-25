@@ -16,7 +16,7 @@ const Auth = props => {
     console.log(keycloakConfig);
     const keycloak = Keycloak(keycloakConfig);
 
-    keycloak.init({ onLoad: 'login-required' }).then(authenticated => {
+    keycloak.init({ onLoad: 'login-required',checkLoginIframe: false} }).then(authenticated => {
       keycloak.loadUserProfile().then(function () {
         const profile = {
           username: keycloak.profile.username,
