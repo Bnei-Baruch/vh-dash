@@ -131,7 +131,9 @@ const HLSPlayer = () => {
         streams[state.selectedLanguage],
         selectedBitrate,
       );
-      const sources = [{ file: stream.hls }, { file: stream.rtmp }];
+
+      // Hotfix for streams
+      const sources = [{ file: stream.hls.replace('http', 'https') }, { file: stream.rtmp }];
       setupPlayer(sources, selectedVolume);
     }
   } else {
