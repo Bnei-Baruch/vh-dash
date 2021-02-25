@@ -174,7 +174,7 @@ function UserMenu() {
 
   const onProfileClick = () => {
     closeMenu();
-    history.push(DASHBOARD_ROUTES.Profile);
+    //history.push(DASHBOARD_ROUTES.Profile);
   };
 
   const onLogOutClick = () => {
