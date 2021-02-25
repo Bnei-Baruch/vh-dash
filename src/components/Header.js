@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { darken } from 'polished';
 import i18next from 'i18next';
 import { useTranslation } from 'react-i18next';
-import { useHistory } from 'react-router-dom';
 import _ from 'lodash';
 
 import {
@@ -23,7 +22,6 @@ import { Menu as MenuIcon } from '@material-ui/icons';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { Bell, MessageSquare, Search as SearchIcon } from 'react-feather';
 import { CHAT_AND_NOTIFICATION_ICONS, SEARCH_BAR } from '../shared/constants';
-import { DASHBOARD_ROUTES } from '../routes/dashboardRoutes';
 import { setLoggedInUser } from '../redux/actions/userActions';
 import ModalWindow from './ui/ModalWindow';
 
@@ -158,7 +156,6 @@ function LanguageMenu() {
 function UserMenu() {
   const { t } = useTranslation();
   const state = useSelector(state => state.userReducer.info);
-  const history = useHistory();
   const dispatch = useDispatch();
 
   const [anchorMenu, setAnchorMenu] = useState(null);
@@ -174,7 +171,6 @@ function UserMenu() {
 
   const onProfileClick = () => {
     closeMenu();
-    //history.push(DASHBOARD_ROUTES.Profile);
   };
 
   const onLogOutClick = () => {
