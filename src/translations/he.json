@@ -2,19 +2,19 @@
   "translation": {
     "Languages": {
       "English": "אנגלית",
-      "Russian": " רוּסִי",
+      "Russian": "רוּסִית",
       "Hebrew": " עִברִית",
       "Spanish": " ספרדית"
     },
     "Home": {
-      "arvut": " ארבות",
-      "watchBtn": " שעון",
+      "arvut": " ערבות",
+      "watchBtn": " לצפיה",
       "noLiveEvent": " אין אירועים חיים",
       "noEvent": " אין אירועים",
       "currentEvent": " אירוע נוכחי",
-      "totalConnections": " סך כל הקשרים",
-      "tensNumber": " מספר העשרות המחוברים",
-      "tenFriends": " חברים מעשרך",
+      "totalConnections": " המחוברים למערכת",
+      "tensNumber": " מספר העשריות המחוברות",
+      "tenFriends": " חברים מהעשיריה שלך",
       "today": " היום",
       "tomorrow": " מָחָר",
       "yesterday": " אתמול",
@@ -30,7 +30,7 @@
     },
     "Dashboard": {
       "Dashboard": {
-        "name": " לוּחַ מַחווָנִים"
+        "name": " ראשי"
       },
       "Profile": {
         "name": " פּרוֹפִיל",
@@ -58,7 +58,7 @@
           "country": " ארץ מקור",
           "primaryLanguage": " שפת אם",
           "phoneNumber": " מספר טלפון",
-          "phoneNumberPlaceholder": " תכניס את מספר הטלפון שלך",
+          "phoneNumberPlaceholder": " הכנס את מספר הטלפון שלך",
           "saveBtn": " שמור שינויים"
         },
         "LoginForm": {
