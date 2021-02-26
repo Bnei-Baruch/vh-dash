@@ -12,8 +12,8 @@
             "noLiveEvent": "אין שידור חי",
             "noEvent": "אין אירועים",
             "currentEvent": "אירוע נוכחי",
-            "totalConnections": "המחוברים למערכת",
-            "tensNumber": "מספר העשריות המחוברות",
+            "totalConnections": "מחוברים למערכת",
+            "tensNumber": "מספר עשירייות מחוברות",
             "tenFriends": "חברים מהעשירייה שלך",
             "today": "היום",
             "tomorrow": "מחר",
@@ -24,8 +24,8 @@
         "UserMenu": {
             "logOut": "להתנתק",
             "profile": "פרופיל",
-            "logOutText": "האם אתה באמת רוצה לצאת?",
-            "yesBtn": " כן",
+            "logOutText": "האם את/ה באמת רוצה לצאת?",
+            "yesBtn": "כן",
             "cancelBtn": "לבטל"
         },
         "Dashboard": {
