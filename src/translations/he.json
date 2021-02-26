@@ -2,19 +2,19 @@
   "translation": {
     "Languages": {
       "English": "אנגלית",
-      "Russian": " רוּסִי",
+      "Russian": "רוּסִית",
       "Hebrew": " עִברִית",
       "Spanish": " ספרדית"
     },
     "Home": {
-      "arvut": " ארבות",
-      "watchBtn": " שעון",
+      "arvut": " ערבות",
+      "watchBtn": " לצפיה",
       "noLiveEvent": " אין אירועים חיים",
       "noEvent": " אין אירועים",
       "currentEvent": " אירוע נוכחי",
-      "totalConnections": " סך כל הקשרים",
-      "tensNumber": " מספר העשרות המחוברים",
-      "tenFriends": " חברים מעשרך",
+      "totalConnections": " המחוברים למערכת",
+      "tensNumber": " מספר העשריות המחוברות",
+      "tenFriends": " חברים מהעשיריה שלך",
       "today": " היום",
       "tomorrow": " מָחָר",
       "yesterday": " אתמול",
@@ -30,7 +30,7 @@
     },
     "Dashboard": {
       "Dashboard": {
-        "name": " לוּחַ מַחווָנִים"
+        "name": " ראשי"
       },
       "Profile": {
         "name": " פּרוֹפִיל",
@@ -58,7 +58,7 @@
           "country": " ארץ מקור",
           "primaryLanguage": " שפת אם",
           "phoneNumber": " מספר טלפון",
-          "phoneNumberPlaceholder": " תכניס את מספר הטלפון שלך",
+          "phoneNumberPlaceholder": " הכנס את מספר הטלפון שלך",
           "saveBtn": " שמור שינויים"
         },
         "LoginForm": {
@@ -108,8 +108,8 @@
         "expirationDate": " תאריך תפוגה"
       },
       "CongressArea": {
-        "name": " אזור הקונגרס",
-        "title": " אזור הקונגרס",
+        "name": " עמוד הכנס",
+        "title": " עמוד הכנס",
         "caption": " גילוי החיים בעשר",
         "subCaption": " קבלית העולם העולמית 2021",
         "broadcast": " מִשׁדָר",
@@ -119,7 +119,7 @@
         "Question": {
           "title": " שלח שאלה",
           "label": " מה השאלה שלך?",
-          "placeholder": " הזן את השאלה שלך ולחץ על הלחצן",
+          "placeholder": " הזן את השאלה שלך ולחץ על הכפתור",
           "button": " לִשְׁאוֹל",
           "successMsg": "נשלח בהצלחה!",
           "errorMsg": "שגיאה לא צפויה. בבקשה נסה שוב!"
