@@ -30,10 +30,10 @@
         },
         "Dashboard": {
             "Dashboard": {
-                "name": "ראשי"
+                "name": "לוח מחוונים"
             },
             "Profile": {
-                "name": "פּרוֹפִיל",
+                "name": "פרופיל",
                 "title": "הפרופיל שלי",
                 "Tabs": {
                     "personal": "אישי",
@@ -44,12 +44,12 @@
                 "PersonalForm": {
                     "name": "אישי",
                     "firstName": "שם פרטי",
-                    "firstNamePlaceholder": "הכנס את השם הפרטי שלך",
+                    "firstNamePlaceholder": "הכנס/י את השם הפרטי שלך",
                     "dateOfBirth": "תאריך לידה",
                     "gender": {
-                        "label": "מִין",
-                        "male": "זָכָר",
-                        "female": "נְקֵבָה"
+                        "label": "מין",
+                        "male": "זכר",
+                        "female": "נקבה"
                     },
                     "fullName": "הזן את שמך המלא בשפת אםש שלך",
                     "fullNamePlaceholder": "הכנס את שמך המלא",
