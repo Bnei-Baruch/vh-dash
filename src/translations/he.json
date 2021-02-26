@@ -2,31 +2,31 @@
   "translation": {
     "Languages": {
       "English": "אנגלית",
-      "Russian": "רוּסִית",
-      "Hebrew": " עִברִית",
-      "Spanish": " ספרדית"
+      "Russian": "רוסית",
+      "Hebrew": "עברית",
+      "Spanish": "ספרדית"
     },
     "Home": {
-      "arvut": " ערבות",
-      "watchBtn": " לצפיה",
-      "noLiveEvent": " אין אירועים חיים",
-      "noEvent": " אין אירועים",
-      "currentEvent": " אירוע נוכחי",
-      "totalConnections": " המחוברים למערכת",
-      "tensNumber": " מספר העשריות המחוברות",
-      "tenFriends": " חברים מהעשיריה שלך",
-      "today": " היום",
-      "tomorrow": " מָחָר",
-      "yesterday": " אתמול",
-      "events": " אירועים",
-      "welcomeBack": " ברוך שובך"
+      "arvut": "ערבות",
+      "watchBtn": "לצפיה",
+      "noLiveEvent": "אין שידור חי",
+      "noEvent": "אין אירועים",
+      "currentEvent": "אירוע נוכחי",
+      "totalConnections": "המחוברים למערכת",
+      "tensNumber": "מספר העשריות המחוברות",
+      "tenFriends": "חברים מהעשירייה שלך",
+      "today": "היום",
+      "tomorrow": "מחר",
+      "yesterday": "אתמול",
+      "events": "אירועים",
+      "welcomeBack": "ברוך שובך"
     },
     "UserMenu": {
-      "logOut": " להתנתק",
-      "profile": " פּרוֹפִיל",
-      "logOutText": " האם אתה באמת רוצה לעזוב?",
+      "logOut": "להתנתק",
+      "profile": "פרופיל",
+      "logOutText": "האם אתה באמת רוצה לצאת?",
       "yesBtn": " כן",
-      "cancelBtn": " לְבַטֵל"
+      "cancelBtn": "לבטל"
     },
     "Dashboard": {
       "Dashboard": {
