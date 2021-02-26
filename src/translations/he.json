@@ -1,134 +1,134 @@
 {
-  "translation": {
-    "Languages": {
-      "English": "אנגלית",
-      "Russian": "רוסית",
-      "Hebrew": "עברית",
-      "Spanish": "ספרדית"
-    },
-    "Home": {
-      "arvut": "ערבות",
-      "watchBtn": "לצפיה",
-      "noLiveEvent": "אין שידור חי",
-      "noEvent": "אין אירועים",
-      "currentEvent": "אירוע נוכחי",
-      "totalConnections": "המחוברים למערכת",
-      "tensNumber": "מספר העשריות המחוברות",
-      "tenFriends": "חברים מהעשירייה שלך",
-      "today": "היום",
-      "tomorrow": "מחר",
-      "yesterday": "אתמול",
-      "events": "אירועים",
-      "welcomeBack": "ברוך שובך"
-    },
-    "UserMenu": {
-      "logOut": "להתנתק",
-      "profile": "פרופיל",
-      "logOutText": "האם אתה באמת רוצה לצאת?",
-      "yesBtn": " כן",
-      "cancelBtn": "לבטל"
-    },
-    "Dashboard": {
-      "Dashboard": {
-        "name": " ראשי"
-      },
-      "Profile": {
-        "name": " פּרוֹפִיל",
-        "title": " הפרופיל שלי",
-        "Tabs": {
-          "personal": " אישי",
-          "framework": " המסגרת שלי",
-          "skills": " הכישורים שלי",
-          "notification": " הוֹדָעָה"
+    "translation": {
+        "Languages": {
+            "English": "אנגלית",
+            "Russian": "רוסית",
+            "Hebrew": "עברית",
+            "Spanish": "ספרדית"
         },
-        "PersonalForm": {
-          "name": " אישי",
-          "firstName": " שם פרטי",
-          "firstNamePlaceholder": " הכנס את השם הפרטי שלך",
-          "dateOfBirth": " תאריך לידה",
-          "gender": {
-            "label": " מִין",
-            "male": " זָכָר",
-            "female": " נְקֵבָה"
-          },
-          "fullName": " הזן את שמך המלא בשפה הראשית",
-          "fullNamePlaceholder": " הכנס את שמך המלא",
-          "lastName": " שם משפחה",
-          "lastNamePlaceholder": " הזן את שם המשפחה שלך",
-          "country": " ארץ מקור",
-          "primaryLanguage": " שפת אם",
-          "phoneNumber": " מספר טלפון",
-          "phoneNumberPlaceholder": " הכנס את מספר הטלפון שלך",
-          "saveBtn": " שמור שינויים"
+        "Home": {
+            "arvut": "ערבות",
+            "watchBtn": "לצפיה",
+            "noLiveEvent": "אין שידור חי",
+            "noEvent": "אין אירועים",
+            "currentEvent": "אירוע נוכחי",
+            "totalConnections": "המחוברים למערכת",
+            "tensNumber": "מספר העשריות המחוברות",
+            "tenFriends": "חברים מהעשירייה שלך",
+            "today": "היום",
+            "tomorrow": "מחר",
+            "yesterday": "אתמול",
+            "events": "אירועים",
+            "welcomeBack": "ברוך שובך"
         },
-        "LoginForm": {
-          "name": " פרטי כניסה",
-          "email": " אימייל",
-          "emailPlaceholder": " הכנס את האימייל שלך",
-          "password": " הכנס את הסיסמה שלך",
-          "passwordPlaceholder": " הכנס את הסיסמה שלך",
-          "saveBtn": " שמור שינויים"
+        "UserMenu": {
+            "logOut": "להתנתק",
+            "profile": "פרופיל",
+            "logOutText": "האם אתה באמת רוצה לצאת?",
+            "yesBtn": " כן",
+            "cancelBtn": "לבטל"
         },
-        "SocialForm": {
-          "name": " חשבונות המדיה החברתית שלי",
-          "facebook": " פרופיל הפייסבוק שלך",
-          "facebookPlaceholder": " הזן פרופיל פייסבוק",
-          "youtube": " פרופיל YouTube שלך",
-          "youtubePlaceholder": " הזן פרופיל Youtube",
-          "instagram": " הידית שלך באינסטגרם",
-          "instagramPlaceholder": " היכנסו לידית האינסטגרם",
-          "linked": " הפרופיל המקושר שלך",
-          "linkedPlaceholder": " הזן פרופיל מקושר",
-          "twitter": " הידית שלך בטוויטר",
-          "twitterPlaceholder": " היכנס לידית הטוויטר",
-          "skype": " ידית הסקייפ שלך",
-          "skypePlaceholder": " הזן את הידית של סקייפ",
-          "connectBtn": " לְחַבֵּר"
+        "Dashboard": {
+            "Dashboard": {
+                "name": "ראשי"
+            },
+            "Profile": {
+                "name": "פּרוֹפִיל",
+                "title": "הפרופיל שלי",
+                "Tabs": {
+                    "personal": "אישי",
+                    "framework": "המסגרת שלי",
+                    "skills": "הכישורים שלי",
+                    "notification": "הודעה"
+                },
+                "PersonalForm": {
+                    "name": "אישי",
+                    "firstName": "שם פרטי",
+                    "firstNamePlaceholder": "הכנס את השם הפרטי שלך",
+                    "dateOfBirth": "תאריך לידה",
+                    "gender": {
+                        "label": "מִין",
+                        "male": "זָכָר",
+                        "female": "נְקֵבָה"
+                    },
+                    "fullName": "הזן את שמך המלא בשפת אםש שלך",
+                    "fullNamePlaceholder": "הכנס את שמך המלא",
+                    "lastName": "שם משפחה",
+                    "lastNamePlaceholder": "הזן את שם המשפחה שלך",
+                    "country": "ארץ מקור",
+                    "primaryLanguage": "שפת אם",
+                    "phoneNumber": "מספר טלפון",
+                    "phoneNumberPlaceholder": "הכנס את מספר הטלפון שלך",
+                    "saveBtn": "שמור שינויים"
+                },
+                "LoginForm": {
+                    "name": "פרטי כניסה",
+                    "email": "אימייל",
+                    "emailPlaceholder": "הכנס את האימייל שלך",
+                    "password": "הכנס את הסיסמה שלך",
+                    "passwordPlaceholder": "הכנס את הסיסמה שלך",
+                    "saveBtn": "שמור שינויים"
+                },
+                "SocialForm": {
+                    "name": "חשבונות המדיה החברתית שלי",
+                    "facebook": "פרופיל הפייסבוק שלך",
+                    "facebookPlaceholder": "הזן פרופיל פייסבוק",
+                    "youtube": "פרופיל YouTube שלך",
+                    "youtubePlaceholder": "הזן פרופיל Youtube",
+                    "instagram": "החשבון שלך באינסטגרם",
+                    "instagramPlaceholder": "היכנסו החשבון אינסטגרם",
+                    "linked": "הפרופיל לינקדאין שלך",
+                    "linkedPlaceholder": "הזן פרופיל לינקדאין",
+                    "twitter": "החשבון שלך בטוויטר",
+                    "twitterPlaceholder": " היכנס לידית הטוויטר",
+                    "skype": " ידית הסקייפ שלך",
+                    "skypePlaceholder": " הזן את הידית של סקייפ",
+                    "connectBtn": " לְחַבֵּר"
+                }
+            },
+            "Account": {
+                "name": " חֶשְׁבּוֹן",
+                "title": " החשבון שלי",
+                "Tabs": {
+                    "transaction": " כל העסקה",
+                    "payment": " שיטות תשלום"
+                },
+                "paidOn": " שילם עבור",
+                "purpose": " מַטָרָה",
+                "paymentMethod": " אמצעי תשלום",
+                "paymentType": " סוג תשלום",
+                "amount": " כמות",
+                "currency": " מַטְבֵּעַ",
+                "status": " סטָטוּס",
+                "action": " פעולה",
+                "cancelPayment": " בטל את התשלום",
+                "downloadInvoice": " הורד חשבונית כ- PDF",
+                "card": " כַּרְטִיס",
+                "cardNumber": " מספר",
+                "expirationDate": " תאריך תפוגה"
+            },
+            "CongressArea": {
+                "name": " עמוד הכנס",
+                "title": " עמוד הכנס",
+                "caption": "גילוי החיים בעשריה",
+                "subCaption": " קבלית העולם העולמית 2021",
+                "broadcast": " מִשׁדָר",
+                "broadcastLanguage": " שפות שידור",
+                "loading": "טוען ...",
+                "noBroadcast": "אין שידור עכשיו",
+                "Question": {
+                    "title": " שלח שאלה",
+                    "label": " מה השאלה שלך?",
+                    "placeholder": " הזן את השאלה שלך ולחץ על הכפתור",
+                    "button": " לִשְׁאוֹל",
+                    "successMsg": "נשלח בהצלחה!",
+                    "errorMsg": "שגיאה לא צפויה. בבקשה נסה שוב!"
+                },
+                "Annoucements": {
+                    "title": " הודעות",
+                    "text": " הבית הווירטואלי שלנו כולל תשתית פיזית וכוח אדם לשמירה על הפעילות המקיפה שלנו ולשיפור מערכות מקוונות לחיבור אופטימלי במהלך שיעורי קבלה יומיים, מפגשים חברתיים, חגים וארוחות. זה מאפשר לכל חבר אינטראקציה מלאה בשפתם, הן עם עשרת הקלי שלהם העולמי מ- 72 מדינות."
+                }
+            }
         }
-      },
-      "Account": {
-        "name": " חֶשְׁבּוֹן",
-        "title": " החשבון שלי",
-        "Tabs": {
-          "transaction": " כל העסקה",
-          "payment": " שיטות תשלום"
-        },
-        "paidOn": " שילם עבור",
-        "purpose": " מַטָרָה",
-        "paymentMethod": " אמצעי תשלום",
-        "paymentType": " סוג תשלום",
-        "amount": " כמות",
-        "currency": " מַטְבֵּעַ",
-        "status": " סטָטוּס",
-        "action": " פעולה",
-        "cancelPayment": " בטל את התשלום",
-        "downloadInvoice": " הורד חשבונית כ- PDF",
-        "card": " כַּרְטִיס",
-        "cardNumber": " מספר",
-        "expirationDate": " תאריך תפוגה"
-      },
-      "CongressArea": {
-        "name": " עמוד הכנס",
-        "title": " עמוד הכנס",
-        "caption": " גילוי החיים בעשר",
-        "subCaption": " קבלית העולם העולמית 2021",
-        "broadcast": " מִשׁדָר",
-        "broadcastLanguage": " שפות שידור",
-        "loading": "טוען ...",
-        "noBroadcast": "אין שידור עכשיו",
-        "Question": {
-          "title": " שלח שאלה",
-          "label": " מה השאלה שלך?",
-          "placeholder": " הזן את השאלה שלך ולחץ על הכפתור",
-          "button": " לִשְׁאוֹל",
-          "successMsg": "נשלח בהצלחה!",
-          "errorMsg": "שגיאה לא צפויה. בבקשה נסה שוב!"
-        },
-        "Annoucements": {
-          "title": " הודעות",
-          "text": " הבית הווירטואלי שלנו כולל תשתית פיזית וכוח אדם לשמירה על הפעילות המקיפה שלנו ולשיפור מערכות מקוונות לחיבור אופטימלי במהלך שיעורי קבלה יומיים, מפגשים חברתיים, חגים וארוחות. זה מאפשר לכל חבר אינטראקציה מלאה בשפתם, הן עם עשרת הקלי שלהם העולמי מ- 72 מדינות."
-        }
-      }
     }
-  }
 }
