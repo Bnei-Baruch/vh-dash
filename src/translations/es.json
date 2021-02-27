@@ -126,7 +126,10 @@
                 },
                 "Annoucements": {
                     "title": "Anuncios",
-                    "text": "Nuestra Casa Virtual incluye la infraestructura física y la mano de obra para mantener nuestro funcionamiento integral y mejorar los sistemas en línea para una conexión óptima durante las Lecciones Diarias de Cabalá, las reuniones sociales, las vacaciones y las comidas. Permite a cada amigo la plena interacción en su idioma, tanto con sus Diez como con el Kli Mundial de 72 países."
+                    "text": "Nuestra Casa Virtual incluye la infraestructura física y la mano de obra para mantener nuestro funcionamiento integral y mejorar los sistemas en línea para una conexión óptima durante las Lecciones Diarias de Cabalá, las reuniones sociales, las vacaciones y las comidas. Permite a cada amigo la plena interacción en su idioma, tanto con sus Diez como con el Kli Mundial de 72 países.",
+                    "donationsbuttone": "DONAR",
+                    "donationsquote": "\"Solo a través de la expansión de la sabiduría de la Cabalá a las masas obtendremos la redención completa\" (Rav Yehuda Ashlag, \"Baal HaSulam\").",
+                    "donations": "SEAMOS SOCIOS EN LA FÁBRICA DE DIFUSIÓN DE LA ASOCIACIÓN \"BNEI BARUJ\""
                 }
             }
         }
