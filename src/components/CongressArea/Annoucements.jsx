@@ -12,12 +12,13 @@ const useStyles = makeStyles({
   },
   donations: {
     textAlign: 'left',
-    marginTop: '10px',
+    marginTop: '15px',
+    fontWeight: 700,
   },
   donationsQuote: {
     textAlign: 'left',
     marginTop: '10px',
-    marginBotton: '10px',
+    marginBotton: '15px',
     fontStyle: 'italic',
   }
 });
@@ -33,8 +34,8 @@ const Annoucements = () => {
       </Typography>
       <Box>{t('Dashboard.CongressArea.Annoucements.text')}</Box>
       <Box className={classes.donations}>{t('Dashboard.CongressArea.Annoucements.donations')}</Box>
-      <Box className={classes.donations}>{t('Dashboard.CongressArea.Annoucements.donationsquote')}</Box>
-      <a href={t('Dashboard.CongressArea.Annoucements.donationslink')}>
+      <Box className={classes.donationsQuote}>{t('Dashboard.CongressArea.Annoucements.donationsquote')}</Box>
+      <a target="_blank" rel="noopener noreferrer" href={t('Dashboard.CongressArea.Annoucements.donationslink')}>
         <Button variant="contained" color="primary">
           {t('Dashboard.CongressArea.Annoucements.donationsbuttone')} 
         </Button>
