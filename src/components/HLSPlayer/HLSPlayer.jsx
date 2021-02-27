@@ -87,7 +87,7 @@ const HLSPlayer = () => {
         playlist: [{ sources: sources }],
         autostart: true,
         aspectratio: '16:9',
-        width: '100%',
+        width: '80%',
       })
       .setVolume(volume)
       .on('volume', event => {
