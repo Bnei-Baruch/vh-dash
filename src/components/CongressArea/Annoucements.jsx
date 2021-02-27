@@ -1,12 +1,26 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core/styles';
-import { Box, Typography } from '@material-ui/core';
+import { Box, Typography, Button } from '@material-ui/core';
 
 const useStyles = makeStyles({
-  root: {
+  title: {
     textAlign: 'center',
   },
+  annoucements: {
+    textAlign: 'left',
+  },
+  donations: {
+    textAlign: 'left',
+    marginTop: '15px',
+    fontWeight: 700,
+  },
+  donationsQuote: {
+    textAlign: 'left',
+    marginTop: '10px',
+    marginBotton: '15px',
+    fontStyle: 'italic',
+  }
 });
 
 const Annoucements = () => {
@@ -14,11 +28,18 @@ const Annoucements = () => {
   const { t } = useTranslation();
 
   return (
-    <div className={classes.root}>
-      <Typography variant='h3' gutterBottom>
+    <div >
+      <Typography className={classes.title} variant='h3' gutterBottom>
         {t('Dashboard.CongressArea.Annoucements.title')}
       </Typography>
       <Box>{t('Dashboard.CongressArea.Annoucements.text')}</Box>
+      <Box className={classes.donations}>{t('Dashboard.CongressArea.Annoucements.donations')}</Box>
+      <Box className={classes.donationsQuote}>{t('Dashboard.CongressArea.Annoucements.donationsquote')}</Box>
+      <a target="_blank" rel="noopener noreferrer" href={t('Dashboard.CongressArea.Annoucements.donationslink')}>
+        <Button variant="contained" color="primary">
+          {t('Dashboard.CongressArea.Annoucements.donationsbuttone')} 
+        </Button>
+      </a>
     </div>
   );
 };
