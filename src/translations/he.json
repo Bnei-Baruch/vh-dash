@@ -82,12 +82,12 @@
                     "twitter": "החשבון שלך בטוויטר",
                     "twitterPlaceholder": " היכנס לידית הטוויטר",
                     "skype": " ידית הסקייפ שלך",
-                    "skypePlaceholder": " הזן את הידית של סקייפ",
-                    "connectBtn": " לְחַבֵּר"
+                    "skypePlaceholder": "הזן את הידית של סקייפ",
+                    "connectBtn": "לְחַבֵּר"
                 }
             },
             "Account": {
-                "name": " חֶשְׁבּוֹן",
+                "name": "חֶשְׁבּוֹן",
                 "title": " החשבון שלי",
                 "Tabs": {
                     "transaction": " כל העסקה",
