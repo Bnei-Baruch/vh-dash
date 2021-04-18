@@ -53,7 +53,8 @@ const Arvut = ({ liveEvent }) => {
   const [clock, setClock] = useState('');
   const [totalConnections, setTotalConnections] = useState(0);
   const [tensConnected, setTensConnected] = useState(0);
-  const [friendsFromTen, setFriendsFromTen] = useState(0);
+  // TODO: add friendsFromTen variable to an array when get updates from BE
+  const [, setFriendsFromTen] = useState(0);
   const user = useSelector(state => state.userReducer.info.profile);
 
   useEffect(() => {
@@ -182,6 +183,7 @@ const Arvut = ({ liveEvent }) => {
                   {t('Home.tensNumber')}
                 </Typography>
               </Box>
+              {/* TODO Hide this section until getting updates from BE
               <Box>
                 <Box fontSize='h2.fontSize' fontWeight='fontWeightMedium'>
                   {friendsFromTen}
@@ -189,7 +191,7 @@ const Arvut = ({ liveEvent }) => {
                 <Typography variant='subtitle1' mt={2} color='textSecondary'>
                   {t('Home.tenFriends')}
                 </Typography>
-              </Box>
+              </Box> */}
             </ConnectionsContainer>
           </>
         ) : (
