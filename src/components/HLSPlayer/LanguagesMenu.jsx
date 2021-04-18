@@ -5,9 +5,10 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 
-const LanguagesMenu = ({ languages, onLangSelected }) => {
+const LanguagesMenu = ({ languages, onLangSelected, currentLanguage }) => {
   const { t } = useTranslation();
 
+  const currentLang = languages[currentLanguage] && languages[currentLanguage].Name;
   const [anchorEl, setAnchorEl] = useState(null);
   const languagesToArray = Object.keys(languages).map(key => [
     key,
@@ -30,7 +31,7 @@ const LanguagesMenu = ({ languages, onLangSelected }) => {
         aria-haspopup='true'
         onClick={handleClick}
       >
-        {t('Dashboard.CongressArea.broadcastLanguage')}
+        {t('Dashboard.BroadcastArea.broadcastLanguage', { name: currentLang })}
       </Button>
       <Menu
         id='languages-menu'

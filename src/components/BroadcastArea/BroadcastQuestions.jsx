@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const CongressQuestions = () => {
+const BroadcastQuestions = () => {
   const classes = useStyles();
   const { t } = useTranslation();
 
@@ -52,7 +52,7 @@ const CongressQuestions = () => {
         user: {
           gender,
           name: `${firstName} ${lastName}`,
-          galaxyRoom: 'Congress Area',
+          galaxyRoom: 'Broadcast Area',
         },
       }),
     };
@@ -96,10 +96,10 @@ const CongressQuestions = () => {
   return (
     <Box mt={10}>
       <Typography variant='h5' gutterBottom>
-        {t('Dashboard.CongressArea.Question.title')}
+        {t('Dashboard.BroadcastArea.Question.title')}
       </Typography>
       <Grid container spacing={6}>
-        <Grid item xs={12} sm={8}>
+        <Grid item xs={12}>
           <form noValidate autoComplete='off'>
             <Typography
               variant='h6'
@@ -108,7 +108,7 @@ const CongressQuestions = () => {
               gutterBottom
               style={{ fontSize: '1rem', marginTop: '10px' }}
             >
-              {t('Dashboard.CongressArea.Question.label')}
+              {t('Dashboard.BroadcastArea.Question.label')}
             </Typography>
             <TextareaAutosize
               className={`${classes.textArea} ${
@@ -116,7 +116,7 @@ const CongressQuestions = () => {
               }`}
               rowsMin={4}
               value={question}
-              placeholder={t('Dashboard.CongressArea.Question.placeholder')}
+              placeholder={t('Dashboard.BroadcastArea.Question.placeholder')}
               onChange={onChangeQuestion}
               onBlur={onQuestionBlur}
             />
@@ -138,7 +138,7 @@ const CongressQuestions = () => {
                 color='primary'
                 onClick={sendQuestion}
               >
-                {t('Dashboard.CongressArea.Question.button')}
+                {t('Dashboard.BroadcastArea.Question.button')}
               </Button>
             </Box>
           </form>
@@ -153,4 +153,4 @@ const CongressQuestions = () => {
   );
 };
 
-export default CongressQuestions;
+export default BroadcastQuestions;

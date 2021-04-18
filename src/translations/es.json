@@ -107,13 +107,13 @@
                 "cardNumber": "Número",
                 "expirationDate": "Fecha de caducidad"
             },
-            "CongressArea": {
-                "name": "Área del Congreso",
-                "title": "Área de Congresos",
+            "BroadcastArea": {
+                "name": "Área de transmisión",
+                "title": "Área de transmisión",
                 "caption": "DESCUBRIENDO LA VIDA EN LOS DIEZ",
                 "subCaption": "CONVENCIÓN MUNDIAL DE CÁBALA 2021",
                 "broadcast": "Difusión",
-                "broadcastLanguage": "Idiomas de transmisión",
+                "broadcastLanguage": "Idioma: {{ name }}",
                 "loading": "Cargando ...",
                 "noBroadcast": "No hay transmisión ahora",
                 "Question": {

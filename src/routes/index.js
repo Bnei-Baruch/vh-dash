@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Sliders, Youtube } from 'react-feather';
+import { FileText, Sliders, User, Youtube } from 'react-feather';
 
 import async from '../components/Async';
 import { DASHBOARD_ROUTES } from './dashboardRoutes';
@@ -9,9 +9,9 @@ import { DASHBOARD_ROUTES } from './dashboardRoutes';
 const Home = async(() => import('../pages/dashboard/Home'));
 
 // Dashboard components
-// const MyProfile = async(() => import('../components/MyProfile'));
-// const MyAccount = async(() => import('../components/MyAccount'));
-const CongressArea = async(() => import('../components/CongressArea'));
+const MyProfile = async(() => import('../components/MyProfile'));
+const MyAccount = async(() => import('../components/MyAccount'));
+const BroadcastArea = async(() => import('../components/BroadcastArea'));
 
 const dashboardRoutes = [
   {
@@ -22,7 +22,6 @@ const dashboardRoutes = [
     children: null,
     component: Home,
   },
-  /*
   {
     path: DASHBOARD_ROUTES.Profile,
     id: 'Profile',
@@ -40,14 +39,14 @@ const dashboardRoutes = [
     breadcrumbs: [{ name: 'Account', path: DASHBOARD_ROUTES.Account }],
     component: MyAccount,
     children: null,
-  },*/
+  },
   {
-    path: DASHBOARD_ROUTES.CongressArea,
-    id: 'CongressArea',
+    path: DASHBOARD_ROUTES.BroadcastArea,
+    id: 'BroadcastArea',
     icon: <Youtube />,
     enableHeader: true,
-    breadcrumbs: [{ name: 'CongressArea', path: DASHBOARD_ROUTES.CongressArea }],
-    component: CongressArea,
+    breadcrumbs: [{ name: 'BroadcastArea', path: DASHBOARD_ROUTES.BroadcastArea }],
+    component: BroadcastArea,
     children: null,
   },
 ];
