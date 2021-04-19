@@ -30,14 +30,14 @@ const Annoucements = () => {
   return (
     <div >
       <Typography className={classes.title} variant='h3' gutterBottom>
-        {t('Dashboard.CongressArea.Annoucements.title')}
+        {t('Dashboard.BroadcastArea.Annoucements.title')}
       </Typography>
-      <Box>{t('Dashboard.CongressArea.Annoucements.text')}</Box>
-      <Box className={classes.donations}>{t('Dashboard.CongressArea.Annoucements.donations')}</Box>
-      <Box className={classes.donationsQuote}>{t('Dashboard.CongressArea.Annoucements.donationsquote')}</Box>
-      <a target="_blank" rel="noopener noreferrer" href={t('Dashboard.CongressArea.Annoucements.donationslink')}>
+      <Box>{t('Dashboard.BroadcastArea.Annoucements.text')}</Box>
+      <Box className={classes.donations}>{t('Dashboard.BroadcastArea.Annoucements.donations')}</Box>
+      <Box className={classes.donationsQuote}>{t('Dashboard.BroadcastArea.Annoucements.donationsquote')}</Box>
+      <a target="_blank" rel="noopener noreferrer" href={t('Dashboard.BroadcastArea.Annoucements.donationslink')}>
         <Button variant="contained" color="primary">
-          {t('Dashboard.CongressArea.Annoucements.donationsbuttone')} 
+          {t('Dashboard.BroadcastArea.Annoucements.donationsbuttone')} 
         </Button>
       </a>
     </div>

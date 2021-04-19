@@ -107,13 +107,13 @@
                 "cardNumber": " מספר",
                 "expirationDate": " תאריך תפוגה"
             },
-            "CongressArea": {
-                "name": " עמוד הכנס",
-                "title": " עמוד הכנס",
+            "BroadcastArea": {
+                "name": "אזור שידור",
+                "title": "אזור שידור",
                 "caption": "גילוי החיים בעשריה",
                 "subCaption": " קבלית העולם העולמית 2021",
                 "broadcast": " מִשׁדָר",
-                "broadcastLanguage": " שפות שידור",
+                "broadcastLanguage": "שפה: {{ name }}",
                 "loading": "טוען ...",
                 "noBroadcast": "אין שידור עכשיו",
                 "Question": {

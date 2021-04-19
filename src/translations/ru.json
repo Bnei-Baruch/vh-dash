@@ -107,13 +107,13 @@
                 "cardNumber": "Номер",
                 "expirationDate": "Дата истечения срока"
             },
-            "CongressArea": {
-                "name": "Конгресс-зона",
-                "title": "Конгресс-зона",
+            "BroadcastArea": {
+                "name": "Зона трансляции",
+                "title": "Зона трансляции",
                 "caption": "ПОЗНАЙТЕ НАСТОЯЩУЮ ЖИЗНЬ",
                 "subCaption": "ВСЕМИРНАЯ КОНВЕНЦИЯ КАББАЛА 2021",
                 "broadcast": "Трансляция",
-                "broadcastLanguage": "Язык вещания",
+                "broadcastLanguage": "Язык вещания: {{ name }}",
                 "loading": "Загрузка...",
                 "noBroadcast": "Вещание отсутствует",
                 "Question": {
