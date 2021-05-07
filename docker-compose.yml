@@ -1,0 +1,12 @@
+version: '2.2'
+services:
+  vh-dash:
+    image: "${IMAGE_NAME}"
+    cpus: '0.1'
+    mem_limit: 50M
+    ports:
+      - 8080:80
+networks:
+    default:
+        external:
+            name: vh
