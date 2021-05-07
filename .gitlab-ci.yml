@@ -4,7 +4,9 @@ stages:
 
 variables:
   STAGING_IMAGE: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
+  STAGING_LATEST_IMAGE: $CI_REGISTRY_IMAGE:staging
   PROD_IMAGE: $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG
+  PROD_LATEST_IMAGE: $CI_REGISTRY_IMAGE:latest
   STAGING_URL: "https://front.althafm.com/dash/"
   PRODUCTION_URL: "https://kli.one/dash/"
 
@@ -16,10 +18,11 @@ build_staging:
   services:
     - docker:19.03.12-dind
   script:
-    - env
     - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
     - docker build --build-arg PUBLIC_URL=$STAGING_URL -t $STAGING_IMAGE .
+    - docker tag $STAGING_IMAGE $STAGING_LATEST_IMAGE
     - docker push $STAGING_IMAGE
+    - docker push $STAGING_LATEST_IMAGE
   only:
     - updated-build
 
