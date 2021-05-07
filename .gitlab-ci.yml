@@ -5,8 +5,8 @@ stages:
 variables:
   STAGING_IMAGE: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
   PROD_IMAGE: $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG
-  STAGING_URL: "https://front.althafm.com/dash"
-  PRODUCTION_URL: "https://kli.one/dash"
+  STAGING_URL: "https://front.althafm.com/dash/"
+  PRODUCTION_URL: "https://kli.one/dash/"
 
 build_staging:
   image: docker:latest
