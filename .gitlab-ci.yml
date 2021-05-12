@@ -24,7 +24,7 @@ build_staging:
     - docker push $STAGING_IMAGE
     - docker push $STAGING_LATEST_IMAGE
   only:
-    - updated-build
+    - updated-build # this need to be changed to master
 
 deploy_staging:
   #image: tmaier/docker-compose:latest

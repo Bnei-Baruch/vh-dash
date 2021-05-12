@@ -6,6 +6,10 @@ ARG PUBLIC_URL="http://127.0.0.1/"
 # production assets / html
 ENV PUBLIC_URL=${PUBLIC_URL}
 
+ARG IS_STAGING_BUILD="true"
+
+ENV REACT_APP_STAGING="${IS_STAGING_BUILD}"
+
 RUN mkdir vh-dash && chown -R node:node vh-dash
 
 WORKDIR /vh-dash
