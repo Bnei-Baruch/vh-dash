@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import { FormControl, InputLabel, MenuItem, Select } from '@material-ui/core';
+import { CustomTooltip } from '../../../shared/Tooltip';
 
 const useStyles = makeStyles({
   root: {
@@ -12,6 +13,7 @@ const useStyles = makeStyles({
   },
   label: {
     color: '#263238',
+    paddingRight: 30
   },
   selectItem: {
     '&.MuiSelect-select': {
@@ -20,15 +22,25 @@ const useStyles = makeStyles({
   },
 });
 
-const SelectElement = ({ id, label, value, onChange, selectData }) => {
+const SelectElement = ({
+  id,
+  label,
+  value,
+  onChange,
+  selectData,
+  disabled = false,
+  tooltipText,
+}) => {
   const classes = useStyles();
 
   return (
     <FormControl className={classes.root}>
       <InputLabel shrink htmlFor={id} className={classes.label}>
         {label}
+        {tooltipText && <CustomTooltip tooltipText={tooltipText} />}
       </InputLabel>
       <Select
+        disabled={disabled}
         value={value}
         onChange={event => onChange(id, event.target.value)}
         inputProps={{

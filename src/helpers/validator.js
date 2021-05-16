@@ -8,15 +8,25 @@ const fieldTypes = {
   username: 'username',
   firstname: 'firstname',
   lastname: 'lastname',
-  dob: 'dob',
-  fullname: 'fullname',
-  email: 'email',
+  primaryEmail: 'primaryEmail',
   phone: 'phone',
-  password: 'password',
   question: 'question',
+  streetAddress: 'streetAddress',
+  postalCode: 'postalCode',
+  stateRegion: 'stateRegion',
+  studyFramework: 'studyFramework',
+  tenName: 'tenName',
+  dob: 'dob',
+  endYear: 'endYear',
+  startYear: 'startYear',
+  email: 'email',
+  password: 'password',
+  alternativeEmail1: 'alternativeEmail1',
+  alternativeEmail2: 'alternativeEmail2',
 };
 
-const emailRex = /^[\w-']+(\.[\w-']+)*@([a-zA-Z0-9]+[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*?\.[a-zA-Z]{2,6}|(\d{1,3}\.){3}\d{1,3})(:\d{4})?$/;
+const emailRex =
+  /^[\w-']+(\.[\w-']+)*@([a-zA-Z0-9]+[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*?\.[a-zA-Z]{2,6}|(\d{1,3}\.){3}\d{1,3})(:\d{4})?$/;
 const validEmail = field => !!field.toString().match(emailRex);
 const usernameRegex = field =>
   //allow only alpha numerical characters
@@ -104,7 +114,8 @@ const instructions = {
     },
     {
       validationMethod: methods.usernameRegex,
-      errorMsg: 'First name must only contain letters, spaces, hyphens, apostrophes or full stop symbols',
+      errorMsg:
+        'First name must only contain letters, spaces, hyphens, apostrophes or full stop symbols',
     },
   ],
   [fieldTypes.lastname]: [
@@ -121,23 +132,24 @@ const instructions = {
     },
     {
       validationMethod: methods.usernameRegex,
-      errorMsg: 'Last name must only contain letters, spaces, hyphens, apostrophes or full stop symbols',
+      errorMsg:
+        'Last name must only contain letters, spaces, hyphens, apostrophes or full stop symbols',
     },
   ],
-  [fieldTypes.fullname]: [
+  [fieldTypes.streetAddress]: [
     {
       validationMethod: methods.nonZeroLength,
-      errorMsg: 'Please enter your full name in primary language',
+      errorMsg: 'Please enter your street address',
       break: true,
     },
     {
       validationMethod: methods.lengthGreaterThan,
       param: 2,
-      errorMsg: 'Full name should be more than 2 symbols',
+      errorMsg: 'Street address should be more than 2 symbols',
       break: true,
     },
   ],
-  [fieldTypes.email]: [
+  [fieldTypes.primaryEmail]: [
     {
       validationMethod: methods.nonZeroLength,
       errorMsg: 'Please enter your email',
@@ -166,6 +178,109 @@ const instructions = {
       break: true,
     },
   ],
+  [fieldTypes.question]: [
+    {
+      validationMethod: methods.nonZeroLength,
+      errorMsg: 'Please enter your question',
+      break: true,
+    },
+  ],
+  [fieldTypes.postalCode]: [
+    {
+      validationMethod: methods.nonZeroLength,
+      errorMsg: 'Please enter your postal code',
+      break: true,
+    },
+    {
+      validationMethod: methods.lengthGreaterThan,
+      param: 2,
+      errorMsg: 'Postal code should be more than 2 symbols',
+      break: true,
+    },
+  ],
+  [fieldTypes.stateRegion]: [
+    {
+      validationMethod: methods.nonZeroLength,
+      errorMsg: 'Please enter your state/region',
+      break: true,
+    },
+    {
+      validationMethod: methods.lengthGreaterThan,
+      param: 2,
+      errorMsg: 'State/region should be more than 2 symbols',
+      break: true,
+    },
+  ],
+  [fieldTypes.tenName]: [
+    {
+      validationMethod: methods.nonZeroLength,
+      errorMsg: 'Please enter your name of ten',
+      break: true,
+    },
+    {
+      validationMethod: methods.lengthGreaterThan,
+      param: 2,
+      errorMsg: 'Name of ten should be more than 2 symbols',
+      break: true,
+    },
+  ],
+  [fieldTypes.studyFramework]: [
+    {
+      validationMethod: methods.nonZeroLength,
+      errorMsg: 'Please enter your study framework',
+      break: true,
+    },
+    {
+      validationMethod: methods.lengthGreaterThan,
+      param: 2,
+      errorMsg: 'Study framework should be more than 2 symbols',
+      break: true,
+    },
+  ],
+  [fieldTypes.dob]: [
+    {
+      validationMethod: methods.nonZeroLength,
+      errorMsg: 'Please enter your date of Birth',
+      break: true,
+    },
+  ],
+  [fieldTypes.startYear]: [
+    {
+      validationMethod: methods.nonZeroLength,
+      errorMsg: 'Please enter your start year',
+      break: true,
+    },
+  ],
+  [fieldTypes.endYear]: [
+    {
+      validationMethod: methods.nonZeroLength,
+      errorMsg: 'Please enter your end year',
+      break: true,
+    },
+  ],
+  [fieldTypes.email]: [
+    {
+      validationMethod: methods.nonZeroLength,
+      errorMsg: 'Please enter your email',
+      break: true,
+    },
+    {
+      validationMethod: methods.validEmail,
+      errorMsg: 'Please enter correct email',
+    },
+  ],
+  [fieldTypes.alternativeEmail1]: [
+    {
+      validationMethod: methods.validEmail,
+      errorMsg: 'Please enter correct email',
+    },
+  ],
+  [fieldTypes.alternativeEmail2]: [
+    {
+      validationMethod: methods.validEmail,
+      errorMsg: 'Please enter correct email',
+    },
+  ],
   [fieldTypes.password]: [
     {
       validationMethod: methods.nonZeroLength,
@@ -174,26 +289,7 @@ const instructions = {
     },
     {
       validationMethod: methods.password,
-      errorMsg:
-        'Minimum 8 characters in length, 1 lower case letter, 1 upper case letter, 1 number.',
-    },
-  ],
-  [fieldTypes.dob]: [
-    {
-      validationMethod: methods.nonZeroLengthDateOfBirth,
-      errorMsg: 'Please choose your date of birth',
-      break: true,
-    },
-    {
-      validationMethod: methods.laterThen1900,
-      errorMsg: 'You cannot enter a year earlier than 1900',
-    },
-  ],
-  [fieldTypes.question]: [
-    {
-      validationMethod: methods.nonZeroLength,
-      errorMsg: 'Please enter your question',
-      break: true,
+      errorMsg: 'Your password should contain at least upper, lower letter',
     },
   ],
 };
