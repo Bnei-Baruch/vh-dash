@@ -7,7 +7,7 @@ variables:
   STAGING_LATEST_IMAGE: $CI_REGISTRY_IMAGE:staging
   PROD_IMAGE: $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG
   PROD_LATEST_IMAGE: $CI_REGISTRY_IMAGE:latest
-  STAGING_URL: "https://front.althafm.com/dash/"
+  STAGING_URL: "https://vh-staging.2serv.eu/dash/"
   PRODUCTION_URL: "https://kli.one/dash/"
 
 build_staging:
@@ -24,7 +24,7 @@ build_staging:
     - docker push $STAGING_IMAGE
     - docker push $STAGING_LATEST_IMAGE
   only:
-    - updated-build # this need to be changed to master
+    - master
 
 deploy_staging:
   #image: tmaier/docker-compose:latest
@@ -36,7 +36,7 @@ deploy_staging:
     - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
     - IMAGE_NAME=$STAGING_IMAGE docker-compose up -d
   only:
-    - updated-build
+    - master
 
 
 build_production:
