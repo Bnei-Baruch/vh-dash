@@ -1,4 +1,4 @@
-export const DASHBOARD_ROOT = '/dashboard';
+export const DASHBOARD_ROOT = '/dash';
 export const ROOT = '/';
 
 export const DASHBOARD_ROUTES = {
