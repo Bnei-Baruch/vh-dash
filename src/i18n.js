@@ -28,9 +28,6 @@ i18next
     react: {
       transKeepBasicHtmlNodesFor: ['br', 'strong', 'i', 'p', 'ul', 'li'],
     },
-    backend:{
-      loadPath: '/dash/locales/{{lng}}/{{ns}}.json',
-    }
   });
 
 export default resources;
