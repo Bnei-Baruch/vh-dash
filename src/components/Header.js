@@ -132,7 +132,7 @@ function LanguageMenu() {
         color='inherit'
       >
         <Flag
-          src={`/static/img/flags/${i18next.language}.png`}
+          src={`/dash/static/img/flags/${i18next.language}.png`}
           alt={i18next.language}
         />
       </IconButton>
