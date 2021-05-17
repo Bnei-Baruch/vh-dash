@@ -249,7 +249,7 @@ const Sidebar = ({ classes, staticContext, location, ...rest }) => {
     <Drawer variant='permanent' {...rest}>
       <Brand>
         <Link button component={NavLink} exact to='/'>
-          <Avatar alt='Logo' src='/static/img/bb-logo.png' />{' '}
+          <Avatar alt='Logo' src='/static/static/img/bb-logo.png' />{' '}
           <Box ml={1}>
             <b>BNEI BARUCH</b>
           </Box>
