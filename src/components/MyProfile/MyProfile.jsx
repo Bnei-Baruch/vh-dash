@@ -4,10 +4,10 @@ import { useTranslation } from 'react-i18next';
 import Helmet from 'react-helmet';
 
 import NavigationBar from '../NavigationBar';
-import { Grid } from '@material-ui/core';
-import PersonalForm from '../Forms/PersonalForm';
-import LoginForm from '../Forms/LoginForm';
-import SocialContainer from './SocialContainer';
+import MyProfileTab from './Tabs/MyProfileTab';
+import LanguagesTab from './Tabs/LanguagesTab';
+import OtherInformationsTab from './Tabs/OtherInformationsTab';
+import SecurityTab from './Tabs/SecurityTab';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -19,21 +19,11 @@ const useStyles = makeStyles(theme => ({
       color: '#1E88E5',
     },
   },
+  errorMsg: {
+    position: 'absolute',
+    top: 0,
+  },
 }));
-
-const MyProfileContent = () => (
-  <Grid container spacing={6}>
-    <Grid item xs={12} sm={6}>
-      <PersonalForm />
-    </Grid>
-    <Grid item xs={12} sm={6}>
-      <LoginForm />
-    </Grid>
-    <Grid item xs={12}>
-      <SocialContainer />
-    </Grid>
-  </Grid>
-);
 
 const MyProfile = () => {
   const classes = useStyles();
@@ -42,7 +32,22 @@ const MyProfile = () => {
     {
       id: 0,
       tab: t('Dashboard.Profile.Tabs.personal'),
-      component: <MyProfileContent />,
+      component: <MyProfileTab />,
+    },
+    {
+      id: 1,
+      tab: t('Dashboard.Profile.Tabs.security'),
+      component: <SecurityTab />,
+    },
+    {
+      id: 2,
+      tab: t('Dashboard.Profile.Tabs.languages'),
+      component: <LanguagesTab />,
+    },
+    {
+      id: 3,
+      tab: t('Dashboard.Profile.Tabs.otherInformations'),
+      component: <OtherInformationsTab />,
     },
   ];
 
