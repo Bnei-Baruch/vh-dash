@@ -7,8 +7,8 @@ variables:
   STAGING_LATEST_IMAGE: $CI_REGISTRY_IMAGE:staging
   PROD_IMAGE: $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG
   PROD_LATEST_IMAGE: $CI_REGISTRY_IMAGE:latest
-  STAGING_URL: "https://vh-staging.2serv.eu/dash/"
-  PRODUCTION_URL: "https://kli.one/dash/"
+  STAGING_URL: "https://$STAGING_DOMAIN/dash/"
+  PRODUCTION_URL: "https://$PRODUCTION_DOMAIN/dash/"
 
 build_staging:
   image: docker:latest
