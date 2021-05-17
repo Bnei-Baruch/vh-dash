@@ -16,7 +16,7 @@ const CongressArea = async(() => import('../components/CongressArea'));
 const dashboardRoutes = [
   {
     id: 'Dashboard',
-    path: '/',
+    path: '/dash',
     icon: <Sliders />,
     containsHome: true,
     children: null,

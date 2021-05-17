@@ -1,14 +1,25 @@
 FROM node:14.12.0-stretch as builder
+# this will be passed in as  --build-arg, when building docker image
+# default value will be localhost
+ARG PUBLIC_URL="http://127.0.0.1/"
+# below environment variable will be considered when npm building 
+# production assets / html
+ENV PUBLIC_URL=${PUBLIC_URL}
+
+ARG IS_STAGING_BUILD="true"
+
+ENV REACT_APP_STAGING="${IS_STAGING_BUILD}"
+
 RUN mkdir vh-dash && chown -R node:node vh-dash
+
 WORKDIR /vh-dash
+
 ADD . /vh-dash
 
 RUN npm install
 
-ARG BUILD=build
-ENV ENVIRONMENT_NAME=$BUILD
-RUN echo $ENVIRONMENT_NAME
-RUN yarn $ENVIRONMENT_NAME --output-path=build
+
+RUN npm run-script build --output-path=build
 
 FROM nginx:1.15
 
