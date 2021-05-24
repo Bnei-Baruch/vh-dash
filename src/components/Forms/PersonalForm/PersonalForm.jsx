@@ -9,9 +9,7 @@ import {
 } from '../../../constants/formData';
 
 const PersonalForm = ({
-  errorFields,
   inputFields,
-  onInputBlur,
   handleChange,
   isModified,
 }) => {
@@ -36,13 +34,10 @@ const PersonalForm = ({
             placeholder={t(
               'Dashboard.Profile.PersonalForm.firstNamePlaceholder',
             )}
-            error={!!errorFields.firstname.length}
-            helperText={errorFields.firstname}
             InputLabelProps={{
               shrink: true,
             }}
             onChange={event => handleChange('firstname', event.target.value)}
-            onBlur={() => onInputBlur('firstname')}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -55,13 +50,10 @@ const PersonalForm = ({
             placeholder={t(
               'Dashboard.Profile.PersonalForm.lastNamePlaceholder',
             )}
-            error={!!errorFields.lastname.length}
-            helperText={errorFields.lastname}
             InputLabelProps={{
               shrink: true,
             }}
             onChange={event => handleChange('lastname', event.target.value)}
-            onBlur={() => onInputBlur('lastname')}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -74,13 +66,10 @@ const PersonalForm = ({
             placeholder={t(
               'Dashboard.Profile.PersonalForm.dateOfBirthPlaceholder',
             )}
-            error={!!errorFields.dob.length}
-            helperText={errorFields.dob}
             InputLabelProps={{
               shrink: true,
             }}
             onChange={event => handleChange('dob', event.target.value)}
-            onBlur={() => onInputBlur('dob')}
           />
         </Grid>
         <Grid item xs={12} sm={6}>

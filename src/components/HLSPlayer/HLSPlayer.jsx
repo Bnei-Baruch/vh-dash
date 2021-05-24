@@ -116,8 +116,8 @@ const HLSPlayer = () => {
 
   const { streams, selectedBitrate, selectedVolume, broadcast } = state;
   const statusPhrase = broadcast
-    ? t('Dashboard.CongressArea.loading')
-    : t('Dashboard.CongressArea.noBroadcast');
+    ? t('Dashboard.BroadcastArea.loading')
+    : t('Dashboard.BroadcastArea.noBroadcast');
 
     // Setup jwplayer if it is idle and we're broadcasting
   if (broadcast || Object.keys(streams).length) {
@@ -144,7 +144,7 @@ const HLSPlayer = () => {
     <>
       <Box display='flex' justifyContent='space-between' alignItems='baseline'>
         <Typography variant='h3' className={classes.caption}>
-          {t('Dashboard.CongressArea.broadcast')}
+          {t('Dashboard.BroadcastArea.broadcast')}
         </Typography>
         <LanguagesMenu
           languages={state.languages}

@@ -35,7 +35,7 @@ const mockData = [
   },
 ];
 
-const PaymentMethodsTable = () => {
+const MyPlan = () => {
   const classes = useStyles();
   const { t } = useTranslation();
 
@@ -71,4 +71,4 @@ const PaymentMethodsTable = () => {
   );
 };
 
-export default PaymentMethodsTable;
+export default MyPlan;

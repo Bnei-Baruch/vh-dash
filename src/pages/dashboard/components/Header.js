@@ -22,11 +22,11 @@ const Header = () => {
   return (
     <>
       <Grid>
-        <Typography variant='h3' display='inline'>
+        <Typography variant='h3'>
           {t('Home.welcomeBack')}, {user.firstName}
         </Typography>
-        <Typography variant='body2' ml={2} display='inline'>
-          {`${DAY_NAMES[now.getDay()]}, ${now.getDate()} ${
+        <Typography variant='body2' ml={2}>
+          {`${DAY_NAMES[now.getDay() - 1]}, ${now.getDate()} ${
             MONTH_NAMES[now.getMonth()]
           } ${now.getFullYear()}`}
         </Typography>

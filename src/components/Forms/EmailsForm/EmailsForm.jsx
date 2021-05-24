@@ -3,13 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Grid, TextField, Typography } from '@material-ui/core';
 import { commonFormStyles } from '../../../constants/formData';
 
-const EmailsForm = ({
-  handleChange,
-  onInputBlur,
-  errorFields,
-  inputFields,
-  isModified
-}) => {
+const EmailsForm = ({ handleChange, inputFields, isModified }) => {
   const classes = commonFormStyles();
   const { t } = useTranslation();
 
@@ -29,13 +23,10 @@ const EmailsForm = ({
             placeholder={t('Global.inputPlaceholder', {
               input: 'primary email',
             })}
-            error={!!errorFields.primaryEmail.length}
-            helperText={errorFields.primaryEmail}
             InputLabelProps={{
               shrink: true,
             }}
             onChange={event => handleChange('primaryEmail', event.target.value)}
-            onBlur={() => onInputBlur('primaryEmail')}
           />
         </Grid>
         <Grid item xs={12} md={6}>
@@ -50,15 +41,12 @@ const EmailsForm = ({
             placeholder={t('Global.inputPlaceholder', {
               input: 'alternative email 1',
             })}
-            error={!!errorFields.alternativeEmail1.length}
-            helperText={errorFields.alternativeEmail1}
             InputLabelProps={{
               shrink: true,
             }}
             onChange={event =>
               handleChange('alternativeEmail1', event.target.value)
             }
-            onBlur={() => onInputBlur('alternativeEmail1')}
           />
         </Grid>
         <Grid item xs={12} md={6}>
@@ -73,15 +61,12 @@ const EmailsForm = ({
             placeholder={t('Global.inputPlaceholder', {
               input: 'alternative email 1',
             })}
-            error={!!errorFields.alternativeEmail2.length}
-            helperText={errorFields.alternativeEmail2}
             InputLabelProps={{
               shrink: true,
             }}
             onChange={event =>
               handleChange('alternativeEmail2', event.target.value)
             }
-            onBlur={() => onInputBlur('alternativeEmail2')}
           />
         </Grid>
       </Grid>

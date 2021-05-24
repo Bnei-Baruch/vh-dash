@@ -2,20 +2,15 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core/styles';
-import { AppBar, Button, Grid, Toolbar, Typography } from '@material-ui/core';
+import { AppBar, Button, Grid, Toolbar } from '@material-ui/core';
 
 import PersonalForm from '../../Forms/PersonalForm/PersonalForm';
 import EmailsForm from '../../Forms/EmailsForm';
-import { initialErrorFields, initialFields } from '../../../constants/formData';
-import validator from '../../../helpers/validator';
+import { initialFields } from '../../../constants/formData';
 import PhysicalLocationForm from '../../Forms/PersonalForm/PhysicalLocationForm';
 import SocialForm from '../../Forms/SocialForm';
 
 const useStyles = makeStyles({
-  errorMsg: {
-    position: 'absolute',
-    top: 0,
-  },
   appBar: {
     top: 'auto',
     bottom: 0,
@@ -34,8 +29,6 @@ const MyProfileTab = () => {
 
   const state = useSelector(state => state.userReducer.info.profile);
   const [isModified, setIsModified] = useState(false);
-  const [errorFields, setErrorFields] = useState({ ...initialErrorFields });
-  const [errorMsg, setErrorMsg] = useState('');
   const [inputFields, setInputFields] = useState({
     ...initialFields,
     firstname: state.firstName,
@@ -47,36 +40,18 @@ const MyProfileTab = () => {
     primaryEmail: state.email,
   });
 
-  const handleChange = (field, value) => {
+  const handleChange = (field, value) =>
     setInputFields(prevState => ({ ...prevState, [field]: value }));
-    setErrorMsg('');
-  };
-
-  const onInputBlur = field => {
-    validator.extendErrorFields(
-      errorFields,
-      field,
-      validator.fieldTypes[field],
-      inputFields[field],
-    );
-
-    setErrorFields({ ...errorFields });
-  };
 
   const onSubmit = event => {
     event.preventDefault();
-    const { fieldsetHasErrors } = validator;
 
     if (!isModified) {
       setIsModified(true);
       return;
     }
 
-    if (!fieldsetHasErrors(errorFields)) {
-      console.log('Submit', inputFields);
-    } else {
-      setErrorMsg(t('Global.formErrorMsg'));
-    }
+    console.log('Submit', inputFields);
   };
 
   const buttonText = isModified ? t('Global.saveBtn') : t('Global.modify');
@@ -86,15 +61,11 @@ const MyProfileTab = () => {
       <Grid container spacing={6}>
         <Grid item xs={12} sm={6}>
           <PersonalForm
-            onInputBlur={onInputBlur}
-            errorFields={errorFields}
             inputFields={inputFields}
             handleChange={handleChange}
             isModified={isModified}
           />
           <PhysicalLocationForm
-            onInputBlur={onInputBlur}
-            errorFields={errorFields}
             inputFields={inputFields}
             handleChange={handleChange}
             isModified={isModified}
@@ -107,32 +78,27 @@ const MyProfileTab = () => {
           style={{ display: 'grid', alignContent: 'space-between' }}
         >
           <EmailsForm
-            onInputBlur={onInputBlur}
-            errorFields={errorFields}
             inputFields={inputFields}
             handleChange={handleChange}
             isModified={isModified}
           />
           <SocialForm
-            onInputBlur={onInputBlur}
-            errorFields={errorFields}
             inputFields={inputFields}
             handleChange={handleChange}
             isModified={isModified}
           />
         </Grid>
-        <Grid item xs={12} style={{ position: 'relative' }}>
-          <Typography component='p' color='error' className={classes.errorMsg}>
-            {errorMsg}
-          </Typography>
-        </Grid>
         <AppBar
           position='fixed'
           className={classes.appBar}
-          style={{ background: `${errorMsg ? '#ff00006e' : '#fff'}` }}
+          style={{ background: `${isModified ? '#C9F9DA' : '#fff'}` }}
         >
           <Toolbar className={classes.toolBar}>
-            <Button variant='contained' color='primary' type='submit'>
+            <Button
+              variant='contained'
+              color={isModified ? 'secondary' : 'primary'}
+              type='submit'
+            >
               {buttonText}
             </Button>
             {isModified && (

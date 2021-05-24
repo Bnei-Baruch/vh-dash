@@ -7,7 +7,19 @@
       "cancelBtn": "Cancel",
       "modify": "Modify",
       "yes": "Yes",
-      "no": "No"
+      "no": "No",
+      "Days": {
+        "monday": "Monday",
+        "tuesday": "Tuesday",
+        "wednesday": "Wednesday",
+        "thursday": "Thursday",
+        "friday": "Friday",
+        "saturday": "Saturday",
+        "sunday": "Sunday"
+      },
+      "Months": {
+        
+      }
     },
     "Languages": {
       "English": "English",
@@ -102,7 +114,6 @@
         "OtherInformation": {
           "education": "Education",
           "startYear": "Start Year",
-          "endYear": "End Year",
           "studyFramework": "Study Framework",
           "ten": "Ten",
           "tenName": "Name of ten, if has group",
@@ -112,7 +123,6 @@
         "Security": {
           "name": "Login Info",
           "email": "Email",
-          "password": "Password",
           "googleConnected": "Google Connected",
           "googleTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
           "facebookConnected": "Facebook Connected",
@@ -125,7 +135,7 @@
         "title": "My account",
         "Tabs": {
           "transaction": "All Transaction",
-          "payment": "Payment Methods"
+          "myPlan": "My Plan"
         },
         "paidOn": "Paid on",
         "purpose": "Purpose",
@@ -141,9 +151,9 @@
         "cardNumber": "Number",
         "expirationDate": "Expiration Date"
       },
-      "CongressArea": {
-        "name": "Congress Area",
-        "title": "Congress Area",
+      "BroadcastArea": {
+        "name": "Broadcast Area",
+        "title": "Broadcast Area",
         "caption": "DISCOVERING LIFE IN THE TEN",
         "subCaption": "WORLD KABBALAH CONVENTION 2021",
         "broadcast": "Broadcast",
