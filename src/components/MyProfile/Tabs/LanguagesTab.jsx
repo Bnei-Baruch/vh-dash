@@ -74,9 +74,17 @@ const LanguagesTab = () => {
             isModified={isModified}
           />
         </Grid>
-        <AppBar position='fixed' className={classes.appBar}>
+        <AppBar
+          position='fixed'
+          className={classes.appBar}
+          style={{ background: `${isModified ? '#C9F9DA' : '#fff'}` }}
+        >
           <Toolbar className={classes.toolBar}>
-            <Button variant='contained' color='primary' type='submit'>
+            <Button
+              variant='contained'
+              color={isModified ? 'secondary' : 'primary'}
+              type='submit'
+            >
               {buttonText}
             </Button>
             {isModified && (

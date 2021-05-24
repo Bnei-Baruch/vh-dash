@@ -5,7 +5,7 @@ import Helmet from 'react-helmet';
 
 import NavigationBar from '../NavigationBar';
 import TransactionTable from './TransactionTable';
-import PaymentMethodsTable from './PaymentMethodsTable';
+import MyPlan from './MyPlan';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -30,8 +30,8 @@ const MyAccount = () => {
     },
     {
       id: 1,
-      tab: t('Dashboard.Account.Tabs.payment'),
-      component: <PaymentMethodsTable />,
+      tab: t('Dashboard.Account.Tabs.myPlan'),
+      component: <MyPlan />,
     },
   ];
 

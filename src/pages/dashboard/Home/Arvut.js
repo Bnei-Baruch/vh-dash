@@ -6,6 +6,7 @@ import {
   CardContent,
   CardHeader,
   Divider as MuiDivider,
+  makeStyles,
   Typography as MuiTypography,
 } from '@material-ui/core';
 import { spacing } from '@material-ui/system';
@@ -47,8 +48,16 @@ const ConnectionsContainer = styled.div`
   justify-content: space-between;
 `;
 
+const useStyles = makeStyles({
+  cardTitle: {
+    fontSize: 14,
+    color: '#ff0000',
+  },
+});
+
 const Arvut = ({ liveEvent }) => {
   const { t } = useTranslation();
+  const classes = useStyles();
 
   const [clock, setClock] = useState('');
   const [totalConnections, setTotalConnections] = useState(0);
@@ -112,10 +121,10 @@ const Arvut = ({ liveEvent }) => {
     const interval = setInterval(() => {
       const now = new Date();
       setClock(
-        `${now.getHours()}:${now
-          .getMinutes()
+        `${now.getHours()}:${now.getMinutes().toString().padStart(2, '0')}:${now
+          .getSeconds()
           .toString()
-          .padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`,
+          .padStart(2, '0')}`,
       );
     }, 1000);
 
@@ -128,16 +137,19 @@ const Arvut = ({ liveEvent }) => {
     <Card mb={6}>
       <CardHeader
         action={
-          <Button
-            variant='contained'
-            color='primary'
-            href={`${ARVUT_URL}/stream`}
-            target='_blank'
-          >
-            {t('Home.watchBtn')}
-          </Button>
+          liveEvent ? (
+            <Button
+              variant='contained'
+              color='primary'
+              href={`${ARVUT_URL}/stream`}
+              target='_blank'
+            >
+              {t('Home.watchBtn')}
+            </Button>
+          ) : null
         }
-        title={t('Home.arvut')}
+        title={liveEvent ? t('Home.active') : t('Home.notActive')}
+        classes={{ title: classes.cardTitle }}
       />
 
       <CardContent>
@@ -195,7 +207,17 @@ const Arvut = ({ liveEvent }) => {
             </ConnectionsContainer>
           </>
         ) : (
-          <Typography variant='h3'>{t('Home.noLiveEvent')}</Typography>
+          <Box display='flex' justifyContent='space-between'>
+            <Typography variant='h3'>{t('Home.noLiveEvent')}</Typography>
+            <Button
+              variant='outlined'
+              color='secondary'
+              href={`${ARVUT_URL}/stream`}
+              target='_blank'
+            >
+              {t('Home.watchRecordedBtn')}
+            </Button>
+          </Box>
         )}
       </CardContent>
     </Card>
