@@ -18,7 +18,18 @@
         "sunday": "Sunday"
       },
       "Months": {
-        
+        "january": "January",
+        "february": "February",
+        "march": "March",
+        "april": "April",
+        "may": "May",
+        "june": "June",
+        "july": "July",
+        "august": "August",
+        "september": "September",
+        "october": "October",
+        "november": "November",
+        "december": "December"
       }
     },
     "Languages": {
@@ -29,8 +40,10 @@
       "Spanish": "Spanish"
     },
     "Home": {
-      "arvut": "Arvut",
+      "notActive": "Not ACTIVE",
+      "active": "ACTIVE",
       "watchBtn": "Watch",
+      "watchRecordedBtn": "Watch Recorded",
       "noLiveEvent": "No live events",
       "noEvent": "No events",
       "currentEvent": "Current Event",
@@ -95,7 +108,8 @@
         "Emails": {
           "name": "My Emails",
           "primaryEmail": "Primary email",
-          "alternativeEmail": "Alternative email {{number}}"
+          "alternativeEmail": "Alternative email {{number}}",
+          "emailError": "Please enter correct email address"
         },
         "Languages": {
           "name": "Languages",

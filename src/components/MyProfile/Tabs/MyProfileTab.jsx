@@ -23,12 +23,20 @@ const useStyles = makeStyles({
   },
 });
 
+const initialErrorFields = {
+  primaryEmail: '',
+  alternativeEmail1: '',
+  alternativeEmail2: '',
+};
+
 const MyProfileTab = () => {
   const classes = useStyles();
   const { t } = useTranslation();
 
   const state = useSelector(state => state.userReducer.info.profile);
   const [isModified, setIsModified] = useState(false);
+  const [isValid, setIsValid] = useState(true);
+  const [errorFields, setErrorFields] = useState({ ...initialErrorFields });
   const [inputFields, setInputFields] = useState({
     ...initialFields,
     firstname: state.firstName,
@@ -43,6 +51,24 @@ const MyProfileTab = () => {
   const handleChange = (field, value) =>
     setInputFields(prevState => ({ ...prevState, [field]: value }));
 
+  const onInputBlur = field => {
+    const isValid = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(inputFields[field]);
+    if (inputFields[field]) {
+      if (!isValid) {
+        setErrorFields(prevState => ({
+          ...prevState,
+          [field]: t('Dashboard.Profile.Emails.emailError'),
+        }));
+        setIsValid(false);
+  
+        return;
+      }
+  
+      setErrorFields(initialErrorFields);
+      setIsValid(true);
+    }
+  };
+
   const onSubmit = event => {
     event.preventDefault();
 
@@ -51,8 +77,13 @@ const MyProfileTab = () => {
       return;
     }
 
-    console.log('Submit', inputFields);
+    isValid && console.log('Submit', inputFields);
   };
+
+  const onCancel = () => {
+    setIsModified(false);
+    setErrorFields(initialErrorFields);
+  }
 
   const buttonText = isModified ? t('Global.saveBtn') : t('Global.modify');
 
@@ -79,8 +110,10 @@ const MyProfileTab = () => {
         >
           <EmailsForm
             inputFields={inputFields}
+            errorFields={errorFields}
             handleChange={handleChange}
             isModified={isModified}
+            onInputBlur={onInputBlur}
           />
           <SocialForm
             inputFields={inputFields}
@@ -106,7 +139,7 @@ const MyProfileTab = () => {
                 style={{ marginLeft: 20 }}
                 variant='contained'
                 color='default'
-                onClick={() => setIsModified(false)}
+                onClick={onCancel}
               >
                 {t('Global.cancelBtn')}
               </Button>

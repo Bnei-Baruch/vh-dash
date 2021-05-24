@@ -1,29 +1,3 @@
-import i18next from 'i18next';
-
-export const DAY_NAMES = [
-  i18next.t('Global.Days.monday'),
-  i18next.t('Global.Days.tuesday'),
-  i18next.t('Global.Days.wednesday'),
-  i18next.t('Global.Days.thursday'),
-  i18next.t('Global.Days.friday'),
-  i18next.t('Global.Days.saturday'),
-  i18next.t('Global.Days.sunday'),
-];
-export const MONTH_NAMES = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
-];
-
 export const ARVUT_URL = 'https://arvut.kli.one';
 export const QUESTION_URL = 'https://qst.kli.one';
 
