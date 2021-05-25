@@ -15,17 +15,13 @@ import {
   Toolbar,
   Typography,
 } from '@material-ui/core';
-import validator from '../../../helpers/validator';
 import { commonFormStyles } from '../../../constants/formData';
 import { CustomTooltip } from '../../../shared/Tooltip';
 import GoogleIcon from '../../../img/icons/google.png';
 import FacebookIcon from '../../../img/icons/facebook.png';
+import { useSelector } from 'react-redux';
 
 const useStyles = makeStyles(theme => ({
-  errorMsg: {
-    position: 'absolute',
-    top: 0,
-  },
   appBar: {
     top: 'auto',
     bottom: 0,
@@ -65,14 +61,8 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const initialErrorFields = {
-  email: [],
-  password: [],
-};
-
 const initialFields = {
   email: '',
-  password: '',
   isGoogleConnected: 'Yes',
   isFacebookConnected: 'No',
 };
@@ -81,47 +71,33 @@ const SecurityTab = () => {
   const classes = useStyles();
   const styles = commonFormStyles();
   const { t } = useTranslation();
+  const { keycloak } = useSelector(state => state.userReducer.info);
 
   const [isModified, setIsModified] = useState(false);
-  const [errorFields, setErrorFields] = useState({ ...initialErrorFields });
-  const [errorMsg, setErrorMsg] = useState('');
   const [inputFields, setInputFields] = useState(initialFields);
 
-  const handleChange = (field, value) => {
+  const handleChange = (field, value) =>
     setInputFields(prevState => ({ ...prevState, [field]: value }));
-    setErrorMsg('');
-  };
-
-  const onInputBlur = field => {
-    validator.extendErrorFields(
-      errorFields,
-      field,
-      validator.fieldTypes[field],
-      inputFields[field],
-    );
-
-    setErrorFields({ ...errorFields });
-  };
 
   const onSubmit = event => {
     event.preventDefault();
-    const { fieldsetHasErrors } = validator;
 
     if (!isModified) {
       setIsModified(true);
       return;
     }
 
-    if (!fieldsetHasErrors(errorFields)) {
-      console.log('Submit', inputFields);
-    } else {
-      setErrorMsg(t('Global.formErrorMsg'));
-    }
+    console.log('Submit', inputFields);
   };
 
+  const onForgotPasswordClick = () =>
+    window.open(
+      `${keycloak.authServerUrl}realms/${keycloak.realm}/login-actions/reset-credentials?client_id=membership_pay&tab_id=P47ir4Jct-s`,
+      '_self',
+    );
+
   const buttonText = isModified ? t('Global.saveBtn') : t('Global.modify');
-  const { email, password, isGoogleConnected, isFacebookConnected } =
-    inputFields;
+  const { email, isGoogleConnected, isFacebookConnected } = inputFields;
 
   return (
     <form noValidate autoComplete='off' onSubmit={onSubmit}>
@@ -140,41 +116,17 @@ const SecurityTab = () => {
               placeholder={t('Global.inputPlaceholder', {
                 input: 'email',
               })}
-              error={!!errorFields.email.length}
-              helperText={errorFields.email}
               InputLabelProps={{
                 shrink: true,
               }}
               onChange={event => handleChange('email', event.target.value)}
-              onBlur={() => onInputBlur('email')}
-            />
-          </Grid>
-          <Grid item xs={12} sm={8}>
-            <TextField
-              disabled={!isModified}
-              type='password'
-              label={t('Dashboard.Profile.Security.password')}
-              value={password}
-              fullWidth
-              placeholder={t('Global.inputPlaceholder', {
-                input: 'password',
-              })}
-              error={!!errorFields.password.length}
-              helperText={errorFields.password}
-              InputLabelProps={{
-                shrink: true,
-              }}
-              onChange={event => handleChange('password', event.target.value)}
-              onBlur={() => onInputBlur('password')}
             />
           </Grid>
           <Grid item xs={12} sm={8} className={classes.linkWrapper}>
             <Link
               component='button'
               variant='body2'
-              onClick={() => {
-                console.info('Link to forgot password');
-              }}
+              onClick={onForgotPasswordClick}
             >
               {t('Dashboard.Profile.Security.forgotPassword')}
             </Link>
@@ -182,7 +134,11 @@ const SecurityTab = () => {
           <Grid item xs={12} sm={8}>
             <FormControl component='fieldset' className={classes.formControl}>
               <FormLabel component='div' className={classes.radioLabel}>
-                <img src={GoogleIcon} alt='google' style={{ marginRight: 10 }} />
+                <img
+                  src={GoogleIcon}
+                  alt='google'
+                  style={{ marginRight: 10 }}
+                />
                 {t('Dashboard.Profile.Security.googleConnected')}
                 <CustomTooltip
                   tooltipText={t('Dashboard.Profile.Security.googleTooltip')}
@@ -197,11 +153,13 @@ const SecurityTab = () => {
               >
                 <FormControlLabel
                   value='Yes'
+                  disabled
                   control={<Radio />}
                   label={t('Global.yes')}
                 />
                 <FormControlLabel
                   value='No'
+                  disabled
                   control={<Radio />}
                   label={t('Global.no')}
                 />
@@ -211,7 +169,11 @@ const SecurityTab = () => {
           <Grid item xs={12} sm={8}>
             <FormControl component='fieldset' className={classes.formControl}>
               <FormLabel component='div' className={classes.radioLabel}>
-                <img src={FacebookIcon} alt='facebook' style={{ marginRight: 10 }} />
+                <img
+                  src={FacebookIcon}
+                  alt='facebook'
+                  style={{ marginRight: 10 }}
+                />
                 {t('Dashboard.Profile.Security.facebookConnected')}
                 <CustomTooltip
                   tooltipText={t('Dashboard.Profile.Security.facebookTooltip')}
@@ -226,29 +188,30 @@ const SecurityTab = () => {
               >
                 <FormControlLabel
                   value='Yes'
+                  disabled
                   control={<Radio />}
                   label={t('Global.yes')}
                 />
                 <FormControlLabel
                   value='No'
+                  disabled
                   control={<Radio />}
                   label={t('Global.no')}
                 />
               </RadioGroup>
             </FormControl>
           </Grid>
-          <Grid item xs={12} style={{ position: 'relative' }}>
-            <Typography
-              component='p'
-              color='error'
-              className={classes.errorMsg}
-            >
-              {errorMsg}
-            </Typography>
-          </Grid>
-          <AppBar position='fixed' className={classes.appBar}>
+          <AppBar
+            position='fixed'
+            className={classes.appBar}
+            style={{ background: `${isModified ? '#C9F9DA' : '#fff'}` }}
+          >
             <Toolbar className={classes.toolBar}>
-              <Button variant='contained' color='primary' type='submit'>
+              <Button
+                variant='contained'
+                color={isModified ? 'secondary' : 'primary'}
+                type='submit'
+              >
                 {buttonText}
               </Button>
               {isModified && (

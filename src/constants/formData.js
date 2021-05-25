@@ -7,12 +7,21 @@ export const commonFormStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.background.paper,
     '& .MuiTypography-root': {
       marginBottom: theme.spacing(4),
-      fontSize: '14px',
+      fontSize: 18,
+    },
+    '& .MuiInputBase-input': {
+      fontSize: 16,
     },
     '& .MuiInputLabel-root': {
       color: '#263238',
+      fontSize: 18,
+      position: 'relative',
+      width: 'fit-content',
       '&.Mui-error': {
         color: '#f44336',
+      },
+      '& + .MuiInput-formControl': {
+        marginTop: 0,
       },
     },
   },

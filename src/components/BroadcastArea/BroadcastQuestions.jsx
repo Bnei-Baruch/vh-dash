@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import { Box, Button, TextareaAutosize, Typography } from '@material-ui/core';
-import validator from '../../helpers/validator';
 import { QUESTION_URL } from '../../shared/constants';
 import Notifications from '../ui/Notifications';
 
@@ -15,18 +14,14 @@ const useStyles = makeStyles(theme => ({
     borderRadius: 6,
     border: `2px solid ${theme.palette.text.secondary}`,
     outline: 'none',
-    '&.error': {
-      borderColor: theme.palette.error.main,
-    },
   },
 }));
 
-const CongressQuestions = () => {
+const BroadcastQuestions = () => {
   const classes = useStyles();
   const { t } = useTranslation();
 
   const state = useSelector(state => state.userReducer.info);
-  const [errorField, setErrorField] = useState({ question: [] });
   const [question, setQuestion] = useState('');
   const [open, setOpen] = useState(false);
   const [isSentSuccessfully, setIsSentSuccessfully] = useState(true);
@@ -35,7 +30,6 @@ const CongressQuestions = () => {
     event.preventDefault();
 
     const { username, lastName, firstName, gender } = state.profile;
-    const { fieldsetHasErrors, fieldsetHasValues } = validator;
 
     const requestOptions = {
       method: 'POST',
@@ -52,21 +46,18 @@ const CongressQuestions = () => {
         user: {
           gender,
           name: `${firstName} ${lastName}`,
-          galaxyRoom: 'Congress Area',
+          galaxyRoom: 'Dashboard Area',
         },
       }),
     };
 
-    // Check validation error
-    onQuestionBlur();
-
-    if (!fieldsetHasErrors(errorField) && fieldsetHasValues(question)) {
+    if (question) {
       fetch(`${QUESTION_URL}/api/ask`, requestOptions)
         .then(response => response.json())
         .then(data => {
           console.log('Question response', data);
           setOpen(true);
-          
+
           if (data.msg) {
             setIsSentSuccessfully(false);
             return;
@@ -77,26 +68,12 @@ const CongressQuestions = () => {
     }
   };
 
-  const onChangeQuestion = event => {
-    setQuestion(event.target.value);
-    setErrorField({ question: [] });
-  };
-
-  const onQuestionBlur = () => {
-    validator.extendErrorFields(
-      errorField,
-      'question',
-      validator.fieldTypes['question'],
-      question,
-    );
-
-    setErrorField({ ...errorField });
-  };
+  const onChangeQuestion = event => setQuestion(event.target.value);
 
   return (
     <Box mt={10}>
       <Typography variant='h5' gutterBottom>
-        {t('Dashboard.CongressArea.Question.title')}
+        {t('Dashboard.BroadcastArea.Question.title')}
       </Typography>
       <Grid container spacing={6}>
         <Grid item xs={12} sm={8}>
@@ -108,29 +85,15 @@ const CongressQuestions = () => {
               gutterBottom
               style={{ fontSize: '1rem', marginTop: '10px' }}
             >
-              {t('Dashboard.CongressArea.Question.label')}
+              {t('Dashboard.BroadcastArea.Question.label')}
             </Typography>
             <TextareaAutosize
-              className={`${classes.textArea} ${
-                errorField.question.length ? 'error' : ''
-              }`}
+              className={classes.textArea}
               rowsMin={4}
               value={question}
-              placeholder={t('Dashboard.CongressArea.Question.placeholder')}
+              placeholder={t('Dashboard.BroadcastArea.Question.placeholder')}
               onChange={onChangeQuestion}
-              onBlur={onQuestionBlur}
             />
-            {errorField.question.length ? (
-              <Typography
-                variant='h6'
-                component='p'
-                color='error'
-                gutterBottom
-                style={{ fontSize: '0.75rem' }}
-              >
-                {errorField.question}
-              </Typography>
-            ) : null}
             <Box display='flex' justifyContent='flex-end'>
               <Button
                 type='submit'
@@ -138,7 +101,7 @@ const CongressQuestions = () => {
                 color='primary'
                 onClick={sendQuestion}
               >
-                {t('Dashboard.CongressArea.Question.button')}
+                {t('Dashboard.BroadcastArea.Question.button')}
               </Button>
             </Box>
           </form>
@@ -153,4 +116,4 @@ const CongressQuestions = () => {
   );
 };
 
-export default CongressQuestions;
+export default BroadcastQuestions;

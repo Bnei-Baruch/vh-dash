@@ -7,8 +7,6 @@ import { commonFormStyles } from '../../../constants/formData';
 
 const PhysicalLocationForm = ({
   handleChange,
-  onInputBlur,
-  errorFields,
   inputFields,
   isModified
 }) => {
@@ -31,15 +29,12 @@ const PhysicalLocationForm = ({
             value={streetAddress}
             fullWidth
             placeholder={t('Global.inputPlaceholder', { input: 'street' })}
-            error={!!errorFields.streetAddress.length}
-            helperText={errorFields.streetAddress}
             InputLabelProps={{
               shrink: true,
             }}
             onChange={event =>
               handleChange('streetAddress', event.target.value)
             }
-            onBlur={() => onInputBlur('streetAddress')}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -50,13 +45,10 @@ const PhysicalLocationForm = ({
             value={postalCode}
             fullWidth
             placeholder={t('Global.inputPlaceholder', { input: 'postal code' })}
-            error={!!errorFields.postalCode.length}
-            helperText={errorFields.postalCode}
             InputLabelProps={{
               shrink: true,
             }}
             onChange={event => handleChange('postalCode', event.target.value)}
-            onBlur={() => onInputBlur('postalCode')}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -79,13 +71,10 @@ const PhysicalLocationForm = ({
             placeholder={t('Global.inputPlaceholder', {
               input: 'state or region',
             })}
-            error={!!errorFields.stateRegion.length}
-            helperText={errorFields.stateRegion}
             InputLabelProps={{
               shrink: true,
             }}
             onChange={event => handleChange('stateRegion', event.target.value)}
-            onBlur={() => onInputBlur('stateRegion')}
           />
         </Grid>
       </Grid>

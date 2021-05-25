@@ -6,8 +6,6 @@ import { commonFormStyles, studyGroup } from '../../../constants/formData';
 
 const TenForm = ({
   inputFields,
-  errorFields,
-  onInputBlur,
   handleChange,
   isModified,
 }) => {
@@ -52,13 +50,10 @@ const TenForm = ({
             placeholder={t('Global.inputPlaceholder', {
               input: 'name of ten',
             })}
-            error={!!errorFields.tenName.length}
-            helperText={errorFields.tenName}
             InputLabelProps={{
               shrink: true,
             }}
             onChange={event => handleChange('tenName', event.target.value)}
-            onBlur={() => onInputBlur('tenName')}
           />
         </Grid>
       </Grid>

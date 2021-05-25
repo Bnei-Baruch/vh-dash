@@ -19,8 +19,8 @@ const Notifications = ({ open, toggleNotifications, isSentSuccessfully }) => {
   const { t } = useTranslation();
 
   const message = isSentSuccessfully
-    ? t('Dashboard.CongressArea.Question.successMsg')
-    : t('Dashboard.CongressArea.Question.errorMsg');
+    ? t('Dashboard.BroadcastArea.Question.successMsg')
+    : t('Dashboard.BroadcastArea.Question.errorMsg');
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
       return;

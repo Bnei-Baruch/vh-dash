@@ -30,7 +30,7 @@ const LanguagesMenu = ({ languages, onLangSelected }) => {
         aria-haspopup='true'
         onClick={handleClick}
       >
-        {t('Dashboard.CongressArea.broadcastLanguage')}
+        {t('Dashboard.BroadcastArea.broadcastLanguage')}
       </Button>
       <Menu
         id='languages-menu'
