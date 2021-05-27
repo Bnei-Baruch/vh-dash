@@ -9,8 +9,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
-import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
-import { Chip, List, MenuItem, Popover } from '@material-ui/core';
+import { Chip } from '@material-ui/core';
 
 const useStyles = makeStyles({
   table: {
@@ -105,7 +104,6 @@ const TransactionTable = () => {
 
   const [data, setData] = useState(mockData);
   const [isSorted, setIsSorted] = useState(false);
-  const [anchorEl, setAnchorEl] = useState(null);
 
   const sortPaidOn = sorted => {
     const copiedData = [...mockData];
@@ -118,14 +116,15 @@ const TransactionTable = () => {
     setIsSorted(sorted);
   };
 
-  const handleClick = event => {
-    event.stopPropagation();
-    setAnchorEl(event.currentTarget);
-  };
+  // TODO: Implement action logic after imple,entation on BE
+  // const handleClick = event => {
+  //   event.stopPropagation();
+  //   setAnchorEl(event.currentTarget);
+  // };
 
-  const handleMenuClose = () => {
-    setAnchorEl(null);
-  };
+  // const handleMenuClose = () => {
+  //   setAnchorEl(null);
+  // };
 
   const convertDateToAnotherFormat = date => {
     const newDate = new Date(date);
@@ -163,7 +162,7 @@ const TransactionTable = () => {
                 onClick={() => sortPaidOn(!isSorted)}
                 className={classes.sortedCell}
               >
-                {t('Dashboard.Account.paidOn')}
+                {t('Dashboard.Payments.paidOn')}
                 <ArrowDownwardIcon
                   className={`${classes.arrowDown} ${
                     isSorted ? classes.rotateUp : classes.rotateDown
@@ -171,13 +170,14 @@ const TransactionTable = () => {
                 />
               </span>
             </TableCell>
-            <TableCell>{t('Dashboard.Account.purpose')}</TableCell>
-            <TableCell>{t('Dashboard.Account.paymentMethod')}</TableCell>
-            <TableCell>{t('Dashboard.Account.paymentType')}</TableCell>
-            <TableCell>{t('Dashboard.Account.amount')}</TableCell>
-            <TableCell>{t('Dashboard.Account.currency')}</TableCell>
-            <TableCell>{t('Dashboard.Account.status')}</TableCell>
-            <TableCell align='center'>{t('Dashboard.Account.action')}</TableCell>
+            <TableCell>{t('Dashboard.Payments.purpose')}</TableCell>
+            <TableCell>{t('Dashboard.Payments.paymentMethod')}</TableCell>
+            <TableCell>{t('Dashboard.Payments.paymentType')}</TableCell>
+            <TableCell>{t('Dashboard.Payments.amount')}</TableCell>
+            <TableCell>{t('Dashboard.Payments.currency')}</TableCell>
+            <TableCell>{t('Dashboard.Payments.status')}</TableCell>
+            {/* TODO: Implement action logic after imple,entation on BE */}
+            {/* <TableCell align='center'>{t('Dashboard.Payments.action')}</TableCell> */}
           </TableRow>
         </TableHead>
         <TableBody>
@@ -202,7 +202,8 @@ const TransactionTable = () => {
                   }}
                 />
               </TableCell>
-              <TableCell align='center'>
+              {/* TODO: Implement action logic after imple,entation on BE */}
+              {/* <TableCell align='center'>
                 <MoreHorizIcon
                   onClick={handleClick}
                   className={classes.actionCell}
@@ -215,14 +216,14 @@ const TransactionTable = () => {
                 >
                   <List>
                     <MenuItem onClick={handleMenuClose}>
-                      {t('Dashboard.Account.cancelPayment')}
+                      {t('Dashboard.Payments.cancelPayment')}
                     </MenuItem>
                     <MenuItem onClick={handleMenuClose}>
-                      {t('Dashboard.Account.downloadInvoice')}
+                      {t('Dashboard.Payments.downloadInvoice')}
                     </MenuItem>
                   </List>
                 </Popover>
-              </TableCell>
+              </TableCell> */}
             </TableRow>
           ))}
         </TableBody>

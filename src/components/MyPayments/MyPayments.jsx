@@ -19,28 +19,28 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const MyAccount = () => {
+const MyPayments = () => {
   const classes = useStyles();
   const { t } = useTranslation();
   const tabs = [
     {
       id: 0,
-      tab: t('Dashboard.Account.Tabs.transaction'),
+      tab: t('Dashboard.Payments.Tabs.transaction'),
       component: <TransactionTable />,
     },
     {
       id: 1,
-      tab: t('Dashboard.Account.Tabs.myPlan'),
+      tab: t('Dashboard.Payments.Tabs.myPlan'),
       component: <MyPlan />,
     },
   ];
 
   return (
     <div className={classes.root}>
-      <Helmet title={t('Dashboard.Account.name')} />
+      <Helmet title={t('Dashboard.Payments.name')} />
       <NavigationBar tabs={tabs} />
     </div>
   );
 };
 
-export default MyAccount;
+export default MyPayments;

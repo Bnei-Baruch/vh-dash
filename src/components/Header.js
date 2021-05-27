@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import styled, { withTheme } from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
 import { darken } from 'polished';
 import i18next from 'i18next';
 import { useTranslation } from 'react-i18next';
 import _ from 'lodash';
+import { Bell, MessageSquare, Search as SearchIcon } from 'react-feather';
 
 import {
   Badge,
@@ -16,14 +18,17 @@ import {
   AppBar as MuiAppBar,
   IconButton as MuiIconButton,
   Toolbar,
+  Box,
+  Typography,
+  Chip,
 } from '@material-ui/core';
 
 import { Menu as MenuIcon } from '@material-ui/icons';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import { Bell, MessageSquare, Search as SearchIcon } from 'react-feather';
 import { CHAT_AND_NOTIFICATION_ICONS, SEARCH_BAR } from '../shared/constants';
 import { setLoggedInUser } from '../redux/actions/userActions';
 import ModalWindow from './ui/ModalWindow';
+import { DASHBOARD_ROUTES } from '../routes/dashboardRoutes';
 
 const AppBar = styled(MuiAppBar)`
   background: ${props => props.theme.header.background};
@@ -157,6 +162,7 @@ function UserMenu() {
   const { t } = useTranslation();
   const state = useSelector(state => state.userReducer.info);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const [anchorMenu, setAnchorMenu] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -169,7 +175,8 @@ function UserMenu() {
     setAnchorMenu(null);
   };
 
-  const onProfileClick = () => {
+  const onMenuItemClick = path => {
+    history.push(path);
     closeMenu();
   };
 
@@ -182,7 +189,6 @@ function UserMenu() {
     setIsModalOpen(!isModalOpen);
   };
 
-  
   const onAuthLogout = () => {
     state.keycloak.logout();
     dispatch(setLoggedInUser(null));
@@ -205,7 +211,12 @@ function UserMenu() {
         open={Boolean(anchorMenu)}
         onClose={closeMenu}
       >
-        <MenuItem onClick={onProfileClick}>{t('UserMenu.profile')}</MenuItem>
+        <MenuItem onClick={() => onMenuItemClick(DASHBOARD_ROUTES.Profile)}>
+          {t('Dashboard.Profile.name')}
+        </MenuItem>
+        <MenuItem onClick={() => onMenuItemClick(DASHBOARD_ROUTES.Payments)}>
+          {t('Dashboard.Payments.name')}
+        </MenuItem>
         <MenuItem onClick={onLogOutClick}>{t('UserMenu.logOut')}</MenuItem>
       </Menu>
       <ModalWindow
@@ -216,6 +227,45 @@ function UserMenu() {
     </>
   );
 }
+
+const Subscription = () => {
+  const history = useHistory();
+  const { t } = useTranslation();
+
+  const setStatusColor = value => {
+    switch (value) {
+      case 'Active':
+        return '#9CCB3B';
+      case 'hold':
+      case 'late':
+        return '#FF9800';
+      case 'nonExistant':
+        return '#D32F2F';
+      default:
+        return '#d3d3d3';
+    }
+  };
+
+  const onBtnClick = () => history.push(`${DASHBOARD_ROUTES.Payments}?my-plan`);
+
+  return (
+    <Box justifyContent='flex-end' display='flex' alignItems='baseline'>
+      <Typography>{t('UserMenu.subscriptions')}</Typography>
+      <Chip
+        label={t('UserMenu.statuses.nonExistant')}
+        style={{
+          backgroundColor: setStatusColor('nonExistant'),
+          color: '#FFF',
+          height: 30,
+          borderRadius: 15,
+          margin: '0 10px',
+          cursor: 'pointer',
+        }}
+        onClick={onBtnClick}
+      />
+    </Box>
+  );
+};
 
 const Header = ({ onDrawerToggle }) => (
   <>
@@ -243,7 +293,9 @@ const Header = ({ onDrawerToggle }) => (
               </Search>
             </Grid>
           )}
-          <Grid item xs />
+          <Grid item xs>
+            <Subscription />
+          </Grid>
           <Grid item>
             {CHAT_AND_NOTIFICATION_ICONS && (
               <>
