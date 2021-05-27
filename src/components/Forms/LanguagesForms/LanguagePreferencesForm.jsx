@@ -4,7 +4,8 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Grid, Typography } from '@material-ui/core';
 import SelectElement from '../FormElements/SelectElement';
-import { commonFormStyles, languages } from '../../../constants/formData';
+import { commonFormStyles, systemLanguages } from '../../../constants/formData';
+import languages from '../../../constants/languages';
 
 const LanguagePreferencesForm = ({ inputFields, handleChange, isModified }) => {
   const classes = commonFormStyles();
@@ -51,7 +52,7 @@ const LanguagePreferencesForm = ({ inputFields, handleChange, isModified }) => {
             label={t('Dashboard.Profile.LanguagePreferences.emailLanguage')}
             value={emailLanguage}
             onChange={handleChange}
-            selectData={languages}
+            selectData={systemLanguages}
             tooltipText={t(
               'Dashboard.Profile.LanguagePreferences.emailTooltip',
             )}

@@ -108,7 +108,7 @@ const SecurityTab = () => {
         <Grid container spacing={6}>
           <Grid item xs={12} sm={8}>
             <TextField
-              disabled={!isModified}
+              disabled
               type='email'
               label={t('Dashboard.Profile.Security.email')}
               value={email}
@@ -208,6 +208,7 @@ const SecurityTab = () => {
           >
             <Toolbar className={classes.toolBar}>
               <Button
+                disabled
                 variant='contained'
                 color={isModified ? 'secondary' : 'primary'}
                 type='submit'
