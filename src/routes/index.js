@@ -10,7 +10,7 @@ const Home = async(() => import('../pages/dashboard/Home'));
 
 // Dashboard components
 const MyProfile = async(() => import('../components/MyProfile'));
-const MyAccount = async(() => import('../components/MyAccount'));
+const MyPayments = async(() => import('../components/MyPayments'));
 const BroadcastArea = async(() => import('../components/BroadcastArea'));
 
 const dashboardRoutes = [
@@ -32,12 +32,12 @@ const dashboardRoutes = [
     children: null,
   },
   {
-    path: DASHBOARD_ROUTES.Account,
-    id: 'Account',
+    path: DASHBOARD_ROUTES.Payments,
+    id: 'Payments',
     icon: <User />,
     enableHeader: true,
-    breadcrumbs: [{ name: 'Account', path: DASHBOARD_ROUTES.Account }],
-    component: MyAccount,
+    breadcrumbs: [{ name: 'Payments', path: DASHBOARD_ROUTES.Payments }],
+    component: MyPayments,
     children: null,
   },
   {

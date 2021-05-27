@@ -8,6 +8,10 @@
       "modify": "Modify",
       "yes": "Yes",
       "no": "No",
+      "Currency": {
+        "usd": "USD",
+        "eur": "EUR"
+      },
       "Days": {
         "monday": "Monday",
         "tuesday": "Tuesday",
@@ -58,10 +62,17 @@
     },
     "UserMenu": {
       "logOut": "Log Out",
-      "profile": "Profile",
       "logOutText": "Do you really want to quit?",
       "yesBtn": "Yes",
-      "cancelBtn": "Cancel"
+      "cancelBtn": "Cancel",
+      "subscriptions": "Subscriptions",
+      "statuses": {
+        "active": "Active",
+        "hold": "On hold",
+        "unknown": "Unknown",
+        "nonExistant": "Non - existant",
+        "late": "late fees"
+      }
     },
     "Dashboard": {
       "Dashboard": {
@@ -144,9 +155,9 @@
           "forgotPassword": "Forgot Password?"
         }
       },
-      "Account": {
-        "name": "Account",
-        "title": "My account",
+      "Payments": {
+        "name": "Payments",
+        "title": "My payments",
         "Tabs": {
           "transaction": "All Transaction",
           "myPlan": "My Plan"
@@ -161,15 +172,14 @@
         "action": "Action",
         "cancelPayment": "Cancel payment",
         "downloadInvoice": "Download invoice as PDF",
-        "card": "Card",
-        "cardNumber": "Number",
-        "expirationDate": "Expiration Date"
+        "newPlan": "New Plan",
+        "edit": "Edit",
+        "editSubscription": "Edit Subscription",
+        "currencyLabel": "Choose your currency"
       },
       "BroadcastArea": {
         "name": "Broadcast Area",
         "title": "Broadcast Area",
-        "caption": "DISCOVERING LIFE IN THE TEN",
-        "subCaption": "WORLD KABBALAH CONVENTION 2021",
         "broadcast": "Broadcast",
         "broadcastLanguage": "Broadcast languages",
         "loading": "Loading...",
