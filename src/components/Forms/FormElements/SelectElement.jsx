@@ -13,11 +13,17 @@ const useStyles = makeStyles({
   },
   label: {
     color: '#263238',
-    paddingRight: 30
+    paddingRight: 30,
+    fontSize: 18,
+    position: 'relative',
+    width: 'max-content',
+    '& + .MuiInput-formControl': {
+      marginTop: 0,
+    },
   },
   selectItem: {
     '&.MuiSelect-select': {
-      paddingRight: '0',
+      paddingRight: 0,
     },
   },
 });

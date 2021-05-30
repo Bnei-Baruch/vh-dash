@@ -29,6 +29,7 @@ import { CHAT_AND_NOTIFICATION_ICONS, SEARCH_BAR } from '../shared/constants';
 import { setLoggedInUser } from '../redux/actions/userActions';
 import ModalWindow from './ui/ModalWindow';
 import { DASHBOARD_ROUTES } from '../routes/dashboardRoutes';
+import { setStatusColor } from '../shared/helper';
 
 const AppBar = styled(MuiAppBar)`
   background: ${props => props.theme.header.background};
@@ -232,21 +233,8 @@ const Subscription = () => {
   const history = useHistory();
   const { t } = useTranslation();
 
-  const setStatusColor = value => {
-    switch (value) {
-      case 'Active':
-        return '#9CCB3B';
-      case 'hold':
-      case 'late':
-        return '#FF9800';
-      case 'nonExistant':
-        return '#D32F2F';
-      default:
-        return '#d3d3d3';
-    }
-  };
-
-  const onBtnClick = () => history.push(`${DASHBOARD_ROUTES.Payments}?my-plan`);
+  const onChipClick = () =>
+    history.push(`${DASHBOARD_ROUTES.Payments}?my-plan`);
 
   return (
     <Box justifyContent='flex-end' display='flex' alignItems='baseline'>
@@ -261,7 +249,7 @@ const Subscription = () => {
           margin: '0 10px',
           cursor: 'pointer',
         }}
-        onClick={onBtnClick}
+        onClick={onChipClick}
       />
     </Box>
   );
