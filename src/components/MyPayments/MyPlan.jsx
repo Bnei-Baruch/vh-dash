@@ -46,6 +46,12 @@ const mockData = [
   },
 ];
 
+const initialFields = {
+  amount: '',
+  currency: 'USD',
+  subscription: 'active',
+};
+
 const MyPlan = () => {
   const classes = useStyles();
   const { t } = useTranslation();
@@ -65,10 +71,18 @@ const MyPlan = () => {
   ];
 
   const [windowOpen, setWindowOpen] = useState(false);
+  const [inputFields, setInputFields] = useState(initialFields);
 
   const onEdit = () => setWindowOpen(true);
 
-  const handleClose = () => setWindowOpen(false);
+  const handleClose = () => {
+    setWindowOpen(false);
+    setInputFields(initialFields);
+  };
+
+  const handleChange = (field, value) => {
+    setInputFields(prevState => ({ ...prevState, [field]: value }));
+  };
 
   const onSubmit = () => console.log('Submit plan');
 
@@ -81,7 +95,7 @@ const MyPlan = () => {
             .split('/');
 
           return (
-            <Grid key={item.id} item xs={4}>
+            <Grid key={item.id} item xs={12} md={4}>
               <Card className={classes.root}>
                 <CardContent>
                   <Typography gutterBottom variant='h4' component='h2'>
@@ -130,7 +144,13 @@ const MyPlan = () => {
           );
         })}
       </Grid>
-      <EditDialog open={windowOpen} onClose={handleClose} onSubmit={onSubmit} />
+      <EditDialog
+        open={windowOpen}
+        onClose={handleClose}
+        onSubmit={onSubmit}
+        inputFields={inputFields}
+        handleChange={handleChange}
+      />
     </>
   ) : (
     <Button

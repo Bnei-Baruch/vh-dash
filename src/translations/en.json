@@ -71,7 +71,7 @@
         "hold": "On hold",
         "unknown": "Unknown",
         "nonExistant": "Non - existant",
-        "late": "late fees"
+        "late": "Late fees"
       }
     },
     "Dashboard": {
@@ -175,7 +175,9 @@
         "newPlan": "New Plan",
         "edit": "Edit",
         "editSubscription": "Edit Subscription",
-        "currencyLabel": "Choose your currency"
+        "currencyLabel": "Choose your currency",
+        "subscriptionLabel": "Change the status of subscription",
+        "amountLabel": "How much are you paying?"
       },
       "BroadcastArea": {
         "name": "Broadcast Area",

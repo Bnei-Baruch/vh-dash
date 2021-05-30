@@ -80,6 +80,17 @@ export const currencyData = [
   { code: 'EUR', label: i18next.t('Global.Currency.eur') },
 ];
 
+export const subscriptionData = [
+  { code: 'active', label: i18next.t('UserMenu.statuses.active') },
+  { code: 'hold', label: i18next.t('UserMenu.statuses.hold') },
+  { code: 'late', label: i18next.t('UserMenu.statuses.late') },
+  {
+    code: 'nonExistant',
+    label: i18next.t('UserMenu.statuses.nonExistant'),
+  },
+  { code: 'Unknown', label: i18next.t('UserMenu.statuses.unknown') },
+];
+
 export const genderData = [
   {
     code: 'male',
