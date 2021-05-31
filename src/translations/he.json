@@ -1,231 +1,240 @@
 {
-    "translation": {
+  "translation": {
+    "Global": {
+      "inputPlaceholder": "הזן את {{input}}",
+      "formErrorMsg": "הזן את הפרטים שלך",
+      "saveBtn": "לשמור שינויים",
+      "cancelBtn": "לבטל",
+      "modify": "לשנות",
+      "yes": "כן",
+      "no": "לא",
+      "Currency": {
+        "usd": "USD",
+        "eur": "EUR"
+      },
+      "Days": {
+        "monday": "יום שני",
+        "tuesday": "יום שלישי",
+        "wednesday": "יום רביעי",
+        "thursday": "יום חמישי",
+        "friday": "יום שישי",
+        "saturday": "שבת",
+        "sunday": "יום ראשון"
+      },
+      "Months": {
+        "january": "ינואר",
+        "february": "פברואר",
+        "march": "במרץ",
+        "april": "אפריל",
+        "may": "אולי",
+        "june": "יוני",
+        "july": "יולי",
+        "august": "אוגוסט",
+        "september": "ספטמבר",
+        "october": "אוקטובר",
+        "november": "נובמבר",
+        "december": "דצמבר"
+      },
+      "Subscription": {
+        "active": "Active",
+        "pause": "Pause",
+        "cancel": "Cancel"
+      }
+    },
+    "Languages": {
+      "English": "אנגלית",
+      "Russian": "רוסית",
+      "Hebrew": "עברית",
+      "Spanish": "ספרדית",
+      "streetAddressPlaceholder": "הזן את כתובת הרחוב שלך"
+    },
+    "Home": {
+      "arvut": "ערבות",
+      "watchBtn": "לצפיה",
+      "noLiveEvent": "אין שידור חי",
+      "noEvent": "אין אירועים",
+      "currentEvent": "אירוע נוכחי",
+      "totalConnections": "מחוברים למערכת",
+      "tensNumber": "מספר עשירייות מחוברות",
+      "tenFriends": "חברים מהעשירייה שלך",
+      "today": "היום",
+      "tomorrow": "מחר",
+      "yesterday": "אתמול",
+      "events": "אירועים",
+      "welcomeBack": "ברוך שובך",
+      "notActive": "לא פעיל",
+      "active": "פעיל",
+      "watchRecordedBtn": "צפה שהוקלט"
+    },
+    "UserMenu": {
+      "logOut": "להתנתק",
+      "profile": "פרופיל",
+      "logOutText": "האם את/ה באמת רוצה לצאת?",
+      "yesBtn": "כן",
+      "cancelBtn": "לבטל"
+    },
+    "Dashboard": {
+      "Dashboard": {
+        "name": "לוח מחוונים"
+      },
+      "Profile": {
+        "name": "פרופיל",
+        "title": "הפרופיל שלי",
+        "Tabs": {
+          "personal": "אישי",
+          "framework": "המסגרת שלי",
+          "skills": "הכישורים שלי",
+          "notification": "הודעה",
+          "security": "אבטחה",
+          "languages": "שפה",
+          "otherInformations": "מידע אחר"
+        },
+        "PersonalForm": {
+          "name": "אישי",
+          "firstName": "שם פרטי",
+          "firstNamePlaceholder": "הכנס/הכניסי את השם הפרטי שלך",
+          "dateOfBirth": "תאריך לידה",
+          "gender": {
+            "label": "מין",
+            "male": "זכר",
+            "female": "נקבה"
+          },
+          "fullName": "הזן/י את שמך המלא בשפת האם שלך",
+          "fullNamePlaceholder": "הכנס/הכניסי את שמך המלא",
+          "lastName": "שם משפחה",
+          "lastNamePlaceholder": "הזן/י את שם המשפחה שלך",
+          "country": "ארץ מוצא",
+          "primaryLanguage": "שפת אם",
+          "phoneNumber": "מספר טלפון",
+          "phoneNumberPlaceholder": "הכנס/הכניסי את מספר הטלפון שלך",
+          "saveBtn": "שמור/שמרי שינויים",
+          "maritalStatus": {
+            "single": "רווק",
+            "married": "נשואים",
+            "divorced": "גרוש",
+            "widowed": "אלמנה",
+            "label": "מצב משפחתי"
+          }
+        },
+        "LoginForm": {
+          "name": "פרטי כניסה",
+          "email": "דוא\"ל",
+          "emailPlaceholder": "הכנס/הכניסי את כתובת הדוא\"ל שלך",
+          "password": "הכנס/הכניסי את הסיסמה שלך",
+          "passwordPlaceholder": "הכנס/הכניסי את הסיסמה שלך",
+          "saveBtn": "שמור/שמרי שינויים"
+        },
+        "SocialForm": {
+          "name": "חשבונות הרשת החברתית שלי",
+          "facebook": "פרופיל הפייסבוק שלך",
+          "facebookPlaceholder": "הזן/ני פרופיל פייסבוק",
+          "youtube": "פרופיל YouTube שלך",
+          "youtubePlaceholder": "הזן/ני פרופיל Youtube",
+          "instagram": "החשבון שלך באינסטגרם",
+          "instagramPlaceholder": "הכנס/ הכניסי את הכינוי שלך באינסטגרם",
+          "linked": "הפרופיל Linkedin שלך",
+          "linkedPlaceholder": "הזן פרופיל לינקדאין",
+          "twitter": "החשבון שלך בטוויטר",
+          "twitterPlaceholder": " היכנס לידית הטוויטר",
+          "skype": " ידית הסקייפ שלך",
+          "skypePlaceholder": " הזן את הידית של סקייפ",
+          "connectBtn": " לְחַבֵּר"
+        },
+        "PhysicalLocationForm": {
+          "name": "המיקום הפיזי",
+          "streetAddress": "כתובת הרחוב",
+          "postalCode": "המיקוד",
+          "country": "ארץ",
+          "stateRegion": "שם המחוז/אזור"
+        },
+        "socialFormName": "מספרי הטלפון שלי",
+        "Emails": {
+          "name": "האימיילים שלי",
+          "primaryEmail": "דוא\"ל עיקרי",
+          "alternativeEmail": "דואר אלקטרוני חלופי {{number}}",
+          "emailError": "הזן כתובת דואר אלקטרוני נכונה"
+        },
         "Languages": {
-            "English": "אנגלית",
-            "Russian": "רוסית",
-            "Hebrew": "עברית",
-            "Spanish": "ספרדית",
-            "streetAddressPlaceholder": "הזן את כתובת הרחוב שלך"
+          "name": "שפה",
+          "firstLanguage": "שפת האם",
+          "otherLanguage": "שפה אחרת {{number}}"
         },
-        "Home": {
-            "arvut": "ערבות",
-            "watchBtn": "לצפיה",
-            "noLiveEvent": "אין שידור חי",
-            "noEvent": "אין אירועים",
-            "currentEvent": "אירוע נוכחי",
-            "totalConnections": "מחוברים למערכת",
-            "tensNumber": "מספר עשירייות מחוברות",
-            "tenFriends": "חברים מהעשירייה שלך",
-            "today": "היום",
-            "tomorrow": "מחר",
-            "yesterday": "אתמול",
-            "events": "אירועים",
-            "welcomeBack": "ברוך שובך",
-            "notActive": "לא פעיל",
-            "active": "פעיל",
-            "watchRecordedBtn": "צפה שהוקלט"
+        "LanguagePreferences": {
+          "name": "העדפות השפה",
+          "emailLanguage": "שפת דוא\"ל",
+          "listeningLanguage": "שפת האזנה",
+          "listeningTooltip": "לורם איפסום דולור לשבת אמט, קונסטרוקטור אדיפיסינג אליט. פורוס לשבת לקטוס מגורים סאפיאן, קוויסק אולטריס.",
+          "emailTooltip": "לורם איפסום דולור לשבת אמט, קונסטרוקטור אדיפיסינג אליט. פורוס לשבת לקטוס מגורים סאפיאן, קוויסק אולטריס.",
+          "readingLanguage": "שפת קריאה",
+          "readingTooltip": "לורם איפסום דולור לשבת אמט, קונסטרוקטור אדיפיסינג אליט. פורוס לשבת לקטוס מגורים סאפיאן, קוויסק אולטריס."
         },
-        "UserMenu": {
-            "logOut": "להתנתק",
-            "profile": "פרופיל",
-            "logOutText": "האם את/ה באמת רוצה לצאת?",
-            "yesBtn": "כן",
-            "cancelBtn": "לבטל"
+        "OtherInformation": {
+          "education": "חינוך",
+          "startYear": "שנת התחלה",
+          "studyFramework": "מסגרת לימודים",
+          "ten": "עשר",
+          "tenName": "שם של עשר, אם יש קבוצה",
+          "studyGroup": "יש לך קבוצת לימוד?",
+          "wantStudyGroup": "אתה רוצה קבוצת לימוד?"
         },
-        "Dashboard": {
-            "Dashboard": {
-                "name": "לוח מחוונים"
-            },
-            "Profile": {
-                "name": "פרופיל",
-                "title": "הפרופיל שלי",
-                "Tabs": {
-                    "personal": "אישי",
-                    "framework": "המסגרת שלי",
-                    "skills": "הכישורים שלי",
-                    "notification": "הודעה",
-                    "security": "אבטחה",
-                    "languages": "שפה",
-                    "otherInformations": "מידע אחר"
-                },
-                "PersonalForm": {
-                    "name": "אישי",
-                    "firstName": "שם פרטי",
-                    "firstNamePlaceholder": "הכנס/הכניסי את השם הפרטי שלך",
-                    "dateOfBirth": "תאריך לידה",
-                    "gender": {
-                        "label": "מין",
-                        "male": "זכר",
-                        "female": "נקבה"
-                    },
-                    "fullName": "הזן/י את שמך המלא בשפת האם שלך",
-                    "fullNamePlaceholder": "הכנס/הכניסי את שמך המלא",
-                    "lastName": "שם משפחה",
-                    "lastNamePlaceholder": "הזן/י את שם המשפחה שלך",
-                    "country": "ארץ מוצא",
-                    "primaryLanguage": "שפת אם",
-                    "phoneNumber": "מספר טלפון",
-                    "phoneNumberPlaceholder": "הכנס/הכניסי את מספר הטלפון שלך",
-                    "saveBtn": "שמור/שמרי שינויים",
-                    "maritalStatus": {
-                        "single": "רווק",
-                        "married": "נשואים",
-                        "divorced": "גרוש",
-                        "widowed": "אלמנה",
-                        "label": "מצב משפחתי"
-                    }
-                },
-                "LoginForm": {
-                    "name": "פרטי כניסה",
-                    "email": "דוא\"ל",
-                    "emailPlaceholder": "הכנס/הכניסי את כתובת הדוא\"ל שלך",
-                    "password": "הכנס/הכניסי את הסיסמה שלך",
-                    "passwordPlaceholder": "הכנס/הכניסי את הסיסמה שלך",
-                    "saveBtn": "שמור/שמרי שינויים"
-                },
-                "SocialForm": {
-                    "name": "חשבונות הרשת החברתית שלי",
-                    "facebook": "פרופיל הפייסבוק שלך",
-                    "facebookPlaceholder": "הזן/ני פרופיל פייסבוק",
-                    "youtube": "פרופיל YouTube שלך",
-                    "youtubePlaceholder": "הזן/ני פרופיל Youtube",
-                    "instagram": "החשבון שלך באינסטגרם",
-                    "instagramPlaceholder": "הכנס/ הכניסי את הכינוי שלך באינסטגרם",
-                    "linked": "הפרופיל Linkedin שלך",
-                    "linkedPlaceholder": "הזן פרופיל לינקדאין",
-                    "twitter": "החשבון שלך בטוויטר",
-                    "twitterPlaceholder": " היכנס לידית הטוויטר",
-                    "skype": " ידית הסקייפ שלך",
-                    "skypePlaceholder": " הזן את הידית של סקייפ",
-                    "connectBtn": " לְחַבֵּר"
-                },
-                "PhysicalLocationForm": {
-                    "name": "המיקום הפיזי",
-                    "streetAddress": "כתובת הרחוב",
-                    "postalCode": "המיקוד",
-                    "country": "ארץ",
-                    "stateRegion": "שם המחוז/אזור"
-                },
-                "socialFormName": "מספרי הטלפון שלי",
-                "Emails": {
-                    "name": "האימיילים שלי",
-                    "primaryEmail": "דוא\"ל עיקרי",
-                    "alternativeEmail": "דואר אלקטרוני חלופי {{number}}",
-                    "emailError": "הזן כתובת דואר אלקטרוני נכונה"
-                },
-                "Languages": {
-                    "name": "שפה",
-                    "firstLanguage": "שפת האם",
-                    "otherLanguage": "שפה אחרת {{number}}"
-                },
-                "LanguagePreferences": {
-                    "name": "העדפות השפה",
-                    "emailLanguage": "שפת דוא\"ל",
-                    "listeningLanguage": "שפת האזנה",
-                    "listeningTooltip": "לורם איפסום דולור לשבת אמט, קונסטרוקטור אדיפיסינג אליט. פורוס לשבת לקטוס מגורים סאפיאן, קוויסק אולטריס.",
-                    "emailTooltip": "לורם איפסום דולור לשבת אמט, קונסטרוקטור אדיפיסינג אליט. פורוס לשבת לקטוס מגורים סאפיאן, קוויסק אולטריס.",
-                    "readingLanguage": "שפת קריאה",
-                    "readingTooltip": "לורם איפסום דולור לשבת אמט, קונסטרוקטור אדיפיסינג אליט. פורוס לשבת לקטוס מגורים סאפיאן, קוויסק אולטריס."
-                },
-                "OtherInformation": {
-                    "education": "חינוך",
-                    "startYear": "שנת התחלה",
-                    "studyFramework": "מסגרת לימודים",
-                    "ten": "עשר",
-                    "tenName": "שם של עשר, אם יש קבוצה",
-                    "studyGroup": "יש לך קבוצת לימוד?",
-                    "wantStudyGroup": "אתה רוצה קבוצת לימוד?"
-                },
-                "Security": {
-                    "name": "פרטי כניסה",
-                    "email": "דואר אלקטרוני",
-                    "googleConnected": "גוגל מחובר",
-                    "googleTooltip": "לורם איפסום דולור לשבת אמט, קונסטרוקטור אדיפיסינג אליט. פורוס לשבת לקטוס מגורים סאפיאן, קוויסק אולטריס.",
-                    "facebookConnected": "פייסבוק מחוברת",
-                    "facebookTooltip": "לורם איפסום דולור לשבת אמט, קונסטרוקטור אדיפיסינג אליט. פורוס לשבת לקטוס מגורים סאפיאן, קוויסק אולטריס.",
-                    "forgotPassword": "שכחת את הסיסמה?"
-                }
-            },
-            "Account": {
-                "name": "חֶשְׁבּוֹן",
-                "title": "החשבון שלי",
-                "Tabs": {
-                    "transaction": "כל העסקה",
-                    "payment": " שיטות תשלום",
-                    "myPlan": "התוכנית שלי"
-                },
-                "paidOn": "שילם עבור",
-                "purpose": "מַטָרָה",
-                "paymentMethod": "אמצעי תשלום",
-                "paymentType": "סוג תשלום",
-                "amount": "כמות",
-                "currency": "מַטְבֵּעַ",
-                "status": "סטָטוּס",
-                "action": "פעולה",
-                "cancelPayment": "בטל את התשלום",
-                "downloadInvoice": "הורד חשבונית כ- PDF",
-                "card": "כַּרְטִיס",
-                "cardNumber": "מספר",
-                "expirationDate": "תאריך תפוגה"
-            },
-            "BroadcastArea": {
-                "name": "עמוד הכנס",
-                "title": "עמוד הכנס",
-                "caption": "גילוי החיים בעשריה",
-                "subCaption": "קבלית העולם העולמית 2021",
-                "broadcast": "מִשׁדָר",
-                "broadcastLanguage": "שפות שידור",
-                "loading": "טוען…",
-                "noBroadcast": "אין שידור עכשיו",
-                "Question": {
-                    "title": "שלח שאלה",
-                    "label": "מה השאלה שלך?",
-                    "placeholder": "הזן את השאלה שלך ולחץ על הכפתור",
-                    "button": "לִשְׁאוֹל",
-                    "successMsg": "נשלח בהצלחה!",
-                    "errorMsg": "שגיאה לא צפויה. בבקשה נסה שוב!"
-                },
-                "Annoucements": {
-                    "title": "הודעות",
-                    "text": "הבית הווירטואלי שלנו כולל תשתית פיזית וכוח אדם לשמירה על הפעילות המקיפה שלנו ולשיפור מערכות מקוונות לחיבור אופטימלי במהלך שיעורי קבלה יומיים, מפגשים חברתיים, חגים וארוחות. זה מאפשר לכל חבר אינטראקציה מלאה בשפתם, הן עם עשרת הקלי שלהם העולמי מ- 72 מדינות.",
-                    "donationsbuttone": "לתרומה",
-                    "donationsquote": "\"אך ורק בהתפשטות חכמת הקבלה נזכה לגאולה השלמה\" (הרב יהודה אשלג, \"בעל הסולם\").",
-                    "donations": "בואו להיות שותפים במפעל ההפצה של עמותת \"בני ברוך - קבלה לעם\"",
-                    "donationslink": "http://bit.ly/2ZUteWn"
-                }
-            }
-        },
-        "Global": {
-            "Days": {
-                "monday": "יום שני",
-                "tuesday": "יום שלישי",
-                "wednesday": "יום רביעי",
-                "thursday": "יום חמישי",
-                "friday": "יום שישי",
-                "saturday": "שבת",
-                "sunday": "יום ראשון"
-            },
-            "Months": {
-                "january": "ינואר",
-                "february": "פברואר",
-                "march": "במרץ",
-                "april": "אפריל",
-                "may": "אולי",
-                "june": "יוני",
-                "july": "יולי",
-                "august": "אוגוסט",
-                "september": "ספטמבר",
-                "october": "אוקטובר",
-                "november": "נובמבר",
-                "december": "דצמבר"
-            },
-            "inputPlaceholder": "הזן את {{input}}",
-            "formErrorMsg": "הזן את הפרטים שלך",
-            "saveBtn": "לשמור שינויים",
-            "cancelBtn": "לבטל",
-            "modify": "לשנות",
-            "yes": "כן",
-            "no": "לא"
+        "Security": {
+          "name": "פרטי כניסה",
+          "email": "דואר אלקטרוני",
+          "googleConnected": "גוגל מחובר",
+          "googleTooltip": "לורם איפסום דולור לשבת אמט, קונסטרוקטור אדיפיסינג אליט. פורוס לשבת לקטוס מגורים סאפיאן, קוויסק אולטריס.",
+          "facebookConnected": "פייסבוק מחוברת",
+          "facebookTooltip": "לורם איפסום דולור לשבת אמט, קונסטרוקטור אדיפיסינג אליט. פורוס לשבת לקטוס מגורים סאפיאן, קוויסק אולטריס.",
+          "forgotPassword": "שכחת את הסיסמה?"
         }
+      },
+      "Account": {
+        "name": "חֶשְׁבּוֹן",
+        "title": "החשבון שלי",
+        "Tabs": {
+          "transaction": "כל העסקה",
+          "payment": " שיטות תשלום",
+          "myPlan": "התוכנית שלי"
+        },
+        "paidOn": "שילם עבור",
+        "purpose": "מַטָרָה",
+        "paymentMethod": "אמצעי תשלום",
+        "paymentType": "סוג תשלום",
+        "amount": "כמות",
+        "currency": "מַטְבֵּעַ",
+        "status": "סטָטוּס",
+        "action": "פעולה",
+        "cancelPayment": "בטל את התשלום",
+        "downloadInvoice": "הורד חשבונית כ- PDF",
+        "card": "כַּרְטִיס",
+        "cardNumber": "מספר",
+        "expirationDate": "תאריך תפוגה"
+      },
+      "BroadcastArea": {
+        "name": "עמוד הכנס",
+        "title": "עמוד הכנס",
+        "caption": "גילוי החיים בעשריה",
+        "subCaption": "קבלית העולם העולמית 2021",
+        "broadcast": "מִשׁדָר",
+        "broadcastLanguage": "שפות שידור",
+        "loading": "טוען…",
+        "noBroadcast": "אין שידור עכשיו",
+        "Question": {
+          "title": "שלח שאלה",
+          "label": "מה השאלה שלך?",
+          "placeholder": "הזן את השאלה שלך ולחץ על הכפתור",
+          "button": "לִשְׁאוֹל",
+          "successMsg": "נשלח בהצלחה!",
+          "errorMsg": "שגיאה לא צפויה. בבקשה נסה שוב!"
+        },
+        "Annoucements": {
+          "title": "הודעות",
+          "text": "הבית הווירטואלי שלנו כולל תשתית פיזית וכוח אדם לשמירה על הפעילות המקיפה שלנו ולשיפור מערכות מקוונות לחיבור אופטימלי במהלך שיעורי קבלה יומיים, מפגשים חברתיים, חגים וארוחות. זה מאפשר לכל חבר אינטראקציה מלאה בשפתם, הן עם עשרת הקלי שלהם העולמי מ- 72 מדינות.",
+          "donationsButton": "לתרומה",
+          "donationsQuote": "\"אך ורק בהתפשטות חכמת הקבלה נזכה לגאולה השלמה\" (הרב יהודה אשלג, \"בעל הסולם\").",
+          "donations": "בואו להיות שותפים במפעל ההפצה של עמותת \"בני ברוך - קבלה לעם\"",
+          "donationsLink": "http://bit.ly/2ZUteWn"
+        }
+      }
     }
+  }
 }

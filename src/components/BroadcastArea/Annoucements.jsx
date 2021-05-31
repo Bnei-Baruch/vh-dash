@@ -34,10 +34,10 @@ const Annoucements = () => {
       </Typography>
       <Box>{t('Dashboard.BroadcastArea.Annoucements.text')}</Box>
       <Box className={classes.donations}>{t('Dashboard.BroadcastArea.Annoucements.donations')}</Box>
-      <Box className={classes.donationsQuote}>{t('Dashboard.BroadcastArea.Annoucements.donationsquote')}</Box>
-      <a target="_blank" rel="noopener noreferrer" href={t('Dashboard.BroadcastArea.Annoucements.donationslink')}>
+      <Box className={classes.donationsQuote}>{t('Dashboard.BroadcastArea.Annoucements.donationsQuote')}</Box>
+      <a target="_blank" rel="noopener noreferrer" href={t('Dashboard.BroadcastArea.Annoucements.donationsLink')}>
         <Button variant="contained" color="primary">
-          {t('Dashboard.BroadcastArea.Annoucements.donationsbuttone')} 
+          {t('Dashboard.BroadcastArea.Annoucements.donationsButton')} 
         </Button>
       </a>
     </div>
