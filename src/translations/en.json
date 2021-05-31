@@ -34,6 +34,11 @@
         "october": "October",
         "november": "November",
         "december": "December"
+      },
+      "Subscription": {
+        "active": "Active",
+        "pause": "Pause",
+        "cancel": "Cancel"
       }
     },
     "Languages": {
