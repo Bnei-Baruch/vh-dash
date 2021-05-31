@@ -17,8 +17,7 @@ import {
 } from '@material-ui/core';
 import { withStyles } from '@material-ui/styles';
 import SelectElement from '../Forms/FormElements/SelectElement';
-import { currencyData, subscriptionData } from '../../constants/formData';
-import { setStatusColor } from '../../shared/helper';
+import { currencyData } from '../../constants/formData';
 
 const CustomInput = withStyles(theme => ({
   input: {
@@ -89,6 +88,25 @@ export const EditDialog = ({
   const { t } = useTranslation();
   const { subscription, amount, currency } = inputFields;
 
+  const subscriptionData = [
+    { code: 'active', label: t('Global.Subscription.active') },
+    { code: 'pause', label: t('Global.Subscription.pause') },
+    { code: 'cancel', label: t('Global.Subscription.cancel') },
+  ];
+
+  const setSubscriptionColor = value => {
+    switch (value) {
+      case 'active':
+        return '#9CCB3B';
+      case 'pause':
+        return '#FF9800';
+      case 'cancel':
+        return '#D32F2F';
+      default:
+        return '#d3d3d3';
+    }
+  };
+
   return (
     <Dialog
       onClose={onClose}
@@ -116,7 +134,7 @@ export const EditDialog = ({
                   input={
                     <CustomInput
                       style={{
-                        backgroundColor: setStatusColor(subscription),
+                        backgroundColor: setSubscriptionColor(subscription),
                         borderRadius: 15,
                         marginLeft: 20,
                       }}
