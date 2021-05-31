@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core/styles';
@@ -37,6 +37,7 @@ const MyProfileTab = () => {
   const [isModified, setIsModified] = useState(false);
   const [isValid, setIsValid] = useState(true);
   const [errorFields, setErrorFields] = useState({ ...initialErrorFields });
+  const [copiedFields, setCopiedFields] = useState({});
   const [inputFields, setInputFields] = useState({
     ...initialFields,
     firstname: state.firstName,
@@ -47,6 +48,11 @@ const MyProfileTab = () => {
     maritalStatus: 'single',
     primaryEmail: state.email,
   });
+
+  useEffect(() => {
+    setCopiedFields(inputFields);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleChange = (field, value) =>
     setInputFields(prevState => ({ ...prevState, [field]: value }));
@@ -60,10 +66,10 @@ const MyProfileTab = () => {
           [field]: t('Dashboard.Profile.Emails.emailError'),
         }));
         setIsValid(false);
-  
+
         return;
       }
-  
+
       setErrorFields(initialErrorFields);
       setIsValid(true);
     }
@@ -83,7 +89,8 @@ const MyProfileTab = () => {
   const onCancel = () => {
     setIsModified(false);
     setErrorFields(initialErrorFields);
-  }
+    setInputFields(copiedFields);
+  };
 
   const buttonText = isModified ? t('Global.saveBtn') : t('Global.modify');
 

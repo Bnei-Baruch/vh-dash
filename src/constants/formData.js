@@ -63,7 +63,7 @@ export const initialErrorFields = {
   whatsappPhone: [],
 };
 
-export const languages = [
+export const systemLanguages = [
   { code: 'English', label: i18next.t('Languages.English') },
   { code: 'Russian', label: i18next.t('Languages.Russian') },
   { code: 'Spanish', label: i18next.t('Languages.Spanish') },
@@ -73,6 +73,22 @@ export const languages = [
 export const studyGroup = [
   { code: 'Yes', label: i18next.t('Global.yes') },
   { code: 'No', label: i18next.t('Global.no') },
+];
+
+export const currencyData = [
+  { code: 'USD', label: i18next.t('Global.Currency.usd') },
+  { code: 'EUR', label: i18next.t('Global.Currency.eur') },
+];
+
+export const subscriptionData = [
+  { code: 'active', label: i18next.t('UserMenu.statuses.active') },
+  { code: 'hold', label: i18next.t('UserMenu.statuses.hold') },
+  { code: 'late', label: i18next.t('UserMenu.statuses.late') },
+  {
+    code: 'nonExistant',
+    label: i18next.t('UserMenu.statuses.nonExistant'),
+  },
+  { code: 'Unknown', label: i18next.t('UserMenu.statuses.unknown') },
 ];
 
 export const genderData = [

@@ -23,6 +23,7 @@ import {
 import { ExpandLess, ExpandMore } from '@material-ui/icons';
 
 import { sidebarRoutes as routes } from '../routes/index';
+import { DASHBOARD_ROOT } from '../routes/dashboardRoutes';
 
 const NavLink = React.forwardRef((props, ref) => (
   <RouterNavLink innerRef={ref} {...props} />
@@ -248,8 +249,8 @@ const Sidebar = ({ classes, staticContext, location, ...rest }) => {
   return (
     <Drawer variant='permanent' {...rest}>
       <Brand>
-        <Link button component={NavLink} exact to='/'>
-          <Avatar alt='Logo' src='/dash/static/img/bb-logo.png' />{' '}
+        <Link button component={NavLink} exact to={DASHBOARD_ROOT}>
+          <Avatar alt='Logo' src='/dash/static/img/bb-logo.png' />
           <Box ml={1}>
             <b>BNEI BARUCH</b>
           </Box>

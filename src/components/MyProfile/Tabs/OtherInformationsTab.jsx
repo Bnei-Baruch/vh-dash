@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, Button, Grid, Toolbar } from '@material-ui/core';
@@ -33,6 +33,12 @@ const OtherInformationsTab = () => {
 
   const [isModified, setIsModified] = useState(false);
   const [inputFields, setInputFields] = useState(initialFields);
+  const [copiedFields, setCopiedFields] = useState({});
+
+  useEffect(() => {
+    setCopiedFields(inputFields);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleChange = (field, value) =>
     setInputFields(prevState => ({ ...prevState, [field]: value }));
@@ -46,6 +52,11 @@ const OtherInformationsTab = () => {
     }
 
     console.log('Submit', inputFields);
+  };
+
+  const onCancel = () => {
+    setIsModified(false);
+    setInputFields(copiedFields);
   };
 
   const buttonText = isModified ? t('Global.saveBtn') : t('Global.modify');
@@ -85,7 +96,7 @@ const OtherInformationsTab = () => {
                 style={{ marginLeft: 20 }}
                 variant='contained'
                 color='default'
-                onClick={() => setIsModified(false)}
+                onClick={onCancel}
               >
                 {t('Global.cancelBtn')}
               </Button>
