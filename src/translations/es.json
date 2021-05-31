@@ -133,6 +133,10 @@
                     "donationslink": "http://bit.ly/2ZWi0kc"
                 }
             }
+        },
+        "Global": {
+            "inputPlaceholder": "Ingrese su {{input}}",
+            "formErrorMsg": "Introduce tus datos"
         }
     }
 }
