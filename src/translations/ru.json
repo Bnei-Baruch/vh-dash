@@ -4,7 +4,8 @@
             "English": "Английский",
             "Russian": "Русский",
             "Hebrew": "Иврит",
-            "Spanish": "Испанский"
+            "Spanish": "Испанский",
+            "streetAddressPlaceholder": "Введите вашу улицу"
         },
         "Home": {
             "arvut": "Арвут",
@@ -19,11 +20,17 @@
             "tomorrow": "Завтра",
             "yesterday": "Вчера",
             "events": "События",
-            "welcomeBack": "Рады возвращению"
+            "welcomeBack": "Рады возвращению",
+            "notActive": "Нет АКТИВНЫХ",
+            "active": "АКТИВНЫЕ",
+            "watchRecordedBtn": "Смотреть запись"
         },
         "UserMenu": {
             "logOut": "Выйти",
-            "profile": "Профиль"
+            "profile": "Профиль",
+            "logOutText": "Вы действительно хотите выйти?",
+            "yesBtn": "Да",
+            "cancelBtn": "Отменить"
         },
         "Dashboard": {
             "Dashboard": {
@@ -39,7 +46,10 @@
                     "personal": "Личная информация",
                     "framework": "Структура",
                     "skills": "Мои навыки",
-                    "notification": "Оповещения"
+                    "notification": "Оповещения",
+                    "security": "Безопасность",
+                    "languages": "Языки",
+                    "otherInformations": "Другая информация"
                 },
                 "PersonalForm": {
                     "name": "Личные данные",
@@ -59,7 +69,14 @@
                     "primaryLanguage": "Родной язык",
                     "phoneNumber": "Мобильный телефон",
                     "phoneNumberPlaceholder": "Введите мобильный номер",
-                    "saveBtn": "Сохранить"
+                    "saveBtn": "Сохранить",
+                    "maritalStatus": {
+                        "label": "Семейный статус",
+                        "single": "Одинокий(-кая)",
+                        "married": "Женат(замужем)",
+                        "divorced": "Разведен(-а)",
+                        "widowed": "Вдовец(вдова)"
+                    }
                 },
                 "LoginForm": {
                     "name": "Логин",
@@ -84,6 +101,52 @@
                     "skype": "Мой аккаунт Skype",
                     "skypePlaceholder": "Введите аккаунт Skype",
                     "connectBtn": "Подключить"
+                },
+                "Security": {
+                    "googleTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
+                    "facebookTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
+                    "name": "Информация для входа",
+                    "email": "Электронные адреса",
+                    "googleConnected": "Google аккаунт",
+                    "facebookConnected": "Facebook аккаунт",
+                    "forgotPassword": "Забыли пароль?"
+                },
+                "Emails": {
+                    "alternativeEmail": "Дополнительный эл. адрес {{number}}",
+                    "name": "Мои эл. адреса",
+                    "primaryEmail": "Основной эл. адрес",
+                    "emailError": "Пожалуйста, введите правильный эл. адрес"
+                },
+                "LanguagePreferences": {
+                    "emailTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
+                    "readingTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
+                    "name": "Настройки языка",
+                    "emailLanguage": "Язык эл. адреса",
+                    "listeningLanguage": "Язык вещания",
+                    "listeningTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
+                    "readingLanguage": "Язык для чтение"
+                },
+                "socialFormName": "Мои мобильные номера",
+                "PhysicalLocationForm": {
+                    "name": "Место проживания",
+                    "streetAddress": "Улица",
+                    "postalCode": "Почтовый индекс",
+                    "country": "Страна",
+                    "stateRegion": "Район/Область"
+                },
+                "OtherInformation": {
+                    "studyGroup": "У вас есть учебная группа?",
+                    "wantStudyGroup": "Вы хотите учебную группу?",
+                    "education": "Образование",
+                    "startYear": "Год начала",
+                    "studyFramework": "Структура обучения",
+                    "tenName": "Имя десятки, если есть группа",
+                    "ten": "Десятка"
+                },
+                "Languages": {
+                    "name": "Языки",
+                    "firstLanguage": "Основной язык",
+                    "otherLanguage": "Другой язык {{number}}"
                 }
             },
             "Account": {
@@ -91,7 +154,8 @@
                 "title": "Мой аккаунт",
                 "Tabs": {
                     "transaction": "Все транзакции",
-                    "payment": "Платежные методы"
+                    "payment": "Платежные методы",
+                    "myPlan": "Мой план"
                 },
                 "paidOn": "Оплачено",
                 "purpose": "Назначение",
@@ -114,7 +178,7 @@
                 "subCaption": "ВСЕМИРНАЯ КОНВЕНЦИЯ КАББАЛА 2021",
                 "broadcast": "Трансляция",
                 "broadcastLanguage": "Язык вещания",
-                "loading": "Загрузка...",
+                "loading": "Загрузка…",
                 "noBroadcast": "Вещание отсутствует",
                 "Question": {
                     "title": "Задайте вопрос",
@@ -132,6 +196,38 @@
                     "donations": "СТАНЕМ РАВНЫМИ ПАРТНЕРАМИ В РАСПРОСТРАНЕНИИ НАУКИ КАББАЛА, КОТОРОЕ ВЕДЕТ НАША ОРГАНИЗАЦИЯ - «БНЕЙ БАРУХ – КАББАЛА ЛААМ»",
                     "donationslink": "http://bit.ly/3bBL0mE"
                 }
+            }
+        },
+        "Global": {
+            "inputPlaceholder": "Введите ваш {{input}}",
+            "formErrorMsg": "Пожалуйста, введите ваши данные",
+            "saveBtn": "Сохранить изменения",
+            "cancelBtn": "Отменить",
+            "modify": "Изменить",
+            "yes": "Да",
+            "no": "Нет",
+            "Days": {
+                "monday": "Понедельник",
+                "tuesday": "Вторник",
+                "wednesday": "Среда",
+                "thursday": "Четверг",
+                "friday": "Пятница",
+                "saturday": "Суббота",
+                "sunday": "Воскресенье"
+            },
+            "Months": {
+                "january": "Январь",
+                "february": "Февраль",
+                "march": "Март",
+                "april": "Апрель",
+                "may": "Май",
+                "june": "Июнь",
+                "july": "Июль",
+                "august": "Август",
+                "september": "Сентябрь",
+                "october": "Октябрь",
+                "november": "Ноябрь",
+                "december": "Декабрь"
             }
         }
     }
