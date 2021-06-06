@@ -45,7 +45,7 @@ const TenForm = ({
             disabled={!isModified}
             type='text'
             label={t('Dashboard.Profile.OtherInformation.tenName')}
-            value={tenName}
+            value={tenName || ''}
             fullWidth
             placeholder={t('Global.inputPlaceholder', {
               input: 'name of ten',

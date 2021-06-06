@@ -46,7 +46,7 @@ const SocialForm = ({ handleChange, isModified }) => {
         <Grid item xs={2} md={1}>
           <img src={Phone} alt='phone' className={styles.image} />
         </Grid>
-        <Grid item xs={10} md={6}>
+        <Grid item xs={10} md={8} lg={6}>
           <MuiPhoneInput
             defaultCountry='us'
             disabled={!isModified}
@@ -61,7 +61,7 @@ const SocialForm = ({ handleChange, isModified }) => {
         <Grid item xs={2} md={1}>
           <img src={Whatsapp} alt='whatsapp' className={styles.image} />
         </Grid>
-        <Grid item xs={10} md={6}>
+        <Grid item xs={10} md={8} lg={6}>
           <MuiPhoneInput
             defaultCountry='us'
             disabled={!isModified}
@@ -76,7 +76,7 @@ const SocialForm = ({ handleChange, isModified }) => {
         <Grid item xs={2} md={1}>
           <img src={Telegram} alt='telegram' className={styles.image} />
         </Grid>
-        <Grid item xs={10} md={6}>
+        <Grid item xs={10} md={8} lg={6}>
           <MuiPhoneInput
             defaultCountry='us'
             disabled={!isModified}

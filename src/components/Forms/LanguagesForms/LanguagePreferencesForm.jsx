@@ -24,7 +24,7 @@ const LanguagePreferencesForm = ({ inputFields, handleChange, isModified }) => {
             id='listeningLanguage'
             disabled={!isModified}
             label={t('Dashboard.Profile.LanguagePreferences.listeningLanguage')}
-            value={listeningLanguage}
+            value={listeningLanguage || ''}
             onChange={handleChange}
             selectData={languages}
             tooltipText={t(
@@ -37,7 +37,7 @@ const LanguagePreferencesForm = ({ inputFields, handleChange, isModified }) => {
             id='readingLanguage'
             disabled={!isModified}
             label={t('Dashboard.Profile.LanguagePreferences.readingLanguage')}
-            value={readingLanguage}
+            value={readingLanguage || ''}
             onChange={handleChange}
             selectData={languages}
             tooltipText={t(
@@ -50,7 +50,7 @@ const LanguagePreferencesForm = ({ inputFields, handleChange, isModified }) => {
             id='emailLanguage'
             disabled={!isModified}
             label={t('Dashboard.Profile.LanguagePreferences.emailLanguage')}
-            value={emailLanguage}
+            value={emailLanguage || ''}
             onChange={handleChange}
             selectData={systemLanguages}
             tooltipText={t(

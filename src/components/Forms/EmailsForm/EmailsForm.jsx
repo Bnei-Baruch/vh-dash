@@ -21,7 +21,7 @@ const EmailsForm = ({
       <Grid container spacing={10}>
         <Grid item xs={12} md={6}>
           <TextField
-            disabled={!isModified}
+            disabled
             type='email'
             label={t('Dashboard.Profile.Emails.primaryEmail')}
             value={inputFields.primaryEmail}
@@ -45,7 +45,7 @@ const EmailsForm = ({
             label={t('Dashboard.Profile.Emails.alternativeEmail', {
               number: '1',
             })}
-            value={inputFields.alternativeEmail1}
+            value={inputFields.alternativeEmail1 || ''}
             fullWidth
             placeholder={t('Global.inputPlaceholder', {
               input: 'alternative email 1',
@@ -68,7 +68,7 @@ const EmailsForm = ({
             label={t('Dashboard.Profile.Emails.alternativeEmail', {
               number: '2',
             })}
-            value={inputFields.alternativeEmail2}
+            value={inputFields.alternativeEmail2 || ''}
             fullWidth
             placeholder={t('Global.inputPlaceholder', {
               input: 'alternative email 1',

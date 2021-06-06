@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Grid, TextField, Typography } from '@material-ui/core';
+import { DatePicker } from '@material-ui/pickers';
 import SelectElement from '../FormElements/SelectElement';
 import {
   commonFormStyles,
@@ -8,11 +9,7 @@ import {
   maritalStatuses,
 } from '../../../constants/formData';
 
-const PersonalForm = ({
-  inputFields,
-  handleChange,
-  isModified,
-}) => {
+const PersonalForm = ({ inputFields, handleChange, isModified }) => {
   const classes = commonFormStyles();
   const { t } = useTranslation();
 
@@ -29,7 +26,7 @@ const PersonalForm = ({
             disabled={!isModified}
             type='text'
             label={t('Dashboard.Profile.PersonalForm.firstName')}
-            value={firstname}
+            value={firstname || ''}
             fullWidth
             placeholder={t(
               'Dashboard.Profile.PersonalForm.firstNamePlaceholder',
@@ -45,7 +42,7 @@ const PersonalForm = ({
             disabled={!isModified}
             type='text'
             label={t('Dashboard.Profile.PersonalForm.lastName')}
-            value={lastname}
+            value={lastname || ''}
             fullWidth
             placeholder={t(
               'Dashboard.Profile.PersonalForm.lastNamePlaceholder',
@@ -57,19 +54,20 @@ const PersonalForm = ({
           />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <TextField
-            disabled={!isModified}
-            type='date'
-            label={t('Dashboard.Profile.PersonalForm.dateOfBirth')}
+          <DatePicker
+            autoOk
+            orientation='landscape'
+            openTo='date'
             value={dob}
+            disableFuture
+            onChange={value => handleChange('dob', value)}
+            label={t('Dashboard.Profile.PersonalForm.dateOfBirth')}
             fullWidth
-            placeholder={t(
-              'Dashboard.Profile.PersonalForm.dateOfBirthPlaceholder',
-            )}
+            disabled={!isModified}
+            format='dd.mm.yyyy'
             InputLabelProps={{
               shrink: true,
             }}
-            onChange={event => handleChange('dob', event.target.value)}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
