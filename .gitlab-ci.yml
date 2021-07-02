@@ -14,7 +14,7 @@ build_staging:
   image: docker:latest
   stage: build
   tags:
-    - dockerbuild
+    - kubernetes
   services:
     - docker:19.03.12-dind
   script:
