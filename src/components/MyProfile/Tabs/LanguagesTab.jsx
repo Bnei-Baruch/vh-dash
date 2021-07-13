@@ -20,37 +20,24 @@ const useStyles = makeStyles({
   },
 });
 
-const initialFields = {
-  firstLanguage: 'English',
-  language1: '',
-  language2: '',
-  language3: '',
-  emailLanguage: '',
-  listeningLanguage: '',
-  readingLanguage: '',
-};
-
-const LanguagesTab = () => {
+const LanguagesTab = ({
+  inputFields,
+  setInputFields,
+  handleChange,
+  onSubmit,
+}) => {
   const classes = useStyles();
   const { t } = useTranslation();
 
   const [isModified, setIsModified] = useState(false);
   const [copiedFields, setCopiedFields] = useState({});
-  const [inputFields, setInputFields] = useState({
-    ...initialFields,
-    firstLanguage: 'English',
-  });
 
   useEffect(() => {
     setCopiedFields(inputFields);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleChange = (field, value) => {
-    setInputFields(prevState => ({ ...prevState, [field]: value }));
-  };
-
-  const onSubmit = event => {
+  const onFormSubmit = event => {
     event.preventDefault();
 
     if (!isModified) {
@@ -58,7 +45,7 @@ const LanguagesTab = () => {
       return;
     }
 
-    console.log('Submit', inputFields);
+    onSubmit();
   };
 
   const onCancel = () => {
@@ -69,7 +56,7 @@ const LanguagesTab = () => {
   const buttonText = isModified ? t('Global.saveBtn') : t('Global.modify');
 
   return (
-    <form noValidate autoComplete='off' onSubmit={onSubmit}>
+    <form noValidate autoComplete='off' onSubmit={onFormSubmit}>
       <Grid container spacing={6}>
         <Grid item xs={12} sm={6}>
           <LanguagesForm

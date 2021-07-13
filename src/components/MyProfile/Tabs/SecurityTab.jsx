@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core/styles';
 import {
@@ -61,34 +61,11 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const initialFields = {
-  email: '',
-  isGoogleConnected: 'Yes',
-  isFacebookConnected: 'No',
-};
-
 const SecurityTab = () => {
   const classes = useStyles();
   const styles = commonFormStyles();
   const { t } = useTranslation();
   const { keycloak } = useSelector(state => state.userReducer.info);
-
-  const [isModified, setIsModified] = useState(false);
-  const [inputFields, setInputFields] = useState(initialFields);
-
-  const handleChange = (field, value) =>
-    setInputFields(prevState => ({ ...prevState, [field]: value }));
-
-  const onSubmit = event => {
-    event.preventDefault();
-
-    if (!isModified) {
-      setIsModified(true);
-      return;
-    }
-
-    console.log('Submit', inputFields);
-  };
 
   const onForgotPasswordClick = () =>
     window.open(
@@ -96,11 +73,8 @@ const SecurityTab = () => {
       '_self',
     );
 
-  const buttonText = isModified ? t('Global.saveBtn') : t('Global.modify');
-  const { email, isGoogleConnected, isFacebookConnected } = inputFields;
-
   return (
-    <form noValidate autoComplete='off' onSubmit={onSubmit}>
+    <form noValidate autoComplete='off'>
       <div className={styles.root}>
         <Typography variant='h4'>
           {t('Dashboard.Profile.Security.name')}
@@ -111,7 +85,7 @@ const SecurityTab = () => {
               disabled
               type='email'
               label={t('Dashboard.Profile.Security.email')}
-              value={email}
+              value={keycloak.profile.email}
               fullWidth
               placeholder={t('Global.inputPlaceholder', {
                 input: 'email',
@@ -119,7 +93,6 @@ const SecurityTab = () => {
               InputLabelProps={{
                 shrink: true,
               }}
-              onChange={event => handleChange('email', event.target.value)}
             />
           </Grid>
           <Grid item xs={12} sm={8} className={classes.linkWrapper}>
@@ -144,13 +117,7 @@ const SecurityTab = () => {
                   tooltipText={t('Dashboard.Profile.Security.googleTooltip')}
                 />
               </FormLabel>
-              <RadioGroup
-                className={classes.radioGroup}
-                value={isGoogleConnected}
-                onChange={event =>
-                  handleChange('isGoogleConnected', event.target.value)
-                }
-              >
+              <RadioGroup className={classes.radioGroup} value='Yes'>
                 <FormControlLabel
                   value='Yes'
                   disabled
@@ -179,13 +146,7 @@ const SecurityTab = () => {
                   tooltipText={t('Dashboard.Profile.Security.facebookTooltip')}
                 />
               </FormLabel>
-              <RadioGroup
-                className={classes.radioGroup}
-                value={isFacebookConnected}
-                onChange={event =>
-                  handleChange('isFacebookConnected', event.target.value)
-                }
-              >
+              <RadioGroup className={classes.radioGroup} value='No'>
                 <FormControlLabel
                   value='Yes'
                   disabled
@@ -201,30 +162,16 @@ const SecurityTab = () => {
               </RadioGroup>
             </FormControl>
           </Grid>
-          <AppBar
-            position='fixed'
-            className={classes.appBar}
-            style={{ background: `${isModified ? '#C9F9DA' : '#fff'}` }}
-          >
+          <AppBar position='fixed' className={classes.appBar}>
             <Toolbar className={classes.toolBar}>
               <Button
                 disabled
                 variant='contained'
-                color={isModified ? 'secondary' : 'primary'}
+                color='primary'
                 type='submit'
               >
-                {buttonText}
+                {t('Global.saveBtn')}
               </Button>
-              {isModified && (
-                <Button
-                  style={{ marginLeft: 20 }}
-                  variant='contained'
-                  color='default'
-                  onClick={() => setIsModified(false)}
-                >
-                  {t('Global.cancelBtn')}
-                </Button>
-              )}
             </Toolbar>
           </AppBar>
         </Grid>

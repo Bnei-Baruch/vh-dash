@@ -27,42 +27,6 @@ export const commonFormStyles = makeStyles(theme => ({
   },
 }));
 
-export const initialFields = {
-  firstname: '',
-  dob: '',
-  gender: '',
-  lastname: '',
-  maritalStatus: '',
-  streetAddress: '',
-  postalCode: '',
-  stateRegion: '',
-  country: '',
-  primaryEmail: '',
-  alternativeEmail1: '',
-  alternativeEmail2: '',
-  phone: '',
-  telegramPhone: '',
-  whatsappPhone: '',
-};
-
-export const initialErrorFields = {
-  firstname: [],
-  dob: [],
-  gender: [],
-  lastname: [],
-  maritalStatus: [],
-  streetAddress: [],
-  postalCode: [],
-  stateRegion: [],
-  country: [],
-  primaryEmail: [],
-  alternativeEmail1: [],
-  alternativeEmail2: [],
-  phone: [],
-  telegramPhone: [],
-  whatsappPhone: [],
-};
-
 export const systemLanguages = [
   { code: 'English', label: i18next.t('Languages.English') },
   { code: 'Russian', label: i18next.t('Languages.Russian') },
@@ -104,19 +68,19 @@ export const genderData = [
 
 export const maritalStatuses = [
   {
-    code: 'single',
+    code: 'Single',
     label: i18next.t('Dashboard.Profile.PersonalForm.maritalStatus.single'),
   },
   {
-    code: 'married',
+    code: 'Married',
     label: i18next.t('Dashboard.Profile.PersonalForm.maritalStatus.married'),
   },
   {
-    code: 'divorced',
+    code: 'Divorced',
     label: i18next.t('Dashboard.Profile.PersonalForm.maritalStatus.divorced'),
   },
   {
-    code: 'widowed',
+    code: 'Widowed',
     label: i18next.t('Dashboard.Profile.PersonalForm.maritalStatus.widowed'),
   },
 ];

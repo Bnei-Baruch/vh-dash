@@ -33,9 +33,9 @@ const SocialForm = ({ handleChange, isModified }) => {
   const styles = useStyles();
   const { t } = useTranslation();
 
-  const onPhoneChange = value => handleChange('phone', value);
-  const onTelegramPhoneChange = value => handleChange('telegramPhone', value);
-  const onWhatsappPhoneChange = value => handleChange('whatsappPhone', value);
+  const onPhoneChange = value => handleChange('mobile_number', value);
+  const onTelegramPhoneChange = value => handleChange('telegram_number', value);
+  const onWhatsappPhoneChange = value => handleChange('whats_app_number', value);
 
   return (
     <div className={classes.root}>
@@ -46,7 +46,7 @@ const SocialForm = ({ handleChange, isModified }) => {
         <Grid item xs={2} md={1}>
           <img src={Phone} alt='phone' className={styles.image} />
         </Grid>
-        <Grid item xs={10} md={6}>
+        <Grid item xs={10} md={8} lg={6}>
           <MuiPhoneInput
             defaultCountry='us'
             disabled={!isModified}
@@ -61,7 +61,7 @@ const SocialForm = ({ handleChange, isModified }) => {
         <Grid item xs={2} md={1}>
           <img src={Whatsapp} alt='whatsapp' className={styles.image} />
         </Grid>
-        <Grid item xs={10} md={6}>
+        <Grid item xs={10} md={8} lg={6}>
           <MuiPhoneInput
             defaultCountry='us'
             disabled={!isModified}
@@ -76,7 +76,7 @@ const SocialForm = ({ handleChange, isModified }) => {
         <Grid item xs={2} md={1}>
           <img src={Telegram} alt='telegram' className={styles.image} />
         </Grid>
-        <Grid item xs={10} md={6}>
+        <Grid item xs={10} md={8} lg={6}>
           <MuiPhoneInput
             defaultCountry='us'
             disabled={!isModified}

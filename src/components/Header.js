@@ -222,8 +222,11 @@ function UserMenu() {
       </Menu>
       <ModalWindow
         open={isModalOpen}
+        contentText={t('UserMenu.logOutText')}
+        confirmBtnText={t('UserMenu.yesBtn')}
+        closeBtnText={t('UserMenu.cancelBtn')}
         handleClose={handleCloseModal}
-        onAuthLogout={onAuthLogout}
+        onConfirmation={onAuthLogout}
       />
     </>
   );
