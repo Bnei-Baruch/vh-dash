@@ -4,15 +4,11 @@ import { Grid, TextField, Typography } from '@material-ui/core';
 import SelectElement from '../FormElements/SelectElement';
 import { commonFormStyles, studyGroup } from '../../../constants/formData';
 
-const TenForm = ({
-  inputFields,
-  handleChange,
-  isModified,
-}) => {
+const TenForm = ({ inputFields, handleChange, isModified }) => {
   const classes = commonFormStyles();
   const { t } = useTranslation();
 
-  const { isStudyGroup, isWantStudyGroup, tenName } = inputFields;
+  const { has_ten_group, wants_ten_group, name_of_ten_group } = inputFields;
 
   return (
     <div className={classes.root}>
@@ -22,20 +18,20 @@ const TenForm = ({
       <Grid container spacing={6}>
         <Grid item xs={12} sm={6}>
           <SelectElement
-            id='isStudyGroup'
+            id='has_ten_group'
             disabled={!isModified}
             label={t('Dashboard.Profile.OtherInformation.studyGroup')}
-            value={isStudyGroup}
+            value={has_ten_group}
             onChange={handleChange}
             selectData={studyGroup}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <SelectElement
-            id='isWantStudyGroup'
+            id='wants_ten_group'
             disabled={!isModified}
             label={t('Dashboard.Profile.OtherInformation.wantStudyGroup')}
-            value={isWantStudyGroup}
+            value={wants_ten_group}
             onChange={handleChange}
             selectData={studyGroup}
           />
@@ -45,7 +41,7 @@ const TenForm = ({
             disabled={!isModified}
             type='text'
             label={t('Dashboard.Profile.OtherInformation.tenName')}
-            value={tenName || ''}
+            value={name_of_ten_group || ''}
             fullWidth
             placeholder={t('Global.inputPlaceholder', {
               input: 'name of ten',
@@ -53,7 +49,7 @@ const TenForm = ({
             InputLabelProps={{
               shrink: true,
             }}
-            onChange={event => handleChange('tenName', event.target.value)}
+            onChange={event => handleChange('name_of_ten_group', event.target.value)}
           />
         </Grid>
       </Grid>

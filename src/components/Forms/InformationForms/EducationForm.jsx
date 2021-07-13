@@ -8,7 +8,7 @@ const EducationForm = ({ inputFields, handleChange, isModified }) => {
   const classes = commonFormStyles();
   const { t } = useTranslation();
 
-  const { startYear, studyFramework } = inputFields;
+  const { study_start_year, study_framework } = inputFields;
 
   return (
     <div className={classes.root}>
@@ -22,14 +22,14 @@ const EducationForm = ({ inputFields, handleChange, isModified }) => {
             label={t('Global.inputPlaceholder', {
               input: 'start year',
             })}
-            value={startYear}
+            value={study_start_year}
             disabled={!isModified}
-            onChange={value => handleChange('startYear', value)}
+            onChange={value => handleChange('study_start_year', value)}
             animateYearScrolling
             autoOk
             openTo='year'
             maxDate={new Date('2050-01-01')}
-            minDate={new Date('2010-01-01')}
+            minDate={new Date('2018-01-01')}
             fullWidth
             InputLabelProps={{
               shrink: true,
@@ -41,7 +41,7 @@ const EducationForm = ({ inputFields, handleChange, isModified }) => {
             disabled={!isModified}
             type='text'
             label={t('Dashboard.Profile.OtherInformation.studyFramework')}
-            value={studyFramework || ''}
+            value={study_framework || ''}
             fullWidth
             placeholder={t('Global.inputPlaceholder', {
               input: 'study framework',
@@ -50,7 +50,7 @@ const EducationForm = ({ inputFields, handleChange, isModified }) => {
               shrink: true,
             }}
             onChange={event =>
-              handleChange('studyFramework', event.target.value)
+              handleChange('study_framework', event.target.value)
             }
           />
         </Grid>

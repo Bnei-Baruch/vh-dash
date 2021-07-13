@@ -33,9 +33,9 @@ const SocialForm = ({ handleChange, isModified }) => {
   const styles = useStyles();
   const { t } = useTranslation();
 
-  const onPhoneChange = value => handleChange('phone', value);
-  const onTelegramPhoneChange = value => handleChange('telegramPhone', value);
-  const onWhatsappPhoneChange = value => handleChange('whatsappPhone', value);
+  const onPhoneChange = value => handleChange('mobile_number', value);
+  const onTelegramPhoneChange = value => handleChange('telegram_number', value);
+  const onWhatsappPhoneChange = value => handleChange('whats_app_number', value);
 
   return (
     <div className={classes.root}>

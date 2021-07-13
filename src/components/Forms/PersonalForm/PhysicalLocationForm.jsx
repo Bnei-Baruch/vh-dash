@@ -9,7 +9,8 @@ const PhysicalLocationForm = ({ handleChange, inputFields, isModified }) => {
   const { t } = useTranslation();
   const classes = commonFormStyles();
 
-  const { streetAddress, stateRegion, postalCode, country, city } = inputFields;
+  const { street_address, state_region, postal_code, country, city } =
+    inputFields;
 
   return (
     <div className={classes.root}>
@@ -22,14 +23,14 @@ const PhysicalLocationForm = ({ handleChange, inputFields, isModified }) => {
             disabled={!isModified}
             type='text'
             label={t('Dashboard.Profile.PhysicalLocationForm.streetAddress')}
-            value={streetAddress || ''}
+            value={street_address || ''}
             fullWidth
             placeholder={t('Global.inputPlaceholder', { input: 'street' })}
             InputLabelProps={{
               shrink: true,
             }}
             onChange={event =>
-              handleChange('streetAddress', event.target.value)
+              handleChange('street_address', event.target.value)
             }
           />
         </Grid>
@@ -38,13 +39,13 @@ const PhysicalLocationForm = ({ handleChange, inputFields, isModified }) => {
             disabled={!isModified}
             type='text'
             label={t('Dashboard.Profile.PhysicalLocationForm.postalCode')}
-            value={postalCode || ''}
+            value={postal_code || ''}
             fullWidth
             placeholder={t('Global.inputPlaceholder', { input: 'postal code' })}
             InputLabelProps={{
               shrink: true,
             }}
-            onChange={event => handleChange('postalCode', event.target.value)}
+            onChange={event => handleChange('postal_code', event.target.value)}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -62,7 +63,7 @@ const PhysicalLocationForm = ({ handleChange, inputFields, isModified }) => {
             disabled={!isModified}
             type='text'
             label={t('Dashboard.Profile.PhysicalLocationForm.stateRegion')}
-            value={stateRegion || ''}
+            value={state_region || ''}
             fullWidth
             placeholder={t('Global.inputPlaceholder', {
               input: 'state or region',
@@ -70,7 +71,7 @@ const PhysicalLocationForm = ({ handleChange, inputFields, isModified }) => {
             InputLabelProps={{
               shrink: true,
             }}
-            onChange={event => handleChange('stateRegion', event.target.value)}
+            onChange={event => handleChange('state_region', event.target.value)}
           />
         </Grid>
         <Grid item xs={12} sm={6}>

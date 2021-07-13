@@ -13,7 +13,13 @@ const PersonalForm = ({ inputFields, handleChange, isModified }) => {
   const classes = commonFormStyles();
   const { t } = useTranslation();
 
-  const { firstname, lastname, dob, gender, maritalStatus } = inputFields;
+  const {
+    first_name_latin,
+    last_name_latin,
+    date_of_birth,
+    gender,
+    marital_status,
+  } = inputFields;
 
   return (
     <div className={classes.root}>
@@ -26,7 +32,7 @@ const PersonalForm = ({ inputFields, handleChange, isModified }) => {
             disabled={!isModified}
             type='text'
             label={t('Dashboard.Profile.PersonalForm.firstName')}
-            value={firstname || ''}
+            value={first_name_latin || ''}
             fullWidth
             placeholder={t(
               'Dashboard.Profile.PersonalForm.firstNamePlaceholder',
@@ -34,7 +40,7 @@ const PersonalForm = ({ inputFields, handleChange, isModified }) => {
             InputLabelProps={{
               shrink: true,
             }}
-            onChange={event => handleChange('firstname', event.target.value)}
+            onChange={event => handleChange('first_name_latin', event.target.value)}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -42,7 +48,7 @@ const PersonalForm = ({ inputFields, handleChange, isModified }) => {
             disabled={!isModified}
             type='text'
             label={t('Dashboard.Profile.PersonalForm.lastName')}
-            value={lastname || ''}
+            value={last_name_latin || ''}
             fullWidth
             placeholder={t(
               'Dashboard.Profile.PersonalForm.lastNamePlaceholder',
@@ -50,7 +56,7 @@ const PersonalForm = ({ inputFields, handleChange, isModified }) => {
             InputLabelProps={{
               shrink: true,
             }}
-            onChange={event => handleChange('lastname', event.target.value)}
+            onChange={event => handleChange('last_name_latin', event.target.value)}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -58,9 +64,9 @@ const PersonalForm = ({ inputFields, handleChange, isModified }) => {
             autoOk
             orientation='landscape'
             openTo='date'
-            value={dob}
+            value={date_of_birth}
             disableFuture
-            onChange={value => handleChange('dob', value)}
+            onChange={value => handleChange('date_of_birth', value)}
             label={t('Dashboard.Profile.PersonalForm.dateOfBirth')}
             fullWidth
             disabled={!isModified}
@@ -72,10 +78,10 @@ const PersonalForm = ({ inputFields, handleChange, isModified }) => {
         </Grid>
         <Grid item xs={12} sm={6}>
           <SelectElement
-            id='maritalStatus'
+            id='marital_status'
             disabled={!isModified}
             label={t('Dashboard.Profile.PersonalForm.maritalStatus.label')}
-            value={maritalStatus}
+            value={marital_status}
             onChange={handleChange}
             selectData={maritalStatuses}
           />

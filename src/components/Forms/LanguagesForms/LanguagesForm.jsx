@@ -9,8 +9,13 @@ const LanguagesForm = ({ inputFields, handleChange, isModified }) => {
   const classes = commonFormStyles();
   const { t } = useTranslation();
 
-  const { firstLanguage, language1, language2, language3, language4 } =
-    inputFields;
+  const {
+    first_language,
+    other_language_1,
+    other_language_2,
+    other_language_3,
+    other_language_4,
+  } = inputFields;
 
   return (
     <div className={classes.root}>
@@ -20,58 +25,58 @@ const LanguagesForm = ({ inputFields, handleChange, isModified }) => {
       <Grid container spacing={6}>
         <Grid item xs={12} sm={6}>
           <SelectElement
-            id='firstLanguage'
+            id='first_language'
             disabled={!isModified}
             label={t('Dashboard.Profile.Languages.firstLanguage')}
-            value={firstLanguage || ''}
+            value={first_language || ''}
             onChange={handleChange}
             selectData={languages}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <SelectElement
-            id='language1'
+            id='other_language_1'
             disabled={!isModified}
             label={t('Dashboard.Profile.Languages.otherLanguage', {
               number: '1',
             })}
-            value={language1 || ''}
+            value={other_language_1 || ''}
             onChange={handleChange}
             selectData={languages}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <SelectElement
-            id='language2'
+            id='other_language_2'
             disabled={!isModified}
             label={t('Dashboard.Profile.Languages.otherLanguage', {
               number: '2',
             })}
-            value={language2 || ''}
+            value={other_language_2 || ''}
             onChange={handleChange}
             selectData={languages}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <SelectElement
-            id='language3'
+            id='other_language_3'
             disabled={!isModified}
             label={t('Dashboard.Profile.Languages.otherLanguage', {
               number: '3',
             })}
-            value={language3 || ''}
+            value={other_language_3 || ''}
             onChange={handleChange}
             selectData={languages}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <SelectElement
-            id='language4'
+            id='other_language_4'
             disabled={!isModified}
             label={t('Dashboard.Profile.Languages.otherLanguage', {
               number: '4',
             })}
-            value={language4 || ''}
+            value={other_language_4 || ''}
             onChange={handleChange}
             selectData={languages}
           />

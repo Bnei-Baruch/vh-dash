@@ -11,3 +11,5 @@ export const setStatusColor = value => {
       return '#d3d3d3';
   }
 };
+
+export const convertBooleanToString = value => (value ? 'Yes' : 'No');

@@ -11,7 +11,7 @@ const LanguagePreferencesForm = ({ inputFields, handleChange, isModified }) => {
   const classes = commonFormStyles();
   const { t } = useTranslation();
 
-  const { emailLanguage, listeningLanguage, readingLanguage } = inputFields;
+  const { listening_language, reading_language, email_language } = inputFields;
 
   return (
     <div className={classes.root}>
@@ -21,10 +21,10 @@ const LanguagePreferencesForm = ({ inputFields, handleChange, isModified }) => {
       <Grid container spacing={6}>
         <Grid item xs={12} sm={6}>
           <SelectElement
-            id='listeningLanguage'
+            id='listening_language'
             disabled={!isModified}
             label={t('Dashboard.Profile.LanguagePreferences.listeningLanguage')}
-            value={listeningLanguage || ''}
+            value={listening_language || ''}
             onChange={handleChange}
             selectData={languages}
             tooltipText={t(
@@ -34,10 +34,10 @@ const LanguagePreferencesForm = ({ inputFields, handleChange, isModified }) => {
         </Grid>
         <Grid item xs={12} sm={6}>
           <SelectElement
-            id='readingLanguage'
+            id='reading_language'
             disabled={!isModified}
             label={t('Dashboard.Profile.LanguagePreferences.readingLanguage')}
-            value={readingLanguage || ''}
+            value={reading_language || ''}
             onChange={handleChange}
             selectData={languages}
             tooltipText={t(
@@ -47,10 +47,10 @@ const LanguagePreferencesForm = ({ inputFields, handleChange, isModified }) => {
         </Grid>
         <Grid item xs={12} sm={6}>
           <SelectElement
-            id='emailLanguage'
+            id='email_language'
             disabled={!isModified}
             label={t('Dashboard.Profile.LanguagePreferences.emailLanguage')}
-            value={emailLanguage || ''}
+            value={email_language || ''}
             onChange={handleChange}
             selectData={systemLanguages}
             tooltipText={t(

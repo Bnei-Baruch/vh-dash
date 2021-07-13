@@ -24,7 +24,7 @@ const EmailsForm = ({
             disabled
             type='email'
             label={t('Dashboard.Profile.Emails.primaryEmail')}
-            value={inputFields.primaryEmail}
+            value={inputFields.primary_email}
             fullWidth
             placeholder={t('Global.inputPlaceholder', {
               input: 'primary email',
@@ -32,10 +32,10 @@ const EmailsForm = ({
             InputLabelProps={{
               shrink: true,
             }}
-            onChange={event => handleChange('primaryEmail', event.target.value)}
-            onBlur={() => onInputBlur('primaryEmail')}
-            helperText={errorFields.primaryEmail}
-            error={!!errorFields.primaryEmail}
+            onChange={event => handleChange('primary_email', event.target.value)}
+            onBlur={() => onInputBlur('primary_email')}
+            helperText={errorFields.primary_email}
+            error={!!errorFields.primary_email}
           />
         </Grid>
         <Grid item xs={12} md={6}>
@@ -45,7 +45,7 @@ const EmailsForm = ({
             label={t('Dashboard.Profile.Emails.alternativeEmail', {
               number: '1',
             })}
-            value={inputFields.alternativeEmail1 || ''}
+            value={inputFields.alternate_email_1 || ''}
             fullWidth
             placeholder={t('Global.inputPlaceholder', {
               input: 'alternative email 1',
@@ -54,11 +54,11 @@ const EmailsForm = ({
               shrink: true,
             }}
             onChange={event =>
-              handleChange('alternativeEmail1', event.target.value)
+              handleChange('alternate_email_1', event.target.value)
             }
-            onBlur={() => onInputBlur('alternativeEmail1')}
-            helperText={errorFields.alternativeEmail1}
-            error={!!errorFields.alternativeEmail1}
+            onBlur={() => onInputBlur('alternate_email_1')}
+            helperText={errorFields.alternate_email_1}
+            error={!!errorFields.alternate_email_1}
           />
         </Grid>
         <Grid item xs={12} md={6}>
@@ -68,7 +68,7 @@ const EmailsForm = ({
             label={t('Dashboard.Profile.Emails.alternativeEmail', {
               number: '2',
             })}
-            value={inputFields.alternativeEmail2 || ''}
+            value={inputFields.alternate_email_2 || ''}
             fullWidth
             placeholder={t('Global.inputPlaceholder', {
               input: 'alternative email 1',
@@ -77,11 +77,11 @@ const EmailsForm = ({
               shrink: true,
             }}
             onChange={event =>
-              handleChange('alternativeEmail2', event.target.value)
+              handleChange('alternate_email_2', event.target.value)
             }
-            onBlur={() => onInputBlur('alternativeEmail2')}
-            helperText={errorFields.alternativeEmail2}
-            error={!!errorFields.alternativeEmail2}
+            onBlur={() => onInputBlur('alternate_email_2')}
+            helperText={errorFields.alternate_email_2}
+            error={!!errorFields.alternate_email_2}
           />
         </Grid>
       </Grid>
