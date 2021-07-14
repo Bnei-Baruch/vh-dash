@@ -19,20 +19,16 @@ const useStyles = makeStyles({
   },
 });
 
-const initialFields = {
-  startYear: '',
-  studyFramework: '',
-  isStudyGroup: 'Yes',
-  isWantStudyGroup: 'Yes',
-  tenName: '',
-};
-
-const OtherInformationsTab = () => {
+const OtherInformationsTab = ({
+  inputFields,
+  setInputFields,
+  onSubmit,
+  handleChange,
+}) => {
   const classes = useStyles();
   const { t } = useTranslation();
 
   const [isModified, setIsModified] = useState(false);
-  const [inputFields, setInputFields] = useState(initialFields);
   const [copiedFields, setCopiedFields] = useState({});
 
   useEffect(() => {
@@ -40,10 +36,7 @@ const OtherInformationsTab = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleChange = (field, value) =>
-    setInputFields(prevState => ({ ...prevState, [field]: value }));
-
-  const onSubmit = event => {
+  const onFormSubmit = event => {
     event.preventDefault();
 
     if (!isModified) {
@@ -51,7 +44,7 @@ const OtherInformationsTab = () => {
       return;
     }
 
-    console.log('Submit', inputFields);
+    onSubmit();
   };
 
   const onCancel = () => {
@@ -62,7 +55,7 @@ const OtherInformationsTab = () => {
   const buttonText = isModified ? t('Global.saveBtn') : t('Global.modify');
 
   return (
-    <form noValidate autoComplete='off' onSubmit={onSubmit}>
+    <form noValidate autoComplete='off' onSubmit={onFormSubmit}>
       <Grid container spacing={6}>
         <Grid item xs={12} sm={6}>
           <EducationForm

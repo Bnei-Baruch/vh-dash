@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Grid, TextField, Typography } from '@material-ui/core';
+import { DatePicker } from '@material-ui/pickers';
 import SelectElement from '../FormElements/SelectElement';
 import {
   commonFormStyles,
@@ -8,15 +9,17 @@ import {
   maritalStatuses,
 } from '../../../constants/formData';
 
-const PersonalForm = ({
-  inputFields,
-  handleChange,
-  isModified,
-}) => {
+const PersonalForm = ({ inputFields, handleChange, isModified }) => {
   const classes = commonFormStyles();
   const { t } = useTranslation();
 
-  const { firstname, lastname, dob, gender, maritalStatus } = inputFields;
+  const {
+    first_name_latin,
+    last_name_latin,
+    date_of_birth,
+    gender,
+    marital_status,
+  } = inputFields;
 
   return (
     <div className={classes.root}>
@@ -29,7 +32,7 @@ const PersonalForm = ({
             disabled={!isModified}
             type='text'
             label={t('Dashboard.Profile.PersonalForm.firstName')}
-            value={firstname}
+            value={first_name_latin || ''}
             fullWidth
             placeholder={t(
               'Dashboard.Profile.PersonalForm.firstNamePlaceholder',
@@ -37,7 +40,7 @@ const PersonalForm = ({
             InputLabelProps={{
               shrink: true,
             }}
-            onChange={event => handleChange('firstname', event.target.value)}
+            onChange={event => handleChange('first_name_latin', event.target.value)}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -45,7 +48,7 @@ const PersonalForm = ({
             disabled={!isModified}
             type='text'
             label={t('Dashboard.Profile.PersonalForm.lastName')}
-            value={lastname}
+            value={last_name_latin || ''}
             fullWidth
             placeholder={t(
               'Dashboard.Profile.PersonalForm.lastNamePlaceholder',
@@ -53,31 +56,32 @@ const PersonalForm = ({
             InputLabelProps={{
               shrink: true,
             }}
-            onChange={event => handleChange('lastname', event.target.value)}
+            onChange={event => handleChange('last_name_latin', event.target.value)}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <TextField
-            disabled={!isModified}
-            type='date'
+          <DatePicker
+            autoOk
+            orientation='landscape'
+            openTo='date'
+            value={date_of_birth}
+            disableFuture
+            onChange={value => handleChange('date_of_birth', value)}
             label={t('Dashboard.Profile.PersonalForm.dateOfBirth')}
-            value={dob}
             fullWidth
-            placeholder={t(
-              'Dashboard.Profile.PersonalForm.dateOfBirthPlaceholder',
-            )}
+            disabled={!isModified}
+            format='dd.mm.yyyy'
             InputLabelProps={{
               shrink: true,
             }}
-            onChange={event => handleChange('dob', event.target.value)}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <SelectElement
-            id='maritalStatus'
+            id='marital_status'
             disabled={!isModified}
             label={t('Dashboard.Profile.PersonalForm.maritalStatus.label')}
-            value={maritalStatus}
+            value={marital_status}
             onChange={handleChange}
             selectData={maritalStatuses}
           />

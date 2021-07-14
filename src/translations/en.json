@@ -8,6 +8,8 @@
       "modify": "Modify",
       "yes": "Yes",
       "no": "No",
+      "closeBtn": "Close",
+      "requestError": "Ooops! Something went wrong! Please, try again later or contact our support",
       "Currency": {
         "usd": "USD",
         "eur": "EUR"
@@ -87,6 +89,9 @@
         "name": "Profile",
         "title": "My Profile",
         "socialFormName": "My phone numbers",
+        "profileCreated": "Your profile info was successfully created",
+        "profileUpdated": "Your profile info was successfully updated",
+        "profileNotExist": "Seems like you don't have created profile info. Please, click on 'Modify' button and create your profile",
         "Tabs": {
           "personal": "Personal",
           "security": "Security",
@@ -119,7 +124,8 @@
           "streetAddress": "Street address",
           "postalCode": "Postal Code",
           "country": "Country",
-          "stateRegion": "State/Region"
+          "stateRegion": "State/Region",
+          "city": "City"
         },
         "Emails": {
           "name": "My Emails",
