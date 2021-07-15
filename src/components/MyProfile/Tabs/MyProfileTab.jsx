@@ -81,7 +81,7 @@ const MyProfileTab = ({
 
   return (
     <form noValidate autoComplete='off' onSubmit={onFormSubmit}>
-      <Grid container spacing={6}>
+      <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
           <PersonalForm
             inputFields={inputFields}
@@ -98,7 +98,7 @@ const MyProfileTab = ({
           item
           xs={12}
           sm={6}
-          style={{ display: 'grid', alignContent: 'space-between' }}
+          style={{ display: 'grid' }}
         >
           <EmailsForm
             inputFields={inputFields}

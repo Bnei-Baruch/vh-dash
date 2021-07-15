@@ -1,7 +1,8 @@
 import React from 'react';
 
-import { FileText, Sliders, User, Youtube } from 'react-feather';
-
+import { FileText, Sliders, Youtube } from 'react-feather';
+import ViewComfyIcon from '@material-ui/icons/ViewComfy';
+import FolderOpenIcon from '@material-ui/icons/FolderOpen';
 import async from '../components/Async';
 import { DASHBOARD_ROUTES } from './dashboardRoutes';
 
@@ -10,7 +11,8 @@ const Home = async(() => import('../pages/dashboard/Home'));
 
 // Dashboard components
 const MyProfile = async(() => import('../components/MyProfile'));
-const MyPayments = async(() => import('../components/MyPayments'));
+const Archive = async(() => import('../components/Archive'));
+const ArvutSystem = async(() => import('../components/ArvutSystem'));
 const BroadcastArea = async(() => import('../components/BroadcastArea'));
 
 const dashboardRoutes = [
@@ -32,15 +34,6 @@ const dashboardRoutes = [
     children: null,
   },
   {
-    path: DASHBOARD_ROUTES.Payments,
-    id: 'Payments',
-    icon: <User />,
-    enableHeader: true,
-    breadcrumbs: [{ name: 'Payments', path: DASHBOARD_ROUTES.Payments }],
-    component: MyPayments,
-    children: null,
-  },
-  {
     path: DASHBOARD_ROUTES.broadcastArea,
     id: 'BroadcastArea',
     icon: <Youtube />,
@@ -49,6 +42,24 @@ const dashboardRoutes = [
     component: BroadcastArea,
     children: null,
   },
+  {
+    path: DASHBOARD_ROUTES.arvutSystem,
+    id: 'ArvutSystem',
+    icon: <ViewComfyIcon />,
+    enableHeader: true,
+    breadcrumbs: [{ name: 'BroadcastArea', path: DASHBOARD_ROUTES.arvutSystem }],
+    component: ArvutSystem,
+    children: null,
+  },
+  {
+    path: DASHBOARD_ROUTES.archive,
+    id: 'Archive',
+    icon: <FolderOpenIcon />,
+    enableHeader: true,
+    breadcrumbs: [{ name: 'BroadcastArea', path: DASHBOARD_ROUTES.archive }],
+    component: Archive,
+    children: null,
+  }
 ];
 
 // Routes using the Dashboard layout

@@ -14,7 +14,7 @@ const EmailsForm = ({
   const { t } = useTranslation();
 
   return (
-    <div className={classes.root}>
+    <div className={`${classes.root}  ${classes.emailForm}`}>
       <Typography variant='h4' gutterBottom>
         {t('Dashboard.Profile.Emails.name')}
       </Typography>

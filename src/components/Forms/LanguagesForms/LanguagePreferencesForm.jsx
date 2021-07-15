@@ -14,7 +14,7 @@ const LanguagePreferencesForm = ({ inputFields, handleChange, isModified }) => {
   const { listening_language, reading_language, email_language } = inputFields;
 
   return (
-    <div className={classes.root}>
+    <div className={`${classes.root} ${classes.height_100}`}>
       <Typography variant='h4'>
         {t('Dashboard.Profile.LanguagePreferences.name')}
       </Typography>

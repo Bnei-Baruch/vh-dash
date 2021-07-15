@@ -7,7 +7,7 @@ import i18next from 'i18next';
 import { useTranslation } from 'react-i18next';
 import _ from 'lodash';
 import { Bell, MessageSquare, Search as SearchIcon } from 'react-feather';
-
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import {
   Badge,
   Grid,
@@ -18,9 +18,6 @@ import {
   AppBar as MuiAppBar,
   IconButton as MuiIconButton,
   Toolbar,
-  Box,
-  Typography,
-  Chip,
 } from '@material-ui/core';
 
 import { Menu as MenuIcon } from '@material-ui/icons';
@@ -29,7 +26,6 @@ import { CHAT_AND_NOTIFICATION_ICONS, SEARCH_BAR } from '../shared/constants';
 import { setLoggedInUser } from '../redux/actions/userActions';
 import ModalWindow from './ui/ModalWindow';
 import { DASHBOARD_ROUTES } from '../routes/dashboardRoutes';
-import { setStatusColor } from '../shared/helper';
 
 const AppBar = styled(MuiAppBar)`
   background: ${props => props.theme.header.background};
@@ -45,9 +41,16 @@ const IconButton = styled(MuiIconButton)`
 `;
 
 const UserIconButton = styled(MuiIconButton)`
+  font-size: 16px;
+  span, label {
+    color: #5a5a5a
+  }
   svg {
     width: 30px;
     height: 30px;
+  }
+  &:hover {
+    background-color: transparent;
   }
 `;
 
@@ -138,7 +141,7 @@ function LanguageMenu() {
         color='inherit'
       >
         <Flag
-          src={`/dash/static/img/flags/${i18next.language}.png`}
+          src={`/static/img/flags/${i18next.language}.png`}
           alt={i18next.language}
         />
       </IconButton>
@@ -204,19 +207,19 @@ function UserMenu() {
         onClick={toggleMenu}
         color='inherit'
       >
-        <AccountCircleIcon />
+        <AccountCircleIcon /> 
+        &nbsp; {state.keycloak.profile.firstName + " " + state.keycloak.profile.lastName}
+        &nbsp; <KeyboardArrowDownIcon />
       </UserIconButton>
       <Menu
         id='menu-appbar'
         anchorEl={anchorMenu}
         open={Boolean(anchorMenu)}
         onClose={closeMenu}
+        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
       >
         <MenuItem onClick={() => onMenuItemClick(DASHBOARD_ROUTES.Profile)}>
           {t('Dashboard.Profile.name')}
-        </MenuItem>
-        <MenuItem onClick={() => onMenuItemClick(DASHBOARD_ROUTES.Payments)}>
-          {t('Dashboard.Payments.name')}
         </MenuItem>
         <MenuItem onClick={onLogOutClick}>{t('UserMenu.logOut')}</MenuItem>
       </Menu>
@@ -231,32 +234,6 @@ function UserMenu() {
     </>
   );
 }
-
-const Subscription = () => {
-  const history = useHistory();
-  const { t } = useTranslation();
-
-  const onChipClick = () =>
-    history.push(`${DASHBOARD_ROUTES.Payments}?my-plan`);
-
-  return (
-    <Box justifyContent='flex-end' display='flex' alignItems='baseline'>
-      <Typography>{t('UserMenu.subscriptions')}</Typography>
-      <Chip
-        label={t('UserMenu.statuses.nonExistant')}
-        style={{
-          backgroundColor: setStatusColor('nonExistant'),
-          color: '#FFF',
-          height: 30,
-          borderRadius: 15,
-          margin: '0 10px',
-          cursor: 'pointer',
-        }}
-        onClick={onChipClick}
-      />
-    </Box>
-  );
-};
 
 const Header = ({ onDrawerToggle }) => (
   <>
@@ -285,7 +262,6 @@ const Header = ({ onDrawerToggle }) => (
             </Grid>
           )}
           <Grid item xs>
-            <Subscription />
           </Grid>
           <Grid item>
             {CHAT_AND_NOTIFICATION_ICONS && (
