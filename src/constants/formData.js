@@ -25,6 +25,15 @@ export const commonFormStyles = makeStyles(theme => ({
       },
     },
   },
+  emailForm: {
+    marginBottom: '6px'
+  },
+  socialForm: {
+    marginTop: "6px"
+  },
+  height_100: {
+    height: "100%"
+  }
 }));
 
 export const systemLanguages = [

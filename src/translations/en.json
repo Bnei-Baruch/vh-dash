@@ -51,7 +51,7 @@
       "Spanish": "Spanish"
     },
     "Home": {
-      "notActive": "Not ACTIVE",
+      "notActive": "NOT ACTIVE",
       "active": "ACTIVE",
       "watchBtn": "Watch",
       "watchRecordedBtn": "Watch Recorded",
@@ -82,6 +82,12 @@
       }
     },
     "Dashboard": {
+      "ArvutSystem": {
+        "name": "Arvut System"
+      },
+      "Archive": {
+        "name": "Archive"
+      },
       "Dashboard": {
         "name": "Dashboard"
       },
@@ -105,8 +111,8 @@
           "dateOfBirth": "Date of birth",
           "gender": {
             "label": "Gender",
-            "male": "male",
-            "female": "female"
+            "male": "Male",
+            "female": "Female"
           },
           "maritalStatus": {
             "label": "Marital Status",

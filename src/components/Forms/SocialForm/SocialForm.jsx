@@ -38,7 +38,7 @@ const SocialForm = ({ handleChange, isModified }) => {
   const onWhatsappPhoneChange = value => handleChange('whats_app_number', value);
 
   return (
-    <div className={classes.root}>
+    <div className={`${classes.root} ${classes.socialForm}`}>
       <Typography variant='h4' gutterBottom>
         {t('Dashboard.Profile.socialFormName')}
       </Typography>
