@@ -57,7 +57,7 @@ const LanguagesTab = ({
 
   return (
     <form noValidate autoComplete='off' onSubmit={onFormSubmit}>
-      <Grid container spacing={6}>
+      <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
           <LanguagesForm
             inputFields={inputFields}

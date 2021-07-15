@@ -30,7 +30,10 @@ const NavLink = React.forwardRef((props, ref) => (
 ));
 
 const Box = styled(MuiBox)(spacing);
-
+const Logo = styled(Avatar)`
+  height: auto;
+  width: auto;
+`;
 const Drawer = styled(MuiDrawer)`
   border-right: 0;
 
@@ -122,6 +125,11 @@ const CategoryIconLess = styled(ExpandLess)`
 
 const CategoryIconMore = styled(ExpandMore)`
   color: ${props => rgba(props.theme.sidebar.color, 0.5)};
+`;
+
+const Subtitle = styled.div`
+  color: #4aa5ff;
+  font-size: 12px;
 `;
 
 const Link = styled(ListItem)`
@@ -250,9 +258,10 @@ const Sidebar = ({ classes, staticContext, location, ...rest }) => {
     <Drawer variant='permanent' {...rest}>
       <Brand>
         <Link button component={NavLink} exact to={DASHBOARD_ROOT}>
-          <Avatar alt='Logo' src='/dash/static/img/bb-logo.png' />
+          <Logo alt='Logo' src='/static/img/logo.svg' />
           <Box ml={1}>
             <b>BNEI BARUCH</b>
+            <Subtitle>VIRTUAL HOME</Subtitle>
           </Box>
         </Link>
       </Brand>

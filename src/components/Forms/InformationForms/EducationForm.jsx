@@ -11,7 +11,7 @@ const EducationForm = ({ inputFields, handleChange, isModified }) => {
   const { study_start_year, study_framework } = inputFields;
 
   return (
-    <div className={classes.root}>
+    <div className={`${classes.root} ${classes.height_100}`}>
       <Typography variant='h4'>
         {t('Dashboard.Profile.OtherInformation.education')}
       </Typography>

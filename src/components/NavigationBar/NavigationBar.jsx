@@ -33,8 +33,11 @@ const useStyles = makeStyles(theme => ({
     fontSize: '17px',
   },
   tabPanel: {
-    margin: theme.spacing(0, -3),
+    margin: theme.spacing(0, -2.5),
   },
+  mainTab: {
+    backgroundColor: '#fff'
+  }
 }));
 
 const NavigationBar = ({ tabs }) => {
@@ -69,6 +72,7 @@ const NavigationBar = ({ tabs }) => {
         textColor='primary'
         variant='scrollable'
         scrollButtons='auto'
+        className={classes.mainTab}
       >
         {tabs.map(item => (
           <Tab

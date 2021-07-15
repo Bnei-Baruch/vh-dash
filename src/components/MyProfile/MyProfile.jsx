@@ -8,7 +8,6 @@ import NavigationBar from '../NavigationBar';
 import MyProfileTab from './Tabs/MyProfileTab';
 import LanguagesTab from './Tabs/LanguagesTab';
 import OtherInformationsTab from './Tabs/OtherInformationsTab';
-import SecurityTab from './Tabs/SecurityTab';
 import ModalWindow from '../ui/ModalWindow';
 import { profileInfo, profileModalContent } from '../../redux/selectors/profile';
 import { convertBooleanToString } from '../../shared/helper';
@@ -130,18 +129,6 @@ const MyProfile = () => {
     },
     {
       id: 1,
-      tab: t('Dashboard.Profile.Tabs.security'),
-      component: (
-        <SecurityTab
-          inputFields={inputFields}
-          setInputFields={setInputFields}
-          handleChange={handleChange}
-          onSubmit={onSubmit}
-        />
-      ),
-    },
-    {
-      id: 2,
       tab: t('Dashboard.Profile.Tabs.languages'),
       component: (
         <LanguagesTab
@@ -153,7 +140,7 @@ const MyProfile = () => {
       ),
     },
     {
-      id: 3,
+      id: 2,
       tab: t('Dashboard.Profile.Tabs.otherInformations'),
       component: (
         <OtherInformationsTab
