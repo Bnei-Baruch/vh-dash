@@ -24,13 +24,14 @@ import { Menu as MenuIcon } from '@material-ui/icons';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { CHAT_AND_NOTIFICATION_ICONS, SEARCH_BAR } from '../shared/constants';
 import { setLoggedInUser } from '../redux/actions/userActions';
-import ModalWindow from './ui/ModalWindow';
+import ModalWindow from '../pages/dashboard/MyProfile/ui/ModalWindow';
 import { DASHBOARD_ROUTES } from '../routes/dashboardRoutes';
 
 const AppBar = styled(MuiAppBar)`
   background: ${props => props.theme.header.background};
   color: ${props => props.theme.header.color};
   box-shadow: ${props => props.theme.shadows[1]};
+  background-color : #fff !important;
 `;
 
 const IconButton = styled(MuiIconButton)`
@@ -41,7 +42,7 @@ const IconButton = styled(MuiIconButton)`
 `;
 
 const UserIconButton = styled(MuiIconButton)`
-  font-size: 16px;
+  font-size: 16px !important;
   span, label {
     color: #5a5a5a
   }
@@ -106,17 +107,19 @@ const Input = styled(InputBase)`
   }
 `;
 
-const Flag = styled.img`
-  border-radius: 50%;
-  width: 22px;
-  height: 22px;
-`;
+function countryToFlag(isoCode) {
+  return typeof String.fromCodePoint !== 'undefined'
+    ? isoCode
+      .toUpperCase()
+      .replace(/./g, (char) => String.fromCodePoint(char.charCodeAt(0) + 127397))
+    : isoCode;
+}
 
 const languages = [
-  { code: 'en', name: 'English' },
-  { code: 'ru', name: 'Russian' },
-  { code: 'he', name: 'Hebrew' },
-  { code: 'es', name: 'Spanish' },
+  { code: 'en', name: 'English', country: 'gb' },
+  { code: 'ru', name: 'Russian', country: 'ru' },
+  { code: 'he', name: 'Hebrew', country: 'il' },
+  { code: 'es', name: 'Spanish', country: 'es' },
 ];
 
 function LanguageMenu() {
@@ -140,10 +143,11 @@ function LanguageMenu() {
         onClick={toggleMenu}
         color='inherit'
       >
-        <Flag
-          src={`/static/img/flags/${i18next.language}.png`}
+        {countryToFlag(languages.find(value => value.code === i18next.language).country)}
+        {/* <Flag
+          src={`dash/static/img/flags/${i18next.language}.png`}
           alt={i18next.language}
-        />
+        /> */}
       </IconButton>
       <Menu
         id='menu-appbar'

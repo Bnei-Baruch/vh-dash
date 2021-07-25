@@ -5,15 +5,16 @@ import ViewComfyIcon from '@material-ui/icons/ViewComfy';
 import FolderOpenIcon from '@material-ui/icons/FolderOpen';
 import async from '../components/Async';
 import { DASHBOARD_ROUTES } from './dashboardRoutes';
+import { ARCHIVE_LINK, ARVUT_SYSTEM_URL } from '../constants/common';
 
 // Home
 const Home = async(() => import('../pages/dashboard/Home'));
 
 // Dashboard components
-const MyProfile = async(() => import('../components/MyProfile'));
-const Archive = async(() => import('../components/Archive'));
-const ArvutSystem = async(() => import('../components/ArvutSystem'));
-const BroadcastArea = async(() => import('../components/BroadcastArea'));
+const MyProfile = async(() => import('../pages/dashboard/MyProfile'));
+const Archive = async(() => import('../pages/dashboard/Archive'));
+const ArvutSystem = async(() => import('../pages/dashboard/ArvutSystem'));
+const BroadcastArea = async(() => import('../pages/dashboard/BroadcastArea'));
 
 const dashboardRoutes = [
   {
@@ -43,22 +44,24 @@ const dashboardRoutes = [
     children: null,
   },
   {
-    path: DASHBOARD_ROUTES.arvutSystem,
+    path: ARVUT_SYSTEM_URL,
     id: 'ArvutSystem',
     icon: <ViewComfyIcon />,
     enableHeader: true,
     breadcrumbs: [{ name: 'BroadcastArea', path: DASHBOARD_ROUTES.arvutSystem }],
     component: ArvutSystem,
     children: null,
+    isExternalLink: true
   },
   {
-    path: DASHBOARD_ROUTES.archive,
+    path: ARCHIVE_LINK,
     id: 'Archive',
     icon: <FolderOpenIcon />,
     enableHeader: true,
     breadcrumbs: [{ name: 'BroadcastArea', path: DASHBOARD_ROUTES.archive }],
     component: Archive,
     children: null,
+    isExternalLink: true
   }
 ];
 

@@ -1,4 +1,4 @@
-import request from 'superagent-es6-promise';
+import axios from 'axios';
 import {
   CHANGE_BITRATE,
   CHANGE_VOLUME,
@@ -68,11 +68,7 @@ export const receiveStreams = (lang, data) => {
 // Backend api related stuff
 
 const apiRequest = (path, payload) => {
-  return request
-    .post(API_URL + path)
-    .set('Content-Type', 'application/json')
-    .send(payload)
-    .timeout(TIMEOUT);
+  return axios.post(API_URL + path, payload, {timeout : TIMEOUT});
 };
 
 export const asyncHeartbeat = (lang, bitrate) => {
@@ -81,6 +77,7 @@ export const asyncHeartbeat = (lang, bitrate) => {
     dispatch(requestHeartbeat(lang, bitrate));
 
     return apiRequest('heartbeat', { lang, bitrate }).then(res => {
+      console.log(res);
       return dispatch(receiveHeartbeat(lang, bitrate, res.body));
     });
   };
@@ -91,7 +88,7 @@ export const asyncFetchStreams = lang => {
     dispatch(requestStreams(lang));
 
     return apiRequest('streams', { lang }).then(res => {
-      return dispatch(receiveStreams(lang, res.body));
+      return dispatch(receiveStreams(lang, res));
     });
   };
 };

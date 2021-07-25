@@ -1,0 +1,111 @@
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import { Box, Button, TextareaAutosize, Typography } from '@material-ui/core';
+import { QUESTION_URL } from '../../../shared/constants';
+import Notifications from './ui/Notifications';
+import axios from 'axios';
+
+const useStyles = makeStyles(theme => ({
+  textArea: {
+    width: '100%',
+    padding: theme.spacing(2),
+    borderRadius: 6,
+    border: `2px solid ${theme.palette.text.secondary}`,
+    outline: 'none',
+  },
+}));
+
+const BroadcastQuestions = () => {
+  const classes = useStyles();
+  const { t } = useTranslation();
+
+  const state = useSelector(state => state.userReducer.info);
+  const [question, setQuestion] = useState('');
+  const [open, setOpen] = useState(false);
+  const [isSentSuccessfully, setIsSentSuccessfully] = useState(true);
+
+  const sendQuestion = event => {
+    event.preventDefault();
+
+    const { username, lastName, firstName, gender } = state.profile;
+    const requestOptions = {
+      body: JSON.stringify({
+        askForMe: true,
+        serialUserId: username,
+        question: {
+          content: question,
+        },
+        user: {
+          gender,
+          name: `${firstName} ${lastName}`,
+          galaxyRoom: 'Dashboard Area',
+        },
+      }),
+    };
+
+    if (question) {
+      axios.post(`${QUESTION_URL}/api/ask`, requestOptions.body).then(res => {
+        let data = res.data
+        setOpen(true);
+        if (data.msg) {
+          setIsSentSuccessfully(false);
+          return;
+        }
+        setIsSentSuccessfully(true);
+      })
+      .finally(setQuestion(''));
+    }
+  };
+
+  const onChangeQuestion = event => setQuestion(event.target.value);
+
+  return (
+    <Box mt={10}>
+      <Typography variant='h5' gutterBottom>
+        {t('Dashboard.BroadcastArea.Question.title')}
+      </Typography>
+      <Grid container spacing={6}>
+        <Grid item xs={12} sm={8}>
+          <form noValidate autoComplete='off'>
+            <Typography
+              variant='h6'
+              component='p'
+              color='textSecondary'
+              gutterBottom
+              style={{ fontSize: '1rem', marginTop: '10px' }}
+            >
+              {t('Dashboard.BroadcastArea.Question.label')}
+            </Typography>
+            <TextareaAutosize
+              className={classes.textArea}
+              rowsMin={4}
+              value={question}
+              placeholder={t('Dashboard.BroadcastArea.Question.placeholder')}
+              onChange={onChangeQuestion}
+            />
+            <Box display='flex' justifyContent='flex-end'>
+              <Button
+                type='submit'
+                variant='contained'
+                color='primary'
+                onClick={sendQuestion}
+              >
+                {t('Dashboard.BroadcastArea.Question.button')}
+              </Button>
+            </Box>
+          </form>
+        </Grid>
+      </Grid>
+      <Notifications
+        open={open}
+        toggleNotifications={setOpen}
+        isSentSuccessfully={isSentSuccessfully}
+      />
+    </Box>
+  );
+};
+
+export default BroadcastQuestions;
