@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Keycloak from 'keycloak-js';
 import keycloakConfig from './keycloak-config';
 
-import { setLoggedInUser } from '../redux/actions/userActions';
+import { setKeycloakData, setLoggedInUser } from '../redux/actions/userActions';
 import { useDispatch } from 'react-redux';
 
 import ErrorLogin from '../views/ErrorLogin';
@@ -14,13 +14,12 @@ const Auth = props => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log(keycloakConfig);
     const keycloak = Keycloak(keycloakConfig);
-
     keycloak
       .init({ onLoad: 'login-required', checkLoginIframe: false })
       .then(authenticated => {
         keycloak.loadUserProfile().then(function () {
+          dispatch(setKeycloakData(keycloak))
           const profile = {
             username: keycloak.profile.username,
             firstName: keycloak.profile.firstName,
@@ -37,7 +36,7 @@ const Auth = props => {
           });
         });
       });
-  }, []);
+  }, [dispatch]);
 
   if (auth.keycloak) {
     if (auth.authenticated) {

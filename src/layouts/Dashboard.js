@@ -55,7 +55,8 @@ const Paper = styled(MuiPaper)(spacing);
 
 const MainContent = styled(Paper)`
   flex: 1;
-  background: #F2F2F2;
+  background: #F2F2F2 !important;
+  background-color: #F2F2F2 !important;
 
   @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
     flex: none;

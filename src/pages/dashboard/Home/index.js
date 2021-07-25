@@ -3,7 +3,7 @@ import {withTheme} from 'styled-components';
 import {Grid} from '@material-ui/core';
 import Arvut from './Arvut';
 import Calendar from './Calendar';
-import Header from '../components/Header';
+import Header from './Header';
 
 const Home = () => {
   const [liveEvent, setLiveEvent] = useState();

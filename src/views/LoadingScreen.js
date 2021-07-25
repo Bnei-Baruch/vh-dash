@@ -2,7 +2,6 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
 import {
-  LinearProgress,
   CircularProgress,
   Typography,
   Box,
@@ -31,7 +30,6 @@ function LoadingScreen() {
   return (
     <>
       <div className={classes.root}>
-        <LinearProgress className={classes.linear} />
         <Box className={classes.loader}>
           <Box className={classes.central}>
             <CircularProgress thickness={5} />
