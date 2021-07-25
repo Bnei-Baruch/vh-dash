@@ -1,10 +1,10 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 import { dashboardLayoutRoutes } from './index';
 
 import DashboardLayout from '../layouts/Dashboard';
 import Page404 from '../pages/auth/Page404';
-import DashboardHeader from '../components/DashboardHeader';
+import DashboardHeader from '../pages/dashboard/Home/DashboardHeader';
 import Auth from '../config/Auth';
 
 const childRoutes = (Layout, routes) =>
@@ -57,13 +57,8 @@ const Routes = () => (
   <Router>
     <Switch>
       {childRoutes(DashboardLayout, dashboardLayoutRoutes)}
-      <Route
-        render={() => (
-          <Auth>
-            <Page404 />
-          </Auth>
-        )}
-      />
+      <Redirect to="/dash" />
+      <Route render={() => (<Auth><Page404 /></Auth>)}/>
     </Switch>
   </Router>
 );

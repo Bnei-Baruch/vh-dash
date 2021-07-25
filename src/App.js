@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
+import store from './redux/store/index';
 import Helmet from 'react-helmet';
 
 import DateFnsUtils from '@date-io/date-fns';
@@ -15,11 +15,32 @@ import maTheme from './theme';
 import Routes from './routes/Routes';
 import Auth from './config/Auth';
 import { useTranslation } from 'react-i18next';
+import axios from 'axios';
 
 const jss = create({
   plugins: [...jssPreset().plugins, rtl()],
   insertionPoint: 'jss-insertion-point',
 });
+
+/**
+ * Axios interceptor for token updation
+ * and appending token in api's
+ */
+axios.interceptors.request.use(async c => {
+  const state = store.getState();
+  if (state.userReducer.keycloak && state.userReducer.keycloak.isTokenExpired()) {
+    await state.userReducer.keycloak.updateToken(30).success();
+  }
+  //fetch token and pass here
+  if (state.userReducer.keycloak.token) {
+    let header = {
+      "Authorization": "Bearer " + state.userReducer.keycloak.token,
+      "Accept": "application/json"
+    };
+    c.headers = header
+  }
+  return c;
+})
 
 const App = ({ theme }) => {
   const { i18n } = useTranslation();
@@ -52,4 +73,4 @@ const App = ({ theme }) => {
   );
 };
 
-export default connect(store => ({ theme: store.themeReducer }))(App);
+export default connect(store => ({ theme: store.themeReducer, token: store.userReducer.token }))(App);

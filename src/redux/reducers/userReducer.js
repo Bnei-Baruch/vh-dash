@@ -3,6 +3,7 @@ import {
   setLoggedInUser,
   setFirstName,
   setLastName,
+  setKeycloakData
 } from '../actions/userActions';
 
 const initialState = {
@@ -19,6 +20,10 @@ export default createReducer(
     },
     [setLastName]: (state, action) => {
       return { ...state, info: action.user };
+    },
+    [setKeycloakData]: (state, action) => {
+      console.log(action)
+      return { ...state, keycloak: action.keycloak };
     },
   },
   initialState,
