@@ -31,8 +31,8 @@ const NavLink = React.forwardRef((props, ref) => (
 
 const Box = styled(MuiBox)(spacing);
 const Logo = styled(Avatar)`
-  height: auto;
-  width: auto;
+  height: auto !important;
+  width: auto !important;
 `;
 const Drawer = styled(MuiDrawer)`
   border-right: 0;
