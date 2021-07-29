@@ -41,6 +41,12 @@
             "subscriptions": "Suscripciones"
         },
         "Dashboard": {
+            "ArvutSystem": {
+                "name": "Sistema Arvut"
+              },
+              "Archive": {
+                "name": "Archivo"
+              },
             "Dashboard": {
                 "name": "Tablero de mandos"
             },
