@@ -30,7 +30,15 @@
             "profile": "Perfil",
             "logOutText": "¿Realmente quiere dejar de fumar?",
             "yesBtn": "Sí",
-            "cancelBtn": "Cancelar"
+            "cancelBtn": "Cancelar",
+            "statuses": {
+                "late": "Cargos por mora",
+                "nonExistant": "Inexistente",
+                "unknown": "Desconocidas",
+                "hold": "En espera",
+                "active": "Activo"
+            },
+            "subscriptions": "Suscripciones"
         },
         "Dashboard": {
             "Dashboard": {
@@ -193,6 +201,30 @@
                     "donations": "SEAMOS SOCIOS EN LA FÁBRICA DE DIFUSIÓN DE LA ASOCIACIÓN \"BNEI BARUJ\"",
                     "donationsLink": "http://bit.ly/2ZWi0kc"
                 }
+            },
+            "Payments": {
+                "amountLabel": "¿Cuánto estás pagando?",
+                "subscriptionLabel": "Cambiar el estado de la suscripción",
+                "currencyLabel": "Elige tu moneda",
+                "editSubscription": "Editar Suscripción",
+                "edit": "Editar",
+                "newPlan": "Nuevo Plan",
+                "downloadInvoice": "Descargar factura como PDF",
+                "cancelPayment": "Cancelar pago",
+                "action": "Accion",
+                "status": "Estado",
+                "currency": "Moneda",
+                "amount": "Importe",
+                "paymentType": "Tipo de pago",
+                "paymentMethod": "Forma de Pago",
+                "purpose": "Proposito",
+                "paidOn": "Pagado en",
+                "Tabs": {
+                    "myPlan": "Mi plan",
+                    "transaction": "Todas las transacciones"
+                },
+                "title": "Mis pagos",
+                "name": "Pagos"
             }
         },
         "Global": {
@@ -225,7 +257,16 @@
             "yes": "Sí",
             "modify": "Modificar",
             "cancelBtn": "Cancelar",
-            "saveBtn": "Guardar cambios"
+            "saveBtn": "Guardar cambios",
+            "Subscription": {
+                "cancel": "Cancelar",
+                "pause": "Pausa",
+                "active": "Activo"
+            },
+            "Currency": {
+                "eur": "euro",
+                "usd": "USD"
+            }
         }
     }
 }
