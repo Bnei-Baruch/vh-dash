@@ -73,6 +73,7 @@
       "yesBtn": "Yes",
       "cancelBtn": "Cancel",
       "subscriptions": "Subscriptions",
+      "payUserFee": "Pay User Fee",
       "statuses": {
         "active": "Active",
         "hold": "On hold",
