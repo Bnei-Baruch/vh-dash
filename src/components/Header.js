@@ -18,6 +18,7 @@ import {
   AppBar as MuiAppBar,
   IconButton as MuiIconButton,
   Toolbar,
+  Button,
 } from '@material-ui/core';
 
 import { Menu as MenuIcon } from '@material-ui/icons';
@@ -61,6 +62,10 @@ const Indicator = styled(Badge)`
     color: ${props => props.theme.palette.common.white};
   }
 `;
+
+const PayButton = styled(Button)`
+  border-radius: 20px !important;
+`
 
 const Search = styled.div`
   border-radius: 2px;
@@ -239,8 +244,12 @@ function UserMenu() {
   );
 }
 
-const Header = ({ onDrawerToggle }) => (
-  <>
+const Header = ({ onDrawerToggle }) => {
+  const { t } = useTranslation();
+  const redirectToPayment = () => {
+    window.location.href = `${window.location.origin}/pay/order/1`
+  }
+  return <>
     <AppBar position='sticky' elevation={0}>
       <Toolbar>
         <Grid container alignItems='center'>
@@ -282,6 +291,7 @@ const Header = ({ onDrawerToggle }) => (
                 </IconButton>
               </>
             )}
+            <PayButton onClick={redirectToPayment} variant="contained" color="primary">{t('UserMenu.payUserFee')}</PayButton>
             <LanguageMenu />
             <UserMenu />
           </Grid>
@@ -289,6 +299,6 @@ const Header = ({ onDrawerToggle }) => (
       </Toolbar>
     </AppBar>
   </>
-);
+};
 
 export default withTheme(Header);
