@@ -4,7 +4,8 @@
             "English": "Inglés",
             "Russian": "Ruso",
             "Hebrew": "Hebreo",
-            "Spanish": "Español"
+            "Spanish": "Español",
+            "streetAddressPlaceholder": "Entra en tu calle"
         },
         "Home": {
             "arvut": "Arvut",
@@ -19,16 +20,33 @@
             "tomorrow": "Mañana",
             "yesterday": "Ayer",
             "events": "Eventos",
-            "welcomeBack": "Bienvenido de nuevo"
+            "welcomeBack": "Bienvenido de nuevo",
+            "watchRecordedBtn": "Ver Grabado",
+            "active": "ACTIVO",
+            "notActive": "No ACTIVO"
         },
         "UserMenu": {
             "logOut": "Cerrar la sesión",
             "profile": "Perfil",
             "logOutText": "¿Realmente quiere dejar de fumar?",
             "yesBtn": "Sí",
-            "cancelBtn": "Cancelar"
+            "cancelBtn": "Cancelar",
+            "statuses": {
+                "late": "Cargos por mora",
+                "nonExistant": "Inexistente",
+                "unknown": "Desconocidas",
+                "hold": "En espera",
+                "active": "Activo"
+            },
+            "subscriptions": "Suscripciones"
         },
         "Dashboard": {
+            "ArvutSystem": {
+                "name": "Sistema Arvut"
+              },
+              "Archive": {
+                "name": "Archivo"
+              },
             "Dashboard": {
                 "name": "Tablero de mandos"
             },
@@ -39,7 +57,10 @@
                     "personal": "Personal",
                     "framework": "Mi marco de trabajo",
                     "skills": "Mis habilidades",
-                    "notification": "Notificación"
+                    "notification": "Notificación",
+                    "otherInformations": "Otras informaciones",
+                    "languages": "Idiomas",
+                    "security": "Seguridad"
                 },
                 "PersonalForm": {
                     "name": "Personal",
@@ -59,7 +80,14 @@
                     "primaryLanguage": "Idioma principal",
                     "phoneNumber": "Número de teléfono",
                     "phoneNumberPlaceholder": "Introduzca su número de teléfono",
-                    "saveBtn": "Guarde los cambios"
+                    "saveBtn": "Guarde los cambios",
+                    "maritalStatus": {
+                        "widowed": "Viudo",
+                        "divorced": "Divorciado",
+                        "married": "Casó",
+                        "single": "Soltero",
+                        "label": "Estado Civil"
+                    }
                 },
                 "LoginForm": {
                     "name": "Información de acceso",
@@ -84,14 +112,61 @@
                     "skype": "Tu nombre en Skype",
                     "skypePlaceholder": "Introduzca su nombre de usuario de Skype",
                     "connectBtn": "Conectar"
-                }
+                },
+                "Security": {
+                    "forgotPassword": "¿Olvidaste tu contraseña?",
+                    "facebookTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
+                    "facebookConnected": "Facebook conectado",
+                    "googleTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
+                    "googleConnected": "Google conectado",
+                    "email": "Correo electrónico",
+                    "name": "Información de inicio de sesión"
+                },
+                "OtherInformation": {
+                    "wantStudyGroup": "¿Quieres tener un grupo de estudio?",
+                    "studyGroup": "¿Tienes un grupo de estudio?",
+                    "tenName": "Nombre de diez, si tiene grupo",
+                    "ten": "Diez",
+                    "studyFramework": "Marco de estudio",
+                    "startYear": "Año de inicio",
+                    "education": "Educacion"
+                },
+                "LanguagePreferences": {
+                    "readingTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
+                    "readingLanguage": "Lenguaje de lectura",
+                    "listeningTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
+                    "listeningLanguage": "Lenguaje de escucha",
+                    "emailTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
+                    "emailLanguage": "Idioma del correo electrónico",
+                    "name": "Preferencias de idioma"
+                },
+                "Languages": {
+                    "otherLanguage": "Otro idioma {{number}}",
+                    "firstLanguage": "Lengua materna",
+                    "name": "Idiomas"
+                },
+                "Emails": {
+                    "emailError": "Introduce la dirección de correo electrónico correcta",
+                    "alternativeEmail": "Correo electrónico alternativo {{number}}",
+                    "primaryEmail": "Correo electrónico principal",
+                    "name": "Mis correos electrónicos"
+                },
+                "PhysicalLocationForm": {
+                    "stateRegion": "Estado/Región",
+                    "country": "País",
+                    "postalCode": "Código Postal",
+                    "streetAddress": "Dirección de la calle",
+                    "name": "Ubicación Física"
+                },
+                "socialFormName": "Mis números de teléfono"
             },
             "Account": {
                 "name": "Cuenta",
                 "title": "Mi cuenta",
                 "Tabs": {
                     "transaction": "Todas las transacciones",
-                    "payment": "Métodos de pago"
+                    "payment": "Métodos de pago",
+                    "myPlan": "Mi plan"
                 },
                 "paidOn": "Pagado en",
                 "purpose": "Propósito",
@@ -114,7 +189,7 @@
                 "subCaption": "CONVENCIÓN MUNDIAL DE CÁBALA 2021",
                 "broadcast": "Difusión",
                 "broadcastLanguage": "Idiomas de transmisión",
-                "loading": "Cargando ...",
+                "loading": "Cargando…",
                 "noBroadcast": "No hay transmisión ahora",
                 "Question": {
                     "title": "Enviar una pregunta",
@@ -132,11 +207,72 @@
                     "donations": "SEAMOS SOCIOS EN LA FÁBRICA DE DIFUSIÓN DE LA ASOCIACIÓN \"BNEI BARUJ\"",
                     "donationsLink": "http://bit.ly/2ZWi0kc"
                 }
+            },
+            "Payments": {
+                "amountLabel": "¿Cuánto estás pagando?",
+                "subscriptionLabel": "Cambiar el estado de la suscripción",
+                "currencyLabel": "Elige tu moneda",
+                "editSubscription": "Editar Suscripción",
+                "edit": "Editar",
+                "newPlan": "Nuevo Plan",
+                "downloadInvoice": "Descargar factura como PDF",
+                "cancelPayment": "Cancelar pago",
+                "action": "Accion",
+                "status": "Estado",
+                "currency": "Moneda",
+                "amount": "Importe",
+                "paymentType": "Tipo de pago",
+                "paymentMethod": "Forma de Pago",
+                "purpose": "Proposito",
+                "paidOn": "Pagado en",
+                "Tabs": {
+                    "myPlan": "Mi plan",
+                    "transaction": "Todas las transacciones"
+                },
+                "title": "Mis pagos",
+                "name": "Pagos"
             }
         },
         "Global": {
             "inputPlaceholder": "Ingrese su {{input}}",
-            "formErrorMsg": "Introduce tus datos"
+            "formErrorMsg": "Introduce tus datos",
+            "Months": {
+                "december": "Diciembre",
+                "november": "Noviembre",
+                "october": "Octubre",
+                "september": "Setiembre",
+                "august": "Agosto",
+                "july": "Julio",
+                "june": "Junio",
+                "may": "May",
+                "april": "Abril",
+                "march": "Marzo",
+                "february": "Febrero",
+                "january": "Enero"
+            },
+            "Days": {
+                "sunday": "Domingos",
+                "saturday": "Sabado",
+                "friday": "Viernes",
+                "thursday": "Jueves",
+                "wednesday": "El miercoles",
+                "tuesday": "Martes",
+                "monday": "Lunes,"
+            },
+            "no": "No",
+            "yes": "Sí",
+            "modify": "Modificar",
+            "cancelBtn": "Cancelar",
+            "saveBtn": "Guardar cambios",
+            "Subscription": {
+                "cancel": "Cancelar",
+                "pause": "Pausa",
+                "active": "Activo"
+            },
+            "Currency": {
+                "eur": "euro",
+                "usd": "USD"
+            }
         }
     }
 }
