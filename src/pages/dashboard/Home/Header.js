@@ -8,6 +8,7 @@ import styled from 'styled-components';
 import { spacing } from '@material-ui/system';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import { profileInfo } from '../../../redux/selectors/profile';
 
 const Typography = styled(MuiTypography)(spacing);
 
@@ -15,7 +16,7 @@ const Divider = styled(MuiDivider)(spacing);
 
 const Header = () => {
   const { t } = useTranslation();
-  const user = useSelector(state => state.userReducer.info.profile);
+  const profileData = useSelector(profileInfo);
   const now = new Date();
 
   const MONTH_NAMES = [
@@ -37,7 +38,7 @@ const Header = () => {
     <>
       <Grid>
         <Typography variant='h3'>
-          {t('Home.welcomeBack')}, {user.firstName}
+          {t('Home.welcomeBack')}, {profileData ? profileData.first_name_vernacular : ''}
         </Typography>
         <Typography variant='body2' ml={2}>
           {`${now.getDate()} ${

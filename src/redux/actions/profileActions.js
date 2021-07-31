@@ -9,6 +9,15 @@ import {
   UPDATE_PROFILE_FAILED,
 } from '../constants';
 
+
+const apiProfile = (method, url, data, token) => {
+  return axios[method](url, data, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
 export const updateProfile = data => {
   return (dispatch, getState) => {
     const { subject, token } = getState().userReducer.info.keycloak;
@@ -28,7 +37,7 @@ export const updateProfile = data => {
           .then(res => {
             dispatch({
               type: UPDATE_PROFILE_SUCCESS,
-              payload: i18next.t('Dashboard.Profile.updatedProfile'),
+              payload: i18next.t('Dashboard.Profile.profileUpdated'),
             });
             console.log('Success patch response:', res);
           })
@@ -69,21 +78,25 @@ export const fetchProfile = () => {
         ({ message, response }) => {
           if (response && response.status === 400) {
             const data = {
-              first_name_latin: profile.firstName,
-              last_name_latin: profile.lastName,
-              country: 'Germany',
-              gender: 'male',
-              marital_status: 'Single',
+              keycloak_id: subject,
+              first_name_vernacular: profile.firstName,
+              last_name_vernacular: profile.lastName,
               primary_email: profile.email,
-              first_language: 'English',
-              has_ten_group: 'No',
-              wants_ten_group: 'Yes',
             };
 
-            updateProfile(data);
+            apiProfile('post',PROFILE_URL, data, token)
+              .then(res => console.log('Success post response:', res))
+              .catch(error => {
+                  dispatch({
+                    type: UPDATE_PROFILE_SUCCESS,
+                    payload: i18next.t('Global.requestError'),
+                  });
+                  console.error('Failed post response:', error);
+              });
           }
-
-          dispatch({ type: FETCH_PROFILE_FAILED, payload: message });
+          else {
+            dispatch({ type: FETCH_PROFILE_FAILED, payload: message });
+          }
         },
       );
   };

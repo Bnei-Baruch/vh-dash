@@ -34,20 +34,20 @@ const initialErrorFields = {
 };
 
 const initialFields = {
-  first_name_latin: null,
-  last_name_latin: null,
+  first_name_vernacular: null,
+  last_name_vernacular: null,
   date_of_birth: null,
-  gender: 'male',
-  marital_status: 'Single',
+  gender: null,
+  marital_status: null,
   street_address: null,
   state_region: null,
   postal_code: null,
-  country: 'Germany',
+  country: null,
   city: null,
   primary_email: null,
   alternate_email_1: null,
   alternate_email_2: null,
-  first_language: 'English',
+  first_language: 'en',
   other_language_1: null,
   other_language_2: null,
   other_language_3: null,
@@ -60,8 +60,8 @@ const initialFields = {
   telegram_number: null,
   study_start_year: null,
   study_framework: null,
-  has_ten_group: 'Yes',
-  wants_ten_group: 'No',
+  has_ten_group: null,
+  wants_ten_group: null,
   name_of_ten_group: null,
 };
 
@@ -69,45 +69,32 @@ const MyProfile = () => {
   const classes = useStyles();
   const { t } = useTranslation();
   const dispatch = useDispatch();
-
-  const { keycloak } = useSelector(state => state.userReducer.info);
   const profileData = useSelector(profileInfo);
   const { isModalOpen, description } = useSelector(profileModalContent);
 
 
   const [errorFields, setErrorFields] = useState({ ...initialErrorFields });
+  const [updatedFields, setUpdatedFileds] = useState({});
   const [inputFields, setInputFields] = useState({
     ...initialFields,
     ...profileData,
-    primaryLanguage: 'English',
-    first_name_latin: keycloak.profile.firstName,
-    last_name_latin: keycloak.profile.lastName,
-    primary_email: keycloak.profile.email,
+    primaryLanguage: 'en',
     has_ten_group: convertBooleanToString(profileData.has_ten_group),
     wants_ten_group: convertBooleanToString(profileData.wants_ten_group),
   });
 
   const onErrorClear = () => setErrorFields(initialErrorFields);
 
-  const handleChange = (field, value) =>
+  const handleChange = (field, value) => {
+    console.log(field, value);
+    setUpdatedFileds({
+      ...updatedFields, [field]: value
+    });
     setInputFields(prevState => ({ ...prevState, [field]: value }));
-
-  const convertToBoolean = value => (value === 'Yes' ? true : false);
+  }
 
   const onSubmit = () => {
-    const { has_ten_group, wants_ten_group, study_start_year } = inputFields;
-
-    const data = {
-      ...inputFields,
-      keycloak_id: keycloak.subject,
-      has_ten_group: convertToBoolean(has_ten_group),
-      wants_ten_group: convertToBoolean(wants_ten_group),
-      study_start_year: study_start_year
-        ? new Date(study_start_year).getFullYear()
-        : null,
-    };
-
-    dispatch(updateProfile(data));
+    dispatch(updateProfile(updatedFields));
   };
 
   const onModalClose = () =>
