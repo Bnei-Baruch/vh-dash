@@ -71,6 +71,7 @@ const MyProfileTab = ({
     }
 
     isValid && onSubmit();
+    setIsModified(false);
   };
 
   const onCancel = () => {
