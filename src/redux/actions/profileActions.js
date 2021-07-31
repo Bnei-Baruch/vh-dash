@@ -37,7 +37,7 @@ export const updateProfile = data => {
           .then(res => {
             dispatch({
               type: UPDATE_PROFILE_SUCCESS,
-              payload: i18next.t('Dashboard.Profile.updatedProfile'),
+              payload: i18next.t('Dashboard.Profile.profileUpdated'),
             });
             console.log('Success patch response:', res);
           })
