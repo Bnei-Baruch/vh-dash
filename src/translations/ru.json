@@ -1,243 +1,275 @@
 {
-  "translation": {
-    "Global": {
-      "inputPlaceholder": "Введите ваш {{input}}",
-      "formErrorMsg": "Пожалуйста, введите ваши данные",
-      "saveBtn": "Сохранить изменения",
-      "cancelBtn": "Отменить",
-      "modify": "Изменить",
-      "yes": "Да",
-      "no": "Нет",
-      "Currency": {
-        "usd": "USD",
-        "eur": "EUR"
-      },
-      "Days": {
-        "monday": "Понедельник",
-        "tuesday": "Вторник",
-        "wednesday": "Среда",
-        "thursday": "Четверг",
-        "friday": "Пятница",
-        "saturday": "Суббота",
-        "sunday": "Воскресенье"
-      },
-      "Months": {
-        "january": "Январь",
-        "february": "Февраль",
-        "march": "Март",
-        "april": "Апрель",
-        "may": "Май",
-        "june": "Июнь",
-        "july": "Июль",
-        "august": "Август",
-        "september": "Сентябрь",
-        "october": "Октябрь",
-        "november": "Ноябрь",
-        "december": "Декабрь"
-      },
-      "Subscription": {
-        "active": "Active",
-        "pause": "Pause",
-        "cancel": "Cancel"
-      }
-    },
-    "Languages": {
-      "English": "Английский",
-      "Russian": "Русский",
-      "Hebrew": "Иврит",
-      "Spanish": "Испанский",
-      "streetAddressPlaceholder": "Введите вашу улицу"
-    },
-    "Home": {
-      "arvut": "Арвут",
-      "watchBtn": "Смотреть",
-      "noLiveEvent": "Онлайн события отсутствуют",
-      "noEvent": "Нет событий",
-      "currentEvent": "Текущее событие",
-      "totalConnections": "Всего подключений",
-      "tensNumber": "Количество подключенных десятков",
-      "tenFriends": "Товарищи из твоей десятки",
-      "today": "Сегодня",
-      "tomorrow": "Завтра",
-      "yesterday": "Вчера",
-      "events": "События",
-      "welcomeBack": "Рады возвращению",
-      "notActive": "Нет АКТИВНЫХ",
-      "active": "АКТИВНЫЕ",
-      "watchRecordedBtn": "Смотреть запись"
-    },
-    "UserMenu": {
-      "logOut": "Выйти",
-      "profile": "Профиль",
-      "logOutText": "Вы действительно хотите выйти?",
-      "yesBtn": "Да",
-      "cancelBtn": "Отменить"
-    },
-    "Dashboard": {
-      "Dashboard": {
-        "name": "Панель навигации"
-      },
-      "Events": {
-        "name": "События"
-      },
-      "Profile": {
-        "name": "Профиль",
-        "title": "Мой профиль",
-        "Tabs": {
-          "personal": "Личная информация",
-          "framework": "Структура",
-          "skills": "Мои навыки",
-          "notification": "Оповещения",
-          "security": "Безопасность",
-          "languages": "Языки",
-          "otherInformations": "Другая информация"
-        },
-        "PersonalForm": {
-          "name": "Личные данные",
-          "firstName": "Имя",
-          "firstNamePlaceholder": "Введите имя",
-          "dateOfBirth": "Дата рождения",
-          "gender": {
-            "label": "Пол",
-            "male": "мужской",
-            "female": "женский"
-          },
-          "fullName": "Введите ФИО на родном языке",
-          "fullNamePlaceholder": "Введите ФИО",
-          "lastName": "Фамилия",
-          "lastNamePlaceholder": "Введите фамилию",
-          "country": "Страна",
-          "primaryLanguage": "Родной язык",
-          "phoneNumber": "Мобильный телефон",
-          "phoneNumberPlaceholder": "Введите мобильный номер",
-          "saveBtn": "Сохранить",
-          "maritalStatus": {
-            "label": "Семейный статус",
-            "single": "Одинокий(-кая)",
-            "married": "Женат(замужем)",
-            "divorced": "Разведен(-а)",
-            "widowed": "Вдовец(вдова)"
-          }
-        },
-        "LoginForm": {
-          "name": "Логин",
-          "email": "Эл. адрес",
-          "emailPlaceholder": "Введите эл. почту",
-          "password": "Пароль",
-          "passwordPlaceholder": "Введите ваг пароль",
-          "saveBtn": "Сохранить"
-        },
-        "SocialForm": {
-          "name": "Мои публичные аккаунты",
-          "facebook": "Мой аккаунт Facebook",
-          "facebookPlaceholder": "Введите аккаунт Facebook",
-          "youtube": "Мой аккаунт Youtube",
-          "youtubePlaceholder": "Введите аккаунт Youtube",
-          "instagram": "Мой аккаунт Instagram",
-          "instagramPlaceholder": "Введите аккаунт Instagram",
-          "linked": "Мой аккаунт Linked",
-          "linkedPlaceholder": "Введите аккаунт Linked",
-          "twitter": "Мой аккаунт Twitter",
-          "twitterPlaceholder": "Введите аккаунт Twitter",
-          "skype": "Мой аккаунт Skype",
-          "skypePlaceholder": "Введите аккаунт Skype",
-          "connectBtn": "Подключить"
-        },
-        "Security": {
-          "googleTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
-          "facebookTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
-          "name": "Информация для входа",
-          "email": "Электронные адреса",
-          "googleConnected": "Google аккаунт",
-          "facebookConnected": "Facebook аккаунт",
-          "forgotPassword": "Забыли пароль?"
-        },
-        "Emails": {
-          "alternativeEmail": "Дополнительный эл. адрес {{number}}",
-          "name": "Мои эл. адреса",
-          "primaryEmail": "Основной эл. адрес",
-          "emailError": "Пожалуйста, введите правильный эл. адрес"
-        },
-        "LanguagePreferences": {
-          "emailTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
-          "readingTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
-          "name": "Настройки языка",
-          "emailLanguage": "Язык эл. адреса",
-          "listeningLanguage": "Язык вещания",
-          "listeningTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
-          "readingLanguage": "Язык для чтение"
-        },
-        "socialFormName": "Мои мобильные номера",
-        "PhysicalLocationForm": {
-          "name": "Место проживания",
-          "streetAddress": "Улица",
-          "postalCode": "Почтовый индекс",
-          "country": "Страна",
-          "stateRegion": "Район/Область"
-        },
-        "OtherInformation": {
-          "studyGroup": "У вас есть учебная группа?",
-          "wantStudyGroup": "Вы хотите учебную группу?",
-          "education": "Образование",
-          "startYear": "Год начала",
-          "studyFramework": "Структура обучения",
-          "tenName": "Имя десятки, если есть группа",
-          "ten": "Десятка"
+    "translation": {
+        "Global": {
+            "inputPlaceholder": "Введите ваш {{input}}",
+            "formErrorMsg": "Пожалуйста, введите ваши данные",
+            "saveBtn": "Сохранить изменения",
+            "cancelBtn": "Отменить",
+            "modify": "Изменить",
+            "yes": "Да",
+            "no": "Нет",
+            "Currency": {
+                "usd": "USD",
+                "eur": "EUR"
+            },
+            "Days": {
+                "monday": "Понедельник",
+                "tuesday": "Вторник",
+                "wednesday": "Среда",
+                "thursday": "Четверг",
+                "friday": "Пятница",
+                "saturday": "Суббота",
+                "sunday": "Воскресенье"
+            },
+            "Months": {
+                "january": "Январь",
+                "february": "Февраль",
+                "march": "Март",
+                "april": "Апрель",
+                "may": "Май",
+                "june": "Июнь",
+                "july": "Июль",
+                "august": "Август",
+                "september": "Сентябрь",
+                "october": "Октябрь",
+                "november": "Ноябрь",
+                "december": "Декабрь"
+            },
+            "Subscription": {
+                "active": "Active",
+                "pause": "Pause",
+                "cancel": "Cancel"
+            }
         },
         "Languages": {
-          "name": "Языки",
-          "firstLanguage": "Основной язык",
-          "otherLanguage": "Другой язык {{number}}"
-        }
-      },
-      "Account": {
-        "name": "Аккаунт",
-        "title": "Мой аккаунт",
-        "Tabs": {
-          "transaction": "Все транзакции",
-          "payment": "Платежные методы",
-          "myPlan": "Мой план"
+            "English": "Английский",
+            "Russian": "Русский",
+            "Hebrew": "Иврит",
+            "Spanish": "Испанский",
+            "streetAddressPlaceholder": "Введите вашу улицу"
         },
-        "paidOn": "Оплачено",
-        "purpose": "Назначение",
-        "paymentMethod": "Платежный метод",
-        "paymentType": "Платежный тип",
-        "amount": "Сумма",
-        "currency": "Валюта",
-        "status": "Статус",
-        "action": "Действие",
-        "cancelPayment": "Отменить платеж",
-        "downloadInvoice": "Загрузить квитанцию как PDF",
-        "card": "Карта",
-        "cardNumber": "Номер",
-        "expirationDate": "Дата истечения срока"
-      },
-      "BroadcastArea": {
-        "name": "Конгресс-зона",
-        "title": "Конгресс-зона",
-        "caption": "ПОЗНАЙТЕ НАСТОЯЩУЮ ЖИЗНЬ",
-        "subCaption": "ВСЕМИРНАЯ КОНВЕНЦИЯ КАББАЛА 2021",
-        "broadcast": "Трансляция",
-        "broadcastLanguage": "Язык вещания",
-        "loading": "Загрузка…",
-        "noBroadcast": "Вещание отсутствует",
-        "Question": {
-          "title": "Задайте вопрос",
-          "label": "Какой у вас вопрос?",
-          "placeholder": "Введите вопрос и нажмите кнопку 'Спросить'",
-          "button": "Спросить",
-          "successMsg": "Успешно отправлено!",
-          "errorMsg": "Непредвиденная ошибка. Пожалуйста, попробуйте еще раз!"
+        "Home": {
+            "arvut": "Арвут",
+            "watchBtn": "Смотреть",
+            "noLiveEvent": "Онлайн события отсутствуют",
+            "noEvent": "Нет событий",
+            "currentEvent": "Текущее событие",
+            "totalConnections": "Всего подключений",
+            "tensNumber": "Количество подключенных десятков",
+            "tenFriends": "Товарищи из твоей десятки",
+            "today": "Сегодня",
+            "tomorrow": "Завтра",
+            "yesterday": "Вчера",
+            "events": "События",
+            "welcomeBack": "Рады возвращению",
+            "notActive": "Нет АКТИВНЫХ",
+            "active": "АКТИВНЫЕ",
+            "watchRecordedBtn": "Смотреть запись"
         },
-        "Annoucements": {
-          "title": "Объявления",
-          "text": "Наш виртуальный дом включает в себя физическую инфраструктуру и рабочую силу для поддержки нашей комплексной работы и улучшения онлайн-систем для оптимального соединения во время ежедневных уроков каббалы, общественных собраний, праздников и обедов. Это позволяет каждому другу полноценно общаться на своем языке как со своими Десятью, так и с мировым кли из 72 стран.",
-          "donationsButton": "ВНЕСТИ ВКЛАД",
-          "donationsQuote": "«Только благодаря распространению науки каббала мы сможем удостоиться полного избавления» Бааль Сулам.",
-          "donations": "СТАНЕМ РАВНЫМИ ПАРТНЕРАМИ В РАСПРОСТРАНЕНИИ НАУКИ КАББАЛА, КОТОРОЕ ВЕДЕТ НАША ОРГАНИЗАЦИЯ - «БНЕЙ БАРУХ – КАББАЛА ЛААМ»",
-          "donationsLink": "http://bit.ly/3bBL0mE"
+        "UserMenu": {
+            "logOut": "Выйти",
+            "profile": "Профиль",
+            "logOutText": "Вы действительно хотите выйти?",
+            "yesBtn": "Да",
+            "cancelBtn": "Отменить",
+            "statuses": {
+                "late": "Поздние сборы",
+                "nonExistant": "Не существует",
+                "unknown": "Неизвестный",
+                "hold": "В ожидании",
+                "active": "Активный"
+            },
+            "subscriptions": "Подписки"
+        },
+        "Dashboard": {
+            "Dashboard": {
+                "name": "Панель навигации"
+            },
+            "Events": {
+                "name": "События"
+            },
+            "Profile": {
+                "name": "Профиль",
+                "title": "Мой профиль",
+                "Tabs": {
+                    "personal": "Личная информация",
+                    "framework": "Структура",
+                    "skills": "Мои навыки",
+                    "notification": "Оповещения",
+                    "security": "Безопасность",
+                    "languages": "Языки",
+                    "otherInformations": "Другая информация"
+                },
+                "PersonalForm": {
+                    "name": "Личные данные",
+                    "firstName": "Имя",
+                    "firstNamePlaceholder": "Введите имя",
+                    "dateOfBirth": "Дата рождения",
+                    "gender": {
+                        "label": "Пол",
+                        "male": "мужской",
+                        "female": "женский"
+                    },
+                    "fullName": "Введите ФИО на родном языке",
+                    "fullNamePlaceholder": "Введите ФИО",
+                    "lastName": "Фамилия",
+                    "lastNamePlaceholder": "Введите фамилию",
+                    "country": "Страна",
+                    "primaryLanguage": "Родной язык",
+                    "phoneNumber": "Мобильный телефон",
+                    "phoneNumberPlaceholder": "Введите мобильный номер",
+                    "saveBtn": "Сохранить",
+                    "maritalStatus": {
+                        "label": "Семейный статус",
+                        "single": "Одинокий(-кая)",
+                        "married": "Женат(замужем)",
+                        "divorced": "Разведен(-а)",
+                        "widowed": "Вдовец(вдова)"
+                    }
+                },
+                "LoginForm": {
+                    "name": "Логин",
+                    "email": "Эл. адрес",
+                    "emailPlaceholder": "Введите эл. почту",
+                    "password": "Пароль",
+                    "passwordPlaceholder": "Введите ваг пароль",
+                    "saveBtn": "Сохранить"
+                },
+                "SocialForm": {
+                    "name": "Мои публичные аккаунты",
+                    "facebook": "Мой аккаунт Facebook",
+                    "facebookPlaceholder": "Введите аккаунт Facebook",
+                    "youtube": "Мой аккаунт Youtube",
+                    "youtubePlaceholder": "Введите аккаунт Youtube",
+                    "instagram": "Мой аккаунт Instagram",
+                    "instagramPlaceholder": "Введите аккаунт Instagram",
+                    "linked": "Мой аккаунт Linked",
+                    "linkedPlaceholder": "Введите аккаунт Linked",
+                    "twitter": "Мой аккаунт Twitter",
+                    "twitterPlaceholder": "Введите аккаунт Twitter",
+                    "skype": "Мой аккаунт Skype",
+                    "skypePlaceholder": "Введите аккаунт Skype",
+                    "connectBtn": "Подключить"
+                },
+                "Security": {
+                    "googleTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
+                    "facebookTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
+                    "name": "Информация для входа",
+                    "email": "Электронные адреса",
+                    "googleConnected": "Google аккаунт",
+                    "facebookConnected": "Facebook аккаунт",
+                    "forgotPassword": "Забыли пароль?"
+                },
+                "Emails": {
+                    "alternativeEmail": "Дополнительный эл. адрес {{number}}",
+                    "name": "Мои эл. адреса",
+                    "primaryEmail": "Основной эл. адрес",
+                    "emailError": "Пожалуйста, введите правильный эл. адрес"
+                },
+                "LanguagePreferences": {
+                    "emailTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
+                    "readingTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
+                    "name": "Настройки языка",
+                    "emailLanguage": "Язык эл. адреса",
+                    "listeningLanguage": "Язык вещания",
+                    "listeningTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
+                    "readingLanguage": "Язык для чтение"
+                },
+                "socialFormName": "Мои мобильные номера",
+                "PhysicalLocationForm": {
+                    "name": "Место проживания",
+                    "streetAddress": "Улица",
+                    "postalCode": "Почтовый индекс",
+                    "country": "Страна",
+                    "stateRegion": "Район/Область"
+                },
+                "OtherInformation": {
+                    "studyGroup": "У вас есть учебная группа?",
+                    "wantStudyGroup": "Вы хотите учебную группу?",
+                    "education": "Образование",
+                    "startYear": "Год начала",
+                    "studyFramework": "Структура обучения",
+                    "tenName": "Имя десятки, если есть группа",
+                    "ten": "Десятка"
+                },
+                "Languages": {
+                    "name": "Языки",
+                    "firstLanguage": "Основной язык",
+                    "otherLanguage": "Другой язык {{number}}"
+                }
+            },
+            "Account": {
+                "name": "Аккаунт",
+                "title": "Мой аккаунт",
+                "Tabs": {
+                    "transaction": "Все транзакции",
+                    "payment": "Платежные методы",
+                    "myPlan": "Мой план"
+                },
+                "paidOn": "Оплачено",
+                "purpose": "Назначение",
+                "paymentMethod": "Платежный метод",
+                "paymentType": "Платежный тип",
+                "amount": "Сумма",
+                "currency": "Валюта",
+                "status": "Статус",
+                "action": "Действие",
+                "cancelPayment": "Отменить платеж",
+                "downloadInvoice": "Загрузить квитанцию как PDF",
+                "card": "Карта",
+                "cardNumber": "Номер",
+                "expirationDate": "Дата истечения срока"
+            },
+            "BroadcastArea": {
+                "name": "Конгресс-зона",
+                "title": "Конгресс-зона",
+                "caption": "ПОЗНАЙТЕ НАСТОЯЩУЮ ЖИЗНЬ",
+                "subCaption": "ВСЕМИРНАЯ КОНВЕНЦИЯ КАББАЛА 2021",
+                "broadcast": "Трансляция",
+                "broadcastLanguage": "Язык вещания",
+                "loading": "Загрузка…",
+                "noBroadcast": "Вещание отсутствует",
+                "Question": {
+                    "title": "Задайте вопрос",
+                    "label": "Какой у вас вопрос?",
+                    "placeholder": "Введите вопрос и нажмите кнопку 'Спросить'",
+                    "button": "Спросить",
+                    "successMsg": "Успешно отправлено!",
+                    "errorMsg": "Непредвиденная ошибка. Пожалуйста, попробуйте еще раз!"
+                },
+                "Annoucements": {
+                    "title": "Объявления",
+                    "text": "Наш виртуальный дом включает в себя физическую инфраструктуру и рабочую силу для поддержки нашей комплексной работы и улучшения онлайн-систем для оптимального соединения во время ежедневных уроков каббалы, общественных собраний, праздников и обедов. Это позволяет каждому другу полноценно общаться на своем языке как со своими Десятью, так и с мировым кли из 72 стран.",
+                    "donationsButton": "ВНЕСТИ ВКЛАД",
+                    "donationsQuote": "«Только благодаря распространению науки каббала мы сможем удостоиться полного избавления» Бааль Сулам.",
+                    "donations": "СТАНЕМ РАВНЫМИ ПАРТНЕРАМИ В РАСПРОСТРАНЕНИИ НАУКИ КАББАЛА, КОТОРОЕ ВЕДЕТ НАША ОРГАНИЗАЦИЯ - «БНЕЙ БАРУХ – КАББАЛА ЛААМ»",
+                    "donationsLink": "http://bit.ly/3bBL0mE"
+                }
+            },
+            "Payments": {
+                "amountLabel": "Сколько вы платите?",
+                "subscriptionLabel": "Изменить статус подписки",
+                "currencyLabel": "Выберите валюту",
+                "editSubscription": "Изменить подписку",
+                "edit": "Изменить",
+                "newPlan": "Новый план",
+                "downloadInvoice": "Скачать счет в формате PDF",
+                "cancelPayment": "Отменить платеж",
+                "action": "Действие",
+                "status": "Статус",
+                "currency": "Валюта",
+                "amount": "Сумма",
+                "paymentType": "Платежный тип",
+                "paymentMethod": "Плаежный метод",
+                "purpose": "Цель",
+                "paidOn": "Оплачено",
+                "Tabs": {
+                    "myPlan": "Мой план",
+                    "transaction": "Все транзакции"
+                },
+                "title": "Мои платежи",
+                "name": "Платежи"
+            }
         }
-      }
     }
-  }
 }
