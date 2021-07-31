@@ -14,8 +14,8 @@ const PersonalForm = ({ inputFields, handleChange, isModified }) => {
   const { t } = useTranslation();
 
   const {
-    first_name_latin,
-    last_name_latin,
+    first_name_vernacular,
+    last_name_vernacular,
     date_of_birth,
     gender,
     marital_status,
@@ -32,7 +32,7 @@ const PersonalForm = ({ inputFields, handleChange, isModified }) => {
             disabled={!isModified}
             type='text'
             label={t('Dashboard.Profile.PersonalForm.firstName')}
-            value={first_name_latin || ''}
+            value={first_name_vernacular || ''}
             fullWidth
             placeholder={t(
               'Dashboard.Profile.PersonalForm.firstNamePlaceholder',
@@ -40,7 +40,7 @@ const PersonalForm = ({ inputFields, handleChange, isModified }) => {
             InputLabelProps={{
               shrink: true,
             }}
-            onChange={event => handleChange('first_name_latin', event.target.value)}
+            onChange={event => handleChange('first_name_vernacular', event.target.value)}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -48,7 +48,7 @@ const PersonalForm = ({ inputFields, handleChange, isModified }) => {
             disabled={!isModified}
             type='text'
             label={t('Dashboard.Profile.PersonalForm.lastName')}
-            value={last_name_latin || ''}
+            value={last_name_vernacular || ''}
             fullWidth
             placeholder={t(
               'Dashboard.Profile.PersonalForm.lastNamePlaceholder',
@@ -56,7 +56,7 @@ const PersonalForm = ({ inputFields, handleChange, isModified }) => {
             InputLabelProps={{
               shrink: true,
             }}
-            onChange={event => handleChange('last_name_latin', event.target.value)}
+            onChange={event => handleChange('last_name_vernacular', event.target.value)}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
