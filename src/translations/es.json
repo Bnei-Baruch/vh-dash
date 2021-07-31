@@ -31,6 +31,7 @@
             "logOutText": "¿Realmente quiere dejar de fumar?",
             "yesBtn": "Sí",
             "cancelBtn": "Cancelar",
+            "payUserFee": "Pagar la tarifa de usuario",
             "statuses": {
                 "late": "Cargos por mora",
                 "nonExistant": "Inexistente",
