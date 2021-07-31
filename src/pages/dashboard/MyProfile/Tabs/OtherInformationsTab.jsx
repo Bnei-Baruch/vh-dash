@@ -47,6 +47,7 @@ const OtherInformationsTab = ({
     }
 
     onSubmit();
+    setIsModified(false);
   };
 
   const onCancel = () => {
