@@ -39,7 +39,9 @@
                 "active": "Active",
                 "pause": "Pause",
                 "cancel": "Cancel"
-            }
+            },
+            "requestError": "Ой! Что-то пошло не так! Пожалуйста, попробуйте позже или обратитесь в нашу службу поддержки",
+            "closeBtn": "Закрыть"
         },
         "Languages": {
             "English": "Английский",
@@ -62,7 +64,7 @@
             "yesterday": "Вчера",
             "events": "События",
             "welcomeBack": "Рады возвращению",
-            "notActive": "Нет АКТИВНЫХ",
+            "notActive": "НЕТ АКТИВНЫХ",
             "active": "АКТИВНЫЕ",
             "watchRecordedBtn": "Смотреть запись"
         },
@@ -79,7 +81,8 @@
                 "hold": "В ожидании",
                 "active": "Активный"
             },
-            "subscriptions": "Подписки"
+            "subscriptions": "Подписки",
+            "payUserFee": "Оплата комиссии пользователя"
         },
         "Dashboard": {
             "Dashboard": {
@@ -107,8 +110,8 @@
                     "dateOfBirth": "Дата рождения",
                     "gender": {
                         "label": "Пол",
-                        "male": "мужской",
-                        "female": "женский"
+                        "male": "Мужской",
+                        "female": "Женский"
                     },
                     "fullName": "Введите ФИО на родном языке",
                     "fullNamePlaceholder": "Введите ФИО",
@@ -181,7 +184,8 @@
                     "streetAddress": "Улица",
                     "postalCode": "Почтовый индекс",
                     "country": "Страна",
-                    "stateRegion": "Район/Область"
+                    "stateRegion": "Район/Область",
+                    "city": "Город"
                 },
                 "OtherInformation": {
                     "studyGroup": "У вас есть учебная группа?",
@@ -196,7 +200,10 @@
                     "name": "Языки",
                     "firstLanguage": "Основной язык",
                     "otherLanguage": "Другой язык {{number}}"
-                }
+                },
+                "profileNotExist": "Похоже, вы не создали данные профиля. Пожалуйста, нажмите кнопку 'Изменить' и создайте свой профиль.",
+                "profileUpdated": "Информация вашего профиля была успешно обновлена",
+                "profileCreated": "Информация вашего профиля была успешно создана"
             },
             "Account": {
                 "name": "Аккаунт",
@@ -227,7 +234,7 @@
                 "subCaption": "ВСЕМИРНАЯ КОНВЕНЦИЯ КАББАЛА 2021",
                 "broadcast": "Трансляция",
                 "broadcastLanguage": "Язык вещания",
-                "loading": "Загрузка…",
+                "loading": "Загрузка...",
                 "noBroadcast": "Вещание отсутствует",
                 "Question": {
                     "title": "Задайте вопрос",
@@ -269,6 +276,12 @@
                 },
                 "title": "Мои платежи",
                 "name": "Платежи"
+            },
+            "Archive": {
+                "name": "Архив"
+            },
+            "ArvutSystem": {
+                "name": "Arvut система"
             }
         }
     }
