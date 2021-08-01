@@ -44,10 +44,10 @@
         "Dashboard": {
             "ArvutSystem": {
                 "name": "Sistema Arvut"
-              },
-              "Archive": {
+            },
+            "Archive": {
                 "name": "Archivo"
-              },
+            },
             "Dashboard": {
                 "name": "Tablero de mandos"
             },
@@ -70,8 +70,8 @@
                     "dateOfBirth": "Fecha de nacimiento",
                     "gender": {
                         "label": "Género",
-                        "male": "masculino",
-                        "female": "mujer"
+                        "male": "Masculino",
+                        "female": "Mujer"
                     },
                     "fullName": "Introduzca su nombre completo en la lengua principal",
                     "fullNamePlaceholder": "Introduzca su nombre completo",
@@ -157,9 +157,13 @@
                     "country": "País",
                     "postalCode": "Código Postal",
                     "streetAddress": "Dirección de la calle",
-                    "name": "Ubicación Física"
+                    "name": "Ubicación Física",
+                    "city": "Ciudad"
                 },
-                "socialFormName": "Mis números de teléfono"
+                "socialFormName": "Mis números de teléfono",
+                "profileNotExist": "Parece que no has creado información de perfil. Por favor, haga clic en el botón 'Modificar' y cree su perfil",
+                "profileUpdated": "La información de tu perfil se actualizó correctamente",
+                "profileCreated": "La información de tu perfil se creó correctamente"
             },
             "Account": {
                 "name": "Cuenta",
@@ -190,7 +194,7 @@
                 "subCaption": "CONVENCIÓN MUNDIAL DE CÁBALA 2021",
                 "broadcast": "Difusión",
                 "broadcastLanguage": "Idiomas de transmisión",
-                "loading": "Cargando…",
+                "loading": "Cargando...",
                 "noBroadcast": "No hay transmisión ahora",
                 "Question": {
                     "title": "Enviar una pregunta",
@@ -273,7 +277,9 @@
             "Currency": {
                 "eur": "euro",
                 "usd": "USD"
-            }
+            },
+            "requestError": "Ooops! ¡Algo salió mal! Por favor, inténtelo de nuevo más tarde o póngase en contacto con nuestro soporte técnico",
+            "closeBtn": "Cerrar"
         }
     }
 }
