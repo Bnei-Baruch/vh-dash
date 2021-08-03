@@ -229,7 +229,7 @@ const countries = [
 	{ ISO: 'TZ', label: 'United Republic of Tanzania', code: 'United Republic of Tanzania'},
 	{ ISO: 'UA', label: 'Ukraine', code: 'Ukraine'},
 	{ ISO: 'UG', label: 'Uganda', code: 'Uganda'},
-	{ ISO: 'US', label: 'United States', code: 'United States'},
+	{ ISO: 'USA', label: 'United States', code: 'United States'},
 	{ ISO: 'UY', label: 'Uruguay', code: 'Uruguay'},
 	{ ISO: 'UZ', label: 'Uzbekistan', code: 'Uzbekistan'},
 	{ ISO: 'VA', label: 'Holy See (Vatican City State)', code: 'Holy See (Vatican City State)'},

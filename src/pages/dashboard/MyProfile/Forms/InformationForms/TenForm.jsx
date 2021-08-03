@@ -8,7 +8,7 @@ const TenForm = ({ inputFields, handleChange, isModified }) => {
   const classes = commonFormStyles();
   const { t } = useTranslation();
 
-  const { has_ten_group, wants_ten_group, name_of_ten_group } = inputFields;
+  const { has_ten_group, wants_ten_group, name_ten_group } = inputFields;
 
   return (
     <div className={classes.root}>
@@ -41,7 +41,7 @@ const TenForm = ({ inputFields, handleChange, isModified }) => {
             disabled={!isModified}
             type='text'
             label={t('Dashboard.Profile.OtherInformation.tenName')}
-            value={name_of_ten_group || ''}
+            value={name_ten_group || ''}
             fullWidth
             placeholder={t('Global.inputPlaceholder', {
               input: 'name of ten',
@@ -49,7 +49,7 @@ const TenForm = ({ inputFields, handleChange, isModified }) => {
             InputLabelProps={{
               shrink: true,
             }}
-            onChange={event => handleChange('name_of_ten_group', event.target.value)}
+            onChange={event => handleChange('name_ten_group', event.target.value)}
           />
         </Grid>
       </Grid>

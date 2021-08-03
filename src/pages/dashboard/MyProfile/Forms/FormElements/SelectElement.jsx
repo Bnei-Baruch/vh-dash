@@ -62,7 +62,7 @@ const SelectElement = ({
         }}
       >
         {selectData.map(option => (
-          <MenuItem key={option.ISO} value={option.ISO}>
+          <MenuItem key={option.code} value={option.ISO || option.code}>
             {option.label}
           </MenuItem>
         ))}

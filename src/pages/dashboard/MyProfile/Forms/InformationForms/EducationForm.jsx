@@ -9,6 +9,7 @@ const EducationForm = ({ inputFields, handleChange, isModified }) => {
   const { t } = useTranslation();
 
   const { study_start_year, study_framework } = inputFields;
+  const convertedStudyYear = study_start_year && study_start_year.toString();
 
   return (
     <div className={`${classes.root} ${classes.height_100}`}>
@@ -22,14 +23,14 @@ const EducationForm = ({ inputFields, handleChange, isModified }) => {
             label={t('Global.inputPlaceholder', {
               input: 'start year',
             })}
-            value={study_start_year}
+            value={convertedStudyYear}
             disabled={!isModified}
             onChange={value => handleChange('study_start_year', value)}
             animateYearScrolling
             autoOk
             openTo='year'
             maxDate={new Date('2050-01-01')}
-            minDate={new Date('2018-01-01')}
+            minDate={new Date('1990-01-01')}
             fullWidth
             InputLabelProps={{
               shrink: true,
