@@ -48,6 +48,7 @@ const LanguagesTab = ({
     }
 
     onSubmit();
+    setIsModified(false);
   };
 
   const onCancel = () => {

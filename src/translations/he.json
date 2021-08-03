@@ -39,14 +39,15 @@
         "active": "Active",
         "pause": "Pause",
         "cancel": "Cancel"
-      }
+      },
+      "requestError": "אופס! משהו השתבש! נא נסה שוב מאוחר יותר או פנה לתמיכה שלנו",
+      "closeBtn": "סגור"
     },
     "Languages": {
       "English": "אנגלית",
       "Russian": "רוסית",
       "Hebrew": "עברית",
       "Spanish": "ספרדית",
-      "French": "צָרְפָתִית",
       "streetAddressPlaceholder": "הזן את כתובת הרחוב שלך"
     },
     "Home": {
@@ -72,7 +73,16 @@
       "profile": "פרופיל",
       "logOutText": "האם את/ה באמת רוצה לצאת?",
       "yesBtn": "כן",
-      "cancelBtn": "לבטל"
+      "cancelBtn": "לבטל",
+      "statuses": {
+        "late": "עמלות מאוחרות",
+        "nonExistant": "לא קיים",
+        "unknown": "ידוע",
+        "hold": "בהמתנה",
+        "active": "פעילים"
+      },
+      "payUserFee": "לתשלום עבור השימוש",
+      "subscriptions": "מנויים"
     },
     "Dashboard": {
       "Dashboard": {
@@ -146,7 +156,8 @@
           "streetAddress": "כתובת הרחוב",
           "postalCode": "המיקוד",
           "country": "ארץ",
-          "stateRegion": "שם המחוז/אזור"
+          "stateRegion": "שם המחוז/אזור",
+          "city": "עיר"
         },
         "socialFormName": "מספרי הטלפון שלי",
         "Emails": {
@@ -186,7 +197,10 @@
           "facebookConnected": "פייסבוק מחוברת",
           "facebookTooltip": "לורם איפסום דולור לשבת אמט, קונסטרוקטור אדיפיסינג אליט. פורוס לשבת לקטוס מגורים סאפיאן, קוויסק אולטריס.",
           "forgotPassword": "שכחת את הסיסמה?"
-        }
+        },
+        "profileNotExist": "נראה שלא יצרת פרטי פרופיל. אנא, לחץ על כפתור 'שינוי' וליצור את הפרופיל שלך",
+        "profileUpdated": "פרטי הפרופיל שלך עודכנו בהצלחה",
+        "profileCreated": "פרטי הפרופיל שלך נוצרו בהצלחה"
       },
       "Account": {
         "name": "חֶשְׁבּוֹן",
@@ -217,7 +231,7 @@
         "subCaption": "קבלית העולם העולמית 2021",
         "broadcast": "מִשׁדָר",
         "broadcastLanguage": "שפות שידור",
-        "loading": "טוען…",
+        "loading": "טוען...",
         "noBroadcast": "אין שידור עכשיו",
         "Question": {
           "title": "שלח שאלה",
@@ -235,6 +249,36 @@
           "donations": "בואו להיות שותפים במפעל ההפצה של עמותת \"בני ברוך - קבלה לעם\"",
           "donationsLink": "http://bit.ly/2ZUteWn"
         }
+      },
+      "Payments": {
+        "amountLabel": "כמה אתה משלם?",
+        "subscriptionLabel": "שינוי מצב המנוי",
+        "currencyLabel": "בחר את המטבע שלך",
+        "editSubscription": "ערוך מנוי",
+        "edit": "ערוך",
+        "newPlan": "תוכנית חדשה",
+        "downloadInvoice": "הורד חשבונית כ- PDF",
+        "cancelPayment": "בטל תשלום",
+        "action": "פעולה",
+        "status": "סטטוס",
+        "currency": "מטבע",
+        "amount": "כמות",
+        "paymentType": "סוג תשלום",
+        "paymentMethod": "שיטת תשלום",
+        "purpose": "תכלית",
+        "paidOn": "שולם ב-",
+        "Tabs": {
+          "myPlan": "התוכנית שלי",
+          "transaction": "כל התנועה"
+        },
+        "title": "התשלומים שלי",
+        "name": "תשלומים"
+      },
+      "Archive": {
+        "name": "ארכיון"
+      },
+      "ArvutSystem": {
+        "name": "מערכת ערווט"
       }
     }
   }
