@@ -10,7 +10,6 @@ import LanguagesTab from './Tabs/LanguagesTab';
 import OtherInformationsTab from './Tabs/OtherInformationsTab';
 import ModalWindow from './ui/ModalWindow';
 import { profileInfo, profileModalContent } from '../../../redux/selectors/profile';
-import { convertBooleanToString } from '../../../shared/helper';
 import { updateProfile } from '../../../redux/actions/profileActions';
 import { TOGGLE_PROFILE_WINDOW } from '../../../redux/constants';
 
@@ -72,21 +71,17 @@ const MyProfile = () => {
   const profileData = useSelector(profileInfo);
   const { isModalOpen, description } = useSelector(profileModalContent);
 
-
   const [errorFields, setErrorFields] = useState({ ...initialErrorFields });
   const [updatedFields, setUpdatedFileds] = useState({});
   const [inputFields, setInputFields] = useState({
     ...initialFields,
     ...profileData,
-    primaryLanguage: 'en',
-    has_ten_group: convertBooleanToString(profileData.has_ten_group),
-    wants_ten_group: convertBooleanToString(profileData.wants_ten_group),
+    primaryLanguage: 'en'
   });
 
   const onErrorClear = () => setErrorFields(initialErrorFields);
 
   const handleChange = (field, value) => {
-    console.log(field, value);
     setUpdatedFileds({
       ...updatedFields, [field]: value
     });
