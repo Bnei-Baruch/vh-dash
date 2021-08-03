@@ -70,7 +70,7 @@ const PersonalForm = ({ inputFields, handleChange, isModified }) => {
             label={t('Dashboard.Profile.PersonalForm.dateOfBirth')}
             fullWidth
             disabled={!isModified}
-            format='dd.mm.yyyy'
+            format='dd.MM.yyyy'
             InputLabelProps={{
               shrink: true,
             }}

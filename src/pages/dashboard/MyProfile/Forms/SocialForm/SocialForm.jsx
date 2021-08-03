@@ -28,21 +28,23 @@ const useStyles = makeStyles({
   },
 });
 
-const SocialForm = ({ handleChange, isModified }) => {
+const SocialForm = ({ inputFields, handleChange, isModified }) => {
   const classes = commonFormStyles();
   const styles = useStyles();
   const { t } = useTranslation();
+  const { mobile_number, telegram_number, whats_app_number } = inputFields;
 
   const onPhoneChange = value => handleChange('mobile_number', value);
   const onTelegramPhoneChange = value => handleChange('telegram_number', value);
-  const onWhatsappPhoneChange = value => handleChange('whats_app_number', value);
+  const onWhatsappPhoneChange = value =>
+    handleChange('whats_app_number', value);
 
   return (
     <div className={`${classes.root} ${classes.socialForm}`}>
       <Typography variant='h4' gutterBottom>
         {t('Dashboard.Profile.socialFormName')}
       </Typography>
-      <Grid container spacing={10} alignContent="center">
+      <Grid container spacing={10} alignContent='center'>
         <Grid item xs={2} md={1}>
           <img src={Phone} alt='phone' className={styles.image} />
         </Grid>
@@ -52,35 +54,38 @@ const SocialForm = ({ handleChange, isModified }) => {
             disabled={!isModified}
             onChange={onPhoneChange}
             variant='outlined'
+            value={mobile_number}
             className={styles.input}
             fullWidth
           />
         </Grid>
       </Grid>
-      <Grid container spacing={10} alignContent="center">
+      <Grid container spacing={10} alignContent='center'>
         <Grid item xs={2} md={1}>
           <img src={Whatsapp} alt='whatsapp' className={styles.image} />
         </Grid>
         <Grid item xs={10} md={8} lg={6}>
           <MuiPhoneInput
             defaultCountry='us'
+            value={whats_app_number}
             disabled={!isModified}
-            onChange={onTelegramPhoneChange}
+            onChange={onWhatsappPhoneChange}
             variant='outlined'
             className={styles.input}
             fullWidth
           />
         </Grid>
       </Grid>
-      <Grid container spacing={10} alignContent="center">
+      <Grid container spacing={10} alignContent='center'>
         <Grid item xs={2} md={1}>
           <img src={Telegram} alt='telegram' className={styles.image} />
         </Grid>
         <Grid item xs={10} md={8} lg={6}>
           <MuiPhoneInput
             defaultCountry='us'
+            value={telegram_number}
             disabled={!isModified}
-            onChange={onWhatsappPhoneChange}
+            onChange={onTelegramPhoneChange}
             variant='outlined'
             className={styles.input}
             fullWidth
