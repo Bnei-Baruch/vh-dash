@@ -39,6 +39,12 @@ const SelectElement = ({
 }) => {
   const classes = useStyles();
 
+  // TODO: pass value after updating DB on backend
+  const defaultValue =
+    id.includes('country') && value && value.length >= 3
+      ? selectData.filter(item => item.code === value)[0].ISO
+      : value;
+
   return (
     <FormControl className={classes.root}>
       <InputLabel shrink htmlFor={id} className={classes.label}>
@@ -47,7 +53,7 @@ const SelectElement = ({
       </InputLabel>
       <Select
         disabled={disabled}
-        value={value}
+        value={defaultValue}
         onChange={event => onChange(id, event.target.value)}
         inputProps={{
           id,

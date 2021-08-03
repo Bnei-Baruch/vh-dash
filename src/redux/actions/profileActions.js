@@ -39,6 +39,7 @@ export const updateProfile = data => {
               type: UPDATE_PROFILE_SUCCESS,
               payload: i18next.t('Dashboard.Profile.profileUpdated'),
             });
+            dispatch(fetchProfile());
             console.log('Success patch response:', res);
           })
           .catch(error => {
@@ -52,7 +53,10 @@ export const updateProfile = data => {
             dispatch({ type: TOGGLE_PROFILE_WINDOW, payload: true }),
           )
       : sendProfile('post', PROFILE_URL, data)
-          .then(res => console.log('Success post response:', res))
+          .then(res => {
+            dispatch(fetchProfile());
+            console.log('Success post response:', res)
+          })
           .catch(error => {
             dispatch({
               type: UPDATE_PROFILE_SUCCESS,
@@ -85,7 +89,10 @@ export const fetchProfile = () => {
             };
 
             apiProfile('post',PROFILE_URL, data, token)
-              .then(res => console.log('Success post response:', res))
+              .then(res => {
+                dispatch(fetchProfile());
+                console.log('Success post response:', res)
+              })
               .catch(error => {
                   dispatch({
                     type: UPDATE_PROFILE_SUCCESS,
