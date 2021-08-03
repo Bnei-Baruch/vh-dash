@@ -11,6 +11,11 @@ const EducationForm = ({ inputFields, handleChange, isModified }) => {
   const { study_start_year, study_framework } = inputFields;
   const convertedStudyYear = study_start_year && study_start_year.toString();
 
+  const onYearChange = value => {
+    const year = new Date(value).getFullYear();
+    handleChange('study_start_year', +year);
+  }
+
   return (
     <div className={`${classes.root} ${classes.height_100}`}>
       <Typography variant='h4'>
@@ -25,7 +30,7 @@ const EducationForm = ({ inputFields, handleChange, isModified }) => {
             })}
             value={convertedStudyYear}
             disabled={!isModified}
-            onChange={value => handleChange('study_start_year', value)}
+            onChange={onYearChange}
             animateYearScrolling
             autoOk
             openTo='year'
