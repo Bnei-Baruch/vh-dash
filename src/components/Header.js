@@ -256,7 +256,6 @@ const Header = ({ onDrawerToggle }) => {
           <Hidden mdUp>
             <Grid item>
               <IconButton
-                color='inherit'
                 aria-label='Open drawer'
                 onClick={onDrawerToggle}
               >
