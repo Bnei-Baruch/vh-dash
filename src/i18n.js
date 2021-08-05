@@ -19,9 +19,14 @@ i18next
   .use(initReactI18next) // Passes i18n down to react-i18next
   .use(LanguageDetector)
   .init({
+    detection: {
+      caches: ['localStorage'],
+      lookupLocalStorage: 'i18nextLng',
+      lookupQuerystring: 'lang',
+      order: ['querystring', 'localStorage', 'header'],
+    },
+    fallbackLng: lng,
     resources,
-    // Default language
-    lng,
     interpolation: {
       escapeValue: false,
     },
