@@ -225,11 +225,11 @@
                 "expirationDate": "תאריך תפוגה"
             },
             "BroadcastArea": {
-                "name": "עמוד הכנס",
-                "title": "עמוד הכנס",
+                "name": "שידור",
+                "title": "שידור",
                 "caption": "גילוי החיים בעשריה",
                 "subCaption": "קבלית העולם העולמית 2021",
-                "broadcast": "מִשׁדָר",
+                "broadcast": "שידור",
                 "broadcastLanguage": "שפות שידור",
                 "loading": "טוען...",
                 "noBroadcast": "אין שידור עכשיו",
@@ -278,7 +278,7 @@
                 "name": "ארכיון"
             },
             "ArvutSystem": {
-                "name": "מערכת ערווט"
+                "name": "מערכת הערבות"
             }
         }
     }
