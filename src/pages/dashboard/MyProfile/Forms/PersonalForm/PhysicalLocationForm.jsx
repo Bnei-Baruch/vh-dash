@@ -11,6 +11,16 @@ const PhysicalLocationForm = ({ handleChange, inputFields, isModified }) => {
 
   const { street_address, state_region, postal_code, country, city } =
     inputFields;
+  const streetAddressTrans = t(
+    'Dashboard.Profile.PhysicalLocationForm.streetAddress',
+  );
+  const postalCodeTrans = t(
+    'Dashboard.Profile.PhysicalLocationForm.postalCode',
+  );
+  const stateRegionTrans = t(
+    'Dashboard.Profile.PhysicalLocationForm.stateRegion',
+  );
+  const cityTrans = t('Dashboard.Profile.PhysicalLocationForm.city');
 
   return (
     <div className={classes.root}>
@@ -22,10 +32,12 @@ const PhysicalLocationForm = ({ handleChange, inputFields, isModified }) => {
           <TextField
             disabled={!isModified}
             type='text'
-            label={t('Dashboard.Profile.PhysicalLocationForm.streetAddress')}
+            label={streetAddressTrans}
             value={street_address || ''}
             fullWidth
-            placeholder={t('Global.inputPlaceholder', { input: 'street' })}
+            placeholder={t('Global.inputPlaceholder', {
+              input: streetAddressTrans.toLowerCase(),
+            })}
             InputLabelProps={{
               shrink: true,
             }}
@@ -38,10 +50,12 @@ const PhysicalLocationForm = ({ handleChange, inputFields, isModified }) => {
           <TextField
             disabled={!isModified}
             type='text'
-            label={t('Dashboard.Profile.PhysicalLocationForm.postalCode')}
+            label={postalCodeTrans}
             value={postal_code || ''}
             fullWidth
-            placeholder={t('Global.inputPlaceholder', { input: 'postal code' })}
+            placeholder={t('Global.inputPlaceholder', {
+              input: postalCodeTrans.toLowerCase(),
+            })}
             InputLabelProps={{
               shrink: true,
             }}
@@ -62,11 +76,11 @@ const PhysicalLocationForm = ({ handleChange, inputFields, isModified }) => {
           <TextField
             disabled={!isModified}
             type='text'
-            label={t('Dashboard.Profile.PhysicalLocationForm.stateRegion')}
+            label={stateRegionTrans}
             value={state_region || ''}
             fullWidth
             placeholder={t('Global.inputPlaceholder', {
-              input: 'state or region',
+              input: stateRegionTrans.toLowerCase(),
             })}
             InputLabelProps={{
               shrink: true,
@@ -78,11 +92,11 @@ const PhysicalLocationForm = ({ handleChange, inputFields, isModified }) => {
           <TextField
             disabled={!isModified}
             type='text'
-            label={t('Dashboard.Profile.PhysicalLocationForm.city')}
+            label={cityTrans}
             value={city || ''}
             fullWidth
             placeholder={t('Global.inputPlaceholder', {
-              input: 'city',
+              input: cityTrans.toLowerCase(),
             })}
             InputLabelProps={{
               shrink: true,

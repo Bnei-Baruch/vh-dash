@@ -14,7 +14,12 @@ const EducationForm = ({ inputFields, handleChange, isModified }) => {
   const onYearChange = value => {
     const year = new Date(value).getFullYear();
     handleChange('study_start_year', +year);
-  }
+  };
+
+  const startYearTrans = t('Dashboard.Profile.OtherInformation.startYear');
+  const studyFrameworkTrans = t(
+    'Dashboard.Profile.OtherInformation.studyFramework',
+  );
 
   return (
     <div className={`${classes.root} ${classes.height_100}`}>
@@ -25,8 +30,9 @@ const EducationForm = ({ inputFields, handleChange, isModified }) => {
         <Grid item xs={12} sm={6}>
           <DatePicker
             views={['year']}
-            label={t('Global.inputPlaceholder', {
-              input: 'start year',
+            label={startYearTrans}
+            placeholder={t('Global.inputPlaceholder', {
+              input: startYearTrans.toLowerCase(),
             })}
             value={convertedStudyYear}
             disabled={!isModified}
@@ -46,11 +52,11 @@ const EducationForm = ({ inputFields, handleChange, isModified }) => {
           <TextField
             disabled={!isModified}
             type='text'
-            label={t('Dashboard.Profile.OtherInformation.studyFramework')}
+            label={studyFrameworkTrans}
             value={study_framework || ''}
             fullWidth
             placeholder={t('Global.inputPlaceholder', {
-              input: 'study framework',
+              input: studyFrameworkTrans.toLowerCase(),
             })}
             InputLabelProps={{
               shrink: true,
