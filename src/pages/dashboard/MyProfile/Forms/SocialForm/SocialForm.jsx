@@ -8,7 +8,7 @@ import Telegram from '../../../../../img/icons/telegram.png';
 import Whatsapp from '../../../../../img/icons/whatsapp.png';
 import { makeStyles } from '@material-ui/styles';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   image: {
     width: 22,
     height: 22,
@@ -17,6 +17,8 @@ const useStyles = makeStyles({
     '& input': {
       padding: 0,
       height: 35,
+      direction: 'initial',
+      textAlign: ({ textAlignProps }) => textAlignProps,
     },
     '& .MuiOutlinedInput-adornedStart': {
       paddingLeft: 0,
@@ -26,12 +28,13 @@ const useStyles = makeStyles({
       background: '#F4F4F4',
     },
   },
-});
+}));
 
 const SocialForm = ({ inputFields, handleChange, isModified }) => {
   const classes = commonFormStyles();
-  const styles = useStyles();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const textAlignProps = i18n.dir() === 'rtl' ? 'right' : 'left';
+  const styles = useStyles({ textAlignProps });
   const { mobile_number, telegram_number, whats_app_number } = inputFields;
 
   const onPhoneChange = value => handleChange('mobile_number', value);
