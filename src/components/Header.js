@@ -32,7 +32,7 @@ const AppBar = styled(MuiAppBar)`
   background: ${props => props.theme.header.background};
   color: ${props => props.theme.header.color};
   box-shadow: ${props => props.theme.shadows[1]};
-  background-color : #fff !important;
+  background-color: #fff !important;
 `;
 
 const IconButton = styled(MuiIconButton)`
@@ -44,8 +44,9 @@ const IconButton = styled(MuiIconButton)`
 
 const UserIconButton = styled(MuiIconButton)`
   font-size: 16px !important;
-  span, label {
-    color: #5a5a5a
+  span,
+  label {
+    color: #5a5a5a;
   }
   svg {
     width: 30px;
@@ -65,7 +66,7 @@ const Indicator = styled(Badge)`
 
 const PayButton = styled(Button)`
   border-radius: 20px !important;
-`
+`;
 
 const Search = styled.div`
   border-radius: 2px;
@@ -112,13 +113,11 @@ const Input = styled(InputBase)`
   }
 `;
 
-function countryToFlag(isoCode) {
-  return typeof String.fromCodePoint !== 'undefined'
-    ? isoCode
-      .toUpperCase()
-      .replace(/./g, (char) => String.fromCodePoint(char.charCodeAt(0) + 127397))
-    : isoCode;
-}
+const Flag = styled.img`
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+`;
 
 const languages = [
   { code: 'en', name: 'English', country: 'gb' },
@@ -148,11 +147,11 @@ function LanguageMenu() {
         onClick={toggleMenu}
         color='inherit'
       >
-        {countryToFlag(languages.find(value => value.code === i18next.language).country)}
-        {/* <Flag
-          src={`dash/static/img/flags/${i18next.language}.png`}
+        {/* Don't replace with emoji as it's not supported in Windows */}
+        <Flag
+          src={`/static/img/flags/${i18next.language}.png`}
           alt={i18next.language}
-        /> */}
+        />
       </IconButton>
       <Menu
         id='menu-appbar'
@@ -216,8 +215,11 @@ function UserMenu() {
         onClick={toggleMenu}
         color='inherit'
       >
-        <AccountCircleIcon /> 
-        &nbsp; {state.keycloak.profile.firstName + " " + state.keycloak.profile.lastName}
+        <AccountCircleIcon />
+        &nbsp;{' '}
+        {state.keycloak.profile.firstName +
+          ' ' +
+          state.keycloak.profile.lastName}
         &nbsp; <KeyboardArrowDownIcon />
       </UserIconButton>
       <Menu
@@ -225,7 +227,7 @@ function UserMenu() {
         anchorEl={anchorMenu}
         open={Boolean(anchorMenu)}
         onClose={closeMenu}
-        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
       >
         <MenuItem onClick={() => onMenuItemClick(DASHBOARD_ROUTES.Profile)}>
           {t('Dashboard.Profile.name')}
@@ -247,57 +249,61 @@ function UserMenu() {
 const Header = ({ onDrawerToggle }) => {
   const { t } = useTranslation();
   const redirectToPayment = () => {
-    window.location.href = `${window.location.origin}/pay/order/1`
-  }
-  return <>
-    <AppBar position='sticky' elevation={0}>
-      <Toolbar>
-        <Grid container alignItems='center'>
-          <Hidden mdUp>
-            <Grid item>
-              <IconButton
-                aria-label='Open drawer'
-                onClick={onDrawerToggle}
-              >
-                <MenuIcon />
-              </IconButton>
-            </Grid>
-          </Hidden>
-          {SEARCH_BAR && (
-            <Grid item>
-              <Search>
-                <SearchIconWrapper>
-                  <SearchIcon />
-                </SearchIconWrapper>
-                <Input placeholder='Search topics' />
-              </Search>
-            </Grid>
-          )}
-          <Grid item xs>
-          </Grid>
-          <Grid item>
-            {CHAT_AND_NOTIFICATION_ICONS && (
-              <>
-                <IconButton color='inherit'>
-                  <Indicator badgeContent={3}>
-                    <MessageSquare />
-                  </Indicator>
+    window.location.href = `${window.location.origin}/pay/order/1`;
+  };
+  return (
+    <>
+      <AppBar position='sticky' elevation={0}>
+        <Toolbar>
+          <Grid container alignItems='center'>
+            <Hidden mdUp>
+              <Grid item>
+                <IconButton aria-label='Open drawer' onClick={onDrawerToggle}>
+                  <MenuIcon />
                 </IconButton>
-                <IconButton color='inherit'>
-                  <Indicator badgeContent={7}>
-                    <Bell />
-                  </Indicator>
-                </IconButton>
-              </>
+              </Grid>
+            </Hidden>
+            {SEARCH_BAR && (
+              <Grid item>
+                <Search>
+                  <SearchIconWrapper>
+                    <SearchIcon />
+                  </SearchIconWrapper>
+                  <Input placeholder='Search topics' />
+                </Search>
+              </Grid>
             )}
-            <PayButton onClick={redirectToPayment} variant="contained" color="primary">{t('UserMenu.payUserFee')}</PayButton>
-            <LanguageMenu />
-            <UserMenu />
+            <Grid item xs></Grid>
+            <Grid item>
+              {CHAT_AND_NOTIFICATION_ICONS && (
+                <>
+                  <IconButton color='inherit'>
+                    <Indicator badgeContent={3}>
+                      <MessageSquare />
+                    </Indicator>
+                  </IconButton>
+                  <IconButton color='inherit'>
+                    <Indicator badgeContent={7}>
+                      <Bell />
+                    </Indicator>
+                  </IconButton>
+                </>
+              )}
+              <PayButton
+                onClick={redirectToPayment}
+                variant='contained'
+                color='primary'
+              >
+                {t('UserMenu.payUserFee')}
+              </PayButton>
+              <LanguageMenu />
+              <UserMenu />
+            </Grid>
           </Grid>
-        </Grid>
-      </Toolbar>
-    </AppBar>
-  </>
+        </Toolbar>
+      </AppBar>
+    </>
+  );
 };
 
 export default withTheme(Header);
