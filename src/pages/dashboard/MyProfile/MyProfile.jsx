@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Helmet from 'react-helmet';
 import { makeStyles } from '@material-ui/core/styles';
 import { useTranslation } from 'react-i18next';
@@ -9,7 +9,10 @@ import MyProfileTab from './Tabs/MyProfileTab';
 import LanguagesTab from './Tabs/LanguagesTab';
 import OtherInformationsTab from './Tabs/OtherInformationsTab';
 import ModalWindow from './ui/ModalWindow';
-import { profileInfo, profileModalContent } from '../../../redux/selectors/profile';
+import {
+  profileInfo,
+  profileModalContent,
+} from '../../../redux/selectors/profile';
 import { updateProfile } from '../../../redux/actions/profileActions';
 import { TOGGLE_PROFILE_WINDOW } from '../../../redux/constants';
 
@@ -75,18 +78,26 @@ const MyProfile = () => {
   const [updatedFields, setUpdatedFileds] = useState({});
   const [inputFields, setInputFields] = useState({
     ...initialFields,
-    ...profileData,
-    primaryLanguage: 'en'
+    primaryLanguage: 'en',
   });
+
+  useEffect(() => {
+    setInputFields({
+      ...inputFields,
+      ...profileData,
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [profileData]);
 
   const onErrorClear = () => setErrorFields(initialErrorFields);
 
   const handleChange = (field, value) => {
     setUpdatedFileds({
-      ...updatedFields, [field]: value
+      ...updatedFields,
+      [field]: value,
     });
     setInputFields(prevState => ({ ...prevState, [field]: value }));
-  }
+  };
 
   const onSubmit = () => {
     dispatch(updateProfile(updatedFields));

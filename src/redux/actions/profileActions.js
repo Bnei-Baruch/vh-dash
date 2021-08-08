@@ -95,7 +95,7 @@ export const fetchProfile = () => {
               })
               .catch(error => {
                   dispatch({
-                    type: UPDATE_PROFILE_SUCCESS,
+                    type: UPDATE_PROFILE_FAILED,
                     payload: i18next.t('Global.requestError'),
                   });
                   console.error('Failed post response:', error);
