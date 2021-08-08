@@ -37,7 +37,8 @@ const EducationForm = ({ inputFields, handleChange, isModified }) => {
             value={convertedStudyYear}
             disabled={!isModified}
             onChange={onYearChange}
-            animateYearScrolling
+            disableToolbar
+            initialFocusedDate={new Date('1990-01-01')}
             autoOk
             openTo='year'
             maxDate={new Date('2050-01-01')}
