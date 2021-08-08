@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
     bottom: 0,
     textAlign: 'right',
     background: '#fff',
-    boxShadow: 'none'
+    boxShadow: 'none',
   },
   toolBar: {
     padding: 20,
@@ -74,6 +74,8 @@ const SecurityTab = () => {
       '_self',
     );
 
+  const emailTrans = t('Dashboard.Profile.Security.email');
+
   return (
     <form noValidate autoComplete='off'>
       <div className={styles.root}>
@@ -85,11 +87,11 @@ const SecurityTab = () => {
             <TextField
               disabled
               type='email'
-              label={t('Dashboard.Profile.Security.email')}
+              label={emailTrans}
               value={keycloak.profile.email}
               fullWidth
               placeholder={t('Global.inputPlaceholder', {
-                input: 'email',
+                input: emailTrans.toLowerCase(),
               })}
               InputLabelProps={{
                 shrink: true,
