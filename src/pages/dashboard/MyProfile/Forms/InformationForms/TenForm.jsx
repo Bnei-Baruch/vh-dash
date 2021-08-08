@@ -2,13 +2,17 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Grid, TextField, Typography } from '@material-ui/core';
 import SelectElement from '../FormElements/SelectElement';
-import { commonFormStyles, studyGroup } from '../../../../../constants/formData';
+import {
+  commonFormStyles,
+  studyGroup,
+} from '../../../../../constants/formData';
 
 const TenForm = ({ inputFields, handleChange, isModified }) => {
   const classes = commonFormStyles();
   const { t } = useTranslation();
 
   const { has_ten_group, wants_ten_group, name_ten_group } = inputFields;
+  const tenNameTrans = t('Dashboard.Profile.OtherInformation.tenName');
 
   return (
     <div className={classes.root}>
@@ -40,16 +44,18 @@ const TenForm = ({ inputFields, handleChange, isModified }) => {
           <TextField
             disabled={!isModified}
             type='text'
-            label={t('Dashboard.Profile.OtherInformation.tenName')}
+            label={tenNameTrans}
             value={name_ten_group || ''}
             fullWidth
             placeholder={t('Global.inputPlaceholder', {
-              input: 'name of ten',
+              input: tenNameTrans.toLowerCase(),
             })}
             InputLabelProps={{
               shrink: true,
             }}
-            onChange={event => handleChange('name_ten_group', event.target.value)}
+            onChange={event =>
+              handleChange('name_ten_group', event.target.value)
+            }
           />
         </Grid>
       </Grid>

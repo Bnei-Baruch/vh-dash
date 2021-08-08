@@ -13,6 +13,20 @@ const EmailsForm = ({
   const classes = commonFormStyles();
   const { t } = useTranslation();
 
+  const primaryEmailTrans = t('Dashboard.Profile.Emails.primaryEmail');
+  const alternativeEmail1Trans = t(
+    'Dashboard.Profile.Emails.alternativeEmail',
+    {
+      number: '1',
+    },
+  );
+  const alternativeEmail2Trans = t(
+    'Dashboard.Profile.Emails.alternativeEmail',
+    {
+      number: '2',
+    },
+  );
+
   return (
     <div className={`${classes.root}  ${classes.emailForm}`}>
       <Typography variant='h4' gutterBottom>
@@ -23,16 +37,18 @@ const EmailsForm = ({
           <TextField
             disabled
             type='email'
-            label={t('Dashboard.Profile.Emails.primaryEmail')}
+            label={primaryEmailTrans}
             value={inputFields.primary_email}
             fullWidth
             placeholder={t('Global.inputPlaceholder', {
-              input: 'primary email',
+              input: primaryEmailTrans.toLowerCase(),
             })}
             InputLabelProps={{
               shrink: true,
             }}
-            onChange={event => handleChange('primary_email', event.target.value)}
+            onChange={event =>
+              handleChange('primary_email', event.target.value)
+            }
             onBlur={() => onInputBlur('primary_email')}
             helperText={errorFields.primary_email}
             error={!!errorFields.primary_email}
@@ -42,13 +58,11 @@ const EmailsForm = ({
           <TextField
             disabled={!isModified}
             type='email'
-            label={t('Dashboard.Profile.Emails.alternativeEmail', {
-              number: '1',
-            })}
+            label={alternativeEmail1Trans}
             value={inputFields.alternate_email_1 || ''}
             fullWidth
             placeholder={t('Global.inputPlaceholder', {
-              input: 'alternative email 1',
+              input: alternativeEmail1Trans.toLowerCase(),
             })}
             InputLabelProps={{
               shrink: true,
@@ -65,13 +79,11 @@ const EmailsForm = ({
           <TextField
             disabled={!isModified}
             type='email'
-            label={t('Dashboard.Profile.Emails.alternativeEmail', {
-              number: '2',
-            })}
+            label={alternativeEmail2Trans}
             value={inputFields.alternate_email_2 || ''}
             fullWidth
             placeholder={t('Global.inputPlaceholder', {
-              input: 'alternative email 1',
+              input: alternativeEmail2Trans.toLowerCase(),
             })}
             InputLabelProps={{
               shrink: true,
