@@ -4,10 +4,12 @@ export const QUESTION_URL = 'https://qst.kli.one';
 
 //export const PROFILE_URL = 'http://localhost:7471/v1/profile';
 export const PROFILE_URL =
-  process.env.REACT_APP_STAGING === 'true' ? 'https://api.eurokab.info/profile/v1/profile' : 'https://api.kli.one/profile/v1/profile';
+  process.env.REACT_APP_STAGING === 'true'
+    ? 'https://api.eurokab.info/profile/v1/profile'
+    : 'https://api.kli.one/profile/v1/profile';
 
-
-export const GOOGLE_CALENDAR_API_KEY = process.env.REACT_APP_GOOGLE_CALENDAR_API_KEY;
+export const GOOGLE_CALENDAR_API_KEY =
+  process.env.REACT_APP_GOOGLE_CALENDAR_API_KEY;
 export const GOOGLE_CALENDAR_HE = process.env.REACT_APP_GOOGLE_CALENDAR_ID_HE;
 export const GOOGLE_CALENDAR_RU = process.env.REACT_APP_GOOGLE_CALENDAR_ID_RU;
 export const GOOGLE_CALENDAR_EN = process.env.REACT_APP_GOOGLE_CALENDAR_ID_EN;
@@ -18,3 +20,7 @@ export const CHAT_AND_NOTIFICATION_ICONS =
   process.env.NODE_ENV === 'development' ? false : false;
 export const SEARCH_BAR =
   process.env.NODE_ENV === 'development' ? false : false;
+
+// Variable for the flag images located in src/img
+export const IMAGE_URL =
+  process.env.NODE_ENV === 'development' ? '/static' : 'dash/static';

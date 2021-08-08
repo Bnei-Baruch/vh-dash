@@ -23,7 +23,11 @@ import {
 
 import { Menu as MenuIcon } from '@material-ui/icons';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import { CHAT_AND_NOTIFICATION_ICONS, SEARCH_BAR } from '../shared/constants';
+import {
+  CHAT_AND_NOTIFICATION_ICONS,
+  IMAGE_URL,
+  SEARCH_BAR,
+} from '../shared/constants';
 import { setLoggedInUser } from '../redux/actions/userActions';
 import ModalWindow from '../pages/dashboard/MyProfile/ui/ModalWindow';
 import { DASHBOARD_ROUTES } from '../routes/dashboardRoutes';
@@ -149,7 +153,7 @@ function LanguageMenu() {
       >
         {/* Don't replace with emoji as it's not supported in Windows */}
         <Flag
-          src={`/static/img/flags/${i18next.language}.png`}
+          src={`${IMAGE_URL}/img/flags/${i18next.language}.png`}
           alt={i18next.language}
         />
       </IconButton>
