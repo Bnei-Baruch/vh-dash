@@ -60,14 +60,14 @@ const OtherInformationsTab = ({
   return (
     <form noValidate autoComplete='off' onSubmit={onFormSubmit}>
       <Grid container spacing={3}>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={12} mg={12} lg={6}>
           <EducationForm
             inputFields={inputFields}
             handleChange={handleChange}
             isModified={isModified}
           />
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={12} mg={12} lg={6}>
           <TenForm
             inputFields={inputFields}
             handleChange={handleChange}
