@@ -46,6 +46,16 @@ const IconButton = styled(MuiIconButton)`
   }
 `;
 
+const FlagButton = styled(MuiIconButton)`
+  svg {
+    width: 22px;
+    height: 22px;
+  }
+  @media (max-width: 600px) {
+    padding: 10px !important;
+  }
+`;
+
 const UserIconButton = styled(MuiIconButton)`
   font-size: 16px !important;
   span,
@@ -58,6 +68,9 @@ const UserIconButton = styled(MuiIconButton)`
   }
   &:hover {
     background-color: transparent;
+  }
+  @media (max-width: 600px) {
+    padding: 0px !important;
   }
 `;
 
@@ -121,6 +134,7 @@ const Flag = styled.img`
   border-radius: 50%;
   width: 25px;
   height: 25px;
+
 `;
 
 const languages = [
@@ -145,7 +159,7 @@ function LanguageMenu() {
 
   return (
     <>
-      <IconButton
+      <FlagButton
         aria-owns={anchorMenu ? 'menu-appbar' : undefined}
         aria-haspopup='true'
         onClick={toggleMenu}
@@ -156,7 +170,7 @@ function LanguageMenu() {
           src={`${IMAGE_URL}/img/flags/${i18next.language}.png`}
           alt={i18next.language}
         />
-      </IconButton>
+      </FlagButton>
       <Menu
         id='menu-appbar'
         anchorEl={anchorMenu}
