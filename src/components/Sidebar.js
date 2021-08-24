@@ -305,7 +305,7 @@ const Sidebar = ({ classes, staticContext, location, ...rest }) => {
                     </Collapse>
                   </React.Fragment>
                 ) : category.isExternalLink ? (
-                  <ExternalLink href={category.path}>
+                  <ExternalLink href={category.path} target="_blank">
                     <Category>
                       {category.icon}
                       <CategoryText>{t(`Dashboard.${category.id}.name`)}</CategoryText>

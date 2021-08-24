@@ -251,9 +251,10 @@ function UserMenu() {
 }
 
 const Header = ({ onDrawerToggle }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  console.log(i18n);
   const redirectToPayment = () => {
-    window.location.href = `${window.location.origin}/pay/order/1`;
+    window.open(`${window.location.origin}/pay/order/1?lang=${i18n.language}`, '_blank').focus();
   };
   return (
     <>

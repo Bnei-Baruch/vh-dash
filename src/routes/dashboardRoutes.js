@@ -5,7 +5,7 @@ export const DASHBOARD_ROUTES = {
     Profile: `${DASHBOARD_ROOT}/profile`,
     Events: `${DASHBOARD_ROOT}/events`,
     Payments: `${DASHBOARD_ROOT}/payments`,
-    broadcastArea: `${DASHBOARD_ROOT}/dashboard`,
+    broadcastArea: `${DASHBOARD_ROOT}/broadcast`,
     arvutSystem: `${DASHBOARD_ROOT}/arvutsytem`,
     archive: `${DASHBOARD_ROOT}/archive`,
 };
