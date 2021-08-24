@@ -55,6 +55,18 @@ const LiveChip = styled(Chip)`
   width: 50px;
 `;
 
+const CardHead = styled(CardHeader)`
+@media(max-width: 600px) {
+  display: block;
+  >div {
+    margin: 15px 0px;
+  }
+  .MuiButton-root {
+    padding: 5px 10px !important;
+  }
+}
+`
+
 const TableWrapper = styled.div`
   overflow-y: auto;
   max-height: 500px;
@@ -237,7 +249,7 @@ const Calendar = ({onLiveEvent, settings: {language}}) => {
 
   return (
     <Card mb={6}>
-      <CardHeader
+      <CardHead
         action={
           <CardActionHeader>
             <StaticIcon aria-label="calendar">
