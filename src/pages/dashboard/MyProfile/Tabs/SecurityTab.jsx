@@ -83,7 +83,7 @@ const SecurityTab = () => {
           {t('Dashboard.Profile.Security.name')}
         </Typography>
         <Grid container spacing={6}>
-          <Grid item xs={12} sm={8}>
+          <Grid item xs={12} sm={12} mg={12} lg={6}>
             <TextField
               disabled
               type='email'
@@ -98,7 +98,7 @@ const SecurityTab = () => {
               }}
             />
           </Grid>
-          <Grid item xs={12} sm={8} className={classes.linkWrapper}>
+          <Grid item xs={12} sm={12} mg={12} lg={6} className={classes.linkWrapper}>
             <Link
               component='button'
               variant='body2'
@@ -107,7 +107,7 @@ const SecurityTab = () => {
               {t('Dashboard.Profile.Security.forgotPassword')}
             </Link>
           </Grid>
-          <Grid item xs={12} sm={8}>
+          <Grid item xs={12} sm={12} mg={12} lg={6}>
             <FormControl component='fieldset' className={classes.formControl}>
               <FormLabel component='div' className={classes.radioLabel}>
                 <img
@@ -136,7 +136,7 @@ const SecurityTab = () => {
               </RadioGroup>
             </FormControl>
           </Grid>
-          <Grid item xs={12} sm={8}>
+          <Grid item xs={12} sm={12} mg={12} lg={6}>
             <FormControl component='fieldset' className={classes.formControl}>
               <FormLabel component='div' className={classes.radioLabel}>
                 <img
