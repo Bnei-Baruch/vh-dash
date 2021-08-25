@@ -19,14 +19,14 @@ import { useSelector } from 'react-redux';
 const Typography = styled(MuiTypography)(spacing);
 
 const ConventionIcon = styled.img`
-    height: 30px;
-    margin-right: 10px
+    height: 25px;
+    margin: 5px 10px
 `;
 
 const ConventionButton = styled(Button)`
     background-color: #FF6058;
     color: #fff;
-    margin: 0px 10px;
+    margin: 10px;
     :hover {
         background-color: #f9524a;
         border-color: #FF6058;
@@ -36,6 +36,15 @@ const ConventionButton = styled(Button)`
         border-color: #FF6058;
     }
 `
+
+const RegisterButton = styled(Button)`
+    margin: 10px;
+`;
+
+const RegistrationText = styled.div`
+    margin: auto 0px;
+    font-weight: 600;
+`;
 
 const RegistrationContainer = styled(Box)`
     @media(max-width: 600px) {
@@ -49,7 +58,7 @@ const RegistrationContainer = styled(Box)`
 const GreenTick = styled(CheckCircleOutlineOutlinedIcon)`
     color: green;
     vertical-align: sub;
-    height: 0.7em;
+    height: 0.75em;
 `;
 
 const RedCircle = styled(CancelOutlinedIcon)`
@@ -97,12 +106,12 @@ const Convention = () => {
                 <MuiDivider />
                 <br />
                 <RegistrationContainer display='flex' justifyContent='space-between'>
-                    <div>
+                    <RegistrationText>
                         {registered && <> <GreenTick /> {t('Home.registered')}</>}
                         {!registered && <> <RedCircle /> {t('Home.notRegistered')}</>}
-                    </div>
+                    </RegistrationText>
                     <div>
-                        {!registered && <Button color='primary' variant='contained' onClick={navigateToRegister}>{t('Home.register')} </Button>}
+                        {!registered && <RegisterButton color='primary' variant='contained' onClick={navigateToRegister}>{t('Home.register')} </RegisterButton>}
                         <ConventionButton onClick={navigateToConvention} color='primary' variant='contained'> {t('Home.conventionSite')} </ConventionButton>
                     </div>
                 </RegistrationContainer>
