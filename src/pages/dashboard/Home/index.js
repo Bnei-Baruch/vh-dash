@@ -4,6 +4,7 @@ import {Grid} from '@material-ui/core';
 import Arvut from './Arvut';
 import Calendar from './Calendar';
 import Header from './Header';
+import Convention from './Convention';
 
 const Home = () => {
   const [liveEvent, setLiveEvent] = useState();
@@ -18,10 +19,12 @@ const Home = () => {
 
       <Grid container spacing={6}>
         <Grid item xs={12} lg={6}>
-          <Arvut liveEvent={liveEvent}/>
+          <Convention liveEvent={liveEvent}/>
         </Grid>
         <Grid item xs={12} lg={6}>
           <Calendar onLiveEvent={onLiveEvent}/>
+          <br/>
+          <Arvut liveEvent={liveEvent}/>
         </Grid>
       </Grid>
     </>
