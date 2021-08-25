@@ -67,7 +67,11 @@
             "yesterday": "Yesterday",
             "events": "Events",
             "welcomeBack": "Welcome back",
-            "convention": "Convention"
+            "convention": "Convention",
+            "registered": "You are registered",
+            "notRegistered": "You are not registered",
+            "register": "Register",
+            "conventionSite": "Convention Site"
         },
         "UserMenu": {
             "logOut": "Log Out",

@@ -6,83 +6,106 @@ import {
     CardContent,
     CardHeader,
     Divider as MuiDivider,
-    makeStyles,
     Typography as MuiTypography,
 } from '@material-ui/core';
 import { spacing } from '@material-ui/system';
 import styled from 'styled-components';
-import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import ConventionImage from "../../../asset/icons/convention_icon.svg";
-import CheckCircleIcon from '@material-ui/icons/CheckCircle';
-import CancelIcon from '@material-ui/icons/Cancel';
+import CheckCircleOutlineOutlinedIcon from '@material-ui/icons/CheckCircleOutlineOutlined';
+import CancelOutlinedIcon from '@material-ui/icons/CancelOutlined';
+import { BB_CONVENTION_REGISTERED, BB_CONVENTION_REGISTER_LINK, BB_CONVENTION_REGISTER_SITE } from '../../../constants/common';
+import { useSelector } from 'react-redux';
 const Typography = styled(MuiTypography)(spacing);
 
 const ConventionIcon = styled.img`
-height: 40px;
+    height: 30px;
+    margin-right: 10px
 `;
 
 const ConventionButton = styled(Button)`
     background-color: #FF6058;
     color: #fff;
-
+    margin: 0px 10px;
+    :hover {
+        background-color: #f9524a;
+        border-color: #FF6058;
+    }
+    :active, :focus {
+        background-color: #FF6058;
+        border-color: #FF6058;
+    }
 `
 
-const GreenTick = styled(CheckCircleIcon)`
-color: green
+const RegistrationContainer = styled(Box)`
+    @media(max-width: 600px) {
+        display: block;
+        >div { 
+            margin: 10px 0px;
+        }
+    }
 `
-const RedCircle = styled(CancelIcon)`
-color: red`;
-const useStyles = makeStyles({
-    cardTitle: {
-        fontSize: 14,
-        color: '#ff0000',
-    },
-});
+
+const GreenTick = styled(CheckCircleOutlineOutlinedIcon)`
+    color: green;
+    vertical-align: sub;
+    height: 0.7em;
+`;
+
+const RedCircle = styled(CancelOutlinedIcon)`
+    color: red;
+    vertical-align: sub;
+    height: 0.7em;
+`;
 
 const Convention = () => {
-    const { t } = useTranslation();
-    const classes = useStyles();
-
-    // TODO: add friendsFromTen variable to an array when get updates from BE
+    const { t, i18n } = useTranslation();
     const [registered, setRegistered] = useState(false);
-    const user = useSelector(state => state.userReducer.info.profile);
+    const keycloak = useSelector(state => state.userReducer.keycloak);
 
     useEffect(() => {
-    }, []);
+        if (keycloak.realmAccess.roles.includes(BB_CONVENTION_REGISTERED)) {
+            setRegistered(true);
+        }
+    }, [])
 
-    useEffect(() => {
-    }, []);
+    const navigateToRegister = () => {
+        window.open(BB_CONVENTION_REGISTER_LINK, '_blank').focus();
+    }
+
+    const navigateToConvention = () => {
+        window.open(`${BB_CONVENTION_REGISTER_SITE}${i18n.language}`, '_blank').focus();
+    }
 
     return (
         <Card mb={6}>
             <CardHeader
                 title={t('Home.convention')}
-                classes={{ title: classes.cardTitle }}
             />
             <CardContent>
-
                 <Box display='flex' justifyContent='space-between'>
                     <Box display='flex'>
                         <ConventionIcon src={ConventionImage} />
                         <div>
-                            <Typography variant='h3'>Convention Title</Typography>
+                            <Typography variant='h2'>Convention Title</Typography>
                             <span>Convention Subtitle</span>
                         </div>
                     </Box>
                     <Typography variant='h3'>22/09</Typography>
                 </Box>
-                <hr/>
-                <Box display='flex' justifyContent='space-between'>
+                <br />
+                <MuiDivider />
+                <br />
+                <RegistrationContainer display='flex' justifyContent='space-between'>
                     <div>
-                        { registered  && <> <GreenTick /> You are registered </>}
-                        { !registered  && <> <RedCircle /> You are not registered </>}
+                        {registered && <> <GreenTick /> {t('Home.registered')}</>}
+                        {!registered && <> <RedCircle /> {t('Home.notRegistered')}</>}
                     </div>
                     <div>
-                        <Button color='primary' variant='contained'>Register </Button>
-                        <ConventionButton color='primary' variant='contained'> Convention</ConventionButton>
+                        {!registered && <Button color='primary' variant='contained' onClick={navigateToRegister}>{t('Home.register')} </Button>}
+                        <ConventionButton onClick={navigateToConvention} color='primary' variant='contained'> {t('Home.conventionSite')} </ConventionButton>
                     </div>
-                </Box>
+                </RegistrationContainer>
             </CardContent>
         </Card>
     );

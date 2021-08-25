@@ -22,7 +22,6 @@ export default createReducer(
       return { ...state, info: action.user };
     },
     [setKeycloakData]: (state, action) => {
-      console.log(action)
       return { ...state, keycloak: action.keycloak };
     },
   },
