@@ -24,7 +24,12 @@
             "welcomeBack": "Bienvenido de nuevo",
             "watchRecordedBtn": "Ver Grabado",
             "active": "ACTIVO",
-            "notActive": "No ACTIVO"
+            "notActive": "No ACTIVO",
+            "convention": "Convention",
+            "registered": "You are registered",
+            "notRegistered": "You are not registered",
+            "register": "Register",
+            "conventionSite": "Convention Site"
         },
         "UserMenu": {
             "logOut": "Cerrar la sesión",
