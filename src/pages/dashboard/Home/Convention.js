@@ -19,52 +19,52 @@ import { useSelector } from 'react-redux';
 const Typography = styled(MuiTypography)(spacing);
 
 const ConventionIcon = styled.img`
-    height: 25px;
-    margin: 5px 10px
+    height: 25px !important;
+    margin: 5px 10px!important;
 `;
 
 const ConventionButton = styled(Button)`
-    background-color: #FF6058;
-    color: #fff;
-    margin: 10px;
+    background-color: #FF6058 !important;
+    color: #fff !important;
+    margin: 10px !important;
     :hover {
-        background-color: #f9524a;
-        border-color: #FF6058;
+        background-color: #f9524a !important;
+        border-color: #FF6058 !important;
     }
     :active, :focus {
-        background-color: #FF6058;
-        border-color: #FF6058;
+        background-color: #FF6058 !important;
+        border-color: #FF6058 !important;
     }
 `
 
 const RegisterButton = styled(Button)`
-    margin: 10px;
+    margin: 10px !important;
 `;
 
 const RegistrationText = styled.div`
-    margin: auto 0px;
-    font-weight: 600;
+    margin: auto 0px !important;
+    font-weight: 600 !important;
 `;
 
 const RegistrationContainer = styled(Box)`
     @media(max-width: 600px) {
-        display: block;
+        display: block !important;
         >div { 
-            margin: 10px 0px;
+            margin: 10px 0px !important;
         }
     }
 `
 
 const GreenTick = styled(CheckCircleOutlineOutlinedIcon)`
-    color: green;
-    vertical-align: sub;
-    height: 0.75em;
+    color: green !important;
+    vertical-align: sub !important;
+    height: 0.75em !important;
 `;
 
 const RedCircle = styled(CancelOutlinedIcon)`
-    color: red;
-    vertical-align: sub;
-    height: 0.7em;
+    color: red !important;
+    vertical-align: sub !important;
+    height: 0.7em !important;
 `;
 
 const Convention = () => {
