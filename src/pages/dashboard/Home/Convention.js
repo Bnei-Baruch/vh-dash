@@ -16,6 +16,7 @@ import CheckCircleOutlineOutlinedIcon from '@material-ui/icons/CheckCircleOutlin
 import CancelOutlinedIcon from '@material-ui/icons/CancelOutlined';
 import { BB_CONVENTION_REGISTERED, BB_CONVENTION_REGISTER_LINK, BB_CONVENTION_REGISTER_SITE } from '../../../constants/common';
 import { useSelector } from 'react-redux';
+import { profileInfo } from '../../../redux/selectors/profile';
 const Typography = styled(MuiTypography)(spacing);
 
 const ConventionIcon = styled.img`
@@ -70,13 +71,15 @@ const RedCircle = styled(CancelOutlinedIcon)`
 const Convention = () => {
     const { t, i18n } = useTranslation();
     const [registered, setRegistered] = useState(false);
-    const keycloak = useSelector(state => state.userReducer.keycloak);
-
+    const profileData = useSelector(profileInfo);
     useEffect(() => {
-        if (keycloak.realmAccess.roles.includes(BB_CONVENTION_REGISTERED)) {
-            setRegistered(true);
+        if(profileData && profileData.status) {
+            const { ticket, membership, convention } = profileData.status
+            if ((ticket || membership) && convention) {
+                setRegistered(true);
+            }
         }
-    }, [])
+    }, [profileData])
 
     const navigateToRegister = () => {
         window.open(BB_CONVENTION_REGISTER_LINK, '_blank').focus();
