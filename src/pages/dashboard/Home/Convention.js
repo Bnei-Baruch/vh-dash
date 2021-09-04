@@ -45,6 +45,7 @@ const RegisterButton = styled(Button)`
 const RegistrationText = styled.div`
     margin: auto 0px !important;
     font-weight: 600 !important;
+    visibility: hidden;
 `;
 
 const RegistrationContainer = styled(Box)`
