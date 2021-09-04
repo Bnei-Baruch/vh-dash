@@ -71,7 +71,9 @@
             "registered": "You are registered",
             "notRegistered": "You are not registered",
             "register": "Register",
-            "conventionSite": "Convention Site"
+            "conventionSite": "Convention Site",
+            "conventionsubtitle": "מגלים עולם חדש",
+            "conventiontitle": "כניסה לעיבור"
         },
         "UserMenu": {
             "logOut": "להתנתק",
