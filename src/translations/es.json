@@ -415,7 +415,19 @@
                     },
                     "requestError": "Ooops! ¡Algo salió mal! Por favor, inténtelo de nuevo más tarde o póngase en contacto con nuestro soporte técnico",
                     "closeBtn": "Cerrar"
-                }
+                },
+                "PhysicalLocationForm": {
+                    "city": "Ciudad",
+                    "stateRegion": "Estado / Región",
+                    "country": "País",
+                    "postalCode": "Código postal",
+                    "streetAddress": "Dirección",
+                    "name": "Localizacion fisica"
+                },
+                "profileNotExist": "Parece que no ha creado la información de perfil. Por favor, haga clic en el botón 'Modificar' y cree su perfil",
+                "profileUpdated": "La información de tu perfil se actualizó correctamente",
+                "profileCreated": "La información de su perfil se creó correctamente",
+                "socialFormName": "Mis números de teléfono"
             },
             "Payments": {
                 "amountLabel": "¿Cuánto estás pagando?",
@@ -440,6 +452,29 @@
                 },
                 "title": "Mis pagos",
                 "name": "Pagos"
+            },
+            "BroadcastArea": {
+                "Annoucements": {
+                    "donationsLink": "http://bit.ly/2O0Pifo",
+                    "donationsButton": "Donar",
+                    "donationsQuote": "\"Solo a través de la expansión de la sabiduría de la Cabalá en las masas obtendremos la redención completa\" (Rabí Yehuda Ashlag, \"Baal HaSulam\").",
+                    "donations": "SOMOS SOCIOS EN LA EMPRESA DE DIFUSIÓN DE LA ASOCIACIÓN \"BNEI BARUCH - KABBALAH LA'AM\"",
+                    "title": "Anuncios"
+                },
+                "Question": {
+                    "errorMsg": "Error inesperado. ¡Inténtalo de nuevo!",
+                    "successMsg": "¡Enviado correctamente!",
+                    "button": "Pedir",
+                    "placeholder": "Ingrese su pregunta y presione el botón",
+                    "label": "¿Cuál es tu pregunta?",
+                    "title": "Envíe una pregunta"
+                },
+                "noBroadcast": "No hay transmisión ahora",
+                "loading": "Cargando",
+                "broadcastLanguage": "Idiomas de transmisión",
+                "broadcast": "Transmisión",
+                "title": "Área de transmisión",
+                "name": "Área de transmisión"
             }
         },
         "Global": {
@@ -481,7 +516,9 @@
             "Currency": {
                 "eur": "euro",
                 "usd": "USD"
-            }
+            },
+            "requestError": "¡Upss! ¡Algo salió mal! Inténtelo de nuevo más tarde o póngase en contacto con nuestro servicio de asistencia.",
+            "closeBtn": "Cerrar"
         }
     }
 }
