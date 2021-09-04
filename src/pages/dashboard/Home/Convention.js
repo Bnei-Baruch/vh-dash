@@ -86,7 +86,11 @@ const Convention = () => {
     }
 
     const navigateToConvention = () => {
-        window.open(`${BB_CONVENTION_REGISTER_SITE}${i18n.language}`, '_blank').focus();
+        if (i18n.language === "en"){
+            window.open(`${BB_CONVENTION_REGISTER_SITE}`, '_blank').focus();
+        } else {
+            window.open(`${BB_CONVENTION_REGISTER_SITE}${i18n.language}`, '_blank').focus();
+        }
     }
 
     return (
