@@ -29,7 +29,9 @@
             "registered": "You are registered",
             "notRegistered": "You are not registered",
             "register": "Register",
-            "conventionSite": "Convention Site"
+            "conventionSite": "Convention Site",
+            "conventionsubtitle": "Descubriendo un nuevo mondo",
+            "conventiontitle": "Entrada a la concepción"
         },
         "UserMenu": {
             "logOut": "Cerrar la sesión",
