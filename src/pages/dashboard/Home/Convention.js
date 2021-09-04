@@ -99,11 +99,11 @@ const Convention = () => {
                     <Box display='flex'>
                         <ConventionIcon src={ConventionImage} />
                         <div>
-                            <Typography variant='h2'>Convention Title</Typography>
-                            <span>Convention Subtitle</span>
+                          <Typography variant='h2'>{t('Home.conventiontitle')}</Typography>
+                          <span>{t('Home.conventionsubtitle')}</span>
                         </div>
                     </Box>
-                    <Typography variant='h3'>22/09</Typography>
+                    <Typography variant='h3'>24/09</Typography>
                 </Box>
                 <br />
                 <MuiDivider />

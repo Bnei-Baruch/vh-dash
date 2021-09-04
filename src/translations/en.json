@@ -71,7 +71,9 @@
             "registered": "You are registered",
             "notRegistered": "You are not registered",
             "register": "Register",
-            "conventionSite": "Convention Site"
+            "conventionSite": "Convention Site",
+            "conventiontitle": "Convention Actual Title",
+            "conventionsubtitle":"The subtitle"
         },
         "UserMenu": {
             "logOut": "Log Out",
