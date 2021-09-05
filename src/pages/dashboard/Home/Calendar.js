@@ -50,7 +50,7 @@ const Spinner = styled.div`
 `;
 
 const LiveChip = styled(Chip)`
-  background-color: ${red[500]};
+  background-color: ${red[500]} !important;
   color: white;
   width: 50px;
 `;
