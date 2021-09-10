@@ -119,7 +119,7 @@ const Convention = () => {
                         {!registered && <> <RedCircle /> {t('Home.notRegistered')}</>}
                     </RegistrationText>
                     <div>
-                        {!registered && <RegisterButton color='primary' variant='contained' onClick={navigateToRegister}>{t('Home.register')} </RegisterButton>}
+                        {!registered || registered && <RegisterButton color='primary' variant='contained' onClick={navigateToRegister}>{t('Home.register')} </RegisterButton>}
                         <ConventionButton onClick={navigateToConvention} color='primary' variant='contained'> {t('Home.conventionSite')} </ConventionButton>
                     </div>
                 </RegistrationContainer>
