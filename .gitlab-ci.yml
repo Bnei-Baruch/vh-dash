@@ -51,7 +51,9 @@ build_production:
     - env
     - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
     - docker build --build-arg IS_STAGING_BUILD=false --build-arg PUBLIC_URL=$PRODUCTION_URL -t $PROD_IMAGE .
+    - docker tag $PROD_IMAGE $PROD_LATEST_IMAGE
     - docker push $PROD_IMAGE
+    - docker push $PROD_LATEST_IMAGE
   only:
     - tags
 
