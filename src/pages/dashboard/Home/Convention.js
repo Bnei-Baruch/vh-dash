@@ -27,7 +27,7 @@ const ConventionIcon = styled.img`
 const ConventionButton = styled(Button)`
     background-color: #FF6058 !important;
     color: #fff !important;
-    margin: 10px !important;
+    margin: -1px !important;
     :hover {
         background-color: #f9524a !important;
         border-color: #FF6058 !important;
@@ -39,7 +39,7 @@ const ConventionButton = styled(Button)`
 `
 
 const RegisterButton = styled(Button)`
-    margin: 10px !important;
+    margin: -1px 10px !important;
 `;
 
 const RegistrationText = styled.div`
