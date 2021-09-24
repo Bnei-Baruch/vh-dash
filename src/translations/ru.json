@@ -235,6 +235,10 @@
                 "expirationDate": "Дата истечения срока"
             },
             "BroadcastArea": {
+                "liveLanguage": "Live Language",
+                "questions": "Questions",
+                "yourQuestion": "Your Question",
+                "postYourQuestion": "Post your question",
                 "name": "Конгресс-зона",
                 "title": "Конгресс-зона",
                 "caption": "ПОЗНАЙТЕ НАСТОЯЩУЮ ЖИЗНЬ",
