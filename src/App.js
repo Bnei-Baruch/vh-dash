@@ -27,6 +27,9 @@ const jss = create({
  * and appending token in api's
  */
 axios.interceptors.request.use(async c => {
+  if (c && c.url && c.url.includes('heartbeat')) {
+    return c;
+  }
   const state = store.getState();
   if (state.userReducer.keycloak && state.userReducer.keycloak.isTokenExpired()) {
     await state.userReducer.keycloak.updateToken(30).success();
@@ -47,7 +50,7 @@ const App = ({ theme }) => {
 
   // Set direction on body
   document.body.setAttribute('dir', i18n.dir(i18n.language));
-  
+
   return (
     <Auth>
       <Helmet
@@ -59,11 +62,11 @@ const App = ({ theme }) => {
           <MuiThemeProvider theme={{
             ...maTheme[theme.currentTheme],
             direction: i18n.dir(i18n.language),
-            }}>
+          }}>
             <ThemeProvider theme={{
               ...maTheme[theme.currentTheme],
               direction: i18n.dir(i18n.language),
-              }}>
+            }}>
               <Routes />
             </ThemeProvider>
           </MuiThemeProvider>

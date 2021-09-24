@@ -454,6 +454,10 @@
                 "name": "Pagos"
             },
             "BroadcastArea": {
+                "liveLanguage": "Live Language",
+                "questions": "Questions",
+                "yourQuestion": "Your Question",
+                "postYourQuestion": "Post your question",
                 "Annoucements": {
                     "donationsLink": "http://bit.ly/2O0Pifo",
                     "donationsButton": "Donar",

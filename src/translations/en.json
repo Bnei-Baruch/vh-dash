@@ -73,7 +73,7 @@
             "register": "Register",
             "conventionSite": "Convention Site",
             "conventiontitle": "Entering Impregnation",
-            "conventionsubtitle":"Revealing a new World"
+            "conventionsubtitle": "Revealing a new World"
         },
         "UserMenu": {
             "logOut": "Log Out",
@@ -206,6 +206,10 @@
                 "amountLabel": "How much are you paying?"
             },
             "BroadcastArea": {
+                "liveLanguage": "Live Language",
+                "questions": "Questions",
+                "yourQuestion": "Your Question",
+                "postYourQuestion": "Post your question",
                 "name": "Broadcast Area",
                 "title": "Broadcast Area",
                 "broadcast": "Broadcast",

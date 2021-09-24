@@ -14,7 +14,7 @@ import { useTranslation } from 'react-i18next';
 import ConventionImage from "../../../asset/icons/convention_icon.svg";
 import CheckCircleOutlineOutlinedIcon from '@material-ui/icons/CheckCircleOutlineOutlined';
 import CancelOutlinedIcon from '@material-ui/icons/CancelOutlined';
-import { BB_CONVENTION_REGISTERED, BB_CONVENTION_REGISTER_LINK, BB_CONVENTION_REGISTER_SITE } from '../../../constants/common';
+import { BB_CONVENTION_REGISTER_LINK, BB_CONVENTION_REGISTER_SITE } from '../../../constants/common';
 import { useSelector } from 'react-redux';
 import { profileInfo } from '../../../redux/selectors/profile';
 const Typography = styled(MuiTypography)(spacing);
@@ -74,7 +74,7 @@ const Convention = () => {
     const [registered, setRegistered] = useState(false);
     const profileData = useSelector(profileInfo);
     useEffect(() => {
-        if(profileData && profileData.status) {
+        if (profileData && profileData.status) {
             const { ticket, membership, convention } = profileData.status
             if ((ticket || membership) && convention) {
                 setRegistered(true);
@@ -87,7 +87,7 @@ const Convention = () => {
     }
 
     const navigateToConvention = () => {
-        if (i18n.language === "en"){
+        if (i18n.language === "en") {
             window.open(`${BB_CONVENTION_REGISTER_SITE}`, '_blank').focus();
         } else {
             window.open(`${BB_CONVENTION_REGISTER_SITE}${i18n.language}`, '_blank').focus();
@@ -104,8 +104,8 @@ const Convention = () => {
                     <Box display='flex'>
                         <ConventionIcon src={ConventionImage} />
                         <div>
-                          <Typography variant='h2'>{t('Home.conventiontitle')}</Typography>
-                          <span>{t('Home.conventionsubtitle')}</span>
+                            <Typography variant='h2'>{t('Home.conventiontitle')}</Typography>
+                            <span>{t('Home.conventionsubtitle')}</span>
                         </div>
                     </Box>
                     <Typography variant='h3'>24/09</Typography>

@@ -232,6 +232,10 @@
                 "expirationDate": "תאריך תפוגה"
             },
             "BroadcastArea": {
+                "liveLanguage": "Live Language",
+                "questions": "Questions",
+                "yourQuestion": "Your Question",
+                "postYourQuestion": "Post your question",
                 "name": "שידור",
                 "title": "שידור",
                 "caption": "גילוי החיים בעשריה",
