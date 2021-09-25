@@ -232,6 +232,8 @@
                 "expirationDate": "תאריך תפוגה"
             },
             "BroadcastArea": {
+                "noText": "Please input question",
+                "successPosted": "Question successfully posted",
                 "liveLanguage": "Live Language",
                 "questions": "Questions",
                 "yourQuestion": "Your Question",

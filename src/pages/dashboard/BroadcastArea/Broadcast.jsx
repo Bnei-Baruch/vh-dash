@@ -15,6 +15,8 @@ import ReactHlsPlayer from "react-hls-player";
 import PublicIcon from "@material-ui/icons/Public";
 import axios from "axios";
 import { getCountryCode, getCustomCodeFromCoutryCode } from "../../../utils";
+import { useSelector } from "react-redux";
+import Snackbar from "../../../components/SnackBar";
 const useStyles = makeStyles((theme) => ({
   rootFirstSelect: {
     padding: "10px",
@@ -48,11 +50,21 @@ const getBroadCast = (lang) => {
     .then((res) => res.data);
 };
 
+const postBroadcastQuestion = (body) => {
+  return axios
+    .post(`https://qst.kli.one/api/ask`, body)
+    .then((res) => res.data);
+};
+
 export default function Broadcast() {
   const classes = useStyles();
   const [languages, setLanguages] = React.useState([]);
   const [selectedLang, setSelectedLang] = React.useState("eng");
+  const [type, setType] = React.useState("success");
+  const [snackbarMessage, setSnackbarMessage] = React.useState("eng");
+  const [showSnackbar, setshowSnackbar] = React.useState(false);
   const { t } = useTranslation();
+  const user = useSelector((state) => state.userReducer.info);
   const [qText, setQText] = React.useState("");
   const getSourceURL = (lang) => {
     return `https://edge3.uk.kab.tv/live/${lang}-medium/playlist.m3u8`;
@@ -72,6 +84,33 @@ export default function Broadcast() {
       }
     });
   }, []);
+
+  const postQuestion = () => {
+    console.log(user);
+    if (qText.trim() === "") {
+      console.log("error");
+      setSnackbarMessage(t("Dashboard.BroadcastArea.noText"));
+      setType("error");
+      setshowSnackbar(true);
+      return;
+    }
+    let body = {
+      askForMe: true,
+      serialUserId: user?.keycloak?.subject,
+      question: { content: qText },
+      user: {
+        gender: user?.profile?.gender,
+        name: `${user?.profile?.firstName} ${user?.profile?.lastName}`,
+        galaxyRoom: "Dashboard Area",
+      },
+    };
+    postBroadcastQuestion(body).then(() => {
+      setQText("");
+      setSnackbarMessage(t("Dashboard.BroadcastArea.successPosted"));
+      setType("success");
+      setshowSnackbar(true);
+    });
+  };
 
   const updateBroadcastLang = (code) => {
     setSelectedLang(code);
@@ -144,12 +183,18 @@ export default function Broadcast() {
                   />
                 </div>
                 <br />
-                <Button variant="contained" color="primary">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  disabled={qText.trim() === ""}
+                  onClick={postQuestion}
+                >
                   {t("Dashboard.BroadcastArea.postYourQuestion")}
                 </Button>
               </Grid>
             </Grid>
           </PlayerContainer>
+          <Snackbar show={showSnackbar} type={type} message={snackbarMessage} />
         </Grid>
       </Grid>
     </>

@@ -8,11 +8,6 @@ import Broadcast from "./Broadcast";
 const useStyles = makeStyles((theme) => ({
   rightButton: {
     marginTop: "10px",
-    borderRight: `2px  solid ${theme.palette.text.secondary}`,
-    "@media (max-width: 600px)": {
-      borderRight: "none",
-      borderBottom: `2px  solid ${theme.palette.text.secondary}`,
-    },
   },
 }));
 

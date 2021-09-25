@@ -216,6 +216,8 @@
                 "broadcastLanguage": "Broadcast languages",
                 "loading": "Loading...",
                 "noBroadcast": "No broadcast now",
+                "noText": "Please input question",
+                "successPosted": "Question successfully posted",
                 "Question": {
                     "title": "Send a Question",
                     "label": "What is your question?",
