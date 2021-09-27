@@ -1,6 +1,6 @@
-import React, {useCallback, useState} from 'react';
-import {withTheme} from 'styled-components';
-import {Grid} from '@material-ui/core';
+import React, { useCallback, useState } from 'react';
+import { withTheme } from 'styled-components';
+import { Grid } from '@material-ui/core';
 import Arvut from './Arvut';
 import Calendar from './Calendar';
 import Header from './Header';
@@ -15,16 +15,17 @@ const Home = () => {
 
   return (
     <>
-      <Header/>
+      <Header />
 
       <Grid container spacing={6}>
         <Grid item xs={12} lg={6}>
-          <Convention liveEvent={liveEvent}/>
+          {/* <Convention liveEvent={liveEvent}/> */}
+          <Arvut liveEvent={liveEvent} />
         </Grid>
         <Grid item xs={12} lg={6}>
-          <Calendar onLiveEvent={onLiveEvent}/>
-          <br/>
-          <Arvut liveEvent={liveEvent}/>
+          <Calendar onLiveEvent={onLiveEvent} />
+          <br />
+          {/* <Arvut liveEvent={liveEvent} /> */}
         </Grid>
       </Grid>
     </>
