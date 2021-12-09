@@ -108,7 +108,7 @@ const Convention = () => {
                             <span>{t('Home.conventionsubtitle')}</span>
                         </div>
                     </Box>
-                    <Typography variant='h3'>24/09</Typography>
+                    <Typography variant='h3'>07/01</Typography>
                 </Box>
                 <br />
                 <MuiDivider />
