@@ -39,6 +39,7 @@ deploy_staging:
     - IMAGE_NAME=$STAGING_IMAGE docker-compose up -d
   only:
     - master
+    - staging
 
 
 build_production:
