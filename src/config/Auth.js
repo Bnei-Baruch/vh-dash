@@ -14,7 +14,7 @@ const Auth = props => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const keycloak = Keycloak(keycloakConfig);
+    const keycloak = Keycloak(window.APP_CONFIG.KEYCLOAK_CONFIG);
     keycloak
       .init({ onLoad: 'login-required', checkLoginIframe: false })
       .then(authenticated => {
