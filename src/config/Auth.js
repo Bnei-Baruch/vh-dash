@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Keycloak from 'keycloak-js';
-import keycloakConfig from './keycloak-config';
 
 import { setKeycloakData, setLoggedInUser } from '../redux/actions/userActions';
 import { useDispatch } from 'react-redux';
