@@ -167,7 +167,7 @@ function LanguageMenu() {
       >
         {/* Don't replace with emoji as it's not supported in Windows */}
         <Flag
-          src={`${IMAGE_URL}/img/flags/${i18next.language}.png`}
+          src={`${window.APP_CONFIG.BASE_STATIC_PATH}/img/flags/${i18next.language}.png`}
           alt={i18next.language}
         />
       </FlagButton>

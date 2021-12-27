@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Keycloak from 'keycloak-js';
-import keycloakConfig from './keycloak-config';
 
 import { setKeycloakData, setLoggedInUser } from '../redux/actions/userActions';
 import { useDispatch } from 'react-redux';
@@ -14,7 +13,7 @@ const Auth = props => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const keycloak = Keycloak(keycloakConfig);
+    const keycloak = Keycloak(window.APP_CONFIG.KEYCLOAK_CONFIG);
     keycloak
       .init({ onLoad: 'login-required', checkLoginIframe: false })
       .then(authenticated => {
