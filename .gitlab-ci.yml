@@ -26,6 +26,7 @@ build_staging:
     - docker push $STAGING_LATEST_IMAGE
   only:
     - master
+    - staging
 
 deploy_staging:
   #image: tmaier/docker-compose:latest
@@ -38,6 +39,7 @@ deploy_staging:
     - IMAGE_NAME=$STAGING_IMAGE docker-compose up -d
   only:
     - master
+    - staging
 
 
 build_production:
