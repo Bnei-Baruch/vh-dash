@@ -20,9 +20,12 @@ const Home = () => {
       <Grid container spacing={6}>
         <Grid item xs={12} lg={6}>
           <Grid container spacing={2}>
-            <Grid item xs={12} lg={12}>
+            {/*
+             <Grid item xs={12} lg={12}>
               <Convention liveEvent={liveEvent} />
             </Grid>
+             */
+            }
             <Grid item xs={12} lg={12}>
               <Arvut liveEvent={liveEvent} />
             </Grid>
