@@ -8,7 +8,7 @@ services:
       - 8080:80
     volumes:
       - /opt/$CI_PROJECT_PATH/public/config/:/usr/share/nginx/html/public/config/
-# networks:
-#     default:
-#         external:
-#             name: vh
+networks:
+    default:
+        external:
+            name: vh
