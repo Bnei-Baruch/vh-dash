@@ -36,7 +36,7 @@ deploy_staging:
     - staging
   script:
     - mkdir -p /opt/$CI_PROJECT_PATH || true
-    - for variable in "${!${DYN_STAGING}@}"; do echo "${variable_#${DYN_STAGING}}"="${!variable}"; export "${variable_#${DYN_STAGING}}"="${!variable}"; done;
+    - for variable in "${!DYN_STAGING@}"; do echo "${variable_#DYN_STAGING}"="${!variable}"; export "${variable_#DYN_STAGING}"="${!variable}"; done;
     - "[ -d config-templates ]  &&  gomplate --input-dir=config-templates --output-dir=/opt/$CI_PROJECT_PATH/public/config"
     - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
     - IMAGE_NAME=$STAGING_IMAGE docker-compose up -d
