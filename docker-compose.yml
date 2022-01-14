@@ -6,7 +6,9 @@ services:
     mem_limit: 50M
     ports:
       - 8080:80
-networks:
-    default:
-        external:
-            name: vh
+    volumes:
+      - /opt/$CI_PROJECT_PATH/public/config/:/usr/share/nginx/html/public/config/
+# networks:
+#     default:
+#         external:
+#             name: vh

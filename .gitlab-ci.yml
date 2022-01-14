@@ -30,11 +30,13 @@ build_staging:
 
 deploy_staging:
   #image: tmaier/docker-compose:latest
-  image: gitlab.bbdev.team:5050/vh/buildutils/buildutil:0.2.0
+  image: gitlab.bbdev.team:5050/vh/buildutils/buildutil:0.4.0
   stage: deploy
   tags:
     - staging
   script:
+    - mkdir -p /opt/$CI_PROJECT_PATH && true
+    - gomplate --input-dir=config-templates --output-dir=/opt/$CI_PROJECT_PATH/public/config
     - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
     - IMAGE_NAME=$STAGING_IMAGE docker-compose up -d
   only:
