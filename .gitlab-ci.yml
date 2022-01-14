@@ -35,8 +35,14 @@ deploy_staging:
   tags:
     - staging
   script:
+<<<<<<< Updated upstream
     - mkdir -p /opt/$CI_PROJECT_PATH && true
     - gomplate --input-dir=config-templates --output-dir=/opt/$CI_PROJECT_PATH/public/config
+=======
+    - mkdir -p /opt/$CI_PROJECT_PATH || true
+    - for variable in "${!${CI_JOB_STAGE}@}"; do echo "${variable_#${CI_JOB_STAGE}_}"="${!variable}"; export "${variable_#${CI_JOB_STAGE}}"="${!variable}"; done;
+    - "[ -d config-templates ]  &&  gomplate --input-dir=config-templates --output-dir=/opt/$CI_PROJECT_PATH/public/config"
+>>>>>>> Stashed changes
     - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
     - IMAGE_NAME=$STAGING_IMAGE docker-compose up -d
   only:
@@ -68,6 +74,8 @@ deploy_production:
   tags:
     - production
   script:
+    - mkdir -p /opt/$CI_PROJECT_PATH || true
+    - "[ -d config-templates ]  &&  gomplate --input-dir=config-templates --output-dir=/opt/$CI_PROJECT_PATH/public/config"
     - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
     - IMAGE_NAME=$PROD_IMAGE docker-compose up -d
   only:
