@@ -36,15 +36,15 @@ deploy_staging:
   tags:
     - staging
   script:
-    - mkdir -p /opt/$CI_PROJECT_PATH || true
-    - env
-    - for variable in "${!DYN_STAGING@}"; do echo "${variable#DYN_STAGING_}"="${!variable}"; export "${variable#DYN_STAGING_}"="${!variable}"; done;
-    - export REACT_APP_COMMIT_SHA=${CI_COMMIT_SHORT_SHA}
-    > 
+    >
+      mkdir -p /opt/$CI_PROJECT_PATH || true
+      env
+      for variable in "${!DYN_STAGING@}"; do echo "${variable#DYN_STAGING_}"="${!variable}"; export "${variable#DYN_STAGING_}"="${!variable}"; done;
+      export REACT_APP_COMMIT_SHA=${CI_COMMIT_SHORT_SHA}
       [ -d config-templates ] && gomplate --input-dir=config-templates --output-map='/opt/$CI_PROJECT_PATH/public/config/{{ .in | strings.ReplaceAll ".js" (tmpl.Inline "-{{ env.Getenv \"REACT_APP_COMMIT_SHA\" \"dynamic\"}}.js") }}'
     # - "[ -d config-templates ]  && gomplate --input-dir=config-templates --output-dir=/opt/$CI_PROJECT_PATH/public/config"
-    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
-    - IMAGE_NAME=$STAGING_IMAGE docker-compose up -d
+      docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
+      IMAGE_NAME=$STAGING_IMAGE docker-compose up -d
   only:
     - master
     - staging
