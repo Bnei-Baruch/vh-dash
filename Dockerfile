@@ -14,10 +14,11 @@ RUN mkdir vh-dash && chown -R node:node vh-dash
 
 WORKDIR /vh-dash
 
-ADD . /vh-dash
+COPY package.json /vh-dash/package.json
 
 RUN npm install
 
+ADD . /vh-dash
 
 RUN npm run-script build --output-path=build
 

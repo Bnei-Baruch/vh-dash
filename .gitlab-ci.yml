@@ -37,6 +37,25 @@ deploy_staging:
     - master
     - staging
 
+build_production:
+  extends: .build_front
+  variables:
+    REACT_APP_STAGING: 'false'
+    BUILD_FOR_URL: "/dash/"
+  stage: build
+  only:
+    - tags
+
+deploy_production:
+  extends: .deploy_front
+  stage: deploy
+  tags:
+    - production
+  only:
+    - tags
+  when: manual
+
+
 # build_staging:
 #   image: docker:latest
 #   stage: build
@@ -72,36 +91,36 @@ deploy_staging:
 #     - staging
 
 
-build_production:
-  image: docker:latest
-  stage: build
-  tags:
-    - dockerbuild
-  services:
-    - docker:19.03.12-dind
-  script:
-    - env
-    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
-    - docker build --build-arg IS_STAGING_BUILD=false --build-arg PUBLIC_URL=$PRODUCTION_URL -t $PROD_IMAGE .
-    - docker tag $PROD_IMAGE $PROD_LATEST_IMAGE
-    - docker push $PROD_IMAGE
-    - docker push $PROD_LATEST_IMAGE
-  only:
-    - tags
+# build_production:
+#   image: docker:latest
+#   stage: build
+#   tags:
+#     - dockerbuild
+#   services:
+#     - docker:19.03.12-dind
+#   script:
+#     - env
+#     - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
+#     - docker build --build-arg IS_STAGING_BUILD=false --build-arg PUBLIC_URL=$PRODUCTION_URL -t $PROD_IMAGE .
+#     - docker tag $PROD_IMAGE $PROD_LATEST_IMAGE
+#     - docker push $PROD_IMAGE
+#     - docker push $PROD_LATEST_IMAGE
+#   only:
+#     - tags
 
-deploy_production:
-  #image: tmaier/docker-compose:latest
-  image: gitlab.bbdev.team:5050/vh/buildutils/buildutil:0.5.0
-  stage: deploy
-  tags:
-    - production
-  script:
-    - mkdir -p /opt/$CI_PROJECT_PATH || true
-    - env
-    - for variable in "${!DYN_PROD@}"; do echo "${variable#DYN_PROD_}"="${!variable}"; export "${variable#DYN_PROD_}"="${!variable}"; done;
-    - "[ -d config-templates ]  &&  gomplate --input-dir=config-templates --output-dir=/opt/$CI_PROJECT_PATH/public/config"
-    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
-    - IMAGE_NAME=$PROD_IMAGE docker-compose up -d
-  only:
-    - tags
-  when: manual
+# deploy_production:
+#   #image: tmaier/docker-compose:latest
+#   image: gitlab.bbdev.team:5050/vh/buildutils/buildutil:0.5.0
+#   stage: deploy
+#   tags:
+#     - production
+#   script:
+#     - mkdir -p /opt/$CI_PROJECT_PATH || true
+#     - env
+#     - for variable in "${!DYN_PROD@}"; do echo "${variable#DYN_PROD_}"="${!variable}"; export "${variable#DYN_PROD_}"="${!variable}"; done;
+#     - "[ -d config-templates ]  &&  gomplate --input-dir=config-templates --output-dir=/opt/$CI_PROJECT_PATH/public/config"
+#     - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
+#     - IMAGE_NAME=$PROD_IMAGE docker-compose up -d
+#   only:
+#     - tags
+#   when: manual
