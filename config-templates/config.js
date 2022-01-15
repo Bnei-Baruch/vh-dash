@@ -1,4 +1,5 @@
 window.APP_CONFIG = {
+    BUILD_TIME: '{{ (time.Now).UTC }}',
     REG_BRANCH: '{{env.Getenv "CI_COMMIT_REF_NAME" "-"}}',
     REF_VERSION: '{{env.Getenv "CI_COMMIT_SHA" "-"}}',
     BASE_STATIC_PATH: "/static",
