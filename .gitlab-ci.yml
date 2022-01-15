@@ -39,7 +39,7 @@ deploy_staging:
     - mkdir -p /opt/$CI_PROJECT_PATH || true
     - env
     - for variable in "${!DYN_STAGING@}"; do echo "${variable#DYN_STAGING_}"="${!variable}"; export "${variable#DYN_STAGING_}"="${!variable}"; done;
-    - gomplate --input-dir=config-templates --output-map=/opt/$CI_PROJECT_PATH/public/config/{{ .in | strings.ReplaceAll ".js" (tmpl.Inline "-{{ env.Getenv \"CI_COMMIT_SHORT_SHA\" \"dynamic\"}}.js") }}
+    - gomplate --input-dir=config-templates --output-map="/opt/$CI_PROJECT_PATH/public/config/{{ .in | strings.ReplaceAll \".js\" (tmpl.Inline "-{{ env.Getenv \"CI_COMMIT_SHORT_SHA\" \"dynamic\"}}.js") }}""
     - ls -lrt /opt/$CI_PROJECT_PATH/public/config/
     # - "[ -d config-templates ]  && gomplate --input-dir=config-templates --output-dir=/opt/$CI_PROJECT_PATH/public/config"
     - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
