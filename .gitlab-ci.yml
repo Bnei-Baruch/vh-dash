@@ -24,7 +24,7 @@ variables:
 build_staging:
   extends: .build_front
   variables:
-    BUILD_FOR_URL: "/form/"
+    BUILD_FOR_URL: "/dash/"
     REACT_APP_STAGING: 'true'
   stage: build
   only:
