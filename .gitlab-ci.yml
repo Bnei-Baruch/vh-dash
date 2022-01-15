@@ -73,6 +73,9 @@ deploy_production:
     - mkdir -p /opt/$CI_PROJECT_PATH || true
     - env
     - for variable in "${!DYN_PROD@}"; do echo "${variable#DYN_PROD_}"="${!variable}"; export "${variable#DYN_PROD_}"="${!variable}"; done;
+    - export KEYCLOAK_URL="https://accounts.kab.info/auth/"
+    - export KEYCLOAK_REALM="main"
+    - export KEYCLOAK_CLIENT_ID="membership_pay"
     - "[ -d config-templates ]  &&  gomplate --input-dir=config-templates --output-dir=/opt/$CI_PROJECT_PATH/public/config"
     - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
     - IMAGE_NAME=$PROD_IMAGE docker-compose up -d
