@@ -64,7 +64,7 @@ build_production:
 
 deploy_production:
   #image: tmaier/docker-compose:latest
-  image: gitlab.bbdev.team:5050/vh/buildutils/buildutil:0.2.0
+  image: gitlab.bbdev.team:5050/vh/buildutils/buildutil:0.5.0
   stage: deploy
   tags:
     - production
