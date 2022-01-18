@@ -72,7 +72,7 @@ export const fetchProfile = () => {
     const { subject, token, profile } = getState().userReducer.info.keycloak;
 
     return axios
-      .get(`${PROFILE_URL}/${subject}`, {
+      .get(`${window.APP_CONFIG.PROFILE_URL}/${subject}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
