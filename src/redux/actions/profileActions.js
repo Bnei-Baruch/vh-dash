@@ -22,7 +22,7 @@ export const updateProfile = data => {
   return (dispatch, getState) => {
     const { subject, token } = getState().userReducer.info.keycloak;
     const { isProfileExist } = getState().profileReducer;
-    const patchURL = `${PROFILE_URL}/${subject}`;
+    const patchURL = `${window.APP_CONFIG.PROFILE_URL}/${subject}`;
 
     const sendProfile = (method, url, data) => {
       return axios[method](url, data, {
