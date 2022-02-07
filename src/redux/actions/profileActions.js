@@ -1,6 +1,5 @@
 import axios from 'axios';
 import i18next from 'i18next';
-import { PROFILE_URL } from '../../shared/constants';
 import {
   FETCH_PROFILE_SUCCESS,
   FETCH_PROFILE_FAILED,
@@ -52,7 +51,7 @@ export const updateProfile = data => {
           .finally(() =>
             dispatch({ type: TOGGLE_PROFILE_WINDOW, payload: true }),
           )
-      : sendProfile('post', PROFILE_URL, data)
+      : sendProfile('post', window.APP_CONFIG.PROFILE_URL, data)
           .then(res => {
             dispatch(fetchProfile());
             console.log('Success post response:', res)
@@ -88,7 +87,7 @@ export const fetchProfile = () => {
               primary_email: profile.email,
             };
 
-            apiProfile('post',PROFILE_URL, data, token)
+            apiProfile('post',window.APP_CONFIG.PROFILE_URL, data, token)
               .then(res => {
                 dispatch(fetchProfile());
                 console.log('Success post response:', res)
