@@ -79,7 +79,7 @@ export const fetchProfile = () => {
       .then(
         ({ data }) => dispatch({ type: FETCH_PROFILE_SUCCESS, payload: data }),
         ({ message, response }) => {
-          if (response && response.status === 400) {
+          if (response && response.status === 404) {
             const data = {
               keycloak_id: subject,
               first_name_vernacular: profile.firstName,
