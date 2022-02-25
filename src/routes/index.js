@@ -1,25 +1,27 @@
-import React from 'react';
+import React from "react";
 
-import { FileText, Sliders, Youtube } from 'react-feather';
-import ViewComfyIcon from '@material-ui/icons/ViewComfy';
-import FolderOpenIcon from '@material-ui/icons/FolderOpen';
-import async from '../components/Async';
-import { DASHBOARD_ROUTES } from './dashboardRoutes';
-import { ARCHIVE_LINK, ARVUT_SYSTEM_URL } from '../constants/common';
+import { FileText, Sliders, Youtube } from "react-feather";
+import ViewComfyIcon from "@material-ui/icons/ViewComfy";
+import FolderOpenIcon from "@material-ui/icons/FolderOpen";
+import async from "../components/Async";
+import { DASHBOARD_ROUTES } from "./dashboardRoutes";
+import { ARCHIVE_LINK, ARVUT_SYSTEM_URL } from "../constants/common";
 
 // Home
-const Home = async(() => import('../pages/dashboard/Home'));
+const Home = async(() => import("../pages/dashboard/Home"));
 
 // Dashboard components
-const MyProfile = async(() => import('../pages/dashboard/MyProfile'));
-const Archive = async(() => import('../pages/dashboard/Archive'));
-const ArvutSystem = async(() => import('../pages/dashboard/ArvutSystem'));
-const BroadcastArea = async(() => import('../pages/dashboard/BroadcastArea'));
+const MyProfile = async(() => import("../pages/dashboard/MyProfile"));
+const Archive = async(() => import("../pages/dashboard/Archive"));
+const ArvutSystem = async(() => import("../pages/dashboard/ArvutSystem"));
+const BroadcastArea = async(() => import("../pages/dashboard/BroadcastArea"));
+const Status = async(() => import("../pages/dashboard/Membership/Status"));
+const PreviousPayments = async(() => import("../pages/dashboard/Membership/PreviousPayments"));
 
 const dashboardRoutes = [
   {
-    id: 'Dashboard',
-    path: '/dash',
+    id: "Dashboard",
+    path: "/dash",
     icon: <Sliders />,
     containsHome: true,
     children: null,
@@ -27,42 +29,71 @@ const dashboardRoutes = [
   },
   {
     path: DASHBOARD_ROUTES.Profile,
-    id: 'Profile',
+    id: "Profile",
     icon: <FileText />,
     enableHeader: true,
-    breadcrumbs: [{ name: 'Profile', path: DASHBOARD_ROUTES.Profile }],
+    breadcrumbs: [{ name: "Profile", path: DASHBOARD_ROUTES.Profile }],
     component: MyProfile,
     children: null,
   },
   {
+    path: DASHBOARD_ROUTES.membership,
+    id: "Membership",
+    icon: <FileText />,
+    enableHeader: true,
+    breadcrumbs: [{ name: "Membership", path: DASHBOARD_ROUTES.membership }],
+    children: [
+      {
+        path: DASHBOARD_ROUTES.membership,
+        id: "Status",
+        icon: <FileText />,
+        enableHeader: true,
+        breadcrumbs: [{ name: "Status", path: DASHBOARD_ROUTES.Profile }],
+        component: Status,
+      },
+      {
+        path: DASHBOARD_ROUTES.previousPayment,
+        id: "PreviousPayment",
+        icon: <FileText />,
+        enableHeader: true,
+        breadcrumbs: [{ name: "PreviousPayment", path: DASHBOARD_ROUTES.previousPayment }],
+        component: PreviousPayments,
+      },
+    ],
+  },
+  {
     path: DASHBOARD_ROUTES.broadcastArea,
-    id: 'BroadcastArea',
+    id: "BroadcastArea",
     icon: <Youtube />,
     enableHeader: true,
-    breadcrumbs: [{ name: 'BroadcastArea', path: DASHBOARD_ROUTES.broadcastArea }],
+    breadcrumbs: [
+      { name: "BroadcastArea", path: DASHBOARD_ROUTES.broadcastArea },
+    ],
     component: BroadcastArea,
     children: null,
   },
   {
     path: ARVUT_SYSTEM_URL,
-    id: 'ArvutSystem',
+    id: "ArvutSystem",
     icon: <ViewComfyIcon />,
     enableHeader: true,
-    breadcrumbs: [{ name: 'BroadcastArea', path: DASHBOARD_ROUTES.arvutSystem }],
+    breadcrumbs: [
+      { name: "BroadcastArea", path: DASHBOARD_ROUTES.arvutSystem },
+    ],
     component: ArvutSystem,
     children: null,
-    isExternalLink: true
+    isExternalLink: true,
   },
   {
     path: ARCHIVE_LINK,
-    id: 'Archive',
+    id: "Archive",
     icon: <FolderOpenIcon />,
     enableHeader: true,
-    breadcrumbs: [{ name: 'BroadcastArea', path: DASHBOARD_ROUTES.archive }],
+    breadcrumbs: [{ name: "BroadcastArea", path: DASHBOARD_ROUTES.archive }],
     component: Archive,
     children: null,
-    isExternalLink: true
-  }
+    isExternalLink: true,
+  },
 ];
 
 // Routes using the Dashboard layout

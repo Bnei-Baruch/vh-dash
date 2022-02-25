@@ -25,7 +25,6 @@ import { Menu as MenuIcon } from '@material-ui/icons';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import {
   CHAT_AND_NOTIFICATION_ICONS,
-  IMAGE_URL,
   SEARCH_BAR,
 } from '../shared/constants';
 import { setLoggedInUser } from '../redux/actions/userActions';

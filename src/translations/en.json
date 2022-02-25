@@ -100,6 +100,12 @@
             "Dashboard": {
                 "name": "Dashboard"
             },
+            "Status": {
+                "name": "Status"
+            },
+            "PreviousPayment": {
+                "name": "Previous Payment"
+            },
             "Profile": {
                 "name": "Profile",
                 "title": "My Profile",
@@ -236,6 +242,9 @@
                     "donationsLink": "http://bit.ly/2O0Pifo"
                 }
             }
+        },
+        "Membership" : {
+            "name": "Membership"
         }
     }
 }

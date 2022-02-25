@@ -296,7 +296,7 @@ const Sidebar = ({ classes, staticContext, location, ...rest }) => {
                       {category.children.map((route, index) => (
                         <SidebarLink
                           key={index}
-                          name={t(`Dashboard.${route.name}.name`)}
+                          name={t(`Dashboard.${route.id}.name`)}
                           to={route.path}
                           icon={route.icon}
                           badge={route.badge}

@@ -8,4 +8,7 @@ export const DASHBOARD_ROUTES = {
     broadcastArea: `${DASHBOARD_ROOT}/broadcast`,
     arvutSystem: `${DASHBOARD_ROOT}/arvutsytem`,
     archive: `${DASHBOARD_ROOT}/archive`,
+    membership: `${DASHBOARD_ROOT}/membership`,
+    status: `${DASHBOARD_ROOT}/membership`,
+    previousPayment: `${DASHBOARD_ROOT}/membership/payments`,
 };
