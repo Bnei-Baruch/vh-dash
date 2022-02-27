@@ -1,10 +1,10 @@
-import { createReducer } from 'redux-act';
+import { createReducer } from "redux-act";
 import {
   setLoggedInUser,
   setFirstName,
   setLastName,
-  setKeycloakData
-} from '../actions/userActions';
+  setKeycloakData,
+} from "../actions/userActions";
 
 const initialState = {
   info: {},
@@ -25,5 +25,5 @@ export default createReducer(
       return { ...state, keycloak: action.keycloak };
     },
   },
-  initialState,
+  initialState
 );

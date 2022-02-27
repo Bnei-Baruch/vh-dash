@@ -1,13 +1,12 @@
-import axios from 'axios';
-import i18next from 'i18next';
+import axios from "axios";
+import i18next from "i18next";
 import {
   FETCH_PROFILE_SUCCESS,
   FETCH_PROFILE_FAILED,
   TOGGLE_PROFILE_WINDOW,
   UPDATE_PROFILE_SUCCESS,
   UPDATE_PROFILE_FAILED,
-} from '../constants';
-
+} from "../constants";
 
 const apiProfile = (method, url, data, token) => {
   return axios[method](url, data, {
@@ -17,7 +16,7 @@ const apiProfile = (method, url, data, token) => {
   });
 };
 
-export const updateProfile = data => {
+export const updateProfile = (data) => {
   return (dispatch, getState) => {
     const { subject, token } = getState().userReducer.info.keycloak;
     const { isProfileExist } = getState().profileReducer;
@@ -32,36 +31,36 @@ export const updateProfile = data => {
     };
 
     isProfileExist
-      ? sendProfile('patch', patchURL, data)
-          .then(res => {
+      ? sendProfile("patch", patchURL, data)
+          .then((res) => {
             dispatch({
               type: UPDATE_PROFILE_SUCCESS,
-              payload: i18next.t('Dashboard.Profile.profileUpdated'),
+              payload: i18next.t("Dashboard.Profile.profileUpdated"),
             });
             dispatch(fetchProfile());
-            console.log('Success patch response:', res);
+            console.log("Success patch response:", res);
           })
-          .catch(error => {
+          .catch((error) => {
             dispatch({
               type: UPDATE_PROFILE_FAILED,
-              payload: i18next.t('Global.requestError'),
+              payload: i18next.t("Global.requestError"),
             });
-            console.error('Failed patch response:', error);
+            console.error("Failed patch response:", error);
           })
           .finally(() =>
-            dispatch({ type: TOGGLE_PROFILE_WINDOW, payload: true }),
+            dispatch({ type: TOGGLE_PROFILE_WINDOW, payload: true })
           )
-      : sendProfile('post', window.APP_CONFIG.PROFILE_URL, data)
-          .then(res => {
+      : sendProfile("post", window.APP_CONFIG.PROFILE_URL, data)
+          .then((res) => {
             dispatch(fetchProfile());
-            console.log('Success post response:', res)
+            console.log("Success post response:", res);
           })
-          .catch(error => {
+          .catch((error) => {
             dispatch({
               type: UPDATE_PROFILE_SUCCESS,
-              payload: i18next.t('Global.requestError'),
+              payload: i18next.t("Global.requestError"),
             });
-            console.error('Failed post response:', error);
+            console.error("Failed post response:", error);
           });
   };
 };
@@ -87,23 +86,22 @@ export const fetchProfile = () => {
               primary_email: profile.email,
             };
 
-            apiProfile('post',window.APP_CONFIG.PROFILE_URL, data, token)
-              .then(res => {
+            apiProfile("post", window.APP_CONFIG.PROFILE_URL, data, token)
+              .then((res) => {
                 dispatch(fetchProfile());
-                console.log('Success post response:', res)
+                console.log("Success post response:", res);
               })
-              .catch(error => {
-                  dispatch({
-                    type: UPDATE_PROFILE_FAILED,
-                    payload: i18next.t('Global.requestError'),
-                  });
-                  console.error('Failed post response:', error);
+              .catch((error) => {
+                dispatch({
+                  type: UPDATE_PROFILE_FAILED,
+                  payload: i18next.t("Global.requestError"),
+                });
+                console.error("Failed post response:", error);
               });
-          }
-          else {
+          } else {
             dispatch({ type: FETCH_PROFILE_FAILED, payload: message });
           }
-        },
+        }
       );
   };
 };

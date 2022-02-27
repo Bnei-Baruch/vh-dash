@@ -1,7 +1,7 @@
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-import { Grid, TextField, Typography } from '@material-ui/core';
-import { commonFormStyles } from '../../../../../constants/formData';
+import React from "react";
+import { useTranslation } from "react-i18next";
+import { Grid, TextField, Typography } from "@material-ui/core";
+import { commonFormStyles } from "../../../../../constants/formData";
 
 const EmailsForm = ({
   handleChange,
@@ -13,43 +13,43 @@ const EmailsForm = ({
   const classes = commonFormStyles();
   const { t } = useTranslation();
 
-  const primaryEmailTrans = t('Dashboard.Profile.Emails.primaryEmail');
+  const primaryEmailTrans = t("Dashboard.Profile.Emails.primaryEmail");
   const alternativeEmail1Trans = t(
-    'Dashboard.Profile.Emails.alternativeEmail',
+    "Dashboard.Profile.Emails.alternativeEmail",
     {
-      number: '1',
-    },
+      number: "1",
+    }
   );
   const alternativeEmail2Trans = t(
-    'Dashboard.Profile.Emails.alternativeEmail',
+    "Dashboard.Profile.Emails.alternativeEmail",
     {
-      number: '2',
-    },
+      number: "2",
+    }
   );
 
   return (
     <div className={`${classes.root}  ${classes.emailForm}`}>
-      <Typography variant='h4' gutterBottom>
-        {t('Dashboard.Profile.Emails.name')}
+      <Typography variant="h4" gutterBottom>
+        {t("Dashboard.Profile.Emails.name")}
       </Typography>
       <Grid container spacing={10}>
         <Grid item xs={12} md={6}>
           <TextField
             disabled
-            type='email'
+            type="email"
             label={primaryEmailTrans}
             value={inputFields.primary_email}
             fullWidth
-            placeholder={t('Global.inputPlaceholder', {
+            placeholder={t("Global.inputPlaceholder", {
               input: primaryEmailTrans.toLowerCase(),
             })}
             InputLabelProps={{
               shrink: true,
             }}
-            onChange={event =>
-              handleChange('primary_email', event.target.value)
+            onChange={(event) =>
+              handleChange("primary_email", event.target.value)
             }
-            onBlur={() => onInputBlur('primary_email')}
+            onBlur={() => onInputBlur("primary_email")}
             helperText={errorFields.primary_email}
             error={!!errorFields.primary_email}
           />
@@ -57,20 +57,20 @@ const EmailsForm = ({
         <Grid item xs={12} md={6}>
           <TextField
             disabled={!isModified}
-            type='email'
+            type="email"
             label={alternativeEmail1Trans}
-            value={inputFields.alternate_email_1 || ''}
+            value={inputFields.alternate_email_1 || ""}
             fullWidth
-            placeholder={t('Global.inputPlaceholder', {
+            placeholder={t("Global.inputPlaceholder", {
               input: alternativeEmail1Trans.toLowerCase(),
             })}
             InputLabelProps={{
               shrink: true,
             }}
-            onChange={event =>
-              handleChange('alternate_email_1', event.target.value)
+            onChange={(event) =>
+              handleChange("alternate_email_1", event.target.value)
             }
-            onBlur={() => onInputBlur('alternate_email_1')}
+            onBlur={() => onInputBlur("alternate_email_1")}
             helperText={errorFields.alternate_email_1}
             error={!!errorFields.alternate_email_1}
           />
@@ -78,20 +78,20 @@ const EmailsForm = ({
         <Grid item xs={12} md={6}>
           <TextField
             disabled={!isModified}
-            type='email'
+            type="email"
             label={alternativeEmail2Trans}
-            value={inputFields.alternate_email_2 || ''}
+            value={inputFields.alternate_email_2 || ""}
             fullWidth
-            placeholder={t('Global.inputPlaceholder', {
+            placeholder={t("Global.inputPlaceholder", {
               input: alternativeEmail2Trans.toLowerCase(),
             })}
             InputLabelProps={{
               shrink: true,
             }}
-            onChange={event =>
-              handleChange('alternate_email_2', event.target.value)
+            onChange={(event) =>
+              handleChange("alternate_email_2", event.target.value)
             }
-            onBlur={() => onInputBlur('alternate_email_2')}
+            onBlur={() => onInputBlur("alternate_email_2")}
             helperText={errorFields.alternate_email_2}
             error={!!errorFields.alternate_email_2}
           />

@@ -1,23 +1,23 @@
-import React, { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { makeStyles } from '@material-ui/core/styles';
-import { AppBar, Button, Grid, Toolbar } from '@material-ui/core';
-import EducationForm from '../Forms/InformationForms/EducationForm';
-import TenForm from '../Forms/InformationForms/TenForm';
+import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { makeStyles } from "@material-ui/core/styles";
+import { AppBar, Button, Grid, Toolbar } from "@material-ui/core";
+import EducationForm from "../Forms/InformationForms/EducationForm";
+import TenForm from "../Forms/InformationForms/TenForm";
 
 const useStyles = makeStyles({
   appBar: {
-    top: 'auto',
+    top: "auto",
     bottom: 0,
-    textAlign: 'right',
-    background: '#fff',
-    boxShadow: 'none'
+    textAlign: "right",
+    background: "#fff",
+    boxShadow: "none",
   },
   toolBar: {
     padding: 20,
-    display: 'flex',
-    justifyContent: 'flex-end',
-    backgroundColor: 'rgb(242, 242, 242) !important'
+    display: "flex",
+    justifyContent: "flex-end",
+    backgroundColor: "rgb(242, 242, 242) !important",
   },
 });
 
@@ -38,7 +38,7 @@ const OtherInformationsTab = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const onFormSubmit = event => {
+  const onFormSubmit = (event) => {
     event.preventDefault();
 
     if (!isModified) {
@@ -55,10 +55,10 @@ const OtherInformationsTab = ({
     setInputFields(copiedFields);
   };
 
-  const buttonText = isModified ? t('Global.saveBtn') : t('Global.modify');
+  const buttonText = isModified ? t("Global.saveBtn") : t("Global.modify");
 
   return (
-    <form noValidate autoComplete='off' onSubmit={onFormSubmit}>
+    <form noValidate autoComplete="off" onSubmit={onFormSubmit}>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={12} mg={12} lg={6}>
           <EducationForm
@@ -75,26 +75,26 @@ const OtherInformationsTab = ({
           />
         </Grid>
         <AppBar
-          position='fixed'
+          position="fixed"
           className={classes.appBar}
-          style={{ background: `${isModified ? '#C9F9DA' : '#fff'}` }}
+          style={{ background: `${isModified ? "#C9F9DA" : "#fff"}` }}
         >
           <Toolbar className={classes.toolBar}>
             <Button
-              variant='contained'
-              color={isModified ? 'secondary' : 'primary'}
-              type='submit'
+              variant="contained"
+              color={isModified ? "secondary" : "primary"}
+              type="submit"
             >
               {buttonText}
             </Button>
             {isModified && (
               <Button
                 style={{ marginLeft: 20 }}
-                variant='contained'
-                color='default'
+                variant="contained"
+                color="default"
                 onClick={onCancel}
               >
-                {t('Global.cancelBtn')}
+                {t("Global.cancelBtn")}
               </Button>
             )}
           </Toolbar>

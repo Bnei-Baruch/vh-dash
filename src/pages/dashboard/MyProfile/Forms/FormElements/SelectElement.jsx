@@ -1,28 +1,28 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import { FormControl, InputLabel, MenuItem, Select } from '@material-ui/core';
-import { CustomTooltip } from '../../../../../shared/Tooltip';
+import React from "react";
+import PropTypes from "prop-types";
+import { makeStyles } from "@material-ui/core/styles";
+import { FormControl, InputLabel, MenuItem, Select } from "@material-ui/core";
+import { CustomTooltip } from "../../../../../shared/Tooltip";
 
 const useStyles = makeStyles({
   root: {
-    width: '100%',
+    width: "100%",
   },
   menu: {
-    maxHeight: '300px',
+    maxHeight: "300px",
   },
   label: {
-    color: '#263238',
+    color: "#263238",
     paddingRight: 30,
     fontSize: 18,
-    position: 'relative',
-    width: 'max-content',
-    '& + .MuiInput-formControl': {
+    position: "relative",
+    width: "max-content",
+    "& + .MuiInput-formControl": {
       marginTop: 0,
     },
   },
   selectItem: {
-    '&.MuiSelect-select': {
+    "&.MuiSelect-select": {
       paddingRight: 0,
     },
   },
@@ -41,8 +41,8 @@ const SelectElement = ({
 
   // TODO: pass value after updating DB on backend
   const defaultValue =
-    id.includes('country') && value && value.length >= 3
-      ? selectData.filter(item => item.code === value)[0]?.ISO
+    id.includes("country") && value && value.length >= 3
+      ? selectData.filter((item) => item.code === value)[0]?.ISO
       : value;
 
   return (
@@ -54,7 +54,7 @@ const SelectElement = ({
       <Select
         disabled={disabled}
         value={defaultValue}
-        onChange={event => onChange(id, event.target.value)}
+        onChange={(event) => onChange(id, event.target.value)}
         inputProps={{
           id,
         }}
@@ -67,7 +67,7 @@ const SelectElement = ({
           select: classes.selectItem,
         }}
       >
-        {selectData.map(option => (
+        {selectData.map((option) => (
           <MenuItem key={option.code} value={option.ISO || option.code}>
             {option.label}
           </MenuItem>
@@ -86,12 +86,12 @@ SelectElement.propTypes = {
     PropTypes.shape({
       code: PropTypes.string.isRequired,
       label: PropTypes.string.isRequired,
-    }),
+    })
   ).isRequired,
 };
 
 SelectElement.defaultProps = {
-  helperText: '',
+  helperText: "",
 };
 
 export default SelectElement;

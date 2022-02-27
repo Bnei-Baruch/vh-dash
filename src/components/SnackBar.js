@@ -1,51 +1,49 @@
-import React from 'react';
-import Snackbar from '@material-ui/core/Snackbar';
-import MuiAlert from '@material-ui/lab/Alert';
-import { makeStyles } from '@material-ui/core/styles';
+import React from "react";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
+import { makeStyles } from "@material-ui/core/styles";
 
 function Alert(props) {
-    return <MuiAlert elevation={6} variant="filled" {...props} />;
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        width: '100%',
-        '& > * + *': {
-            marginTop: theme.spacing(2),
-        },
+  root: {
+    width: "100%",
+    "& > * + *": {
+      marginTop: theme.spacing(2),
     },
+  },
 }));
 
-export default function CustomizedSnackbars({ show, type, message = '' }) {
-    const classes = useStyles();
-    const [open, setOpen] = React.useState(false);
-    const [severity, setSeverity] = React.useState("success");
+export default function CustomizedSnackbars({ show, type, message = "" }) {
+  const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
+  const [severity, setSeverity] = React.useState("success");
 
-    const handleClose = (event, reason) => {
-        if (reason === 'clickaway') {
-            return;
-        }
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
 
-        setOpen(false);
-    };
+    setOpen(false);
+  };
 
-    React.useEffect(() => {
-        console.log('here in snackbar')
-        if (show) {
-            console.log('here')
-            setOpen(true)
-        }
-        if (type) {
-            setSeverity(type)
-        }
-    }, [show])
-    return (
-        <div className={classes.root}>
-            <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
-                <Alert onClose={handleClose} severity={severity}>
-                    {message}
-                </Alert>
-            </Snackbar>
-        </div>
-    );
+  React.useEffect(() => {
+    if (show) {
+      setOpen(true);
+    }
+    if (type) {
+      setSeverity(type);
+    }
+  }, [show]);
+  return (
+    <div className={classes.root}>
+      <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity={severity}>
+          {message}
+        </Alert>
+      </Snackbar>
+    </div>
+  );
 }

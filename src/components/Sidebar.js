@@ -42,9 +42,9 @@ const Drawer = styled(MuiDrawer)`
   }
 `;
 const ExternalLink = styled.a`
-  text-decoration:none;
+  text-decoration: none;
   &:hover {
-    text-decoration:none;
+    text-decoration: none;
   }
 `;
 const Scrollbar = styled(PerfectScrollbar)`
@@ -142,6 +142,7 @@ const Link = styled(ListItem)`
   padding-left: ${(props) => props.theme.spacing(15)}px;
   padding-top: ${(props) => props.theme.spacing(2)}px;
   padding-bottom: ${(props) => props.theme.spacing(2)}px;
+  margin-left: ${(props) => props.marginleft};
 
   span {
     color: ${(props) => rgba(props.theme.sidebar.color, 0.7)};
@@ -163,7 +164,7 @@ const Link = styled(ListItem)`
 
 const LinkText = styled(ListItemText)`
   color: ${(props) => props.theme.sidebar.color};
-
+  margin-left: 35px;
   span {
     font-size: ${(props) => props.theme.typography.body1.fontSize}px;
   }
@@ -308,7 +309,9 @@ const Sidebar = ({ classes, staticContext, location, ...rest }) => {
                   <ExternalLink href={category.path} target="_blank">
                     <Category>
                       {category.icon}
-                      <CategoryText>{t(`Dashboard.${category.id}.name`)}</CategoryText>
+                      <CategoryText>
+                        {t(`Dashboard.${category.id}.name`)}
+                      </CategoryText>
                     </Category>
                   </ExternalLink>
                 ) : (
@@ -320,7 +323,6 @@ const Sidebar = ({ classes, staticContext, location, ...rest }) => {
                     component={NavLink}
                     icon={category.icon}
                     exact
-                    isExternalLink={category.isExternalLink}
                     badge={category.badge}
                   />
                 )}

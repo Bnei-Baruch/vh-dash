@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import styled, { createGlobalStyle } from 'styled-components';
+import React, { useState } from "react";
+import styled, { createGlobalStyle } from "styled-components";
 
-import { spacing } from '@material-ui/system';
+import { spacing } from "@material-ui/system";
 import {
   Hidden,
   CssBaseline,
   Paper as MuiPaper,
   withWidth,
-} from '@material-ui/core';
-import { isWidthUp } from '@material-ui/core/withWidth';
-import Sidebar from '../components/Sidebar';
-import Header from '../components/Header';
+} from "@material-ui/core";
+import { isWidthUp } from "@material-ui/core/withWidth";
+import Sidebar from "../components/Sidebar";
+import Header from "../components/Header";
 
 const drawerWidth = 260;
 
@@ -38,7 +38,7 @@ const Root = styled.div`
 `;
 
 const Drawer = styled.div`
-  ${(props) => props.theme.breakpoints.up('md')} {
+  ${(props) => props.theme.breakpoints.up("md")} {
     width: ${drawerWidth}px;
     flex-shrink: 0;
   }
@@ -55,8 +55,8 @@ const Paper = styled(MuiPaper)(spacing);
 
 const MainContent = styled(Paper)`
   flex: 1;
-  background: #F2F2F2 !important;
-  background-color: #F2F2F2 !important;
+  background: #f2f2f2 !important;
+  background-color: #f2f2f2 !important;
 
   @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
     flex: none;
@@ -97,7 +97,7 @@ const Dashboard = ({ children, routes, width }) => {
       </Drawer>
       <AppContent>
         <Header onDrawerToggle={handleDrawerToggle} />
-        <MainContent p={isWidthUp('lg', width) ? 10 : 5}>
+        <MainContent p={isWidthUp("lg", width) ? 10 : 5}>
           {children}
         </MainContent>
       </AppContent>

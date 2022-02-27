@@ -4,16 +4,16 @@ import {
   UPDATE_PROFILE_SUCCESS,
   UPDATE_PROFILE_FAILED,
   TOGGLE_PROFILE_WINDOW,
-} from '../constants';
+} from "../constants";
 
 const INITIAL_STATE = {
   info: {},
   modalContent: {
     isModalOpen: false,
-    description: '',
+    description: "",
   },
   isProfileExist: false,
-  error: '',
+  error: "",
 };
 
 export default function reducer(state = INITIAL_STATE, actions) {

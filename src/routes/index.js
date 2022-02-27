@@ -3,6 +3,7 @@ import React from "react";
 import { FileText, Sliders, Youtube } from "react-feather";
 import ViewComfyIcon from "@material-ui/icons/ViewComfy";
 import FolderOpenIcon from "@material-ui/icons/FolderOpen";
+import VerifiedUserIcon from "@material-ui/icons/VerifiedUser";
 import async from "../components/Async";
 import { DASHBOARD_ROUTES } from "./dashboardRoutes";
 import { ARCHIVE_LINK, ARVUT_SYSTEM_URL } from "../constants/common";
@@ -16,7 +17,9 @@ const Archive = async(() => import("../pages/dashboard/Archive"));
 const ArvutSystem = async(() => import("../pages/dashboard/ArvutSystem"));
 const BroadcastArea = async(() => import("../pages/dashboard/BroadcastArea"));
 const Status = async(() => import("../pages/dashboard/Membership/Status"));
-const PreviousPayments = async(() => import("../pages/dashboard/Membership/PreviousPayments"));
+const PreviousPayments = async(() =>
+  import("../pages/dashboard/Membership/PreviousPayments")
+);
 
 const dashboardRoutes = [
   {
@@ -39,24 +42,30 @@ const dashboardRoutes = [
   {
     path: DASHBOARD_ROUTES.membership,
     id: "Membership",
-    icon: <FileText />,
+    icon: <VerifiedUserIcon />,
     enableHeader: true,
     breadcrumbs: [{ name: "Membership", path: DASHBOARD_ROUTES.membership }],
     children: [
       {
         path: DASHBOARD_ROUTES.membership,
         id: "Status",
-        icon: <FileText />,
+        icon: <VerifiedUserIcon />,
         enableHeader: true,
-        breadcrumbs: [{ name: "Status", path: DASHBOARD_ROUTES.Profile }],
+        breadcrumbs: [
+          { name: "Membership", path: DASHBOARD_ROUTES.membership },
+          { name: "Status", path: DASHBOARD_ROUTES.Profile },
+        ],
         component: Status,
       },
       {
         path: DASHBOARD_ROUTES.previousPayment,
         id: "PreviousPayment",
-        icon: <FileText />,
+        icon: <VerifiedUserIcon />,
         enableHeader: true,
-        breadcrumbs: [{ name: "PreviousPayment", path: DASHBOARD_ROUTES.previousPayment }],
+        breadcrumbs: [
+          { name: "Membership", path: DASHBOARD_ROUTES.membership },
+          { name: "PreviousPayment", path: DASHBOARD_ROUTES.previousPayment },
+        ],
         component: PreviousPayments,
       },
     ],

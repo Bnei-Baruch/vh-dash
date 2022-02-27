@@ -1,3 +1,3 @@
-import Component from './ArvutSystem';
+import Component from "./ArvutSystem";
 
 export default Component;
