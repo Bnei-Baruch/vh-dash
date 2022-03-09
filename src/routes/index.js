@@ -4,6 +4,7 @@ import { FileText, Sliders, Youtube } from "react-feather";
 import ViewComfyIcon from "@material-ui/icons/ViewComfy";
 import FolderOpenIcon from "@material-ui/icons/FolderOpen";
 import VerifiedUserIcon from "@material-ui/icons/VerifiedUser";
+import EventIcon from '@material-ui/icons/Event';
 import async from "../components/Async";
 import { DASHBOARD_ROUTES } from "./dashboardRoutes";
 import { ARCHIVE_LINK, ARVUT_SYSTEM_URL } from "../constants/common";
@@ -17,6 +18,7 @@ const Archive = async(() => import("../pages/dashboard/Archive"));
 const ArvutSystem = async(() => import("../pages/dashboard/ArvutSystem"));
 const BroadcastArea = async(() => import("../pages/dashboard/BroadcastArea"));
 const Status = async(() => import("../pages/dashboard/Membership/Status"));
+const Events = async(() => import("../pages/dashboard/Events/Events"));
 const PreviousPayments = async(() =>
   import("../pages/dashboard/Membership/PreviousPayments")
 );
@@ -69,6 +71,17 @@ const dashboardRoutes = [
         component: PreviousPayments,
       },
     ],
+  },
+  {
+    path: DASHBOARD_ROUTES.events,
+    id: "Events",
+    icon: <EventIcon />,
+    enableHeader: true,
+    breadcrumbs: [
+      { name: "Events", path: DASHBOARD_ROUTES.events },
+    ],
+    component: Events,
+    children: null,
   },
   {
     path: DASHBOARD_ROUTES.broadcastArea,

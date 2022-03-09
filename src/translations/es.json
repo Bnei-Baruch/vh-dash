@@ -59,6 +59,12 @@
       "Dashboard": {
         "name": "Tablero de mandos"
       },
+      "Events": {
+        "name": "Events",
+        "title": "Events",
+        "page": "Event Page",
+        "register": "Register"
+      },
       "Profile": {
         "name": "Perfil",
         "title": "Mi perfil",

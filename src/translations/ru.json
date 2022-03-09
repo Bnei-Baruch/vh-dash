@@ -96,7 +96,10 @@
         "name": "Панель навигации"
       },
       "Events": {
-        "name": "События"
+        "name": "События",
+        "title": "Events",
+        "page": "Event Page",
+        "register": "Register"
       },
       "Profile": {
         "name": "Профиль",

@@ -112,6 +112,12 @@
       "Membership": {
         "name": "Membership"
       },
+      "Events": {
+        "name": "Events",
+        "title": "Events",
+        "page": "Event Page",
+        "register": "Register"
+      },
       "Profile": {
         "name": "Profile",
         "title": "My Profile",
