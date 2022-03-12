@@ -112,6 +112,16 @@
       "Membership": {
         "name": "Membership"
       },
+      "EventTicket": {
+        "name": "Event Ticket",
+        "title": "Event Ticket",
+        "eventTicket": "Event Ticket",
+        "eventTicketHistory": "The Below table provides the history of event tickets purchased by user"
+      },
+      "Help" : {
+        "name": "Help",
+        "title": "Help"
+      },
       "Events": {
         "name": "Events",
         "title": "Events",

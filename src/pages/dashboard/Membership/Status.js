@@ -51,6 +51,14 @@ export default function Status() {
       )
       .focus();
   };
+
+  const getUserStatus = () => {
+    setStatus("active");
+  }
+
+  React.useEffect(() => {
+    getUserStatus();
+  }, [])
   return (
     <Grid container spacing={6}>
       <Grid item xs={12} lg={8}>

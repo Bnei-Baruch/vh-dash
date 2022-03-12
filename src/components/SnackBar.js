@@ -36,7 +36,7 @@ export default function CustomizedSnackbars({ show, type, message = "" }) {
     if (type) {
       setSeverity(type);
     }
-  }, [show]);
+  }, [show, type]);
   return (
     <div className={classes.root}>
       <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>

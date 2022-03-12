@@ -5,9 +5,10 @@ import ViewComfyIcon from "@material-ui/icons/ViewComfy";
 import FolderOpenIcon from "@material-ui/icons/FolderOpen";
 import VerifiedUserIcon from "@material-ui/icons/VerifiedUser";
 import EventIcon from '@material-ui/icons/Event';
+import HelpIcon from '@material-ui/icons/Help';
 import async from "../components/Async";
 import { DASHBOARD_ROUTES } from "./dashboardRoutes";
-import { ARCHIVE_LINK, ARVUT_SYSTEM_URL } from "../constants/common";
+import { ARCHIVE_LINK, ARVUT_SYSTEM_URL, BB_HELP_LINK } from "../constants/common";
 
 // Home
 const Home = async(() => import("../pages/dashboard/Home"));
@@ -19,6 +20,7 @@ const ArvutSystem = async(() => import("../pages/dashboard/ArvutSystem"));
 const BroadcastArea = async(() => import("../pages/dashboard/BroadcastArea"));
 const Status = async(() => import("../pages/dashboard/Membership/Status"));
 const Events = async(() => import("../pages/dashboard/Events/Events"));
+const EventsTicket = async(() => import("../pages/dashboard/Events/Tickets"));
 const PreviousPayments = async(() =>
   import("../pages/dashboard/Membership/PreviousPayments")
 );
@@ -81,7 +83,6 @@ const dashboardRoutes = [
       { name: "Events", path: DASHBOARD_ROUTES.events },
     ],
     component: Events,
-    children: null,
   },
   {
     path: DASHBOARD_ROUTES.broadcastArea,
@@ -116,10 +117,33 @@ const dashboardRoutes = [
     children: null,
     isExternalLink: true,
   },
+  {
+    path: window.APP_CONFIG.VH_BASE_URL + BB_HELP_LINK,
+    id: "Help",
+    icon: <HelpIcon />,
+    enableHeader: true,
+    component: Archive,
+    children: null,
+    isExternalLink: true,
+  },
 ];
 
+const eventTicketRoute = [
+  {
+    path: DASHBOARD_ROUTES.eventsTickets,
+    id: "EventTicket",
+    icon: <EventIcon />,
+    enableHeader: true,
+    breadcrumbs: [
+      { name: "Events", path: DASHBOARD_ROUTES.events },
+      { name: "EventTicket", path: DASHBOARD_ROUTES.eventsTickets },
+    ],
+    component: EventsTicket,
+  }
+]
+
 // Routes using the Dashboard layout
-export const dashboardLayoutRoutes = [...dashboardRoutes];
+export const dashboardLayoutRoutes = [...dashboardRoutes, ...eventTicketRoute];
 
 // Routes visible in the sidebar
 export const sidebarRoutes = [...dashboardRoutes];

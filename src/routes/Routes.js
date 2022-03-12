@@ -57,7 +57,6 @@ const childRoutes = (Layout, routes) =>
         />
       )
   );
-
 const Routes = () => (
   <Router>
     <Switch>
