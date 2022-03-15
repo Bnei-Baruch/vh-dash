@@ -13,6 +13,8 @@ import { useTranslation } from "react-i18next";
 import AddBoxIcon from "@material-ui/icons/AddBox";
 import VerifiedUserIcon from "@material-ui/icons/VerifiedUser";
 import CancelIcon from "@material-ui/icons/Cancel";
+import { useSelector } from "react-redux";
+import { membershipData } from "../../../redux/selectors/user";
 const useStyles = makeStyles({
   statusContainer: {
     display: "flex",
@@ -40,9 +42,10 @@ const useStyles = makeStyles({
   },
 });
 export default function Status() {
-  const [status, setStatus] = React.useState("active");
+  const [status, setStatus] = React.useState("inactive");
   const classes = useStyles();
   const { t, i18n } = useTranslation();
+  const membership = useSelector(membershipData);
   const redirectToPayment = () => {
     window
       .open(
@@ -52,13 +55,11 @@ export default function Status() {
       .focus();
   };
 
-  const getUserStatus = () => {
-    setStatus("active");
-  }
-
   React.useEffect(() => {
-    getUserStatus();
-  }, [])
+    if (membership && membership.membership) {
+      setStatus("active");
+    }
+  }, [membership]);
   return (
     <Grid container spacing={6}>
       <Grid item xs={12} lg={8}>
@@ -66,7 +67,6 @@ export default function Status() {
           <Grid item xs={12} lg={12}>
             <Card mb={6}>
               <CardHeader title={t("Membership.name")} />
-
               <CardContent>
                 <Box>
                   <Grid className={classes.statusContainer}>
@@ -74,28 +74,30 @@ export default function Status() {
                       <>
                         <AddBoxIcon
                           className={[classes.iconStyle, classes.iconNew]}
-                        />{" "}
+                        />
                         <div>
                           <Typography variant="h5" className={classes.greyText}>
                             {t("Membership.myMembership")}
                           </Typography>
                           <Typography variant="h4">
-                            {" "}
                             {t("Membership.new")}
                           </Typography>
-                        </div>{" "}
+                        </div>
                       </>
                     )}
                     {status === "active" && (
                       <>
                         <VerifiedUserIcon
                           className={[classes.iconStyle, classes.iconActive]}
-                        />{" "}
+                        />
                         <div>
                           <Typography variant="h5" className={classes.greyText}>
                             {t("Membership.myMembership")}
-                          </Typography>{" "}
-                          <Typography variant="h4">
+                          </Typography>
+                          <Typography
+                            variant="h4"
+                            className={classes.iconActive}
+                          >
                             {t("Membership.active")}
                           </Typography>
                         </div>
@@ -103,18 +105,19 @@ export default function Status() {
                     )}
                     {status === "inactive" && (
                       <>
-                        {" "}
                         <CancelIcon
                           className={[classes.iconStyle, classes.iconInActive]}
                         />
                         <div>
-                          {" "}
                           <Typography variant="h5" className={classes.greyText}>
                             {t("Membership.myMembership")}
                           </Typography>
-                          <Typography variant="h4">
+                          <Typography
+                            variant="h4"
+                            className={classes.iconInActive}
+                          >
                             {t("Membership.inactive")}
-                          </Typography>{" "}
+                          </Typography>
                         </div>
                       </>
                     )}
@@ -122,13 +125,12 @@ export default function Status() {
                   <br />
                   <Grid>
                     <Typography variant="h5">
-                      {t("Membership.statusDescription")} :{" "}
+                      {t("Membership.statusDescription")} :
                     </Typography>
-                    <br />
                     <Typography variant="body1">
-                      {
-                        "No Membership found. Please click below button to purchase a membership or applying for grant"
-                      }
+                      {status === "active"
+                        ? t("Membership.descriptionActiveMembership")
+                        : t("Membership.descriptionInActiveMembership")}
                     </Typography>
                   </Grid>
                   <br />
@@ -138,7 +140,6 @@ export default function Status() {
                       variant="contained"
                       color="primary"
                     >
-                      {" "}
                       {t("UserMenu.payUserFee")}
                     </Button>
                   </Grid>
@@ -153,13 +154,10 @@ export default function Status() {
           <Grid item xs={12} lg={12}>
             <Card mb={6}>
               <CardHeader title={t("Membership.info")} />
-
               <CardContent>
                 <Box display="flex" justifyContent="space-between">
                   <Typography variant="body1">
-                    {
-                      "Description about the membership. This Memberhship provides you access to all the events and workskops on the platforms."
-                    }
+                    {t("Membership.membershipDescription")}
                   </Typography>
                 </Box>
               </CardContent>

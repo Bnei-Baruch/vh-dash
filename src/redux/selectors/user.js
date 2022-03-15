@@ -1,0 +1,1 @@
+export const membershipData = (state) => state.userReducer.membership;

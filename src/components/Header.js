@@ -29,6 +29,7 @@ import { CHAT_AND_NOTIFICATION_ICONS, SEARCH_BAR } from "../shared/constants";
 import { setLoggedInUser } from "../redux/actions/userActions";
 import ModalWindow from "../pages/dashboard/MyProfile/ui/ModalWindow";
 import { DASHBOARD_ROUTES } from "../routes/dashboardRoutes";
+import { membershipData } from "../redux/selectors/user";
 
 const AppBar = styled(MuiAppBar)`
   background: ${(props) => props.theme.header.background};
@@ -277,6 +278,7 @@ function UserMenu() {
 
 const Header = ({ onDrawerToggle }) => {
   const { t } = useTranslation();
+  const membership = useSelector(membershipData);
   return (
     <>
       <AppBar position="sticky" elevation={0}>
@@ -306,9 +308,16 @@ const Header = ({ onDrawerToggle }) => {
                 </MembershipHeaderText>
                 <MembershipStatusText
                   variant="body1"
-                  color="#0d9d0d !important"
+                  color={
+                    membership.membership
+                      ? "#0d9d0d !important"
+                      : "#ff0000 !important"
+                  }
                 >
-                  <FiberManualRecordIcon /> Active
+                  <FiberManualRecordIcon />{" "}
+                  {membership.membership
+                    ? t("Membership.inactive")
+                    : t("Membership.active")}
                 </MembershipStatusText>
               </MembershipStatusContainer>
             </Grid>
