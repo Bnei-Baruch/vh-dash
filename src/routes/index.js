@@ -8,7 +8,7 @@ import EventIcon from '@material-ui/icons/Event';
 import HelpIcon from '@material-ui/icons/Help';
 import async from "../components/Async";
 import { DASHBOARD_ROUTES } from "./dashboardRoutes";
-import { ARCHIVE_LINK, ARVUT_SYSTEM_URL, BB_HELP_LINK } from "../constants/common";
+import { ARCHIVE_LINK, BB_HELP_LINK } from "../constants/common";
 
 // Home
 const Home = async(() => import("../pages/dashboard/Home"));
@@ -96,7 +96,7 @@ const dashboardRoutes = [
     children: null,
   },
   {
-    path: ARVUT_SYSTEM_URL,
+    path: DASHBOARD_ROUTES.arvutSystem,
     id: "ArvutSystem",
     icon: <ViewComfyIcon />,
     enableHeader: true,
@@ -104,8 +104,7 @@ const dashboardRoutes = [
       { name: "BroadcastArea", path: DASHBOARD_ROUTES.arvutSystem },
     ],
     component: ArvutSystem,
-    children: null,
-    isExternalLink: true,
+    children: null
   },
   {
     path: ARCHIVE_LINK,

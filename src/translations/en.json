@@ -92,7 +92,15 @@
     },
     "Dashboard": {
       "ArvutSystem": {
-        "name": "Arvut System"
+        "name": "Arvut System",
+        "title": "Arvut System",
+        "description": "Arvut Description : Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it",
+        "accessTitle": "Access to the Arvut System",
+        "accessSubDescription": "Arvut Description : Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it",
+        "accessDescription": "Arvut Description : Lorem Ipsum is simply dummy text of the printing",
+        "requestAccess": "Request Access to Arvut System",
+        "continueAsGuest": "Continue as guest",
+        "verfiyInformation": "Please verify or complete your information below"
       },
       "Archive": {
         "name": "Kabbalah Media"
@@ -140,6 +148,9 @@
           "security": "Security",
           "languages": "Languages",
           "otherInformations": "Other Informations"
+        },
+        "study" : {
+          "tellAboutYouStudyFramework": "Tell about you study framework in Beni Baruch"
         },
         "PersonalForm": {
           "name": "Personal",
@@ -285,7 +296,11 @@
       "amount": "Amount",
       "paymentId": "Payment ID",
       "paymentMethod": "Payment Method",
-      "status": "Status"
+      "status": "Status",
+      "paid": "Paid",
+      "failed": "Failed",
+      "pending": "Pending",
+      "currency": "Currency"
     }
   }
 }

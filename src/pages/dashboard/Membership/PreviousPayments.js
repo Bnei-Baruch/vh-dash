@@ -6,17 +6,32 @@ import { spacing } from "@material-ui/system";
 import { useTranslation } from "react-i18next";
 import MUIDataTable from "mui-datatables";
 import moment from "moment";
+import { getUserPreviousPayments } from "../../../services/payments.service";
+import { useSelector } from "react-redux";
+import { keycloakData } from "../../../redux/selectors/user";
 export const SucessfulPayment = styled.div`
-  color: green;
+  background-color: green;
+  text-align: center;
+  border-radius: 5px;
   font-weight: 800;
+  color: #fff;
+  padding: 2px;
 `;
 export const PendingPayment = styled.div`
-  color: orange;
+  background-color: orange;
   font-weight: 800;
+  text-align: center;
+  border-radius: 5px;
+  color: #fff;
+  padding: 2px;
 `;
 export const FailedPayment = styled.div`
-  color: red;
+  background-color: red;
   font-weight: 800;
+  text-align: center;
+  border-radius: 5px;
+  color: #fff;
+  padding: 2px;
 `;
 const Divider = styled(MuiDivider)(spacing);
 
@@ -24,7 +39,7 @@ function PreviousPayments() {
   const { t } = useTranslation();
   const columns = [
     {
-      name: "created_at",
+      name: "payment_date",
       label: t("common.date"),
       options: {
         filter: false,
@@ -32,20 +47,19 @@ function PreviousPayments() {
         customBodyRender: (value) => (
           <>{moment(value).format("DD-MM-YYYY HH:MM:SS")} </>
         ),
-        // display: false,
       },
     },
     {
-      name: "product",
-      label: t("common.product"),
+      name: "type",
+      label: t("common.type"),
       options: {
-        filter: false,
+        filter: true,
         sort: false,
       },
     },
     {
-      name: "productType",
-      label: t("common.type"),
+      name: "product_type",
+      label: t("common.product"),
       options: {
         filter: true,
         sort: false,
@@ -60,7 +74,15 @@ function PreviousPayments() {
       },
     },
     {
-      name: "paymentId",
+      name: "currency",
+      label: t("common.currency"),
+      options: {
+        filter: true,
+        sort: false,
+      },
+    },
+    {
+      name: "payment_id",
       label: t("common.paymentId"),
       options: {
         filter: true,
@@ -68,7 +90,7 @@ function PreviousPayments() {
       },
     },
     {
-      name: "paymentMethod",
+      name: "cc_number",
       label: t("common.paymentMethod"),
       options: {
         filter: true,
@@ -76,16 +98,17 @@ function PreviousPayments() {
       },
     },
     {
-      name: "PaymentStatus",
+      name: "payment_status",
       label: t("common.status"),
       options: {
         filter: true,
         sort: false,
-        customBodyRender: (value) => {
+        customBodyRender: (value, row) => {
+          console.log(row);
           return (
             <>
-              {value === "success" && (
-                <SucessfulPayment>{t("common.success")} </SucessfulPayment>
+              {value === "paid" && (
+                <SucessfulPayment>{t("common.paid")} </SucessfulPayment>
               )}
               {value === "pending" && (
                 <PendingPayment>{t("common.pending")} </PendingPayment>
@@ -106,6 +129,15 @@ function PreviousPayments() {
     pagination: false,
     responsive: "scroll",
   };
+
+  const [payments, setPayments] = React.useState([]);
+  const keycloak = useSelector(keycloakData);
+  React.useEffect(() => {
+    if (keycloak) {
+      const { profile } = keycloak;
+      getUserPreviousPayments(profile.email).then((res) => setPayments(res));
+    }
+  }, [keycloak]);
   return (
     <React.Fragment>
       <Helmet title={t("Membership.paymentHistory")} />
@@ -114,7 +146,7 @@ function PreviousPayments() {
         <Grid item xs={12}>
           <MUIDataTable
             title={t("Dashboard.PreviousPayment.paymentHistory")}
-            data={[]}
+            data={payments}
             columns={columns}
             options={options}
           />
