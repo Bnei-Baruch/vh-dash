@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import {
   Button,
@@ -14,19 +14,19 @@ import {
   TableBody,
   TableCell,
   TableRow,
-  Typography
-} from '@material-ui/core';
-import {Calendar as CalendarIcon, RefreshCw} from 'react-feather';
-import {grey, red} from '@material-ui/core/colors';
-import { useTranslation } from 'react-i18next';
-import {connect} from 'react-redux';
+  Typography,
+} from "@material-ui/core";
+import { Calendar as CalendarIcon, RefreshCw } from "react-feather";
+import { grey, red } from "@material-ui/core/colors";
+import { useTranslation } from "react-i18next";
+import { connect } from "react-redux";
 import {
   GOOGLE_CALENDAR_API_KEY,
   GOOGLE_CALENDAR_EN,
   GOOGLE_CALENDAR_ES,
   GOOGLE_CALENDAR_HE,
-  GOOGLE_CALENDAR_RU
-} from '../../../shared/constants';
+  GOOGLE_CALENDAR_RU,
+} from "../../../shared/constants";
 
 const TODAY = 0;
 const TOMORROW = 1;
@@ -56,16 +56,16 @@ const LiveChip = styled(Chip)`
 `;
 
 const CardHead = styled(CardHeader)`
-@media(max-width: 600px) {
-  display: block;
-  >div {
-    margin: 15px 0px;
+  @media (max-width: 600px) {
+    display: block;
+    > div {
+      margin: 15px 0px;
+    }
+    .MuiButton-root {
+      padding: 5px 10px !important;
+    }
   }
-  .MuiButton-root {
-    padding: 5px 10px !important;
-  }
-}
-`
+`;
 
 const TableWrapper = styled.div`
   overflow-y: auto;
@@ -91,17 +91,17 @@ const CALENDAR_LANGUAGE = {
   en: GOOGLE_CALENDAR_EN,
   he: GOOGLE_CALENDAR_HE,
   ru: GOOGLE_CALENDAR_RU,
-  es: GOOGLE_CALENDAR_ES
+  es: GOOGLE_CALENDAR_ES,
 };
 
-const Calendar = ({onLiveEvent, settings: {language}}) => {
+const Calendar = ({ onLiveEvent, settings: { language } }) => {
   const { t } = useTranslation();
 
   const [authenticated, setAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
   const [refresh, setRefresh] = useState(true);
   const [refreshToday, setRefreshToday] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState("");
   const [day, setDay] = useState(TODAY);
   const [events, setEvents] = useState([]);
   const [eventsForToday, setEventsForToday] = useState([]);
@@ -110,12 +110,14 @@ const Calendar = ({onLiveEvent, settings: {language}}) => {
   const eventsErr = (err) => {
     setRefresh(false);
     setLoading(false);
-    setErrorMessage('Could not load events');
+    setErrorMessage("Could not load events");
     console.error(err);
   };
 
-  const onDayChange = ({target}) => {
-    const newDay = parseInt(target.tagName === 'SPAN' ? target.parentNode.value : target.value);
+  const onDayChange = ({ target }) => {
+    const newDay = parseInt(
+      target.tagName === "SPAN" ? target.parentNode.value : target.value
+    );
     setDay(newDay);
     setRefresh(true);
   };
@@ -123,21 +125,24 @@ const Calendar = ({onLiveEvent, settings: {language}}) => {
   useEffect(() => {
     const gapi = window.gapi;
 
-    gapi.load('client:auth2', () => {
+    gapi.load("client:auth2", () => {
       const initClient = async () => {
-        const {client: {load, setApiKey}} = gapi;
+        const {
+          client: { load, setApiKey },
+        } = gapi;
 
         setApiKey(GOOGLE_CALENDAR_API_KEY);
-        await load('https://content.googleapis.com/discovery/v1/apis/calendar/v3/rest');
+        await load(
+          "https://content.googleapis.com/discovery/v1/apis/calendar/v3/rest"
+        );
 
         setAuthenticated(true);
       };
 
-      initClient()
-        .catch((err) => {
-          setLoading(false);
-          eventsErr(err);
-        });
+      initClient().catch((err) => {
+        setLoading(false);
+        eventsErr(err);
+      });
     });
   }, []);
 
@@ -147,29 +152,38 @@ const Calendar = ({onLiveEvent, settings: {language}}) => {
     }
 
     const getEvents = async () => {
-      setErrorMessage('');
+      setErrorMessage("");
 
-      const padDate = (date) => date.toString().padStart(2, '0');
-      const parseDate = (date) => `${date.getFullYear()}-${padDate(date.getMonth() + 1)}-${padDate(date.getDate())}`;
+      const padDate = (date) => date.toString().padStart(2, "0");
+      const parseDate = (date) =>
+        `${date.getFullYear()}-${padDate(date.getMonth() + 1)}-${padDate(
+          date.getDate()
+        )}`;
 
       const now = new Date();
-      const currentDate = new Date(now.setDate(now.getDate() + (refreshToday ? 0 : day)));
+      const currentDate = new Date(
+        now.setDate(now.getDate() + (refreshToday ? 0 : day))
+      );
 
-      const {result: {items}} = await window.gapi.client.calendar.events.list({
+      const {
+        result: { items },
+      } = await window.gapi.client.calendar.events.list({
         calendarId: CALENDAR_LANGUAGE[language] || GOOGLE_CALENDAR_EN,
         timeMin: `${parseDate(currentDate)}T00:00:00Z`,
         timeMax: `${parseDate(currentDate)}T23:59:59Z`,
         timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
         singleEvents: true,
-        orderBy: 'startTime'
+        orderBy: "startTime",
       });
 
       const nowMs = new Date().getTime();
-      const calendarEvents = items.map(i => {
+      const calendarEvents = items.map((i) => {
         const start = new Date(i.start.dateTime);
         const end = new Date(i.end.dateTime);
         const live = nowMs >= start.getTime() && nowMs < end.getTime();
-        const timeStart = `${padDate(start.getHours())}:${padDate(start.getMinutes())}`;
+        const timeStart = `${padDate(start.getHours())}:${padDate(
+          start.getMinutes()
+        )}`;
 
         return {
           id: i.id,
@@ -177,7 +191,7 @@ const Calendar = ({onLiveEvent, settings: {language}}) => {
           timeStart,
           start: start.getTime(),
           end: end.getTime(),
-          live
+          live,
         };
       });
 
@@ -199,14 +213,16 @@ const Calendar = ({onLiveEvent, settings: {language}}) => {
 
   useEffect(() => {
     const nowMs = new Date().getTime();
-    const liveEvent = eventsForToday.find(e => nowMs >= e.start && nowMs < e.end);
+    const liveEvent = eventsForToday.find(
+      (e) => nowMs >= e.start && nowMs < e.end
+    );
     let timeout;
 
     if (liveEvent) {
       // Scroll to the live event
       setTimeout(() => {
-        const el = document.getElementById(liveEvent.id)
-        el && el.scrollIntoView({behavior: 'smooth', block: 'end'});
+        const el = document.getElementById(liveEvent.id);
+        el && el.scrollIntoView({ behavior: "smooth", block: "end" });
       });
 
       onLiveEvent(liveEvent);
@@ -215,7 +231,7 @@ const Calendar = ({onLiveEvent, settings: {language}}) => {
     } else {
       onLiveEvent(null);
 
-      const nextEvent = eventsForToday.find(e => e.start >= nowMs);
+      const nextEvent = eventsForToday.find((e) => e.start >= nowMs);
 
       if (nextEvent) {
         timeout = nextEvent.start - nowMs;
@@ -253,56 +269,79 @@ const Calendar = ({onLiveEvent, settings: {language}}) => {
         action={
           <CardActionHeader>
             <StaticIcon aria-label="calendar">
-              <CalendarIcon/>
+              <CalendarIcon />
             </StaticIcon>
 
-            <CalendarButtonGroup color="primary" onClick={onDayChange} aria-label="primary button group">
-              <Button variant={day === TODAY ? 'contained' : 'outlined'}
-                      color={day === TODAY ? 'primary' : 'default'}
-                      value={TODAY}>{t('Home.today')}</Button>
-              <Button variant={day === TOMORROW ? 'contained' : 'outlined'}
-                      color={day === TOMORROW ? 'primary' : 'default'}
-                      value={TOMORROW}>{t('Home.tomorrow')}</Button>
-              <Button variant={day === YESTERDAY ? 'contained' : 'outlined'}
-                      color={day === YESTERDAY ? 'primary' : 'default'}
-                      value={YESTERDAY}>{t('Home.yesterday')}</Button>
+            <CalendarButtonGroup
+              color="primary"
+              onClick={onDayChange}
+              aria-label="primary button group"
+            >
+              <Button
+                variant={day === TODAY ? "contained" : "outlined"}
+                color={day === TODAY ? "primary" : "default"}
+                value={TODAY}
+              >
+                {t("Home.today")}
+              </Button>
+              <Button
+                variant={day === TOMORROW ? "contained" : "outlined"}
+                color={day === TOMORROW ? "primary" : "default"}
+                value={TOMORROW}
+              >
+                {t("Home.tomorrow")}
+              </Button>
+              <Button
+                variant={day === YESTERDAY ? "contained" : "outlined"}
+                color={day === YESTERDAY ? "primary" : "default"}
+                value={YESTERDAY}
+              >
+                {t("Home.yesterday")}
+              </Button>
             </CalendarButtonGroup>
 
-            <IconButton aria-label="refresh" color="primary" disabled={loading || refresh}
-                        onClick={() => setRefresh(true)}>
-              <RefreshCw/>
+            <IconButton
+              aria-label="refresh"
+              color="primary"
+              disabled={loading || refresh}
+              onClick={() => setRefresh(true)}
+            >
+              <RefreshCw />
             </IconButton>
           </CardActionHeader>
         }
-        title={t('Home.events')}
+        title={t("Home.events")}
       />
 
       <CardContent>
-        {
-
-          loading ?
-            <Spinner>
-              <CircularProgress/>
-            </Spinner>
-            : events.length ?
-            <TableWrapper>
-              <Table>
-                <TableBody>
-                  {events.map(event => (
-                    <TableRow key={event.id} id={event.id}>
-                      <TimeCell>{event.live ?
-                        <LiveChip size="small" label="Live"/> :
-                        <Chip size="small" label={event.timeStart}/>}
-                      </TimeCell>
-                      <TitleCell>{event.live ? <b>{event.title}</b> : event.title}</TitleCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableWrapper>
-            :
-            <Typography variant="h3">{t('Home.noEvent')}</Typography>
-        }
+        {loading ? (
+          <Spinner>
+            <CircularProgress />
+          </Spinner>
+        ) : events.length ? (
+          <TableWrapper>
+            <Table>
+              <TableBody>
+                {events.map((event) => (
+                  <TableRow key={event.id} id={event.id}>
+                    <TimeCell>
+                      {event.live ? (
+                        <LiveChip size="small" label="Live" />
+                      ) : (
+                        <Chip size="small" label={event.timeStart} />
+                      )}
+                    </TimeCell>
+                    <TitleCell>
+                      {event.live ? <b>{event.title}</b> : event.title}
+                    </TitleCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableWrapper>
+        ) : (
+          <Typography variant="h3">{t("Home.noEvent")}</Typography>
+        )}
 
         <Typography variant="h3">{errorMessage}</Typography>
       </CardContent>
@@ -310,4 +349,6 @@ const Calendar = ({onLiveEvent, settings: {language}}) => {
   );
 };
 
-export default connect(store => ({settings: store.settingsReducer}))(Calendar);
+export default connect((store) => ({ settings: store.settingsReducer }))(
+  Calendar
+);

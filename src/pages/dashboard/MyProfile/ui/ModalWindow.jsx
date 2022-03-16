@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
+import React from "react";
+import PropTypes from "prop-types";
+import Button from "@material-ui/core/Button";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
 
 const ModalWindow = ({
   open,
@@ -17,25 +17,25 @@ const ModalWindow = ({
   <Dialog
     open={open}
     onClose={handleClose}
-    aria-describedby='dialog-description'
+    aria-describedby="dialog-description"
   >
     <DialogContent>
-      <DialogContentText id='dialog-description'>
+      <DialogContentText id="dialog-description">
         {contentText}
       </DialogContentText>
     </DialogContent>
-    <DialogActions style={{ justifyContent: 'center' }}>
+    <DialogActions style={{ justifyContent: "center" }}>
       {onConfirmation && (
         <Button
           onClick={onConfirmation}
-          color='primary'
+          color="primary"
           autoFocus
-          variant='contained'
+          variant="contained"
         >
           {confirmBtnText}
         </Button>
       )}
-      <Button onClick={handleClose} variant='contained'>
+      <Button onClick={handleClose} variant="contained">
         {closeBtnText}
       </Button>
     </DialogActions>

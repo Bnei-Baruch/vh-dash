@@ -1,3 +1,3 @@
-import Component from './Archive';
+import Component from "./Archive";
 
 export default Component;

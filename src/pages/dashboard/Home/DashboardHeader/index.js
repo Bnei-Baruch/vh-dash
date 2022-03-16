@@ -1,3 +1,3 @@
-import Component from './DashboardHeader.jsx';
+import Component from "./DashboardHeader.jsx";
 
 export default Component;

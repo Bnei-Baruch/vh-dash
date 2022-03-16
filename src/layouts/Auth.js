@@ -1,7 +1,7 @@
-import React from 'react';
-import styled, { createGlobalStyle } from 'styled-components';
+import React from "react";
+import styled, { createGlobalStyle } from "styled-components";
 
-import { CssBaseline } from '@material-ui/core';
+import { CssBaseline } from "@material-ui/core";
 
 const GlobalStyle = createGlobalStyle`
   html,

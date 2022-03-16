@@ -68,7 +68,7 @@ export default function Broadcast() {
         setLanguages(res.Languages);
       }
     });
-  }, []);
+  }, [selectedLang]);
 
   const updateBroadcastLang = (code) => {
     setSelectedLang(code);
