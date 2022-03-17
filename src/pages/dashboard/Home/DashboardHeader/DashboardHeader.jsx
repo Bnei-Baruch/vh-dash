@@ -1,16 +1,16 @@
-import React from 'react';
-import { useHistory } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
-import PropTypes from 'prop-types';
-import { useTranslation} from 'react-i18next';
-import { Breadcrumbs, Link, Typography } from '@material-ui/core';
-import { DASHBOARD_ROOT } from '../../../../routes/dashboardRoutes';
+import React from "react";
+import { useHistory } from "react-router-dom";
+import { makeStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
+import { useTranslation } from "react-i18next";
+import { Breadcrumbs, Link, Typography } from "@material-ui/core";
+import { DASHBOARD_ROOT } from "../../../../routes/dashboardRoutes";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   breadcrumbs: {
     marginBottom: theme.spacing(6),
-    '& .MuiTypography-colorInherit': {
-      color: '#1E88E5',
+    "& .MuiTypography-colorInherit": {
+      color: "#1E88E5",
     },
   },
 }));
@@ -27,19 +27,23 @@ const DashboardHeader = ({ name, breadcrumbs }) => {
 
   return (
     <div>
-      <Typography variant='h3'>{t(`Dashboard.${name}.title`)}</Typography>
+      <Typography variant="h3">{t(`Dashboard.${name}.title`)}</Typography>
       {breadcrumbs.length ? (
-        <Breadcrumbs aria-label='breadcrumb' className={classes.breadcrumbs}>
-          <Link color='inherit' href={DASHBOARD_ROOT} onClick={event => handleClick(event, DASHBOARD_ROOT)}>
-            {t('Dashboard.Dashboard.name')}
+        <Breadcrumbs aria-label="breadcrumb" className={classes.breadcrumbs}>
+          <Link
+            color="inherit"
+            href={DASHBOARD_ROOT}
+            onClick={(event) => handleClick(event, DASHBOARD_ROOT)}
+          >
+            {t("Dashboard.Dashboard.name")}
           </Link>
-          {breadcrumbs.map(item => (
+          {breadcrumbs.map((item) => (
             <Link
               key={item.name}
-              color='textPrimary'
+              color="textPrimary"
               href={item.path}
-              onClick={event => handleClick(event, item.path)}
-              aria-current='page'
+              onClick={(event) => handleClick(event, item.path)}
+              aria-current="page"
             >
               {t(`Dashboard.${item.name}.name`)}
             </Link>

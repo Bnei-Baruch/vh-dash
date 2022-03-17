@@ -1,3 +1,3 @@
-import Component from './EmailsForm';
+import Component from "./EmailsForm";
 
 export default Component;

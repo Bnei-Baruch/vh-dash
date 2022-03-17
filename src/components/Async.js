@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-import Loader from './Loader';
+import Loader from "./Loader";
 
 const sleep = (m) => new Promise((r) => setTimeout(r, m));
 

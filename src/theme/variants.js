@@ -1,22 +1,20 @@
-import {
-  blue, green, grey, indigo, red, teal,
-} from '@material-ui/core/colors';
+import { blue, green, grey, indigo, red, teal } from "@material-ui/core/colors";
 
 const blueVariant = {
-  name: 'Blue',
+  name: "Blue",
   palette: {
     primary: {
       main: blue[800],
-      contrastText: '#FFF',
+      contrastText: "#FFF",
     },
     secondary: {
       main: blue[600],
-      contrastText: '#FFF',
+      contrastText: "#FFF",
     },
   },
   header: {
     color: grey[500],
-    background: '#FFF',
+    background: "#FFF",
     search: {
       color: grey[800],
     },
@@ -25,50 +23,50 @@ const blueVariant = {
     },
   },
   sidebar: {
-    color: '#FFF',
+    color: "#FFF",
     background: blue[700],
     header: {
-      color: '#FFF',
+      color: "#FFF",
       background: blue[800],
       brand: {
-        color: '#FFFFFF',
+        color: "#FFFFFF",
       },
     },
     footer: {
-      color: '#FFF',
+      color: "#FFF",
       background: blue[800],
       online: {
-        background: '#FFF',
+        background: "#FFF",
       },
     },
     category: {
       fontWeight: 400,
     },
     badge: {
-      color: '#000',
-      background: '#FFF',
+      color: "#000",
+      background: "#FFF",
     },
   },
   body: {
-    background: '#F7F9FC',
+    background: "#F7F9FC",
   },
 };
 
 const greenVariant = {
-  name: 'Green',
+  name: "Green",
   palette: {
     primary: {
       main: green[800],
-      contrastText: '#FFF',
+      contrastText: "#FFF",
     },
     secondary: {
       main: green[500],
-      contrastText: '#FFF',
+      contrastText: "#FFF",
     },
   },
   header: {
     color: grey[500],
-    background: '#FFF',
+    background: "#FFF",
     search: {
       color: grey[800],
     },
@@ -77,50 +75,50 @@ const greenVariant = {
     },
   },
   sidebar: {
-    color: '#FFF',
+    color: "#FFF",
     background: green[700],
     header: {
-      color: '#FFF',
+      color: "#FFF",
       background: green[800],
       brand: {
-        color: '#FFFFFF',
+        color: "#FFFFFF",
       },
     },
     footer: {
-      color: '#FFF',
+      color: "#FFF",
       background: green[800],
       online: {
-        background: '#FFF',
+        background: "#FFF",
       },
     },
     category: {
       fontWeight: 400,
     },
     badge: {
-      color: '#000',
-      background: '#FFF',
+      color: "#000",
+      background: "#FFF",
     },
   },
   body: {
-    background: '#F9F9FC',
+    background: "#F9F9FC",
   },
 };
 
 const indigoVariant = {
-  name: 'Indigo',
+  name: "Indigo",
   palette: {
     primary: {
       main: indigo[600],
-      contrastText: '#FFF',
+      contrastText: "#FFF",
     },
     secondary: {
       main: indigo[400],
-      contrastText: '#FFF',
+      contrastText: "#FFF",
     },
   },
   header: {
     color: grey[500],
-    background: '#FFF',
+    background: "#FFF",
     search: {
       color: grey[800],
     },
@@ -129,50 +127,50 @@ const indigoVariant = {
     },
   },
   sidebar: {
-    color: '#FFF',
+    color: "#FFF",
     background: indigo[600],
     header: {
-      color: '#FFF',
+      color: "#FFF",
       background: indigo[700],
       brand: {
-        color: '#FFFFFF',
+        color: "#FFFFFF",
       },
     },
     footer: {
-      color: '#FFF',
+      color: "#FFF",
       background: indigo[700],
       online: {
-        background: '#FFF',
+        background: "#FFF",
       },
     },
     category: {
       fontWeight: 400,
     },
     badge: {
-      color: '#000',
-      background: '#FFF',
+      color: "#000",
+      background: "#FFF",
     },
   },
   body: {
-    background: '#F9F9FC',
+    background: "#F9F9FC",
   },
 };
 
 const tealVariant = {
-  name: 'Teal',
+  name: "Teal",
   palette: {
     primary: {
       main: teal[800],
-      contrastText: '#FFF',
+      contrastText: "#FFF",
     },
     secondary: {
       main: teal[600],
-      contrastText: '#FFF',
+      contrastText: "#FFF",
     },
   },
   header: {
     color: grey[500],
-    background: '#FFF',
+    background: "#FFF",
     search: {
       color: grey[800],
     },
@@ -181,45 +179,45 @@ const tealVariant = {
     },
   },
   sidebar: {
-    color: '#FFF',
+    color: "#FFF",
     background: teal[700],
     header: {
-      color: '#FFF',
+      color: "#FFF",
       background: teal[800],
       brand: {
-        color: '#FFFFFF',
+        color: "#FFFFFF",
       },
     },
     footer: {
-      color: '#FFF',
+      color: "#FFF",
       background: teal[800],
       online: {
-        background: '#FFF',
+        background: "#FFF",
       },
     },
     category: {
       fontWeight: 400,
     },
     badge: {
-      color: '#000',
-      background: '#FFF',
+      color: "#000",
+      background: "#FFF",
     },
   },
   body: {
-    background: '#F7F9FC',
+    background: "#F7F9FC",
   },
 };
 
 const lightVariant = {
-  name: 'Light',
+  name: "Light",
   palette: {
     primary: {
       main: blue[800],
-      contrastText: '#FFF',
+      contrastText: "#FFF",
     },
     secondary: {
       main: blue[600],
-      contrastText: '#FFF',
+      contrastText: "#FFF",
     },
   },
   header: {
@@ -234,12 +232,12 @@ const lightVariant = {
   },
   sidebar: {
     color: grey[900],
-    background: '#FFF',
+    background: "#FFF",
     header: {
-      color: '#FFF',
+      color: "#FFF",
       background: blue[800],
       brand: {
-        color: '#FFFFFF',
+        color: "#FFFFFF",
       },
     },
     footer: {
@@ -253,30 +251,30 @@ const lightVariant = {
       fontWeight: 600,
     },
     badge: {
-      color: '#FFF',
+      color: "#FFF",
       background: green[600],
     },
   },
   body: {
-    background: '#F7F9FC',
+    background: "#F7F9FC",
   },
 };
 
 const darkVariant = {
-  name: 'Dark',
+  name: "Dark",
   palette: {
     primary: {
       main: blue[700],
-      contrastText: '#FFF',
+      contrastText: "#FFF",
     },
     secondary: {
       main: blue[500],
-      contrastText: '#FFF',
+      contrastText: "#FFF",
     },
   },
   header: {
     color: grey[500],
-    background: '#FFFFFF',
+    background: "#FFFFFF",
     search: {
       color: grey[800],
     },
@@ -286,17 +284,17 @@ const darkVariant = {
   },
   sidebar: {
     color: grey[200],
-    background: '#1B2430',
+    background: "#1B2430",
     header: {
       color: grey[200],
-      background: '#232f3e',
+      background: "#232f3e",
       brand: {
         color: blue[500],
       },
     },
     footer: {
       color: grey[200],
-      background: '#232f3e',
+      background: "#232f3e",
       online: {
         background: green[500],
       },
@@ -305,12 +303,12 @@ const darkVariant = {
       fontWeight: 400,
     },
     badge: {
-      color: '#FFF',
+      color: "#FFF",
       background: blue[500],
     },
   },
   body: {
-    background: '#F7F9FC',
+    background: "#F7F9FC",
   },
 };
 

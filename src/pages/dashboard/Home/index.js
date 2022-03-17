@@ -1,17 +1,16 @@
-import React, { useCallback, useState } from 'react'
-import { withTheme } from 'styled-components'
-import { Grid } from '@material-ui/core'
-import Arvut from './Arvut'
-import Calendar from './Calendar'
-import Header from './Header'
-import Convention from './Convention'
+import React, { useCallback, useState } from "react";
+import { withTheme } from "styled-components";
+import { Grid } from "@material-ui/core";
+import Arvut from "./Arvut";
+import Calendar from "./Calendar";
+import Header from "./Header";
 
 const Home = () => {
-  const [liveEvent, setLiveEvent] = useState()
+  const [liveEvent, setLiveEvent] = useState();
 
   const onLiveEvent = useCallback((event) => {
-    setLiveEvent(event)
-  }, [])
+    setLiveEvent(event);
+  }, []);
 
   return (
     <>
@@ -24,8 +23,7 @@ const Home = () => {
              <Grid item xs={12} lg={12}>
               <Convention liveEvent={liveEvent} />
             </Grid>
-             */
-            }
+             */}
             <Grid item xs={12} lg={12}>
               <Arvut liveEvent={liveEvent} />
             </Grid>
@@ -38,7 +36,7 @@ const Home = () => {
         </Grid>
       </Grid>
     </>
-  )
-}
+  );
+};
 
-export default withTheme(Home)
+export default withTheme(Home);

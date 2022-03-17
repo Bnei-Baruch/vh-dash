@@ -1,25 +1,25 @@
-import React, { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { makeStyles } from '@material-ui/core/styles';
-import { AppBar, Button, Grid, Toolbar } from '@material-ui/core';
+import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { makeStyles } from "@material-ui/core/styles";
+import { AppBar, Button, Grid, Toolbar } from "@material-ui/core";
 
-import PersonalForm from '../Forms/PersonalForm/PersonalForm';
-import EmailsForm from '../Forms/EmailsForm';
-import PhysicalLocationForm from '../Forms/PersonalForm/PhysicalLocationForm';
-import SocialForm from '../Forms/SocialForm';
+import PersonalForm from "../Forms/PersonalForm/PersonalForm";
+import EmailsForm from "../Forms/EmailsForm";
+import PhysicalLocationForm from "../Forms/PersonalForm/PhysicalLocationForm";
+import SocialForm from "../Forms/SocialForm";
 
 const useStyles = makeStyles({
   appBar: {
-    top: 'auto',
+    top: "auto",
     bottom: 0,
-    textAlign: 'right',
-    boxShadow: 'none'
+    textAlign: "right",
+    boxShadow: "none",
   },
   toolBar: {
     padding: 20,
-    display: 'flex',
-    justifyContent: 'flex-end',
-    backgroundColor: 'rgb(242, 242, 242) !important'
+    display: "flex",
+    justifyContent: "flex-end",
+    backgroundColor: "rgb(242, 242, 242) !important",
   },
 });
 
@@ -44,13 +44,13 @@ const MyProfileTab = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const onInputBlur = field => {
+  const onInputBlur = (field) => {
     const isValid = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(inputFields[field]);
     if (inputFields[field]) {
       if (!isValid) {
-        setErrorFields(prevState => ({
+        setErrorFields((prevState) => ({
           ...prevState,
-          [field]: t('Dashboard.Profile.Emails.emailError'),
+          [field]: t("Dashboard.Profile.Emails.emailError"),
         }));
         setIsValid(false);
 
@@ -62,7 +62,7 @@ const MyProfileTab = ({
     }
   };
 
-  const onFormSubmit = event => {
+  const onFormSubmit = (event) => {
     event.preventDefault();
 
     if (!isModified) {
@@ -80,10 +80,10 @@ const MyProfileTab = ({
     setInputFields(copiedFields);
   };
 
-  const buttonText = isModified ? t('Global.saveBtn') : t('Global.modify');
+  const buttonText = isModified ? t("Global.saveBtn") : t("Global.modify");
 
   return (
-    <form noValidate autoComplete='off' onSubmit={onFormSubmit}>
+    <form noValidate autoComplete="off" onSubmit={onFormSubmit}>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={12} mg={12} lg={6}>
           <PersonalForm
@@ -97,11 +97,7 @@ const MyProfileTab = ({
             isModified={isModified}
           />
         </Grid>
-        <Grid
-          item
-          xs={12} sm={12} mg={12} lg={6}
-          style={{ display: 'grid' }}
-        >
+        <Grid item xs={12} sm={12} mg={12} lg={6} style={{ display: "grid" }}>
           <EmailsForm
             inputFields={inputFields}
             errorFields={errorFields}
@@ -116,26 +112,26 @@ const MyProfileTab = ({
           />
         </Grid>
         <AppBar
-          position='fixed'
+          position="fixed"
           className={classes.appBar}
-          style={{ background: `${isModified ? '#C9F9DA' : '#fff'}` }}
+          style={{ background: `${isModified ? "#C9F9DA" : "#fff"}` }}
         >
           <Toolbar className={classes.toolBar}>
             <Button
-              variant='contained'
-              color={isModified ? 'secondary' : 'primary'}
-              type='submit'
+              variant="contained"
+              color={isModified ? "secondary" : "primary"}
+              type="submit"
             >
               {buttonText}
             </Button>
             {isModified && (
               <Button
                 style={{ marginLeft: 20 }}
-                variant='contained'
-                color='default'
+                variant="contained"
+                color="default"
                 onClick={onCancel}
               >
-                {t('Global.cancelBtn')}
+                {t("Global.cancelBtn")}
               </Button>
             )}
           </Toolbar>

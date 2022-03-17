@@ -1,27 +1,23 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
 
-import {
-  CircularProgress,
-  Typography,
-  Box,
-} from '@material-ui/core';
+import { CircularProgress, Typography, Box } from "@material-ui/core";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    width: '100%',
+    width: "100%",
   },
   linear: {
-    height: '6px',
+    height: "6px",
   },
   loader: {
-    height: '100vh',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
+    height: "100vh",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
   central: {
-    textAlign: 'center',
+    textAlign: "center",
   },
 }));
 function LoadingScreen() {

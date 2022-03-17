@@ -1,13 +1,15 @@
-import { createReducer } from 'redux-act';
+import { createReducer } from "redux-act";
 import {
   setLoggedInUser,
   setFirstName,
   setLastName,
-  setKeycloakData
-} from '../actions/userActions';
+  setKeycloakData,
+  setMembershipData
+} from "../actions/userActions";
 
 const initialState = {
   info: {},
+  membership: {},
 };
 
 export default createReducer(
@@ -24,6 +26,9 @@ export default createReducer(
     [setKeycloakData]: (state, action) => {
       return { ...state, keycloak: action.keycloak };
     },
+    [setMembershipData]: (state, action) => {
+      return { ...state, membership: action.data };
+    }
   },
-  initialState,
+  initialState
 );
