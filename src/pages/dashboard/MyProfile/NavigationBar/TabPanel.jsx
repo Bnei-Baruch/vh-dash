@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Box from '@material-ui/core/Box';
+import React from "react";
+import PropTypes from "prop-types";
+import Box from "@material-ui/core/Box";
 
 const TabPanel = ({ children, value, index, ...props }) => (
   <div
-    role='tabpanel'
+    role="tabpanel"
     hidden={value !== index}
     id={`scrollable-auto-tabpanel-${index}`}
     aria-labelledby={`scrollable-auto-tab-${index}`}

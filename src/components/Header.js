@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
-import styled, { withTheme } from 'styled-components';
-import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router';
-import { darken } from 'polished';
-import i18next from 'i18next';
-import { useTranslation } from 'react-i18next';
-import _ from 'lodash';
-import { Bell, MessageSquare, Search as SearchIcon } from 'react-feather';
-import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+import React, { useState } from "react";
+import styled, { withTheme } from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router";
+import { darken } from "polished";
+import i18next from "i18next";
+import { useTranslation } from "react-i18next";
+import _ from "lodash";
+import { Bell, MessageSquare, Search as SearchIcon } from "react-feather";
+import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
+import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import {
   Badge,
   Grid,
@@ -18,24 +19,22 @@ import {
   AppBar as MuiAppBar,
   IconButton as MuiIconButton,
   Toolbar,
-  Button,
-} from '@material-ui/core';
+  Typography,
+  Box,
+} from "@material-ui/core";
 
-import { Menu as MenuIcon } from '@material-ui/icons';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import {
-  CHAT_AND_NOTIFICATION_ICONS,
-  IMAGE_URL,
-  SEARCH_BAR,
-} from '../shared/constants';
-import { setLoggedInUser } from '../redux/actions/userActions';
-import ModalWindow from '../pages/dashboard/MyProfile/ui/ModalWindow';
-import { DASHBOARD_ROUTES } from '../routes/dashboardRoutes';
+import { Menu as MenuIcon } from "@material-ui/icons";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import { CHAT_AND_NOTIFICATION_ICONS, SEARCH_BAR } from "../shared/constants";
+import { setLoggedInUser } from "../redux/actions/userActions";
+import ModalWindow from "../pages/dashboard/MyProfile/ui/ModalWindow";
+import { DASHBOARD_ROUTES } from "../routes/dashboardRoutes";
+import { membershipData } from "../redux/selectors/user";
 
 const AppBar = styled(MuiAppBar)`
-  background: ${props => props.theme.header.background};
-  color: ${props => props.theme.header.color};
-  box-shadow: ${props => props.theme.shadows[1]};
+  background: ${(props) => props.theme.header.background};
+  color: ${(props) => props.theme.header.color};
+  box-shadow: ${(props) => props.theme.shadows[1]};
   background-color: #fff !important;
 `;
 
@@ -43,6 +42,24 @@ const IconButton = styled(MuiIconButton)`
   svg {
     width: 22px;
     height: 22px;
+  }
+`;
+const MembershipStatusContainer = styled(Box)`
+  float: right;
+  margin-right: 10px;
+`;
+const MembershipHeaderText = styled(Typography)`
+  color: #747474;
+`;
+const MembershipStatusText = styled(Typography)`
+  color: ${(props) => props.color};
+  display: flex;
+  align-items: center;
+
+  svg {
+    width: 10px;
+    color: ${(props) => props.color};
+    margin-right: 5px;
   }
 `;
 
@@ -76,27 +93,23 @@ const UserIconButton = styled(MuiIconButton)`
 
 const Indicator = styled(Badge)`
   .MuiBadge-badge {
-    background: ${props => props.theme.header.indicator.background};
-    color: ${props => props.theme.palette.common.white};
+    background: ${(props) => props.theme.header.indicator.background};
+    color: ${(props) => props.theme.palette.common.white};
   }
-`;
-
-const PayButton = styled(Button)`
-  border-radius: 20px !important;
 `;
 
 const Search = styled.div`
   border-radius: 2px;
-  background-color: ${props => props.theme.header.background};
+  background-color: ${(props) => props.theme.header.background};
   display: none;
   position: relative;
   width: 100%;
 
   &:hover {
-    background-color: ${props => darken(0.05, props.theme.header.background)};
+    background-color: ${(props) => darken(0.05, props.theme.header.background)};
   }
 
-  ${props => props.theme.breakpoints.up('md')} {
+  ${(props) => props.theme.breakpoints.up("md")} {
     display: block;
   }
 `;
@@ -121,11 +134,11 @@ const Input = styled(InputBase)`
   width: 100%;
 
   > input {
-    color: ${props => props.theme.header.search.color};
-    padding-top: ${props => props.theme.spacing(2.5)}px;
-    padding-right: ${props => props.theme.spacing(2.5)}px;
-    padding-bottom: ${props => props.theme.spacing(2.5)}px;
-    padding-left: ${props => props.theme.spacing(12)}px;
+    color: ${(props) => props.theme.header.search.color};
+    padding-top: ${(props) => props.theme.spacing(2.5)}px;
+    padding-right: ${(props) => props.theme.spacing(2.5)}px;
+    padding-bottom: ${(props) => props.theme.spacing(2.5)}px;
+    padding-left: ${(props) => props.theme.spacing(12)}px;
     width: 160px;
   }
 `;
@@ -134,25 +147,24 @@ const Flag = styled.img`
   border-radius: 50%;
   width: 25px;
   height: 25px;
-
 `;
 
 const languages = [
-  { code: 'en', name: 'English', country: 'gb' },
-  { code: 'ru', name: 'Russian', country: 'ru' },
-  { code: 'he', name: 'Hebrew', country: 'il' },
-  { code: 'es', name: 'Spanish', country: 'es' },
+  { code: "en", name: "English", country: "gb" },
+  { code: "ru", name: "Russian", country: "ru" },
+  { code: "he", name: "Hebrew", country: "il" },
+  { code: "es", name: "Spanish", country: "es" },
 ];
 
 function LanguageMenu() {
   const { t, i18n } = useTranslation();
   const [anchorMenu, setAnchorMenu] = useState(null);
 
-  const toggleMenu = event => {
+  const toggleMenu = (event) => {
     setAnchorMenu(event.currentTarget);
   };
 
-  const closeMenu = lng => {
+  const closeMenu = (lng) => {
     setAnchorMenu(null);
     _.isString(lng) && i18n.changeLanguage(lng);
   };
@@ -160,10 +172,10 @@ function LanguageMenu() {
   return (
     <>
       <FlagButton
-        aria-owns={anchorMenu ? 'menu-appbar' : undefined}
-        aria-haspopup='true'
+        aria-owns={anchorMenu ? "menu-appbar" : undefined}
+        aria-haspopup="true"
         onClick={toggleMenu}
-        color='inherit'
+        color="inherit"
       >
         {/* Don't replace with emoji as it's not supported in Windows */}
         <Flag
@@ -172,13 +184,13 @@ function LanguageMenu() {
         />
       </FlagButton>
       <Menu
-        id='menu-appbar'
+        id="menu-appbar"
         anchorEl={anchorMenu}
         open={Boolean(anchorMenu)}
         onClose={closeMenu}
         style={{ maxHeight: 350 }}
       >
-        {languages.map(item => (
+        {languages.map((item) => (
           <MenuItem key={item.code} onClick={() => closeMenu(item.code)}>
             {t(`Languages.${item.name}`)}
           </MenuItem>
@@ -190,14 +202,14 @@ function LanguageMenu() {
 
 function UserMenu() {
   const { t } = useTranslation();
-  const state = useSelector(state => state.userReducer.info);
+  const state = useSelector((state) => state.userReducer.info);
   const dispatch = useDispatch();
   const history = useHistory();
 
   const [anchorMenu, setAnchorMenu] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const toggleMenu = event => {
+  const toggleMenu = (event) => {
     setAnchorMenu(event.currentTarget);
   };
 
@@ -205,7 +217,7 @@ function UserMenu() {
     setAnchorMenu(null);
   };
 
-  const onMenuItemClick = path => {
+  const onMenuItemClick = (path) => {
     history.push(path);
     closeMenu();
   };
@@ -228,35 +240,35 @@ function UserMenu() {
   return (
     <>
       <UserIconButton
-        aria-owns={anchorMenu ? 'menu-appbar' : undefined}
-        aria-haspopup='true'
+        aria-owns={anchorMenu ? "menu-appbar" : undefined}
+        aria-haspopup="true"
         onClick={toggleMenu}
-        color='inherit'
+        color="inherit"
       >
         <AccountCircleIcon />
-        &nbsp;{' '}
+        &nbsp;{" "}
         {state.keycloak.profile.firstName +
-          ' ' +
+          " " +
           state.keycloak.profile.lastName}
         &nbsp; <KeyboardArrowDownIcon />
       </UserIconButton>
       <Menu
-        id='menu-appbar'
+        id="menu-appbar"
         anchorEl={anchorMenu}
         open={Boolean(anchorMenu)}
         onClose={closeMenu}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
       >
         <MenuItem onClick={() => onMenuItemClick(DASHBOARD_ROUTES.Profile)}>
-          {t('Dashboard.Profile.name')}
+          {t("Dashboard.Profile.name")}
         </MenuItem>
-        <MenuItem onClick={onLogOutClick}>{t('UserMenu.logOut')}</MenuItem>
+        <MenuItem onClick={onLogOutClick}>{t("UserMenu.logOut")}</MenuItem>
       </Menu>
       <ModalWindow
         open={isModalOpen}
-        contentText={t('UserMenu.logOutText')}
-        confirmBtnText={t('UserMenu.yesBtn')}
-        closeBtnText={t('UserMenu.cancelBtn')}
+        contentText={t("UserMenu.logOutText")}
+        confirmBtnText={t("UserMenu.yesBtn")}
+        closeBtnText={t("UserMenu.cancelBtn")}
         handleClose={handleCloseModal}
         onConfirmation={onAuthLogout}
       />
@@ -265,19 +277,16 @@ function UserMenu() {
 }
 
 const Header = ({ onDrawerToggle }) => {
-  const { t, i18n } = useTranslation();
-  console.log(i18n);
-  const redirectToPayment = () => {
-    window.open(`${window.location.origin}/pay/order/1?lang=${i18n.language}`, '_blank').focus();
-  };
+  const { t } = useTranslation();
+  const membership = useSelector(membershipData);
   return (
     <>
-      <AppBar position='sticky' elevation={0}>
+      <AppBar position="sticky" elevation={0}>
         <Toolbar>
-          <Grid container alignItems='center'>
+          <Grid container alignItems="center">
             <Hidden mdUp>
               <Grid item>
-                <IconButton aria-label='Open drawer' onClick={onDrawerToggle}>
+                <IconButton aria-label="Open drawer" onClick={onDrawerToggle}>
                   <MenuIcon />
                 </IconButton>
               </Grid>
@@ -288,33 +297,45 @@ const Header = ({ onDrawerToggle }) => {
                   <SearchIconWrapper>
                     <SearchIcon />
                   </SearchIconWrapper>
-                  <Input placeholder='Search topics' />
+                  <Input placeholder="Search topics" />
                 </Search>
               </Grid>
             )}
-            <Grid item xs></Grid>
+            <Grid item xs>
+              <MembershipStatusContainer component="span">
+                <MembershipHeaderText variant="h6">
+                  {t("Membership.myMembership")}
+                </MembershipHeaderText>
+                <MembershipStatusText
+                  variant="body1"
+                  color={
+                    membership.membership
+                      ? "#0d9d0d !important"
+                      : "#ff0000 !important"
+                  }
+                >
+                  <FiberManualRecordIcon />{" "}
+                  {membership.membership
+                    ? t("Membership.inactive")
+                    : t("Membership.active")}
+                </MembershipStatusText>
+              </MembershipStatusContainer>
+            </Grid>
             <Grid item>
               {CHAT_AND_NOTIFICATION_ICONS && (
                 <>
-                  <IconButton color='inherit'>
+                  <IconButton color="inherit">
                     <Indicator badgeContent={3}>
                       <MessageSquare />
                     </Indicator>
                   </IconButton>
-                  <IconButton color='inherit'>
+                  <IconButton color="inherit">
                     <Indicator badgeContent={7}>
                       <Bell />
                     </Indicator>
                   </IconButton>
                 </>
               )}
-              <PayButton
-                onClick={redirectToPayment}
-                variant='contained'
-                color='primary'
-              >
-                {t('UserMenu.payUserFee')}
-              </PayButton>
               <LanguageMenu />
               <UserMenu />
             </Grid>

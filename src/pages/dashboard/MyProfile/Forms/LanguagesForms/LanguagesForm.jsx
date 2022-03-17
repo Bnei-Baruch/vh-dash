@@ -1,9 +1,9 @@
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-import { Grid, Typography } from '@material-ui/core';
-import SelectElement from '../FormElements/SelectElement';
-import { commonFormStyles } from '../../../../../constants/formData';
-import languages from '../../../../../constants/languages';
+import React from "react";
+import { useTranslation } from "react-i18next";
+import { Grid, Typography } from "@material-ui/core";
+import SelectElement from "../FormElements/SelectElement";
+import { commonFormStyles } from "../../../../../constants/formData";
+import languages from "../../../../../constants/languages";
 
 const LanguagesForm = ({ inputFields, handleChange, isModified }) => {
   const classes = commonFormStyles();
@@ -19,64 +19,64 @@ const LanguagesForm = ({ inputFields, handleChange, isModified }) => {
 
   return (
     <div className={classes.root}>
-      <Typography variant='h4'>
-        {t('Dashboard.Profile.Languages.name')}
+      <Typography variant="h4">
+        {t("Dashboard.Profile.Languages.name")}
       </Typography>
       <Grid container spacing={6}>
         <Grid item xs={12} sm={6}>
           <SelectElement
-            id='first_language'
+            id="first_language"
             disabled={!isModified}
-            label={t('Dashboard.Profile.Languages.firstLanguage')}
-            value={first_language || ''}
+            label={t("Dashboard.Profile.Languages.firstLanguage")}
+            value={first_language || ""}
             onChange={handleChange}
             selectData={languages}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <SelectElement
-            id='other_language_1'
+            id="other_language_1"
             disabled={!isModified}
-            label={t('Dashboard.Profile.Languages.otherLanguage', {
-              number: '1',
+            label={t("Dashboard.Profile.Languages.otherLanguage", {
+              number: "1",
             })}
-            value={other_language_1 || ''}
+            value={other_language_1 || ""}
             onChange={handleChange}
             selectData={languages}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <SelectElement
-            id='other_language_2'
+            id="other_language_2"
             disabled={!isModified}
-            label={t('Dashboard.Profile.Languages.otherLanguage', {
-              number: '2',
+            label={t("Dashboard.Profile.Languages.otherLanguage", {
+              number: "2",
             })}
-            value={other_language_2 || ''}
+            value={other_language_2 || ""}
             onChange={handleChange}
             selectData={languages}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <SelectElement
-            id='other_language_3'
+            id="other_language_3"
             disabled={!isModified}
-            label={t('Dashboard.Profile.Languages.otherLanguage', {
-              number: '3',
+            label={t("Dashboard.Profile.Languages.otherLanguage", {
+              number: "3",
             })}
-            value={other_language_3 || ''}
+            value={other_language_3 || ""}
             onChange={handleChange}
             selectData={languages}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <SelectElement
-            id='other_language_4'
+            id="other_language_4"
             disabled={!isModified}
-            label={t('Dashboard.Profile.Languages.otherLanguage', {
-              number: '4',
+            label={t("Dashboard.Profile.Languages.otherLanguage", {
+              number: "4",
             })}
-            value={other_language_4 || ''}
+            value={other_language_4 || ""}
             onChange={handleChange}
             selectData={languages}
           />

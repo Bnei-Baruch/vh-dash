@@ -3,7 +3,7 @@ const props = {
     disableRipple: true,
   },
   MuiCardHeader: {
-    titleTypographyProps: { variant: 'h6' },
+    titleTypographyProps: { variant: "h6" },
   },
 };
 

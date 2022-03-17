@@ -1,3 +1,3 @@
-import Component from './NavigationBar.jsx';
+import Component from "./NavigationBar.jsx";
 
 export default Component;

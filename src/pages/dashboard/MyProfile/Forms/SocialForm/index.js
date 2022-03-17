@@ -1,3 +1,3 @@
-import Component from './SocialForm';
+import Component from "./SocialForm";
 
 export default Component;

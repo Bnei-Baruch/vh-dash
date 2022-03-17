@@ -1,30 +1,35 @@
-import React from 'react';
-import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
-import { dashboardLayoutRoutes } from './index';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Route,
+  Switch,
+} from "react-router-dom";
+import { dashboardLayoutRoutes } from "./index";
 
-import DashboardLayout from '../layouts/Dashboard';
-import Page404 from '../pages/auth/Page404';
-import DashboardHeader from '../pages/dashboard/Home/DashboardHeader';
-import Auth from '../config/Auth';
+import DashboardLayout from "../layouts/Dashboard";
+import Page404 from "../pages/auth/Page404";
+import DashboardHeader from "../pages/dashboard/Home/DashboardHeader";
+import Auth from "../config/Auth";
 
 const childRoutes = (Layout, routes) =>
   routes.map(
     (
       { children, path, id, breadcrumbs, enableHeader, component: Component },
-      index,
+      index
     ) =>
       children ? (
         // Route item with children
         children.map(
           (
             { path, id, enableHeader, breadcrumbs, component: Component },
-            index,
+            index
           ) => (
             <Route
               key={index}
               path={path}
               exact
-              render={props => (
+              render={(props) => (
                 <Layout>
                   {enableHeader && (
                     <DashboardHeader name={id} breadcrumbs={breadcrumbs} />
@@ -33,7 +38,7 @@ const childRoutes = (Layout, routes) =>
                 </Layout>
               )}
             />
-          ),
+          )
         )
       ) : (
         // Route item without children
@@ -41,7 +46,7 @@ const childRoutes = (Layout, routes) =>
           key={index}
           path={path}
           exact
-          render={props => (
+          render={(props) => (
             <Layout>
               {enableHeader && (
                 <DashboardHeader name={id} breadcrumbs={breadcrumbs} />
@@ -50,15 +55,20 @@ const childRoutes = (Layout, routes) =>
             </Layout>
           )}
         />
-      ),
+      )
   );
-
 const Routes = () => (
   <Router>
     <Switch>
       {childRoutes(DashboardLayout, dashboardLayoutRoutes)}
       <Redirect to="/dash" />
-      <Route render={() => (<Auth><Page404 /></Auth>)}/>
+      <Route
+        render={() => (
+          <Auth>
+            <Page404 />
+          </Auth>
+        )}
+      />
     </Switch>
   </Router>
 );

@@ -1,3 +1,3 @@
-import Component from './MyProfile';
+import Component from "./MyProfile";
 
 export default Component;

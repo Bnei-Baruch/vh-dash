@@ -4,32 +4,32 @@ import {
   CHANGE_BITRATE,
   CHANGE_VOLUME,
   CHANGE_LANGUAGE,
-} from '../constants';
+} from "../constants";
 
 const initialState = {
   streams: {},
   languages: {},
-  selectedBitrate: localStorage.getItem('live.selectedBitrate') || 500,
-  selectedVolume: localStorage.getItem('live.selectedVolume') || 80,
-  selectedLanguage: localStorage.getItem('live.selectedLanguage') || 'eng',
+  selectedBitrate: localStorage.getItem("live.selectedBitrate") || 500,
+  selectedVolume: localStorage.getItem("live.selectedVolume") || 80,
+  selectedLanguage: localStorage.getItem("live.selectedLanguage") || "eng",
 };
 
 const streamReducer = (state = initialState, action) => {
   switch (action.type) {
     case CHANGE_LANGUAGE:
-      localStorage.setItem('live.selectedLanguage', action.lang);
+      localStorage.setItem("live.selectedLanguage", action.lang);
       return {
         ...state,
-        selectedLanguage: action.lang
+        selectedLanguage: action.lang,
       };
     case CHANGE_BITRATE:
-      localStorage.setItem('live.selectedBitrate', action.bitrate);
+      localStorage.setItem("live.selectedBitrate", action.bitrate);
       return {
         ...state,
         selectedBitrate: action.bitrate,
       };
     case CHANGE_VOLUME:
-      localStorage.setItem('live.selectedVolume', action.volume);
+      localStorage.setItem("live.selectedVolume", action.volume);
       return {
         ...state,
         selectedVolume: action.volume,
@@ -42,11 +42,11 @@ const streamReducer = (state = initialState, action) => {
       };
     case RECEIVE_STREAMS:
       const streams = new Map(
-        action.data.Streams.map(item => {
+        action.data.Streams.map((item) => {
           const hls = item.hlsUrl,
-            rtmp = item.netUrl + '/' + item.streamName;
+            rtmp = item.netUrl + "/" + item.streamName;
           return [item.bitRate, { hls, rtmp }];
-        }),
+        })
       );
       return {
         ...state,

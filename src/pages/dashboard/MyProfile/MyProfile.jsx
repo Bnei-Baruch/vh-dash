@@ -1,38 +1,38 @@
-import React, { useEffect, useState } from 'react';
-import Helmet from 'react-helmet';
-import { makeStyles } from '@material-ui/core/styles';
-import { useTranslation } from 'react-i18next';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useState } from "react";
+import Helmet from "react-helmet";
+import { makeStyles } from "@material-ui/core/styles";
+import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
 
-import NavigationBar from './NavigationBar';
-import MyProfileTab from './Tabs/MyProfileTab';
-import LanguagesTab from './Tabs/LanguagesTab';
-import OtherInformationsTab from './Tabs/OtherInformationsTab';
-import ModalWindow from './ui/ModalWindow';
+import NavigationBar from "./NavigationBar";
+import MyProfileTab from "./Tabs/MyProfileTab";
+import LanguagesTab from "./Tabs/LanguagesTab";
+import OtherInformationsTab from "./Tabs/OtherInformationsTab";
+import ModalWindow from "./ui/ModalWindow";
 import {
   profileInfo,
   profileModalContent,
-} from '../../../redux/selectors/profile';
-import { updateProfile } from '../../../redux/actions/profileActions';
-import { TOGGLE_PROFILE_WINDOW } from '../../../redux/constants';
+} from "../../../redux/selectors/profile";
+import { updateProfile } from "../../../redux/actions/profileActions";
+import { TOGGLE_PROFILE_WINDOW } from "../../../redux/constants";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: '#F2F2F2',
+    backgroundColor: "#F2F2F2",
     paddingBottom: 76,
   },
   breadcrumbs: {
     marginBottom: theme.spacing(6),
-    '& .MuiTypography-colorInherit': {
-      color: '#1E88E5',
+    "& .MuiTypography-colorInherit": {
+      color: "#1E88E5",
     },
   },
 }));
 
 const initialErrorFields = {
-  primary_email: '',
-  alternate_email_1: '',
-  alternate_email_2: '',
+  primary_email: "",
+  alternate_email_1: "",
+  alternate_email_2: "",
 };
 
 const initialFields = {
@@ -49,7 +49,7 @@ const initialFields = {
   primary_email: null,
   alternate_email_1: null,
   alternate_email_2: null,
-  first_language: 'en',
+  first_language: "en",
   other_language_1: null,
   other_language_2: null,
   other_language_3: null,
@@ -78,7 +78,7 @@ const MyProfile = () => {
   const [updatedFields, setUpdatedFileds] = useState({});
   const [inputFields, setInputFields] = useState({
     ...initialFields,
-    primaryLanguage: 'en',
+    primaryLanguage: "en",
   });
 
   useEffect(() => {
@@ -96,7 +96,7 @@ const MyProfile = () => {
       ...updatedFields,
       [field]: value,
     });
-    setInputFields(prevState => ({ ...prevState, [field]: value }));
+    setInputFields((prevState) => ({ ...prevState, [field]: value }));
   };
 
   const onSubmit = () => {
@@ -109,7 +109,7 @@ const MyProfile = () => {
   const tabs = [
     {
       id: 0,
-      tab: t('Dashboard.Profile.Tabs.personal'),
+      tab: t("Dashboard.Profile.Tabs.personal"),
       component: (
         <MyProfileTab
           errorFields={errorFields}
@@ -124,7 +124,7 @@ const MyProfile = () => {
     },
     {
       id: 1,
-      tab: t('Dashboard.Profile.Tabs.languages'),
+      tab: t("Dashboard.Profile.Tabs.languages"),
       component: (
         <LanguagesTab
           inputFields={inputFields}
@@ -136,7 +136,7 @@ const MyProfile = () => {
     },
     {
       id: 2,
-      tab: t('Dashboard.Profile.Tabs.otherInformations'),
+      tab: t("Dashboard.Profile.Tabs.otherInformations"),
       component: (
         <OtherInformationsTab
           inputFields={inputFields}
@@ -150,12 +150,12 @@ const MyProfile = () => {
 
   return (
     <div className={classes.root}>
-      <Helmet title={t('Dashboard.Profile.name')} />
+      <Helmet title={t("Dashboard.Profile.name")} />
       <NavigationBar tabs={tabs} />
       <ModalWindow
         open={isModalOpen}
         contentText={description}
-        closeBtnText={t('Global.closeBtn')}
+        closeBtnText={t("Global.closeBtn")}
         handleClose={onModalClose}
       />
     </div>

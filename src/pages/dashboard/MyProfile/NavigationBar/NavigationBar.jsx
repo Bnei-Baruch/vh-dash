@@ -1,43 +1,43 @@
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import TabPanel from './TabPanel.jsx';
-import { useHistory } from 'react-router';
+import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import { makeStyles } from "@material-ui/core/styles";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import TabPanel from "./TabPanel.jsx";
+import { useHistory } from "react-router";
 
 const a11yProps = (index, classes) => ({
   id: `scrollable-auto-tab-${index}`,
-  'aria-controls': `scrollable-auto-tabpanel-${index}`,
+  "aria-controls": `scrollable-auto-tabpanel-${index}`,
   classes: { selected: `${classes}` },
 });
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    width: '100%',
-    backgroundColor: '#F2F2F2',
-    '& .MuiTab-root': {
-      '@media (min-width: 600px) and (max-width: 1100px)': {
-        minWidth: '100px',
+    width: "100%",
+    backgroundColor: "#F2F2F2",
+    "& .MuiTab-root": {
+      "@media (min-width: 600px) and (max-width: 1100px)": {
+        minWidth: "100px",
       },
     },
   },
   selectedTab: {
     backgroundColor: theme.palette.background.paper,
-    '&.Mui-selected': {
-      color: '#000000',
+    "&.Mui-selected": {
+      color: "#000000",
     },
   },
   tabElement: {
-    fontSize: '17px',
+    fontSize: "17px",
   },
   tabPanel: {
     margin: theme.spacing(0, -2.5),
   },
   mainTab: {
-    backgroundColor: '#fff'
-  }
+    backgroundColor: "#fff",
+  },
 }));
 
 const NavigationBar = ({ tabs }) => {
@@ -50,15 +50,15 @@ const NavigationBar = ({ tabs }) => {
   };
 
   useEffect(() => {
-    const myPlan = search.includes('my-plan');
+    const myPlan = search.includes("my-plan");
 
     if (myPlan) {
       const url = new URL(href);
-      
+
       setValue(1);
 
       // Delete the my-plan parameter.
-      url.searchParams.delete('my-plan');
+      url.searchParams.delete("my-plan");
       history.push(url);
     }
   }, [search, href, history]);
@@ -68,12 +68,12 @@ const NavigationBar = ({ tabs }) => {
       <Tabs
         value={value}
         onChange={handleChange}
-        indicatorColor='primary'
-        textColor='primary'
-        variant='scrollable'
-        scrollButtons='auto'
+        indicatorColor="primary"
+        textColor="primary"
+        variant="scrollable"
+        scrollButtons="auto"
       >
-        {tabs.map(item => (
+        {tabs.map((item) => (
           <Tab
             key={item.id}
             label={item.tab}
@@ -82,7 +82,7 @@ const NavigationBar = ({ tabs }) => {
           />
         ))}
       </Tabs>
-      {tabs.map(item => (
+      {tabs.map((item) => (
         <TabPanel
           key={item.id}
           value={value}
@@ -102,7 +102,7 @@ NavigationBar.propTypes = {
       id: PropTypes.number.isRequired,
       tab: PropTypes.string.isRequired,
       component: PropTypes.node.isRequired,
-    }),
+    })
   ).isRequired,
 };
 
