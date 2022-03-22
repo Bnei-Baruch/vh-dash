@@ -309,15 +309,14 @@ const Header = ({ onDrawerToggle }) => {
                 <MembershipStatusText
                   variant="body1"
                   color={
-                    membership.membership
+                    membership.membership 
                       ? "#0d9d0d !important"
                       : "#ff0000 !important"
                   }
                 >
                   <FiberManualRecordIcon />{" "}
                   {membership.membership
-                    ? t("Membership.inactive")
-                    : t("Membership.active")}
+                    ? t("Membership.active") : t("Membership.inactive")}
                 </MembershipStatusText>
               </MembershipStatusContainer>
             </Grid>
