@@ -47,6 +47,7 @@ const IconButton = styled(MuiIconButton)`
 const MembershipStatusContainer = styled(Box)`
   float: right;
   margin-right: 10px;
+  cursor: pointer;
 `;
 const MembershipHeaderText = styled(Typography)`
   color: #747474;
@@ -75,6 +76,9 @@ const FlagButton = styled(MuiIconButton)`
 
 const UserIconButton = styled(MuiIconButton)`
   font-size: 16px !important;
+  &:hover {
+    border-radius: 10px !important;
+  }
   span,
   label {
     color: #5a5a5a;
@@ -82,9 +86,6 @@ const UserIconButton = styled(MuiIconButton)`
   svg {
     width: 30px;
     height: 30px;
-  }
-  &:hover {
-    background-color: transparent;
   }
   @media (max-width: 600px) {
     padding: 0px !important;
@@ -277,8 +278,12 @@ function UserMenu() {
 }
 
 const Header = ({ onDrawerToggle }) => {
+  const history = useHistory();
   const { t } = useTranslation();
   const membership = useSelector(membershipData);
+  const navigateToMembership = () => {
+    history.push(DASHBOARD_ROUTES.Membership);
+  };
   return (
     <>
       <AppBar position="sticky" elevation={0}>
@@ -302,21 +307,25 @@ const Header = ({ onDrawerToggle }) => {
               </Grid>
             )}
             <Grid item xs>
-              <MembershipStatusContainer component="span">
+              <MembershipStatusContainer
+                component="span"
+                onClick={navigateToMembership}
+              >
                 <MembershipHeaderText variant="h6">
                   {t("Membership.myMembership")}
                 </MembershipHeaderText>
                 <MembershipStatusText
                   variant="body1"
                   color={
-                    membership.membership 
+                    membership.membership
                       ? "#0d9d0d !important"
                       : "#ff0000 !important"
                   }
                 >
                   <FiberManualRecordIcon />{" "}
                   {membership.membership
-                    ? t("Membership.active") : t("Membership.inactive")}
+                    ? t("Membership.active")
+                    : t("Membership.inactive")}
                 </MembershipStatusText>
               </MembershipStatusContainer>
             </Grid>
