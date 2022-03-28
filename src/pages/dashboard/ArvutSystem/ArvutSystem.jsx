@@ -13,6 +13,13 @@ import Phone from "../../../img/icons/phone.png";
 import Whatsapp from "../../../img/icons/whatsapp.png";
 import countries from "../../../constants/countries";
 import SelectElement from "../MyProfile/Forms/FormElements/SelectElement";
+import { profileInfo } from "../../../redux/selectors/profile";
+import { useSelector } from "react-redux";
+import { keycloakData } from "../../../redux/selectors/user";
+import {
+  requestAccessToArvut,
+  getArvutStatus,
+} from "../../../services/arvut.service";
 const useStyles = makeStyles((theme) => ({
   image: {
     width: 22,
@@ -37,6 +44,25 @@ const useStyles = makeStyles((theme) => ({
 const ArvutSystem = () => {
   const { t, i18n } = useTranslation();
   const textAlignProps = i18n.dir() === "rtl" ? "right" : "left";
+  const keycloak = useSelector(keycloakData);
+  const profileData = useSelector(profileInfo);
+  const [note, setNote] = React.useState("");
+  const requestAccess = () => {
+    const body = {
+      name: keycloak.profile.firstName + " " + keycloak.profile.lastName,
+      keycloak_id: keycloak.subject,
+      status: "REQUESTED",
+      request_note: note,
+    };
+    //TODO: CHANGE UI
+    requestAccessToArvut(body).then((res) => console.log(res));
+  };
+  React.useEffect(() => {
+    if (keycloak && keycloak.subject) {
+      //TODO: CHANGE UI ON THE BASIS OF THE STATUS
+      getArvutStatus(keycloak.subject).then((res) => console.log(res));
+    }
+  });
   const styles = useStyles({ textAlignProps });
   return (
     <Grid container spacing={6}>
@@ -87,6 +113,7 @@ const ArvutSystem = () => {
               type="text"
               label={t("Dashboard.Profile.PersonalForm.firstName")}
               fullWidth
+              value={profileData.first_name_vernacular}
               placeholder={t(
                 "Dashboard.Profile.PersonalForm.firstNamePlaceholder"
               )}
@@ -98,6 +125,7 @@ const ArvutSystem = () => {
           <Grid item xs={12} md={6}>
             <TextField
               disabled={true}
+              value={profileData.last_name_vernacular}
               type="text"
               label={t("Dashboard.Profile.PersonalForm.firstName")}
               fullWidth
@@ -113,7 +141,8 @@ const ArvutSystem = () => {
             <TextField
               disabled={true}
               type="text"
-              label={t("Dashboard.Profile.PersonalForm.firstName")}
+              value={profileData.primary_email}
+              label={t("Dashboard.Profile.Emails.primaryEmail")}
               fullWidth
               placeholder={t(
                 "Dashboard.Profile.PersonalForm.firstNamePlaceholder"
@@ -127,7 +156,10 @@ const ArvutSystem = () => {
             <TextField
               disabled={true}
               type="text"
-              label={t("Dashboard.Profile.PersonalForm.firstName")}
+              value={profileData.alternate_email_1}
+              label={t("Dashboard.Profile.Emails.alternativeEmail", {
+                number: "1",
+              })}
               fullWidth
               placeholder={t(
                 "Dashboard.Profile.PersonalForm.firstNamePlaceholder"
@@ -144,6 +176,7 @@ const ArvutSystem = () => {
             <Grid item xs={10}>
               <MuiPhoneInput
                 defaultCountry="us"
+                value={profileData.mobile_number}
                 variant="outlined"
                 className={styles.input}
                 fullWidth
@@ -160,6 +193,7 @@ const ArvutSystem = () => {
             </Grid>
             <Grid item xs={10}>
               <MuiPhoneInput
+                value={profileData.whats_app_number}
                 defaultCountry="us"
                 variant="outlined"
                 className={styles.input}
@@ -170,6 +204,8 @@ const ArvutSystem = () => {
           <Grid item xs={12} md={6}>
             <SelectElement
               id="country"
+              disabled
+              value={profileData.country}
               label={t("Dashboard.Profile.PhysicalLocationForm.country")}
               selectData={countries}
             />
@@ -177,6 +213,7 @@ const ArvutSystem = () => {
           <Grid item xs={12} md={6}>
             <TextField
               type="text"
+              value={profileData.city}
               label={t("Dashboard.Profile.PhysicalLocationForm.city")}
               fullWidth
               placeholder={t("Global.inputPlaceholder", {
@@ -200,6 +237,7 @@ const ArvutSystem = () => {
                   "Dashboard.Profile.OtherInformation.tenName"
                 ).toLowerCase(),
               })}
+              value={profileData.name_of_ten_group}
               InputLabelProps={{
                 shrink: true,
               }}
@@ -215,13 +253,19 @@ const ArvutSystem = () => {
                   "Dashboard.Profile.study.tellAboutYouStudyFramework"
                 ).toLowerCase(),
               })}
+              value={note}
+              onChange={(e) => setNote(e.target.value)}
               InputLabelProps={{
                 shrink: true,
               }}
             />
           </Grid>
           <Grid item xs={12} md={12} justify="flex-end">
-            <Button variant="contained" color="primary">
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => requestAccess()}
+            >
               {t("Dashboard.ArvutSystem.requestAccess")}
             </Button>
           </Grid>
