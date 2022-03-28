@@ -291,6 +291,7 @@
     },
     "common": {
       "date": "Date",
+      "time": "Time",
       "product": "Product",
       "type": "Type",
       "amount": "Amount",
@@ -300,7 +301,8 @@
       "paid": "Paid",
       "failed": "Failed",
       "pending": "Pending",
-      "currency": "Currency"
+      "currency": "Currency",
+      "ticket": "Ticket"
     }
   }
 }
