@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Keycloak from "keycloak-js";
 
-import { setKeycloakData, setLoggedInUser, setMembershipData } from "../redux/actions/userActions";
+import {
+  setKeycloakData,
+  setLoggedInUser,
+  setMembershipData,
+} from "../redux/actions/userActions";
 import { useDispatch } from "react-redux";
 
 import ErrorLogin from "../views/ErrorLogin";

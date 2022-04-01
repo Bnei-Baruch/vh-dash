@@ -49,7 +49,7 @@ export default function Events() {
 
   const navigate = (externalUrl, url) => {
     if (externalUrl) {
-      window.location.href = "https://eurokab.info" + url;
+      window.location.href = window.location.origin + url;
       return;
     }
     history.push(url);
