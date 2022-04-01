@@ -4,7 +4,7 @@ import {
   setFirstName,
   setLastName,
   setKeycloakData,
-  setMembershipData
+  setMembershipData,
 } from "../actions/userActions";
 
 const initialState = {
@@ -28,7 +28,7 @@ export default createReducer(
     },
     [setMembershipData]: (state, action) => {
       return { ...state, membership: action.data };
-    }
+    },
   },
   initialState
 );
