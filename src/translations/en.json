@@ -126,7 +126,7 @@
         "eventTicket": "Event Ticket",
         "eventTicketHistory": "The Below table provides the history of event tickets purchased by user"
       },
-      "Help" : {
+      "Help": {
         "name": "Help",
         "title": "Help"
       },
@@ -149,7 +149,7 @@
           "languages": "Languages",
           "otherInformations": "Other Informations"
         },
-        "study" : {
+        "study": {
           "tellAboutYouStudyFramework": "Tell about you study framework in Beni Baruch"
         },
         "PersonalForm": {
@@ -285,7 +285,7 @@
       "info": "Membership Info",
       "statusDescription": "Status Description",
       "paymentHistory": "Payment History",
-      "descriptionInActiveMembership" : "No Membership found. Please click below button to purchase a membership or applying for grant",
+      "descriptionInActiveMembership": "No Membership found. Please click below button to purchase a membership or applying for grant",
       "descriptionActiveMembership": "Your membership is active.",
       "membershipDescription": "Description about the membership. This Memberhship provides you access to all the events and workskops on the platforms."
     },

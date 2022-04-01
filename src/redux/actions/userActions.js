@@ -4,7 +4,7 @@ import {
   SET_KEYCLOAK_DATA,
   SET_LAST_NAME,
   SET_LOGGEDIN_USER,
-  SET_MEMBERSHIP_DATA
+  SET_MEMBERSHIP_DATA,
 } from "../constants";
 
 export const setLoggedInUser = createAction(
