@@ -91,8 +91,8 @@ export default function Tickets() {
           </Grid>
           <Grid container>
             <Grid item xs={4}>
-                <Label variant="h4">$10</Label>
-                <Value variant="h5">Price</Value>
+              <Label variant="h4">$10</Label>
+              <Value variant="h5">Price</Value>
             </Grid>
             <Grid item xs={4}>
               <Label variant="h4">Regular</Label>
