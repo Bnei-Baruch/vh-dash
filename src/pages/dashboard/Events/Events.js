@@ -63,7 +63,7 @@ export default function Events() {
   };
   const getTicketsData = (eventId) => {
     const query = `?eventid=${eventId}&kc_id=${keycloak.subject}`;
-    getParticipants(query).then((res) => {
+    getParticipants(query).then(res => {
       if (res) {
         history.push(DASHBOARD_ROUTES.eventsTickets, res);
       }
