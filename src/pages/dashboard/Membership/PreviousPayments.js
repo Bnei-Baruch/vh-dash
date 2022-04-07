@@ -107,7 +107,7 @@ function PreviousPayments() {
           console.log(row);
           return (
             <>
-              {value === "paid" && (
+              {value === "success" && (
                 <SucessfulPayment>{t("common.paid")} </SucessfulPayment>
               )}
               {value === "pending" && (
@@ -135,7 +135,9 @@ function PreviousPayments() {
   React.useEffect(() => {
     if (keycloak) {
       const { profile } = keycloak;
-      getUserPreviousPayments(profile.email).then((res) => setPayments(res));
+      getUserPreviousPayments("yaakov.sabal@gmail.com").then((res) =>
+        setPayments(res)
+      );
     }
   }, [keycloak]);
   return (
