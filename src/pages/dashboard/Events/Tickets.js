@@ -1,4 +1,5 @@
 import { Grid, Typography } from "@material-ui/core";
+import moment from "moment";
 import React from "react";
 import styled from "styled-components";
 const TicketGrid = styled(Grid)`
@@ -16,7 +17,6 @@ const TicketHeaderLeft = styled(Grid)`
   color: #fff;
   font-weight: bold;
   min-height: 66px;
-  font-family: auto !important;
 `;
 const TicketHeaderRight = styled(Grid)`
   background-color: #4aa5ff;
@@ -51,7 +51,6 @@ const RightSide = styled(Grid)`
 const Label = styled(Typography)`
   padding: 20px 20px 0px 20px;
   font-weight: bold !important;
-  font-family: auto !important;
   transform: uppercase;
 `;
 
@@ -59,66 +58,89 @@ const Value = styled(Typography)`
   padding: 0px 20px 20px 20px;
   font-weight: normal !important;
   color: grey;
-  font-family: auto !important;
 `;
 
-export default function Tickets() {
-  return (
-    <Grid container spacing={3}>
-      <TicketGrid container item xs={12}>
-        <Grid item xs={8}>
-          <TicketHeaderLeft>
-            <Typography variant="h1">Convention Ticket</Typography>
-          </TicketHeaderLeft>
-          <Grid>
-            <Label variant="h3"> CONVENTION 2020 JAN : KABALAAH</Label>
-            <Value variant="h4">Convention Event</Value>
-          </Grid>
+export default function Tickets(props) {
+  if (!props && !props.location && !props.location.state) return <></>;
+  const { state } = props.location;
+  if (state && state.length > 0) {
+    const eventData = state[0];
+    return (
+      <Grid container spacing={3}>
+        <TicketGrid container item xs={12}>
+          <Grid item xs={8}>
+            <TicketHeaderLeft>
+              <Typography variant="h1">Ticket</Typography>
+            </TicketHeaderLeft>
+            <Grid>
+              <Label variant="h3"> {eventData.event_name}</Label>
+              <Value variant="h4">Convention Event</Value>
+            </Grid>
 
-          <Grid container>
-            <Grid item xs={4}>
-              <Label variant="h4">Yash Shah</Label>
-              <Value variant="h5">Name</Value>
+            <Grid container>
+              <Grid item xs={4}>
+                <Label variant="h4">
+                  {eventData.part_first_name} {eventData.part_last_name}
+                </Label>
+                <Value variant="h5">Name</Value>
+              </Grid>
+              <Grid item xs={4}>
+                <Label variant="h4">{eventData.part_gender}</Label>
+                <Value variant="h5">Gender</Value>
+              </Grid>
+              <Grid item xs={4}>
+                <Label variant="h4">{eventData.part_country}</Label>
+                <Value variant="h5">Country</Value>
+              </Grid>
             </Grid>
-            <Grid item xs={4}>
-              <Label variant="h4">Male</Label>
-              <Value variant="h5">Gender</Value>
-            </Grid>
-            <Grid item xs={4}>
-              <Label variant="h4">Active</Label>
-              <Value variant="h5">Membership</Value>
+            <Grid container>
+              <Grid item xs={4}>
+                <Label
+                  variant="h4"
+                  style={{
+                    whiteSpace: "nowrap",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                  }}
+                >
+                  {eventData.part_email}
+                </Label>
+                <Value variant="h5">Email</Value>
+              </Grid>
+              <Grid item xs={4}>
+                <Label variant="h4">
+                  {moment(eventData.registration_date).format("DD/MM/YYYY")}
+                </Label>
+                <Value variant="h5">Registration Date</Value>
+              </Grid>
+              <Grid item xs={4}>
+                <Label variant="h4">{eventData.participation_option}</Label>
+                <Value variant="h5">Payment Option</Value>
+              </Grid>
             </Grid>
           </Grid>
-          <Grid container>
-            <Grid item xs={4}>
-              <Label variant="h4">$10</Label>
-              <Value variant="h5">Price</Value>
+          <RightSide item xs={4}>
+            <TicketHeaderRight>
+              <Typography variant="h1"></Typography>
+            </TicketHeaderRight>
+            <Grid>
+              <Label variant="h3">
+                {moment(eventData.event_starts_on).format("DD/MM/YYYY")}
+              </Label>
+              <Value variant="h4">Date</Value>
             </Grid>
-            <Grid item xs={4}>
-              <Label variant="h4">Regular</Label>
-              <Value variant="h5">Ticket Type</Value>
-            </Grid>
-            <Grid item xs={4}>
-              <Label variant="h4">Credit Card</Label>
-              <Value variant="h5">Payment Mode</Value>
-            </Grid>
-          </Grid>
-        </Grid>
-        <RightSide item xs={4}>
-          <TicketHeaderRight>
-            <Typography variant="h1"></Typography>
-          </TicketHeaderRight>
-          <Grid>
-            <Label variant="h3">22 May 2022</Label>
-            <Value variant="h4">Date</Value>
-          </Grid>
 
-          <Grid>
-            <Label variant="h3">12AM</Label>
-            <Value variant="h4">Time</Value>
-          </Grid>
-        </RightSide>
-      </TicketGrid>
-    </Grid>
-  );
+            <Grid>
+              <Label variant="h3">
+                {moment(eventData.event_starts_on).format("HH:MM:SSS")}
+              </Label>
+              <Value variant="h4">Time</Value>
+            </Grid>
+          </RightSide>
+        </TicketGrid>
+      </Grid>
+    );
+  } else {
+    return <></>;
+  }
 }
