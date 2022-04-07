@@ -8,7 +8,11 @@ import EventIcon from "@material-ui/icons/Event";
 import HelpIcon from "@material-ui/icons/Help";
 import async from "../components/Async";
 import { DASHBOARD_ROUTES } from "./dashboardRoutes";
-import { ARCHIVE_LINK, BB_HELP_LINK } from "../constants/common";
+import {
+  ARCHIVE_LINK,
+  ARVUT_SYSTEM_URL,
+  BB_HELP_LINK,
+} from "../constants/common";
 
 // Home
 const Home = async(() => import("../pages/dashboard/Home"));
@@ -94,7 +98,7 @@ const dashboardRoutes = [
     children: null,
   },
   {
-    path: DASHBOARD_ROUTES.arvutSystem,
+    path: ARVUT_SYSTEM_URL,
     id: "ArvutSystem",
     icon: <ViewComfyIcon />,
     enableHeader: true,
@@ -103,7 +107,7 @@ const dashboardRoutes = [
     ],
     component: ArvutSystem,
     children: null,
-    isExternalLink: false,
+    isExternalLink: true,
   },
   {
     path: ARCHIVE_LINK,
@@ -115,15 +119,15 @@ const dashboardRoutes = [
     children: null,
     isExternalLink: true,
   },
-  {
-    path: window.APP_CONFIG.VH_BASE_URL + BB_HELP_LINK,
-    id: "Help",
-    icon: <HelpIcon />,
-    enableHeader: true,
-    component: Archive,
-    children: null,
-    isExternalLink: true,
-  },
+  // {
+  //   path: window.APP_CONFIG.VH_BASE_URL + BB_HELP_LINK,
+  //   id: "Help",
+  //   icon: <HelpIcon />,
+  //   enableHeader: true,
+  //   component: Archive,
+  //   children: null,
+  //   isExternalLink: true,
+  // },
 ];
 
 const eventTicketRoute = [
