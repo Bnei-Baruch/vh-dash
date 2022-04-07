@@ -3,7 +3,10 @@ import React from "react";
 import EventIcon from "@material-ui/icons/Event";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import { getEventsListWithParticipationDetail, getParticipants } from "../../../services/events.service";
+import {
+  getEventsListWithParticipationDetail,
+  getParticipants,
+} from "../../../services/events.service";
 import { keycloakData } from "../../../redux/selectors/user";
 import moment from "moment";
 import { useHistory } from "react-router-dom";
@@ -58,10 +61,9 @@ export default function Events() {
     }
     history.push(url);
   };
-  console.log(keycloak)
   const getTicketsData = (eventId) => {
     const query = `?eventid=${eventId}&kc_id=${keycloak.subject}`;
-    getParticipants(query).then(res => {
+    getParticipants(query).then((res) => {
       if (res) {
         history.push(DASHBOARD_ROUTES.eventsTickets, res);
       }
