@@ -47,7 +47,11 @@ export default function Events() {
       );
   }, [keycloak]);
 
-  const navigate = (externalUrl, url) => {
+  const navigate = (externalUrl, url, newTab) => {
+    if (newTab) {
+      window.open(url, "_blank").focus();
+      return;
+    }
     if (externalUrl) {
       window.location.href = window.location.origin + url;
       return;
@@ -89,10 +93,9 @@ export default function Events() {
                 color="default"
                 onClick={() =>
                   navigate(
-                    false,
-                    event.url
-                      ? event.url
-                      : (window.location.href = "https://convention.kli.one")
+                    true,
+                    event.url ? event.url : "https://convention.kli.one",
+                    true
                   )
                 }
               >
