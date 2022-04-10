@@ -1,99 +1,134 @@
 {
   "translation": {
     "Global": {
-      "inputPlaceholder": "הזן את {{input}}",
-      "formErrorMsg": "הזן את הפרטים שלך",
-      "saveBtn": "לשמור שינויים",
-      "cancelBtn": "לבטל",
-      "modify": "לשנות",
-      "yes": "כן",
-      "no": "לא",
+      "inputPlaceholder": "Enter your {{input}}",
+      "formErrorMsg": "Please enter your details",
+      "saveBtn": "Save changes",
+      "cancelBtn": "Cancel",
+      "modify": "Modify",
+      "yes": "Yes",
+      "no": "No",
+      "closeBtn": "Close",
+      "requestError": "Ooops! Something went wrong! Please, try again later or contact our support",
       "Currency": {
         "usd": "USD",
         "eur": "EUR"
       },
       "Days": {
-        "monday": "יום שני",
-        "tuesday": "יום שלישי",
-        "wednesday": "יום רביעי",
-        "thursday": "יום חמישי",
-        "friday": "יום שישי",
-        "saturday": "שבת",
-        "sunday": "יום ראשון"
+        "monday": "Monday",
+        "tuesday": "Tuesday",
+        "wednesday": "Wednesday",
+        "thursday": "Thursday",
+        "friday": "Friday",
+        "saturday": "Saturday",
+        "sunday": "Sunday"
       },
       "Months": {
-        "january": "ינואר",
-        "february": "פברואר",
-        "march": "במרץ",
-        "april": "אפריל",
-        "may": "אולי",
-        "june": "יוני",
-        "july": "יולי",
-        "august": "אוגוסט",
-        "september": "ספטמבר",
-        "october": "אוקטובר",
-        "november": "נובמבר",
-        "december": "דצמבר"
+        "january": "January",
+        "february": "February",
+        "march": "March",
+        "april": "April",
+        "may": "May",
+        "june": "June",
+        "july": "July",
+        "august": "August",
+        "september": "September",
+        "october": "October",
+        "november": "November",
+        "december": "December"
       },
       "Subscription": {
         "active": "Active",
         "pause": "Pause",
         "cancel": "Cancel"
-      },
-      "requestError": "אופס! משהו השתבש! נא נסה שוב מאוחר יותר או פנה לתמיכה שלנו",
-      "closeBtn": "סגור"
+      }
     },
     "Languages": {
-      "English": "אנגלית",
-      "Russian": "רוסית",
-      "Hebrew": "עברית",
-      "Spanish": "ספרדית",
-      "streetAddressPlaceholder": "הזן את כתובת הרחוב שלך"
+      "English": "English",
+      "Russian": "Russian",
+      "Hebrew": "Hebrew",
+      "streetAddressPlaceholder": "Enter your street",
+      "Spanish": "Spanish",
+      "French": "French"
     },
     "Home": {
-      "arvut": "ערבות",
-      "watchBtn": "לצפיה",
-      "noLiveEvent": "אין שידור חי",
-      "noEvent": "אין אירועים",
-      "currentEvent": "אירוע נוכחי",
-      "totalConnections": "מחוברים למערכת",
-      "tensNumber": "מספר עשירייות מחוברות",
-      "tenFriends": "חברים מהעשירייה שלך",
-      "today": "היום",
-      "tomorrow": "מחר",
-      "yesterday": "אתמול",
-      "events": "אירועים",
-      "welcomeBack": "ברוך שובך",
-      "notActive": "לא פעיל",
-      "active": "פעיל",
-      "watchRecordedBtn": "צפה שהוקלט",
-      "convention": "כנס בינלאומי",
-      "registered": "אתה רשום",
-      "notRegistered": "אינך רשום לכנס",
-      "register": "הרשמה",
-      "conventionSite": "אתר הכנס",
-      "conventionsubtitle": "מגלים עולם חדש",
-      "conventiontitle": "מתעלים על עצמנו"
+      "notActive": "NOT ACTIVE",
+      "active": "ACTIVE",
+      "watchBtn": "Watch",
+      "watchRecordedBtn": "Watch Recorded",
+      "noLiveEvent": "No live events",
+      "noEvent": "No events",
+      "currentEvent": "Current Event",
+      "totalConnections": "Total connections",
+      "tensNumber": "Number of tens connected",
+      "tenFriends": "Friends from your ten",
+      "today": "Today",
+      "tomorrow": "Tomorrow",
+      "yesterday": "Yesterday",
+      "events": "Events",
+      "welcomeBack": "Welcome back",
+      "convention": "Convention",
+      "registered": "You are registered",
+      "notRegistered": "You are not registered",
+      "register": "Register",
+      "conventionSite": "Convention Site",
+      "conventiontitle": "Rising above ourselves",
+      "conventionsubtitle": "Revealing a new World"
     },
     "UserMenu": {
-      "logOut": "להתנתק",
-      "profile": "פרופיל",
-      "logOutText": "האם את/ה באמת רוצה לצאת?",
-      "yesBtn": "כן",
-      "cancelBtn": "לבטל",
+      "logOut": "Log Out",
+      "logOutText": "Do you really want to quit?",
+      "yesBtn": "Yes",
+      "cancelBtn": "Cancel",
+      "subscriptions": "Subscriptions",
+      "payUserFee": "Pay User Fee",
       "statuses": {
-        "late": "עמלות מאוחרות",
-        "nonExistant": "לא קיים",
-        "unknown": "ידוע",
-        "hold": "בהמתנה",
-        "active": "פעילים"
-      },
-      "payUserFee": "לתשלום עבור השימוש",
-      "subscriptions": "מנויים"
+        "active": "Active",
+        "hold": "On hold",
+        "unknown": "Unknown",
+        "nonExistant": "Non - existant",
+        "late": "Late fees"
+      }
     },
     "Dashboard": {
+      "ArvutSystem": {
+        "name": "Arvut System",
+        "title": "Arvut System",
+        "description": "Arvut Description : Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it",
+        "accessTitle": "Access to the Arvut System",
+        "accessSubDescription": "Arvut Description : Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it",
+        "accessDescription": "Arvut Description : Lorem Ipsum is simply dummy text of the printing",
+        "requestAccess": "Request Access to Arvut System",
+        "continueAsGuest": "Continue as guest",
+        "verfiyInformation": "Please verify or complete your information below"
+      },
+      "Archive": {
+        "name": "Kabbalah Media"
+      },
       "Dashboard": {
-        "name": "ראשי"
+        "name": "Dashboard"
+      },
+      "Status": {
+        "name": "Status",
+        "title": "Status"
+      },
+      "PreviousPayment": {
+        "name": "Previous Payment",
+        "title": "Previous Payment",
+        "paymentHistory": "The Below table provides the history of payments made to by user"
+      },
+      "Membership": {
+        "name": "Membership"
+      },
+      "EventTicket": {
+        "name": "Event Ticket",
+        "title": "Event Ticket",
+        "eventTicket": "Event Ticket",
+        "eventTicketHistory": "The Below table provides the history of event tickets purchased by user"
+      },
+      "Help": {
+        "name": "Help",
+        "title": "Help"
       },
       "Events": {
         "name": "Events",
@@ -102,204 +137,173 @@
         "register": "Register"
       },
       "Profile": {
-        "name": "פרופיל",
-        "title": "הפרופיל שלי",
+        "name": "Profile",
+        "title": "My Profile",
+        "socialFormName": "My phone numbers",
+        "profileCreated": "Your profile info was successfully created",
+        "profileUpdated": "Your profile info was successfully updated",
+        "profileNotExist": "Seems like you don't have created profile info. Please, click on 'Modify' button and create your profile",
         "Tabs": {
-          "personal": "אישי",
-          "framework": "המסגרת שלי",
-          "skills": "הכישורים שלי",
-          "notification": "הודעה",
-          "security": "אבטחה",
-          "languages": "שפה",
-          "otherInformations": "מידע אחר"
+          "personal": "Personal",
+          "security": "Security",
+          "languages": "Languages",
+          "otherInformations": "Other Informations"
+        },
+        "study": {
+          "tellAboutYouStudyFramework": "Tell about you study framework in Beni Baruch"
         },
         "PersonalForm": {
-          "name": "אישי",
-          "firstName": "שם פרטי",
-          "firstNamePlaceholder": "הכנס/הכניסי את השם הפרטי שלך",
-          "dateOfBirth": "תאריך לידה",
+          "name": "Personal",
+          "firstName": "First Name",
+          "firstNamePlaceholder": "Enter your first name",
+          "dateOfBirth": "Date of birth",
           "gender": {
-            "label": "מין",
-            "male": "זכר",
-            "female": "נקבה"
+            "label": "Gender",
+            "male": "Male",
+            "female": "Female"
           },
-          "fullName": "הזן/י את שמך המלא בשפת האם שלך",
-          "fullNamePlaceholder": "הכנס/הכניסי את שמך המלא",
-          "lastName": "שם משפחה",
-          "lastNamePlaceholder": "הזן/י את שם המשפחה שלך",
-          "country": "ארץ מוצא",
-          "primaryLanguage": "שפת אם",
-          "phoneNumber": "מספר טלפון",
-          "phoneNumberPlaceholder": "הכנס/הכניסי את מספר הטלפון שלך",
-          "saveBtn": "שמור/שמרי שינויים",
           "maritalStatus": {
-            "single": "רווק",
-            "married": "נשואים",
-            "divorced": "גרוש",
-            "widowed": "אלמנה",
-            "label": "מצב משפחתי"
-          }
-        },
-        "LoginForm": {
-          "name": "פרטי כניסה",
-          "email": "דוא\"ל",
-          "emailPlaceholder": "הכנס/הכניסי את כתובת הדוא\"ל שלך",
-          "password": "הכנס/הכניסי את הסיסמה שלך",
-          "passwordPlaceholder": "הכנס/הכניסי את הסיסמה שלך",
-          "saveBtn": "שמור/שמרי שינויים"
-        },
-        "SocialForm": {
-          "name": "חשבונות הרשת החברתית שלי",
-          "facebook": "פרופיל הפייסבוק שלך",
-          "facebookPlaceholder": "הזן/ני פרופיל פייסבוק",
-          "youtube": "פרופיל YouTube שלך",
-          "youtubePlaceholder": "הזן/ני פרופיל Youtube",
-          "instagram": "החשבון שלך באינסטגרם",
-          "instagramPlaceholder": "הכנס/ הכניסי את הכינוי שלך באינסטגרם",
-          "linked": "הפרופיל Linkedin שלך",
-          "linkedPlaceholder": "הזן פרופיל לינקדאין",
-          "twitter": "החשבון שלך בטוויטר",
-          "twitterPlaceholder": " היכנס לידית הטוויטר",
-          "skype": " ידית הסקייפ שלך",
-          "skypePlaceholder": " הזן את הידית של סקייפ",
-          "connectBtn": " לְחַבֵּר"
+            "label": "Marital Status",
+            "single": "Single",
+            "married": "Married",
+            "divorced": "Divorced",
+            "widowed": "Widowed"
+          },
+          "lastName": "Last Name",
+          "lastNamePlaceholder": "Enter your last name",
+          "primaryLanguage": "Primary language"
         },
         "PhysicalLocationForm": {
-          "name": "המיקום הפיזי",
-          "streetAddress": "כתובת הרחוב",
-          "postalCode": "המיקוד",
-          "country": "ארץ",
-          "stateRegion": "שם המחוז/אזור",
-          "city": "עיר"
+          "name": "Physical Location",
+          "streetAddress": "Street address",
+          "postalCode": "Postal Code",
+          "country": "Country",
+          "stateRegion": "State/Region",
+          "city": "City"
         },
-        "socialFormName": "מספרי הטלפון שלי",
         "Emails": {
-          "name": "האימיילים שלי",
-          "primaryEmail": "דוא\"ל עיקרי",
-          "alternativeEmail": "דואר אלקטרוני חלופי {{number}}",
-          "emailError": "הזן כתובת דואר אלקטרוני נכונה"
+          "name": "My Emails",
+          "primaryEmail": "Primary email",
+          "alternativeEmail": "Alternative email {{number}}",
+          "emailError": "Please enter correct email address"
         },
         "Languages": {
-          "name": "שפה",
-          "firstLanguage": "שפת האם",
-          "otherLanguage": "שפה אחרת {{number}}"
+          "name": "Languages",
+          "firstLanguage": "First Language",
+          "otherLanguage": "Other language {{number}}"
         },
         "LanguagePreferences": {
-          "name": "העדפות השפה",
-          "emailLanguage": "שפת דוא\"ל",
-          "listeningLanguage": "שפת האזנה",
-          "listeningTooltip": "לורם איפסום דולור לשבת אמט, קונסטרוקטור אדיפיסינג אליט. פורוס לשבת לקטוס מגורים סאפיאן, קוויסק אולטריס.",
-          "emailTooltip": "לורם איפסום דולור לשבת אמט, קונסטרוקטור אדיפיסינג אליט. פורוס לשבת לקטוס מגורים סאפיאן, קוויסק אולטריס.",
-          "readingLanguage": "שפת קריאה",
-          "readingTooltip": "לורם איפסום דולור לשבת אמט, קונסטרוקטור אדיפיסינג אליט. פורוס לשבת לקטוס מגורים סאפיאן, קוויסק אולטריס."
+          "name": "Language Preferences",
+          "emailLanguage": "Email Language",
+          "emailTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
+          "listeningLanguage": "Listening Language",
+          "listeningTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
+          "readingLanguage": "Reading Language",
+          "readingTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque."
         },
         "OtherInformation": {
-          "education": "לימודים",
-          "startYear": "שנת התחלה",
-          "studyFramework": "מסגרת לימוד",
-          "ten": "עשיריה",
-          "tenName": "שם של עשיריה, אם יש",
-          "studyGroup": "יש לך קבוצת לימוד?",
-          "wantStudyGroup": "אתה רוצה קבוצת לימוד?"
+          "education": "Education",
+          "startYear": "Start Year",
+          "studyFramework": "Study Framework",
+          "ten": "Ten",
+          "tenName": "Name of ten, if has group",
+          "studyGroup": "Do you have a study group?",
+          "wantStudyGroup": "Do you want to have a study group?"
         },
         "Security": {
-          "name": "פרטי כניסה",
-          "email": "דואר אלקטרוני",
-          "googleConnected": "גוגל קונקט",
-          "googleTooltip": "לורם איפסום דולור לשבת אמט, קונסטרוקטור אדיפיסינג אליט. פורוס לשבת לקטוס מגורים סאפיאן, קוויסק אולטריס.",
-          "facebookConnected": "פייסבוק מחוברת",
-          "facebookTooltip": "לורם איפסום דולור לשבת אמט, קונסטרוקטור אדיפיסינג אליט. פורוס לשבת לקטוס מגורים סאפיאן, קוויסק אולטריס.",
-          "forgotPassword": "שכחת את הסיסמה?"
-        },
-        "profileNotExist": "נראה שלא יצרת פרטי פרופיל. אנא, לחץ על כפתור 'שינוי' וליצור את הפרופיל שלך",
-        "profileUpdated": "פרטי הפרופיל שלך עודכנו בהצלחה",
-        "profileCreated": "פרטי הפרופיל שלך נוצרו בהצלחה"
+          "name": "Login Info",
+          "email": "Email",
+          "googleConnected": "Google Connected",
+          "googleTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
+          "facebookConnected": "Facebook Connected",
+          "facebookTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
+          "forgotPassword": "Forgot Password?"
+        }
       },
-      "Account": {
-        "name": "חֶשְׁבּוֹן",
-        "title": "החשבון שלי",
+      "Payments": {
+        "name": "Payments",
+        "title": "My payments",
         "Tabs": {
-          "transaction": "כל העסקה",
-          "payment": " שיטות תשלום",
-          "myPlan": "התוכנית שלי"
+          "transaction": "All Transaction",
+          "myPlan": "My Plan"
         },
-        "paidOn": "שילם עבור",
-        "purpose": "מַטָרָה",
-        "paymentMethod": "אמצעי תשלום",
-        "paymentType": "סוג תשלום",
-        "amount": "כמות",
-        "currency": "מַטְבֵּעַ",
-        "status": "סטָטוּס",
-        "action": "פעולה",
-        "cancelPayment": "בטל את התשלום",
-        "downloadInvoice": "הורד חשבונית כ- PDF",
-        "card": "כַּרְטִיס",
-        "cardNumber": "מספר",
-        "expirationDate": "תאריך תפוגה"
+        "paidOn": "Paid on",
+        "purpose": "Purpose",
+        "paymentMethod": "Payment Method",
+        "paymentType": "Payment Type",
+        "amount": "Amount",
+        "currency": "Currency",
+        "status": "Status",
+        "action": "Action",
+        "cancelPayment": "Cancel payment",
+        "downloadInvoice": "Download invoice as PDF",
+        "newPlan": "New Plan",
+        "edit": "Edit",
+        "editSubscription": "Edit Subscription",
+        "currencyLabel": "Choose your currency",
+        "subscriptionLabel": "Change the status of subscription",
+        "amountLabel": "How much are you paying?"
       },
       "BroadcastArea": {
-        "noText": "Please input question",
-        "successPosted": "Question successfully posted",
         "liveLanguage": "Live Language",
         "questions": "Questions",
         "yourQuestion": "Your Question",
         "postYourQuestion": "Post your question",
         "posting": "Posting...",
-        "name": "שידור",
-        "title": "שידור",
-        "caption": "גילוי החיים בעשריה",
-        "subCaption": "קבלית העולם העולמית 2021",
-        "broadcast": "שידור",
-        "broadcastLanguage": "שפות שידור",
-        "loading": "טוען...",
-        "noBroadcast": "אין שידור עכשיו",
+        "name": "Broadcast Area",
+        "title": "Broadcast Area",
+        "broadcast": "Broadcast",
+        "broadcastLanguage": "Broadcast languages",
+        "loading": "Loading...",
+        "noBroadcast": "No broadcast now",
+        "noText": "Please input question",
+        "successPosted": "Question successfully posted",
         "Question": {
-          "title": "שלח שאלה",
-          "label": "מה השאלה שלך?",
-          "placeholder": "הזן את השאלה שלך ולחץ על הכפתור",
-          "button": "לִשְׁאוֹל",
-          "successMsg": "נשלח בהצלחה!",
-          "errorMsg": "שגיאה לא צפויה. בבקשה נסה שוב!"
+          "title": "Send a Question",
+          "label": "What is your question?",
+          "placeholder": "Enter your question and press the button",
+          "button": "Ask",
+          "successMsg": "Sent successfully!",
+          "errorMsg": "Unexpected error. Please, try again!"
         },
         "Annoucements": {
-          "title": "הודעות",
-          "text": "הבית הווירטואלי שלנו כולל תשתית פיזית וכוח אדם לשמירה על הפעילות המקיפה שלנו ולשיפור מערכות מקוונות לחיבור אופטימלי במהלך שיעורי קבלה יומיים, מפגשים חברתיים, חגים וארוחות. זה מאפשר לכל חבר אינטראקציה מלאה בשפתם, הן עם עשרת הקלי שלהם העולמי מ- 72 מדינות.",
-          "donationsButton": "לתרומה",
-          "donationsQuote": "\"אך ורק בהתפשטות חכמת הקבלה נזכה לגאולה השלמה\" (הרב יהודה אשלג, \"בעל הסולם\").",
-          "donations": "בואו להיות שותפים במפעל ההפצה של עמותת \"בני ברוך - קבלה לעם\"",
-          "donationsLink": "http://bit.ly/2ZUteWn"
+          "title": "Announcements",
+          "text": "Our Virtual Home includes the physical infrastructure and manpower for maintaining our comprehensive operation and improving online systems for optimal connection during Daily Kabbalah Lessons, social gatherings, holidays, and meals. It allows each friend full interaction in their language, both with their Ten and the World Kli from 72 countries.",
+          "donations": "LET'S BE PARTNERS IN THE DISSEMINATION ENTERPRISE OF THE \"BNEI BARUCH - KABBALAH LA'AM\" ASSOCIATION",
+          "donationsQuote": "\"Only through the expansion of the wisdom of Kabbalah in the masses will we obtain complete redemption\" (Rabbi Yehuda Ashlag, \"Baal HaSulam\").",
+          "donationsButton": "Donate",
+          "donationsLink": "http://bit.ly/2O0Pifo"
         }
-      },
-      "Payments": {
-        "amountLabel": "כמה אתה משלם?",
-        "subscriptionLabel": "שינוי מצב המנוי",
-        "currencyLabel": "בחר את המטבע שלך",
-        "editSubscription": "ערוך מנוי",
-        "edit": "ערוך",
-        "newPlan": "תוכנית חדשה",
-        "downloadInvoice": "הורד חשבונית כ- PDF",
-        "cancelPayment": "בטל תשלום",
-        "action": "פעולה",
-        "status": "סטטוס",
-        "currency": "מטבע",
-        "amount": "כמות",
-        "paymentType": "סוג תשלום",
-        "paymentMethod": "שיטת תשלום",
-        "purpose": "תכלית",
-        "paidOn": "שולם ב-",
-        "Tabs": {
-          "myPlan": "התוכנית שלי",
-          "transaction": "כל התנועה"
-        },
-        "title": "התשלומים שלי",
-        "name": "תשלומים"
-      },
-      "Archive": {
-        "name": "קבלה מדיה"
-      },
-      "ArvutSystem": {
-        "name": "מערכת הערבות"
       }
-    }
+    },
+    "Membership": {
+      "name": "Membership",
+      "myMembership": "My Membership status",
+      "active": "Active",
+      "inactive": "Inactive",
+      "new": "New",
+      "info": "Membership Info",
+      "statusDescription": "Status Description",
+      "paymentHistory": "Payment History",
+      "descriptionInActiveMembership": "No Membership found. Please click below button to purchase a membership or applying for grant",
+      "descriptionActiveMembership": "Your membership is active.",
+      "membershipDescription": "Description about the membership. This Memberhship provides you access to all the events and workskops on the platforms."
+    },
+    "common": {
+      "date": "Date",
+      "time": "Time",
+      "product": "Product",
+      "type": "Type",
+      "amount": "Amount",
+      "paymentId": "Payment ID",
+      "paymentMethod": "Payment Method",
+      "status": "Status",
+      "paid": "Paid",
+      "failed": "Failed",
+      "pending": "Pending",
+      "currency": "Currency",
+      "ticket": "Ticket"
+    },
+    "may2022": "Only the friends - Kabbalah Convention"
   }
 }

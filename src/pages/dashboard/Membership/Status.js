@@ -49,7 +49,7 @@ export default function Status() {
   const redirectToPayment = () => {
     window
       .open(
-        `${window.location.origin}/pay/order/1?lang=${i18n.language}`,
+        `${window.location.origin}/pay/membership?lang=${i18n.language}`,
         "_blank"
       )
       .focus();
@@ -128,9 +128,7 @@ export default function Status() {
                       {t("Membership.statusDescription")} :
                     </Typography>
                     <Typography variant="body1">
-                      {status === "active"
-                        ? t("Membership.descriptionActiveMembership")
-                        : t("Membership.descriptionInActiveMembership")}
+                      {t(`Membership.${membership.status_name}`)}
                     </Typography>
                   </Grid>
                   <br />
