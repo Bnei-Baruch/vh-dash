@@ -135,8 +135,11 @@ function PreviousPayments() {
   React.useEffect(() => {
     if (keycloak) {
       const { profile } = keycloak;
-      getUserPreviousPayments("yaakov.sabal@gmail.com").then((res) =>
-        setPayments(res)
+      getUserPreviousPayments(profile.email).then((res) => {
+        if (res && res.length > 0) {
+          setPayments(res.filter((item) => item.payment_status === 'success'));
+        }
+      }
       );
     }
   }, [keycloak]);

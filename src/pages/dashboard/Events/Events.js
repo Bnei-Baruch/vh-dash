@@ -76,7 +76,7 @@ export default function Events() {
           <Grid item xs={12} md={4} className={classes.eventTile}>
             <Grid className={[classes.flexTile, classes.eventName]}>
               <EventIcon /> &nbsp; &nbsp;
-              <Typography variant="h4">{event.name}</Typography>
+              <Typography variant="h4">{t(event.slug)}</Typography>
             </Grid>
             <Grid className={classes.flexTile}>
               <Typography className={classes.label} variant="p">
