@@ -128,9 +128,7 @@ export default function Status() {
                       {t("Membership.statusDescription")} :
                     </Typography>
                     <Typography variant="body1">
-                      {status === "active"
-                        ? t("Membership.descriptionActiveMembership")
-                        : t("Membership.descriptionInActiveMembership")}
+                      {t(`Membership.${membership.status_name}`)}
                     </Typography>
                   </Grid>
                   <br />
