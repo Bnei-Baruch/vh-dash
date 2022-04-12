@@ -49,11 +49,20 @@ export default function Status() {
   const redirectToPayment = () => {
     window
       .open(
-        `${window.location.origin}/pay/membership?lang=${i18n.language}`,
+        `${window.location.origin}/pay/order/1?lang=${i18n.language}`,
         "_blank"
       )
       .focus();
   };
+
+  // const redirectToPayment = () => {
+  //   window
+  //     .open(
+  //       `${window.location.origin}/pay/membership?lang=${i18n.language}`,
+  //       "_blank"
+  //     )
+  //     .focus();
+  // };
 
   React.useEffect(() => {
     if (membership && membership.membership) {
