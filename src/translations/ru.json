@@ -92,8 +92,8 @@
         },
         "Dashboard": {
             "ArvutSystem": {
-                "name": "Arvut система",
-                "title": "Arvut система",
+                "name": "Система Арвут",
+                "title": "Система Арвут",
                 "description": "Arvut Description : Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it",
                 "accessTitle": "Access to the Arvut System",
                 "accessSubDescription": "Arvut Description : Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it",
@@ -103,10 +103,10 @@
                 "verfiyInformation": "Please verify or complete your information below"
             },
             "Archive": {
-                "name": "каббала медиа"
+                "name": "Архив"
             },
             "Dashboard": {
-                "name": "главный"
+                "name": "Главная"
             },
             "Status": {
                 "name": "Статус",
@@ -133,7 +133,7 @@
             "Events": {
                 "name": "События",
                 "title": "События",
-                "page": "События",
+                "page": "Страница события",
                 "register": "Регистрация"
             },
             "Profile": {
@@ -304,6 +304,6 @@
             "currency": "Валюта",
             "ticket": "Билет"
         },
-        "may2022": "Только с товарищами"
+        "may2022": "Только с товарищами - Конгресс"
     }
 }
