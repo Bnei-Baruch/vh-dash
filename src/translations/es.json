@@ -511,11 +511,11 @@
       },
 
       "Payments": {
-        "name": "Payments",
-        "title": "My payments",
+        "name": "Pagos",
+        "title": "Mis Pagos",
         "Tabs": {
-          "transaction": "All Transaction",
-          "myPlan": "My Plan"
+          "transaction": "Todas las transacciones",
+          "myPlan": "Mi Plan"
         },
         "paidOn": "Paid on",
         "purpose": "Purpose",
@@ -540,10 +540,10 @@
         "yourQuestion": "Your Question",
         "postYourQuestion": "Post your question",
         "posting": "Posting...",
-        "name": "Broadcast Area",
-        "title": "Broadcast Area",
-        "broadcast": "Broadcast",
-        "broadcastLanguage": "Broadcast languages",
+        "name": "Transmisiones en vivo",
+        "title": "Transmisiones en vivo",
+        "broadcast": "Transmisiones en vivo",
+        "broadcastLanguage": "Lenguaje de difusión",
         "loading": "Loading...",
         "noBroadcast": "No broadcast now",
         "noText": "Please input question",
@@ -566,34 +566,35 @@
         }
       }
     },
+
     "Membership": {
-      "name": "Membership",
-      "myMembership": "My Membership status",
-      "active": "Active",
-      "inactive": "Inactive",
+      "name": "Membresía",
+      "myMembership": "Estado de la membresía",
+      "active": "Activo",
+      "inactive": "Inactivo",
       "new": "New",
-      "info": "Membership Info",
-      "statusDescription": "Status Description",
-      "paymentHistory": "Payment History",
-      "descriptionInActiveMembership": "No Membership found. Please click below button to purchase a membership or applying for grant",
-      "descriptionActiveMembership": "Your membership is active.",
-      "membershipDescription": "Description about the membership. This Memberhship provides you access to all the events and workskops on the platforms."
+      "info": "Sobre la membresía",
+      "statusDescription": "Estado de la membresía",
+      "paymentHistory": "Historial de pagos",
+      "descriptionInActiveMembership": "No se ha encontrado ninguna membresía, haga clic a continuación para comprar una membresía o solicitar apoyo financiero",
+      "descriptionActiveMembership": "Su membresía está activa",
+      "membershipDescription": "La membresía es su apoyo a Bnei Baruch y le brinde acceso a eventos y talleres en el sistema ARVUT"
     },
     "common": {
-      "date": "Date",
-      "time": "Time",
-      "product": "Product",
-      "type": "Type",
-      "amount": "Amount",
-      "paymentId": "Payment ID",
-      "paymentMethod": "Payment Method",
-      "status": "Status",
-      "paid": "Paid",
-      "failed": "Failed",
-      "pending": "Pending",
-      "currency": "Currency",
-      "ticket": "Ticket"
+      "date": "Fecha",
+      "time": "Tiempo",
+      "product": "Producto",
+      "type": "Tipo",
+      "amount": "Monto",
+      "paymentId": "ID de Pago",
+      "paymentMethod": "Metodo de Pago",
+      "status": "Estado",
+      "paid": "Pagado",
+      "failed": "Fallado",
+      "pending": "Pendiente",
+      "currency": "Divisa",
+      "ticket": "Billete"
     },
-    "may2022": "Only the friends - Kabbalah Convention"
+    "may2022": "Solo los amigos - Congreso de Cabalá"
   }
 }

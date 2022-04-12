@@ -277,17 +277,17 @@
             }
         },
         "Membership": {
-            "name": "абонемент",
-            "myMembership": "Статус абоненемента",
+            "name": "Абонемент",
+            "myMembership": "Статус абонемента",
             "active": "активный",
             "inactive": "Неактивный",
             "new": "New",
-            "info": "Информация о абонемент",
+            "info": "Информация о абонементе",
             "statusDescription": "Статус Описание",
             "paymentHistory": "История платежей",
             "descriptionInActiveMembership": "Aбонемент не найдена. Пожалуйста, нажмите кнопку ниже, чтобы купить один или обратиться за помощью",
-            "descriptionActiveMembership": "Ваша абонемент активна",
-            "membershipDescription": "Он предоставляет вам доступ ко всем событиям и семинарам в системе."
+            "descriptionActiveMembership": "Ваш абонемент активен.",
+            "membershipDescription": "Абонемент — это ваша поддержка Бней Барух и доступ к мероприятиям и семинарам в системе Арвут."
         },
         "common": {
             "date": "Дата",
