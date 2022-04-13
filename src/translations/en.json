@@ -304,6 +304,17 @@
       "currency": "Currency",
       "ticket": "Ticket"
     },
+    "ticket": {
+      "title": "Ticket",
+      "event": "Event",
+      "name": "Name",
+      "registration_date": "Registration Date",
+      "payment_option": "Payment Option",
+      "date": "Date",
+      "email": "Email",
+      "country": "Country",
+      "gender": "Gender"
+    },
     "may2022": "Only the friends - Kabbalah Convention"
   }
 }

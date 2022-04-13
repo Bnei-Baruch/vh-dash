@@ -5,12 +5,10 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import {
   getEventsListWithParticipationDetail,
-  getParticipants,
 } from "../../../services/events.service";
 import { keycloakData } from "../../../redux/selectors/user";
 import moment from "moment";
 import { useHistory } from "react-router-dom";
-import { DASHBOARD_ROUTES } from "../../../routes/dashboardRoutes";
 const useStyles = makeStyles((theme) => ({
   eventTile: {
     backgroundColor: "#fff",
@@ -62,12 +60,7 @@ export default function Events() {
     history.push(url);
   };
   const getTicketsData = (eventId) => {
-    const query = `?eventid=${eventId}&kc_id=${keycloak.subject}`;
-    getParticipants(query).then((res) => {
-      if (res) {
-        history.push(DASHBOARD_ROUTES.eventsTickets, res);
-      }
-    });
+      history.push(`/dash/events/tickets/${eventId}`);
   };
   return (
     <Grid container spacing={6}>
