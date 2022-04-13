@@ -1,14 +1,21 @@
 import { Grid, Typography } from "@material-ui/core";
 import moment from "moment";
 import React from "react";
+import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import Loader from "../../../components/Loader";
+import { keycloakData } from "../../../redux/selectors/user";
+import { getParticipants } from "../../../services/events.service";
 const TicketGrid = styled(Grid)`
-  max-width: 800px !important;
+  max-width: 80% !important;
   background-color: #fff;
   border-radius: 10px;
   overflow: hidden;
   padding: 0px !important;
   margin: auto !important;
+  margin-top: 20px !important;
 `;
 
 const TicketHeaderLeft = styled(Grid)`
@@ -60,87 +67,89 @@ const Value = styled(Typography)`
   color: grey;
 `;
 
-export default function Tickets(props) {
-  if (!props && !props.location && !props.location.state) return <></>;
-  const { state } = props.location;
-  if (state && state.length > 0) {
-    const eventData = state[0];
-    return (
-      <Grid container spacing={3}>
-        <TicketGrid container item xs={12}>
-          <Grid item xs={8}>
-            <TicketHeaderLeft>
-              <Typography variant="h1">Ticket</Typography>
-            </TicketHeaderLeft>
-            <Grid>
-              <Label variant="h3"> {eventData.event_name}</Label>
-              <Value variant="h4">Convention Event</Value>
-            </Grid>
+export default function Tickets() {
+  const { eventId } = useParams();
+  const { t } = useTranslation();
+  const keycloak = useSelector(keycloakData);
+  const [eventData, setEventData] = React.useState(undefined);
+  React.useEffect(() => {
+    const query = `?eventid=${eventId}&kc_id=${keycloak.subject}`;
+    getParticipants(query).then((res) => {
+      if (res) {
+        setEventData(res[0]);
+      }
+    });
+  // eslint-disable-next-line
+  }, [])
+  if (!eventData) return <Loader />;
+  return (
+    <Grid container spacing={3}>
+      <TicketGrid container item xs={12}>
+        <Grid item xs={8}>
+          <TicketHeaderLeft>
+            <Typography variant="h1">{t('ticket.title')}</Typography>
+          </TicketHeaderLeft>
+          <Grid>
+            <Label variant="h3"> {eventData.event_name}</Label>
+            <Value variant="h4">{t('ticket.event')}</Value>
+          </Grid>
 
-            <Grid container>
-              <Grid item xs={4}>
-                <Label variant="h4">
-                  {eventData.part_first_name} {eventData.part_last_name}
-                </Label>
-                <Value variant="h5">Name</Value>
-              </Grid>
-              <Grid item xs={4}>
-                <Label variant="h4">{eventData.part_gender}</Label>
-                <Value variant="h5">Gender</Value>
-              </Grid>
-              <Grid item xs={4}>
-                <Label variant="h4">{eventData.part_country}</Label>
-                <Value variant="h5">Country</Value>
-              </Grid>
+          <Grid container>
+            <Grid item xs={4}>
+              <Label variant="h4">
+                {eventData.part_first_name} {eventData.part_last_name}
+              </Label>
+              <Value variant="h5">{t('ticket.name')}</Value>
             </Grid>
-            <Grid container>
-              <Grid item xs={4}>
-                <Label
-                  variant="h4"
-                  style={{
-                    whiteSpace: "nowrap",
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
-                  }}
-                >
-                  {eventData.part_email}
-                </Label>
-                <Value variant="h5">Email</Value>
-              </Grid>
-              <Grid item xs={4}>
-                <Label variant="h4">
-                  {moment(eventData.registration_date).format("DD/MM/YYYY")}
-                </Label>
-                <Value variant="h5">Registration Date</Value>
-              </Grid>
-              <Grid item xs={4}>
-                <Label variant="h4">{eventData.participation_option}</Label>
-                <Value variant="h5">Payment Option</Value>
-              </Grid>
+            <Grid item xs={4}>
+              <Label variant="h4">{eventData.part_gender?.toUpperCase()}</Label>
+              <Value variant="h5">{t('ticket.gender')}</Value>
+            </Grid>
+            <Grid item xs={4}>
+              <Label variant="h4">{eventData.part_country}</Label>
+              <Value variant="h5">{t('ticket.country')}</Value>
             </Grid>
           </Grid>
-          <RightSide item xs={4}>
-            <TicketHeaderRight>
-              <Typography variant="h1"></Typography>
-            </TicketHeaderRight>
-            <Grid>
-              <Label variant="h3">
-                {moment(eventData.event_starts_on).format("DD/MM/YYYY")}
+          <Grid container>
+            <Grid item xs={12}>
+              <Label
+                variant="h4"
+                style={{
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                }}
+              >
+                {eventData.part_email}
               </Label>
-              <Value variant="h4">Date</Value>
+              <Value variant="h5">{t('ticket.email')}</Value>
             </Grid>
-
-            <Grid>
-              <Label variant="h3">
-                {moment(eventData.event_starts_on).format("HH:MM:SSS")}
-              </Label>
-              <Value variant="h4">Time</Value>
-            </Grid>
-          </RightSide>
-        </TicketGrid>
-      </Grid>
-    );
-  } else {
-    return <></>;
-  }
+          </Grid>
+        </Grid>
+        <RightSide item xs={4}>
+          <TicketHeaderRight>
+            <Typography variant="h1"></Typography>
+          </TicketHeaderRight>
+          <Grid>
+            <Label variant="h3">
+              {moment(eventData.event_starts_on).format("DD/MM/YYYY")}
+            </Label>
+            <Value variant="h4">{t('ticket.date')}</Value>
+          </Grid>
+          <Grid>
+            <Label variant="h3">
+              {eventData.participation_option}
+            </Label>
+            <Value variant="h4">{t('ticket.payment_option')}</Value>
+          </Grid>
+          <Grid>
+            <Label variant="h3">
+              {moment(eventData.registration_date).format("DD/MM/YYYY")}
+            </Label>
+            <Value variant="h4">{t('ticket.registration_date')}</Value>
+          </Grid>
+        </RightSide>
+      </TicketGrid>
+    </Grid>
+  );
 }

@@ -595,6 +595,17 @@
       "currency": "Divisa",
       "ticket": "Billete"
     },
-    "may2022": "Solo los amigos - Congreso de Cabalá"
+    "ticket": {
+      "title": "Billete",
+      "event": "Evento",
+      "name": "Nombre",
+      "registration_date": "Fecha de registro",
+      "payment_option": "Opcion de pago",
+      "date": "Fecha",
+      "email": "Email",
+      "country": "País",
+      "gender": "Gender"
+    },
+    "may2022": "Only the friends - Kabbalah Convention"
   }
 }
