@@ -304,6 +304,17 @@
             "currency": "מטבע",
             "ticket": "כרטיס"
         },
+        "ticket": {
+            "title": "כרטיס",
+            "event": "אירוע",
+            "name": "שם",
+            "registration_date": "תאריך רישום",
+            "payment_option": "אפשרות תשלום",
+            "date": "תאריך",
+            "email": "דואר אלקטרוני",
+            "country": "מדינה",
+            "gender": "Gender"
+          },
         "may2022": "רק החברים - כנס הקבלה"
     }
 }

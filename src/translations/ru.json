@@ -304,6 +304,17 @@
             "currency": "Валюта",
             "ticket": "Билет"
         },
+        "ticket": {
+            "title": "Билет",
+            "event": "Событие",
+            "name": "Имя",
+            "registration_date": "Дата регистрации",
+            "payment_option": "Способ оплаты",
+            "date": "Дата",
+            "email": "Электронная почта",
+            "country": "Страна",
+            "gender": "Gender"
+          },
         "may2022": "Только с товарищами - Конгресс"
     }
 }
