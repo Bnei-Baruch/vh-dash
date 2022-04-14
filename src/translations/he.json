@@ -52,8 +52,8 @@
             "French": "French"
         },
         "Home": {
-            "notActive": "NOT ACTIVE",
-            "active": "ACTIVE",
+            "notActive": "אין שידור חי",
+            "active": "שידור חי פעיל",
             "watchBtn": "לצפיה",
             "watchRecordedBtn": "לצפיה מוקלט",
             "noLiveEvent": "אין שידור חי",

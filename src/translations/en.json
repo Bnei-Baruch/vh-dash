@@ -52,8 +52,8 @@
       "French": "French"
     },
     "Home": {
-      "notActive": "NOT ACTIVE",
-      "active": "ACTIVE",
+      "notActive": "NO LIVE BROADCAST",
+      "active": "BROADCAST ACTIVE",
       "watchBtn": "Watch",
       "watchRecordedBtn": "Watch Recorded",
       "noLiveEvent": "No live events",

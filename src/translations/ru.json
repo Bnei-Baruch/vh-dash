@@ -52,8 +52,8 @@
             "French": "French"
         },
         "Home": {
-            "notActive": "НЕТ АКТИВНЫХ",
-            "active": "АКТИВНЫЕ",
+            "notActive": "Нет прямой трансляции",
+            "active": "Прямая трансляция",
             "watchBtn": "Смотреть",
             "watchRecordedBtn": "Смотреть запись",
             "noLiveEvent": "Онлайн события отсутствуют",
