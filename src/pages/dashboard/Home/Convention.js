@@ -20,6 +20,8 @@ import {
 } from "../../../constants/common";
 import { useSelector } from "react-redux";
 import { profileInfo } from "../../../redux/selectors/profile";
+import { getEventsListWithParticipationDetail } from "../../../services/events.service";
+import moment from "moment";
 const Typography = styled(MuiTypography)(spacing);
 
 const ConventionIcon = styled.img`
@@ -75,6 +77,7 @@ const RedCircle = styled(CancelOutlinedIcon)`
 
 const Convention = () => {
   const { t, i18n } = useTranslation();
+  const [events, setEvents] = useState(undefined);
   const [registered, setRegistered] = useState(false);
   const profileData = useSelector(profileInfo);
   useEffect(() => {
@@ -84,10 +87,17 @@ const Convention = () => {
         setRegistered(true);
       }
     }
+    if (profileData && profileData.primary_email) {
+      getEventsListWithParticipationDetail(profileData.primary_email).then(res => {
+        if (res && res.length > 0) {
+          setEvents(res[0]);
+        }
+      })
+    }
   }, [profileData]);
 
   const navigateToRegister = () => {
-    window.open(BB_CONVENTION_REGISTER_LINK, "_blank").focus();
+    window.open(`${window.location.origin}/pay/order/ticket/${events.slug}`, "_blank").focus();
   };
 
   const navigateToConvention = () => {
@@ -100,6 +110,8 @@ const Convention = () => {
     }
   };
 
+  if (!events) return <></>
+
   return (
     <Card mb={6}>
       <CardHeader title={t("Home.convention")} />
@@ -108,24 +120,24 @@ const Convention = () => {
           <Box display="flex">
             <ConventionIcon src={ConventionImage} />
             <div>
-              <Typography variant="h2">{t("Home.conventiontitle")}</Typography>
-              <span>{t("Home.conventionsubtitle")}</span>
+              <Typography variant="h3">{t(events.slug)}</Typography>
+              <span>{moment(events.starts_on).format("DD/MM/YYYY")} -{" "}
+                {moment(events.ends_on).format("DD/MM/YYYY")}</span>
             </div>
           </Box>
-          <Typography variant="h3">07/01</Typography>
         </Box>
         <br />
         <MuiDivider />
         <br />
         <RegistrationContainer display="flex" justifyContent="space-between">
           <RegistrationText>
-            {registered && (
+            {events.is_user_registered && (
               <>
                 {" "}
                 <GreenTick /> {t("Home.registered")}
               </>
             )}
-            {!registered && (
+            {!events.is_user_registered && (
               <>
                 {" "}
                 <RedCircle /> {t("Home.notRegistered")}
