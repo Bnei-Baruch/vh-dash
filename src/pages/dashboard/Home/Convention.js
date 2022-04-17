@@ -51,7 +51,6 @@ const RegisterButton = styled(Button)`
 const RegistrationText = styled.div`
   margin: auto 0px !important;
   font-weight: 600 !important;
-  visibility: hidden;
 `;
 
 const RegistrationContainer = styled(Box)`
@@ -145,13 +144,13 @@ const Convention = () => {
             )}
           </RegistrationText>
           <div>
-            <RegisterButton
+            {!events.is_user_registered && <RegisterButton
               color="primary"
               variant="contained"
               onClick={navigateToRegister}
             >
               {t("Home.register")}{" "}
-            </RegisterButton>
+            </RegisterButton>}
             <ConventionButton
               onClick={navigateToConvention}
               color="primary"
