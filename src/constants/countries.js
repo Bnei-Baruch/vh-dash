@@ -311,8 +311,8 @@ const countries = [
   { ISO: "TV", label: "Tuvalu", code: "Tuvalu" },
   {
     ISO: "TW",
-    label: "Taiwan, Province of China",
-    code: "Taiwan, Province of China",
+    label: "Taiwan",
+    code: "Taiwan",
   },
   {
     ISO: "TZ",
