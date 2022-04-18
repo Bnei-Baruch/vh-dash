@@ -81,7 +81,7 @@ export default function Events() {
                 {moment(event.ends_on).format("DD/MM/YYYY")}
               </Typography>
             </Grid>
-            <Grid className={classes.flexTile}>
+            {/* <Grid className={classes.flexTile}>
               <Typography className={classes.label} variant="p">
                 {t("common.time")} :{" "}
               </Typography>{" "}
@@ -90,7 +90,7 @@ export default function Events() {
                 {moment(event.starts_on).format("HH:MM:SSS")} -{" "}
                 {moment(event.ends_on).format("HH:MM:SSS")}
               </Typography>
-            </Grid>
+            </Grid> */}
             <Grid className={[classes.flexTile, classes.actionTile]}>
               <Button
                 variant="contained"
