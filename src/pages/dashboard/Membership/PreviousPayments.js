@@ -39,7 +39,7 @@ function PreviousPayments() {
   const { t } = useTranslation();
   const columns = [
     {
-      name: "payment_date",
+      name: "created_at",
       label: t("common.date"),
       options: {
         filter: false,
