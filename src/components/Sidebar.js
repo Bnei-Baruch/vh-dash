@@ -135,6 +135,7 @@ const CategoryIconMore = styled(ExpandMore)`
 
 const Subtitle = styled.div`
   color: #4aa5ff;
+  font-weight: bold;
   font-size: 12px;
 `;
 
