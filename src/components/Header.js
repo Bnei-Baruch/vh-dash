@@ -9,6 +9,7 @@ import _ from "lodash";
 import { Bell, MessageSquare, Search as SearchIcon } from "react-feather";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
+import LanguageIcon from '@material-ui/icons/Language';
 import {
   Badge,
   Grid,
@@ -68,6 +69,13 @@ const FlagButton = styled(MuiIconButton)`
   svg {
     width: 22px;
     height: 22px;
+  }
+  span {
+    color: #747474;
+    font-size: 14px;
+  }
+  :hover {
+    background-color: transparent !important;
   }
   @media (max-width: 600px) {
     padding: 10px !important;
@@ -144,12 +152,6 @@ const Input = styled(InputBase)`
   }
 `;
 
-const Flag = styled.img`
-  border-radius: 50%;
-  width: 25px;
-  height: 25px;
-`;
-
 const languages = [
   { code: "en", name: "English", country: "gb" },
   { code: "ru", name: "Russian", country: "ru" },
@@ -178,11 +180,8 @@ function LanguageMenu() {
         onClick={toggleMenu}
         color="inherit"
       >
-        {/* Don't replace with emoji as it's not supported in Windows */}
-        <Flag
-          src={`${window.APP_CONFIG.BASE_STATIC_PATH}/img/flags/${i18next.language}.png`}
-          alt={i18next.language}
-        />
+        <LanguageIcon /> &nbsp;
+        {i18next?.language?.toLocaleUpperCase()}
       </FlagButton>
       <Menu
         id="menu-appbar"

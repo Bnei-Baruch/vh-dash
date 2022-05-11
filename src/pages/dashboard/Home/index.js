@@ -4,7 +4,6 @@ import { Grid } from "@material-ui/core";
 import Arvut from "./Arvut";
 import Calendar from "./Calendar";
 import Header from "./Header";
-import Convention from "./Convention";
 
 const Home = () => {
   const [liveEvent, setLiveEvent] = useState();
