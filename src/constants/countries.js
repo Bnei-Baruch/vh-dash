@@ -321,7 +321,7 @@ const countries = [
   },
   { ISO: "UA", label: "Ukraine", code: "Ukraine" },
   { ISO: "UG", label: "Uganda", code: "Uganda" },
-  { ISO: "USA", label: "United States", code: "United States" },
+  { ISO: "US", label: "United States", code: "United States" },
   { ISO: "UY", label: "Uruguay", code: "Uruguay" },
   { ISO: "UZ", label: "Uzbekistan", code: "Uzbekistan" },
   {
