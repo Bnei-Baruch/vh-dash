@@ -15,7 +15,6 @@ import ConventionImage from "../../../asset/icons/convention_icon.svg";
 import CheckCircleOutlineOutlinedIcon from "@material-ui/icons/CheckCircleOutlineOutlined";
 import CancelOutlinedIcon from "@material-ui/icons/CancelOutlined";
 import {
-  BB_CONVENTION_REGISTER_LINK,
   BB_CONVENTION_REGISTER_SITE,
 } from "../../../constants/common";
 import { useSelector } from "react-redux";
