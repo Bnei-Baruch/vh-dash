@@ -281,7 +281,7 @@ const Header = ({ onDrawerToggle }) => {
   const { t } = useTranslation();
   const membership = useSelector(membershipData);
   const navigateToMembership = () => {
-    history.push(DASHBOARD_ROUTES.Membership);
+    history.push(DASHBOARD_ROUTES.membership);
   };
   return (
     <>
