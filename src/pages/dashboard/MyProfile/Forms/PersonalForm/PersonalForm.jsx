@@ -1,6 +1,14 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { Grid, TextField, Typography } from "@material-ui/core";
+import {
+  FormControl,
+  Grid,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+  Typography,
+} from "@material-ui/core";
 import { DatePicker } from "@material-ui/pickers";
 import SelectElement from "../FormElements/SelectElement";
 import {
@@ -65,23 +73,62 @@ const PersonalForm = ({ inputFields, handleChange, isModified }) => {
             }
           />
         </Grid>
-        <Grid item xs={12} sm={6}>
-          <DatePicker
-          InputProps={{ disableUnderline: !isModified ? true : false }}
-            autoOk
-            orientation="landscape"
-            openTo="date"
-            value={date_of_birth}
-            disableFuture
-            onChange={(value) => handleChange("date_of_birth", value)}
-            label={t("Dashboard.Profile.PersonalForm.dateOfBirth")}
-            fullWidth
-            disabled={!isModified}
-            format="dd.MM.yyyy"
-            InputLabelProps={{
-              shrink: true,
-            }}
-          />
+        <Grid item xs={12} sm={2}>
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-outlined-label">Date</InputLabel>
+            <Select
+              labelId="demo-simple-select-outlined-label"
+              id="demo-simple-select-outlined"
+              value={date_of_birth}
+              onChange={(e) => handleChange("date_of_birth", e.target.value)}
+              label="Age"
+            >
+              <MenuItem value="">
+                <em>None</em>
+              </MenuItem>
+              <MenuItem value={10}>Ten</MenuItem>
+              <MenuItem value={20}>Twenty</MenuItem>
+              <MenuItem value={30}>Thirty</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+        <Grid item xs={12} sm={2}>
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-outlined-label">Month</InputLabel>
+            <Select
+              labelId="demo-simple-select-outlined-label"
+              id="demo-simple-select-outlined"
+              value={date_of_birth}
+              onChange={(e) => handleChange("date_of_birth", e.target.value)}
+              label="Age"
+            >
+              <MenuItem value="">
+                <em>None</em>
+              </MenuItem>
+              <MenuItem value={10}>Ten</MenuItem>
+              <MenuItem value={20}>Twenty</MenuItem>
+              <MenuItem value={30}>Thirty</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+        <Grid item xs={12} sm={2}>
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-outlined-label">Year</InputLabel>
+            <Select
+              labelId="demo-simple-select-outlined-label"
+              id="demo-simple-select-outlined"
+              value={date_of_birth}
+              onChange={(e) => handleChange("date_of_birth", e.target.value)}
+              label="Age"
+            >
+              <MenuItem value="">
+                <em>None</em>
+              </MenuItem>
+              <MenuItem value={10}>Ten</MenuItem>
+              <MenuItem value={20}>Twenty</MenuItem>
+              <MenuItem value={30}>Thirty</MenuItem>
+            </Select>
+          </FormControl>
         </Grid>
         <Grid item xs={12} sm={6}>
           <SelectElement
