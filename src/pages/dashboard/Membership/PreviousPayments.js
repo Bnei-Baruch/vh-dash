@@ -137,10 +137,9 @@ function PreviousPayments() {
       const { profile } = keycloak;
       getUserPreviousPayments(profile.email).then((res) => {
         if (res && res.length > 0) {
-          setPayments(res.filter((item) => item.payment_status === 'success'));
+          setPayments(res.filter((item) => item.payment_status === "success"));
         }
-      }
-      );
+      });
     }
   }, [keycloak]);
   return (
