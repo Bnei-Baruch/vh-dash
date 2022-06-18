@@ -34,9 +34,11 @@ const OtherInformationsTab = ({
   const [copiedFields, setCopiedFields] = useState({});
 
   useEffect(() => {
-    setCopiedFields(inputFields);
+    if (copiedFields !== inputFields) {
+      setCopiedFields(inputFields);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [inputFields]);
 
   const onFormSubmit = (event) => {
     event.preventDefault();

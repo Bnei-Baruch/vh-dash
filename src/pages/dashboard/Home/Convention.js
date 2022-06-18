@@ -14,9 +14,7 @@ import { useTranslation } from "react-i18next";
 import ConventionImage from "../../../asset/icons/convention_icon.svg";
 import CheckCircleOutlineOutlinedIcon from "@material-ui/icons/CheckCircleOutlineOutlined";
 import CancelOutlinedIcon from "@material-ui/icons/CancelOutlined";
-import {
-  BB_CONVENTION_REGISTER_SITE,
-} from "../../../constants/common";
+import { BB_CONVENTION_REGISTER_SITE } from "../../../constants/common";
 import { useSelector } from "react-redux";
 import { profileInfo } from "../../../redux/selectors/profile";
 import { getEventsListWithParticipationDetail } from "../../../services/events.service";
@@ -86,16 +84,23 @@ const Convention = () => {
       }
     }
     if (profileData && profileData.primary_email) {
-      getEventsListWithParticipationDetail(profileData.primary_email).then(res => {
-        if (res && res.length > 0) {
-          setEvents(res[0]);
+      getEventsListWithParticipationDetail(profileData.primary_email).then(
+        (res) => {
+          if (res && res.length > 0) {
+            setEvents(res[0]);
+          }
         }
-      })
+      );
     }
   }, [profileData]);
 
   const navigateToRegister = () => {
-    window.open(`${window.location.origin}/pay/order/ticket/${events.slug}`, "_blank").focus();
+    window
+      .open(
+        `${window.location.origin}/pay/order/ticket/${events.slug}`,
+        "_blank"
+      )
+      .focus();
   };
 
   const navigateToConvention = () => {
@@ -108,7 +113,7 @@ const Convention = () => {
     }
   };
 
-  if (!events) return <></>
+  if (!events) return <></>;
 
   return (
     <Card mb={6}>
@@ -119,8 +124,10 @@ const Convention = () => {
             <ConventionIcon src={ConventionImage} />
             <div>
               <Typography variant="h3">{t(events.slug)}</Typography>
-              <span>{moment(events.starts_on).format("DD/MM/YYYY")} -{" "}
-                {moment(events.ends_on).format("DD/MM/YYYY")}</span>
+              <span>
+                {moment(events.starts_on).format("DD/MM/YYYY")} -{" "}
+                {moment(events.ends_on).format("DD/MM/YYYY")}
+              </span>
             </div>
           </Box>
         </Box>
@@ -143,13 +150,15 @@ const Convention = () => {
             )}
           </RegistrationText>
           <div>
-            {!events.is_user_registered && <RegisterButton
-              color="primary"
-              variant="contained"
-              onClick={navigateToRegister}
-            >
-              {t("Home.register")}{" "}
-            </RegisterButton>}
+            {!events.is_user_registered && (
+              <RegisterButton
+                color="primary"
+                variant="contained"
+                onClick={navigateToRegister}
+              >
+                {t("Home.register")}{" "}
+              </RegisterButton>
+            )}
             <ConventionButton
               onClick={navigateToConvention}
               color="primary"
