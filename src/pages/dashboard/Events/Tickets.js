@@ -79,19 +79,19 @@ export default function Tickets() {
         setEventData(res[0]);
       }
     });
-  // eslint-disable-next-line
-  }, [])
+    // eslint-disable-next-line
+  }, []);
   if (!eventData) return <Loader />;
   return (
     <Grid container spacing={3}>
       <TicketGrid container item xs={12}>
         <Grid item xs={8}>
           <TicketHeaderLeft>
-            <Typography variant="h1">{t('ticket.title')}</Typography>
+            <Typography variant="h1">{t("ticket.title")}</Typography>
           </TicketHeaderLeft>
           <Grid>
             <Label variant="h3"> {eventData.event_name}</Label>
-            <Value variant="h4">{t('ticket.event')}</Value>
+            <Value variant="h4">{t("ticket.event")}</Value>
           </Grid>
 
           <Grid container>
@@ -99,15 +99,15 @@ export default function Tickets() {
               <Label variant="h4">
                 {eventData.part_first_name} {eventData.part_last_name}
               </Label>
-              <Value variant="h5">{t('ticket.name')}</Value>
+              <Value variant="h5">{t("ticket.name")}</Value>
             </Grid>
             <Grid item xs={4}>
               <Label variant="h4">{eventData.part_gender?.toUpperCase()}</Label>
-              <Value variant="h5">{t('ticket.gender')}</Value>
+              <Value variant="h5">{t("ticket.gender")}</Value>
             </Grid>
             <Grid item xs={4}>
               <Label variant="h4">{eventData.part_country}</Label>
-              <Value variant="h5">{t('ticket.country')}</Value>
+              <Value variant="h5">{t("ticket.country")}</Value>
             </Grid>
           </Grid>
           <Grid container>
@@ -122,7 +122,7 @@ export default function Tickets() {
               >
                 {eventData.part_email}
               </Label>
-              <Value variant="h5">{t('ticket.email')}</Value>
+              <Value variant="h5">{t("ticket.email")}</Value>
             </Grid>
           </Grid>
         </Grid>
@@ -134,19 +134,17 @@ export default function Tickets() {
             <Label variant="h3">
               {moment(eventData.event_starts_on).format("DD/MM/YYYY")}
             </Label>
-            <Value variant="h4">{t('ticket.date')}</Value>
+            <Value variant="h4">{t("ticket.date")}</Value>
           </Grid>
           <Grid>
-            <Label variant="h3">
-              {eventData.participation_option}
-            </Label>
-            <Value variant="h4">{t('ticket.payment_option')}</Value>
+            <Label variant="h3">{eventData.participation_option}</Label>
+            <Value variant="h4">{t("ticket.payment_option")}</Value>
           </Grid>
           <Grid>
             <Label variant="h3">
               {moment(eventData.registration_date).format("DD/MM/YYYY")}
             </Label>
-            <Value variant="h4">{t('ticket.registration_date')}</Value>
+            <Value variant="h4">{t("ticket.registration_date")}</Value>
           </Grid>
         </RightSide>
       </TicketGrid>

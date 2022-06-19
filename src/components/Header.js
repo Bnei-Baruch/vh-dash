@@ -9,7 +9,7 @@ import _ from "lodash";
 import { Bell, MessageSquare, Search as SearchIcon } from "react-feather";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
-import LanguageIcon from '@material-ui/icons/Language';
+import LanguageIcon from "@material-ui/icons/Language";
 import {
   Badge,
   Grid,
