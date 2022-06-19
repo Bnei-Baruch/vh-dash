@@ -1,320 +1,320 @@
 {
-    "translation": {
-        "Global": {
-            "inputPlaceholder": "Введите ваш(-у) {{input}}",
-            "formErrorMsg": "Пожалуйста, введите ваши данные",
-            "saveBtn": "Сохранить изменения",
-            "cancelBtn": "Отмена",
-            "modify": "Изменить",
-            "yes": "Да",
-            "no": "Нет",
-            "closeBtn": "Закрывать",
-            "requestError": "Упс! Что-то пошло не так! Пожалуйста, повторите попытку позже или свяжитесь с нашей службой поддержки",
-            "Currency": {
-                "usd": "USD",
-                "eur": "EUR"
-            },
-            "Days": {
-                "monday": "Monday",
-                "tuesday": "Tuesday",
-                "wednesday": "Среда",
-                "thursday": "Четверг",
-                "friday": "Пятница",
-                "saturday": "Суббота",
-                "sunday": "Воскресенье"
-            },
-            "Months": {
-                "january": "Январь",
-                "february": "Февраль",
-                "march": "Март",
-                "april": "Апрель",
-                "may": "Май",
-                "june": "Июнь",
-                "july": "Июль",
-                "august": "Август",
-                "september": "Сентябрь",
-                "october": "Октябрь",
-                "november": "Ноябрь",
-                "december": "Декабрь"
-            },
-            "Subscription": {
-                "active": "Активный",
-                "pause": "Пауза",
-                "cancel": "Отмена"
-            }
+  "translation": {
+    "Global": {
+      "inputPlaceholder": "Введите ваш(-у) {{input}}",
+      "formErrorMsg": "Пожалуйста, введите ваши данные",
+      "saveBtn": "Сохранить изменения",
+      "cancelBtn": "Отмена",
+      "modify": "Изменить",
+      "yes": "Да",
+      "no": "Нет",
+      "closeBtn": "Закрывать",
+      "requestError": "Упс! Что-то пошло не так! Пожалуйста, повторите попытку позже или свяжитесь с нашей службой поддержки",
+      "Currency": {
+        "usd": "USD",
+        "eur": "EUR"
+      },
+      "Days": {
+        "monday": "Monday",
+        "tuesday": "Tuesday",
+        "wednesday": "Среда",
+        "thursday": "Четверг",
+        "friday": "Пятница",
+        "saturday": "Суббота",
+        "sunday": "Воскресенье"
+      },
+      "Months": {
+        "january": "Январь",
+        "february": "Февраль",
+        "march": "Март",
+        "april": "Апрель",
+        "may": "Май",
+        "june": "Июнь",
+        "july": "Июль",
+        "august": "Август",
+        "september": "Сентябрь",
+        "october": "Октябрь",
+        "november": "Ноябрь",
+        "december": "Декабрь"
+      },
+      "Subscription": {
+        "active": "Активный",
+        "pause": "Пауза",
+        "cancel": "Отмена"
+      }
+    },
+    "Languages": {
+      "English": "English",
+      "Russian": "Russian",
+      "Hebrew": "Hebrew",
+      "streetAddressPlaceholder": "Введите вашу улицу",
+      "Spanish": "Spanish",
+      "French": "French"
+    },
+    "Home": {
+      "notActive": "Нет прямой трансляции",
+      "active": "Прямая трансляция",
+      "watchBtn": "Смотреть",
+      "watchRecordedBtn": "Смотреть запись",
+      "noLiveEvent": "Онлайн события отсутствуют",
+      "noEvent": "Нет событий",
+      "currentEvent": "Текущее событие",
+      "totalConnections": "Всего подключений",
+      "tensNumber": "Количество подключенных десятков",
+      "tenFriends": "Товарищи из твоей десятки",
+      "today": "Сегодня",
+      "tomorrow": "Завтра",
+      "yesterday": "Вчера",
+      "events": "События",
+      "welcomeBack": "Рады возвращению",
+      "convention": "Международный конгресс",
+      "registered": "Вы уже зарегистрированы",
+      "notRegistered": "Вы еще не зарегистрированы",
+      "register": "Регистрация",
+      "conventionSite": "Сайт конгрессов",
+      "conventiontitle": "раскрываем новый мир",
+      "conventionsubtitle": "ПОДЪЕМ НАД СОБОЙ"
+    },
+    "UserMenu": {
+      "logOut": "Выйти",
+      "logOutText": "Вы действительно хотите выйти?",
+      "yesBtn": "Да",
+      "cancelBtn": "Отменить",
+      "subscriptions": "Подписки",
+      "payUserFee": "Внести абонентскую плату",
+      "statuses": {
+        "active": "активный",
+        "hold": "На удерживании",
+        "unknown": "Неизвестный",
+        "nonExistant": "Несуществующий",
+        "late": "Поздние сборы"
+      }
+    },
+    "Dashboard": {
+      "ArvutSystem": {
+        "name": "Система Арвут",
+        "title": "Система Арвут",
+        "description": "Arvut Description : Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it",
+        "accessTitle": "Access to the Arvut System",
+        "accessSubDescription": "Arvut Description : Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it",
+        "accessDescription": "Arvut Description : Lorem Ipsum is simply dummy text of the printing",
+        "requestAccess": "Request Access to Arvut System",
+        "continueAsGuest": "Continue as guest",
+        "verfiyInformation": "Please verify or complete your information below"
+      },
+      "Archive": {
+        "name": "Архив"
+      },
+      "Dashboard": {
+        "name": "Главная"
+      },
+      "Status": {
+        "name": "Статус",
+        "title": "Статус"
+      },
+      "PreviousPayment": {
+        "name": "Предыдущий платеж",
+        "title": "Предыдущий платеж",
+        "paymentHistory": "В таблице представлена история платежей"
+      },
+      "Membership": {
+        "name": "Подписки"
+      },
+      "EventTicket": {
+        "name": "Билет",
+        "title": "Билет",
+        "eventTicket": "Билет",
+        "eventTicketHistory": "The Below table provides the history of event tickets purchased by user"
+      },
+      "Help": {
+        "name": "Help",
+        "title": "Help"
+      },
+      "Events": {
+        "name": "События",
+        "title": "События",
+        "page": "Страница события",
+        "register": "Регистрация"
+      },
+      "Profile": {
+        "name": "Профиль",
+        "title": "Мой профайл",
+        "socialFormName": "Мои мобильные номера",
+        "profileCreated": "Информация вашего профиля была успешно создана",
+        "profileUpdated": "Информация вашего профиля была успешно обновлена",
+        "profileNotExist": "Похоже, вы не создали данные профиля. Пожалуйста, нажмите кнопку 'Изменить' и создайте свой профиль.",
+        "Tabs": {
+          "personal": "Личная информация",
+          "security": "Безопасность",
+          "languages": "Языки",
+          "otherInformations": "Другая информация"
+        },
+        "study": {
+          "tellAboutYouStudyFramework": "каковы рамки вашего обучения в Бней Барухе?"
+        },
+        "PersonalForm": {
+          "name": "Личные данные",
+          "firstName": "Имя",
+          "firstNamePlaceholder": "Введите имя",
+          "dateOfBirth": "Дата рождения",
+          "gender": {
+            "label": "Пол",
+            "male": "Мужской",
+            "female": "Женский"
+          },
+          "maritalStatus": {
+            "label": "Семейный статус",
+            "single": "Одинокий(-кая)",
+            "married": "Женат(замужем)",
+            "divorced": "Разведен(-а)",
+            "widowed": "Вдовец(вдова)"
+          },
+          "lastName": "Фамилия",
+          "lastNamePlaceholder": "Введите фамилию",
+          "primaryLanguage": "Родной язык"
+        },
+        "PhysicalLocationForm": {
+          "name": "Место проживания",
+          "streetAddress": "Улица",
+          "postalCode": "Почтовый индекс",
+          "country": "Страна",
+          "stateRegion": "Район/Область",
+          "city": "Город"
+        },
+        "Emails": {
+          "name": "Мои эл. адреса",
+          "primaryEmail": "Основной эл. адрес",
+          "alternativeEmail": "Дополнительный эл. адрес {{number}}",
+          "emailError": "Пожалуйста, введите правильный эл. адрес"
         },
         "Languages": {
-            "English": "English",
-            "Russian": "Russian",
-            "Hebrew": "Hebrew",
-            "streetAddressPlaceholder": "Введите вашу улицу",
-            "Spanish": "Spanish",
-            "French": "French"
+          "name": "Языки",
+          "firstLanguage": "Основной язык",
+          "otherLanguage": "Другой язык {{number}}"
         },
-        "Home": {
-            "notActive": "Нет прямой трансляции",
-            "active": "Прямая трансляция",
-            "watchBtn": "Смотреть",
-            "watchRecordedBtn": "Смотреть запись",
-            "noLiveEvent": "Онлайн события отсутствуют",
-            "noEvent": "Нет событий",
-            "currentEvent": "Текущее событие",
-            "totalConnections": "Всего подключений",
-            "tensNumber": "Количество подключенных десятков",
-            "tenFriends": "Товарищи из твоей десятки",
-            "today": "Сегодня",
-            "tomorrow": "Завтра",
-            "yesterday": "Вчера",
-            "events": "События",
-            "welcomeBack": "Рады возвращению",
-            "convention": "Международный конгресс",
-            "registered": "Вы уже зарегистрированы",
-            "notRegistered": "Вы еще не зарегистрированы",
-            "register": "Регистрация",
-            "conventionSite": "Сайт конгрессов",
-            "conventiontitle": "раскрываем новый мир",
-            "conventionsubtitle": "ПОДЪЕМ НАД СОБОЙ"
+        "LanguagePreferences": {
+          "name": "Настройки языка",
+          "emailLanguage": "Язык эл. адреса",
+          "emailTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
+          "listeningLanguage": "Язык вещания",
+          "listeningTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
+          "readingLanguage": "Язык для чтение",
+          "readingTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque."
         },
-        "UserMenu": {
-            "logOut": "Выйти",
-            "logOutText": "Вы действительно хотите выйти?",
-            "yesBtn": "Да",
-            "cancelBtn": "Отменить",
-            "subscriptions": "Подписки",
-            "payUserFee": "Внести абонентскую плату",
-            "statuses": {
-                "active": "активный",
-                "hold": "На удерживании",
-                "unknown": "Неизвестный",
-                "nonExistant": "Несуществующий",
-                "late": "Поздние сборы"
-            }
+        "OtherInformation": {
+          "education": "Образование",
+          "startYear": "Год начала",
+          "studyFramework": "Структура обучения",
+          "ten": "Десятка",
+          "tenName": "Имя десятки, если есть группа",
+          "studyGroup": "У вас есть учебная группа?",
+          "wantStudyGroup": "Вы хотите учебную группу?"
         },
-        "Dashboard": {
-            "ArvutSystem": {
-                "name": "Система Арвут",
-                "title": "Система Арвут",
-                "description": "Arvut Description : Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it",
-                "accessTitle": "Access to the Arvut System",
-                "accessSubDescription": "Arvut Description : Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it",
-                "accessDescription": "Arvut Description : Lorem Ipsum is simply dummy text of the printing",
-                "requestAccess": "Request Access to Arvut System",
-                "continueAsGuest": "Continue as guest",
-                "verfiyInformation": "Please verify or complete your information below"
-            },
-            "Archive": {
-                "name": "Архив"
-            },
-            "Dashboard": {
-                "name": "Главная"
-            },
-            "Status": {
-                "name": "Статус",
-                "title": "Статус"
-            },
-            "PreviousPayment": {
-                "name": "Предыдущий платеж",
-                "title": "Предыдущий платеж",
-                "paymentHistory": "В таблице представлена история платежей"
-            },
-            "Membership": {
-                "name": "Подписки"
-            },
-            "EventTicket": {
-                "name": "Билет",
-                "title": "Билет",
-                "eventTicket": "Билет",
-                "eventTicketHistory": "The Below table provides the history of event tickets purchased by user"
-            },
-            "Help": {
-                "name": "Help",
-                "title": "Help"
-            },
-            "Events": {
-                "name": "События",
-                "title": "События",
-                "page": "Страница события",
-                "register": "Регистрация"
-            },
-            "Profile": {
-                "name": "Профиль",
-                "title": "Мой профайл",
-                "socialFormName": "Мои мобильные номера",
-                "profileCreated": "Информация вашего профиля была успешно создана",
-                "profileUpdated": "Информация вашего профиля была успешно обновлена",
-                "profileNotExist": "Похоже, вы не создали данные профиля. Пожалуйста, нажмите кнопку 'Изменить' и создайте свой профиль.",
-                "Tabs": {
-                    "personal": "Личная информация",
-                    "security": "Безопасность",
-                    "languages": "Языки",
-                    "otherInformations": "Другая информация"
-                },
-                "study": {
-                    "tellAboutYouStudyFramework": "каковы рамки вашего обучения в Бней Барухе?"
-                },
-                "PersonalForm": {
-                    "name": "Личные данные",
-                    "firstName": "Имя",
-                    "firstNamePlaceholder": "Введите имя",
-                    "dateOfBirth": "Дата рождения",
-                    "gender": {
-                        "label": "Пол",
-                        "male": "Мужской",
-                        "female": "Женский"
-                    },
-                    "maritalStatus": {
-                        "label": "Семейный статус",
-                        "single": "Одинокий(-кая)",
-                        "married": "Женат(замужем)",
-                        "divorced": "Разведен(-а)",
-                        "widowed": "Вдовец(вдова)"
-                    },
-                    "lastName": "Фамилия",
-                    "lastNamePlaceholder": "Введите фамилию",
-                    "primaryLanguage": "Родной язык"
-                },
-                "PhysicalLocationForm": {
-                    "name": "Место проживания",
-                    "streetAddress": "Улица",
-                    "postalCode": "Почтовый индекс",
-                    "country": "Страна",
-                    "stateRegion": "Район/Область",
-                    "city": "Город"
-                },
-                "Emails": {
-                    "name": "Мои эл. адреса",
-                    "primaryEmail": "Основной эл. адрес",
-                    "alternativeEmail": "Дополнительный эл. адрес {{number}}",
-                    "emailError": "Пожалуйста, введите правильный эл. адрес"
-                },
-                "Languages": {
-                    "name": "Языки",
-                    "firstLanguage": "Основной язык",
-                    "otherLanguage": "Другой язык {{number}}"
-                },
-                "LanguagePreferences": {
-                    "name": "Настройки языка",
-                    "emailLanguage": "Язык эл. адреса",
-                    "emailTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
-                    "listeningLanguage": "Язык вещания",
-                    "listeningTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
-                    "readingLanguage": "Язык для чтение",
-                    "readingTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque."
-                },
-                "OtherInformation": {
-                    "education": "Образование",
-                    "startYear": "Год начала",
-                    "studyFramework": "Структура обучения",
-                    "ten": "Десятка",
-                    "tenName": "Имя десятки, если есть группа",
-                    "studyGroup": "У вас есть учебная группа?",
-                    "wantStudyGroup": "Вы хотите учебную группу?"
-                },
-                "Security": {
-                    "name": "Информация для входа",
-                    "email": "Электронные адреса",
-                    "googleConnected": "Google Connected",
-                    "googleTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
-                    "facebookConnected": "Facebook Connected",
-                    "facebookTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
-                    "forgotPassword": "Забыли пароль?"
-                }
-            },
-            "Payments": {
-                "name": "Платежи",
-                "title": "Платежи",
-                "Tabs": {
-                    "transaction": "Платежи",
-                    "myPlan": "My Plan"
-                },
-                "paidOn": "Оплачено",
-                "purpose": "Цель",
-                "paymentMethod": "Плаежный метод",
-                "paymentType": "Платежный тип",
-                "amount": "Сумма",
-                "currency": "Валюта",
-                "status": "Статус",
-                "action": "Действие",
-                "cancelPayment": "Отменить платеж",
-                "downloadInvoice": "Скачать счет в формате PDF",
-                "newPlan": "Новый план",
-                "edit": "Изменить",
-                "editSubscription": "Изменить подписку",
-                "currencyLabel": "Выберите валюту",
-                "subscriptionLabel": "Изменить статус подписки",
-                "amountLabel": "Сколько вы платите?"
-            },
-            "BroadcastArea": {
-                "liveLanguage": "язык трансляции",
-                "questions": "Вопросы",
-                "yourQuestion": "Ваш вопрос",
-                "postYourQuestion": "Задавай вопрос",
-                "posting": "Отправка...",
-                "name": "трансляции",
-                "title": "трансляции",
-                "broadcast": "Broadcast",
-                "broadcastLanguage": "Языки трансляции",
-                "loading": "Загрузка...",
-                "noBroadcast": "Сейчас нет трансляции",
-                "noText": "Пожалуйста, напишите свой вопрос",
-                "successPosted": "успешно отправлено!",
-                "Question": {
-                    "title": "Отправить вопрос",
-                    "label": "Какой у Вас вопрос?",
-                    "placeholder": "Введите свой вопрос",
-                    "button": "Спросить",
-                    "successMsg": "Успешно отправлено!",
-                    "errorMsg": "Неожиданная ошибка. Пожалуйста, попробуйте еще раз!"
-                },
-                "Annoucements": {
-                    "title": "Announcements",
-                    "text": "Our Virtual Home includes the physical infrastructure and manpower for maintaining our comprehensive operation and improving online systems for optimal connection during Daily Kabbalah Lessons, social gatherings, holidays, and meals. It allows each friend full interaction in their language, both with their Ten and the World Kli from 72 countries.",
-                    "donations": "LET'S BE PARTNERS IN THE DISSEMINATION ENTERPRISE OF THE \"BNEI BARUCH - KABBALAH LA'AM\" ASSOCIATION",
-                    "donationsQuote": "\"Only through the expansion of the wisdom of Kabbalah in the masses will we obtain complete redemption\" (Rabbi Yehuda Ashlag, \"Baal HaSulam\").",
-                    "donationsButton": "Пожертвовать",
-                    "donationsLink": "http://bit.ly/2O0Pifo"
-                }
-            }
+        "Security": {
+          "name": "Информация для входа",
+          "email": "Электронные адреса",
+          "googleConnected": "Google Connected",
+          "googleTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
+          "facebookConnected": "Facebook Connected",
+          "facebookTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
+          "forgotPassword": "Забыли пароль?"
+        }
+      },
+      "Payments": {
+        "name": "Платежи",
+        "title": "Платежи",
+        "Tabs": {
+          "transaction": "Платежи",
+          "myPlan": "My Plan"
         },
-        "Membership": {
-            "name": "Абонемент",
-            "myMembership": "Статус абонемента",
-            "active": "активный",
-            "inactive": "Неактивный",
-            "new": "New",
-            "info": "Информация о абонементе",
-            "statusDescription": "Статус Описание",
-            "paymentHistory": "История платежей",
-            "descriptionInActiveMembership": "Aбонемент не найдена. Пожалуйста, нажмите кнопку ниже, чтобы купить один или обратиться за помощью",
-            "descriptionActiveMembership": "Ваш абонемент активен.",
-            "membershipDescription": "Абонемент — это ваша поддержка Бней Барух и доступ к мероприятиям и семинарам в системе Арвут."
+        "paidOn": "Оплачено",
+        "purpose": "Цель",
+        "paymentMethod": "Плаежный метод",
+        "paymentType": "Платежный тип",
+        "amount": "Сумма",
+        "currency": "Валюта",
+        "status": "Статус",
+        "action": "Действие",
+        "cancelPayment": "Отменить платеж",
+        "downloadInvoice": "Скачать счет в формате PDF",
+        "newPlan": "Новый план",
+        "edit": "Изменить",
+        "editSubscription": "Изменить подписку",
+        "currencyLabel": "Выберите валюту",
+        "subscriptionLabel": "Изменить статус подписки",
+        "amountLabel": "Сколько вы платите?"
+      },
+      "BroadcastArea": {
+        "liveLanguage": "язык трансляции",
+        "questions": "Вопросы",
+        "yourQuestion": "Ваш вопрос",
+        "postYourQuestion": "Задавай вопрос",
+        "posting": "Отправка...",
+        "name": "трансляции",
+        "title": "трансляции",
+        "broadcast": "Broadcast",
+        "broadcastLanguage": "Языки трансляции",
+        "loading": "Загрузка...",
+        "noBroadcast": "Сейчас нет трансляции",
+        "noText": "Пожалуйста, напишите свой вопрос",
+        "successPosted": "успешно отправлено!",
+        "Question": {
+          "title": "Отправить вопрос",
+          "label": "Какой у Вас вопрос?",
+          "placeholder": "Введите свой вопрос",
+          "button": "Спросить",
+          "successMsg": "Успешно отправлено!",
+          "errorMsg": "Неожиданная ошибка. Пожалуйста, попробуйте еще раз!"
         },
-        "common": {
-            "date": "Дата",
-            "time": "Время",
-            "product": "Продукт",
-            "type": "Тип",
-            "amount": "сумма",
-            "paymentId": "Идентификатор платежа",
-            "paymentMethod": "Способ оплаты",
-            "status": "Статус",
-            "paid": "Оплаченный",
-            "failed": "Неуспешный",
-            "pending": "В ожидании",
-            "currency": "Валюта",
-            "ticket": "Билет"
-        },
-        "ticket": {
-            "title": "Билет",
-            "event": "Событие",
-            "name": "Имя",
-            "registration_date": "Дата регистрации",
-            "payment_option": "Способ оплаты",
-            "date": "Дата",
-            "email": "Электронная почта",
-            "country": "Страна",
-            "gender": "Gender"
-          },
-        "may2022": "Только с товарищами - Конгресс"
-    }
+        "Annoucements": {
+          "title": "Announcements",
+          "text": "Our Virtual Home includes the physical infrastructure and manpower for maintaining our comprehensive operation and improving online systems for optimal connection during Daily Kabbalah Lessons, social gatherings, holidays, and meals. It allows each friend full interaction in their language, both with their Ten and the World Kli from 72 countries.",
+          "donations": "LET'S BE PARTNERS IN THE DISSEMINATION ENTERPRISE OF THE \"BNEI BARUCH - KABBALAH LA'AM\" ASSOCIATION",
+          "donationsQuote": "\"Only through the expansion of the wisdom of Kabbalah in the masses will we obtain complete redemption\" (Rabbi Yehuda Ashlag, \"Baal HaSulam\").",
+          "donationsButton": "Пожертвовать",
+          "donationsLink": "http://bit.ly/2O0Pifo"
+        }
+      }
+    },
+    "Membership": {
+      "name": "Абонемент",
+      "myMembership": "Статус абонемента",
+      "active": "активный",
+      "inactive": "Неактивный",
+      "new": "New",
+      "info": "Информация о абонементе",
+      "statusDescription": "Статус Описание",
+      "paymentHistory": "История платежей",
+      "descriptionInActiveMembership": "Aбонемент не найдена. Пожалуйста, нажмите кнопку ниже, чтобы купить один или обратиться за помощью",
+      "descriptionActiveMembership": "Ваш абонемент активен.",
+      "membershipDescription": "Абонемент — это ваша поддержка Бней Барух и доступ к мероприятиям и семинарам в системе Арвут."
+    },
+    "common": {
+      "date": "Дата",
+      "time": "Время",
+      "product": "Продукт",
+      "type": "Тип",
+      "amount": "сумма",
+      "paymentId": "Идентификатор платежа",
+      "paymentMethod": "Способ оплаты",
+      "status": "Статус",
+      "paid": "Оплаченный",
+      "failed": "Неуспешный",
+      "pending": "В ожидании",
+      "currency": "Валюта",
+      "ticket": "Билет"
+    },
+    "ticket": {
+      "title": "Билет",
+      "event": "Событие",
+      "name": "Имя",
+      "registration_date": "Дата регистрации",
+      "payment_option": "Способ оплаты",
+      "date": "Дата",
+      "email": "Электронная почта",
+      "country": "Страна",
+      "gender": "Gender"
+    },
+    "may2022": "Только с товарищами - Конгресс"
+  }
 }

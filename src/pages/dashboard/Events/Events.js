@@ -3,9 +3,7 @@ import React from "react";
 import EventIcon from "@material-ui/icons/Event";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import {
-  getEventsListWithParticipationDetail,
-} from "../../../services/events.service";
+import { getEventsListWithParticipationDetail } from "../../../services/events.service";
 import { keycloakData } from "../../../redux/selectors/user";
 import moment from "moment";
 import { useHistory } from "react-router-dom";
@@ -60,7 +58,7 @@ export default function Events() {
     history.push(url);
   };
   const getTicketsData = (eventId) => {
-      history.push(`/dash/events/tickets/${eventId}`);
+    history.push(`/dash/events/tickets/${eventId}`);
   };
   return (
     <Grid container spacing={6}>

@@ -1,3 +1,7 @@
 .MuiListItem-button.active:hover {
   background-color: #10151c !important;
 }
+
+.MuiInputBase-input.Mui-disabled {
+  color: #444 !important;
+}
