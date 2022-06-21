@@ -29,6 +29,7 @@ const PersonalForm = ({ inputFields, handleChange, isModified }) => {
       <Grid container spacing={6}>
         <Grid item xs={12} sm={6}>
           <TextField
+            InputProps={{ disableUnderline: !isModified ? true : false }}
             disabled={!isModified}
             type="text"
             label={t("Dashboard.Profile.PersonalForm.firstName")}
@@ -47,6 +48,7 @@ const PersonalForm = ({ inputFields, handleChange, isModified }) => {
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
+          InputProps={{ disableUnderline: !isModified ? true : false }}
             disabled={!isModified}
             type="text"
             label={t("Dashboard.Profile.PersonalForm.lastName")}
@@ -65,6 +67,7 @@ const PersonalForm = ({ inputFields, handleChange, isModified }) => {
         </Grid>
         <Grid item xs={12} sm={6}>
           <DatePicker
+          InputProps={{ disableUnderline: !isModified ? true : false }}
             autoOk
             orientation="landscape"
             openTo="date"

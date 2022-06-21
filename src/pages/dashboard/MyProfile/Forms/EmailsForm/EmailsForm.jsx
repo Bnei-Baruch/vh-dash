@@ -46,6 +46,7 @@ const EmailsForm = ({
             InputLabelProps={{
               shrink: true,
             }}
+            InputProps={{ disableUnderline: true }}
             onChange={(event) =>
               handleChange("primary_email", event.target.value)
             }
@@ -61,12 +62,13 @@ const EmailsForm = ({
             label={alternativeEmail1Trans}
             value={inputFields.alternate_email_1 || ""}
             fullWidth
-            placeholder={t("Global.inputPlaceholder", {
+            placeholder={!isModified ? '-' : t("Global.inputPlaceholder", {
               input: alternativeEmail1Trans.toLowerCase(),
             })}
             InputLabelProps={{
               shrink: true,
             }}
+            InputProps={{ disableUnderline: !isModified ? true : false }}
             onChange={(event) =>
               handleChange("alternate_email_1", event.target.value)
             }
@@ -82,12 +84,13 @@ const EmailsForm = ({
             label={alternativeEmail2Trans}
             value={inputFields.alternate_email_2 || ""}
             fullWidth
-            placeholder={t("Global.inputPlaceholder", {
+            placeholder={!isModified ? '-' : t("Global.inputPlaceholder", {
               input: alternativeEmail2Trans.toLowerCase(),
             })}
             InputLabelProps={{
               shrink: true,
             }}
+            InputProps={{ disableUnderline: !isModified ? true : false }}
             onChange={(event) =>
               handleChange("alternate_email_2", event.target.value)
             }
