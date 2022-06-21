@@ -58,6 +58,7 @@ const SelectElement = ({
         inputProps={{
           id,
         }}
+        disableUnderline={disabled ? true : false}
         MenuProps={{
           classes: {
             paper: classes.menu,

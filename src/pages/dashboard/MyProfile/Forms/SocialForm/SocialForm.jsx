@@ -54,6 +54,7 @@ const SocialForm = ({ inputFields, handleChange, isModified }) => {
         </Grid>
         <Grid item xs={10} md={8} lg={6}>
           <MuiPhoneInput
+          InputProps={{ disableUnderline: !isModified ? true : false }}
             defaultCountry="us"
             disabled={!isModified}
             onChange={onPhoneChange}
@@ -70,6 +71,7 @@ const SocialForm = ({ inputFields, handleChange, isModified }) => {
         </Grid>
         <Grid item xs={10} md={8} lg={6}>
           <MuiPhoneInput
+            InputProps={{ disableUnderline: !isModified ? true : false }}
             defaultCountry="us"
             value={whats_app_number}
             disabled={!isModified}
@@ -86,6 +88,7 @@ const SocialForm = ({ inputFields, handleChange, isModified }) => {
         </Grid>
         <Grid item xs={10} md={8} lg={6}>
           <MuiPhoneInput
+            InputProps={{ disableUnderline: !isModified ? true : false }}
             defaultCountry="us"
             value={telegram_number}
             disabled={!isModified}

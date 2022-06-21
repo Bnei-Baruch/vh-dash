@@ -53,6 +53,9 @@ const TenForm = ({ inputFields, handleChange, isModified }) => {
             InputLabelProps={{
               shrink: true,
             }}
+            InputProps={{
+              disableUnderline: !isModified ? true : false
+            }}
             onChange={(event) =>
               handleChange("name_ten_group", event.target.value)
             }

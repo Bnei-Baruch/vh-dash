@@ -34,6 +34,7 @@ const EducationForm = ({ inputFields, handleChange, isModified }) => {
             placeholder={t("Global.inputPlaceholder", {
               input: startYearTrans.toLowerCase(),
             })}
+            InputProps={{ disableUnderline: !isModified ? true : false }}
             value={convertedStudyYear}
             disabled={!isModified}
             onChange={onYearChange}
@@ -59,6 +60,9 @@ const EducationForm = ({ inputFields, handleChange, isModified }) => {
             placeholder={t("Global.inputPlaceholder", {
               input: studyFrameworkTrans.toLowerCase(),
             })}
+            InputProps={{
+              disableUnderline: !isModified ? true : false
+            }}
             InputLabelProps={{
               shrink: true,
             }}
