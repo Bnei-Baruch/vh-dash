@@ -30,6 +30,7 @@ const PhysicalLocationForm = ({ handleChange, inputFields, isModified }) => {
       <Grid container spacing={6}>
         <Grid item xs={12} sm={6}>
           <TextField
+          InputProps={{ disableUnderline: !isModified ? true : false }}
             disabled={!isModified}
             type="text"
             label={streetAddressTrans}
@@ -48,6 +49,7 @@ const PhysicalLocationForm = ({ handleChange, inputFields, isModified }) => {
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
+          InputProps={{ disableUnderline: !isModified ? true : false }}
             disabled={!isModified}
             type="text"
             label={postalCodeTrans}
@@ -76,6 +78,7 @@ const PhysicalLocationForm = ({ handleChange, inputFields, isModified }) => {
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
+          InputProps={{ disableUnderline: !isModified ? true : false }}
             disabled={!isModified}
             type="text"
             label={stateRegionTrans}
@@ -94,6 +97,7 @@ const PhysicalLocationForm = ({ handleChange, inputFields, isModified }) => {
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
+          InputProps={{ disableUnderline: !isModified ? true : false }}
             disabled={!isModified}
             type="text"
             label={cityTrans}

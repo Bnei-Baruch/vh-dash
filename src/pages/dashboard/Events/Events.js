@@ -20,6 +20,9 @@ const useStyles = makeStyles((theme) => ({
   eventName: {
     borderBottom: "1px solid #cfcfcf",
     padding: "10px 0px",
+    '& h4': {
+      minHeight: '48px'
+    }
   },
   actionTile: {
     marginTop: "20px",
@@ -61,10 +64,11 @@ export default function Events() {
     history.push(`/dash/events/tickets/${eventId}`);
   };
   return (
-    <Grid container spacing={6}>
+    <Grid container spacing={2}>
       {events &&
         events.map((event) => (
-          <Grid item xs={12} md={4} className={classes.eventTile}>
+          <Grid item xs={12} md={4}>
+            <Grid className={classes.eventTile}> 
             <Grid className={[classes.flexTile, classes.eventName]}>
               <EventIcon /> &nbsp; &nbsp;
               <Typography variant="h4">{t(event.slug)}</Typography>
@@ -124,6 +128,8 @@ export default function Events() {
                 </Button>
               )}
             </Grid>
+            </Grid>
+            
           </Grid>
         ))}
     </Grid>
