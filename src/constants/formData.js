@@ -45,8 +45,8 @@ export const systemLanguages = [
 ];
 
 export const studyGroup = [
-  { code: true, label: i18next.t("Global.yes") },
-  { code: false, label: i18next.t("Global.no") },
+  { code: 'true', label: i18next.t("Global.yes") },
+  { code: 'false', label: i18next.t("Global.no") },
 ];
 
 export const currencyData = [
