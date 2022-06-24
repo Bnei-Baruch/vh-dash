@@ -4,6 +4,7 @@ import {
   UPDATE_PROFILE_SUCCESS,
   UPDATE_PROFILE_FAILED,
   TOGGLE_PROFILE_WINDOW,
+  UPDATE_MODIFY_MODE,
 } from "../constants";
 
 const INITIAL_STATE = {
@@ -14,6 +15,7 @@ const INITIAL_STATE = {
   },
   isProfileExist: false,
   error: "",
+  modify: false
 };
 
 export default function reducer(state = INITIAL_STATE, actions) {
@@ -57,6 +59,12 @@ export default function reducer(state = INITIAL_STATE, actions) {
           isModalOpen: actions.payload,
         },
       };
+
+    case UPDATE_MODIFY_MODE:
+    return {
+      ...state,
+      modify: actions.payload
+    }
 
     default:
       return state;

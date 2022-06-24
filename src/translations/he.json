@@ -78,7 +78,9 @@
     "UserMenu": {
       "logOut": "להתנתק",
       "logOutText": "האם את/ה באמת רוצה לצאת?",
+      "unsaved_changes": "You have unsaved changes. Please save or cancel changes before switching tab",
       "yesBtn": "כן",
+      "okbtn": "Ok",
       "cancelBtn": "לבטל",
       "subscriptions": "מנויים",
       "payUserFee": "לתשלום עבור המנוי",
