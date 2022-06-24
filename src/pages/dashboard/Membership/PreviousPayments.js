@@ -104,7 +104,6 @@ function PreviousPayments() {
         filter: true,
         sort: false,
         customBodyRender: (value, row) => {
-          console.log(row);
           return (
             <>
               {value === "success" && (
