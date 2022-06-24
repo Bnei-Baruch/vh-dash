@@ -100,7 +100,11 @@ const MyProfile = () => {
   };
 
   const onSubmit = () => {
-    dispatch(updateProfile(updatedFields));
+    let data = {...updatedFields};
+    if (updateProfile && updatedFields.date_of_birth) {
+      data.date_of_birth = new Date(updatedFields.date_of_birth);
+    }
+    dispatch(updateProfile(data));
   };
 
   const onModalClose = () =>
