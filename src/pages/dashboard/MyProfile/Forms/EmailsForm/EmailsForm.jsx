@@ -62,9 +62,13 @@ const EmailsForm = ({
             label={alternativeEmail1Trans}
             value={inputFields.alternate_email_1 || ""}
             fullWidth
-            placeholder={!isModified ? '-' : t("Global.inputPlaceholder", {
-              input: alternativeEmail1Trans.toLowerCase(),
-            })}
+            placeholder={
+              !isModified
+                ? "-"
+                : t("Global.inputPlaceholder", {
+                    input: alternativeEmail1Trans.toLowerCase(),
+                  })
+            }
             InputLabelProps={{
               shrink: true,
             }}
@@ -84,9 +88,13 @@ const EmailsForm = ({
             label={alternativeEmail2Trans}
             value={inputFields.alternate_email_2 || ""}
             fullWidth
-            placeholder={!isModified ? '-' : t("Global.inputPlaceholder", {
-              input: alternativeEmail2Trans.toLowerCase(),
-            })}
+            placeholder={
+              !isModified
+                ? "-"
+                : t("Global.inputPlaceholder", {
+                    input: alternativeEmail2Trans.toLowerCase(),
+                  })
+            }
             InputLabelProps={{
               shrink: true,
             }}

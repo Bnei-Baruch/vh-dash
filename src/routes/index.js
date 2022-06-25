@@ -10,7 +10,6 @@ import async from "../components/Async";
 import { DASHBOARD_ROUTES } from "./dashboardRoutes";
 import {
   ARCHIVE_LINK,
-  ARVUT_SYSTEM_URL,
   // BB_HELP_LINK,
 } from "../constants/common";
 
@@ -98,7 +97,7 @@ const dashboardRoutes = [
     children: null,
   },
   {
-    path: ARVUT_SYSTEM_URL,
+    path: DASHBOARD_ROUTES.arvutSystem,
     id: "ArvutSystem",
     icon: <ViewComfyIcon />,
     enableHeader: true,
@@ -107,7 +106,7 @@ const dashboardRoutes = [
     ],
     component: ArvutSystem,
     children: null,
-    isExternalLink: true,
+    isExternalLink: false,
   },
   {
     path: ARCHIVE_LINK,

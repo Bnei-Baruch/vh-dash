@@ -61,7 +61,7 @@ const EducationForm = ({ inputFields, handleChange, isModified }) => {
               input: studyFrameworkTrans.toLowerCase(),
             })}
             InputProps={{
-              disableUnderline: !isModified ? true : false
+              disableUnderline: !isModified ? true : false,
             }}
             InputLabelProps={{
               shrink: true,
