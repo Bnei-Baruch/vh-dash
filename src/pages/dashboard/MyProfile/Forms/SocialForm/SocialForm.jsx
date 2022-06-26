@@ -54,7 +54,7 @@ const SocialForm = ({ inputFields, handleChange, isModified }) => {
         </Grid>
         <Grid item xs={10} md={8} lg={6}>
           <MuiPhoneInput
-          InputProps={{ disableUnderline: !isModified ? true : false }}
+            InputProps={{ disableUnderline: !isModified ? true : false }}
             defaultCountry="us"
             disabled={!isModified}
             onChange={onPhoneChange}

@@ -102,7 +102,9 @@
         "accessDescription": "Arvut Description : Lorem Ipsum is simply dummy text of the printing",
         "requestAccess": "Request Access to Arvut System",
         "continueAsGuest": "Continue as guest",
-        "verfiyInformation": "Please verify or complete your information below"
+        "verfiyInformation": "Please verify or complete your information below",
+        "request_submitted": "Your request has been successfully submitted ",
+        "request_submitted_text": "You will be notified by email once the team has reviewed your request."
       },
       "Archive": {
         "name": "Kabbalah Media"

@@ -20,9 +20,9 @@ const useStyles = makeStyles((theme) => ({
   eventName: {
     borderBottom: "1px solid #cfcfcf",
     padding: "10px 0px",
-    '& h4': {
-      minHeight: '48px'
-    }
+    "& h4": {
+      minHeight: "48px",
+    },
   },
   actionTile: {
     marginTop: "20px",
@@ -68,22 +68,22 @@ export default function Events() {
       {events &&
         events.map((event) => (
           <Grid item xs={12} md={4}>
-            <Grid className={classes.eventTile}> 
-            <Grid className={[classes.flexTile, classes.eventName]}>
-              <EventIcon /> &nbsp; &nbsp;
-              <Typography variant="h4">{t(event.slug)}</Typography>
-            </Grid>
-            <Grid className={classes.flexTile}>
-              <Typography className={classes.label} variant="p">
-                {t("common.date")}:{" "}
-              </Typography>{" "}
-              &nbsp;
-              <Typography variant="p">
-                {moment(event.starts_on).format("DD/MM/YYYY")} -{" "}
-                {moment(event.ends_on).format("DD/MM/YYYY")}
-              </Typography>
-            </Grid>
-            {/* <Grid className={classes.flexTile}>
+            <Grid className={classes.eventTile}>
+              <Grid className={[classes.flexTile, classes.eventName]}>
+                <EventIcon /> &nbsp; &nbsp;
+                <Typography variant="h4">{t(event.slug)}</Typography>
+              </Grid>
+              <Grid className={classes.flexTile}>
+                <Typography className={classes.label} variant="p">
+                  {t("common.date")}:{" "}
+                </Typography>{" "}
+                &nbsp;
+                <Typography variant="p">
+                  {moment(event.starts_on).format("DD/MM/YYYY")} -{" "}
+                  {moment(event.ends_on).format("DD/MM/YYYY")}
+                </Typography>
+              </Grid>
+              {/* <Grid className={classes.flexTile}>
               <Typography className={classes.label} variant="p">
                 {t("common.time")} :{" "}
               </Typography>{" "}
@@ -93,43 +93,42 @@ export default function Events() {
                 {moment(event.ends_on).format("HH:MM:SSS")}
               </Typography>
             </Grid> */}
-            <Grid className={[classes.flexTile, classes.actionTile]}>
-              <Button
-                variant="contained"
-                color="default"
-                onClick={() =>
-                  navigate(
-                    true,
-                    event.url ? event.url : "https://convention.kli.one",
-                    true
-                  )
-                }
-              >
-                {t("Dashboard.Events.page")}
-              </Button>{" "}
-              &nbsp;
-              {event.is_user_registered ? (
+              <Grid className={[classes.flexTile, classes.actionTile]}>
                 <Button
                   variant="contained"
-                  color="primary"
-                  onClick={() => getTicketsData(event.id)}
-                >
-                  {t("common.ticket")}
-                </Button>
-              ) : (
-                <Button
-                  variant="contained"
-                  color="primary"
+                  color="default"
                   onClick={() =>
-                    navigate(true, `/pay/order/ticket/${event.slug}`)
+                    navigate(
+                      true,
+                      event.url ? event.url : "https://convention.kli.one",
+                      true
+                    )
                   }
                 >
-                  {t("Dashboard.Events.register")}
-                </Button>
-              )}
+                  {t("Dashboard.Events.page")}
+                </Button>{" "}
+                &nbsp;
+                {event.is_user_registered ? (
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() => getTicketsData(event.id)}
+                  >
+                    {t("common.ticket")}
+                  </Button>
+                ) : (
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() =>
+                      navigate(true, `/pay/order/ticket/${event.slug}`)
+                    }
+                  >
+                    {t("Dashboard.Events.register")}
+                  </Button>
+                )}
+              </Grid>
             </Grid>
-            </Grid>
-            
           </Grid>
         ))}
     </Grid>
