@@ -5,6 +5,10 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import TabPanel from "./TabPanel.jsx";
 import { useHistory } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
+import ModalWindow from "../ui/ModalWindow.jsx";
+import { updateModifyEnabled } from "../../../../redux/actions/profileActions.js";
 
 const a11yProps = (index, classes) => ({
   id: `scrollable-auto-tab-${index}`,
@@ -41,11 +45,21 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const NavigationBar = ({ tabs }) => {
+  const { t } = useTranslation();
+  const dispatch = useDispatch();
   const classes = useStyles();
   const [value, setValue] = useState(0);
   const history = useHistory();
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [selectedOption, setSelectedOption] = useState(null);
   const { href, search } = window.location;
+  const isEdit = useSelector((state) => state.profileReducer.modify);
   const handleChange = (event, newValue) => {
+    if (isEdit) {
+      setSelectedOption(newValue);
+      setShowEditModal(true);
+      return;
+    }
     setValue(newValue);
   };
 
@@ -92,6 +106,21 @@ const NavigationBar = ({ tabs }) => {
           {item.component}
         </TabPanel>
       ))}
+      <ModalWindow
+        open={showEditModal}
+        contentText={t("UserMenu.unsaved_changes")}
+        confirmBtnText={t("UserMenu.okbtn")}
+        closeBtnText={t("UserMenu.okbtn")}
+        handleClose={() => {
+          setSelectedOption(null);
+          setShowEditModal(false);
+        }}
+        onConfirmation={() => {
+          setValue(selectedOption);
+          setShowEditModal(false);
+          dispatch(updateModifyEnabled(false));
+        }}
+      />
     </div>
   );
 };

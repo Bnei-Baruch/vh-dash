@@ -5,6 +5,8 @@ import { AppBar, Button, Grid, Toolbar } from "@material-ui/core";
 
 import LanguagesForm from "../Forms/LanguagesForms/LanguagesForm";
 import LanguagePreferencesForm from "../Forms/LanguagesForms/LanguagePreferencesForm";
+import { useDispatch } from "react-redux";
+import { updateModifyEnabled } from "../../../../redux/actions/profileActions";
 
 const useStyles = makeStyles({
   appBar: {
@@ -29,6 +31,7 @@ const LanguagesTab = ({
   onSubmit,
 }) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const { t } = useTranslation();
 
   const [isModified, setIsModified] = useState(false);
@@ -45,16 +48,19 @@ const LanguagesTab = ({
     event.preventDefault();
 
     if (!isModified) {
+      dispatch(updateModifyEnabled(true))
       setIsModified(true);
       return;
     }
 
     onSubmit();
+    dispatch(updateModifyEnabled(false))
     setIsModified(false);
   };
 
   const onCancel = () => {
     setIsModified(false);
+    dispatch(updateModifyEnabled(false))
     setInputFields(copiedFields);
   };
 
