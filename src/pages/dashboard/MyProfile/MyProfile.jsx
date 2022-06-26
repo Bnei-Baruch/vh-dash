@@ -100,7 +100,7 @@ const MyProfile = () => {
   };
 
   const onSubmit = () => {
-    let data = {...updatedFields};
+    let data = { ...updatedFields };
     if (updateProfile && updatedFields.date_of_birth) {
       data.date_of_birth = new Date(updatedFields.date_of_birth);
     }
