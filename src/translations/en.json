@@ -78,7 +78,9 @@
     "UserMenu": {
       "logOut": "Log Out",
       "logOutText": "Do you really want to quit?",
+      "unsaved_changes": "You have unsaved changes. Please save or cancel changes before switching tab",
       "yesBtn": "Yes",
+      "okbtn": "Ok",
       "cancelBtn": "Cancel",
       "subscriptions": "Subscriptions",
       "payUserFee": "Pay User Fee",

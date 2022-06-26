@@ -37,7 +37,9 @@
       "logOut": "Cerrar la sesión",
       "profile": "Perfil",
       "logOutText": "¿Realmente quiere dejar de fumar?",
+      "unsaved_changes": "You have unsaved changes. Please save or cancel changes before switching tab",
       "yesBtn": "Sí",
+      "okbtn": "Ok",
       "cancelBtn": "Cancelar",
       "payUserFee": "Pagar la tarifa de usuario",
       "statuses": {

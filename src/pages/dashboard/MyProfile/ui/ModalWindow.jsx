@@ -13,6 +13,7 @@ const ModalWindow = ({
   closeBtnText,
   handleClose,
   onConfirmation,
+  hideConfirmBtn
 }) => (
   <Dialog
     open={open}
@@ -25,7 +26,7 @@ const ModalWindow = ({
       </DialogContentText>
     </DialogContent>
     <DialogActions style={{ justifyContent: "center" }}>
-      {onConfirmation && (
+      {onConfirmation && !hideConfirmBtn && (
         <Button
           onClick={onConfirmation}
           color="primary"
@@ -49,6 +50,7 @@ ModalWindow.propTypes = {
   closeBtnText: PropTypes.string.isRequired,
   handleClose: PropTypes.func.isRequired,
   onConfirmation: PropTypes.func,
+  hideConfirmBtn: PropTypes.bool
 };
 
 export default ModalWindow;

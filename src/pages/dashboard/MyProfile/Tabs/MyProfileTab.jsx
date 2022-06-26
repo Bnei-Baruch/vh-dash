@@ -7,6 +7,8 @@ import PersonalForm from "../Forms/PersonalForm/PersonalForm";
 import EmailsForm from "../Forms/EmailsForm";
 import PhysicalLocationForm from "../Forms/PersonalForm/PhysicalLocationForm";
 import SocialForm from "../Forms/SocialForm";
+import { updateModifyEnabled } from "../../../../redux/actions/profileActions";
+import { useDispatch } from "react-redux";
 
 const useStyles = makeStyles({
   appBar: {
@@ -33,6 +35,7 @@ const MyProfileTab = ({
   handleChange,
 }) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const { t } = useTranslation();
 
   const [isModified, setIsModified] = useState(false);
@@ -69,16 +72,19 @@ const MyProfileTab = ({
 
     if (!isModified) {
       setIsModified(true);
+      dispatch(updateModifyEnabled(true))
       return;
     }
 
     isValid && onSubmit();
     setIsModified(false);
+    dispatch(updateModifyEnabled(false))
   };
 
   const onCancel = () => {
     onErrorClear();
     setIsModified(false);
+    dispatch(updateModifyEnabled(false))
     setInputFields(copiedFields);
   };
 
