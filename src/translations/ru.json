@@ -137,8 +137,9 @@
       "Events": {
         "name": "События",
         "title": "События",
-        "page": "Страница события",
-        "register": "Регистрация"
+        "page": "More Info",
+        "register": "Registration",
+        "watch_in_archive": "Watch in the Archive"
       },
       "Profile": {
         "name": "Профиль",
@@ -318,6 +319,15 @@
       "email": "Электронная почта",
       "country": "Страна",
       "gender": "Gender"
+    },
+    "events": {
+      "upcoming_event": "Upcoming Events",
+      "past_events": "Past Events",
+      "registered_events": "Registered Events",
+      "registered_date": "Registration Date",
+      "option": "Options",
+      "part_status": "Participation Status",
+      "registered": "Registered"
     },
     "may2022": "Только с товарищами - Конгресс"
   }

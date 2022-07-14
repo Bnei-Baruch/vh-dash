@@ -140,8 +140,9 @@
       "Events": {
         "name": "Eventos",
         "title": "Eventos",
-        "page": "Pagina de Eventos",
-        "register": "Registro"
+        "page": "More Info",
+        "register": "Registration",
+        "watch_in_archive": "Watch in the Archive"
       },
       "Profile": {
         "name": "Perfil",
@@ -609,6 +610,15 @@
       "email": "Email",
       "country": "País",
       "gender": "Gender"
+    },
+    "events": {
+      "upcoming_event": "Upcoming Events",
+      "past_events": "Past Events",
+      "registered_events": "Registered Events",
+      "registered_date": "Registration Date",
+      "option": "Options",
+      "part_status": "Participation Status",
+      "registered": "Registered"
     },
     "may2022": "Only the friends - Kabbalah Convention"
   }
