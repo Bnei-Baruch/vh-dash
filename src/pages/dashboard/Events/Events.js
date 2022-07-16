@@ -14,6 +14,8 @@ import { getEventsListWithParticipationDetail } from "../../../services/events.s
 import { keycloakData } from "../../../redux/selectors/user";
 import moment from "moment";
 import { useHistory } from "react-router-dom";
+import InfoIcon from "@material-ui/icons/Info";
+import Loader from "../../../components/Loader";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -90,8 +92,27 @@ function TabPanel(props) {
     </div>
   );
 }
+
+const NoEvents = ({ message }) => (
+  <Grid container>
+    <Grid
+      item
+      xs={12}
+      style={{ textAlign: "center", marginTop: "20px", color: "#bdbdbd" }}
+    >
+      <InfoIcon />
+      <Typography variant="h6" style={{}}>
+        {message}
+      </Typography>
+    </Grid>
+  </Grid>
+);
+
 export default function Events() {
-  const [events, setEvents] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
+  const [registeredEvents, setRegisteredEvents] = React.useState([]);
+  const [upcomingEvents, seUpcomingEvents] = React.useState([]);
+  const [pastEvents, setPastEvents] = React.useState([]);
   const { t } = useTranslation();
   const history = useHistory();
   const classes = useStyles();
@@ -101,8 +122,24 @@ export default function Events() {
       getEventsListWithParticipationDetail(keycloak.profile.email).then(
         (res) => {
           if (res) {
-            setEvents(res);
+            const registeredEvents = res.filter(
+              (event) => event.is_user_registered
+            );
+            const upcomingEvents = res.filter(
+              (event) =>
+                !event.is_user_registered &&
+                moment(event.starts_on).isAfter(moment())
+            );
+            const pastEvents = res.filter(
+              (event) =>
+                !event.is_user_registered &&
+                moment(event.starts_on).isBefore(moment())
+            );
+            setRegisteredEvents(registeredEvents);
+            seUpcomingEvents(upcomingEvents);
+            setPastEvents(pastEvents);
           }
+          setLoading(false);
         }
       );
   }, [keycloak]);
@@ -126,6 +163,10 @@ export default function Events() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  if (loading) {
+    return <Loader />;
+  }
   return (
     <Grid container spacing={2}>
       <Grid item xs={12} md={12}>
@@ -138,14 +179,88 @@ export default function Events() {
           scrollButtons="auto"
           aria-label="scrollable auto tabs example"
         >
-          <Tab label={t("events.registered_events")} {...a11yProps(0)} />
-          <Tab label={t("events.upcoming_event")} {...a11yProps(1)} />
+          <Tab label={t("events.upcoming_event")} {...a11yProps(0)} />
+          <Tab label={t("events.registered_events")} {...a11yProps(1)} />
           <Tab label={t("events.past_events")} {...a11yProps(2)} />
         </Tabs>
+
         <TabPanel value={value} index={0}>
           <Grid container spacing={2} style={{ marginTop: "5px" }}>
-            {events &&
-              events.map((event) => (
+            {upcomingEvents && upcomingEvents.length > 0 ? (
+              upcomingEvents.map((event) => (
+                <Grid item xs={12} md={4}>
+                  <Grid className={classes.eventTile}>
+                    <Grid>
+                      <Typography variant="h1">
+                        {moment(event.starts_on).format("DD")} -{" "}
+                        {moment(event.ends_on).format("DD")}
+                      </Typography>
+                      <Typography variant="p">
+                        {moment(event.starts_on).format("MMMM") +
+                          "," +
+                          moment(event.starts_on).format("YYYY")}
+                      </Typography>
+                    </Grid>
+                    <Grid className={[classes.eventName, classes.eventTitle]}>
+                      <Typography variant="h6">{t(event.slug)}</Typography>
+                    </Grid>
+                    <Grid className={[classes.eventName]}>
+                      <Typography variant="p">
+                        {t(
+                          event.desciption ||
+                            "Our next big gathering with the whole world kli is an other opportunity to unite."
+                        )}
+                      </Typography>
+                    </Grid>
+                    <Grid className={[classes.flexTile, classes.actionTile]}>
+                      <Button
+                        variant="outlined"
+                        color="primary"
+                        onClick={() =>
+                          navigate(
+                            true,
+                            event.url
+                              ? event.url
+                              : "https://convention.kli.one",
+                            true
+                          )
+                        }
+                      >
+                        {t("Dashboard.Events.page")}
+                      </Button>{" "}
+                      &nbsp;
+                      {event.is_user_registered ? (
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          onClick={() => getTicketsData(event.id)}
+                        >
+                          {t("common.ticket")}
+                        </Button>
+                      ) : (
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          onClick={() =>
+                            navigate(true, `/pay/order/ticket/${event.slug}`)
+                          }
+                        >
+                          {t("Dashboard.Events.register")}
+                        </Button>
+                      )}
+                    </Grid>
+                  </Grid>
+                </Grid>
+              ))
+            ) : (
+              <NoEvents message={t("events.no_upcoming_events")} />
+            )}
+          </Grid>
+        </TabPanel>
+        <TabPanel value={value} index={1}>
+          <Grid container spacing={2} style={{ marginTop: "5px" }}>
+            {registeredEvents && registeredEvents.length > 0 ? (
+              registeredEvents.map((event) => (
                 <Grid item xs={12} md={4}>
                   <Grid className={classes.eventTile}>
                     <Grid container>
@@ -240,83 +355,16 @@ export default function Events() {
                     </Grid>
                   </Grid>
                 </Grid>
-              ))}
-          </Grid>
-        </TabPanel>
-        <TabPanel value={value} index={1}>
-          <Grid container spacing={2} style={{ marginTop: "5px" }}>
-            {events &&
-              events.map((event) => (
-                <Grid item xs={12} md={4}>
-                  <Grid className={classes.eventTile}>
-                    <Grid>
-                      <Typography variant="h1">
-                        {moment(event.starts_on).format("DD")} -{" "}
-                        {moment(event.ends_on).format("DD")}
-                      </Typography>
-                      <Typography variant="p">
-                        {moment(event.starts_on).format("MMMM") +
-                          "," +
-                          moment(event.starts_on).format("YYYY")}
-                      </Typography>
-                    </Grid>
-                    <Grid className={[classes.eventName, classes.eventTitle]}>
-                      <Typography variant="h6">{t(event.slug)}</Typography>
-                    </Grid>
-                    <Grid className={[classes.eventName]}>
-                      <Typography variant="p">
-                        {t(
-                          event.desciption ||
-                            "Our next big gathering with the whole world kli is an other opportunity to unite."
-                        )}
-                      </Typography>
-                    </Grid>
-                    <Grid className={[classes.flexTile, classes.actionTile]}>
-                      <Button
-                        variant="outlined"
-                        color="primary"
-                        onClick={() =>
-                          navigate(
-                            true,
-                            event.url
-                              ? event.url
-                              : "https://convention.kli.one",
-                            true
-                          )
-                        }
-                      >
-                        {t("Dashboard.Events.page")}
-                      </Button>{" "}
-                      &nbsp;
-                      {event.is_user_registered ? (
-                        <Button
-                          variant="contained"
-                          color="primary"
-                          onClick={() => getTicketsData(event.id)}
-                        >
-                          {t("common.ticket")}
-                        </Button>
-                      ) : (
-                        <Button
-                          variant="contained"
-                          color="primary"
-                          onClick={() =>
-                            navigate(true, `/pay/order/ticket/${event.slug}`)
-                          }
-                        >
-                          {t("Dashboard.Events.register")}
-                        </Button>
-                      )}
-                    </Grid>
-                  </Grid>
-                </Grid>
-              ))}
+              ))
+            ) : (
+              <NoEvents message={t("events.no_registered_events")} />
+            )}
           </Grid>
         </TabPanel>
         <TabPanel value={value} index={2}>
           <Grid container spacing={2} style={{ marginTop: "5px" }}>
-            {events &&
-              events.map((event) => (
+            {pastEvents && pastEvents.length > 0 ? (
+              pastEvents.map((event) => (
                 <Grid item xs={12} md={4}>
                   <Grid className={classes.eventTile}>
                     <Grid>
@@ -360,7 +408,10 @@ export default function Events() {
                     </Grid>
                   </Grid>
                 </Grid>
-              ))}
+              ))
+            ) : (
+              <NoEvents message={t("events.no_past_events")} />
+            )}
           </Grid>
         </TabPanel>
       </Grid>

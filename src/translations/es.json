@@ -618,7 +618,10 @@
       "registered_date": "Registration Date",
       "option": "Options",
       "part_status": "Participation Status",
-      "registered": "Registered"
+      "registered": "Registered",
+      "no_registered_events": "No registered events",
+      "no_upcoming_events": "No upcoming events",
+      "no_past_events": "No past events"
     },
     "may2022": "Only the friends - Kabbalah Convention"
   }
