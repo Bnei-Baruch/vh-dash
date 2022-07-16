@@ -137,8 +137,9 @@
       "Events": {
         "name": "אירועים",
         "title": "אירועים",
-        "page": "דף אירועים",
-        "register": "להרשם"
+        "page": "More Info",
+        "register": "Registration",
+        "watch_in_archive": "Watch in the Archive"
       },
       "Profile": {
         "name": "פרופיל",
@@ -318,6 +319,18 @@
       "email": "דואר אלקטרוני",
       "country": "מדינה",
       "gender": "Gender"
+    },
+    "events": {
+      "upcoming_event": "Upcoming Events",
+      "past_events": "Past Events",
+      "registered_events": "Registered Events",
+      "registered_date": "Registration Date",
+      "option": "Options",
+      "part_status": "Participation Status",
+      "registered": "Registered",
+      "no_registered_events": "No registered events",
+      "no_upcoming_events": "No upcoming events",
+      "no_past_events": "No past events"
     },
     "may2022": "רק החברים - כנס הקבלה"
   }
