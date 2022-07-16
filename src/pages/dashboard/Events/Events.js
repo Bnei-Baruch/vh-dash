@@ -1,13 +1,27 @@
-import { Button, Grid, makeStyles, Typography } from "@material-ui/core";
+import {
+  Button,
+  Grid,
+  makeStyles,
+  Tab,
+  Tabs,
+  Typography,
+} from "@material-ui/core";
 import React from "react";
-import EventIcon from "@material-ui/icons/Event";
+import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { getEventsListWithParticipationDetail } from "../../../services/events.service";
 import { keycloakData } from "../../../redux/selectors/user";
 import moment from "moment";
 import { useHistory } from "react-router-dom";
+import InfoIcon from "@material-ui/icons/Info";
+import Loader from "../../../components/Loader";
 const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+    width: "100%",
+    backgroundColor: theme.palette.background.paper,
+  },
   eventTile: {
     backgroundColor: "#fff",
     padding: "20px !important",
@@ -17,12 +31,15 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     margin: "10px 0px",
   },
-  eventName: {
-    borderBottom: "1px solid #cfcfcf",
+  registeredTile: {
+    marginTop: "20px",
+  },
+  eventTitle: {
+    marginTop: "20px",
     padding: "10px 0px",
-    "& h4": {
-      minHeight: "48px",
-    },
+  },
+  eventName: {
+    padding: "5px 0px",
   },
   actionTile: {
     marginTop: "20px",
@@ -31,9 +48,71 @@ const useStyles = makeStyles((theme) => ({
   label: {
     color: "#717171",
   },
+  partStatus: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "flex-end",
+  },
+  registeredContainer: {
+    alignItems: "center",
+    display: "flex",
+    marginBottom: "5px",
+    "& svg": {
+      color: "#0D9D0D",
+      fontSize: "16px",
+    },
+  },
+  primaryText: {
+    color: "#1565C0",
+  },
+  secondaryText: {
+    color: "#5A5A5A",
+  },
 }));
+
+function a11yProps(index) {
+  return {
+    id: `scrollable-auto-tab-${index}`,
+    "aria-controls": `scrollable-auto-tabpanel-${index}`,
+  };
+}
+
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`scrollable-auto-tabpanel-${index}`}
+      aria-labelledby={`scrollable-auto-tab-${index}`}
+      {...other}
+    >
+      {value === index && children}
+    </div>
+  );
+}
+
+const NoEvents = ({ message }) => (
+  <Grid container>
+    <Grid
+      item
+      xs={12}
+      style={{ textAlign: "center", marginTop: "20px", color: "#bdbdbd" }}
+    >
+      <InfoIcon />
+      <Typography variant="h6" style={{}}>
+        {message}
+      </Typography>
+    </Grid>
+  </Grid>
+);
+
 export default function Events() {
-  const [events, setEvents] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
+  const [registeredEvents, setRegisteredEvents] = React.useState([]);
+  const [upcomingEvents, seUpcomingEvents] = React.useState([]);
+  const [pastEvents, setPastEvents] = React.useState([]);
   const { t } = useTranslation();
   const history = useHistory();
   const classes = useStyles();
@@ -43,8 +122,24 @@ export default function Events() {
       getEventsListWithParticipationDetail(keycloak.profile.email).then(
         (res) => {
           if (res) {
-            setEvents(res);
+            const registeredEvents = res.filter(
+              (event) => event.is_user_registered
+            );
+            const upcomingEvents = res.filter(
+              (event) =>
+                !event.is_user_registered &&
+                moment(event.starts_on).isAfter(moment())
+            );
+            const pastEvents = res.filter(
+              (event) =>
+                !event.is_user_registered &&
+                moment(event.starts_on).isBefore(moment())
+            );
+            setRegisteredEvents(registeredEvents);
+            seUpcomingEvents(upcomingEvents);
+            setPastEvents(pastEvents);
           }
+          setLoading(false);
         }
       );
   }, [keycloak]);
@@ -63,74 +158,263 @@ export default function Events() {
   const getTicketsData = (eventId) => {
     history.push(`/dash/events/tickets/${eventId}`);
   };
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
+  if (loading) {
+    return <Loader />;
+  }
   return (
     <Grid container spacing={2}>
-      {events &&
-        events.map((event) => (
-          <Grid item xs={12} md={4}>
-            <Grid className={classes.eventTile}>
-              <Grid className={[classes.flexTile, classes.eventName]}>
-                <EventIcon /> &nbsp; &nbsp;
-                <Typography variant="h4">{t(event.slug)}</Typography>
-              </Grid>
-              <Grid className={classes.flexTile}>
-                <Typography className={classes.label} variant="p">
-                  {t("common.date")}:{" "}
-                </Typography>{" "}
-                &nbsp;
-                <Typography variant="p">
-                  {moment(event.starts_on).format("DD/MM/YYYY")} -{" "}
-                  {moment(event.ends_on).format("DD/MM/YYYY")}
-                </Typography>
-              </Grid>
-              {/* <Grid className={classes.flexTile}>
-              <Typography className={classes.label} variant="p">
-                {t("common.time")} :{" "}
-              </Typography>{" "}
-              &nbsp;
-              <Typography variant="p">
-                {moment(event.starts_on).format("HH:MM:SSS")} -{" "}
-                {moment(event.ends_on).format("HH:MM:SSS")}
-              </Typography>
-            </Grid> */}
-              <Grid className={[classes.flexTile, classes.actionTile]}>
-                <Button
-                  variant="contained"
-                  color="default"
-                  onClick={() =>
-                    navigate(
-                      true,
-                      event.url ? event.url : "https://convention.kli.one",
-                      true
-                    )
-                  }
-                >
-                  {t("Dashboard.Events.page")}
-                </Button>{" "}
-                &nbsp;
-                {event.is_user_registered ? (
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={() => getTicketsData(event.id)}
-                  >
-                    {t("common.ticket")}
-                  </Button>
-                ) : (
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={() =>
-                      navigate(true, `/pay/order/ticket/${event.slug}`)
-                    }
-                  >
-                    {t("Dashboard.Events.register")}
-                  </Button>
-                )}
-              </Grid>
-            </Grid>
+      <Grid item xs={12} md={12}>
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          indicatorColor="primary"
+          textColor="primary"
+          variant="scrollable"
+          scrollButtons="auto"
+          aria-label="scrollable auto tabs example"
+        >
+          <Tab label={t("events.upcoming_event")} {...a11yProps(0)} />
+          <Tab label={t("events.registered_events")} {...a11yProps(1)} />
+          <Tab label={t("events.past_events")} {...a11yProps(2)} />
+        </Tabs>
+
+        <TabPanel value={value} index={0}>
+          <Grid container spacing={2} style={{ marginTop: "5px" }}>
+            {upcomingEvents && upcomingEvents.length > 0 ? (
+              upcomingEvents.map((event) => (
+                <Grid item xs={12} md={4}>
+                  <Grid className={classes.eventTile}>
+                    <Grid>
+                      <Typography variant="h1">
+                        {moment(event.starts_on).format("DD")} -{" "}
+                        {moment(event.ends_on).format("DD")}
+                      </Typography>
+                      <Typography variant="p">
+                        {moment(event.starts_on).format("MMMM") +
+                          "," +
+                          moment(event.starts_on).format("YYYY")}
+                      </Typography>
+                    </Grid>
+                    <Grid className={[classes.eventName, classes.eventTitle]}>
+                      <Typography variant="h6">{t(event.slug)}</Typography>
+                    </Grid>
+                    <Grid className={[classes.eventName]}>
+                      <Typography variant="p">
+                        {t(
+                          event.desciption ||
+                            "Our next big gathering with the whole world kli is an other opportunity to unite."
+                        )}
+                      </Typography>
+                    </Grid>
+                    <Grid className={[classes.flexTile, classes.actionTile]}>
+                      <Button
+                        variant="outlined"
+                        color="primary"
+                        onClick={() =>
+                          navigate(
+                            true,
+                            event.url
+                              ? event.url
+                              : "https://convention.kli.one",
+                            true
+                          )
+                        }
+                      >
+                        {t("Dashboard.Events.page")}
+                      </Button>{" "}
+                      &nbsp;
+                      {event.is_user_registered ? (
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          onClick={() => getTicketsData(event.id)}
+                        >
+                          {t("common.ticket")}
+                        </Button>
+                      ) : (
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          onClick={() =>
+                            navigate(true, `/pay/order/ticket/${event.slug}`)
+                          }
+                        >
+                          {t("Dashboard.Events.register")}
+                        </Button>
+                      )}
+                    </Grid>
+                  </Grid>
+                </Grid>
+              ))
+            ) : (
+              <NoEvents message={t("events.no_upcoming_events")} />
+            )}
           </Grid>
-        ))}
+        </TabPanel>
+        <TabPanel value={value} index={1}>
+          <Grid container spacing={2} style={{ marginTop: "5px" }}>
+            {registeredEvents && registeredEvents.length > 0 ? (
+              registeredEvents.map((event) => (
+                <Grid item xs={12} md={4}>
+                  <Grid className={classes.eventTile}>
+                    <Grid container>
+                      <Grid sm={7} item>
+                        <Typography variant="h1">
+                          {moment(event.starts_on).format("DD")} -{" "}
+                          {moment(event.ends_on).format("DD")}
+                        </Typography>
+                        <Typography
+                          variant="p"
+                          className={classes.secondaryText}
+                        >
+                          {moment(event.starts_on).format("MMMM") +
+                            "," +
+                            moment(event.starts_on).format("YYYY")}
+                        </Typography>
+                      </Grid>
+                      <Grid sm={5} item className={classes.partStatus}>
+                        <Typography
+                          variant="p"
+                          className={classes.registeredContainer}
+                        >
+                          <CheckCircleIcon /> &nbsp; {t("events.registered")}
+                        </Typography>
+                        <Typography
+                          variant="p"
+                          className={classes.secondaryText}
+                        >
+                          {t("events.part_status")}
+                        </Typography>
+                      </Grid>
+                    </Grid>
+                    <Grid container className={classes.registeredTile}>
+                      <Grid sm={7} item>
+                        <Typography
+                          variant="p"
+                          className={classes.secondaryText}
+                        >
+                          {t("events.registered_date")}
+                        </Typography>
+                        <br />
+                        <Typography variant="p">
+                          <strong>
+                            {" "}
+                            {moment(event.starts_on).format(
+                              "DD, MMMM, YYYY"
+                            )}{" "}
+                          </strong>
+                        </Typography>
+                      </Grid>
+                      <Grid sm={5} item>
+                        <Typography
+                          variant="p"
+                          className={classes.secondaryText}
+                        >
+                          {t("events.option")}
+                        </Typography>
+                        <br />
+                        <Typography variant="p" className={classes.primaryText}>
+                          {"Regular"}
+                        </Typography>
+                      </Grid>
+                    </Grid>
+                    <Grid className={[classes.eventName, classes.eventTitle]}>
+                      <Typography variant="h6">{t(event.slug)}</Typography>
+                    </Grid>
+                    <Grid className={[classes.eventName]}>
+                      <Typography variant="p">
+                        {t(
+                          event.desciption ||
+                            "Our next big gathering with the whole world kli is an other opportunity to unite."
+                        )}
+                      </Typography>
+                    </Grid>
+                    <Grid className={[classes.flexTile, classes.actionTile]}>
+                      <Button
+                        fullWidth
+                        variant="outlined"
+                        color="primary"
+                        onClick={() =>
+                          navigate(
+                            true,
+                            event.url
+                              ? event.url
+                              : "https://convention.kli.one",
+                            true
+                          )
+                        }
+                      >
+                        {t("Dashboard.Events.page")}
+                      </Button>{" "}
+                    </Grid>
+                  </Grid>
+                </Grid>
+              ))
+            ) : (
+              <NoEvents message={t("events.no_registered_events")} />
+            )}
+          </Grid>
+        </TabPanel>
+        <TabPanel value={value} index={2}>
+          <Grid container spacing={2} style={{ marginTop: "5px" }}>
+            {pastEvents && pastEvents.length > 0 ? (
+              pastEvents.map((event) => (
+                <Grid item xs={12} md={4}>
+                  <Grid className={classes.eventTile}>
+                    <Grid>
+                      <Typography variant="h1">
+                        {moment(event.starts_on).format("DD")}
+                      </Typography>
+                      <Typography variant="p">
+                        {moment(event.starts_on).format("MMMM") +
+                          "," +
+                          moment(event.starts_on).format("YYYY")}
+                      </Typography>
+                    </Grid>
+                    <Grid className={[classes.eventName, classes.eventTitle]}>
+                      <Typography variant="h6">{t(event.slug)}</Typography>
+                    </Grid>
+                    <Grid className={[classes.eventName]}>
+                      <Typography variant="p">
+                        {t(
+                          event.desciption ||
+                            "Our next big gathering with the whole world kli is an other opportunity to unite."
+                        )}
+                      </Typography>
+                    </Grid>
+                    <Grid className={classes.actionTile}>
+                      <Button
+                        fullWidth
+                        variant="outlined"
+                        color="primary"
+                        onClick={() =>
+                          navigate(
+                            true,
+                            event.url
+                              ? event.url
+                              : "https://convention.kli.one",
+                            true
+                          )
+                        }
+                      >
+                        {t("Dashboard.Events.watch_in_archive")}
+                      </Button>
+                    </Grid>
+                  </Grid>
+                </Grid>
+              ))
+            ) : (
+              <NoEvents message={t("events.no_past_events")} />
+            )}
+          </Grid>
+        </TabPanel>
+      </Grid>
     </Grid>
   );
 }
