@@ -179,12 +179,12 @@ export default function Events() {
           scrollButtons="auto"
           aria-label="scrollable auto tabs example"
         >
-          <Tab label={t("events.upcoming_event")} {...a11yProps(0)} />
-          <Tab label={t("events.registered_events")} {...a11yProps(1)} />
-          <Tab label={t("events.past_events")} {...a11yProps(2)} />
+          {/* <Tab label={t("events.upcoming_event")} {...a11yProps(0)} /> */}
+          <Tab label={t("events.registered_events")} {...a11yProps(0)} />
+          <Tab label={t("events.past_events")} {...a11yProps(1)} />
         </Tabs>
 
-        <TabPanel value={value} index={0}>
+        {/* <TabPanel value={value} index={0}>
           <Grid container spacing={2} style={{ marginTop: "5px" }}>
             {upcomingEvents && upcomingEvents.length > 0 ? (
               upcomingEvents.map((event) => (
@@ -256,8 +256,8 @@ export default function Events() {
               <NoEvents message={t("events.no_upcoming_events")} />
             )}
           </Grid>
-        </TabPanel>
-        <TabPanel value={value} index={1}>
+        </TabPanel> */}
+        <TabPanel value={value} index={0}>
           <Grid container spacing={2} style={{ marginTop: "5px" }}>
             {registeredEvents && registeredEvents.length > 0 ? (
               registeredEvents.map((event) => (
@@ -361,7 +361,7 @@ export default function Events() {
             )}
           </Grid>
         </TabPanel>
-        <TabPanel value={value} index={2}>
+        <TabPanel value={value} index={1}>
           <Grid container spacing={2} style={{ marginTop: "5px" }}>
             {pastEvents && pastEvents.length > 0 ? (
               pastEvents.map((event) => (
