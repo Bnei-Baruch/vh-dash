@@ -188,7 +188,7 @@ export default function Events() {
           <Tab label={t("events.past_events")} {...a11yProps(1)} />
         </Tabs>
 
-        {/* <TabPanel value={value} index={0}>
+        <TabPanel value={value} index={0}>
           <Grid container spacing={2} style={{ marginTop: "5px" }}>
             {upcomingEvents && upcomingEvents.length > 0 ? (
               upcomingEvents.map((event) => (
