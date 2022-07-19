@@ -284,7 +284,7 @@ export default function Events() {
                     </Grid>
                     <Grid className={[classes.flexTile, classes.actionTile]}>
                       <Button
-                        fullWidth
+                        fullWidth={event.is_user_registered}
                         variant="outlined"
                         color="primary"
                         onClick={() =>
@@ -299,6 +299,18 @@ export default function Events() {
                       >
                         {t("Dashboard.Events.page")}
                       </Button>{" "}
+                      &nbsp;
+                      {!event.is_user_registered  && (
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          onClick={() =>
+                            navigate(true, `/pay/order/ticket/${event.slug}`)
+                          }
+                        >
+                          {t("Dashboard.Events.register")}
+                        </Button>
+                      )}
                     </Grid>
                   </Grid>
                 </Grid>
