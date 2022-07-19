@@ -115,6 +115,7 @@ const NoEvents = ({ message }) => (
 
 export default function Events() {
   const [loading, setLoading] = React.useState(true);
+  // eslint-disable-next-line no-unused-vars
   const [registeredEvents, setRegisteredEvents] = React.useState([]);
   const [upcomingEvents, seUpcomingEvents] = React.useState([]);
   const [pastEvents, setPastEvents] = React.useState([]);
@@ -160,9 +161,7 @@ export default function Events() {
     }
     history.push(url);
   };
-  const getTicketsData = (eventId) => {
-    history.push(`/dash/events/tickets/${eventId}`);
-  };
+
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
