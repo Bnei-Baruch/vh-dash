@@ -48,19 +48,19 @@ const OtherInformationsTab = ({
 
     if (!isModified) {
       setIsModified(true);
-      dispatch(updateModifyEnabled(true))
+      dispatch(updateModifyEnabled(true));
       return;
     }
 
     onSubmit();
     setIsModified(false);
-    dispatch(updateModifyEnabled(false))
+    dispatch(updateModifyEnabled(false));
   };
 
   const onCancel = () => {
     setIsModified(false);
     setInputFields(copiedFields);
-    dispatch(updateModifyEnabled(false))
+    dispatch(updateModifyEnabled(false));
   };
 
   const buttonText = isModified ? t("Global.saveBtn") : t("Global.modify");

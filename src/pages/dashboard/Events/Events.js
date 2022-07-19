@@ -10,6 +10,7 @@ import React from "react";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
+import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
 import { getEventsListWithParticipationDetail } from "../../../services/events.service";
 import { keycloakData } from "../../../redux/selectors/user";
 import moment from "moment";
@@ -57,8 +58,12 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     display: "flex",
     marginBottom: "5px",
-    "& svg": {
+    "& svg.green": {
       color: "#0D9D0D",
+      fontSize: "16px",
+    },
+    "& svg.grey": {
+      color: "#717171",
       fontSize: "16px",
     },
   },
@@ -136,7 +141,7 @@ export default function Events() {
                 moment(event.starts_on).isBefore(moment())
             );
             setRegisteredEvents(registeredEvents);
-            seUpcomingEvents(upcomingEvents);
+            seUpcomingEvents([...upcomingEvents, ...registeredEvents]);
             setPastEvents(pastEvents);
           }
           setLoading(false);
@@ -180,27 +185,93 @@ export default function Events() {
           aria-label="scrollable auto tabs example"
         >
           {/* <Tab label={t("events.upcoming_event")} {...a11yProps(0)} /> */}
-          <Tab label={t("events.registered_events")} {...a11yProps(0)} />
+          <Tab label={t("events.upcoming_event")} {...a11yProps(0)} />
           <Tab label={t("events.past_events")} {...a11yProps(1)} />
         </Tabs>
 
-        {/* <TabPanel value={value} index={0}>
+        <TabPanel value={value} index={0}>
           <Grid container spacing={2} style={{ marginTop: "5px" }}>
             {upcomingEvents && upcomingEvents.length > 0 ? (
               upcomingEvents.map((event) => (
                 <Grid item xs={12} md={4}>
                   <Grid className={classes.eventTile}>
-                    <Grid>
-                      <Typography variant="h1">
-                        {moment(event.starts_on).format("DD")} -{" "}
-                        {moment(event.ends_on).format("DD")}
-                      </Typography>
-                      <Typography variant="p">
-                        {moment(event.starts_on).format("MMMM") +
-                          "," +
-                          moment(event.starts_on).format("YYYY")}
-                      </Typography>
+                    <Grid container>
+                      <Grid sm={7} item>
+                        <Typography variant="h1">
+                          {moment(event.starts_on).format("DD")} -{" "}
+                          {moment(event.ends_on).format("DD")}
+                        </Typography>
+                        <Typography
+                          variant="p"
+                          className={classes.secondaryText}
+                        >
+                          {moment(event.starts_on).format("MMMM") +
+                            "," +
+                            moment(event.starts_on).format("YYYY")}
+                        </Typography>
+                      </Grid>
+                      <Grid sm={5} item className={classes.partStatus}>
+                        <Typography
+                          variant="p"
+                          className={classes.registeredContainer}
+                        >
+                          {event.is_user_registered ? (
+                            <>
+                              {" "}
+                              <CheckCircleIcon className="green" /> &nbsp;{" "}
+                              {t("events.registered")}{" "}
+                            </>
+                          ) : (
+                            <>
+                              <RemoveCircleIcon className="grey" /> &nbsp;{" "}
+                              {t("events.notRegistered")}
+                            </>
+                          )}
+                        </Typography>
+                        <Typography
+                          variant="p"
+                          className={classes.secondaryText}
+                        >
+                          {t("events.part_status")}
+                        </Typography>
+                      </Grid>
                     </Grid>
+                    {event.is_user_registered && (
+                      <Grid container className={classes.registeredTile}>
+                        <Grid sm={7} item>
+                          <Typography
+                            variant="p"
+                            className={classes.secondaryText}
+                          >
+                            {t("events.registered_date")}
+                          </Typography>
+                          <br />
+                          <Typography variant="p">
+                            <strong>
+                              {" "}
+                              {moment(event.starts_on).format(
+                                "DD, MMMM, YYYY"
+                              )}{" "}
+                            </strong>
+                          </Typography>
+                        </Grid>
+                        <Grid sm={5} item>
+                          <Typography
+                            variant="p"
+                            className={classes.secondaryText}
+                          >
+                            {t("events.option")}
+                          </Typography>
+                          <br />
+                          <Typography
+                            variant="p"
+                            className={classes.primaryText}
+                          >
+                            {"Regular"}
+                          </Typography>
+                        </Grid>
+                      </Grid>
+                    )}
                     <Grid className={[classes.eventName, classes.eventTitle]}>
                       <Typography variant="h6">{t(event.slug)}</Typography>
                     </Grid>
@@ -214,6 +285,7 @@ export default function Events() {
                     </Grid>
                     <Grid className={[classes.flexTile, classes.actionTile]}>
                       <Button
+                        fullWidth
                         variant="outlined"
                         color="primary"
                         onClick={() =>
@@ -228,26 +300,6 @@ export default function Events() {
                       >
                         {t("Dashboard.Events.page")}
                       </Button>{" "}
-                      &nbsp;
-                      {event.is_user_registered ? (
-                        <Button
-                          variant="contained"
-                          color="primary"
-                          onClick={() => getTicketsData(event.id)}
-                        >
-                          {t("common.ticket")}
-                        </Button>
-                      ) : (
-                        <Button
-                          variant="contained"
-                          color="primary"
-                          onClick={() =>
-                            navigate(true, `/pay/order/ticket/${event.slug}`)
-                          }
-                        >
-                          {t("Dashboard.Events.register")}
-                        </Button>
-                      )}
                     </Grid>
                   </Grid>
                 </Grid>
@@ -256,8 +308,8 @@ export default function Events() {
               <NoEvents message={t("events.no_upcoming_events")} />
             )}
           </Grid>
-        </TabPanel> */}
-        <TabPanel value={value} index={0}>
+        </TabPanel>
+        {/* <TabPanel value={value} index={0}>
           <Grid container spacing={2} style={{ marginTop: "5px" }}>
             {registeredEvents && registeredEvents.length > 0 ? (
               registeredEvents.map((event) => (
@@ -360,7 +412,7 @@ export default function Events() {
               <NoEvents message={t("events.no_registered_events")} />
             )}
           </Grid>
-        </TabPanel>
+        </TabPanel> */}
         <TabPanel value={value} index={1}>
           <Grid container spacing={2} style={{ marginTop: "5px" }}>
             {pastEvents && pastEvents.length > 0 ? (

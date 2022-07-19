@@ -6,7 +6,7 @@ import {
   TOGGLE_PROFILE_WINDOW,
   UPDATE_PROFILE_SUCCESS,
   UPDATE_PROFILE_FAILED,
-  UPDATE_MODIFY_MODE
+  UPDATE_MODIFY_MODE,
 } from "../constants";
 
 const apiProfile = (method, url, data, token) => {
@@ -71,7 +71,7 @@ export const updateModifyEnabled = (value) => {
     type: UPDATE_MODIFY_MODE,
     payload: value,
   };
-}
+};
 
 export const fetchProfile = () => {
   return (dispatch, getState) => {

@@ -15,7 +15,7 @@ const INITIAL_STATE = {
   },
   isProfileExist: false,
   error: "",
-  modify: false
+  modify: false,
 };
 
 export default function reducer(state = INITIAL_STATE, actions) {
@@ -61,10 +61,10 @@ export default function reducer(state = INITIAL_STATE, actions) {
       };
 
     case UPDATE_MODIFY_MODE:
-    return {
-      ...state,
-      modify: actions.payload
-    }
+      return {
+        ...state,
+        modify: actions.payload,
+      };
 
     default:
       return state;
