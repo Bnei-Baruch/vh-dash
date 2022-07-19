@@ -52,6 +52,10 @@ const MembershipStatusContainer = styled(Box)`
 `;
 const MembershipHeaderText = styled(Typography)`
   color: #747474;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 const MembershipStatusText = styled(Typography)`
   color: ${(props) => props.color};

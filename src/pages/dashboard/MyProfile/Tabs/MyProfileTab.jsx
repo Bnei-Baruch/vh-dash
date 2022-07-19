@@ -72,19 +72,19 @@ const MyProfileTab = ({
 
     if (!isModified) {
       setIsModified(true);
-      dispatch(updateModifyEnabled(true))
+      dispatch(updateModifyEnabled(true));
       return;
     }
 
     isValid && onSubmit();
     setIsModified(false);
-    dispatch(updateModifyEnabled(false))
+    dispatch(updateModifyEnabled(false));
   };
 
   const onCancel = () => {
     onErrorClear();
     setIsModified(false);
-    dispatch(updateModifyEnabled(false))
+    dispatch(updateModifyEnabled(false));
     setInputFields(copiedFields);
   };
 
