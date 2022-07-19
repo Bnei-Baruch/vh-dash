@@ -23,7 +23,6 @@ const ArvutSystem = async(() => import("../pages/dashboard/ArvutSystem"));
 const BroadcastArea = async(() => import("../pages/dashboard/BroadcastArea"));
 const Status = async(() => import("../pages/dashboard/Membership/Status"));
 const Events = async(() => import("../pages/dashboard/Events/Events"));
-const EventsTicket = async(() => import("../pages/dashboard/Events/Tickets"));
 const PreviousPayments = async(() =>
   import("../pages/dashboard/Membership/PreviousPayments")
 );
@@ -129,22 +128,8 @@ const dashboardRoutes = [
   // },
 ];
 
-const eventTicketRoute = [
-  {
-    path: DASHBOARD_ROUTES.eventsTickets,
-    id: "EventTicket",
-    icon: <EventIcon />,
-    enableHeader: true,
-    breadcrumbs: [
-      { name: "Events", path: DASHBOARD_ROUTES.events },
-      { name: "EventTicket", path: DASHBOARD_ROUTES.eventsTickets },
-    ],
-    component: EventsTicket,
-  },
-];
-
 // Routes using the Dashboard layout
-export const dashboardLayoutRoutes = [...dashboardRoutes, ...eventTicketRoute];
+export const dashboardLayoutRoutes = [...dashboardRoutes];
 
 // Routes visible in the sidebar
 export const sidebarRoutes = [...dashboardRoutes];

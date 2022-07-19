@@ -10,7 +10,6 @@ export const DASHBOARD_ROUTES = {
   archive: `${DASHBOARD_ROOT}/archive`,
   membership: `${DASHBOARD_ROOT}/membership`,
   events: `${DASHBOARD_ROOT}/events`,
-  eventsTickets: `${DASHBOARD_ROOT}/events/tickets/:eventId`,
   status: `${DASHBOARD_ROOT}/membership`,
   previousPayment: `${DASHBOARD_ROOT}/membership/payments`,
 };
