@@ -48,19 +48,19 @@ const LanguagesTab = ({
     event.preventDefault();
 
     if (!isModified) {
-      dispatch(updateModifyEnabled(true))
+      dispatch(updateModifyEnabled(true));
       setIsModified(true);
       return;
     }
 
     onSubmit();
-    dispatch(updateModifyEnabled(false))
+    dispatch(updateModifyEnabled(false));
     setIsModified(false);
   };
 
   const onCancel = () => {
     setIsModified(false);
-    dispatch(updateModifyEnabled(false))
+    dispatch(updateModifyEnabled(false));
     setInputFields(copiedFields);
   };
 

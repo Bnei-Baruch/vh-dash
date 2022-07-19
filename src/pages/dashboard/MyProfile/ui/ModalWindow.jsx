@@ -13,7 +13,7 @@ const ModalWindow = ({
   closeBtnText,
   handleClose,
   onConfirmation,
-  hideConfirmBtn
+  hideConfirmBtn,
 }) => (
   <Dialog
     open={open}
@@ -50,7 +50,7 @@ ModalWindow.propTypes = {
   closeBtnText: PropTypes.string.isRequired,
   handleClose: PropTypes.func.isRequired,
   onConfirmation: PropTypes.func,
-  hideConfirmBtn: PropTypes.bool
+  hideConfirmBtn: PropTypes.bool,
 };
 
 export default ModalWindow;
