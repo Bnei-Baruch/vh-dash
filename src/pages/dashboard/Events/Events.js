@@ -17,6 +17,7 @@ import moment from "moment";
 import { useHistory } from "react-router-dom";
 import InfoIcon from "@material-ui/icons/Info";
 import Loader from "../../../components/Loader";
+import { firstUpperCase } from "../../../utils";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -129,7 +130,7 @@ export default function Events() {
         (res) => {
           if (res) {
             const registeredEvents = res.filter(
-              (event) => event.is_user_registered
+              (event) => event.is_user_registered && moment(event.starts_on).isAfter(moment())
             );
             const upcomingEvents = res.filter(
               (event) =>
@@ -138,7 +139,6 @@ export default function Events() {
             );
             const pastEvents = res.filter(
               (event) =>
-                !event.is_user_registered &&
                 moment(event.starts_on).isBefore(moment())
             );
             setRegisteredEvents(registeredEvents);
@@ -188,7 +188,7 @@ export default function Events() {
           <Tab label={t("events.past_events")} {...a11yProps(1)} />
         </Tabs>
 
-        {/* <TabPanel value={value} index={0}>
+        <TabPanel value={value} index={0}>
           <Grid container spacing={2} style={{ marginTop: "5px" }}>
             {upcomingEvents && upcomingEvents.length > 0 ? (
               upcomingEvents.map((event) => (
@@ -248,7 +248,7 @@ export default function Events() {
                           <Typography variant="p">
                             <strong>
                               {" "}
-                              {moment(event.starts_on).format(
+                              {moment(event.user_participation_details.registration_date).format(
                                 "DD, MMMM, YYYY"
                               )}{" "}
                             </strong>
@@ -266,7 +266,7 @@ export default function Events() {
                             variant="p"
                             className={classes.primaryText}
                           >
-                            {"Regular"}
+                            {firstUpperCase(event.user_participation_details.participation_option)}
                           </Typography>
                         </Grid>
                       </Grid>
