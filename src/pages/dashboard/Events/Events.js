@@ -120,7 +120,7 @@ export default function Events() {
   const [registeredEvents, setRegisteredEvents] = React.useState([]);
   const [upcomingEvents, seUpcomingEvents] = React.useState([]);
   const [pastEvents, setPastEvents] = React.useState([]);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const history = useHistory();
   const classes = useStyles();
   const keycloak = useSelector(keycloakData);
@@ -130,16 +130,17 @@ export default function Events() {
         (res) => {
           if (res) {
             const registeredEvents = res.filter(
-              (event) => event.is_user_registered && moment(event.starts_on).isAfter(moment())
+              (event) =>
+                event.is_user_registered &&
+                moment(event.starts_on).isAfter(moment())
             );
             const upcomingEvents = res.filter(
               (event) =>
                 !event.is_user_registered &&
                 moment(event.starts_on).isAfter(moment())
             );
-            const pastEvents = res.filter(
-              (event) =>
-                moment(event.starts_on).isBefore(moment())
+            const pastEvents = res.filter((event) =>
+              moment(event.starts_on).isBefore(moment())
             );
             setRegisteredEvents(registeredEvents);
             seUpcomingEvents([...upcomingEvents, ...registeredEvents]);
@@ -248,9 +249,10 @@ export default function Events() {
                           <Typography variant="p">
                             <strong>
                               {" "}
-                              {moment(event.user_participation_details.registration_date).format(
-                                "DD, MMMM, YYYY"
-                              )}{" "}
+                              {moment(
+                                event.user_participation_details
+                                  .registration_date
+                              ).format("DD, MMMM, YYYY")}{" "}
                             </strong>
                           </Typography>
                         </Grid>
@@ -266,18 +268,23 @@ export default function Events() {
                             variant="p"
                             className={classes.primaryText}
                           >
-                            {firstUpperCase(event.user_participation_details.participation_option)}
+                            {firstUpperCase(
+                              event.user_participation_details
+                                .participation_option
+                            )}
                           </Typography>
                         </Grid>
                       </Grid>
                     )}
                     <Grid className={[classes.eventName, classes.eventTitle]}>
-                      <Typography variant="h6">{t(event.slug)}</Typography>
+                      <Typography variant="h6">
+                        {event.content?.[i18n.language]?.title || event.slug}
+                      </Typography>
                     </Grid>
                     <Grid className={[classes.eventName]}>
                       <Typography variant="p">
                         {t(
-                          event.desciption ||
+                          event.content?.[i18n.language]?.description ||
                             "Our next big gathering with the whole world kli is an other opportunity to unite."
                         )}
                       </Typography>
@@ -300,7 +307,7 @@ export default function Events() {
                         {t("Dashboard.Events.page")}
                       </Button>{" "}
                       &nbsp;
-                      {!event.is_user_registered  && (
+                      {!event.is_user_registered && (
                         <Button
                           variant="contained"
                           color="primary"
@@ -441,12 +448,14 @@ export default function Events() {
                       </Typography>
                     </Grid>
                     <Grid className={[classes.eventName, classes.eventTitle]}>
-                      <Typography variant="h6">{t(event.slug)}</Typography>
+                      <Typography variant="h6">
+                        {event.content?.[i18n.language]?.title || event.slug}
+                      </Typography>
                     </Grid>
                     <Grid className={[classes.eventName]}>
                       <Typography variant="p">
                         {t(
-                          event.desciption ||
+                          event.content?.[i18n.language]?.description ||
                             "Our next big gathering with the whole world kli is an other opportunity to unite."
                         )}
                       </Typography>
