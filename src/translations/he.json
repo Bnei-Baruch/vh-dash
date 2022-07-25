@@ -324,14 +324,15 @@
       "upcoming_event": "Upcoming Events",
       "past_events": "Past Events",
       "registered_events": "Registered Events",
-      "registered_date": "Registration Date",
-      "option": "Options",
-      "part_status": "Participation Status",
-      "registered": "Registered",
-      "notRegistered": "Not Regsitered",
+      "registered_date": "תאריך הרישום",
+      "option": "סוג הכרטיס",
+      "part_status": "סטטוס הרישום",
+      "registered": "נרשם",
+      "notRegistered": "לא נרשם",
       "no_registered_events": "No registered events",
       "no_upcoming_events": "No upcoming events",
-      "no_past_events": "No past events"
+      "no_past_events": "No past events",
+      "pending": "Pending"
     },
     "may2022": "רק החברים - כנס הקבלה"
   }

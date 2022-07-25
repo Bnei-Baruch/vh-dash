@@ -74,6 +74,12 @@ const useStyles = makeStyles((theme) => ({
   secondaryText: {
     color: "#5A5A5A",
   },
+  pending: {
+    borderRadius: "20px",
+    border: "1px solid #F36518",
+    padding: "5px 25px",
+    margin: "auto",
+  },
 }));
 
 function a11yProps(index) {
@@ -129,6 +135,7 @@ export default function Events() {
       getEventsListWithParticipationDetail(keycloak.profile.email).then(
         (res) => {
           if (res) {
+            res = res.filter((event) => event.deleted !== true);
             const registeredEvents = res.filter(
               (event) =>
                 event.is_user_registered &&
@@ -216,11 +223,16 @@ export default function Events() {
                           className={classes.registeredContainer}
                         >
                           {event.is_user_registered ? (
-                            <>
-                              {" "}
-                              <CheckCircleIcon className="green" /> &nbsp;{" "}
-                              {t("events.registered")}{" "}
-                            </>
+                            event.user_participation_details.confirmed ? (
+                              <>
+                                <CheckCircleIcon className="green" /> &nbsp;{" "}
+                                {t("events.registered")}{" "}
+                              </>
+                            ) : (
+                              <div className={classes.pending}>
+                                {t("events.pending")}
+                              </div>
+                            )
                           ) : (
                             <>
                               <RemoveCircleIcon className="grey" /> &nbsp;{" "}
