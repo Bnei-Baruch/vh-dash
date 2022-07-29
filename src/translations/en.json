@@ -334,6 +334,11 @@
             "no_past_events": "No past events",
             "pending": "Pending"
         },
-        "may2022": "Only the friends - Kabbalah Convention"
+        "may2022": "Only the friends - Kabbalah Convention",
+        "hh-request": "Help Haver",
+        "sp-russia": "Special Russia",
+        "sp-ukraine": "Special Ukraine",
+        "membership": "Membership Ticket",
+        "regular": "Regular Ticket"
     }
 }

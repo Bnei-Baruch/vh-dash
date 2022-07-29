@@ -17,7 +17,6 @@ import moment from "moment";
 import { useHistory } from "react-router-dom";
 import InfoIcon from "@material-ui/icons/Info";
 import Loader from "../../../components/Loader";
-import { firstUpperCase } from "../../../utils";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -200,7 +199,7 @@ export default function Events() {
           <Grid container spacing={2} style={{ marginTop: "5px" }}>
             {upcomingEvents && upcomingEvents.length > 0 ? (
               upcomingEvents.map((event) => (
-                <Grid item xs={12} md={4}>
+                <Grid item xs={12} md={5}>
                   <Grid className={classes.eventTile}>
                     <Grid container>
                       <Grid sm={7} item>
@@ -280,7 +279,7 @@ export default function Events() {
                             variant="p"
                             className={classes.primaryText}
                           >
-                            {firstUpperCase(
+                            {t(
                               event.user_participation_details
                                 .participation_option
                             )}
@@ -447,7 +446,7 @@ export default function Events() {
           <Grid container spacing={2} style={{ marginTop: "5px" }}>
             {pastEvents && pastEvents.length > 0 ? (
               pastEvents.map((event) => (
-                <Grid item xs={12} md={4}>
+                <Grid item xs={12} md={5}>
                   <Grid className={classes.eventTile}>
                     <Grid>
                       <Typography variant="h1">
