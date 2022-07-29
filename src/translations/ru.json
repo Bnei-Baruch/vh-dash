@@ -334,6 +334,11 @@
             "no_past_events": "No past events",
             "pending": "Pending"
         },
-        "may2022": "Только с товарищами - Конгресс"
+        "may2022": "Только с товарищами - Конгресс",
+        "hh-request": "Help Haver",
+        "sp-russia": "Special Russia",
+        "sp-ukraine": "Special Ukraine",
+        "membership": "Membership Ticket",
+        "regular": "Regular Ticket"
     }
 }
