@@ -480,8 +480,8 @@ export default function Events() {
                           navigate(
                             true,
                             event.url
-                              ? i18n.langauge !== "en" ? event.url + i18n.langauge : event.url
-                              : i18n.langauge !== "en" ? "https://convention.kli.one" + "/" + i18n.langauge : "https://convention.kli.one",
+                              ? i18n.langauge !== "en" ? `${event.url}${i18n.langauge}` : event.url
+                              : i18n.langauge !== "en" ? "https://convention.kli.one/" + i18n.langauge : "https://convention.kli.one",
                             true
                           )
                         }
