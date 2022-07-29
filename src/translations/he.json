@@ -1,339 +1,339 @@
 {
-  "translation": {
-    "Global": {
-      "inputPlaceholder": "Enter your {{input}}",
-      "formErrorMsg": "Please enter your details",
-      "saveBtn": "שמור שינויים",
-      "cancelBtn": "בטל",
-      "modify": "לשנות",
-      "yes": "כן",
-      "no": "לא",
-      "closeBtn": "לסגור",
-      "requestError": "אופס! משהו השתבש! אנא נסה שוב מאוחר יותר או צור קשר עם התמיכה שלנו",
-      "Currency": {
-        "usd": "USD",
-        "eur": "EUR"
-      },
-      "Days": {
-        "monday": "יום שני",
-        "tuesday": "יום שלישי",
-        "wednesday": "יום רביעי",
-        "thursday": "יום חמישי",
-        "friday": "יום שישי",
-        "saturday": "שבת",
-        "sunday": "יום ראשון"
-      },
-      "Months": {
-        "january": "ינואר",
-        "february": "פברואר",
-        "march": "מרץ",
-        "april": "אפריל",
-        "may": "מאי",
-        "june": "יוני",
-        "july": "יולי",
-        "august": "אוגוסט",
-        "september": "ספטמבר",
-        "october": "אוקטובר",
-        "november": "נובמבר",
-        "december": "דצמבר"
-      },
-      "Subscription": {
-        "active": "פעיל",
-        "pause": "הפסקה",
-        "cancel": "לבטל"
-      }
-    },
-    "Languages": {
-      "English": "English",
-      "Russian": "Russian",
-      "Hebrew": "Hebrew",
-      "streetAddressPlaceholder": "הזן את כתובת הרחוב שלך",
-      "Spanish": "Spanish",
-      "French": "French"
-    },
-    "Home": {
-      "notActive": "אין שידור חי",
-      "active": "שידור חי פעיל",
-      "watchBtn": "לצפיה",
-      "watchRecordedBtn": "לצפיה מוקלט",
-      "noLiveEvent": "אין שידור חי",
-      "noEvent": "אין אירועים",
-      "currentEvent": "אירוע נוכחי",
-      "totalConnections": "מחוברים למערכת",
-      "tensNumber": "מספר עשירייות מחוברות",
-      "tenFriends": "חברים מהעשירייה שלך",
-      "today": "היום",
-      "tomorrow": "מחר",
-      "yesterday": "אתמול",
-      "events": "אירועים",
-      "welcomeBack": "ברוך שובך",
-      "convention": "כנס",
-      "registered": "נרשמת בהצלחה",
-      "notRegistered": "לא נרשמת",
-      "register": "להרשם",
-      "conventionSite": "אתר הכנס",
-      "conventiontitle": "Rising above ourselves",
-      "conventionsubtitle": "Revealing a new World"
-    },
-    "UserMenu": {
-      "logOut": "להתנתק",
-      "logOutText": "האם את/ה באמת רוצה לצאת?",
-      "unsaved_changes": "You have unsaved changes. Please save or cancel changes before switching tab",
-      "yesBtn": "כן",
-      "okbtn": "Ok",
-      "cancelBtn": "לבטל",
-      "subscriptions": "מנויים",
-      "payUserFee": "לתשלום עבור המנוי",
-      "statuses": {
-        "active": "פעיל",
-        "hold": "לא ידוע",
-        "unknown": "לא ידוע",
-        "nonExistant": "לא קיים",
-        "late": "עמלות מאוחרות"
-      }
-    },
-    "Dashboard": {
-      "ArvutSystem": {
-        "name": "מערכת הערבות",
-        "title": "מערכת הערבות",
-        "description": "Arvut Description : Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it",
-        "accessTitle": "Access to the Arvut System",
-        "accessSubDescription": "Arvut Description : Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it",
-        "accessDescription": "Arvut Description : Lorem Ipsum is simply dummy text of the printing",
-        "requestAccess": "Request Access to Arvut System",
-        "continueAsGuest": "Continue as guest",
-        "verfiyInformation": "Please verify or complete your information below",
-        "request_submitted": "Your request has been successfully submitted ",
-        "request_submitted_text": "You will be notified by email once the team has reviewed your request."
-      },
-      "Archive": {
-        "name": "קבלה מדיה"
-      },
-      "Dashboard": {
-        "name": "אזור אישי"
-      },
-      "Status": {
-        "name": "סטטוס",
-        "title": "סטטוס"
-      },
-      "PreviousPayment": {
-        "name": "תשלום הקודם",
-        "title": "תשלום הקודם",
-        "paymentHistory": "הטבלה למטה מספקת את היסטוריית התשלומים שבוצעו"
-      },
-      "Membership": {
-        "name": "מנוי"
-      },
-      "EventTicket": {
-        "name": "כרטיס לאירוע",
-        "title": "כרטיס לאירוע",
-        "eventTicket": "כרטיס לאירוע",
-        "eventTicketHistory": "The Below table provides the history of event tickets purchased by user"
-      },
-      "Help": {
-        "name": "עזרה",
-        "title": "עזרה"
-      },
-      "Events": {
-        "name": "אירועים",
-        "title": "אירועים",
-        "page": "More Info",
-        "register": "Registration",
-        "watch_in_archive": "Watch in the Archive"
-      },
-      "Profile": {
-        "name": "פרופיל",
-        "title": "הפרופיל שלי",
-        "socialFormName": "מספרי הטלפון שלי",
-        "profileCreated": "פרטי הפרופיל שלך נוצרו בהצלחה",
-        "profileUpdated": "פרטי הפרופיל שלך נוצרו בהצלחה",
-        "profileNotExist": "נראה שלא יצרת פרטי פרופיל. אנא, לחץ על כפתור 'שינוי' וליצור את הפרופיל שלך",
-        "Tabs": {
-          "personal": "אישי",
-          "security": "אבטחה",
-          "languages": "שפות",
-          "otherInformations": "מידע אחר"
-        },
-        "study": {
-          "tellAboutYouStudyFramework": "Tell about you study framework in Beni Baruch"
-        },
-        "PersonalForm": {
-          "name": "אישי",
-          "firstName": "שם פרטי",
-          "firstNamePlaceholder": "הכנס/הכניסי את השם הפרטי שלך",
-          "dateOfBirth": "תאריך לידה",
-          "gender": {
-            "label": "מגדר",
-            "male": "זכר",
-            "female": "נקבה"
-          },
-          "maritalStatus": {
-            "label": "מצב משפחתי",
-            "single": "רווק/ה",
-            "married": "נשואים",
-            "divorced": "גרוש/ה",
-            "widowed": "אלמן/נה"
-          },
-          "lastName": "שם משפחה",
-          "lastNamePlaceholder": "הזן/י את שם המשפחה שלך",
-          "primaryLanguage": "שפת אם"
-        },
-        "PhysicalLocationForm": {
-          "name": "המיקום הפיזי",
-          "streetAddress": "כתובת הרחוב",
-          "postalCode": "המיקוד",
-          "country": "מדינה",
-          "stateRegion": "אזור",
-          "city": "עיר"
-        },
-        "Emails": {
-          "name": "הכתובות אימייל שלי",
-          "primaryEmail": "דוא\\\"ל עיקרי",
-          "alternativeEmail": "דואר אלקטרוני חלופי {{number}}",
-          "emailError": "הזן כתובת דואר אלקטרוני נכונה"
+    "translation": {
+        "Global": {
+            "inputPlaceholder": "Enter your {{input}}",
+            "formErrorMsg": "Please enter your details",
+            "saveBtn": "שמור שינויים",
+            "cancelBtn": "בטל",
+            "modify": "לשנות",
+            "yes": "כן",
+            "no": "לא",
+            "closeBtn": "לסגור",
+            "requestError": "אופס! משהו השתבש! אנא נסה שוב מאוחר יותר או צור קשר עם התמיכה שלנו",
+            "Currency": {
+                "usd": "USD",
+                "eur": "EUR"
+            },
+            "Days": {
+                "monday": "יום שני",
+                "tuesday": "יום שלישי",
+                "wednesday": "יום רביעי",
+                "thursday": "יום חמישי",
+                "friday": "יום שישי",
+                "saturday": "שבת",
+                "sunday": "יום ראשון"
+            },
+            "Months": {
+                "january": "ינואר",
+                "february": "פברואר",
+                "march": "מרץ",
+                "april": "אפריל",
+                "may": "מאי",
+                "june": "יוני",
+                "july": "יולי",
+                "august": "אוגוסט",
+                "september": "ספטמבר",
+                "october": "אוקטובר",
+                "november": "נובמבר",
+                "december": "דצמבר"
+            },
+            "Subscription": {
+                "active": "פעיל",
+                "pause": "הפסקה",
+                "cancel": "לבטל"
+            }
         },
         "Languages": {
-          "name": "שפה",
-          "firstLanguage": "שפת האם",
-          "otherLanguage": "שפה אחרת {{number}}"
+            "English": "English",
+            "Russian": "Russian",
+            "Hebrew": "Hebrew",
+            "streetAddressPlaceholder": "הזן את כתובת הרחוב שלך",
+            "Spanish": "Spanish",
+            "French": "French"
         },
-        "LanguagePreferences": {
-          "name": "העדפות השפה",
-          "emailLanguage": "שפת דוא\\\"ל",
-          "emailTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
-          "listeningLanguage": "שפת האזנה",
-          "listeningTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
-          "readingLanguage": "שפת קריאה",
-          "readingTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque."
+        "Home": {
+            "notActive": "אין שידור חי",
+            "active": "שידור חי פעיל",
+            "watchBtn": "לצפיה",
+            "watchRecordedBtn": "לצפיה מוקלט",
+            "noLiveEvent": "אין שידור חי",
+            "noEvent": "אין אירועים",
+            "currentEvent": "אירוע נוכחי",
+            "totalConnections": "מחוברים למערכת",
+            "tensNumber": "מספר עשירייות מחוברות",
+            "tenFriends": "חברים מהעשירייה שלך",
+            "today": "היום",
+            "tomorrow": "מחר",
+            "yesterday": "אתמול",
+            "events": "אירועים",
+            "welcomeBack": "ברוך שובך",
+            "convention": "כנס",
+            "registered": "נרשמת בהצלחה",
+            "notRegistered": "לא נרשמת",
+            "register": "להרשם",
+            "conventionSite": "אתר הכנס",
+            "conventiontitle": "Rising above ourselves",
+            "conventionsubtitle": "Revealing a new World"
         },
-        "OtherInformation": {
-          "education": "לימודים",
-          "startYear": "שנת התחלה",
-          "studyFramework": "מסגרת לימוד",
-          "ten": "עשיריה",
-          "tenName": "שם של עשיריה, אם יש",
-          "studyGroup": "יש לך קבוצת לימוד/עשיריה?",
-          "wantStudyGroup": "אתה רוצה קבוצת לימוד\\עשיריה?"
+        "UserMenu": {
+            "logOut": "להתנתק",
+            "logOutText": "האם את/ה באמת רוצה לצאת?",
+            "unsaved_changes": "You have unsaved changes. Please save or cancel changes before switching tab",
+            "yesBtn": "כן",
+            "okbtn": "Ok",
+            "cancelBtn": "לבטל",
+            "subscriptions": "מנויים",
+            "payUserFee": "לתשלום עבור המנוי",
+            "statuses": {
+                "active": "פעיל",
+                "hold": "לא ידוע",
+                "unknown": "לא ידוע",
+                "nonExistant": "לא קיים",
+                "late": "עמלות מאוחרות"
+            }
         },
-        "Security": {
-          "name": "פרטי כניסה",
-          "email": "דואר אלקטרוני",
-          "googleConnected": "גוגל קונקט",
-          "googleTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
-          "facebookConnected": "פייסבוק מחוברת",
-          "facebookTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
-          "forgotPassword": "שכחת את הסיסמה?"
-        }
-      },
-      "Payments": {
-        "name": "תשלומים",
-        "title": "התשלומים שלי",
-        "Tabs": {
-          "transaction": "כל התנועה",
-          "myPlan": "התוכנית שלי"
+        "Dashboard": {
+            "ArvutSystem": {
+                "name": "מערכת הערבות",
+                "title": "מערכת הערבות",
+                "description": "Arvut Description : Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it",
+                "accessTitle": "Access to the Arvut System",
+                "accessSubDescription": "Arvut Description : Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it",
+                "accessDescription": "Arvut Description : Lorem Ipsum is simply dummy text of the printing",
+                "requestAccess": "Request Access to Arvut System",
+                "continueAsGuest": "Continue as guest",
+                "verfiyInformation": "Please verify or complete your information below",
+                "request_submitted": "Your request has been successfully submitted ",
+                "request_submitted_text": "You will be notified by email once the team has reviewed your request."
+            },
+            "Archive": {
+                "name": "קבלה מדיה"
+            },
+            "Dashboard": {
+                "name": "אזור אישי"
+            },
+            "Status": {
+                "name": "סטטוס",
+                "title": "סטטוס"
+            },
+            "PreviousPayment": {
+                "name": "תשלום הקודם",
+                "title": "תשלום הקודם",
+                "paymentHistory": "הטבלה למטה מספקת את היסטוריית התשלומים שבוצעו"
+            },
+            "Membership": {
+                "name": "מנוי"
+            },
+            "EventTicket": {
+                "name": "כרטיס לאירוע",
+                "title": "כרטיס לאירוע",
+                "eventTicket": "כרטיס לאירוע",
+                "eventTicketHistory": "The Below table provides the history of event tickets purchased by user"
+            },
+            "Help": {
+                "name": "עזרה",
+                "title": "עזרה"
+            },
+            "Events": {
+                "name": "אירועים",
+                "title": "אירועים",
+                "page": "אתר הכנס",
+                "register": "הרשמה",
+                "watch_in_archive": "צפייה בכנס קודם בארכיון"
+            },
+            "Profile": {
+                "name": "פרופיל",
+                "title": "הפרופיל שלי",
+                "socialFormName": "מספרי הטלפון שלי",
+                "profileCreated": "פרטי הפרופיל שלך נוצרו בהצלחה",
+                "profileUpdated": "פרטי הפרופיל שלך נוצרו בהצלחה",
+                "profileNotExist": "נראה שלא יצרת פרטי פרופיל. אנא, לחץ על כפתור 'שינוי' וליצור את הפרופיל שלך",
+                "Tabs": {
+                    "personal": "אישי",
+                    "security": "אבטחה",
+                    "languages": "שפות",
+                    "otherInformations": "מידע אחר"
+                },
+                "study": {
+                    "tellAboutYouStudyFramework": "Tell about you study framework in Beni Baruch"
+                },
+                "PersonalForm": {
+                    "name": "אישי",
+                    "firstName": "שם פרטי",
+                    "firstNamePlaceholder": "הכנס/הכניסי את השם הפרטי שלך",
+                    "dateOfBirth": "תאריך לידה",
+                    "gender": {
+                        "label": "מגדר",
+                        "male": "זכר",
+                        "female": "נקבה"
+                    },
+                    "maritalStatus": {
+                        "label": "מצב משפחתי",
+                        "single": "רווק/ה",
+                        "married": "נשואים",
+                        "divorced": "גרוש/ה",
+                        "widowed": "אלמן/נה"
+                    },
+                    "lastName": "שם משפחה",
+                    "lastNamePlaceholder": "הזן/י את שם המשפחה שלך",
+                    "primaryLanguage": "שפת אם"
+                },
+                "PhysicalLocationForm": {
+                    "name": "המיקום הפיזי",
+                    "streetAddress": "כתובת הרחוב",
+                    "postalCode": "המיקוד",
+                    "country": "מדינה",
+                    "stateRegion": "אזור",
+                    "city": "עיר"
+                },
+                "Emails": {
+                    "name": "הכתובות אימייל שלי",
+                    "primaryEmail": "דוא\\\"ל עיקרי",
+                    "alternativeEmail": "דואר אלקטרוני חלופי {{number}}",
+                    "emailError": "הזן כתובת דואר אלקטרוני נכונה"
+                },
+                "Languages": {
+                    "name": "שפה",
+                    "firstLanguage": "שפת האם",
+                    "otherLanguage": "שפה אחרת {{number}}"
+                },
+                "LanguagePreferences": {
+                    "name": "העדפות השפה",
+                    "emailLanguage": "שפת דוא\\\"ל",
+                    "emailTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
+                    "listeningLanguage": "שפת האזנה",
+                    "listeningTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
+                    "readingLanguage": "שפת קריאה",
+                    "readingTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque."
+                },
+                "OtherInformation": {
+                    "education": "לימודים",
+                    "startYear": "שנת התחלה",
+                    "studyFramework": "מסגרת לימוד",
+                    "ten": "עשיריה",
+                    "tenName": "שם של עשיריה, אם יש",
+                    "studyGroup": "יש לך קבוצת לימוד/עשיריה?",
+                    "wantStudyGroup": "אתה רוצה קבוצת לימוד\\עשיריה?"
+                },
+                "Security": {
+                    "name": "פרטי כניסה",
+                    "email": "דואר אלקטרוני",
+                    "googleConnected": "גוגל קונקט",
+                    "googleTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
+                    "facebookConnected": "פייסבוק מחוברת",
+                    "facebookTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
+                    "forgotPassword": "שכחת את הסיסמה?"
+                }
+            },
+            "Payments": {
+                "name": "תשלומים",
+                "title": "התשלומים שלי",
+                "Tabs": {
+                    "transaction": "כל התנועה",
+                    "myPlan": "התוכנית שלי"
+                },
+                "paidOn": "שולם ב-",
+                "purpose": "תכלית",
+                "paymentMethod": "אמתעי תשלום",
+                "paymentType": "סוג תשלום",
+                "amount": "סכום",
+                "currency": "מטבע",
+                "status": "סטטוס",
+                "action": "פעולה",
+                "cancelPayment": "בטל תשלום",
+                "downloadInvoice": "הורד חשבונית כ- PDF",
+                "newPlan": "תוכנית חדשה",
+                "edit": "ערוך",
+                "editSubscription": "ערוך מנוי",
+                "currencyLabel": "בחר את המטבע שלך",
+                "subscriptionLabel": "שינוי מצב המנוי",
+                "amountLabel": "כמה אתה משלם?"
+            },
+            "BroadcastArea": {
+                "liveLanguage": "שפת שידור",
+                "questions": "שאלות",
+                "yourQuestion": "השאלה שלך",
+                "postYourQuestion": "שלח את שאלתך",
+                "posting": "שליחה...",
+                "name": "שידור",
+                "title": "שידור",
+                "broadcast": "שידור",
+                "broadcastLanguage": "שפות שידור",
+                "loading": "טוען",
+                "noBroadcast": "אין שידור עכשיו",
+                "noText": "נא להזין שאלה",
+                "successPosted": "השאלה פורסמה בהצלחה",
+                "Question": {
+                    "title": "שלח שאלה",
+                    "label": "מה השאלה שלך?",
+                    "placeholder": "הזן את השאלה שלך ולחץ על הכפתור",
+                    "button": "לשׁאול",
+                    "successMsg": "נשלח בהצלחה!",
+                    "errorMsg": "שגיאה לא צפויה. בבקשה נסה שוב!"
+                },
+                "Annoucements": {
+                    "title": "הודעות",
+                    "text": "Our Virtual Home includes the physical infrastructure and manpower for maintaining our comprehensive operation and improving online systems for optimal connection during Daily Kabbalah Lessons, social gatherings, holidays, and meals. It allows each friend full interaction in their language, both with their Ten and the World Kli from 72 countries.",
+                    "donations": "LET'S BE PARTNERS IN THE DISSEMINATION ENTERPRISE OF THE \"BNEI BARUCH - KABBALAH LA'AM\" ASSOCIATION",
+                    "donationsQuote": "\"Only through the expansion of the wisdom of Kabbalah in the masses will we obtain complete redemption\" (Rabbi Yehuda Ashlag, \"Baal HaSulam\").",
+                    "donationsButton": "לתרומה",
+                    "donationsLink": "http://bit.ly/2O0Pifo"
+                }
+            }
         },
-        "paidOn": "שולם ב-",
-        "purpose": "תכלית",
-        "paymentMethod": "אמתעי תשלום",
-        "paymentType": "סוג תשלום",
-        "amount": "סכום",
-        "currency": "מטבע",
-        "status": "סטטוס",
-        "action": "פעולה",
-        "cancelPayment": "בטל תשלום",
-        "downloadInvoice": "הורד חשבונית כ- PDF",
-        "newPlan": "תוכנית חדשה",
-        "edit": "ערוך",
-        "editSubscription": "ערוך מנוי",
-        "currencyLabel": "בחר את המטבע שלך",
-        "subscriptionLabel": "שינוי מצב המנוי",
-        "amountLabel": "כמה אתה משלם?"
-      },
-      "BroadcastArea": {
-        "liveLanguage": "שפת שידור",
-        "questions": "שאלות",
-        "yourQuestion": "השאלה שלך",
-        "postYourQuestion": "שלח את שאלתך",
-        "posting": "שליחה...",
-        "name": "שידור",
-        "title": "שידור",
-        "broadcast": "שידור",
-        "broadcastLanguage": "שפות שידור",
-        "loading": "טוען",
-        "noBroadcast": "אין שידור עכשיו",
-        "noText": "נא להזין שאלה",
-        "successPosted": "השאלה פורסמה בהצלחה",
-        "Question": {
-          "title": "שלח שאלה",
-          "label": "מה השאלה שלך?",
-          "placeholder": "הזן את השאלה שלך ולחץ על הכפתור",
-          "button": "לשׁאול",
-          "successMsg": "נשלח בהצלחה!",
-          "errorMsg": "שגיאה לא צפויה. בבקשה נסה שוב!"
+        "Membership": {
+            "name": "מנוי",
+            "myMembership": "סטטוס המנוי שלי",
+            "active": "פעיל",
+            "inactive": "לא פעיל",
+            "new": "חדש",
+            "info": "מידע על מנוי",
+            "statusDescription": "תיאור הסטטוס",
+            "paymentHistory": "היסטוריית תשלומים",
+            "descriptionInActiveMembership": "לא נמצא מנוי. אנא לחץ על הכפתור למטה כדי לרכוש מנוי או להגיש בקשה לעזרה",
+            "descriptionActiveMembership": "המני שלך פנוי",
+            "membershipDescription": "מנוי זה מספק לך גישה לאירועים ולסדנאות במערכת"
         },
-        "Annoucements": {
-          "title": "הודעות",
-          "text": "Our Virtual Home includes the physical infrastructure and manpower for maintaining our comprehensive operation and improving online systems for optimal connection during Daily Kabbalah Lessons, social gatherings, holidays, and meals. It allows each friend full interaction in their language, both with their Ten and the World Kli from 72 countries.",
-          "donations": "LET'S BE PARTNERS IN THE DISSEMINATION ENTERPRISE OF THE \"BNEI BARUCH - KABBALAH LA'AM\" ASSOCIATION",
-          "donationsQuote": "\"Only through the expansion of the wisdom of Kabbalah in the masses will we obtain complete redemption\" (Rabbi Yehuda Ashlag, \"Baal HaSulam\").",
-          "donationsButton": "לתרומה",
-          "donationsLink": "http://bit.ly/2O0Pifo"
-        }
-      }
-    },
-    "Membership": {
-      "name": "מנוי",
-      "myMembership": "סטטוס המנוי שלי",
-      "active": "פעיל",
-      "inactive": "לא פעיל",
-      "new": "חדש",
-      "info": "מידע על מנוי",
-      "statusDescription": "תיאור הסטטוס",
-      "paymentHistory": "היסטוריית תשלומים",
-      "descriptionInActiveMembership": "לא נמצא מנוי. אנא לחץ על הכפתור למטה כדי לרכוש מנוי או להגיש בקשה לעזרה",
-      "descriptionActiveMembership": "המני שלך פנוי",
-      "membershipDescription": "מנוי זה מספק לך גישה לאירועים ולסדנאות במערכת"
-    },
-    "common": {
-      "date": "תאריך",
-      "time": "זמן",
-      "product": "מוצר",
-      "type": "סוג",
-      "amount": "סכום",
-      "paymentId": "מזהה תשלום",
-      "paymentMethod": "אמצעי תשלום",
-      "status": "סטטוס",
-      "paid": "שולם",
-      "failed": "נכשל",
-      "pending": "ממתין",
-      "currency": "מטבע",
-      "ticket": "כרטיס"
-    },
-    "ticket": {
-      "title": "כרטיס",
-      "event": "אירוע",
-      "name": "שם",
-      "registration_date": "תאריך רישום",
-      "payment_option": "אפשרות תשלום",
-      "date": "תאריך",
-      "email": "דואר אלקטרוני",
-      "country": "מדינה",
-      "gender": "Gender"
-    },
-    "events": {
-      "upcoming_event": "Upcoming Events",
-      "past_events": "Past Events",
-      "registered_events": "Registered Events",
-      "registered_date": "תאריך הרישום",
-      "option": "סוג הכרטיס",
-      "part_status": "סטטוס הרישום",
-      "registered": "נרשם",
-      "notRegistered": "לא נרשם",
-      "no_registered_events": "No registered events",
-      "no_upcoming_events": "No upcoming events",
-      "no_past_events": "No past events",
-      "pending": "Pending"
-    },
-    "may2022": "רק החברים - כנס הקבלה"
-  }
+        "common": {
+            "date": "תאריך",
+            "time": "זמן",
+            "product": "מוצר",
+            "type": "סוג",
+            "amount": "סכום",
+            "paymentId": "מזהה תשלום",
+            "paymentMethod": "אמצעי תשלום",
+            "status": "סטטוס",
+            "paid": "שולם",
+            "failed": "נכשל",
+            "pending": "ממתין",
+            "currency": "מטבע",
+            "ticket": "כרטיס"
+        },
+        "ticket": {
+            "title": "כרטיס",
+            "event": "אירוע",
+            "name": "שם",
+            "registration_date": "תאריך רישום",
+            "payment_option": "אפשרות תשלום",
+            "date": "תאריך",
+            "email": "דואר אלקטרוני",
+            "country": "מדינה",
+            "gender": "Gender"
+        },
+        "events": {
+            "upcoming_event": "אירועים הבאים",
+            "past_events": "אירעים קודמים",
+            "registered_events": "Registered Events",
+            "registered_date": "תאריך הרישום",
+            "option": "סוג הכרטיס",
+            "part_status": "סטטוס הרישום",
+            "registered": "נרשם",
+            "notRegistered": "לא נרשם",
+            "no_registered_events": "No registered events",
+            "no_upcoming_events": "No upcoming events",
+            "no_past_events": "No past events",
+            "pending": "Pending"
+        },
+        "may2022": "רק החברים - כנס הקבלה"
+    }
 }

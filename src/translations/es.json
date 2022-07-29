@@ -1,630 +1,627 @@
 {
-  "translation": {
-    "Global": {
-      "inputPlaceholder": "Enter your {{input}}",
-      "formErrorMsg": "Please enter your details",
-      "saveBtn": "Save changes",
-      "cancelBtn": "Cancel",
-      "modify": "Modify",
-      "yes": "Yes",
-      "no": "No",
-      "closeBtn": "Close",
-      "requestError": "Ooops! Something went wrong! Please, try again later or contact our support",
-      "Currency": {
-        "usd": "USD",
-        "eur": "EUR"
-      },
-      "Days": {
-        "monday": "Monday",
-        "tuesday": "Tuesday",
-        "wednesday": "Wednesday",
-        "thursday": "Thursday",
-        "friday": "Friday",
-        "saturday": "Saturday",
-        "sunday": "Sunday"
-      },
-      "Months": {
-        "january": "January",
-        "february": "February",
-        "march": "March",
-        "april": "April",
-        "may": "May",
-        "june": "June",
-        "july": "July",
-        "august": "August",
-        "september": "September",
-        "october": "October",
-        "november": "November",
-        "december": "December"
-      },
-      "Subscription": {
-        "active": "Active",
-        "pause": "Pause",
-        "cancel": "Cancel"
-      }
-    },
-    "Languages": {
-      "English": "Inglés",
-      "Russian": "Ruso",
-      "Hebrew": "Hebreo",
-      "Spanish": "Español",
-      "French": "Francés",
-      "streetAddressPlaceholder": "Entra en tu calle"
-    },
-
-    "Home": {
-      "arvut": "Arvut",
-      "watchBtn": "Ver",
-      "noLiveEvent": "No hay eventos en vivo",
-      "noEvent": "No hay eventos",
-      "currentEvent": "Evento actual",
-      "totalConnections": "Total de conexiones",
-      "tensNumber": "Número de decenas conectadas",
-      "tenFriends": "Amigos de su decena",
-      "today": "Hoy",
-      "tomorrow": "Mañana",
-      "yesterday": "Ayer",
-      "events": "Eventos",
-      "welcomeBack": "Bienvenido de nuevo",
-      "watchRecordedBtn": "Ver Grabado",
-      "active": "ACTIVO",
-      "notActive": "No hay eventos en vivo",
-      "convention": "Convención",
-      "registered": "Estas registrado",
-      "notRegistered": "No estas registrado",
-      "register": "Registrarse",
-      "conventionSite": "Sitio de la convención",
-      "conventionsubtitle": "Descubriendo un nuevo mondo",
-      "conventiontitle": "Elevándonos por encima de nosotros mismos"
-    },
-    "UserMenu": {
-      "logOut": "Cerrar la sesión",
-      "profile": "Perfil",
-      "logOutText": "¿Realmente quiere dejar de fumar?",
-      "unsaved_changes": "You have unsaved changes. Please save or cancel changes before switching tab",
-      "yesBtn": "Sí",
-      "okbtn": "Ok",
-      "cancelBtn": "Cancelar",
-      "payUserFee": "Pagar la tarifa de usuario",
-      "statuses": {
-        "late": "Cargos por mora",
-        "nonExistant": "Inexistente",
-        "unknown": "Desconocidas",
-        "hold": "En espera",
-        "active": "Activo"
-      },
-      "subscriptions": "Suscripciones"
-    },
-    "Dashboard": {
-      "ArvutSystem": {
-        "name": "Sistema Arvut",
-        "title": "Sistema Arvut",
-        "description": "Arvut Description : Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it",
-        "accessTitle": "Access to the Arvut System",
-        "accessSubDescription": "Arvut Description : Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it",
-        "accessDescription": "Arvut Description : Lorem Ipsum is simply dummy text of the printing",
-        "requestAccess": "Request Access to Arvut System",
-        "continueAsGuest": "Continue as guest",
-        "verfiyInformation": "Please verify or complete your information below",
-        "request_submitted": "Your request has been successfully submitted ",
-        "request_submitted_text": "You will be notified by email once the team has reviewed your request."
-      },
-      "Archive": {
-        "name": "Kabbalah Media"
-      },
-      "Dashboard": {
-        "name": "Panel"
-      },
-      "Status": {
-        "name": "Estado",
-        "title": "Estado"
-      },
-      "PreviousPayment": {
-        "name": "Pago anterior",
-        "title": "Pgo anterior",
-        "paymentHistory": "Esta tabla proporciona el historial de pagos realizados por el usuario"
-      },
-      "Membership": {
-        "name": "Membresía"
-      },
-      "EventTicket": {
-        "name": "Boleto de evento",
-        "title": "Boleto de evento",
-        "eventTicket": "Boleto de evento",
-        "eventTicketHistory": "historial de entradas de eventos"
-      },
-      "Help": {
-        "name": "Ayuda",
-        "title": "Ayuda"
-      },
-      "Events": {
-        "name": "Eventos",
-        "title": "Eventos",
-        "page": "More Info",
-        "register": "Registration",
-        "watch_in_archive": "Watch in the Archive"
-      },
-      "Profile": {
-        "name": "Perfil",
-        "title": "Mi perfil",
-        "Tabs": {
-          "personal": "Personal",
-          "framework": "Mi marco de trabajo",
-          "skills": "Mis habilidades",
-          "notification": "Notificación",
-          "otherInformations": "Otras informaciones",
-          "languages": "Idiomas",
-          "security": "Seguridad"
-        },
-        "PersonalForm": {
-          "name": "Personal",
-          "firstName": "Nombre de pila",
-          "firstNamePlaceholder": "Introduzca su nombre de pila",
-          "dateOfBirth": "Fecha de nacimiento",
-          "gender": {
-            "label": "Género",
-            "male": "masculino",
-            "female": "mujer"
-          },
-          "fullName": "Introduzca su nombre completo en la lengua principal",
-          "fullNamePlaceholder": "Introduzca su nombre completo",
-          "lastName": "Apellido",
-          "lastNamePlaceholder": "Introduzca su apellido",
-          "country": "País de origen",
-          "primaryLanguage": "Idioma principal",
-          "phoneNumber": "Número de teléfono",
-          "phoneNumberPlaceholder": "Introduzca su número de teléfono",
-          "saveBtn": "Guarde los cambios",
-          "maritalStatus": {
-            "widowed": "Viudo",
-            "divorced": "Divorciado",
-            "married": "Casó",
-            "single": "Soltero",
-            "label": "Estado Civil"
-          }
-        },
-        "LoginForm": {
-          "name": "Información de acceso",
-          "email": "Correo electrónico",
-          "emailPlaceholder": "Introduzca su correo electrónico",
-          "password": "Introduzca su contraseña",
-          "passwordPlaceholder": "Introduzca su contraseña",
-          "saveBtn": "Guardar cambios"
-        },
-        "SocialForm": {
-          "name": "Mis cuentas en las redes sociales",
-          "facebook": "Tu perfil de Facebook",
-          "facebookPlaceholder": "Introducir el perfil de Facebook",
-          "youtube": "Su perfil en Youtube",
-          "youtubePlaceholder": "Introducir el perfil de Youtube",
-          "instagram": "Tu cuenta de Instagram",
-          "instagramPlaceholder": "Introduzca el nombre de Instagram",
-          "linked": "Su perfil de Linked",
-          "linkedPlaceholder": "Introduzca su perfil de Linked",
-          "twitter": "Tu nombre en Twitter",
-          "twitterPlaceholder": "Introduzca el nombre de Twitter",
-          "skype": "Tu nombre en Skype",
-          "skypePlaceholder": "Introduzca su nombre de usuario de Skype",
-          "connectBtn": "Conectar"
-        },
-        "Security": {
-          "forgotPassword": "¿Olvidaste tu contraseña?",
-          "facebookTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
-          "facebookConnected": "Facebook conectado",
-          "googleTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
-          "googleConnected": "Google conectado",
-          "email": "Correo electrónico",
-          "name": "Información de inicio de sesión"
-        },
-        "OtherInformation": {
-          "wantStudyGroup": "¿Quieres tener un grupo de estudio?",
-          "studyGroup": "¿Tienes un grupo de estudio?",
-          "tenName": "Nombre de diez, si tiene grupo",
-          "ten": "Diez",
-          "studyFramework": "Marco de estudio",
-          "startYear": "Año de inicio",
-          "education": "Educacion"
-        },
-        "LanguagePreferences": {
-          "readingTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
-          "readingLanguage": "Lenguaje de lectura",
-          "listeningTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
-          "listeningLanguage": "Lenguaje de escucha",
-          "emailTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
-          "emailLanguage": "Idioma del correo electrónico",
-          "name": "Preferencias de idioma"
+    "translation": {
+        "Global": {
+            "inputPlaceholder": "Enter your {{input}}",
+            "formErrorMsg": "Please enter your details",
+            "saveBtn": "Save changes",
+            "cancelBtn": "Cancel",
+            "modify": "Modify",
+            "yes": "Yes",
+            "no": "No",
+            "closeBtn": "Close",
+            "requestError": "Ooops! Something went wrong! Please, try again later or contact our support",
+            "Currency": {
+                "usd": "USD",
+                "eur": "EUR"
+            },
+            "Days": {
+                "monday": "Monday",
+                "tuesday": "Tuesday",
+                "wednesday": "Wednesday",
+                "thursday": "Thursday",
+                "friday": "Friday",
+                "saturday": "Saturday",
+                "sunday": "Sunday"
+            },
+            "Months": {
+                "january": "January",
+                "february": "February",
+                "march": "March",
+                "april": "April",
+                "may": "May",
+                "june": "June",
+                "july": "July",
+                "august": "August",
+                "september": "September",
+                "october": "October",
+                "november": "November",
+                "december": "December"
+            },
+            "Subscription": {
+                "active": "Active",
+                "pause": "Pause",
+                "cancel": "Cancel"
+            }
         },
         "Languages": {
-          "otherLanguage": "Otro idioma {{number}}",
-          "firstLanguage": "Lengua materna",
-          "name": "Idiomas"
+            "English": "Inglés",
+            "Russian": "Ruso",
+            "Hebrew": "Hebreo",
+            "Spanish": "Español",
+            "French": "Francés",
+            "streetAddressPlaceholder": "Entra en tu calle"
         },
-        "Emails": {
-          "emailError": "Introduce la dirección de correo electrónico correcta",
-          "alternativeEmail": "Correo electrónico alternativo {{number}}",
-          "primaryEmail": "Correo electrónico principal",
-          "name": "Mis correos electrónicos"
+        "Home": {
+            "arvut": "Arvut",
+            "watchBtn": "Ver",
+            "noLiveEvent": "No hay eventos en vivo",
+            "noEvent": "No hay eventos",
+            "currentEvent": "Evento actual",
+            "totalConnections": "Total de conexiones",
+            "tensNumber": "Número de decenas conectadas",
+            "tenFriends": "Amigos de su decena",
+            "today": "Hoy",
+            "tomorrow": "Mañana",
+            "yesterday": "Ayer",
+            "events": "Eventos",
+            "welcomeBack": "Bienvenido de nuevo",
+            "watchRecordedBtn": "Ver Grabado",
+            "active": "ACTIVO",
+            "notActive": "No hay eventos en vivo",
+            "convention": "Convención",
+            "registered": "Estas registrado",
+            "notRegistered": "No estas registrado",
+            "register": "Registrarse",
+            "conventionSite": "Sitio de la convención",
+            "conventionsubtitle": "Descubriendo un nuevo mondo",
+            "conventiontitle": "Elevándonos por encima de nosotros mismos"
         },
         "UserMenu": {
-          "logOut": "Cerrar la sesión",
-          "profile": "Perfil",
-          "logOutText": "¿Realmente quiere dejar de fumar?",
-          "yesBtn": "Sí",
-          "cancelBtn": "Cancelar",
-          "payUserFee": "Pagar tarifa de usuario",
-          "statuses": {
-            "late": "Cargos por mora",
-            "nonExistant": "Inexistente",
-            "unknown": "Desconocidas",
-            "hold": "En espera",
-            "active": "Activo"
-          },
-          "subscriptions": "Suscripciones"
+            "logOut": "Cerrar la sesión",
+            "profile": "Perfil",
+            "logOutText": "¿Realmente quiere dejar de fumar?",
+            "unsaved_changes": "You have unsaved changes. Please save or cancel changes before switching tab",
+            "yesBtn": "Sí",
+            "okbtn": "Ok",
+            "cancelBtn": "Cancelar",
+            "payUserFee": "Pagar la tarifa de usuario",
+            "statuses": {
+                "late": "Cargos por mora",
+                "nonExistant": "Inexistente",
+                "unknown": "Desconocidas",
+                "hold": "En espera",
+                "active": "Activo"
+            },
+            "subscriptions": "Suscripciones"
         },
         "Dashboard": {
-          "ArvutSystem": {
-            "name": "Sistema Arvut"
-          },
-          "Archive": {
-            "name": "Archivo"
-          },
-          "Dashboard": {
-            "name": "Tablero de mandos"
-          },
-          "Profile": {
-            "name": "Perfil",
-            "title": "Mi perfil",
-            "Tabs": {
-              "personal": "Personal",
-              "framework": "Mi marco de trabajo",
-              "skills": "Mis habilidades",
-              "notification": "Notificación",
-              "otherInformations": "Otras informaciones",
-              "languages": "Idiomas",
-              "security": "Seguridad"
+            "ArvutSystem": {
+                "name": "Sistema Arvut",
+                "title": "Sistema Arvut",
+                "description": "Arvut Description : Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it",
+                "accessTitle": "Access to the Arvut System",
+                "accessSubDescription": "Arvut Description : Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it",
+                "accessDescription": "Arvut Description : Lorem Ipsum is simply dummy text of the printing",
+                "requestAccess": "Request Access to Arvut System",
+                "continueAsGuest": "Continue as guest",
+                "verfiyInformation": "Please verify or complete your information below",
+                "request_submitted": "Your request has been successfully submitted ",
+                "request_submitted_text": "You will be notified by email once the team has reviewed your request."
             },
-            "PersonalForm": {
-              "name": "Personal",
-              "firstName": "Nombre de pila",
-              "firstNamePlaceholder": "Introduzca su nombre de pila",
-              "dateOfBirth": "Fecha de nacimiento",
-              "gender": {
-                "label": "Género",
-                "male": "Masculino",
-                "female": "Mujer"
-              },
-              "fullName": "Introduzca su nombre completo en la lengua principal",
-              "fullNamePlaceholder": "Introduzca su nombre completo",
-              "lastName": "Apellido",
-              "lastNamePlaceholder": "Introduzca su apellido",
-              "country": "País de origen",
-              "primaryLanguage": "Idioma principal",
-              "phoneNumber": "Número de teléfono",
-              "phoneNumberPlaceholder": "Introduzca su número de teléfono",
-              "saveBtn": "Guarde los cambios",
-              "maritalStatus": {
-                "widowed": "Viudo",
-                "divorced": "Divorciado",
-                "married": "Casó",
-                "single": "Soltero",
-                "label": "Estado Civil"
-              }
+            "Archive": {
+                "name": "Kabbalah Media"
             },
-            "LoginForm": {
-              "name": "Información de acceso",
-              "email": "Correo electrónico",
-              "emailPlaceholder": "Introduzca su correo electrónico",
-              "password": "Introduzca su contraseña",
-              "passwordPlaceholder": "Introduzca su contraseña",
-              "saveBtn": "Guardar cambios"
+            "Dashboard": {
+                "name": "Panel"
             },
-            "SocialForm": {
-              "name": "Mis cuentas en las redes sociales",
-              "facebook": "Tu perfil de Facebook",
-              "facebookPlaceholder": "Introducir el perfil de Facebook",
-              "youtube": "Su perfil en Youtube",
-              "youtubePlaceholder": "Introducir el perfil de Youtube",
-              "instagram": "Tu cuenta de Instagram",
-              "instagramPlaceholder": "Introduzca el nombre de Instagram",
-              "linked": "Su perfil de Linked",
-              "linkedPlaceholder": "Introduzca su perfil de Linked",
-              "twitter": "Tu nombre en Twitter",
-              "twitterPlaceholder": "Introduzca el nombre de Twitter",
-              "skype": "Tu nombre en Skype",
-              "skypePlaceholder": "Introduzca su nombre de usuario de Skype",
-              "connectBtn": "Conectar"
+            "Status": {
+                "name": "Estado",
+                "title": "Estado"
             },
-            "Security": {
-              "forgotPassword": "¿Olvidaste tu contraseña?",
-              "facebookTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
-              "facebookConnected": "Facebook conectado",
-              "googleTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
-              "googleConnected": "Google conectado",
-              "email": "Correo electrónico",
-              "name": "Información de inicio de sesión"
+            "PreviousPayment": {
+                "name": "Pago anterior",
+                "title": "Pgo anterior",
+                "paymentHistory": "Esta tabla proporciona el historial de pagos realizados por el usuario"
             },
-            "OtherInformation": {
-              "wantStudyGroup": "¿Quieres tener un grupo de estudio?",
-              "studyGroup": "¿Tienes un grupo de estudio?",
-              "tenName": "Nombre de diez, si tiene grupo",
-              "ten": "Diez",
-              "studyFramework": "Marco de estudio",
-              "startYear": "Año de inicio",
-              "education": "Educacion"
+            "Membership": {
+                "name": "Membresía"
             },
-            "LanguagePreferences": {
-              "readingTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
-              "readingLanguage": "Lenguaje de lectura",
-              "listeningTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
-              "listeningLanguage": "Lenguaje de escucha",
-              "emailTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
-              "emailLanguage": "Idioma del correo electrónico",
-              "name": "Preferencias de idioma"
+            "EventTicket": {
+                "name": "Boleto de evento",
+                "title": "Boleto de evento",
+                "eventTicket": "Boleto de evento",
+                "eventTicketHistory": "historial de entradas de eventos"
             },
-            "Languages": {
-              "otherLanguage": "Otro idioma {{number}}",
-              "firstLanguage": "Lengua materna",
-              "name": "Idiomas"
+            "Help": {
+                "name": "Ayuda",
+                "title": "Ayuda"
             },
-            "Emails": {
-              "emailError": "Introduce la dirección de correo electrónico correcta",
-              "alternativeEmail": "Correo electrónico alternativo {{number}}",
-              "primaryEmail": "Correo electrónico principal",
-              "name": "Mis correos electrónicos"
+            "Events": {
+                "name": "Eventos",
+                "title": "Eventos",
+                "page": "Sitio del evento",
+                "register": "Registro",
+                "watch_in_archive": "Ver en el archivo"
             },
-            "PhysicalLocationForm": {
-              "stateRegion": "Estado/Región",
-              "country": "País",
-              "postalCode": "Código Postal",
-              "streetAddress": "Dirección de la calle",
-              "name": "Ubicación Física",
-              "city": "Ciudad"
+            "Profile": {
+                "name": "Perfil",
+                "title": "Mi perfil",
+                "Tabs": {
+                    "personal": "Personal",
+                    "framework": "Mi marco de trabajo",
+                    "skills": "Mis habilidades",
+                    "notification": "Notificación",
+                    "otherInformations": "Otras informaciones",
+                    "languages": "Idiomas",
+                    "security": "Seguridad"
+                },
+                "PersonalForm": {
+                    "name": "Personal",
+                    "firstName": "Nombre de pila",
+                    "firstNamePlaceholder": "Introduzca su nombre de pila",
+                    "dateOfBirth": "Fecha de nacimiento",
+                    "gender": {
+                        "label": "Género",
+                        "male": "masculino",
+                        "female": "mujer"
+                    },
+                    "fullName": "Introduzca su nombre completo en la lengua principal",
+                    "fullNamePlaceholder": "Introduzca su nombre completo",
+                    "lastName": "Apellido",
+                    "lastNamePlaceholder": "Introduzca su apellido",
+                    "country": "País de origen",
+                    "primaryLanguage": "Idioma principal",
+                    "phoneNumber": "Número de teléfono",
+                    "phoneNumberPlaceholder": "Introduzca su número de teléfono",
+                    "saveBtn": "Guarde los cambios",
+                    "maritalStatus": {
+                        "widowed": "Viudo",
+                        "divorced": "Divorciado",
+                        "married": "Casó",
+                        "single": "Soltero",
+                        "label": "Estado Civil"
+                    }
+                },
+                "LoginForm": {
+                    "name": "Información de acceso",
+                    "email": "Correo electrónico",
+                    "emailPlaceholder": "Introduzca su correo electrónico",
+                    "password": "Introduzca su contraseña",
+                    "passwordPlaceholder": "Introduzca su contraseña",
+                    "saveBtn": "Guardar cambios"
+                },
+                "SocialForm": {
+                    "name": "Mis cuentas en las redes sociales",
+                    "facebook": "Tu perfil de Facebook",
+                    "facebookPlaceholder": "Introducir el perfil de Facebook",
+                    "youtube": "Su perfil en Youtube",
+                    "youtubePlaceholder": "Introducir el perfil de Youtube",
+                    "instagram": "Tu cuenta de Instagram",
+                    "instagramPlaceholder": "Introduzca el nombre de Instagram",
+                    "linked": "Su perfil de Linked",
+                    "linkedPlaceholder": "Introduzca su perfil de Linked",
+                    "twitter": "Tu nombre en Twitter",
+                    "twitterPlaceholder": "Introduzca el nombre de Twitter",
+                    "skype": "Tu nombre en Skype",
+                    "skypePlaceholder": "Introduzca su nombre de usuario de Skype",
+                    "connectBtn": "Conectar"
+                },
+                "Security": {
+                    "forgotPassword": "¿Olvidaste tu contraseña?",
+                    "facebookTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
+                    "facebookConnected": "Facebook conectado",
+                    "googleTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
+                    "googleConnected": "Google conectado",
+                    "email": "Correo electrónico",
+                    "name": "Información de inicio de sesión"
+                },
+                "OtherInformation": {
+                    "wantStudyGroup": "¿Quieres tener un grupo de estudio?",
+                    "studyGroup": "¿Tienes un grupo de estudio?",
+                    "tenName": "Nombre de diez, si tiene grupo",
+                    "ten": "Diez",
+                    "studyFramework": "Marco de estudio",
+                    "startYear": "Año de inicio",
+                    "education": "Educacion"
+                },
+                "LanguagePreferences": {
+                    "readingTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
+                    "readingLanguage": "Lenguaje de lectura",
+                    "listeningTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
+                    "listeningLanguage": "Lenguaje de escucha",
+                    "emailTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
+                    "emailLanguage": "Idioma del correo electrónico",
+                    "name": "Preferencias de idioma"
+                },
+                "Languages": {
+                    "otherLanguage": "Otro idioma {{number}}",
+                    "firstLanguage": "Lengua materna",
+                    "name": "Idiomas"
+                },
+                "Emails": {
+                    "emailError": "Introduce la dirección de correo electrónico correcta",
+                    "alternativeEmail": "Correo electrónico alternativo {{number}}",
+                    "primaryEmail": "Correo electrónico principal",
+                    "name": "Mis correos electrónicos"
+                },
+                "UserMenu": {
+                    "logOut": "Cerrar la sesión",
+                    "profile": "Perfil",
+                    "logOutText": "¿Realmente quiere dejar de fumar?",
+                    "yesBtn": "Sí",
+                    "cancelBtn": "Cancelar",
+                    "payUserFee": "Pagar tarifa de usuario",
+                    "statuses": {
+                        "late": "Cargos por mora",
+                        "nonExistant": "Inexistente",
+                        "unknown": "Desconocidas",
+                        "hold": "En espera",
+                        "active": "Activo"
+                    },
+                    "subscriptions": "Suscripciones"
+                },
+                "Dashboard": {
+                    "ArvutSystem": {
+                        "name": "Sistema Arvut"
+                    },
+                    "Archive": {
+                        "name": "Archivo"
+                    },
+                    "Dashboard": {
+                        "name": "Tablero de mandos"
+                    },
+                    "Profile": {
+                        "name": "Perfil",
+                        "title": "Mi perfil",
+                        "Tabs": {
+                            "personal": "Personal",
+                            "framework": "Mi marco de trabajo",
+                            "skills": "Mis habilidades",
+                            "notification": "Notificación",
+                            "otherInformations": "Otras informaciones",
+                            "languages": "Idiomas",
+                            "security": "Seguridad"
+                        },
+                        "PersonalForm": {
+                            "name": "Personal",
+                            "firstName": "Nombre de pila",
+                            "firstNamePlaceholder": "Introduzca su nombre de pila",
+                            "dateOfBirth": "Fecha de nacimiento",
+                            "gender": {
+                                "label": "Género",
+                                "male": "Masculino",
+                                "female": "Mujer"
+                            },
+                            "fullName": "Introduzca su nombre completo en la lengua principal",
+                            "fullNamePlaceholder": "Introduzca su nombre completo",
+                            "lastName": "Apellido",
+                            "lastNamePlaceholder": "Introduzca su apellido",
+                            "country": "País de origen",
+                            "primaryLanguage": "Idioma principal",
+                            "phoneNumber": "Número de teléfono",
+                            "phoneNumberPlaceholder": "Introduzca su número de teléfono",
+                            "saveBtn": "Guarde los cambios",
+                            "maritalStatus": {
+                                "widowed": "Viudo",
+                                "divorced": "Divorciado",
+                                "married": "Casó",
+                                "single": "Soltero",
+                                "label": "Estado Civil"
+                            }
+                        },
+                        "LoginForm": {
+                            "name": "Información de acceso",
+                            "email": "Correo electrónico",
+                            "emailPlaceholder": "Introduzca su correo electrónico",
+                            "password": "Introduzca su contraseña",
+                            "passwordPlaceholder": "Introduzca su contraseña",
+                            "saveBtn": "Guardar cambios"
+                        },
+                        "SocialForm": {
+                            "name": "Mis cuentas en las redes sociales",
+                            "facebook": "Tu perfil de Facebook",
+                            "facebookPlaceholder": "Introducir el perfil de Facebook",
+                            "youtube": "Su perfil en Youtube",
+                            "youtubePlaceholder": "Introducir el perfil de Youtube",
+                            "instagram": "Tu cuenta de Instagram",
+                            "instagramPlaceholder": "Introduzca el nombre de Instagram",
+                            "linked": "Su perfil de Linked",
+                            "linkedPlaceholder": "Introduzca su perfil de Linked",
+                            "twitter": "Tu nombre en Twitter",
+                            "twitterPlaceholder": "Introduzca el nombre de Twitter",
+                            "skype": "Tu nombre en Skype",
+                            "skypePlaceholder": "Introduzca su nombre de usuario de Skype",
+                            "connectBtn": "Conectar"
+                        },
+                        "Security": {
+                            "forgotPassword": "¿Olvidaste tu contraseña?",
+                            "facebookTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
+                            "facebookConnected": "Facebook conectado",
+                            "googleTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
+                            "googleConnected": "Google conectado",
+                            "email": "Correo electrónico",
+                            "name": "Información de inicio de sesión"
+                        },
+                        "OtherInformation": {
+                            "wantStudyGroup": "¿Quieres tener un grupo de estudio?",
+                            "studyGroup": "¿Tienes un grupo de estudio?",
+                            "tenName": "Nombre de diez, si tiene grupo",
+                            "ten": "Diez",
+                            "studyFramework": "Marco de estudio",
+                            "startYear": "Año de inicio",
+                            "education": "Educacion"
+                        },
+                        "LanguagePreferences": {
+                            "readingTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
+                            "readingLanguage": "Lenguaje de lectura",
+                            "listeningTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
+                            "listeningLanguage": "Lenguaje de escucha",
+                            "emailTooltip": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus sit lectus habitant sapien, ultrices quisque.",
+                            "emailLanguage": "Idioma del correo electrónico",
+                            "name": "Preferencias de idioma"
+                        },
+                        "Languages": {
+                            "otherLanguage": "Otro idioma {{number}}",
+                            "firstLanguage": "Lengua materna",
+                            "name": "Idiomas"
+                        },
+                        "Emails": {
+                            "emailError": "Introduce la dirección de correo electrónico correcta",
+                            "alternativeEmail": "Correo electrónico alternativo {{number}}",
+                            "primaryEmail": "Correo electrónico principal",
+                            "name": "Mis correos electrónicos"
+                        },
+                        "PhysicalLocationForm": {
+                            "stateRegion": "Estado/Región",
+                            "country": "País",
+                            "postalCode": "Código Postal",
+                            "streetAddress": "Dirección de la calle",
+                            "name": "Ubicación Física",
+                            "city": "Ciudad"
+                        },
+                        "socialFormName": "Mis números de teléfono",
+                        "profileNotExist": "Parece que no has creado información de perfil. Por favor, haga clic en el botón 'Modificar' y cree su perfil",
+                        "profileUpdated": "La información de tu perfil se actualizó correctamente",
+                        "profileCreated": "La información de tu perfil se creó correctamente"
+                    },
+                    "Account": {
+                        "name": "Cuenta",
+                        "title": "Mi cuenta",
+                        "Tabs": {
+                            "transaction": "Todas las transacciones",
+                            "payment": "Métodos de pago",
+                            "myPlan": "Mi plan"
+                        },
+                        "paidOn": "Pagado en",
+                        "purpose": "Propósito",
+                        "paymentMethod": "Método de pago",
+                        "paymentType": "Tipo de pago",
+                        "amount": "Cantidad",
+                        "currency": "Moneda",
+                        "status": "Estado",
+                        "action": "Acción",
+                        "cancelPayment": "Cancelar el pago",
+                        "downloadInvoice": "Descargar la factura en PDF",
+                        "card": "Tarjeta",
+                        "cardNumber": "Número",
+                        "expirationDate": "Fecha de caducidad"
+                    },
+                    "BroadcastArea": {
+                        "name": "Área del Congreso",
+                        "title": "Área de Congresos",
+                        "caption": "DESCUBRIENDO LA VIDA EN LOS DIEZ",
+                        "subCaption": "CONVENCIÓN MUNDIAL DE CÁBALA 2021",
+                        "broadcast": "Difusión",
+                        "broadcastLanguage": "Idiomas de transmisión",
+                        "loading": "Cargando...",
+                        "noBroadcast": "No hay transmisión ahora",
+                        "Question": {
+                            "title": "Enviar una pregunta",
+                            "label": "¿Cuál es su pregunta?",
+                            "placeholder": "Introduzca su pregunta y pulse el botón",
+                            "button": "Pregunte a",
+                            "successMsg": "Enviado con éxito!",
+                            "errorMsg": "Error inesperado. ¡Inténtalo de nuevo!"
+                        },
+                        "Annoucements": {
+                            "title": "Anuncios",
+                            "text": "Nuestra Casa Virtual incluye la infraestructura física y la mano de obra para mantener nuestro funcionamiento integral y mejorar los sistemas en línea para una conexión óptima durante las Lecciones Diarias de Cabalá, las reuniones sociales, las vacaciones y las comidas. Permite a cada amigo la plena interacción en su idioma, tanto con sus Diez como con el Kli Mundial de 72 países.",
+                            "donationsButton": "DONAR",
+                            "donationsQuote": "\"Solo a través de la expansión de la sabiduría de la Cabalá a las masas obtendremos la redención completa\" (Rav Yehuda Ashlag, \"Baal HaSulam\").",
+                            "donations": "SEAMOS SOCIOS EN LA FÁBRICA DE DIFUSIÓN DE LA ASOCIACIÓN \"BNEI BARUJ\"",
+                            "donationsLink": "http://bit.ly/2ZWi0kc"
+                        }
+                    },
+                    "Payments": {
+                        "amountLabel": "¿Cuánto estás pagando?",
+                        "subscriptionLabel": "Cambiar el estado de la suscripción",
+                        "currencyLabel": "Elige tu moneda",
+                        "editSubscription": "Editar Suscripción",
+                        "edit": "Editar",
+                        "newPlan": "Nuevo Plan",
+                        "downloadInvoice": "Descargar factura como PDF",
+                        "cancelPayment": "Cancelar pago",
+                        "action": "Accion",
+                        "status": "Estado",
+                        "currency": "Moneda",
+                        "amount": "Importe",
+                        "paymentType": "Tipo de pago",
+                        "paymentMethod": "Forma de Pago",
+                        "purpose": "Proposito",
+                        "paidOn": "Pagado en",
+                        "Tabs": {
+                            "myPlan": "Mi plan",
+                            "transaction": "Todas las transacciones"
+                        },
+                        "title": "Mis pagos",
+                        "name": "Pagos"
+                    }
+                },
+                "Global": {
+                    "inputPlaceholder": "Ingrese su {{input}}",
+                    "formErrorMsg": "Introduce tus datos",
+                    "Months": {
+                        "december": "Diciembre",
+                        "november": "Noviembre",
+                        "october": "Octubre",
+                        "september": "Setiembre",
+                        "august": "Agosto",
+                        "july": "Julio",
+                        "june": "Junio",
+                        "may": "May",
+                        "april": "Abril",
+                        "march": "Marzo",
+                        "february": "Febrero",
+                        "january": "Enero"
+                    },
+                    "Days": {
+                        "sunday": "Domingos",
+                        "saturday": "Sabado",
+                        "friday": "Viernes",
+                        "thursday": "Jueves",
+                        "wednesday": "El miercoles",
+                        "tuesday": "Martes",
+                        "monday": "Lunes,"
+                    },
+                    "no": "No",
+                    "yes": "Sí",
+                    "modify": "Modificar",
+                    "cancelBtn": "Cancelar",
+                    "saveBtn": "Guardar cambios",
+                    "Subscription": {
+                        "cancel": "Cancelar",
+                        "pause": "Pausa",
+                        "active": "Activo"
+                    },
+                    "Currency": {
+                        "eur": "euro",
+                        "usd": "USD"
+                    },
+                    "requestError": "Ooops! ¡Algo salió mal! Por favor, inténtelo de nuevo más tarde o póngase en contacto con nuestro soporte técnico",
+                    "closeBtn": "Cerrar"
+                },
+                "PhysicalLocationForm": {
+                    "city": "Ciudad",
+                    "stateRegion": "Estado / Región",
+                    "country": "País",
+                    "postalCode": "Código postal",
+                    "streetAddress": "Dirección",
+                    "name": "Localizacion fisica"
+                },
+                "profileNotExist": "Parece que no ha creado la información de perfil. Por favor, haga clic en el botón 'Modificar' y cree su perfil",
+                "profileUpdated": "La información de tu perfil se actualizó correctamente",
+                "profileCreated": "La información de su perfil se creó correctamente",
+                "socialFormName": "Mis números de teléfono"
             },
-            "socialFormName": "Mis números de teléfono",
-            "profileNotExist": "Parece que no has creado información de perfil. Por favor, haga clic en el botón 'Modificar' y cree su perfil",
-            "profileUpdated": "La información de tu perfil se actualizó correctamente",
-            "profileCreated": "La información de tu perfil se creó correctamente"
-          },
-          "Account": {
-            "name": "Cuenta",
-            "title": "Mi cuenta",
-            "Tabs": {
-              "transaction": "Todas las transacciones",
-              "payment": "Métodos de pago",
-              "myPlan": "Mi plan"
+            "Payments": {
+                "name": "Pagos",
+                "title": "Mis Pagos",
+                "Tabs": {
+                    "transaction": "Todas las transacciones",
+                    "myPlan": "Mi Plan"
+                },
+                "paidOn": "Paid on",
+                "purpose": "Purpose",
+                "paymentMethod": "Payment Method",
+                "paymentType": "Payment Type",
+                "amount": "Amount",
+                "currency": "Currency",
+                "status": "Status",
+                "action": "Action",
+                "cancelPayment": "Cancel payment",
+                "downloadInvoice": "Download invoice as PDF",
+                "newPlan": "New Plan",
+                "edit": "Edit",
+                "editSubscription": "Edit Subscription",
+                "currencyLabel": "Choose your currency",
+                "subscriptionLabel": "Change the status of subscription",
+                "amountLabel": "How much are you paying?"
             },
-            "paidOn": "Pagado en",
-            "purpose": "Propósito",
-            "paymentMethod": "Método de pago",
-            "paymentType": "Tipo de pago",
-            "amount": "Cantidad",
-            "currency": "Moneda",
-            "status": "Estado",
-            "action": "Acción",
-            "cancelPayment": "Cancelar el pago",
-            "downloadInvoice": "Descargar la factura en PDF",
-            "card": "Tarjeta",
-            "cardNumber": "Número",
-            "expirationDate": "Fecha de caducidad"
-          },
-          "BroadcastArea": {
-            "name": "Área del Congreso",
-            "title": "Área de Congresos",
-            "caption": "DESCUBRIENDO LA VIDA EN LOS DIEZ",
-            "subCaption": "CONVENCIÓN MUNDIAL DE CÁBALA 2021",
-            "broadcast": "Difusión",
-            "broadcastLanguage": "Idiomas de transmisión",
-            "loading": "Cargando...",
-            "noBroadcast": "No hay transmisión ahora",
-            "Question": {
-              "title": "Enviar una pregunta",
-              "label": "¿Cuál es su pregunta?",
-              "placeholder": "Introduzca su pregunta y pulse el botón",
-              "button": "Pregunte a",
-              "successMsg": "Enviado con éxito!",
-              "errorMsg": "Error inesperado. ¡Inténtalo de nuevo!"
-            },
-            "Annoucements": {
-              "title": "Anuncios",
-              "text": "Nuestra Casa Virtual incluye la infraestructura física y la mano de obra para mantener nuestro funcionamiento integral y mejorar los sistemas en línea para una conexión óptima durante las Lecciones Diarias de Cabalá, las reuniones sociales, las vacaciones y las comidas. Permite a cada amigo la plena interacción en su idioma, tanto con sus Diez como con el Kli Mundial de 72 países.",
-              "donationsButton": "DONAR",
-              "donationsQuote": "\"Solo a través de la expansión de la sabiduría de la Cabalá a las masas obtendremos la redención completa\" (Rav Yehuda Ashlag, \"Baal HaSulam\").",
-              "donations": "SEAMOS SOCIOS EN LA FÁBRICA DE DIFUSIÓN DE LA ASOCIACIÓN \"BNEI BARUJ\"",
-              "donationsLink": "http://bit.ly/2ZWi0kc"
+            "BroadcastArea": {
+                "liveLanguage": "Live Language",
+                "questions": "Questions",
+                "yourQuestion": "Your Question",
+                "postYourQuestion": "Post your question",
+                "posting": "Posting...",
+                "name": "Transmisiones en vivo",
+                "title": "Transmisiones en vivo",
+                "broadcast": "Transmisiones en vivo",
+                "broadcastLanguage": "Lenguaje de difusión",
+                "loading": "Loading...",
+                "noBroadcast": "No broadcast now",
+                "noText": "Please input question",
+                "successPosted": "Question successfully posted",
+                "Question": {
+                    "title": "Send a Question",
+                    "label": "What is your question?",
+                    "placeholder": "Enter your question and press the button",
+                    "button": "Ask",
+                    "successMsg": "Sent successfully!",
+                    "errorMsg": "Unexpected error. Please, try again!"
+                },
+                "Annoucements": {
+                    "title": "Announcements",
+                    "text": "Our Virtual Home includes the physical infrastructure and manpower for maintaining our comprehensive operation and improving online systems for optimal connection during Daily Kabbalah Lessons, social gatherings, holidays, and meals. It allows each friend full interaction in their language, both with their Ten and the World Kli from 72 countries.",
+                    "donations": "LET'S BE PARTNERS IN THE DISSEMINATION ENTERPRISE OF THE \"BNEI BARUCH - KABBALAH LA'AM\" ASSOCIATION",
+                    "donationsQuote": "\"Only through the expansion of the wisdom of Kabbalah in the masses will we obtain complete redemption\" (Rabbi Yehuda Ashlag, \"Baal HaSulam\").",
+                    "donationsButton": "Donate",
+                    "donationsLink": "http://bit.ly/2O0Pifo"
+                }
             }
-          },
-          "Payments": {
-            "amountLabel": "¿Cuánto estás pagando?",
-            "subscriptionLabel": "Cambiar el estado de la suscripción",
-            "currencyLabel": "Elige tu moneda",
-            "editSubscription": "Editar Suscripción",
-            "edit": "Editar",
-            "newPlan": "Nuevo Plan",
-            "downloadInvoice": "Descargar factura como PDF",
-            "cancelPayment": "Cancelar pago",
-            "action": "Accion",
+        },
+        "Membership": {
+            "name": "Membresía",
+            "myMembership": "Estado de la membresía",
+            "active": "Activo",
+            "inactive": "Inactivo",
+            "new": "New",
+            "info": "Sobre la membresía",
+            "statusDescription": "Estado de la membresía",
+            "paymentHistory": "Historial de pagos",
+            "descriptionInActiveMembership": "No se ha encontrado ninguna membresía, haga clic a continuación para comprar una membresía o solicitar apoyo financiero",
+            "descriptionActiveMembership": "Su membresía está activa",
+            "membershipDescription": "La membresía es su apoyo a Bnei Baruch y le brinde acceso a eventos y talleres en el sistema ARVUT"
+        },
+        "common": {
+            "date": "Fecha",
+            "time": "Tiempo",
+            "product": "Producto",
+            "type": "Tipo",
+            "amount": "Monto",
+            "paymentId": "ID de Pago",
+            "paymentMethod": "Metodo de Pago",
             "status": "Estado",
-            "currency": "Moneda",
-            "amount": "Importe",
-            "paymentType": "Tipo de pago",
-            "paymentMethod": "Forma de Pago",
-            "purpose": "Proposito",
-            "paidOn": "Pagado en",
-            "Tabs": {
-              "myPlan": "Mi plan",
-              "transaction": "Todas las transacciones"
-            },
-            "title": "Mis pagos",
-            "name": "Pagos"
-          }
+            "paid": "Pagado",
+            "failed": "Fallado",
+            "pending": "Pendiente",
+            "currency": "Divisa",
+            "ticket": "Billete"
         },
-        "Global": {
-          "inputPlaceholder": "Ingrese su {{input}}",
-          "formErrorMsg": "Introduce tus datos",
-          "Months": {
-            "december": "Diciembre",
-            "november": "Noviembre",
-            "october": "Octubre",
-            "september": "Setiembre",
-            "august": "Agosto",
-            "july": "Julio",
-            "june": "Junio",
-            "may": "May",
-            "april": "Abril",
-            "march": "Marzo",
-            "february": "Febrero",
-            "january": "Enero"
-          },
-          "Days": {
-            "sunday": "Domingos",
-            "saturday": "Sabado",
-            "friday": "Viernes",
-            "thursday": "Jueves",
-            "wednesday": "El miercoles",
-            "tuesday": "Martes",
-            "monday": "Lunes,"
-          },
-          "no": "No",
-          "yes": "Sí",
-          "modify": "Modificar",
-          "cancelBtn": "Cancelar",
-          "saveBtn": "Guardar cambios",
-          "Subscription": {
-            "cancel": "Cancelar",
-            "pause": "Pausa",
-            "active": "Activo"
-          },
-          "Currency": {
-            "eur": "euro",
-            "usd": "USD"
-          },
-          "requestError": "Ooops! ¡Algo salió mal! Por favor, inténtelo de nuevo más tarde o póngase en contacto con nuestro soporte técnico",
-          "closeBtn": "Cerrar"
+        "ticket": {
+            "title": "Billete",
+            "event": "Evento",
+            "name": "Nombre",
+            "registration_date": "Fecha de registro",
+            "payment_option": "Opcion de pago",
+            "date": "Fecha",
+            "email": "Email",
+            "country": "País",
+            "gender": "Gender"
         },
-        "PhysicalLocationForm": {
-          "city": "Ciudad",
-          "stateRegion": "Estado / Región",
-          "country": "País",
-          "postalCode": "Código postal",
-          "streetAddress": "Dirección",
-          "name": "Localizacion fisica"
+        "events": {
+            "upcoming_event": "Próximos eventos",
+            "past_events": "Eventos pasados",
+            "registered_events": "Registered Events",
+            "registered_date": "Fecha de registración",
+            "option": "Opción",
+            "part_status": "Estado de participación",
+            "registered": "Registrado",
+            "notRegistered": "No registrado",
+            "no_registered_events": "No registered events",
+            "no_upcoming_events": "No upcoming events",
+            "no_past_events": "No past events",
+            "pending": "Pending"
         },
-        "profileNotExist": "Parece que no ha creado la información de perfil. Por favor, haga clic en el botón 'Modificar' y cree su perfil",
-        "profileUpdated": "La información de tu perfil se actualizó correctamente",
-        "profileCreated": "La información de su perfil se creó correctamente",
-        "socialFormName": "Mis números de teléfono"
-      },
-
-      "Payments": {
-        "name": "Pagos",
-        "title": "Mis Pagos",
-        "Tabs": {
-          "transaction": "Todas las transacciones",
-          "myPlan": "Mi Plan"
-        },
-        "paidOn": "Paid on",
-        "purpose": "Purpose",
-        "paymentMethod": "Payment Method",
-        "paymentType": "Payment Type",
-        "amount": "Amount",
-        "currency": "Currency",
-        "status": "Status",
-        "action": "Action",
-        "cancelPayment": "Cancel payment",
-        "downloadInvoice": "Download invoice as PDF",
-        "newPlan": "New Plan",
-        "edit": "Edit",
-        "editSubscription": "Edit Subscription",
-        "currencyLabel": "Choose your currency",
-        "subscriptionLabel": "Change the status of subscription",
-        "amountLabel": "How much are you paying?"
-      },
-      "BroadcastArea": {
-        "liveLanguage": "Live Language",
-        "questions": "Questions",
-        "yourQuestion": "Your Question",
-        "postYourQuestion": "Post your question",
-        "posting": "Posting...",
-        "name": "Transmisiones en vivo",
-        "title": "Transmisiones en vivo",
-        "broadcast": "Transmisiones en vivo",
-        "broadcastLanguage": "Lenguaje de difusión",
-        "loading": "Loading...",
-        "noBroadcast": "No broadcast now",
-        "noText": "Please input question",
-        "successPosted": "Question successfully posted",
-        "Question": {
-          "title": "Send a Question",
-          "label": "What is your question?",
-          "placeholder": "Enter your question and press the button",
-          "button": "Ask",
-          "successMsg": "Sent successfully!",
-          "errorMsg": "Unexpected error. Please, try again!"
-        },
-        "Annoucements": {
-          "title": "Announcements",
-          "text": "Our Virtual Home includes the physical infrastructure and manpower for maintaining our comprehensive operation and improving online systems for optimal connection during Daily Kabbalah Lessons, social gatherings, holidays, and meals. It allows each friend full interaction in their language, both with their Ten and the World Kli from 72 countries.",
-          "donations": "LET'S BE PARTNERS IN THE DISSEMINATION ENTERPRISE OF THE \"BNEI BARUCH - KABBALAH LA'AM\" ASSOCIATION",
-          "donationsQuote": "\"Only through the expansion of the wisdom of Kabbalah in the masses will we obtain complete redemption\" (Rabbi Yehuda Ashlag, \"Baal HaSulam\").",
-          "donationsButton": "Donate",
-          "donationsLink": "http://bit.ly/2O0Pifo"
-        }
-      }
-    },
-
-    "Membership": {
-      "name": "Membresía",
-      "myMembership": "Estado de la membresía",
-      "active": "Activo",
-      "inactive": "Inactivo",
-      "new": "New",
-      "info": "Sobre la membresía",
-      "statusDescription": "Estado de la membresía",
-      "paymentHistory": "Historial de pagos",
-      "descriptionInActiveMembership": "No se ha encontrado ninguna membresía, haga clic a continuación para comprar una membresía o solicitar apoyo financiero",
-      "descriptionActiveMembership": "Su membresía está activa",
-      "membershipDescription": "La membresía es su apoyo a Bnei Baruch y le brinde acceso a eventos y talleres en el sistema ARVUT"
-    },
-    "common": {
-      "date": "Fecha",
-      "time": "Tiempo",
-      "product": "Producto",
-      "type": "Tipo",
-      "amount": "Monto",
-      "paymentId": "ID de Pago",
-      "paymentMethod": "Metodo de Pago",
-      "status": "Estado",
-      "paid": "Pagado",
-      "failed": "Fallado",
-      "pending": "Pendiente",
-      "currency": "Divisa",
-      "ticket": "Billete"
-    },
-    "ticket": {
-      "title": "Billete",
-      "event": "Evento",
-      "name": "Nombre",
-      "registration_date": "Fecha de registro",
-      "payment_option": "Opcion de pago",
-      "date": "Fecha",
-      "email": "Email",
-      "country": "País",
-      "gender": "Gender"
-    },
-    "events": {
-      "upcoming_event": "Upcoming Events",
-      "past_events": "Past Events",
-      "registered_events": "Registered Events",
-      "registered_date": "Fecha de registración",
-      "option": "Opción",
-      "part_status": "Estado de participación",
-      "registered": "Registrado",
-      "notRegistered": "No registrado",
-      "no_registered_events": "No registered events",
-      "no_upcoming_events": "No upcoming events",
-      "no_past_events": "No past events",
-      "pending": "Pending"
-    },
-    "may2022": "Only the friends - Kabbalah Convention"
-  }
+        "may2022": "Only the friends - Kabbalah Convention"
+    }
 }
