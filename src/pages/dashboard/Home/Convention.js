@@ -74,20 +74,17 @@ const RedCircle = styled(CancelOutlinedIcon)`
 const Convention = () => {
   const { t, i18n } = useTranslation();
   const [events, setEvents] = useState(undefined);
-  const [registered, setRegistered] = useState(false);
   const profileData = useSelector(profileInfo);
   useEffect(() => {
-    if (profileData && profileData.status) {
-      const { ticket, membership, convention } = profileData.status;
-      if ((ticket || membership) && convention) {
-        setRegistered(true);
-      }
-    }
     if (profileData && profileData.primary_email) {
       getEventsListWithParticipationDetail(profileData.primary_email).then(
         (res) => {
           if (res && res.length > 0) {
-            setEvents(res[0]);
+            const events = res.filter(
+              (event) =>
+                !event.deleted && moment(event.starts_on).isAfter(moment())
+            );
+            setEvents(events[0]);
           }
         }
       );
