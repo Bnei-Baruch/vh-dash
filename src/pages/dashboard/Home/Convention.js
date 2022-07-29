@@ -12,6 +12,7 @@ import { spacing } from "@material-ui/system";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import ConventionImage from "../../../asset/icons/convention_icon.svg";
+import InfoIcon from "@material-ui/icons/Info";
 import CheckCircleOutlineOutlinedIcon from "@material-ui/icons/CheckCircleOutlineOutlined";
 import CancelOutlinedIcon from "@material-ui/icons/CancelOutlined";
 import { BB_CONVENTION_REGISTER_SITE } from "../../../constants/common";
@@ -48,6 +49,8 @@ const RegisterButton = styled(Button)`
 const RegistrationText = styled.div`
   margin: auto 0px !important;
   font-weight: 600 !important;
+  display: flex !important;
+  align-items: center !important;
 `;
 
 const RegistrationContainer = styled(Box)`
@@ -135,14 +138,21 @@ const Convention = () => {
           <RegistrationText>
             {events.is_user_registered && (
               <>
-                {" "}
-                <GreenTick /> {t("Home.registered")}
+                {events.user_participation_details.confirmed ? (
+                  <>
+                    <InfoIcon style={{ color: "#1976d2" }} /> &nbsp;{" "}
+                    {t("Home.pending")}
+                  </>
+                ) : (
+                  <>
+                    <GreenTick /> &nbsp; {t("Home.registered")}
+                  </>
+                )}
               </>
             )}
             {!events.is_user_registered && (
               <>
-                {" "}
-                <RedCircle /> {t("Home.notRegistered")}
+                <RedCircle /> &nbsp; {t("Home.notRegistered")}
               </>
             )}
           </RegistrationText>
