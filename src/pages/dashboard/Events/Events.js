@@ -178,6 +178,7 @@ export default function Events() {
   if (loading) {
     return <Loader />;
   }
+  console.log(i18n.language)
   return (
     <Grid container spacing={2}>
       <Grid item xs={12} md={12}>
@@ -309,8 +310,8 @@ export default function Events() {
                           navigate(
                             true,
                             event.url
-                              ? i18n.langauge !== "en" ? event.url + i18n.langauge : event.url
-                              : i18n.langauge !== "en" ? "https://convention.kli.one/" + i18n.langauge : "https://convention.kli.one",
+                              ? i18n.language !== "en" ? event.url + i18n.language : event.url
+                              : i18n.language !== "en" ? "https://convention.kli.one/" + i18n.language : "https://convention.kli.one",
                             true
                           )
                         }
@@ -480,8 +481,8 @@ export default function Events() {
                           navigate(
                             true,
                             event.url
-                              ? i18n.langauge !== "en" ? `${event.url}${i18n.langauge}` : event.url
-                              : i18n.langauge !== "en" ? "https://convention.kli.one/" + i18n.langauge : "https://convention.kli.one",
+                              ? i18n.language !== "en" ? `${event.url}${i18n.language}` : event.url
+                              : i18n.language !== "en" ? "https://convention.kli.one/" + i18n.language : "https://convention.kli.one",
                             true
                           )
                         }
