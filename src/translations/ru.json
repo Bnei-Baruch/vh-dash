@@ -70,7 +70,7 @@
             "convention": "Международный конгресс",
             "registered": "Вы уже зарегистрированы",
             "notRegistered": "Вы еще не зарегистрированы",
-            "pending": "Your registration is pending",
+            "pending": "ваша регистрация находится на рассмотрении",
             "register": "Регистрация",
             "conventionSite": "Сайт конгрессов",
             "conventiontitle": "раскрываем новый мир",
@@ -333,13 +333,14 @@
             "no_registered_events": "No registered events",
             "no_upcoming_events": "No upcoming events",
             "no_past_events": "No past events",
-            "pending": "Pending"
+            "pending": "В ожидании",
         },
         "may2022": "Только с товарищами - Конгресс",
-        "hh-request": "Help Haver",
-        "sp-russia": "Special Russia",
-        "sp-ukraine": "Special Ukraine",
-        "membership": "Membership Ticket",
-        "regular": "Regular Ticket"
+        "aug2022": "Праздник объединения - Конгресс",
+        "hh-request": "Хелп Хавер",
+        "sp-russia": "Россия",
+        "sp-ukraine": "Украина",
+        "membership": "Билет для подписчиков ",
+        "regular":  "Обычный билет"
     }
 }
