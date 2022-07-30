@@ -71,7 +71,7 @@
             "convention": "Convención",
             "registered": "Estas registrado",
             "notRegistered": "No estas registrado",
-            "pending": "Your registration is pending",
+            "pending": "El registro está en espera de aprobación.",
             "register": "Registrarse",
             "conventionSite": "Sitio de la convención",
             "conventionsubtitle": "Descubriendo un nuevo mondo",
@@ -624,10 +624,11 @@
             "pending": "Pending"
         },
         "may2022": "Only the friends - Kabbalah Convention",
+        "aug2022": "Celebrando la alegría en la conexión",
         "hh-request": "Help Haver",
-        "sp-russia": "Special Russia",
-        "sp-ukraine": "Special Ukraine",
-        "membership": "Membership Ticket",
-        "regular": "Regular Ticket"
+        "sp-russia": "Rusia",
+        "sp-ukraine": "Ucraina",
+        "membership": "Boleto de membresía",
+        "regular": "Boleto común"
     }
 }

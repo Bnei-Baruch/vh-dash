@@ -70,7 +70,7 @@
             "convention": "כנס",
             "registered": "נרשמת בהצלחה",
             "notRegistered": "לא נרשמת",
-            "pending": "Your registration is pending",
+            "pending": "סטטוס הרישום בהמתנה",
             "register": "להרשם",
             "conventionSite": "אתר הכנס",
             "conventiontitle": "Rising above ourselves",
@@ -336,10 +336,11 @@
             "pending": "Pending"
         },
         "may2022": "רק החברים - כנס הקבלה",
-        "hh-request": "Help Haver",
-        "sp-russia": "Special Russia",
-        "sp-ukraine": "Special Ukraine",
-        "membership": "Membership Ticket",
-        "regular": "Regular Ticket"
+        "aug2022": "חוגגים את השמחה שבחיבור",
+        "hh-request": "הלפ חבר",
+        "sp-russia": "רוסיה",
+        "sp-ukraine": "אוקראינה",
+        "membership": "כרטיס למנוי",
+        "regular": "כרטיס רגיל"
     }
 }
