@@ -333,14 +333,14 @@
             "no_registered_events": "No registered events",
             "no_upcoming_events": "No upcoming events",
             "no_past_events": "No past events",
-            "pending": "В ожидании",
+            "pending": "В ожидании"
         },
         "may2022": "Только с товарищами - Конгресс",
         "aug2022": "Праздник объединения - Конгресс",
         "hh-request": "Хелп Хавер",
         "sp-russia": "Россия",
         "sp-ukraine": "Украина",
-        "membership": "Билет для подписчиков ",
+        "membership": "Билет для подписчиков",
         "regular":  "Обычный билет"
     }
 }
