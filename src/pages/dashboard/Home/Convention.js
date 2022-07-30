@@ -138,7 +138,7 @@ const Convention = () => {
           <RegistrationText>
             {events.is_user_registered && (
               <>
-                {events.user_participation_details.confirmed ? (
+                {!events.user_participation_details.confirmed ? (
                   <>
                     <InfoIcon style={{ color: "#1976d2" }} /> &nbsp;{" "}
                     {t("Home.pending")}
