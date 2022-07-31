@@ -480,9 +480,7 @@ export default function Events() {
                         onClick={() =>
                           navigate(
                             true,
-                            event.url
-                              ? i18n.language !== "en" ? `${event.url}${i18n.language}` : event.url
-                              : i18n.language !== "en" ? "https://convention.kli.one/" + i18n.language : "https://convention.kli.one",
+                            event.archive_link,
                             true
                           )
                         }
