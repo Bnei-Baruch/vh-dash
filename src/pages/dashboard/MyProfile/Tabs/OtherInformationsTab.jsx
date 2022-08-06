@@ -26,6 +26,7 @@ const useStyles = makeStyles({
 const OtherInformationsTab = ({
   inputFields,
   setInputFields,
+  resetEdit,
   onSubmit,
   handleChange,
 }) => {
@@ -59,7 +60,7 @@ const OtherInformationsTab = ({
 
   const onCancel = () => {
     setIsModified(false);
-    setInputFields(copiedFields);
+    resetEdit();
     dispatch(updateModifyEnabled(false));
   };
 

@@ -29,6 +29,7 @@ const LanguagesTab = ({
   setInputFields,
   handleChange,
   onSubmit,
+  resetEdit
 }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -61,7 +62,7 @@ const LanguagesTab = ({
   const onCancel = () => {
     setIsModified(false);
     dispatch(updateModifyEnabled(false));
-    setInputFields(copiedFields);
+    resetEdit();
   };
 
   const buttonText = isModified ? t("Global.saveBtn") : t("Global.modify");

@@ -80,14 +80,28 @@ const MyProfile = () => {
     ...initialFields,
     primaryLanguage: "en",
   });
+  const [originalResponse, setOriginalResponse] = useState(undefined);
 
   useEffect(() => {
     setInputFields({
       ...inputFields,
       ...profileData,
     });
+    if (originalResponse === undefined) {
+      setOriginalResponse({
+        ...inputFields,
+        ...profileData,
+      });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [profileData]);
+
+  const resetEdit = () => {
+    setInputFields({
+      ...initialFields,
+      ...profileData,
+    });
+  }
 
   const onErrorClear = () => setErrorFields(initialErrorFields);
 
@@ -121,6 +135,7 @@ const MyProfile = () => {
           setErrorFields={setErrorFields}
           onErrorClear={onErrorClear}
           onSubmit={onSubmit}
+          resetEdit={resetEdit}
           setInputFields={setInputFields}
           handleChange={handleChange}
         />
@@ -134,6 +149,7 @@ const MyProfile = () => {
           inputFields={inputFields}
           setInputFields={setInputFields}
           handleChange={handleChange}
+          resetEdit={resetEdit}
           onSubmit={onSubmit}
         />
       ),
@@ -145,6 +161,7 @@ const MyProfile = () => {
         <OtherInformationsTab
           inputFields={inputFields}
           setInputFields={setInputFields}
+          resetEdit={resetEdit}
           handleChange={handleChange}
           onSubmit={onSubmit}
         />
