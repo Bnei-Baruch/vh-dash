@@ -33,6 +33,7 @@ const MyProfileTab = ({
   onSubmit,
   setInputFields,
   handleChange,
+  resetEdit
 }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -85,7 +86,7 @@ const MyProfileTab = ({
     onErrorClear();
     setIsModified(false);
     dispatch(updateModifyEnabled(false));
-    setInputFields(copiedFields);
+    resetEdit();
   };
 
   const buttonText = isModified ? t("Global.saveBtn") : t("Global.modify");
