@@ -8,10 +8,7 @@ import EventIcon from "@material-ui/icons/Event";
 // import HelpIcon from "@material-ui/icons/Help";
 import async from "../components/Async";
 import { DASHBOARD_ROUTES } from "./dashboardRoutes";
-import {
-  ARCHIVE_LINK,
-  ARVUT_SYSTEM_URL
-} from "../constants/common";
+import { ARCHIVE_LINK, ARVUT_SYSTEM_URL } from "../constants/common";
 
 // Home
 const Home = async(() => import("../pages/dashboard/Home"));

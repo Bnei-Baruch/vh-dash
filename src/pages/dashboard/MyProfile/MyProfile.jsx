@@ -15,6 +15,8 @@ import {
 } from "../../../redux/selectors/profile";
 import { updateProfile } from "../../../redux/actions/profileActions";
 import { TOGGLE_PROFILE_WINDOW } from "../../../redux/constants";
+import moment from "moment";
+import swal from "sweetalert";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -101,7 +103,7 @@ const MyProfile = () => {
       ...initialFields,
       ...profileData,
     });
-  }
+  };
 
   const onErrorClear = () => setErrorFields(initialErrorFields);
 
@@ -116,7 +118,18 @@ const MyProfile = () => {
   const onSubmit = () => {
     let data = { ...updatedFields };
     if (updateProfile && updatedFields.date_of_birth) {
-      data.date_of_birth = new Date(updatedFields.date_of_birth);
+      if (moment(updatedFields.date_of_birth, "DD-MM-YYYY").isValid()) {
+        data.date_of_birth = moment
+          .utc(updatedFields.date_of_birth, "DD-MM-YYYY")
+          .toISOString();
+      } else {
+        setInputFields((prevState) => ({
+          ...prevState,
+          date_of_birth: profileData.date_of_birth,
+        }));
+        swal("Error", t("Dashboard.Profile.name"), "error");
+        return;
+      }
     }
     dispatch(updateProfile(data));
   };

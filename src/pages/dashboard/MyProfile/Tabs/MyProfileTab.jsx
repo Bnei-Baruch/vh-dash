@@ -33,7 +33,7 @@ const MyProfileTab = ({
   onSubmit,
   setInputFields,
   handleChange,
-  resetEdit
+  resetEdit,
 }) => {
   const classes = useStyles();
   const dispatch = useDispatch();

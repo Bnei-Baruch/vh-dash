@@ -178,7 +178,7 @@ export default function Events() {
   if (loading) {
     return <Loader />;
   }
-  console.log(i18n.language)
+  console.log(i18n.language);
   return (
     <Grid container spacing={2}>
       <Grid item xs={12} md={12}>
@@ -310,8 +310,12 @@ export default function Events() {
                           navigate(
                             true,
                             event.url
-                              ? i18n.language !== "en" ? event.url + i18n.language : event.url
-                              : i18n.language !== "en" ? "https://convention.kli.one/" + i18n.language : "https://convention.kli.one",
+                              ? i18n.language !== "en"
+                                ? event.url + i18n.language
+                                : event.url
+                              : i18n.language !== "en"
+                              ? "https://convention.kli.one/" + i18n.language
+                              : "https://convention.kli.one",
                             true
                           )
                         }
@@ -477,13 +481,7 @@ export default function Events() {
                         fullWidth
                         variant="outlined"
                         color="primary"
-                        onClick={() =>
-                          navigate(
-                            true,
-                            event.archive_link,
-                            true
-                          )
-                        }
+                        onClick={() => navigate(true, event.archive_link, true)}
                       >
                         {t("Dashboard.Events.watch_in_archive")}
                       </Button>
