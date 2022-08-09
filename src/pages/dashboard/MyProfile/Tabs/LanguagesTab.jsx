@@ -29,7 +29,7 @@ const LanguagesTab = ({
   setInputFields,
   handleChange,
   onSubmit,
-  resetEdit
+  resetEdit,
 }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
