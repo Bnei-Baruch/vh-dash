@@ -127,7 +127,7 @@ const MyProfile = () => {
           ...prevState,
           date_of_birth: profileData.date_of_birth,
         }));
-        swal("Error", t("Dashboard.Profile.name"), "error");
+        swal("Error", t("Dashboard.Profile.invalid_date"), "error");
         return;
       }
     }

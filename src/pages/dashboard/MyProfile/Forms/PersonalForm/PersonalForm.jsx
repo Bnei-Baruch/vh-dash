@@ -20,16 +20,16 @@ function TextMaskCustom(props) {
         inputRef(ref ? ref.inputElement : null);
       }}
       mask={[
-        /[1-9]/,
-        /[1-9]/,
+        /[0-3]/,
+        /[0-9]/,
         "-",
         /[0-1]/,
         /[1-9]/,
         "-",
         /[1-9]/,
-        /[1-9]/,
-        /[1-9]/,
-        /[1-9]/,
+        /[0-9]/,
+        /[0-9]/,
+        /[0-9]/,
       ]}
       showMask
       placeholder="DD-MM-YYYY"
@@ -49,6 +49,9 @@ const PersonalForm = ({ inputFields, handleChange, isModified }) => {
   } = inputFields;
 
   const getDate = (date) => {
+    if (date === undefined || date === null) {
+      return null
+    }
     return moment(date).isValid() ? moment(date).format("DD-MM-YYYY") : date;
   };
 
