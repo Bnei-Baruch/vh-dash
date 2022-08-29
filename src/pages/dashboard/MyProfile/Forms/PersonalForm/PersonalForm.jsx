@@ -7,35 +7,6 @@ import {
   genderData,
   maritalStatuses,
 } from "../../../../../constants/formData";
-import moment from "moment";
-import MaskedInput from "react-text-mask";
-import Input from "@material-ui/core/Input";
-function TextMaskCustom(props) {
-  const { inputRef, ...other } = props;
-
-  return (
-    <MaskedInput
-      {...other}
-      ref={(ref) => {
-        inputRef(ref ? ref.inputElement : null);
-      }}
-      mask={[
-        /[0-3]/,
-        /[0-9]/,
-        "-",
-        /[0-1]/,
-        /[1-9]/,
-        "-",
-        /[1-9]/,
-        /[0-9]/,
-        /[0-9]/,
-        /[0-9]/,
-      ]}
-      showMask
-      placeholder="DD-MM-YYYY"
-    />
-  );
-}
 const PersonalForm = ({ inputFields, handleChange, isModified }) => {
   const classes = commonFormStyles();
   const { t } = useTranslation();
@@ -47,15 +18,6 @@ const PersonalForm = ({ inputFields, handleChange, isModified }) => {
     gender,
     marital_status,
   } = inputFields;
-
-  const getDate = (date) => {
-    if (date === undefined || date === null) {
-      return null
-    }
-    return moment(date).isValid() ? moment(date).format("DD-MM-YYYY") : date;
-  };
-
-  console.log(date_of_birth);
 
   return (
     <div className={classes.root}>
@@ -105,16 +67,19 @@ const PersonalForm = ({ inputFields, handleChange, isModified }) => {
           <InputLabel shrink>
             {t("Dashboard.Profile.PersonalForm.dateOfBirth") + ` (DD-MM-YYYY)`}
           </InputLabel>
-          <Input
-            fullWidth
-            disabled={!isModified}
+          <TextField
+            id="date"
+            type="date"
+            value={date_of_birth}
             onChange={(event) => {
               handleChange("date_of_birth", event.target.value);
             }}
-            value={getDate(date_of_birth)}
-            name="textmask"
-            id="formatted-text-mask-input"
-            inputComponent={TextMaskCustom}
+            className={classes.textField}
+            fullWidth
+            InputLabelProps={{
+              shrink: true,
+            }}
+            InputProps={{ disableUnderline: !isModified ? true : false }}
           />
         </Grid>
         <Grid item xs={12} sm={6}>

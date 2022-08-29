@@ -138,15 +138,15 @@ export default function Events() {
             const registeredEvents = res.filter(
               (event) =>
                 event.is_user_registered &&
-                moment(event.starts_on).isAfter(moment())
+                moment(event.ends_on).isAfter(moment())
             );
             const upcomingEvents = res.filter(
               (event) =>
                 !event.is_user_registered &&
-                moment(event.starts_on).isAfter(moment())
+                moment(event.ends_on).isAfter(moment())
             );
             const pastEvents = res.filter((event) =>
-              moment(event.starts_on).isBefore(moment())
+              moment(event.ends_on).isBefore(moment())
             );
             setRegisteredEvents(registeredEvents);
             seUpcomingEvents([...upcomingEvents, ...registeredEvents]);
