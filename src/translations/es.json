@@ -573,6 +573,7 @@
     },
     "Membership": {
       "name": "Membresía",
+      "information": "Información de la membresía",
       "myMembership": "Estado de la membresía",
       "active": "Activo",
       "inactive": "Inactivo",

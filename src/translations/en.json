@@ -285,6 +285,7 @@
     },
     "Membership": {
       "name": "Membership",
+      "information": "Information",
       "myMembership": "My Membership status",
       "active": "Active",
       "inactive": "Inactive",
@@ -309,7 +310,8 @@
       "failed": "Failed",
       "pending": "Pending",
       "currency": "Currency",
-      "ticket": "Ticket"
+      "ticket": "Ticket",
+      "details": "Details"
     },
     "ticket": {
       "title": "Ticket",
