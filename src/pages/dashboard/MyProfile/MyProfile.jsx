@@ -118,9 +118,9 @@ const MyProfile = () => {
   const onSubmit = () => {
     let data = { ...updatedFields };
     if (updateProfile && updatedFields.date_of_birth) {
-      if (moment(updatedFields.date_of_birth, "DD-MM-YYYY").isValid()) {
+      if (moment(updatedFields.date_of_birth, "YYYY-MM-DD").isValid()) {
         data.date_of_birth = moment
-          .utc(updatedFields.date_of_birth, "DD-MM-YYYY")
+          .utc(updatedFields.date_of_birth, "YYYY-MM-DD")
           .toISOString();
       } else {
         setInputFields((prevState) => ({
