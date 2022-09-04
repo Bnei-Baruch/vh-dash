@@ -71,6 +71,7 @@ const PersonalForm = ({ inputFields, handleChange, isModified }) => {
             id="date"
             type="date"
             value={date_of_birth}
+            disabled={!isModified}
             onChange={(event) => {
               handleChange("date_of_birth", event.target.value);
             }}
