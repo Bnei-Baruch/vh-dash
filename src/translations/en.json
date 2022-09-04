@@ -311,7 +311,8 @@
       "pending": "Pending",
       "currency": "Currency",
       "ticket": "Ticket",
-      "details": "Details"
+      "details": "Details",
+      "lastPayment": "Last Payment"
     },
     "ticket": {
       "title": "Ticket",

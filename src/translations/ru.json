@@ -310,7 +310,8 @@
       "failed": "Неуспешный",
       "pending": "В ожидании",
       "currency": "Валюта",
-      "ticket": "Билет"
+      "ticket": "Билет",
+      "lastPayment": "Последний платеж"
     },
     "ticket": {
       "title": "Билет",

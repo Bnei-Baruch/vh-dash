@@ -310,7 +310,8 @@
       "failed": "נכשל",
       "pending": "ממתין",
       "currency": "מטבע",
-      "ticket": "כרטיס"
+      "ticket": "כרטיס",
+      "lastPayment": "תשלום אחרון"
     },
     "ticket": {
       "title": "כרטיס",

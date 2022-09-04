@@ -35,11 +35,7 @@ export const FailedPayment = styled.div`
   color: #fff;
   padding: 2px;
 `;
-const NotificationGrid = styled(Grid)`
-  margin: 20px 40px !important;
-  padding: 20px !important;
-  box-shadow: 0 0 14px 0 rgb(53 64 82 / 15%);
-`;
+const NotificationGrid = styled(Grid)``;
 const ActionContainer = styled(Grid)`
   margin: 0px 30px !important;
 `;
@@ -147,7 +143,7 @@ function PreviousPayments() {
                 <Status />
               </Grid>
               <NotificationGrid item xs={12}>
-                <Notification />
+                <Notification status={"pending"} />
               </NotificationGrid>
               <ActionContainer item xs={12}>
                 <PaymentAction />

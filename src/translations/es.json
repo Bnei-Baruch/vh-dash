@@ -598,7 +598,8 @@
       "failed": "Fallado",
       "pending": "Pendiente",
       "currency": "Divisa",
-      "ticket": "Billete"
+      "ticket": "Billete",
+      "lastPayment": "Ultimo Pago"
     },
     "ticket": {
       "title": "Billete",
