@@ -295,7 +295,12 @@
       "paymentHistory": "История платежей",
       "descriptionInActiveMembership": "Aбонемент не найдена. Пожалуйста, нажмите кнопку ниже, чтобы купить один или обратиться за помощью",
       "descriptionActiveMembership": "Ваш абонемент активен.",
-      "membershipDescription": "Абонемент — это ваша поддержка Бней Барух и доступ к мероприятиям и семинарам в системе Арвут."
+      "membershipDescription": "Абонемент — это ваша поддержка Бней Барух и доступ к мероприятиям и семинарам в системе Арвут.",
+      "update_payment_details": "Update Payment Details",
+      "switch_membership_type": "Switch Membership Type",
+      "cancel_membership": "Cancel Membership",
+      "activate_membership": "Activate Membership",
+      "make_new_payment": "Make New Payment"
     },
     "common": {
       "date": "Дата",

@@ -583,7 +583,12 @@
       "paymentHistory": "Historial de pagos",
       "descriptionInActiveMembership": "No se ha encontrado ninguna membresía, haga clic a continuación para comprar una membresía o solicitar apoyo financiero",
       "descriptionActiveMembership": "Su membresía está activa",
-      "membershipDescription": "La membresía es su apoyo a Bnei Baruch y le brinde acceso a eventos y talleres en el sistema ARVUT"
+      "membershipDescription": "La membresía es su apoyo a Bnei Baruch y le brinde acceso a eventos y talleres en el sistema ARVUT",
+      "update_payment_details": "Update Payment Details",
+      "switch_membership_type": "Switch Membership Type",
+      "cancel_membership": "Cancel Membership",
+      "activate_membership": "Activate Membership",
+      "make_new_payment": "Make New Payment"
     },
     "common": {
       "date": "Fecha",

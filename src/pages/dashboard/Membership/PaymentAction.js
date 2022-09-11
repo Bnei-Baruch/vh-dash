@@ -3,7 +3,8 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 
 export default function PaymentAction() {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
+
   const redirectToPayment = () => {
     window
       .open(
@@ -15,11 +16,23 @@ export default function PaymentAction() {
   return (
     <div>
       <Button variant="contained" color="primary" onClick={redirectToPayment}>
-        Primary Button
-      </Button>{" "}
+        {t('Membership.activate_membership')}
+      </Button>
       &nbsp;
+      <Button variant="contained" color="primary" onClick={redirectToPayment}>
+        {t('Membership.update_payment_details')}
+      </Button>
+      &nbsp;
+      <Button variant="contained" color="primary">
+        {t('Membership.make_new_payment')}
+        </Button>
+        &nbsp;
       <Button variant="outlined" color="primary">
-        Secondary Button
+      {t('Membership.switch_membership_type')}
+      </Button>
+      &nbsp;
+      <Button> 
+      {t('Membership.cancel_membership')}
       </Button>
     </div>
   );

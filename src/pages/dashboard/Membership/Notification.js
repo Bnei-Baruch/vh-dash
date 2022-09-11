@@ -1,5 +1,4 @@
 import { makeStyles, Paper, Typography } from "@material-ui/core";
-import InfoIcon from "@material-ui/icons/Info";
 import React from "react";
 const useStyles = makeStyles({
   default: {
@@ -47,6 +46,7 @@ export default function Notification({ status }) {
 
   React.useEffect(() => {
     getClass();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [status]);
   return (
     <Paper elevation={3} className={defaultClass}>

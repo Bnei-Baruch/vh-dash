@@ -295,7 +295,12 @@
       "paymentHistory": "היסטוריית תשלומים",
       "descriptionInActiveMembership": "לא נמצא מנוי. אנא לחץ על הכפתור למטה כדי לרכוש מנוי או להגיש בקשה לעזרה",
       "descriptionActiveMembership": "המני שלך פנוי",
-      "membershipDescription": "מנוי זה מספק לך גישה לאירועים ולסדנאות במערכת"
+      "membershipDescription": "מנוי זה מספק לך גישה לאירועים ולסדנאות במערכת",
+      "update_payment_details": "Update Payment Details",
+      "switch_membership_type": "Switch Membership Type",
+      "cancel_membership": "Cancel Membership",
+      "activate_membership": "Activate Membership",
+      "make_new_payment": "Make New Payment"
     },
     "common": {
       "date": "תאריך",
