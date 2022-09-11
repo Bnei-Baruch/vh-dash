@@ -156,31 +156,60 @@ export default function Status({ membershipDetails }) {
                     </Typography>
                     {membershipDetails && membershipDetails.lastPayment && (
                       <Typography variant="h6" className={classes.iconActive}>
-                        <CheckCircleOutlinedIcon />{" "}
                         {t("common.success", "Success")}
                       </Typography>
-                    )}
-                    {!membershipDetails && (
-                      <Typography
-                        variant="h6"
-                        className={[classes.iconInActive, classes.flexCentered]}
-                      >
-                        <CancelOutlinedIcon /> {t("common.success", "Success")}
+                    </div>
+                  </Grid>
+                </Box>
+              </CardContent>
+            </Card>
+          </Grid>
+        )}
+        {status !== "inactive" && (
+          <Grid item xs={12} lg={2}>
+            <Card mb={6}>
+              <CardContent>
+                <Box>
+                  <Grid className={classes.statusContainer}>
+                    <div>
+                      <Typography variant="h6" className={classes.greyText}>
+                        {t("common.lastPayment")}
                       </Typography>
-                    )}
-                    {membershipDetails &&
-                      membershipDetails.lastPayment === "cancelled" && (
+                      {membershipDetails && membershipDetails.lastPayment && (
                         <Typography variant="h6" className={classes.iconActive}>
+                          <CheckCircleOutlinedIcon />{" "}
+                          {t("common.success", "Success")}
+                        </Typography>
+                      )}
+                      {!membershipDetails && (
+                        <Typography
+                          variant="h6"
+                          className={[
+                            classes.iconInActive,
+                            classes.flexCentered,
+                          ]}
+                        >
                           <CancelOutlinedIcon />{" "}
                           {t("common.success", "Success")}
                         </Typography>
                       )}
-                  </div>
-                </Grid>
-              </Box>
-            </CardContent>
-          </Card>
-        </Grid>
+                      {membershipDetails &&
+                        membershipDetails.lastPayment === "cancelled" && (
+                          <Typography
+                            variant="h6"
+                            className={classes.iconActive}
+                          >
+                            <CancelOutlinedIcon />{" "}
+                            {t("common.success", "Success")}
+                          </Typography>
+                        )}
+                    </div>
+                  </Grid>
+                </Box>
+              </CardContent>
+            </Card>
+          </Grid>
+        )}
         <Grid item xs={12} lg={3}>
           <Card mb={6}>
             <CardContent>
