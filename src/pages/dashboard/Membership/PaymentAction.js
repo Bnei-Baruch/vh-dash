@@ -2,7 +2,7 @@ import { Button } from "@material-ui/core";
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-export default function PaymentAction() {
+export default function PaymentAction({ membershipData }) {
   const { t, i18n } = useTranslation();
 
   const redirectToPayment = () => {
@@ -13,27 +13,45 @@ export default function PaymentAction() {
       )
       .focus();
   };
+
   return (
     <div>
-      <Button variant="contained" color="primary" onClick={redirectToPayment}>
-        {t('Membership.activate_membership')}
-      </Button>
-      &nbsp;
-      <Button variant="contained" color="primary" onClick={redirectToPayment}>
-        {t('Membership.update_payment_details')}
-      </Button>
-      &nbsp;
-      <Button variant="contained" color="primary">
-        {t('Membership.make_new_payment')}
+      {!membershipData?.active && !membershipData?.details?.payment && (
+        <Button variant="contained" color="primary" onClick={redirectToPayment}>
+          {t("Membership.activate_membership")}
         </Button>
-        &nbsp;
-      <Button variant="outlined" color="primary">
-      {t('Membership.switch_membership_type')}
-      </Button>
+      )}
       &nbsp;
-      <Button> 
-      {t('Membership.cancel_membership')}
-      </Button>
+      {(membershipData?.active ||
+        (!membershipData?.active &&
+          membershipData?.details?.payment &&
+          membershipData?.details?.payment?.status === "failed")) && (
+        <Button variant="contained" color="primary" onClick={redirectToPayment}>
+          {t("Membership.update_payment_details")}
+        </Button>
+      )}
+      &nbsp;
+      {membershipData?.active && membershipData.type === "manual" && (
+        <Button variant="contained" color="primary">
+          {t("Membership.make_new_payment")}
+        </Button>
+      )}
+      &nbsp;
+      {(membershipData?.active ||
+        (!membershipData?.active &&
+          membershipData?.details?.payment &&
+          membershipData?.details?.payment?.status === "failed")) && (
+        <Button variant="outlined" color="primary">
+          {t("Membership.switch_membership_type")}
+        </Button>
+      )}
+      &nbsp;
+      {(membershipData?.active ||
+        (!membershipData?.active &&
+          membershipData?.details?.payment &&
+          membershipData?.details?.payment?.status === "failed")) && (
+        <Button>{t("Membership.cancel_membership")}</Button>
+      )}
     </div>
   );
 }

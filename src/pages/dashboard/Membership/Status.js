@@ -9,16 +9,14 @@ import {
 } from "@material-ui/core";
 import React from "react";
 import { useTranslation } from "react-i18next";
-import CancelOutlinedIcon from "@material-ui/icons/CancelOutlined";
-import CheckCircleOutlinedIcon from "@material-ui/icons/CheckCircleOutlined";
 import PersonOutlinedIcon from "@material-ui/icons/PersonOutlined";
 import EmailOutlinedIcon from "@material-ui/icons/EmailOutlined";
 import LocationOnOutlinedIcon from "@material-ui/icons/LocationOnOutlined";
 import SmartphoneOutlinedIcon from "@material-ui/icons/SmartphoneOutlined";
 import { useSelector } from "react-redux";
-import { membershipData } from "../../../redux/selectors/user";
 import { profileInfo } from "../../../redux/selectors/profile";
 import countries from "../../../constants/countries";
+import { firstUpperCase } from "../../../utils";
 const useStyles = makeStyles({
   statusContainer: {
     display: "flex",
@@ -44,7 +42,7 @@ const useStyles = makeStyles({
   },
   greyText: {
     color: "#747474",
-    marginBottom: "5px",
+    marginBottom: "10px",
   },
   ctaContainer: {
     textAlign: "right",
@@ -54,7 +52,6 @@ export default function Status({ membershipDetails }) {
   const [status, setStatus] = React.useState("inactive");
   const classes = useStyles();
   const { t } = useTranslation();
-  const membership = useSelector(membershipData);
   const profileData = useSelector(profileInfo);
 
   const getCountry = (code) => {
@@ -62,10 +59,10 @@ export default function Status({ membershipDetails }) {
     return country.label;
   };
   React.useEffect(() => {
-    if (membership && membership.membership) {
+    if (membershipDetails && membershipDetails.active) {
       setStatus("active");
     }
-  }, [membership]);
+  }, [membershipDetails]);
   return (
     <Grid container spacing={6}>
       <Grid item xs={12}>
@@ -74,21 +71,11 @@ export default function Status({ membershipDetails }) {
         />
       </Grid>
       <Grid container item xs={12} lg={12}>
-        <Grid item xs={12} lg={2}>
+        <Grid item xs={12} lg={status !== "inactive" ? 2 : 4}>
           <Card mb={6}>
             <CardContent>
               <Box>
                 <Grid className={classes.statusContainer}>
-                  {status === "new" && (
-                    <div>
-                      <Typography variant="h6" className={classes.greyText}>
-                        {t("common.status")}
-                      </Typography>
-                      <Typography variant="h6">
-                        {t("Membership.new")}
-                      </Typography>
-                    </div>
-                  )}
                   {status === "active" && (
                     <div>
                       <Typography variant="h6" className={classes.greyText}>
@@ -124,54 +111,9 @@ export default function Status({ membershipDetails }) {
                       <Typography variant="h6" className={classes.greyText}>
                         {t("common.type")}
                       </Typography>
-                      <Typography variant="h6" className={classes.iconActive}>
-                        {t("common.success", "Success")}
+                      <Typography variant="h6">
+                        {firstUpperCase(membershipDetails.type)}
                       </Typography>
-                    </div>
-                  </Grid>
-                </Box>
-              </CardContent>
-            </Card>
-          </Grid>
-        )}
-        {status !== "inactive" && (
-          <Grid item xs={12} lg={2}>
-            <Card mb={6}>
-              <CardContent>
-                <Box>
-                  <Grid className={classes.statusContainer}>
-                    <div>
-                      <Typography variant="h6" className={classes.greyText}>
-                        {t("common.lastPayment")}
-                      </Typography>
-                      {membershipDetails && membershipDetails.lastPayment && (
-                        <Typography variant="h6" className={classes.iconActive}>
-                          <CheckCircleOutlinedIcon />{" "}
-                          {t("common.success", "Success")}
-                        </Typography>
-                      )}
-                      {!membershipDetails && (
-                        <Typography
-                          variant="h6"
-                          className={[
-                            classes.iconInActive,
-                            classes.flexCentered,
-                          ]}
-                        >
-                          <CancelOutlinedIcon />{" "}
-                          {t("common.success", "Success")}
-                        </Typography>
-                      )}
-                      {membershipDetails &&
-                        membershipDetails.lastPayment === "cancelled" && (
-                          <Typography
-                            variant="h6"
-                            className={classes.iconActive}
-                          >
-                            <CancelOutlinedIcon />{" "}
-                            {t("common.success", "Success")}
-                          </Typography>
-                        )}
                     </div>
                   </Grid>
                 </Box>

@@ -19,6 +19,9 @@ const Archive = async(() => import("../pages/dashboard/Archive"));
 const ArvutSystem = async(() => import("../pages/dashboard/ArvutSystem"));
 const BroadcastArea = async(() => import("../pages/dashboard/BroadcastArea"));
 const Events = async(() => import("../pages/dashboard/Events/Events"));
+const MembershipStatus = async(() =>
+  import("../pages/dashboard/Membership/MembershipStatus")
+);
 const PreviousPayments = async(() =>
   import("../pages/dashboard/Membership/PreviousPayments")
 );
@@ -47,31 +50,31 @@ const dashboardRoutes = [
     icon: <VerifiedUserIcon />,
     enableHeader: true,
     breadcrumbs: [{ name: "Membership", path: DASHBOARD_ROUTES.membership }],
-    component: PreviousPayments,
-    // children: [
-    //   {
-    //     path: DASHBOARD_ROUTES.membership,
-    //     id: "Status",
-    //     icon: <VerifiedUserIcon />,
-    //     enableHeader: true,
-    //     breadcrumbs: [
-    //       { name: "Membership", path: DASHBOARD_ROUTES.membership },
-    //       { name: "Status", path: DASHBOARD_ROUTES.Profile },
-    //     ],
-    //     component: Status,
-    //   },
-    //   {
-    //     path: DASHBOARD_ROUTES.previousPayment,
-    //     id: "PreviousPayment",
-    //     icon: <VerifiedUserIcon />,
-    //     enableHeader: true,
-    //     breadcrumbs: [
-    //       { name: "Membership", path: DASHBOARD_ROUTES.membership },
-    //       { name: "PreviousPayment", path: DASHBOARD_ROUTES.previousPayment },
-    //     ],
-    //     component: PreviousPayments,
-    //   },
-    // ],
+    component: MembershipStatus,
+    children: [
+      {
+        path: DASHBOARD_ROUTES.membership,
+        id: "Status",
+        icon: <VerifiedUserIcon />,
+        enableHeader: true,
+        breadcrumbs: [
+          { name: "Membership", path: DASHBOARD_ROUTES.membership },
+          { name: "Status", path: DASHBOARD_ROUTES.Profile },
+        ],
+        component: MembershipStatus,
+      },
+      {
+        path: DASHBOARD_ROUTES.previousPayment,
+        id: "PreviousPayment",
+        icon: <VerifiedUserIcon />,
+        enableHeader: true,
+        breadcrumbs: [
+          { name: "Membership", path: DASHBOARD_ROUTES.membership },
+          { name: "PreviousPayment", path: DASHBOARD_ROUTES.previousPayment },
+        ],
+        component: PreviousPayments,
+      },
+    ],
   },
   {
     path: DASHBOARD_ROUTES.events,
