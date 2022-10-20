@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Helmet from "react-helmet";
-import { Card, Grid } from "@material-ui/core";
+import { Card, Grid, Paper, Typography } from "@material-ui/core";
 import { useTranslation } from "react-i18next";
 import MUIDataTable from "mui-datatables";
 import moment from "moment";
@@ -43,14 +43,20 @@ const FlexContainer = styled.div`
 `;
 const NotificationGrid = styled(Grid)``;
 const ActionContainer = styled(Grid)`
-  margin: 0px 30px !important;
+  margin: 0px 20px !important;
 `;
 
 const PaymentContainer = styled(Grid)`
-  margin: 0px 30px 10px 30px !important;
+  margin: 0px 10px 10px 10px !important;
 
   @media (max-width: 767px) {
     margin: 0px !important;
+  }
+`;
+
+const DataTablesWithoutBorder = styled(MUIDataTable)`
+  * {
+    border: none !important;
   }
 `;
 
@@ -151,7 +157,7 @@ function MembershipStatus() {
   const col_sepcial = [
     {
       name: "approved_by",
-      label: "Approval By",
+      label: t("Membership.approval_by"),
       options: {
         filter: true,
         sort: false,
@@ -224,12 +230,36 @@ function MembershipStatus() {
               <Grid item xs={12}>
                 <Status membershipDetails={membershipData} />
               </Grid>
-              <NotificationGrid item xs={12}>
-                <Notification
-                  membershipData={membershipData}
-                  status={"pending"}
-                />
-              </NotificationGrid>
+              {membershipData &&
+                membershipData.active &&
+                membershipData.expiry &&
+                moment(membershipData.expiry).isValid() && (
+                  <NotificationGrid item xs={12} md={8} lg={6}>
+                    <Paper
+                      elevation={3}
+                      style={{
+                        padding: "20px",
+                        margin: "10px 20px",
+                        boxShadow: "0 0 14px 0 rgb(53 64 82 / 15%)",
+                      }}
+                    >
+                      <Typography variant="p">
+                        {t("Membership.membership_active_until")}{" "}
+                        {moment(membershipData.expiry).format("DD/MM/YYYY")}
+                      </Typography>
+                    </Paper>
+                  </NotificationGrid>
+                )}
+              {membershipData &&
+                membershipData.notifications &&
+                membershipData.notifications.length > 0 && (
+                  <NotificationGrid item xs={12} md={10}>
+                    <Notification
+                      membershipData={membershipData}
+                      status={"pending"}
+                    />
+                  </NotificationGrid>
+                )}
               <ActionContainer item xs={12}>
                 <PaymentAction membershipData={membershipData} />
               </ActionContainer>
@@ -237,7 +267,7 @@ function MembershipStatus() {
                 {membershipData &&
                   membershipData.details &&
                   membershipData.details.payment && (
-                    <MUIDataTable
+                    <DataTablesWithoutBorder
                       title={t("common.details")}
                       data={[membershipData.details.payment]}
                       columns={columns}
@@ -247,7 +277,7 @@ function MembershipStatus() {
                 {membershipData &&
                   membershipData.details &&
                   membershipData.details.special && (
-                    <MUIDataTable
+                    <DataTablesWithoutBorder
                       title={t("common.details")}
                       data={[membershipData.details.special]}
                       columns={col_sepcial}
@@ -258,7 +288,7 @@ function MembershipStatus() {
                 {membershipData &&
                   membershipData.details &&
                   membershipData.details.helphaver && (
-                    <MUIDataTable
+                    <DataTablesWithoutBorder
                       title={t("common.details")}
                       data={[membershipData.details.helphaver]}
                       columns={col_helphaver}

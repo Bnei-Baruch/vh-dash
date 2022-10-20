@@ -315,7 +315,9 @@
       "hh_request_refused_title": "Help Haver: Your request was refused",
       "hh_request_refused_desc": "You can change the membership type at any time",
       "mb_expiration_notice_title": "Your membership is about to expire",
-      "mb_expiration_notice_desc": "You need to make a new payment or switch membership type"
+      "mb_expiration_notice_desc": "You need to make a new payment or switch membership type",
+      "membership_active_until": "Your membership is active until",
+      "approval_by": "Approval by"
     },
     "common": {
       "successful": "Successful",
@@ -333,7 +335,8 @@
       "currency": "Currency",
       "ticket": "Ticket",
       "details": "Details",
-      "lastPayment": "Last Payment"
+      "lastPayment": "Last Payment",
+      "month": "Month"
     },
     "ticket": {
       "title": "Ticket",

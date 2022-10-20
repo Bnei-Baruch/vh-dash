@@ -14,6 +14,18 @@ export default function PaymentAction({ membershipData }) {
       .focus();
   };
 
+  const updatePaymentDetail = () => {
+    //TODO : Update Payment Detail
+  };
+
+  const switchMembershipType = () => {
+    //TODO : Switch Membership Type
+  };
+
+  const cancelMembership = () => {
+    window.location.href = `${window.location.origin}/pay/membership/cancellation`;
+  };
+
   return (
     <div>
       {!membershipData?.active && !membershipData?.details?.payment && (
@@ -25,14 +37,19 @@ export default function PaymentAction({ membershipData }) {
       {(membershipData?.active ||
         (!membershipData?.active &&
           membershipData?.details?.payment &&
-          membershipData?.details?.payment?.status === "failed")) && (
-        <Button variant="contained" color="primary" onClick={redirectToPayment}>
-          {t("Membership.update_payment_details")}
-        </Button>
-      )}
+          membershipData?.details?.payment?.status === "failed")) &&
+        membershipData?.type !== "helphaver" && (
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={updatePaymentDetail}
+          >
+            {t("Membership.update_payment_details")}
+          </Button>
+        )}
       &nbsp;
       {membershipData?.active && membershipData.type === "manual" && (
-        <Button variant="contained" color="primary">
+        <Button variant="contained" color="primary" onClick={redirectToPayment}>
           {t("Membership.make_new_payment")}
         </Button>
       )}
@@ -41,7 +58,11 @@ export default function PaymentAction({ membershipData }) {
         (!membershipData?.active &&
           membershipData?.details?.payment &&
           membershipData?.details?.payment?.status === "failed")) && (
-        <Button variant="outlined" color="primary">
+        <Button
+          variant="outlined"
+          color="primary"
+          onClick={switchMembershipType}
+        >
           {t("Membership.switch_membership_type")}
         </Button>
       )}
@@ -50,7 +71,9 @@ export default function PaymentAction({ membershipData }) {
         (!membershipData?.active &&
           membershipData?.details?.payment &&
           membershipData?.details?.payment?.status === "failed")) && (
-        <Button>{t("Membership.cancel_membership")}</Button>
+        <Button onClick={cancelMembership}>
+          {t("Membership.cancel_membership")}
+        </Button>
       )}
     </div>
   );
