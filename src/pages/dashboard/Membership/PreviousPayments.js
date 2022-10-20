@@ -1,16 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import Helmet from "react-helmet";
-import { Card, Grid } from "@material-ui/core";
+import { Divider as MuiDivider, Grid } from "@material-ui/core";
+import { spacing } from "@material-ui/system";
 import { useTranslation } from "react-i18next";
 import MUIDataTable from "mui-datatables";
 import moment from "moment";
 import { getUserPreviousPayments } from "../../../services/payments.service";
 import { useSelector } from "react-redux";
 import { keycloakData } from "../../../redux/selectors/user";
-import Status from "./Status";
-import Notification from "./Notification";
-import PaymentAction from "./PaymentAction";
 export const SucessfulPayment = styled.div`
   background-color: green;
   text-align: center;
@@ -35,18 +33,8 @@ export const FailedPayment = styled.div`
   color: #fff;
   padding: 2px;
 `;
-const NotificationGrid = styled(Grid)``;
-const ActionContainer = styled(Grid)`
-  margin: 0px 30px !important;
-`;
+const Divider = styled(MuiDivider)(spacing);
 
-const PaymentContainer = styled(Grid)`
-  margin: 0px 30px !important;
-
-  @media (max-width: 767px) {
-    margin: 0px !important;
-  }
-`;
 function PreviousPayments() {
   const { t } = useTranslation();
   const columns = [
@@ -62,6 +50,22 @@ function PreviousPayments() {
       },
     },
     {
+      name: "type",
+      label: t("common.type"),
+      options: {
+        filter: true,
+        sort: false,
+      },
+    },
+    {
+      name: "product_type",
+      label: t("common.product"),
+      options: {
+        filter: true,
+        sort: false,
+      },
+    },
+    {
       name: "amount",
       label: t("common.amount"),
       options: {
@@ -72,6 +76,14 @@ function PreviousPayments() {
     {
       name: "currency",
       label: t("common.currency"),
+      options: {
+        filter: true,
+        sort: false,
+      },
+    },
+    {
+      name: "payment_id",
+      label: t("common.paymentId"),
       options: {
         filter: true,
         sort: false,
@@ -115,9 +127,6 @@ function PreviousPayments() {
     print: false,
     pagination: false,
     responsive: "scroll",
-    filter: false,
-    search: false,
-    viewColumns: false,
   };
 
   const [payments, setPayments] = React.useState([]);
@@ -135,29 +144,15 @@ function PreviousPayments() {
   return (
     <React.Fragment>
       <Helmet title={t("Membership.paymentHistory")} />
+      <Divider my={6} />
       <Grid container spacing={6}>
         <Grid item xs={12}>
-          <Card>
-            <Grid container spacing={6}>
-              <Grid item xs={12}>
-                <Status />
-              </Grid>
-              <NotificationGrid item xs={12}>
-                <Notification status={"pending"} />
-              </NotificationGrid>
-              <ActionContainer item xs={12}>
-                <PaymentAction />
-              </ActionContainer>
-              <PaymentContainer item xs={12}>
-                <MUIDataTable
-                  title={t("common.details")}
-                  data={payments}
-                  columns={columns}
-                  options={options}
-                />
-              </PaymentContainer>
-            </Grid>
-          </Card>
+          <MUIDataTable
+            title={t("Dashboard.PreviousPayment.paymentHistory")}
+            data={payments}
+            columns={columns}
+            options={options}
+          />
         </Grid>
       </Grid>
     </React.Fragment>
