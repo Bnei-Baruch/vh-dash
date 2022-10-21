@@ -285,6 +285,7 @@
     },
     "Membership": {
       "name": "מנוי",
+      "information": "מידע",
       "myMembership": "סטטוס המנוי שלי",
       "active": "פעיל",
       "inactive": "לא פעיל",
@@ -294,9 +295,31 @@
       "paymentHistory": "היסטוריית תשלומים",
       "descriptionInActiveMembership": "לא נמצא מנוי. אנא לחץ על הכפתור למטה כדי לרכוש מנוי או להגיש בקשה לעזרה",
       "descriptionActiveMembership": "המני שלך פנוי",
-      "membershipDescription": "מנוי זה מספק לך גישה לאירועים ולסדנאות במערכת"
+      "membershipDescription": "מנוי זה מספק לך גישה לאירועים ולסדנאות במערכת",
+      "update_payment_details": "עדכון אופן התשלום",
+      "switch_membership_type": "החלפת סוג מנוי",
+      "cancel_membership": "ביטול מנוי",
+      "activate_membership": "הפעל מנוי",
+      "make_new_payment": "Make New Payment",
+      "mb_new_title": "האם אתה רוצה להפעיל מחדש את המנוי שלך?",
+      "mb_new_desc": "המנוי הוא התמיכה שלך בבני ברוך ונותן גישה לאירועים וסדנאות במערכת הערבות",
+      "mb_cancelled_title": "המנוי שלך בוטל",
+      "mb_cancelled_desc": "האם אתה רוצה להפעיל מחדש את המנוי שלך, שוב?",
+      "mb_problem_previous_payment_title": "היתה בעיה עם התשלום הקודם",
+      "mb_problem_previous_payment_desc": "גורם אפשרי לשגיאה: הכרטיס שלך לא פעיל, אין מספיק יתרות תשלום. אנא בדוק ועדכן את פרטי התשלום.",
+      "hh_request_received_title": "בקשתך נשלחה לצוות ״הלפ חבר״  ונמצאת בבדיקה",
+      "hh_request_received_desc": "אנחנו עושים את המיטב לטפל בבקשתך בהקדם האפשרי",
+      "hh_request_approved_title": "'הלפ חבר': בקשתך אושרה",
+      "hh_request_approved_desc": "Your status will be active with Help Haver Status",
+      "hh_request_refused_title": "Help Haver: Your request was refused",
+      "hh_request_refused_desc": "You can change the membership type at any time",
+      "mb_expiration_notice_title": "תוקף המנוי שלך עומד לפוג",
+      "mb_expiration_notice_desc": "אתה נדרש לבצע תשלום חדש או להחליף סוג מנוי",
+      "membership_active_until": "המנוי שלך פעיל עד",
+      "approval_by": "אושר על ידי"
     },
     "common": {
+      "successful": "שולם בהצלחה",
       "date": "תאריך",
       "time": "זמן",
       "product": "מוצר",
@@ -309,7 +332,9 @@
       "failed": "נכשל",
       "pending": "ממתין",
       "currency": "מטבע",
-      "ticket": "כרטיס"
+      "ticket": "כרטיס",
+      "lastPayment": "תשלום אחרון",
+      "month": "חודש"
     },
     "ticket": {
       "title": "כרטיס",
