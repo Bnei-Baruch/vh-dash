@@ -573,6 +573,7 @@
     },
     "Membership": {
       "name": "Membresía",
+      "information": "Información de la membresía",
       "myMembership": "Estado de la membresía",
       "active": "Activo",
       "inactive": "Inactivo",
@@ -582,9 +583,31 @@
       "paymentHistory": "Historial de pagos",
       "descriptionInActiveMembership": "No se ha encontrado ninguna membresía, haga clic a continuación para comprar una membresía o solicitar apoyo financiero",
       "descriptionActiveMembership": "Su membresía está activa",
-      "membershipDescription": "La membresía es su apoyo a Bnei Baruch y le brinde acceso a eventos y talleres en el sistema ARVUT"
+      "membershipDescription": "La membresía es su apoyo a Bnei Baruch y le brinde acceso a eventos y talleres en el sistema ARVUT",
+      "update_payment_details": "Actualizar detalle de pago",
+      "switch_membership_type": "Cambiar tipo de membresía",
+      "cancel_membership": "Cancelar membresía",
+      "activate_membership": "Activar la membresía",
+      "make_new_payment": "Make New Payment",
+      "mb_new_title": "¿Desea activar su membresía?",
+      "mb_new_desc": "La membresía es tu apoyo a Bnei Baruj y el acceso a los eventos y talleres del Sistema Arvut",
+      "mb_cancelled_title": "Su membresía ha sido cancelada",
+      "mb_cancelled_desc": "¿Desea volver a activar su membresía?",
+      "mb_problem_previous_payment_title": "Ha habido un problema con el pago anterior",
+      "mb_problem_previous_payment_desc": "Posibles causas del error: su tarjeta podría estar inactiva, fondos insuficientes en la tarjeta. Por favor, compruebe y actualice sus datos de pago.",
+      "hh_request_received_title": "Help Haver: Su solicitud de Help Haver está siendo revisada por nuestro equipo",
+      "hh_request_received_desc": "Estamos haciendo todo lo posible para procesarla lo antes posible",
+      "hh_request_approved_title": "Help Haver: Su solicitud ha sido aprobada",
+      "hh_request_approved_desc": "Su estatus estará activo con Ayuda desde",
+      "hh_request_refused_title": "Help Haver: Your request was refused",
+      "hh_request_refused_desc": "You can change the membership type at any time",
+      "mb_expiration_notice_title": "Su membresía está a punto de expirar",
+      "mb_expiration_notice_desc": "Necesita realizar un nuevo pago o cambiar tipo de membresía",
+      "membership_active_until": "Su afiliación está activa hasta",
+      "approval_by": "Aprobado por"
     },
     "common": {
+      "successful": "Exitoso",
       "date": "Fecha",
       "time": "Tiempo",
       "product": "Producto",
@@ -597,7 +620,9 @@
       "failed": "Fallado",
       "pending": "Pendiente",
       "currency": "Divisa",
-      "ticket": "Billete"
+      "ticket": "Billete",
+      "lastPayment": "Ultimo Pago",
+      "month": "Mes"
     },
     "ticket": {
       "title": "Billete",
