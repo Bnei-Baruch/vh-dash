@@ -8,22 +8,22 @@ export default function PaymentAction({ membershipData }) {
   const redirectToPayment = () => {
     window
       .open(
-        `${window.location.origin}/pay/order/1?lang=${i18n.language}`,
+        `${window.location.origin}/pay/membership?lang=${i18n.language}`,
         "_blank"
       )
       .focus();
   };
 
-  const updatePaymentDetail = () => {
-    //TODO : Update Payment Detail
+  const updatePaymentDetail = (orderid) => {
+    window.location.href = `${window.location.origin}/pay/membership/payment/update/${orderid}?lang=${i18n.language}`;
   };
 
   const switchMembershipType = () => {
-    //TODO : Switch Membership Type
+    window.location.href = `${window.location.origin}/pay/membership?lang=${i18n.language}`;
   };
 
   const cancelMembership = () => {
-    window.location.href = `${window.location.origin}/pay/membership/cancellation`;
+    window.location.href = `${window.location.origin}/pay/membership/cancellation?lang=${i18n.language}`;
   };
 
   return (
@@ -42,7 +42,9 @@ export default function PaymentAction({ membershipData }) {
           <Button
             variant="contained"
             color="primary"
-            onClick={updatePaymentDetail}
+            onClick={() =>
+              updatePaymentDetail(membershipData?.details?.automatic?.order_id)
+            }
           >
             {t("Membership.update_payment_details")}
           </Button>
