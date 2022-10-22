@@ -145,26 +145,6 @@ export default function Status({ membershipDetails }) {
             </CardContent>
           </Card>
         </Grid>
-        <Grid item xs={12} lg={2}>
-          <Card mb={6}>
-            <CardContent>
-              <Box>
-                <Grid className={classes.statusContainer}>
-                  <div>
-                    <Typography variant="h6" className={classes.greyText}>
-                      {t("common.lastPayment")}
-                    </Typography>
-                    {membershipDetails && membershipDetails.lastPayment && (
-                      <Typography variant="h6" className={classes.iconActive}>
-                        {t("common.success", "Success")}
-                      </Typography>
-                    </div>
-                  </Grid>
-                </Box>
-              </CardContent>
-            </Card>
-          </Grid>
-        )}
         <Grid item xs={12} lg={3}>
           <Card mb={6}>
             <CardContent>
