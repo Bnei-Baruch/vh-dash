@@ -64,7 +64,7 @@ const PersonalForm = ({ inputFields, handleChange, isModified }) => {
           />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <InputLabel shrink>
+        <InputLabel shrink>
             {t("Dashboard.Profile.PersonalForm.dateOfBirth") + ` (DD-MM-YYYY)`}
           </InputLabel>
           <TextField

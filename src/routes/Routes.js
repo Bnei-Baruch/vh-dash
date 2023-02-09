@@ -5,12 +5,13 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
-import { dashboardLayoutRoutes } from "./index";
+import { dashboardLayoutRoutes, dashboardLayoutV2Routes } from "./index";
 
 import DashboardLayout from "../layouts/Dashboard";
 import Page404 from "../pages/auth/Page404";
 import DashboardHeader from "../pages/dashboard/Home/DashboardHeader";
 import Auth from "../config/Auth";
+import { useFlag } from "@unleash/proxy-client-react";
 
 const childRoutes = (Layout, routes) =>
   routes.map(
@@ -57,10 +58,11 @@ const childRoutes = (Layout, routes) =>
         />
       )
   );
-const Routes = () => (
-  <Router>
+const Routes = () => {
+  const enabled = useFlag('membershipv2');
+  return <Router>
     <Switch>
-      {childRoutes(DashboardLayout, dashboardLayoutRoutes)}
+      {childRoutes( DashboardLayout, enabled ? dashboardLayoutRoutes : dashboardLayoutV2Routes)}
       <Redirect to="/dash" />
       <Route
         render={() => (
@@ -71,6 +73,6 @@ const Routes = () => (
       />
     </Switch>
   </Router>
-);
+};
 
 export default Routes;

@@ -3,6 +3,9 @@ window.APP_CONFIG = {
   REG_BRANCH: '{{env.Getenv "CI_COMMIT_REF_NAME" "-"}}',
   REF_VERSION: '{{env.Getenv "CI_COMMIT_SHA" "-"}}',
   VH_BASE_URL: '{{env.Getenv "VH_BASE_URL" "https://eurokab.info"}}',
+  VH_FLAG_URL: '{{env.Getenv "VH_FLAG_URL" "https://eurokab.info"}}',
+  VH_FLAG_CLIENT_KEY: '{{env.Getenv "VH_FLAG_CLIENT_KEY" "-"}}',
+  VH_FLAG_APP_NAME: '{{env.Getenv "VH_FLAG_APP_NAME" "-"}}',
   VH_API_BASE_URL:
     '{{env.Getenv "VH_API_BASE_URL" "https://api.eurokab.info"}}',
   BASE_STATIC_PATH: "/static",
