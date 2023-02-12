@@ -69,7 +69,6 @@
     "redux-act": "^1.8.0",
     "redux-thunk": "^2.3.0",
     "styled-components": "5.1.1",
-    "sweetalert": "^2.1.2",
-    "unleash-proxy-client": "^2.4.2"
+    "sweetalert": "^2.1.2"
   }
 }
