@@ -38,7 +38,7 @@
         "december": "December"
       },
       "Subscription": {
-        "active": "Active",
+        "active": "Activo",
         "pause": "Pause",
         "cancel": "Cancel"
       }
@@ -633,7 +633,7 @@
       "date": "Fecha",
       "email": "Email",
       "country": "País",
-      "gender": "Gender"
+      "gender": "Género"
     },
     "events": {
       "upcoming_event": "Próximos eventos",
