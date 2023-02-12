@@ -4,9 +4,6 @@ window.APP_CONFIG = {
     KEYCLOAK_URL: "https://api.eurokab.info/",
     VH_BASE_URL: "https://eurokab.info",
     VH_API_BASE_URL: "https://api.eurokab.info",
-    VH_FLAG_URL: "https://api.eurokab.info/feature-flags",
-    VH_FLAG_CLIENT_KEY: "eurokab",
-    VH_FLAG_APP_NAME: "eurokab",
     KEYCLOAK_CONFIG: {
         realm: 'master',
         url: 'https://auth.2serv.eu/auth/',

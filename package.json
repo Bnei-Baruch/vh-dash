@@ -32,7 +32,6 @@
     "@material-ui/pickers": "^3.2.10",
     "@material-ui/styles": "4.10.0",
     "@material-ui/system": "4.9.14",
-    "@unleash/proxy-client-react": "^3.5.1",
     "axios": "^0.21.1",
     "chart.js": "2.9.3",
     "css-vendor": "2.0.8",

@@ -5,7 +5,7 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
-import { dashboardLayoutRoutes, dashboardLayoutV2Routes } from "./index";
+import { dashboardLayoutRoutes } from "./index";
 
 import DashboardLayout from "../layouts/Dashboard";
 import Page404 from "../pages/auth/Page404";
@@ -59,10 +59,9 @@ const childRoutes = (Layout, routes) =>
       )
   );
 const Routes = () => {
-  const enabled = useFlag('membershipv2');
   return <Router>
     <Switch>
-      {childRoutes( DashboardLayout, enabled ? dashboardLayoutRoutes : dashboardLayoutV2Routes)}
+      {childRoutes( DashboardLayout, dashboardLayoutRoutes)}
       <Redirect to="/dash" />
       <Route
         render={() => (
