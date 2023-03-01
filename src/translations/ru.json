@@ -345,7 +345,7 @@
       "date": "Дата",
       "email": "Электронная почта",
       "country": "Страна",
-      "gender": "Gender"
+      "gender": "Пол"
     },
     "events": {
       "upcoming_event": "Предстоящие события",

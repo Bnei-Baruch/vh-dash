@@ -20,10 +20,17 @@ const ArvutSystem = async(() => import("../pages/dashboard/ArvutSystem"));
 const BroadcastArea = async(() => import("../pages/dashboard/BroadcastArea"));
 const Events = async(() => import("../pages/dashboard/Events/Events"));
 const MembershipStatus = async(() =>
-  import("../pages/dashboard/Membership/MembershipStatus")
+  import("../pages/dashboard/Membership/Status")
 );
 const PreviousPayments = async(() =>
   import("../pages/dashboard/Membership/PreviousPayments")
+);
+
+const MembershipV2Status = async(() =>
+  import("../pages/dashboard/MembershipV2/MembershipStatus")
+);
+const PreviousV2Payments = async(() =>
+  import("../pages/dashboard/Membership/V2/PreviousPayments")
 );
 
 const dashboardRoutes = [
