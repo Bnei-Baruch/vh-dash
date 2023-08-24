@@ -30,7 +30,7 @@ const MembershipV2Status = async(() =>
   import("../pages/dashboard/MembershipV2/MembershipStatus")
 );
 const PreviousV2Payments = async(() =>
-  import("../pages/dashboard/Membership/V2/PreviousPayments")
+  import("../pages/dashboard/MembershipV2/PreviousPayments")
 );
 
 const dashboardRoutes = [
