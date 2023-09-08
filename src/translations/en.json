@@ -322,6 +322,7 @@
     "common": {
       "successful": "Successful",
       "date": "Date",
+      "approvalStatus": "Approval Status",
       "time": "Time",
       "product": "Product",
       "type": "Type",
@@ -330,12 +331,14 @@
       "paymentMethod": "Payment Method",
       "status": "Status",
       "paid": "Paid",
+      "paymentRefused": "Payment Refused",
       "failed": "Failed",
       "pending": "Pending",
       "currency": "Currency",
       "ticket": "Ticket",
       "details": "Details",
       "lastPayment": "Last Payment",
+      "LastAttemptedPayment": "Last Attempted Payment",
       "month": "Month"
     },
     "ticket": {

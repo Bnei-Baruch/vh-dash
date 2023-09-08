@@ -46,9 +46,13 @@ const IconButton = styled(MuiIconButton)`
   }
 `;
 const MembershipStatusContainer = styled(Box)`
+  
   float: right;
   margin-right: 10px;
   cursor: pointer;
+  display: flex; /* Add this */
+  align-items: center; /* Add this */
+  
 `;
 const MembershipHeaderText = styled(Typography)`
   color: #747474;
@@ -63,9 +67,10 @@ const MembershipStatusText = styled(Typography)`
   align-items: center;
 
   svg {
-    width: 10px;
+    width:4px;
     color: ${(props) => props.color};
-    margin-right: 5px;
+    margin-right: 2px;
+    margin-left: 10px;
   }
 `;
 
@@ -168,6 +173,7 @@ function LanguageMenu() {
   const [anchorMenu, setAnchorMenu] = useState(null);
 
   const toggleMenu = (event) => {
+    console.log('from toggleMenu(), event.currentTarget: ', event.currentTarget)
     setAnchorMenu(event.currentTarget);
   };
 
@@ -284,6 +290,7 @@ const Header = ({ onDrawerToggle }) => {
   const history = useHistory();
   const { t } = useTranslation();
   const membership = useSelector(membershipData);
+  console.log('from header(), membership selector: ', membership);
   const navigateToMembership = () => {
     history.push(DASHBOARD_ROUTES.membership);
   };
@@ -315,6 +322,7 @@ const Header = ({ onDrawerToggle }) => {
                 onClick={navigateToMembership}
               >
                 <MembershipHeaderText variant="h6">
+                  {/* My Membership Status */}
                   {t("Membership.myMembership")}
                 </MembershipHeaderText>
                 <MembershipStatusText
@@ -322,8 +330,13 @@ const Header = ({ onDrawerToggle }) => {
                   color={
                     membership.membership
                       ? "#0d9d0d !important"
-                      : "#ff0000 !important"
+                      : "#747474 !important"
                   }
+                // color={
+                //   membership.membership
+                //     ? "#0d9d0d !important"
+                //     : "#ff0000 !important"
+                // }
                 >
                   <FiberManualRecordIcon />{" "}
                   {membership.membership

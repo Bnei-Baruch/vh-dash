@@ -19,18 +19,18 @@ const Archive = async(() => import("../pages/dashboard/Archive"));
 const ArvutSystem = async(() => import("../pages/dashboard/ArvutSystem"));
 const BroadcastArea = async(() => import("../pages/dashboard/BroadcastArea"));
 const Events = async(() => import("../pages/dashboard/Events/Events"));
-const MembershipStatus = async(() =>
-  import("../pages/dashboard/Membership/Status")
-);
-const PreviousPayments = async(() =>
-  import("../pages/dashboard/Membership/PreviousPayments")
-);
+// const MembershipStatus = async(() =>
+//   import("../pages/dashboard/Membership/Status")
+// );
+// const PreviousPayments = async(() =>
+//   import("../pages/dashboard/Membership/PreviousPayments")
+// );
 
 const MembershipV2Status = async(() =>
   import("../pages/dashboard/MembershipV2/MembershipStatus")
 );
 const PreviousV2Payments = async(() =>
-  import("../pages/dashboard/Membership/V2/PreviousPayments")
+  import("../pages/dashboard/MembershipV2/PreviousPayments")
 );
 
 const dashboardRoutes = [
@@ -57,7 +57,8 @@ const dashboardRoutes = [
     icon: <VerifiedUserIcon />,
     enableHeader: true,
     breadcrumbs: [{ name: "Membership", path: DASHBOARD_ROUTES.membership }],
-    component: MembershipStatus,
+    // component: MembershipStatus,
+    component: MembershipV2Status,
     children: [
       {
         path: DASHBOARD_ROUTES.membership,
@@ -68,7 +69,8 @@ const dashboardRoutes = [
           { name: "Membership", path: DASHBOARD_ROUTES.membership },
           { name: "Status", path: DASHBOARD_ROUTES.Profile },
         ],
-        component: MembershipStatus,
+        // component: MembershipStatus,
+        component: MembershipV2Status,
       },
       {
         path: DASHBOARD_ROUTES.previousPayment,
@@ -79,7 +81,8 @@ const dashboardRoutes = [
           { name: "Membership", path: DASHBOARD_ROUTES.membership },
           { name: "PreviousPayment", path: DASHBOARD_ROUTES.previousPayment },
         ],
-        component: PreviousPayments,
+        // component: PreviousPayments,
+        component: PreviousV2Payments,
       },
     ],
   },

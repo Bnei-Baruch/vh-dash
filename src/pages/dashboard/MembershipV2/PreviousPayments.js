@@ -6,7 +6,7 @@ import { spacing } from "@material-ui/system";
 import { useTranslation } from "react-i18next";
 import MUIDataTable from "mui-datatables";
 import moment from "moment";
-import { getUserPreviousPayments } from "../../../services/payments.service";
+import { getUserPreviousPayments2 } from "../../../services/payments.service";
 import { useSelector } from "react-redux";
 import { keycloakData } from "../../../redux/selectors/user";
 export const SucessfulPayment = styled.div`
@@ -134,7 +134,7 @@ function PreviousPayments() {
   React.useEffect(() => {
     if (keycloak) {
       const { profile } = keycloak;
-      getUserPreviousPayments(profile.email).then((res) => {
+      getUserPreviousPayments2(profile.email).then((res) => {
         if (res && res.length > 0) {
           setPayments(res.filter((item) => item.payment_status === "success"));
         }
