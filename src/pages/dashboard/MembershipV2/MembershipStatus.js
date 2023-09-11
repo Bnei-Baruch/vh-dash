@@ -7,11 +7,11 @@ import MUIDataTable from "mui-datatables";
 import moment from "moment";
 import { useSelector } from "react-redux";
 import _ from "lodash";
-import { keycloakData } from "../../../redux/selectors/user";
+// import { keycloakData } from "../../../redux/selectors/user";
+import { membershipDataV2 } from "../../../redux/selectors/user";
 import Status from "./Status";
 import Notification from "./Notification";
 import PaymentAction from "./PaymentAction";
-import { getMembershipStatusv2 } from "../../../services/membership.service";
 import CancelOutlinedIcon from "@material-ui/icons/CancelOutlined";
 import CheckCircleOutlineOutlinedIcon from "@material-ui/icons/CheckCircleOutlineOutlined";
 
@@ -115,7 +115,8 @@ const CheckIcon = styled(CheckCircleOutlineOutlinedIcon)`
 
 function MembershipStatus() {
   const { t } = useTranslation();
-  const [isLastPaymentSucceeded, setisLastPaymentSucceeded] = React.useState(false);
+  const [isLastPaymentSucceeded, setIsLastPaymentSucceeded] = React.useState(false);
+  // console.log('from MembershipStatus(), isLastPaymentSucceeded: ', isLastPaymentSucceeded)
   const columns = [
     {
       // name: "created_at",
@@ -125,7 +126,6 @@ function MembershipStatus() {
         filter: false,
         sort: false,
         customBodyRender: (value, data) => {
-          { console.log('data& value:  ', data) }
           return (
             <>
               {console.log('from MembershipStatus(),data: ', data)}
@@ -164,7 +164,6 @@ function MembershipStatus() {
       options: {
         filter: true,
         sort: false,
-        // customBodyRender: (value) => <>{value?.toUpperCase()}</>,
         customBodyRender: (value, data) => {
           return (
             <>
@@ -196,23 +195,6 @@ function MembershipStatus() {
         }
       },
     },
-    // {
-    //   name: "payment_method",
-    //   // name: "cc_number",
-    //   label: t("common.paymentMethod"),
-    //   options: {
-    //     filter: true,
-    //     sort: false,
-    //     customBodyRender: (value) => {
-    //       { { console.log('DATA: ', typeof data) } }
-    //       return (
-    //         <>
-    //           {`Card  ${value.slice(-4)}`}
-    //         </>
-    //       )
-    //     }
-    //   },
-    // },
     {
       name: "status",
       label: t("common.status"),
@@ -299,21 +281,15 @@ function MembershipStatus() {
 
   };
 
-  const [membershipData, setMembershipData] = React.useState(undefined);
-  const keycloak = useSelector(keycloakData);
-  console.log('From MembershipStatus(), membershipData: ', membershipData);
-
+  // const keycloak = useSelector(keycloakData);
+  const membershipData = useSelector(membershipDataV2);
+  console.log('From MembershipStatus(), membershipDataV2: ', membershipData);
 
   React.useEffect(() => {
-    if (keycloak) {
-      const { profile } = keycloak;
-      getMembershipStatusv2(profile.email).then((res) => {
-        setMembershipData(res)
-
-        setisLastPaymentSucceeded(res?.details?.payment?.status === "success")
-      });
+    if (membershipData) {
+      setIsLastPaymentSucceeded(membershipData?.details?.payment?.status === "success")
     }
-  }, [keycloak]);
+  }, [membershipData]);
 
   return (
     <React.Fragment>
@@ -365,7 +341,6 @@ function MembershipStatus() {
                 {membershipData &&
                   membershipData.details &&
                   !(_.isEmpty(membershipData.details.payment)) && (
-                    // membershipData.details.payment && (
                     <DataTablesWithoutBorder
                       title={t("common.details")}
                       data={[membershipData.details.payment]}
@@ -376,7 +351,6 @@ function MembershipStatus() {
                 {membershipData &&
                   membershipData.details &&
                   !(_.isEmpty(membershipData.details.special)) && (
-                    // membershipData.details.special && (
                     <DataTablesWithoutBorder
                       title={t("common.details")}
                       data={[membershipData.details.special]}
@@ -388,7 +362,6 @@ function MembershipStatus() {
                 {membershipData &&
                   membershipData.details &&
                   !(_.isEmpty(membershipData.details.help_haver)) && (
-                    // membershipData.details.helphaver && (
                     <DataTablesWithoutBorder
                       title={t("common.details")}
                       data={[membershipData.details.help_haver]}
