@@ -115,12 +115,14 @@ const CheckIcon = styled(CheckCircleOutlineOutlinedIcon)`
 
 function MembershipStatus() {
   const { t } = useTranslation();
-  const [isLastPaymentSucceeded, setisLastPaymentSucceeded] = React.useState(false);
+  const [membershipData, setMembershipData] = React.useState(undefined);
+  const keycloak = useSelector(keycloakData);
+  console.log('From MembershipStatus(), membershipData: ', membershipData);
+
   const columns = [
     {
-      // name: "created_at",
       name: "date",
-      label: isLastPaymentSucceeded ? t("common.lastPayment") : t("common.LastAttemptedPayment"),
+      label: membershipData && membershipData.details.payment.status === "success" ? t("common.lastPayment") : t("common.lastAttemptedPayment"),
       options: {
         filter: false,
         sort: false,
@@ -171,7 +173,7 @@ function MembershipStatus() {
               {data.rowData[2] === "2" && (
                 t("Global.Currency.usd")
               )}
-              {data.rowData[2] === "987" && (
+              {data.rowData[2] === "978" && (
                 t("Global.Currency.eur")
               )}
             </>
@@ -186,33 +188,9 @@ function MembershipStatus() {
       options: {
         filter: true,
         sort: false,
-        customBodyRender: (value) => {
-          { { console.log('DATA: ', typeof data) } }
-          return (
-            <PaymentMethod>
-              {`Card  ${value.slice(-4)}`}
-            </PaymentMethod>
-          )
-        }
+        customBodyRender: (value) => <PaymentMethod>{`Card  ${value.slice(-4)}`}</PaymentMethod>
       },
     },
-    // {
-    //   name: "payment_method",
-    //   // name: "cc_number",
-    //   label: t("common.paymentMethod"),
-    //   options: {
-    //     filter: true,
-    //     sort: false,
-    //     customBodyRender: (value) => {
-    //       { { console.log('DATA: ', typeof data) } }
-    //       return (
-    //         <>
-    //           {`Card  ${value.slice(-4)}`}
-    //         </>
-    //       )
-    //     }
-    //   },
-    // },
     {
       name: "status",
       label: t("common.status"),
@@ -299,18 +277,11 @@ function MembershipStatus() {
 
   };
 
-  const [membershipData, setMembershipData] = React.useState(undefined);
-  const keycloak = useSelector(keycloakData);
-  console.log('From MembershipStatus(), membershipData: ', membershipData);
-
-
   React.useEffect(() => {
     if (keycloak) {
       const { profile } = keycloak;
       getMembershipStatusv2(profile.email).then((res) => {
         setMembershipData(res)
-
-        setisLastPaymentSucceeded(res?.details?.payment?.status === "success")
       });
     }
   }, [keycloak]);

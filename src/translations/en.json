@@ -338,7 +338,7 @@
       "ticket": "Ticket",
       "details": "Details",
       "lastPayment": "Last Payment",
-      "LastAttemptedPayment": "Last Attempted Payment",
+      "lastAttemptedPayment": "Last Attempted Payment",
       "month": "Month"
     },
     "ticket": {
