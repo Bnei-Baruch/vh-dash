@@ -128,7 +128,6 @@ function MembershipStatus() {
         customBodyRender: (value, data) => {
           return (
             <>
-              {console.log('from MembershipStatus(),data: ', data)}
               {data.rowData[4] === "failed" && (
                 <FlexContainer>
                   {" "}
@@ -186,7 +185,6 @@ function MembershipStatus() {
         filter: true,
         sort: false,
         customBodyRender: (value) => {
-          { { console.log('DATA: ', typeof data) } }
           return (
             <PaymentMethod>
               {`Card  ${value.slice(-4)}`}
@@ -283,7 +281,7 @@ function MembershipStatus() {
 
   // const keycloak = useSelector(keycloakData);
   const membershipData = useSelector(membershipDataV2);
-  console.log('From MembershipStatus(), membershipDataV2: ', membershipData);
+  // console.log('From MembershipStatus(), membershipDataV2: ', membershipData);
 
   React.useEffect(() => {
     if (membershipData) {

@@ -292,11 +292,18 @@ const Header = ({ onDrawerToggle }) => {
   const history = useHistory();
   const { t } = useTranslation();
   const membership = useSelector(membershipData);
-  console.log('from Header(), membership selector: ', membership);
+  // console.log('from Header(), membership selector: ', membership);
   const membershipV2 = useSelector(membershipDataV2);
-  console.log('from Header(), membershipV2 selector: ', membershipV2);
+  // console.log('from Header(), membershipV2 selector: ', membershipV2);
   const isMembershipV2 = useSelector(isMembershipDataV2);
-  console.log('from Header(), isMembershipV2 selector: ', isMembershipV2);
+
+  const membershipStatusTextColor = isMembershipV2
+    ? membershipV2.active
+      ? "#0d9d0d !important"
+      : "#747474 !important"
+    : membership.membership
+      ? "#0d9d0d !important"
+      : "#747474 !important";
 
   const navigateToMembership = () => {
     history.push(DASHBOARD_ROUTES.membership);
@@ -334,21 +341,16 @@ const Header = ({ onDrawerToggle }) => {
                 </MembershipHeaderText>
                 <MembershipStatusText
                   variant="body1"
-                  color={
-                    membership.membership
-                      ? "#0d9d0d !important"
-                      : "#747474 !important"
-                  }
-                // color={
-                //   membership.membership
-                //     ? "#0d9d0d !important"
-                //     : "#ff0000 !important"
-                // }
+                  color={membershipStatusTextColor}
                 >
                   <FiberManualRecordIcon />{" "}
-                  {membership.membership
-                    ? t("Membership.active")
-                    : t("Membership.inactive")}
+                  {isMembershipV2
+                    ? membershipV2.active
+                      ? t("Membership.active")
+                      : t("Membership.inactive")
+                    : membership.membership
+                      ? t("Membership.active")
+                      : t("Membership.inactive")}
                 </MembershipStatusText>
               </MembershipStatusContainer>
             </Grid>

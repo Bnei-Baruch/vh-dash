@@ -47,7 +47,7 @@ export default function PaymentAction({ membershipData }) {
   return (
 
     <div>
-      {console.log('PaymentAction(), membershipData: ', membershipData)}
+      {/* {console.log('PaymentAction(), membershipData: ', membershipData)} */}
 
       {!membershipData?.active &&
         _.isEmpty(membershipData?.details?.payment) && (
