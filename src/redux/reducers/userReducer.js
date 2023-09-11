@@ -12,6 +12,7 @@ const initialState = {
   info: {},
   membership: {},
   membershipV2: {},
+  isMembershipDataV2: true,
 };
 
 export default createReducer(

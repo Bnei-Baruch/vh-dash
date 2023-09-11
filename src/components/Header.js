@@ -31,6 +31,8 @@ import { setLoggedInUser } from "../redux/actions/userActions";
 import ModalWindow from "../pages/dashboard/MyProfile/ui/ModalWindow";
 import { DASHBOARD_ROUTES } from "../routes/dashboardRoutes";
 import { membershipData } from "../redux/selectors/user";
+import { membershipDataV2 } from "../redux/selectors/user";
+import { isMembershipDataV2 } from "../redux/selectors/user";
 
 const AppBar = styled(MuiAppBar)`
   background: ${(props) => props.theme.header.background};
@@ -290,7 +292,12 @@ const Header = ({ onDrawerToggle }) => {
   const history = useHistory();
   const { t } = useTranslation();
   const membership = useSelector(membershipData);
-  console.log('from header(), membership selector: ', membership);
+  console.log('from Header(), membership selector: ', membership);
+  const membershipV2 = useSelector(membershipDataV2);
+  console.log('from Header(), membershipV2 selector: ', membershipV2);
+  const isMembershipV2 = useSelector(isMembershipDataV2);
+  console.log('from Header(), isMembershipV2 selector: ', isMembershipV2);
+
   const navigateToMembership = () => {
     history.push(DASHBOARD_ROUTES.membership);
   };
