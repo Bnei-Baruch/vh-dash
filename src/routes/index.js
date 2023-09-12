@@ -6,6 +6,7 @@ import FolderOpenIcon from "@material-ui/icons/FolderOpen";
 import VerifiedUserIcon from "@material-ui/icons/VerifiedUser";
 import EventIcon from "@material-ui/icons/Event";
 // import HelpIcon from "@material-ui/icons/Help";
+import { isMembershipV2 } from "../config/keycloak-config"
 import async from "../components/Async";
 import { DASHBOARD_ROUTES } from "./dashboardRoutes";
 import { ARCHIVE_LINK, ARVUT_SYSTEM_URL } from "../constants/common";
@@ -19,19 +20,19 @@ const Archive = async(() => import("../pages/dashboard/Archive"));
 const ArvutSystem = async(() => import("../pages/dashboard/ArvutSystem"));
 const BroadcastArea = async(() => import("../pages/dashboard/BroadcastArea"));
 const Events = async(() => import("../pages/dashboard/Events/Events"));
-// const MembershipStatus = async(() =>
-//   import("../pages/dashboard/Membership/Status")
-// );
-// const PreviousPayments = async(() =>
-//   import("../pages/dashboard/Membership/PreviousPayments")
-// );
 
-const MembershipV2Status = async(() =>
-  import("../pages/dashboard/MembershipV2/MembershipStatus")
-);
-const PreviousV2Payments = async(() =>
-  import("../pages/dashboard/MembershipV2/PreviousPayments")
-);
+if (isMembershipV2) {
+  var MembershipStatus = async(() =>
+    import("../pages/dashboard/MembershipV2/MembershipStatus"));
+  var PreviousPayments = async(() =>
+    import("../pages/dashboard/MembershipV2/PreviousPayments"));
+}
+else {
+  var MembershipStatus = async(() =>
+    import("../pages/dashboard/Membership/Status"));
+  var PreviousPayments = async(() =>
+    import("../pages/dashboard/Membership/PreviousPayments"));
+}
 
 const dashboardRoutes = [
   {
@@ -57,8 +58,7 @@ const dashboardRoutes = [
     icon: <VerifiedUserIcon />,
     enableHeader: true,
     breadcrumbs: [{ name: "Membership", path: DASHBOARD_ROUTES.membership }],
-    // component: MembershipStatus,
-    component: MembershipV2Status,
+    component: MembershipStatus,
     children: [
       {
         path: DASHBOARD_ROUTES.membership,
@@ -69,8 +69,7 @@ const dashboardRoutes = [
           { name: "Membership", path: DASHBOARD_ROUTES.membership },
           { name: "Status", path: DASHBOARD_ROUTES.Profile },
         ],
-        // component: MembershipStatus,
-        component: MembershipV2Status,
+        component: MembershipStatus,
       },
       {
         path: DASHBOARD_ROUTES.previousPayment,
@@ -81,8 +80,7 @@ const dashboardRoutes = [
           { name: "Membership", path: DASHBOARD_ROUTES.membership },
           { name: "PreviousPayment", path: DASHBOARD_ROUTES.previousPayment },
         ],
-        // component: PreviousPayments,
-        component: PreviousV2Payments,
+        component: PreviousPayments,
       },
     ],
   },

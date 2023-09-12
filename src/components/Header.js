@@ -23,7 +23,7 @@ import {
   Typography,
   Box,
 } from "@material-ui/core";
-
+import { isMembershipV2 } from "../config/keycloak-config"
 import { Menu as MenuIcon } from "@material-ui/icons";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import { CHAT_AND_NOTIFICATION_ICONS, SEARCH_BAR } from "../shared/constants";
@@ -295,7 +295,6 @@ const Header = ({ onDrawerToggle }) => {
   // console.log('from Header(), membership selector: ', membership);
   const membershipV2 = useSelector(membershipDataV2);
   // console.log('from Header(), membershipV2 selector: ', membershipV2);
-  const isMembershipV2 = useSelector(isMembershipDataV2);
 
   const membershipStatusTextColor = isMembershipV2
     ? membershipV2.active

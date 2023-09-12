@@ -3,7 +3,7 @@ import axios from "axios";
 export const getMembershipStatus = (email) => {
   let data = {
     is_special: false,
-    membership: false,
+    membership: true,
     status_color: '5F6368',
     status_name: 'inactive',
     ticket: false

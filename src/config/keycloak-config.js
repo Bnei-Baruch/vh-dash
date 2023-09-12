@@ -2,12 +2,14 @@ const keycloakConfigProd = {
   realm: "main",
   url: "https://accounts.kab.info/auth/",
   clientId: "membership_pay",
+  isMembershipV2: false,
 };
 
 const keycloakConfigDev = {
   realm: "master",
   url: "https://auth.2serv.eu/auth/",
   clientId: "membership_pay_dev",
+  isMembershipV2: true,
 };
 
 // there is a problem with PM2 env variable.
