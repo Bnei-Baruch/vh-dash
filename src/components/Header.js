@@ -173,7 +173,6 @@ function LanguageMenu() {
   const [anchorMenu, setAnchorMenu] = useState(null);
 
   const toggleMenu = (event) => {
-    console.log('from toggleMenu(), event.currentTarget: ', event.currentTarget)
     setAnchorMenu(event.currentTarget);
   };
 
@@ -290,7 +289,6 @@ const Header = ({ onDrawerToggle }) => {
   const history = useHistory();
   const { t } = useTranslation();
   const membership = useSelector(membershipData);
-  console.log('from header(), membership selector: ', membership);
   const navigateToMembership = () => {
     history.push(DASHBOARD_ROUTES.membership);
   };

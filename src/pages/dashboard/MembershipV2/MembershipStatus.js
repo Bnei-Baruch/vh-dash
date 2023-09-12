@@ -117,7 +117,6 @@ function MembershipStatus() {
   const { t } = useTranslation();
   const [membershipData, setMembershipData] = React.useState(undefined);
   const keycloak = useSelector(keycloakData);
-  console.log('From MembershipStatus(), membershipData: ', membershipData);
 
   const columns = [
     {
@@ -127,10 +126,8 @@ function MembershipStatus() {
         filter: false,
         sort: false,
         customBodyRender: (value, data) => {
-          { console.log('data& value:  ', data) }
           return (
             <>
-              {console.log('from MembershipStatus(),data: ', data)}
               {data.rowData[4] === "failed" && (
                 <FlexContainer>
                   {" "}
