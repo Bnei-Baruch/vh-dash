@@ -50,8 +50,8 @@ const MembershipStatusContainer = styled(Box)`
   float: right;
   margin-right: 10px;
   cursor: pointer;
-  display: flex; /* Add this */
-  align-items: center; /* Add this */
+  display: flex;
+  align-items: center; 
   
 `;
 const MembershipHeaderText = styled(Typography)`
