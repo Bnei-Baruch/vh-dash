@@ -32,7 +32,6 @@ import ModalWindow from "../pages/dashboard/MyProfile/ui/ModalWindow";
 import { DASHBOARD_ROUTES } from "../routes/dashboardRoutes";
 import { membershipData } from "../redux/selectors/user";
 import { membershipDataV2 } from "../redux/selectors/user";
-import { isMembershipDataV2 } from "../redux/selectors/user";
 
 const AppBar = styled(MuiAppBar)`
   background: ${(props) => props.theme.header.background};
@@ -52,8 +51,8 @@ const MembershipStatusContainer = styled(Box)`
   float: right;
   margin-right: 10px;
   cursor: pointer;
-  display: flex; /* Add this */
-  align-items: center; /* Add this */
+  display: flex; 
+  align-items: center; 
   
 `;
 const MembershipHeaderText = styled(Typography)`
@@ -292,9 +291,7 @@ const Header = ({ onDrawerToggle }) => {
   const history = useHistory();
   const { t } = useTranslation();
   const membership = useSelector(membershipData);
-  // console.log('from Header(), membership selector: ', membership);
   const membershipV2 = useSelector(membershipDataV2);
-  // console.log('from Header(), membershipV2 selector: ', membershipV2);
 
   const membershipStatusTextColor = isMembershipV2
     ? membershipV2.active
