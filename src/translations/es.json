@@ -607,6 +607,9 @@
       "approval_by": "Aprobado por"
     },
     "common": {
+      "approvalStatus": "Estado de la aprobación",
+      "paymentRefused": "Pago rechazado",
+      "lastAttemptedPayment": "Último intento de pago",
       "successful": "Exitoso",
       "date": "Fecha",
       "time": "Tiempo",

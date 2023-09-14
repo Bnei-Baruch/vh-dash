@@ -319,6 +319,9 @@
       "approval_by": "На рассмотрении/ на утверждении"
     },
     "common": {
+      "approvalStatus": "Статус подтверждения",
+      "paymentRefused": "Платеж отклонен",
+      "lastAttemptedPayment": "Последняя попытка оплаты",
       "successful": "Successful",
       "date": "Дата",
       "time": "Время",
