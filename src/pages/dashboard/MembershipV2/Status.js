@@ -17,6 +17,7 @@ import { useSelector } from "react-redux";
 import { profileInfo } from "../../../redux/selectors/profile";
 import countries from "../../../constants/countries";
 import { firstUpperCase } from "../../../utils";
+
 const useStyles = makeStyles({
   statusContainer: {
     display: "flex",
@@ -47,6 +48,15 @@ const useStyles = makeStyles({
   ctaContainer: {
     textAlign: "right",
   },
+  cardHeaderContent: {
+    fontSize: "1.5rem",
+    fontWeight: 400,
+    lineHeight: "2.5rem",
+    paddingBlockEnd: "0px",
+  },
+  cardHeader: {
+    padding: " 16px  16px 0 16px",
+  },
 });
 export default function Status({ membershipDetails }) {
   const [status, setStatus] = React.useState("inactive");
@@ -64,13 +74,17 @@ export default function Status({ membershipDetails }) {
     }
   }, [membershipDetails]);
   return (
-    <Grid container spacing={6}>
-      <Grid item xs={12}>
-        <CardHeader
-          title={t("Membership.name") + " " + t("Membership.information")}
+    <Grid container spacing={12}>
+      <Grid item xs={12} >
+        <CardHeader className={classes.cardHeader}
+          title={
+            <Typography variant="h4" className={classes.cardHeaderContent}>
+              {t("Membership.name") + " " + t("Membership.information")}
+            </Typography>
+          }
         />
       </Grid>
-      <Grid container item xs={12} lg={12}>
+      <Grid container rowSpacing={10} item xs={12} lg={12} >
         <Grid item xs={12} lg={status !== "inactive" ? 2 : 4}>
           <Card mb={6}>
             <CardContent>
@@ -112,7 +126,9 @@ export default function Status({ membershipDetails }) {
                         {t("common.type")}
                       </Typography>
                       <Typography variant="h6">
-                        {firstUpperCase(membershipDetails.type)}
+                        {membershipDetails.type !== "helphaver"
+                          ? firstUpperCase(membershipDetails.type)
+                          : 'Help Haver'}
                       </Typography>
                     </div>
                   </Grid>
@@ -120,6 +136,9 @@ export default function Status({ membershipDetails }) {
               </CardContent>
             </Card>
           </Grid>
+        )}
+        {status !== "inactive" && (
+          <Grid item lg={2}></Grid>
         )}
         <Grid item xs={12} lg={3}>
           <Card mb={6}>
@@ -131,8 +150,8 @@ export default function Status({ membershipDetails }) {
                       <PersonOutlinedIcon /> &nbsp;
                       {profileData
                         ? profileData.first_name_vernacular +
-                          " " +
-                          profileData.last_name_vernacular
+                        " " +
+                        profileData.last_name_vernacular
                         : ""}
                     </Typography>
                     <Typography variant="h6" className={classes.flexCentered}>

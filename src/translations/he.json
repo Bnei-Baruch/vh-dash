@@ -319,6 +319,9 @@
       "approval_by": "אושר על ידי"
     },
     "common": {
+      "approvalStatus": "סטטוס התשלום",
+      "paymentRefused": "תשלום סורב",
+      "lastAttemptedPayment": "נסיון לתשלום אחרון",
       "successful": "שולם בהצלחה",
       "date": "תאריך",
       "time": "זמן",

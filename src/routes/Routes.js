@@ -60,7 +60,7 @@ const childRoutes = (Layout, routes) =>
 const Routes = () => {
   return <Router>
     <Switch>
-      {childRoutes( DashboardLayout, dashboardLayoutRoutes)}
+      {childRoutes(DashboardLayout, dashboardLayoutRoutes)}
       <Redirect to="/dash" />
       <Route
         render={() => (
