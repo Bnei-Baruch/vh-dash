@@ -49,6 +49,8 @@ const MembershipStatusContainer = styled(Box)`
   float: right;
   margin-right: 10px;
   cursor: pointer;
+  display: flex;
+  align-items: center; 
 `;
 const MembershipHeaderText = styled(Typography)`
   color: #747474;
@@ -63,9 +65,10 @@ const MembershipStatusText = styled(Typography)`
   align-items: center;
 
   svg {
-    width: 10px;
+    width:4px;
     color: ${(props) => props.color};
-    margin-right: 5px;
+    margin-right: 2px;
+    margin-left: 10px;
   }
 `;
 
@@ -315,6 +318,7 @@ const Header = ({ onDrawerToggle }) => {
                 onClick={navigateToMembership}
               >
                 <MembershipHeaderText variant="h6">
+                  {/* My Membership Status */}
                   {t("Membership.myMembership")}
                 </MembershipHeaderText>
                 <MembershipStatusText
@@ -322,7 +326,7 @@ const Header = ({ onDrawerToggle }) => {
                   color={
                     membership.membership
                       ? "#0d9d0d !important"
-                      : "#ff0000 !important"
+                      : "#747474 !important"
                   }
                 >
                   <FiberManualRecordIcon />{" "}

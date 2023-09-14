@@ -25,3 +25,5 @@ package-lock.json
 
 .idea
 .vscode
+
+src/demo-data/
