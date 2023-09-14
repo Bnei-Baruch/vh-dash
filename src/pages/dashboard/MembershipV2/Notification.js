@@ -83,7 +83,7 @@ const useStyles = makeStyles({
     backgroundColor: "#F3FFE9",
     margin: "10px 20px",
     padding: "20px",
-    boxShadow: "Paperelevation={3}0 0 14px 0 rgb(53 64 82 / 15%) !important",
+    boxShadow: "0 0 14px 0 rgb(53 64 82 / 15%) !important",
     "& >h6": {
       color: "#003728",
     },

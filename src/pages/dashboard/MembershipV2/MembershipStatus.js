@@ -54,7 +54,6 @@ const NotificationGrid = styled(Grid)``;
 const ActionContainer = styled(Grid)`
   margin-left: 12px !important;
   padding-left: 16px !important;
-  // margin: 0px 20px !important;
 `;
 
 const PaymentContainer = styled(Grid)`
@@ -69,7 +68,6 @@ const DataTablesWithoutBorder = styled(MUIDataTable)`
   * {
     border: none !important;
     max-width:95%;
-
   }
   .MuiToolbar-root {
     padding-left:16px;
@@ -88,11 +86,9 @@ const DataTablesWithoutBorder = styled(MUIDataTable)`
   font-style: normal;
   font-weight: 400;
   line-height: 1rem; 
-  
 }
 
 .MUIDataTableBodyCell-root-117 {
-  
   padding-block: 5px ;
   font-size: 0.875rem;
   color: #000;
@@ -100,7 +96,6 @@ const DataTablesWithoutBorder = styled(MUIDataTable)`
   font-weight: 400;
   line-height: 1rem; 
 }
-
 `;
 
 const CancelIcon = styled(CancelOutlinedIcon)`
@@ -120,8 +115,8 @@ function MembershipStatus() {
 
   const columns = [
     {
-      name: "date",
-      label: membershipData && membershipData.details.payment.status === "success" ? t("common.lastPayment") : t("common.lastAttemptedPayment"),
+      name: "created_at",
+      label: membershipData?.details?.payment?.status === "success" ? t("common.lastPayment") : t("common.lastAttemptedPayment"),
       options: {
         filter: false,
         sort: false,
@@ -163,7 +158,6 @@ function MembershipStatus() {
       options: {
         filter: true,
         sort: false,
-        // customBodyRender: (value) => <>{value?.toUpperCase()}</>,
         customBodyRender: (value, data) => {
           return (
             <>
@@ -180,7 +174,6 @@ function MembershipStatus() {
     },
     {
       name: "payment_method",
-      // name: "cc_number",
       label: t("common.paymentMethod"),
       options: {
         filter: true,
@@ -271,15 +264,12 @@ function MembershipStatus() {
     filter: false,
     search: false,
     viewColumns: false,
-
   };
 
   React.useEffect(() => {
     if (keycloak) {
       const { profile } = keycloak;
-      getMembershipStatusv2(profile.email).then((res) => {
-        setMembershipData(res)
-      });
+      getMembershipStatusv2(profile.email).then(setMembershipData);
     }
   }, [keycloak]);
 
@@ -330,40 +320,30 @@ function MembershipStatus() {
                 <PaymentAction membershipData={membershipData} />
               </ActionContainer>
               <PaymentContainer item xs={12}>
-                {membershipData &&
-                  membershipData.details &&
-                  !(_.isEmpty(membershipData.details.payment)) && (
-                    // membershipData.details.payment && (
-                    <DataTablesWithoutBorder
-                      title={t("common.details")}
-                      data={[membershipData.details.payment]}
-                      columns={columns}
-                      options={options}
-                    />
-                  )}
-                {membershipData &&
-                  membershipData.details &&
-                  !(_.isEmpty(membershipData.details.special)) && (
-                    // membershipData.details.special && (
-                    <DataTablesWithoutBorder
-                      title={t("common.details")}
-                      data={[membershipData.details.special]}
-                      columns={col_sepcial}
-                      options={options}
-                    />
-                  )}
-
-                {membershipData &&
-                  membershipData.details &&
-                  !(_.isEmpty(membershipData.details.help_haver)) && (
-                    // membershipData.details.helphaver && (
-                    <DataTablesWithoutBorder
-                      title={t("common.details")}
-                      data={[membershipData.details.help_haver]}
-                      columns={col_helphaver}
-                      options={options}
-                    />
-                  )}
+                {!_.isEmpty(membershipData?.details?.payment) && (
+                  <DataTablesWithoutBorder
+                    title={t("common.details")}
+                    data={[membershipData.details.payment]}
+                    columns={columns}
+                    options={options}
+                  />
+                )}
+                {!_.isEmpty(membershipData?.details?.special) && (
+                  <DataTablesWithoutBorder
+                    title={t("common.details")}
+                    data={[membershipData.details.special]}
+                    columns={col_sepcial}
+                    options={options}
+                  />
+                )}
+                {!_.isEmpty(membershipData?.details?.help_haver) && (
+                  <DataTablesWithoutBorder
+                    title={t("common.details")}
+                    data={[membershipData.details.help_haver]}
+                    columns={col_helphaver}
+                    options={options}
+                  />
+                )}
               </PaymentContainer>
             </Grid>
           </Card>

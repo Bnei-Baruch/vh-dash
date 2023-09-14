@@ -17,7 +17,6 @@ import { useSelector } from "react-redux";
 import { profileInfo } from "../../../redux/selectors/profile";
 import countries from "../../../constants/countries";
 import { firstUpperCase } from "../../../utils";
-// import DashboardHeader from "../pages/dashboard/Home/DashboardHeader";
 
 const useStyles = makeStyles({
   statusContainer: {
@@ -138,7 +137,6 @@ export default function Status({ membershipDetails }) {
             </Card>
           </Grid>
         )}
-        {/* Space between type and user details when status is active */}
         {status !== "inactive" && (
           <Grid item lg={2}></Grid>
         )}

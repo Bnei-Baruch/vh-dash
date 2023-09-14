@@ -46,13 +46,11 @@ const IconButton = styled(MuiIconButton)`
   }
 `;
 const MembershipStatusContainer = styled(Box)`
-  
   float: right;
   margin-right: 10px;
   cursor: pointer;
   display: flex;
   align-items: center; 
-  
 `;
 const MembershipHeaderText = styled(Typography)`
   color: #747474;
@@ -330,11 +328,6 @@ const Header = ({ onDrawerToggle }) => {
                       ? "#0d9d0d !important"
                       : "#747474 !important"
                   }
-                // color={
-                //   membership.membership
-                //     ? "#0d9d0d !important"
-                //     : "#ff0000 !important"
-                // }
                 >
                   <FiberManualRecordIcon />{" "}
                   {membership.membership

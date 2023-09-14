@@ -11,7 +11,6 @@ import DashboardLayout from "../layouts/Dashboard";
 import Page404 from "../pages/auth/Page404";
 import DashboardHeader from "../pages/dashboard/Home/DashboardHeader";
 import Auth from "../config/Auth";
-// import { useFlag } from "@unleash/proxy-client-react";
 
 const childRoutes = (Layout, routes) =>
   routes.map(
