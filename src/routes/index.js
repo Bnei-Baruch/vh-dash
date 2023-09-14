@@ -6,7 +6,7 @@ import FolderOpenIcon from "@material-ui/icons/FolderOpen";
 import VerifiedUserIcon from "@material-ui/icons/VerifiedUser";
 import EventIcon from "@material-ui/icons/Event";
 // import HelpIcon from "@material-ui/icons/Help";
-import { isMembershipV2 } from "../config/keycloak-config"
+// import { isMembershipV2 } from "../config/keycloak-config"
 import async from "../components/Async";
 import { DASHBOARD_ROUTES } from "./dashboardRoutes";
 import { ARCHIVE_LINK, ARVUT_SYSTEM_URL } from "../constants/common";
@@ -21,16 +21,19 @@ const ArvutSystem = async(() => import("../pages/dashboard/ArvutSystem"));
 const BroadcastArea = async(() => import("../pages/dashboard/BroadcastArea"));
 const Events = async(() => import("../pages/dashboard/Events/Events"));
 
-if (isMembershipV2) {
-  var MembershipStatus = async(() =>
+let MembershipStatus;
+let PreviousPayments;
+
+if (window.APP_CONFIG.isMembershipV2) {
+  MembershipStatus = async(() =>
     import("../pages/dashboard/MembershipV2/MembershipStatus"));
-  var PreviousPayments = async(() =>
+  PreviousPayments = async(() =>
     import("../pages/dashboard/MembershipV2/PreviousPayments"));
 }
 else {
-  var MembershipStatus = async(() =>
+  MembershipStatus = async(() =>
     import("../pages/dashboard/Membership/Status"));
-  var PreviousPayments = async(() =>
+  PreviousPayments = async(() =>
     import("../pages/dashboard/Membership/PreviousPayments"));
 }
 

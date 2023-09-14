@@ -31,6 +31,9 @@ export default createReducer(
     [setMembershipData]: (state, action) => {
       return { ...state, membership: action.data };
     },
+    [setMembershipDataV2]: (state, action) => {
+      return { ...state, membershipV2: action.data };
+    },
   },
   initialState
 );

@@ -8,5 +8,6 @@ window.APP_CONFIG = {
         realm: 'master',
         url: 'https://auth.2serv.eu/auth/',
         clientId: 'membership_pay_dev'
-    }
+    },
+    isMembershipV2: true,
 };

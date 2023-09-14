@@ -23,7 +23,7 @@ import {
   Typography,
   Box,
 } from "@material-ui/core";
-import { isMembershipV2 } from "../config/keycloak-config"
+
 import { Menu as MenuIcon } from "@material-ui/icons";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import { CHAT_AND_NOTIFICATION_ICONS, SEARCH_BAR } from "../shared/constants";
@@ -290,11 +290,26 @@ function UserMenu() {
 const Header = ({ onDrawerToggle }) => {
   const history = useHistory();
   const { t } = useTranslation();
-  const membership = useSelector(membershipData);
-  const membershipV2 = useSelector(membershipDataV2);
+  // console.log(window.APP_CONFIG.isMembershipV2)
 
-  const membershipStatusTextColor = isMembershipV2
-    ? membershipV2.active
+
+  const membership = useSelector((state) => (
+    window.APP_CONFIG.isMembershipV2 ? membershipDataV2(state) : membershipData(state)
+  ));
+
+  // const membership = useSelector(membershipData);
+  // const membershipV2 = useSelector(membershipDataV2);
+
+  // const membershipStatusTextColor = isMembershipV2
+  //   ? membershipV2.active
+  //     ? "#0d9d0d !important"
+  //     : "#747474 !important"
+  //   : membership.membership
+  //     ? "#0d9d0d !important"
+  //     : "#747474 !important";
+
+  const membershipStatusTextColor = window.APP_CONFIG.isMembershipV2
+    ? membership.active
       ? "#0d9d0d !important"
       : "#747474 !important"
     : membership.membership
@@ -340,13 +355,22 @@ const Header = ({ onDrawerToggle }) => {
                   color={membershipStatusTextColor}
                 >
                   <FiberManualRecordIcon />{" "}
-                  {isMembershipV2
-                    ? membershipV2.active
+                  {window.APP_CONFIG.isMembershipV2
+                    ? membership.active
                       ? t("Membership.active")
                       : t("Membership.inactive")
                     : membership.membership
                       ? t("Membership.active")
                       : t("Membership.inactive")}
+
+                  {/* {isMembershipV2
+                    ? membershipV2.active
+                      ? t("Membership.active")
+                      : t("Membership.inactive")
+                    : membership.membership
+                      ? t("Membership.active")
+                      : t("Membership.inactive")} */}
+
                 </MembershipStatusText>
               </MembershipStatusContainer>
             </Grid>
