@@ -7,7 +7,6 @@ import MUIDataTable from "mui-datatables";
 import moment from "moment";
 import { useSelector } from "react-redux";
 import _ from "lodash";
-// import { keycloakData } from "../../../redux/selectors/user";
 import { membershipDataV2 } from "../../../redux/selectors/user";
 import Status from "./Status";
 import Notification from "./Notification";
@@ -35,7 +34,6 @@ export const PendingPayment = styled.div`
   display: flex;
   align-items: center;
   line-height: 1.875rem; 
-
 `;
 export const FailedPayment = styled.div`
   font-size: 1rem;
@@ -54,7 +52,6 @@ const NotificationGrid = styled(Grid)``;
 const ActionContainer = styled(Grid)`
   margin-left: 12px !important;
   padding-left: 16px !important;
-  // margin: 0px 20px !important;
 `;
 
 const PaymentContainer = styled(Grid)`
@@ -69,7 +66,6 @@ const DataTablesWithoutBorder = styled(MUIDataTable)`
   * {
     border: none !important;
     max-width:95%;
-
   }
   .MuiToolbar-root {
     padding-left:16px;
@@ -88,11 +84,9 @@ const DataTablesWithoutBorder = styled(MUIDataTable)`
   font-style: normal;
   font-weight: 400;
   line-height: 1rem; 
-  
 }
 
 .MUIDataTableBodyCell-root-117 {
-  
   padding-block: 5px ;
   font-size: 0.875rem;
   color: #000;
@@ -100,7 +94,6 @@ const DataTablesWithoutBorder = styled(MUIDataTable)`
   font-weight: 400;
   line-height: 1rem; 
 }
-
 `;
 
 const CancelIcon = styled(CancelOutlinedIcon)`
@@ -116,11 +109,9 @@ const CheckIcon = styled(CheckCircleOutlineOutlinedIcon)`
 function MembershipStatus() {
   const { t } = useTranslation();
   const [isLastPaymentSucceeded, setIsLastPaymentSucceeded] = React.useState(false);
-  // console.log('from MembershipStatus(), isLastPaymentSucceeded: ', isLastPaymentSucceeded)
   const columns = [
     {
-      // name: "created_at",
-      name: "date",
+      name: "created_at",
       label: isLastPaymentSucceeded ? t("common.lastPayment") : t("common.LastAttemptedPayment"),
       options: {
         filter: false,
@@ -169,7 +160,7 @@ function MembershipStatus() {
               {data.rowData[2] === "2" && (
                 t("Global.Currency.usd")
               )}
-              {data.rowData[2] === "987" && (
+              {data.rowData[2] === "978" && (
                 t("Global.Currency.eur")
               )}
             </>
@@ -179,18 +170,11 @@ function MembershipStatus() {
     },
     {
       name: "payment_method",
-      // name: "cc_number",
       label: t("common.paymentMethod"),
       options: {
         filter: true,
         sort: false,
-        customBodyRender: (value) => {
-          return (
-            <PaymentMethod>
-              {`Card  ${value.slice(-4)}`}
-            </PaymentMethod>
-          )
-        }
+        customBodyRender: (value) => <PaymentMethod>{`Card  ${value.slice(-4)}`}</PaymentMethod>
       },
     },
     {
@@ -276,12 +260,9 @@ function MembershipStatus() {
     filter: false,
     search: false,
     viewColumns: false,
-
   };
 
-  // const keycloak = useSelector(keycloakData);
   const membershipData = useSelector(membershipDataV2);
-  // console.log('From MembershipStatus(), membershipDataV2: ', membershipData);
 
   React.useEffect(() => {
     if (membershipData) {
@@ -336,37 +317,30 @@ function MembershipStatus() {
                 <PaymentAction membershipData={membershipData} />
               </ActionContainer>
               <PaymentContainer item xs={12}>
-                {membershipData &&
-                  membershipData.details &&
-                  !(_.isEmpty(membershipData.details.payment)) && (
-                    <DataTablesWithoutBorder
-                      title={t("common.details")}
-                      data={[membershipData.details.payment]}
-                      columns={columns}
-                      options={options}
-                    />
-                  )}
-                {membershipData &&
-                  membershipData.details &&
-                  !(_.isEmpty(membershipData.details.special)) && (
-                    <DataTablesWithoutBorder
-                      title={t("common.details")}
-                      data={[membershipData.details.special]}
-                      columns={col_sepcial}
-                      options={options}
-                    />
-                  )}
-
-                {membershipData &&
-                  membershipData.details &&
-                  !(_.isEmpty(membershipData.details.help_haver)) && (
-                    <DataTablesWithoutBorder
-                      title={t("common.details")}
-                      data={[membershipData.details.help_haver]}
-                      columns={col_helphaver}
-                      options={options}
-                    />
-                  )}
+                {!_.isEmpty(membershipData?.details?.payment) && (
+                  <DataTablesWithoutBorder
+                    title={t("common.details")}
+                    data={[membershipData.details.payment]}
+                    columns={columns}
+                    options={options}
+                  />
+                )}
+                {!_.isEmpty(membershipData?.details?.special) && (
+                  <DataTablesWithoutBorder
+                    title={t("common.details")}
+                    data={[membershipData.details.special]}
+                    columns={col_sepcial}
+                    options={options}
+                  />
+                )}
+                {!_.isEmpty(membershipData?.details?.help_haver) && (
+                  <DataTablesWithoutBorder
+                    title={t("common.details")}
+                    data={[membershipData.details.help_haver]}
+                    columns={col_helphaver}
+                    options={options}
+                  />
+                )}
               </PaymentContainer>
             </Grid>
           </Card>

@@ -99,12 +99,7 @@ export default function Notification({ membershipData }) {
         membershipData.notifications.length > 0 &&
         membershipData.notifications.map((item) => {
           return (
-            <Paper
-              elevation={3}
-              style={{
-                margin: "10px 16px",
-              }}
-              className={classes[item.slug]}>
+            <Paper elevation={3} style={{ margin: "10px 16px", }} className={classes[item.slug]}>
               <Typography variant="h6">
                 {t(`Membership.${item.slug}_title`)}
               </Typography>

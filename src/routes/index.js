@@ -6,7 +6,6 @@ import FolderOpenIcon from "@material-ui/icons/FolderOpen";
 import VerifiedUserIcon from "@material-ui/icons/VerifiedUser";
 import EventIcon from "@material-ui/icons/Event";
 // import HelpIcon from "@material-ui/icons/Help";
-// import { isMembershipV2 } from "../config/keycloak-config"
 import async from "../components/Async";
 import { DASHBOARD_ROUTES } from "./dashboardRoutes";
 import { ARCHIVE_LINK, ARVUT_SYSTEM_URL } from "../constants/common";

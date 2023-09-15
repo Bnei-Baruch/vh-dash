@@ -47,13 +47,11 @@ const IconButton = styled(MuiIconButton)`
   }
 `;
 const MembershipStatusContainer = styled(Box)`
-  
   float: right;
   margin-right: 10px;
   cursor: pointer;
-  display: flex; 
+  display: flex;
   align-items: center; 
-  
 `;
 const MembershipHeaderText = styled(Typography)`
   color: #747474;
@@ -174,7 +172,6 @@ function LanguageMenu() {
   const [anchorMenu, setAnchorMenu] = useState(null);
 
   const toggleMenu = (event) => {
-    console.log('from toggleMenu(), event.currentTarget: ', event.currentTarget)
     setAnchorMenu(event.currentTarget);
   };
 
@@ -290,23 +287,9 @@ function UserMenu() {
 const Header = ({ onDrawerToggle }) => {
   const history = useHistory();
   const { t } = useTranslation();
-  // console.log(window.APP_CONFIG.isMembershipV2)
-
-
   const membership = useSelector((state) => (
     window.APP_CONFIG.isMembershipV2 ? membershipDataV2(state) : membershipData(state)
   ));
-
-  // const membership = useSelector(membershipData);
-  // const membershipV2 = useSelector(membershipDataV2);
-
-  // const membershipStatusTextColor = isMembershipV2
-  //   ? membershipV2.active
-  //     ? "#0d9d0d !important"
-  //     : "#747474 !important"
-  //   : membership.membership
-  //     ? "#0d9d0d !important"
-  //     : "#747474 !important";
 
   const membershipStatusTextColor = window.APP_CONFIG.isMembershipV2
     ? membership.active
@@ -362,15 +345,6 @@ const Header = ({ onDrawerToggle }) => {
                     : membership.membership
                       ? t("Membership.active")
                       : t("Membership.inactive")}
-
-                  {/* {isMembershipV2
-                    ? membershipV2.active
-                      ? t("Membership.active")
-                      : t("Membership.inactive")
-                    : membership.membership
-                      ? t("Membership.active")
-                      : t("Membership.inactive")} */}
-
                 </MembershipStatusText>
               </MembershipStatusContainer>
             </Grid>

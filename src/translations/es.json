@@ -607,6 +607,9 @@
       "approval_by": "Aprobado por"
     },
     "common": {
+      "approvalStatus": "Estado de la aprobación",
+      "paymentRefused": "Pago rechazado",
+      "lastAttemptedPayment": "Último intento de pago",
       "successful": "Exitoso",
       "date": "Fecha",
       "time": "Tiempo",
@@ -650,8 +653,11 @@
       "pending": "Pending"
     },
     "may2022": "Only the friends - Kabbalah Convention",
+    "jul2023": "Todo se obtiene con la fuerza de la plegaria",
+    "oct2023": "Abriendo el corazón",
     "aug2022": "Celebrando la alegría en la conexión",
     "dec2022": "Entramos en Lishma",
+    "feb2023": "Congreso mundial - Febrero 2023",
     "hh-request": "Help Haver",
     "sp-russia": "Rusia",
     "sp-ukraine": "Ucraina",

@@ -338,7 +338,7 @@
       "ticket": "Ticket",
       "details": "Details",
       "lastPayment": "Last Payment",
-      "LastAttemptedPayment": "Last Attempted Payment",
+      "lastAttemptedPayment": "Last Attempted Payment",
       "month": "Month"
     },
     "ticket": {
@@ -367,8 +367,11 @@
       "pending": "Pending"
     },
     "may2022": "Only the friends - Kabbalah Convention",
+    "jul2023": "Everything Is Obtained by the Power of Prayer",
+    "oct2023": "Opening the Heart",
     "aug2022": "Celebrating the Joy of Connection",
     "dec2022": "Entering Lishma",
+    "feb2023": "World Kabbalah Convention - February 2023",
     "hh-request": "Help Haver",
     "sp-russia": "Special Russia",
     "sp-ukraine": "Special Ukraine",

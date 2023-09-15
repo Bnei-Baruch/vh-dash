@@ -47,11 +47,8 @@ export default function PaymentAction({ membershipData }) {
   return (
 
     <div>
-      {/* {console.log('PaymentAction(), membershipData: ', membershipData)} */}
-
       {!membershipData?.active &&
         _.isEmpty(membershipData?.details?.payment) && (
-          // _.isempty(membershipData?.details?.payment) && (
           <Button
             variant="contained"
             color="primary"
@@ -61,12 +58,11 @@ export default function PaymentAction({ membershipData }) {
           </Button>
         )}
       &nbsp;
-      {(membershipData?.active ||
+      {(membershipData?.active && membershipData?.type === "automatic") ||
         (!membershipData?.active &&
-          membershipData?.details?.payment &&
-          membershipData?.details?.payment?.status === "failed")) &&
-        membershipData?.type !== "helphaver" &&
-        _.isEmpty(membershipData?.details?.special) && (
+          membershipData?.type !== "helphaver" &&
+          membershipData?.details?.payment?.status === "failed" &&
+          _.isEmpty(membershipData?.details?.special)) && (
           <Button
             variant="contained"
             color="primary"
@@ -91,7 +87,6 @@ export default function PaymentAction({ membershipData }) {
       &nbsp;
       {(membershipData?.active ||
         (!membershipData?.active &&
-          membershipData?.details?.payment &&
           membershipData?.details?.payment?.status === "failed")) && (
           <Button
             variant="outlined"
@@ -105,7 +100,6 @@ export default function PaymentAction({ membershipData }) {
       &nbsp;
       {(membershipData?.active ||
         (!membershipData?.active &&
-          membershipData?.details?.payment &&
           membershipData?.details?.payment?.status === "failed")) && (
           <Button
             className={classes.cancelMembershipButton}
