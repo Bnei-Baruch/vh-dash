@@ -34,11 +34,6 @@ const Auth = (props) => {
             dispatch(setMembershipData(membership))
           }
 
-          // const membership = await getMembershipStatus(keycloak.profile.email);
-          // dispatch(setMembershipData(membership));
-          // const membershipV2 = await getMembershipStatusV2(keycloak.profile.email);
-          // dispatch(setMembershipDataV2(membershipV2));
-
           const profile = {
             username: keycloak.profile.username,
             firstName: keycloak.profile.firstName,

@@ -1,25 +1,22 @@
-// MEMBERSHIP-V1- DEMO-DATA
-export const getMembershipStatus = (email) => {
-    let data = {
-        is_special: false,
-        membership: true,
-        status_color: '5F6368',
-        status_name: 'inactive',
-        ticket: false
-    }
-    return Promise.resolve(data)
-};
+import axios from "axios";
+
 // MEMBERSHIP-V1- API
+export const getMembershipStatus = (email) => {
+    return axios
+        .get(`${window.APP_CONFIG.VH_API_BASE_URL}/pay/status/${email}`)
+        .then((res) => {
+            return res.data
+        });
+};
 
-// export const getMembershipStatus = (email) => {
-//   return axios
-//     .get(`${window.APP_CONFIG.VH_API_BASE_URL}/pay/status/${email}`)
-//     .then((res) => {
-//       // console.log('getMembershipStatus(),res.data:  ', res.data)
-//       return res.data
-//     });
-// };
-
+// TODO: implement on server
+// export const getMembershipStatusV2 = (kc_id) => {
+//     return axios
+//         .get(`${window.APP_CONFIG.VH_API_BASE_URL}/profile/membership/kc_id/${kc_id}`)
+//         .then((res) => {
+//             return res.data
+//         });
+// }
 
 // MEMBERSHIP-V2- DEMO-DATA
 

@@ -44,11 +44,8 @@ const useStyles = makeStyles({
 export default function Status() {
   const [status, setStatus] = React.useState("inactive");
   const classes = useStyles();
-  console.log('from Status(), classes');
   const { t, i18n } = useTranslation();
-  console.log('from Status(), t("Membership.name"): ', t("Membership.name"));
   const membership = useSelector(membershipData);
-  console.log('from Status(), membership: ', membership)
   const redirectToPayment = () => {
     window
       .open(
