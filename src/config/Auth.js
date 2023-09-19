@@ -27,7 +27,7 @@ const Auth = (props) => {
           dispatch(setKeycloakData(keycloak));
 
           if (window.APP_CONFIG.isMembershipV2) {
-            const membership = await getMembershipStatusV2(keycloak.profile.email);
+            const membership = await getMembershipStatusV2(keycloak.subject);
             dispatch(setMembershipDataV2(membership));
           } else {
             const membership = await getMembershipStatus(keycloak.profile.email);
