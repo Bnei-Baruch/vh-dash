@@ -112,7 +112,7 @@ function MembershipStatus() {
   const columns = [
     {
       name: "created_at",
-      label: isLastPaymentSucceeded ? t("common.lastPayment") : t("common.LastAttemptedPayment"),
+      label: isLastPaymentSucceeded ? t("common.lastPayment") : t("common.lastAttemptedPayment"),
       options: {
         filter: false,
         sort: false,
