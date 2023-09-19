@@ -19,16 +19,16 @@ const Archive = async(() => import("../pages/dashboard/Archive"));
 const ArvutSystem = async(() => import("../pages/dashboard/ArvutSystem"));
 const BroadcastArea = async(() => import("../pages/dashboard/BroadcastArea"));
 const Events = async(() => import("../pages/dashboard/Events/Events"));
-// const MembershipStatus = async(() =>
-//   import("../pages/dashboard/Membership/Status")
-// );
-const PreviousPayments = async(() =>
-  import("../pages/dashboard/Membership/PreviousPayments")
-);
+const PreviousPayments = async(() => import("../pages/dashboard/Membership/PreviousPayments"));
 
-const MembershipV2Status = async(() =>
-  import("../pages/dashboard/MembershipV2/MembershipStatus")
-);
+let MembershipStatus;
+if (window.APP_CONFIG.isMembershipV2) {
+  MembershipStatus = async(() =>
+    import("../pages/dashboard/MembershipV2/MembershipStatus"));
+} else {
+  MembershipStatus = async(() =>
+    import("../pages/dashboard/Membership/Status"));
+}
 
 const dashboardRoutes = [
   {
@@ -54,8 +54,7 @@ const dashboardRoutes = [
     icon: <VerifiedUserIcon />,
     enableHeader: true,
     breadcrumbs: [{ name: "Membership", path: DASHBOARD_ROUTES.membership }],
-    // component: MembershipStatus,
-    component: MembershipV2Status,
+    component: MembershipStatus,
     children: [
       {
         path: DASHBOARD_ROUTES.membership,
@@ -66,8 +65,7 @@ const dashboardRoutes = [
           { name: "Membership", path: DASHBOARD_ROUTES.membership },
           { name: "Status", path: DASHBOARD_ROUTES.Profile },
         ],
-        // component: MembershipStatus,
-        component: MembershipV2Status,
+        component: MembershipStatus,
       },
       {
         path: DASHBOARD_ROUTES.previousPayment,
