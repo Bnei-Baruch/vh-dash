@@ -5,5 +5,3 @@ export const getUserPreviousPayments = (email) => {
     .get(`${window.APP_CONFIG.VH_API_BASE_URL}/pay/payments/all/${email}`)
     .then((res) => res.data.data);
 };
-
-

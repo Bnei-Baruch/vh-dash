@@ -7,11 +7,10 @@ import MUIDataTable from "mui-datatables";
 import moment from "moment";
 import { useSelector } from "react-redux";
 import _ from "lodash";
-import { keycloakData } from "../../../redux/selectors/user";
+import { membershipDataV2 } from "../../../redux/selectors/user";
 import Status from "./Status";
 import Notification from "./Notification";
 import PaymentAction from "./PaymentAction";
-import { getMembershipStatusv2 } from "../../../services/membership.service";
 import CancelOutlinedIcon from "@material-ui/icons/CancelOutlined";
 import CheckCircleOutlineOutlinedIcon from "@material-ui/icons/CheckCircleOutlineOutlined";
 
@@ -35,7 +34,6 @@ export const PendingPayment = styled.div`
   display: flex;
   align-items: center;
   line-height: 1.875rem; 
-
 `;
 export const FailedPayment = styled.div`
   font-size: 1rem;
@@ -110,13 +108,11 @@ const CheckIcon = styled(CheckCircleOutlineOutlinedIcon)`
 
 function MembershipStatus() {
   const { t } = useTranslation();
-  const [membershipData, setMembershipData] = React.useState(undefined);
-  const keycloak = useSelector(keycloakData);
-
+  const [isLastPaymentSucceeded, setIsLastPaymentSucceeded] = React.useState(false);
   const columns = [
     {
       name: "created_at",
-      label: membershipData?.details?.payment?.status === "success" ? t("common.lastPayment") : t("common.lastAttemptedPayment"),
+      label: isLastPaymentSucceeded ? t("common.lastPayment") : t("common.lastAttemptedPayment"),
       options: {
         filter: false,
         sort: false,
@@ -266,12 +262,13 @@ function MembershipStatus() {
     viewColumns: false,
   };
 
+  const membershipData = useSelector(membershipDataV2);
+
   React.useEffect(() => {
-    if (keycloak) {
-      const { profile } = keycloak;
-      getMembershipStatusv2(profile.email).then(setMembershipData);
+    if (membershipData) {
+      setIsLastPaymentSucceeded(membershipData?.details?.payment?.status === "success")
     }
-  }, [keycloak]);
+  }, [membershipData]);
 
   return (
     <React.Fragment>
