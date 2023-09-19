@@ -13,7 +13,7 @@ export const getMembershipStatusV2 = (kc_id) => {
     return axios
         .get(`${window.APP_CONFIG.VH_API_BASE_URL}/profile/v1/membership/kcid/${kc_id}`)
         .then((res) => {
-            return res.data
+            return res.data.data
         }).catch(err => {
             if (err?.response?.status === 404) {
                 return {} // 404 means no membership info. That's fine
