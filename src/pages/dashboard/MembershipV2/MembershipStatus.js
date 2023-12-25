@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import Helmet from "react-helmet";
-import { Card, Grid, Paper, Typography } from "@material-ui/core";
+import { Card, Grid } from "@material-ui/core";
 import { useTranslation } from "react-i18next";
 import MUIDataTable from "mui-datatables";
 import moment from "moment";
 import { useSelector } from "react-redux";
-import _ from "lodash";
+import {isEmpty} from "lodash";
 import { membershipDataV2 } from "../../../redux/selectors/user";
 import Status from "./Status";
 import Notification from "./Notification";
@@ -280,44 +280,17 @@ function MembershipStatus() {
               <Grid item xs={12}>
                 <Status membershipDetails={membershipData} />
               </Grid>
-              {/* expiry message */}
-              {membershipData &&
-                membershipData.active &&
-                membershipData.expiry &&
-                membershipData.details.payment.status === "success" &&
-                moment(membershipData.expiry).isValid() && (
-                  <NotificationGrid item xs={12} md={8} lg={6}>
-                    <Paper
-                      elevation={3}
-                      style={{
-                        padding: "20px",
-                        margin: "10px 16px",
-                        boxShadow: "0 0 14px 0 rgb(53 64 82 / 15%)",
-                      }}
-                    >
-                      <Typography variant="p">
-                        {t("Membership.membership_active_until")}{" "}
-                        {moment(membershipData.expiry).format("DD/MM/YYYY")}
-                      </Typography>
-                    </Paper>
-                  </NotificationGrid>
-                )}
               {/* notification section */}
-              {membershipData &&
-                membershipData.notifications &&
-                membershipData.notifications.length > 0 && (
+              {!isEmpty(membershipData?.notifications) && (
                   <NotificationGrid item xs={12} md={10}>
-                    <Notification
-                      membershipData={membershipData}
-                      status={"pending"}
-                    />
+                    <Notification membershipData={membershipData}/>
                   </NotificationGrid>
                 )}
               <ActionContainer item xs={12}>
                 <PaymentAction membershipData={membershipData} />
               </ActionContainer>
               <PaymentContainer item xs={12}>
-                {!_.isEmpty(membershipData?.details?.payment) && (
+                {!isEmpty(membershipData?.details?.payment) && (
                   <DataTablesWithoutBorder
                     title={t("common.details")}
                     data={[membershipData.details.payment]}
@@ -325,7 +298,7 @@ function MembershipStatus() {
                     options={options}
                   />
                 )}
-                {!_.isEmpty(membershipData?.details?.special) && (
+                {!isEmpty(membershipData?.details?.special) && (
                   <DataTablesWithoutBorder
                     title={t("common.details")}
                     data={[membershipData.details.special]}
@@ -333,7 +306,7 @@ function MembershipStatus() {
                     options={options}
                   />
                 )}
-                {!_.isEmpty(membershipData?.details?.help_haver) && (
+                {!isEmpty(membershipData?.details?.help_haver) && (
                   <DataTablesWithoutBorder
                     title={t("common.details")}
                     data={[membershipData.details.help_haver]}

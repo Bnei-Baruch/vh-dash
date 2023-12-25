@@ -315,7 +315,10 @@
       "hh_request_refused_desc": "You can change the membership type at any time",
       "mb_expiration_notice_title": "תוקף המנוי שלך עומד לפוג",
       "mb_expiration_notice_desc": "אתה נדרש לבצע תשלום חדש או להחליף סוג מנוי",
+      "mb_has_expired_notice_title": "פג תוקפו של המנוי שלך",
+      "mb_has_expired_notice_desc": "אתה נדרש לבצע תשלום חדש או להחליף סוג מנוי",
       "membership_active_until": "המנוי שלך פעיל עד",
+      "membership_was_active_until": "המנוי שלך היה פעיל עד",
       "approval_by": "אושר על ידי"
     },
     "common": {
