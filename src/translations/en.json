@@ -316,7 +316,10 @@
       "hh_request_refused_desc": "You can change the membership type at any time",
       "mb_expiration_notice_title": "Your membership is about to expire",
       "mb_expiration_notice_desc": "You need to make a new payment or switch membership type",
+      "mb_has_expired_notice_title": "Your membership has expired",
+      "mb_has_expired_notice_desc": "You need to make a new payment or switch membership type",
       "membership_active_until": "Your membership is active until",
+      "membership_was_active_until": "Your membership was active until",
       "approval_by": "Approval by"
     },
     "common": {
