@@ -121,15 +121,6 @@ const dashboardRoutes = [
     children: null,
     isExternalLink: true,
   },
-  // {
-  //   path: window.APP_CONFIG.VH_BASE_URL + BB_HELP_LINK,
-  //   id: "Help",
-  //   icon: <HelpIcon />,
-  //   enableHeader: true,
-  //   component: Archive,
-  //   children: null,
-  //   isExternalLink: true,
-  // },
 ];
 
 // Routes using the Dashboard layout

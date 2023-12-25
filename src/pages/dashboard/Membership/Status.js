@@ -55,15 +55,6 @@ export default function Status() {
       .focus();
   };
 
-  // const redirectToPayment = () => {
-  //   window
-  //     .open(
-  //       `${window.location.origin}/pay/membership?lang=${i18n.language}`,
-  //       "_blank"
-  //     )
-  //     .focus();
-  // };
-
   React.useEffect(() => {
     if (membership && membership.membership) {
       setStatus("active");
