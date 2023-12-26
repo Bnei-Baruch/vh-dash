@@ -49,8 +49,6 @@ deploy_staging:
 build_production:
   image: docker:latest
   stage: build
-  tags:
-    - dockerbuild
   services:
     - docker:19.03.12-dind
   script:
@@ -64,7 +62,6 @@ build_production:
     - tags
 
 deploy_production:
-  #image: tmaier/docker-compose:latest
   image: gitlab.bbdev.team:5050/vh/buildutils/buildutil:0.5.0
   stage: deploy
   tags:
