@@ -603,7 +603,10 @@
       "hh_request_refused_desc": "You can change the membership type at any time",
       "mb_expiration_notice_title": "Su membresía está a punto de expirar",
       "mb_expiration_notice_desc": "Necesita realizar un nuevo pago o cambiar tipo de membresía",
+      "mb_has_expired_notice_title": "Tu membresía ha caducado",
+      "mb_has_expired_notice_desc": "Necesita realizar un nuevo pago o cambiar tipo de membresía",
       "membership_active_until": "Su afiliación está activa hasta",
+      "membership_was_active_until": "Su membresía estuvo activa hasta",
       "approval_by": "Aprobado por"
     },
     "common": {

@@ -315,7 +315,10 @@
       "hh_request_refused_desc": "You can change the membership type at any time",
       "mb_expiration_notice_title": "Напомниание! Необходимо внести ежемесячный платёж",
       "mb_expiration_notice_desc": "Вам необходимо внести новый платеж или изменить тип подписки ",
+      "mb_has_expired_notice_title": "Срок действия вашей подписки истек",
+      "mb_has_expired_notice_desc": "Вам необходимо внести новый платеж или изменить тип подписки ",
       "membership_active_until": "Твоя подписка действительна до",
+      "membership_was_active_until": "Твоя подписка была действительна до",
       "approval_by": "На рассмотрении/ на утверждении"
     },
     "common": {
