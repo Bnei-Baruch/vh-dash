@@ -111,7 +111,7 @@ function MembershipStatus() {
   const [isLastPaymentSucceeded, setIsLastPaymentSucceeded] = React.useState(false);
   const columns = [
     {
-      name: "created_at",
+      name: "date",
       label: isLastPaymentSucceeded ? t("common.lastPayment") : t("common.lastAttemptedPayment"),
       options: {
         filter: false,
@@ -121,18 +121,12 @@ function MembershipStatus() {
             <>
               {data.rowData[4] === "failed" && (
                 <FlexContainer>
-                  {" "}
-                  <CancelIcon /> {moment(value).format(
-                    "DD-MM-YYYY"
-                  )}{" "}
+                  {" "}<CancelIcon /> {moment(value).format("DD-MM-YYYY")}{" "}
                 </FlexContainer>
               )}
               {data.rowData[4] === "success" && (
                 <FlexContainer>
-                  {" "}
-                  <CheckIcon /> {moment(value).format(
-                    "DD-MM-YYYY"
-                  )}{" "}
+                  {" "}<CheckIcon /> {moment(value).format("DD-MM-YYYY")}{" "}
                 </FlexContainer>
               )}
             </>
@@ -154,18 +148,7 @@ function MembershipStatus() {
       options: {
         filter: true,
         sort: false,
-        customBodyRender: (value, data) => {
-          return (
-            <>
-              {data.rowData[2] === "2" && (
-                t("Global.Currency.usd")
-              )}
-              {data.rowData[2] === "978" && (
-                t("Global.Currency.eur")
-              )}
-            </>
-          )
-        }
+        customBodyRender: (value) => t(`Global.Currency.${value.toLowerCase()}`)
       },
     },
     {
@@ -235,8 +218,7 @@ function MembershipStatus() {
         customBodyRender: (value, data) => {
           return (
             <FlexContainer>
-              {" "}
-              <CheckIcon /> {moment(value).format("DD-MM-YYYY")}{" "}
+              {" "}<CheckIcon /> {moment(value).format("DD-MM-YYYY")}{" "}
             </FlexContainer>
           );
         },

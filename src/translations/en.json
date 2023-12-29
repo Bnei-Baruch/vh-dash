@@ -11,8 +11,10 @@
       "closeBtn": "Close",
       "requestError": "Ooops! Something went wrong! Please, try again later or contact our support",
       "Currency": {
+        "nis": "NIS",
         "usd": "USD",
-        "eur": "EUR"
+        "eur": "EUR",
+        "rur": "RUR"
       },
       "Days": {
         "monday": "Monday",

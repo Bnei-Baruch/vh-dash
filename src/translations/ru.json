@@ -11,8 +11,10 @@
       "closeBtn": "Закрывать",
       "requestError": "Упс! Что-то пошло не так! Пожалуйста, повторите попытку позже или свяжитесь с нашей службой поддержки",
       "Currency": {
+        "nis": "NIS",
         "usd": "USD",
-        "eur": "EUR"
+        "eur": "EUR",
+        "rur": "RUR"
       },
       "Days": {
         "monday": "Monday",
