@@ -11,8 +11,10 @@
       "closeBtn": "לסגור",
       "requestError": "אופס! משהו השתבש! אנא נסה שוב מאוחר יותר או צור קשר עם התמיכה שלנו",
       "Currency": {
+        "nis": "NIS",
         "usd": "USD",
-        "eur": "EUR"
+        "eur": "EUR",
+        "rur": "RUR"
       },
       "Days": {
         "monday": "יום שני",
