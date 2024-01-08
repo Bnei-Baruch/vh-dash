@@ -1,8 +1,6 @@
 import {Button, makeStyles} from "@material-ui/core";
 import React from "react";
 import {useTranslation} from "react-i18next";
-import {isEmpty} from "lodash";
-
 
 const useStyles = makeStyles({
     updateButton: {
@@ -19,7 +17,6 @@ const useStyles = makeStyles({
     },
 });
 
-
 export default function PaymentAction({membershipData}) {
     const {t, i18n} = useTranslation();
     const classes = useStyles();
@@ -33,7 +30,7 @@ export default function PaymentAction({membershipData}) {
     };
 
     const updatePaymentDetail = () => {
-        const orderId = membershipData?.details?.automatic?.order_id
+        const orderId = membershipData.details?.automatic?.order_id
         window.location.href = `${window.location.origin}/pay/membership/payment/update/${orderId}?lang=${i18n.language}`;
     };
 
@@ -45,17 +42,27 @@ export default function PaymentAction({membershipData}) {
         window.location.href = `${window.location.origin}/pay/membership/cancellation?lang=${i18n.language}`;
     };
 
-    const showActivate = !membershipData?.active && isEmpty(membershipData?.details?.payment);
+    let showActivate, showUpdatePayment, showNewPayment, showSwitchCancel = false;
 
-    const showUpdatePayment = (membershipData?.active && membershipData?.type === "automatic") ||
-        (!membershipData?.active &&
-            membershipData?.type !== "helphaver" &&
-            isEmpty(membershipData?.details?.special) &&
-            membershipData?.details?.payment?.status === "failed");
-
-    const showNewPayment = membershipData?.active && membershipData.type === "manual";
-
-    const showSwitchCancel = membershipData?.active || membershipData?.details?.payment?.status === "failed";
+    switch (membershipData?.type) {
+        case "automatic":
+            showUpdatePayment = true
+            showSwitchCancel = true
+            break;
+        case "manual":
+            showNewPayment = true
+            showSwitchCancel = true
+            break;
+        case "special":
+            showSwitchCancel = true
+            break;
+        case "helphaver":
+            showSwitchCancel = true
+            break;
+        default:
+            showActivate = true;
+            break;
+    }
 
     return (
         <div>

@@ -28,6 +28,15 @@ const useStyles = makeStyles({
             color: "#FF0000",
         },
     },
+    mb_has_expired_notice: {
+        backgroundColor: "#FEF2EF",
+        padding: "20px",
+        margin: "10px 20px",
+        boxShadow: "0 0 14px 0 rgb(53 64 82 / 15%) !important",
+        "& >h6": {
+            color: "#FF0000",
+        },
+    },
     hh_request_refused: {
         backgroundColor: "#FEF2EF",
         padding: "20px",
@@ -96,7 +105,9 @@ export default function Notification({membershipData}) {
     const classes = useStyles();
     const {t} = useTranslation();
 
-    if (isEmpty(membershipData?.notifications)) {
+    const isManual = membershipData.type === "manual";
+
+    if (isEmpty(membershipData.notifications) || !isManual) {
         return null;
     }
 
@@ -105,7 +116,7 @@ export default function Notification({membershipData}) {
 
     return (
         <>
-            {(aboutToExpire || hasExpired) &&
+            {(isManual || aboutToExpire || hasExpired) &&
                 <Paper
                     elevation={3}
                     style={{
