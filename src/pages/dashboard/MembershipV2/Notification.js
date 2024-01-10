@@ -107,7 +107,7 @@ export default function Notification({membershipData}) {
 
     const isManual = membershipData.type === "manual";
 
-    if (isEmpty(membershipData.notifications) || !isManual) {
+    if (isEmpty(membershipData.notifications) && !isManual) {
         return null;
     }
 
