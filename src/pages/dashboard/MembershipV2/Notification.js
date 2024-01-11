@@ -106,13 +106,14 @@ export default function Notification({membershipData}) {
     const {t} = useTranslation();
 
     const isManual = membershipData.type === "manual";
+    const notifications = membershipData.notifications || [];
 
-    if (isEmpty(membershipData.notifications) && !isManual) {
+    if (isEmpty(notifications) && !isManual) {
         return null;
     }
 
-    const aboutToExpire = membershipData.notifications.some(x => x.slug === 'mb_expiration_notice');
-    const hasExpired = membershipData.notifications.some(x => x.slug === 'mb_has_expired_notice');
+    const aboutToExpire = notifications.some(x => x.slug === 'mb_expiration_notice');
+    const hasExpired = notifications.some(x => x.slug === 'mb_has_expired_notice');
 
     return (
         <>
@@ -133,7 +134,7 @@ export default function Notification({membershipData}) {
                 </Paper>
             }
 
-            {membershipData.notifications.map((item) => {
+            {notifications.map((item) => {
                 return (
                     <Paper elevation={3} style={{margin: "10px 16px",}} className={classes[item.slug]}>
                         <Typography variant="h6">

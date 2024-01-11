@@ -263,11 +263,11 @@ function MembershipStatus() {
                 <Status membershipDetails={membershipData} />
               </Grid>
               {/* notification section */}
-              {!isEmpty(membershipData?.notifications) && (
-                  <NotificationGrid item xs={12} md={10}>
-                    <Notification membershipData={membershipData}/>
-                  </NotificationGrid>
-                )}
+              {membershipData && (
+                <NotificationGrid item xs={12} md={10}>
+                  <Notification membershipData={membershipData}/>
+                </NotificationGrid>
+              )}
               <ActionContainer item xs={12}>
                 <PaymentAction membershipData={membershipData} />
               </ActionContainer>
