@@ -19,16 +19,8 @@ const Archive = async(() => import("../pages/dashboard/Archive"));
 const ArvutSystem = async(() => import("../pages/dashboard/ArvutSystem"));
 const BroadcastArea = async(() => import("../pages/dashboard/BroadcastArea"));
 const Events = async(() => import("../pages/dashboard/Events/Events"));
-const PreviousPayments = async(() => import("../pages/dashboard/Membership/PreviousPayments"));
-
-let MembershipStatus;
-if (window.APP_CONFIG.isMembershipV2) {
-  MembershipStatus = async(() =>
-    import("../pages/dashboard/MembershipV2/MembershipStatus"));
-} else {
-  MembershipStatus = async(() =>
-    import("../pages/dashboard/Membership/Status"));
-}
+const PreviousPayments = async(() => import("../pages/dashboard/MembershipV2/PreviousPayments"));
+const MembershipStatus = async(() =>import("../pages/dashboard/MembershipV2/MembershipStatus"));
 
 const dashboardRoutes = [
   {
