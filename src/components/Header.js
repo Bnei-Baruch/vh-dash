@@ -30,7 +30,7 @@ import { CHAT_AND_NOTIFICATION_ICONS, SEARCH_BAR } from "../shared/constants";
 import { setLoggedInUser } from "../redux/actions/userActions";
 import ModalWindow from "../pages/dashboard/MyProfile/ui/ModalWindow";
 import { DASHBOARD_ROUTES } from "../routes/dashboardRoutes";
-import { membershipData, membershipDataV2 } from "../redux/selectors/user";
+import { membershipDataV2 } from "../redux/selectors/user";
 
 const AppBar = styled(MuiAppBar)`
   background: ${(props) => props.theme.header.background};
@@ -286,12 +286,8 @@ function UserMenu() {
 const Header = ({ onDrawerToggle }) => {
   const history = useHistory();
   const { t } = useTranslation();
-  const membership = useSelector((state) => (
-    window.APP_CONFIG.isMembershipV2 ? membershipDataV2(state) : membershipData(state)
-  ));
-
-  const active = window.APP_CONFIG.isMembershipV2 ? membership.active : membership.membership;
-
+  const membership = useSelector(state => (membershipDataV2(state)));
+  const active = membership.active;
   const membershipStatusTextColor = active ? "#0d9d0d !important" : "#747474 !important";
 
   const navigateToMembership = () => {
