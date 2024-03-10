@@ -4,7 +4,6 @@ import Keycloak from "keycloak-js";
 import {
   setKeycloakData,
   setLoggedInUser,
-  setMembershipData,
   setMembershipDataV2
 } from "../redux/actions/userActions";
 import { useDispatch } from "react-redux";
@@ -12,7 +11,7 @@ import { useDispatch } from "react-redux";
 import ErrorLogin from "../views/ErrorLogin";
 import LoadingScreen from "../views/LoadingScreen";
 import { fetchProfile } from "../redux/actions/profileActions";
-import { getMembershipStatus, getMembershipStatusV2 } from "../services/membership.service";
+import { getMembershipStatusV2 } from "../services/membership.service";
 
 const Auth = (props) => {
   const [auth, setAuth] = useState({ keycloak: null, authenticated: false });
@@ -26,14 +25,9 @@ const Auth = (props) => {
         keycloak.loadUserProfile().then(async function () {
           dispatch(setKeycloakData(keycloak));
 
-          if (window.APP_CONFIG.isMembershipV2) {
-            const membership = await getMembershipStatusV2(keycloak.subject);
-            dispatch(setMembershipDataV2(membership));
-          } else {
-            const membership = await getMembershipStatus(keycloak.profile.email);
-            dispatch(setMembershipData(membership))
-          }
-
+          const membership = await getMembershipStatusV2(keycloak.subject);
+          dispatch(setMembershipDataV2(membership));
+          
           const profile = {
             username: keycloak.profile.username,
             firstName: keycloak.profile.firstName,
