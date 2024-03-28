@@ -322,7 +322,13 @@
       "mb_has_expired_notice_desc": "You need to make a new payment or switch membership type",
       "membership_active_until": "Your membership is active until",
       "membership_was_active_until": "Your membership was active until",
-      "approval_by": "Approval by"
+      "approval_by": "Approval by",
+      "type": {
+        "automatic": "Automatic",
+        "manual": "Manual",
+        "helphaver": "Help Haver",
+        "special": "Special"
+      }
     },
     "common": {
       "successful": "Successful",

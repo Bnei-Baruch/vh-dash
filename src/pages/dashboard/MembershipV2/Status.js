@@ -16,7 +16,6 @@ import SmartphoneOutlinedIcon from "@material-ui/icons/SmartphoneOutlined";
 import { useSelector } from "react-redux";
 import { profileInfo } from "../../../redux/selectors/profile";
 import countries from "../../../constants/countries";
-import { firstUpperCase } from "../../../utils";
 
 const useStyles = makeStyles({
   statusContainer: {
@@ -126,9 +125,7 @@ export default function Status({ membershipDetails }) {
                         {t("common.type")}
                       </Typography>
                       <Typography variant="h6">
-                        {membershipDetails.type !== "helphaver"
-                          ? firstUpperCase(membershipDetails.type)
-                          : 'Help Haver'}
+                        {t(`Membership.type.${membershipDetails.type}`)}
                       </Typography>
                     </div>
                   </Grid>

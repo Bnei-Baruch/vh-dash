@@ -55,7 +55,7 @@ const dashboardRoutes = [
         enableHeader: true,
         breadcrumbs: [
           { name: "Membership", path: DASHBOARD_ROUTES.membership },
-          { name: "Status", path: DASHBOARD_ROUTES.Profile },
+          { name: "Status", path: DASHBOARD_ROUTES.membership },
         ],
         component: MembershipStatus,
       },

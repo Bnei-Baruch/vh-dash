@@ -321,7 +321,13 @@
       "mb_has_expired_notice_desc": "אתה נדרש לבצע תשלום חדש או להחליף סוג מנוי",
       "membership_active_until": "המנוי שלך פעיל עד",
       "membership_was_active_until": "המנוי שלך היה פעיל עד",
-      "approval_by": "אושר על ידי"
+      "approval_by": "אושר על ידי",
+      "type": {
+        "automatic": "מנוי מתחדש אוטומטית",
+        "manual": "מנוי לא מתחדש אוטומטית",
+        "helphaver": "״הלפ חבר״ למנויים",
+        "special": "מיוחד"
+      }
     },
     "common": {
       "approvalStatus": "סטטוס התשלום",
@@ -341,6 +347,7 @@
       "pending": "ממתין",
       "currency": "מטבע",
       "ticket": "כרטיס",
+      "details": "פרטים",
       "lastPayment": "תשלום אחרון",
       "month": "חודש"
     },

@@ -609,7 +609,13 @@
       "mb_has_expired_notice_desc": "Necesita realizar un nuevo pago o cambiar tipo de membresía",
       "membership_active_until": "Su afiliación está activa hasta",
       "membership_was_active_until": "Su membresía estuvo activa hasta",
-      "approval_by": "Aprobado por"
+      "approval_by": "Aprobado por",
+      "type": {
+        "automatic": "Suscripción automática",
+        "manual": "Suscripción manual",
+        "helphaver": "Help Haver para la Membresía",
+        "special": "Special"
+      }
     },
     "common": {
       "approvalStatus": "Estado de la aprobación",
@@ -629,6 +635,7 @@
       "pending": "Pendiente",
       "currency": "Divisa",
       "ticket": "Billete",
+      "details": "Detalles",
       "lastPayment": "Ultimo Pago",
       "month": "Mes"
     },
