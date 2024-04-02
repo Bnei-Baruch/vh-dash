@@ -50,7 +50,7 @@ build_production:
   image: docker:latest
   stage: build
   services:
-    - docker:19.03.12-dind
+    - docker:26.0.0-dind
   script:
     - env
     - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
