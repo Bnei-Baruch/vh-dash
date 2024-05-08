@@ -28,8 +28,7 @@ build_staging:
     - dynamic
 
 deploy_staging:
-  #image: tmaier/docker-compose:latest
-  image: gitlab.bbdev.team:5050/vh/buildutils/buildutil:0.5.0
+  image: gitlab.bbdev.team:5050/vh/buildutils/buildutil:0.8.0
   stage: deploy
   tags:
     - staging
@@ -39,7 +38,7 @@ deploy_staging:
     - for variable in "${!DYN_STAGING@}"; do echo "${variable#DYN_STAGING_}"="${!variable}"; export "${variable#DYN_STAGING_}"="${!variable}"; done;
     - gomplate --input-dir=config-templates --output-map="/opt/$CI_PROJECT_PATH/public/config/{{ .in | strings.ReplaceAll \".js\" \"-${CI_COMMIT_SHORT_SHA}.js\" }}"
     - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
-    - IMAGE_NAME=$STAGING_IMAGE docker-compose up -d
+    - IMAGE_NAME=$STAGING_IMAGE docker compose up -d
   only:
     - master
     - staging
@@ -62,7 +61,7 @@ build_production:
     - tags
 
 deploy_production:
-  image: gitlab.bbdev.team:5050/vh/buildutils/buildutil:0.5.0
+  image: gitlab.bbdev.team:5050/vh/buildutils/buildutil:0.8.0
   stage: deploy
   tags:
     - production
@@ -72,7 +71,7 @@ deploy_production:
     - for variable in "${!DYN_PROD@}"; do echo "${variable#DYN_PROD_}"="${!variable}"; export "${variable#DYN_PROD_}"="${!variable}"; done;
     - gomplate --input-dir=config-templates --output-map="/opt/$CI_PROJECT_PATH/public/config/{{ .in | strings.ReplaceAll \".js\" \"-${CI_COMMIT_SHORT_SHA}.js\" }}"
     - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
-    - IMAGE_NAME=$PROD_IMAGE docker-compose up -d
+    - IMAGE_NAME=$PROD_IMAGE docker compose up -d
   only:
     - tags
   when: manual
