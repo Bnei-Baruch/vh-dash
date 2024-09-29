@@ -11,6 +11,7 @@ import {
 import { isWidthUp } from "@material-ui/core/withWidth";
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
+import GlassixWidget from "../components/Glassix";
 
 const drawerWidth = 260;
 
@@ -100,6 +101,7 @@ const Dashboard = ({ children, routes, width }) => {
         <MainContent p={isWidthUp("lg", width) ? 10 : 5}>
           {children}
         </MainContent>
+        <GlassixWidget/>
       </AppContent>
     </Root>
   );
