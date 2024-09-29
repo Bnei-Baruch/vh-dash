@@ -27,6 +27,7 @@ import {
 import { Menu as MenuIcon } from "@material-ui/icons";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import { CHAT_AND_NOTIFICATION_ICONS, SEARCH_BAR } from "../shared/constants";
+import { setSettings } from "../redux/actions/settingsActions";
 import { setLoggedInUser } from "../redux/actions/userActions";
 import ModalWindow from "../pages/dashboard/MyProfile/ui/ModalWindow";
 import { DASHBOARD_ROUTES } from "../routes/dashboardRoutes";
@@ -168,6 +169,7 @@ const languages = [
 
 function LanguageMenu() {
   const { t, i18n } = useTranslation();
+  const dispatch = useDispatch();
   const [anchorMenu, setAnchorMenu] = useState(null);
 
   const toggleMenu = (event) => {
@@ -176,7 +178,10 @@ function LanguageMenu() {
 
   const closeMenu = (lng) => {
     setAnchorMenu(null);
-    _.isString(lng) && i18n.changeLanguage(lng);
+    if (_.isString(lng)) {
+      dispatch(setSettings({language: lng}));
+      i18n.changeLanguage(lng);
+    }
   };
 
   return (
