@@ -1,5 +1,5 @@
 import React from "react";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import store from "./redux/store/index";
 import Helmet from "react-helmet";
 
@@ -16,6 +16,7 @@ import Routes from "./routes/Routes";
 import Auth from "./config/Auth";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
+import { setSettings } from "./redux/actions/settingsActions";
 
 const jss = create({
   plugins: [...jssPreset().plugins, rtl()],
@@ -50,9 +51,11 @@ axios.interceptors.request.use(async (c) => {
 
 const App = ({ theme }) => {
   const { i18n } = useTranslation();
+  const dispatch = useDispatch();
 
   // Set direction on body
   document.body.setAttribute("dir", i18n.dir(i18n.language));
+  dispatch(setSettings({language: i18n.language}));
 
   return (
     <Auth>
