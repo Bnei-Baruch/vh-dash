@@ -283,6 +283,10 @@
           "donationsButton": "לתרומה",
           "donationsLink": "http://bit.ly/2O0Pifo"
         }
+      },
+      "Broadcast": {
+        "membershipRequired": "השידור החי זמין למנויים בלבד",
+        "membershipRequiredDescription": "כדי לצפות בשידור חי, יש לרכוש מנוי פעיל. המנוי מאפשר לך גישה לכל השידורים החיים והתוכן המיוחד שלנו."
       }
     },
     "Membership": {
