@@ -11,6 +11,7 @@ import { membershipDataV2 } from "../../../redux/selectors/user";
 
 const BroadcastArea = () => {
   const { t } = useTranslation();
+
   const membershipData = useSelector(membershipDataV2);
 
   if (!membershipData?.active) {
