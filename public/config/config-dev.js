@@ -10,4 +10,6 @@ window.APP_CONFIG = {
         clientId: 'membership_pay_dev'
     },
     isMembershipV2: true,
-};
+    GLASSIX_API_KEY: "",
+    STUDY_MATERIALS_API_URL: "https://stmat.kab.sh/api/units"
+    };

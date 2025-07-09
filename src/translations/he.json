@@ -267,6 +267,7 @@
         "noBroadcast": "אין שידור עכשיו",
         "noText": "נא להזין שאלה",
         "successPosted": "השאלה פורסמה בהצלחה",
+        "studyMaterialsButton": "חומר לימוד",
         "Question": {
           "title": "שלח שאלה",
           "label": "מה השאלה שלך?",
@@ -274,6 +275,12 @@
           "button": "לשׁאול",
           "successMsg": "נשלח בהצלחה!",
           "errorMsg": "שגיאה לא צפויה. בבקשה נסה שוב!"
+        },
+        "HomerLimud": {
+          "title": "חומר לימוד",
+          "loading": "טוען חומרי לימוד...",
+          "noMaterials": "אין חומרי לימוד זמינים כרגע",
+          "errorLoading": "שגיאה בטעינת חומרי הלימוד"
         },
         "Annoucements": {
           "title": "הודעות",
