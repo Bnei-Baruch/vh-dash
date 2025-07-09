@@ -283,6 +283,10 @@
           "donationsButton": "Пожертвовать",
           "donationsLink": "http://bit.ly/2O0Pifo"
         }
+      },
+      "Broadcast": {
+        "membershipRequired": "Прямая трансляция только для подписчиков",
+        "membershipRequiredDescription": "Для просмотра прямых трансляций вам нужна активная подписка. Подписка дает вам доступ ко всем прямым трансляциям и нашему специальному контенту."
       }
     },
     "Membership": {
