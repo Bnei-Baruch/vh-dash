@@ -82,7 +82,7 @@
     "UserMenu": {
       "logOut": "Cerrar la sesión",
       "profile": "Perfil",
-      "logOutText": "¿Realmente quiere dejar de fumar?",
+      "logOutText": "¿Realmente desea cerrar sesión?",
       "unsaved_changes": "You have unsaved changes. Please save or cancel changes before switching tab",
       "yesBtn": "Sí",
       "okbtn": "Ok",
