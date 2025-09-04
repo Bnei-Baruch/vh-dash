@@ -5,10 +5,11 @@ import ViewComfyIcon from "@material-ui/icons/ViewComfy";
 import FolderOpenIcon from "@material-ui/icons/FolderOpen";
 import VerifiedUserIcon from "@material-ui/icons/VerifiedUser";
 import EventIcon from "@material-ui/icons/Event";
+import PaymentIcon from "@material-ui/icons/Payment";
 // import HelpIcon from "@material-ui/icons/Help";
 import async from "../components/Async";
 import { DASHBOARD_ROUTES } from "./dashboardRoutes";
-import { ARCHIVE_LINK, ARVUT_SYSTEM_URL } from "../constants/common";
+import { ARCHIVE_LINK, ARVUT_SYSTEM_URL, PAY_CLI_ONE_URL } from "../constants/common";
 
 // Home
 const Home = async(() => import("../pages/dashboard/Home"));
@@ -110,6 +111,16 @@ const dashboardRoutes = [
     enableHeader: true,
     breadcrumbs: [{ name: "BroadcastArea", path: DASHBOARD_ROUTES.archive }],
     component: Archive,
+    children: null,
+    isExternalLink: true,
+  },
+  {
+    path: PAY_CLI_ONE_URL,
+    id: "PayCliOne",
+    icon: <PaymentIcon />,
+    enableHeader: true,
+    breadcrumbs: [{ name: "PayCliOne", path: PAY_CLI_ONE_URL }],
+    component: null,
     children: null,
     isExternalLink: true,
   },
