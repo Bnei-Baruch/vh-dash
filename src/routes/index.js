@@ -9,7 +9,7 @@ import PaymentIcon from "@material-ui/icons/Payment";
 // import HelpIcon from "@material-ui/icons/Help";
 import async from "../components/Async";
 import { DASHBOARD_ROUTES } from "./dashboardRoutes";
-import { ARCHIVE_LINK, ARVUT_SYSTEM_URL, PAY_CLI_ONE_URL } from "../constants/common";
+import { ARCHIVE_LINK, ARVUT_SYSTEM_URL, PAY_KLI_ONE_URL } from "../constants/common";
 
 // Home
 const Home = async(() => import("../pages/dashboard/Home"));
@@ -115,11 +115,11 @@ const dashboardRoutes = [
     isExternalLink: true,
   },
   {
-    path: PAY_CLI_ONE_URL,
-    id: "PayCliOne",
+    path: PAY_KLI_ONE_URL,
+    id: "PayKliOne",
     icon: <PaymentIcon />,
     enableHeader: true,
-    breadcrumbs: [{ name: "PayCliOne", path: PAY_CLI_ONE_URL }],
+    breadcrumbs: [{ name: "PayKliOne", path: PAY_KLI_ONE_URL }],
     component: null,
     children: null,
     isExternalLink: true,
