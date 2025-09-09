@@ -1,10 +1,10 @@
 import React, { useCallback, useState } from "react";
 import { withTheme } from "styled-components";
 import { Grid } from "@material-ui/core";
-import Arvut from "./Arvut";
+// import Arvut from "./Arvut";
 import Calendar from "./Calendar";
 import Header from "./Header";
-import Convention from "./Convention";
+// import Convention from "./Convention";
 
 const Home = () => {
   const [liveEvent, setLiveEvent] = useState();
@@ -19,19 +19,7 @@ const Home = () => {
 
       <Grid container spacing={6}>
         <Grid item xs={12} lg={6}>
-          <Grid container spacing={2}>
-            <Grid item xs={12} lg={12}>
-              {/* <Convention liveEvent={liveEvent} /> */}
-            </Grid>
-            <Grid item xs={12} lg={12}>
-              <Arvut liveEvent={liveEvent} />
-            </Grid>
-          </Grid>
-        </Grid>
-        <Grid item xs={12} lg={6}>
           <Calendar onLiveEvent={onLiveEvent} />
-          <br />
-          {/* <Arvut liveEvent={liveEvent} /> */}
         </Grid>
       </Grid>
     </>
