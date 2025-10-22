@@ -2,16 +2,14 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { darken, rgba } from "polished";
 import { useTranslation } from "react-i18next";
+import i18next from "i18next";
 import { NavLink as RouterNavLink, withRouter } from "react-router-dom";
-import LogoImage from "../asset/logo/logo.svg";
+import LogoImageEn from "../asset/logo/en-logo.png";
+import LogoImageHe from "../asset/logo/heb-logo.png";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import "../vendor/perfect-scrollbar.css";
 
-import { spacing } from "@material-ui/system";
-
 import {
-  Avatar,
-  Box as MuiBox,
   Chip,
   Collapse,
   Drawer as MuiDrawer,
@@ -29,11 +27,6 @@ const NavLink = React.forwardRef((props, ref) => (
   <RouterNavLink innerRef={ref} {...props} />
 ));
 
-const Box = styled(MuiBox)(spacing);
-const Logo = styled(Avatar)`
-  height: auto !important;
-  width: auto !important;
-`;
 const Drawer = styled(MuiDrawer)`
   border-right: 0;
 
@@ -62,19 +55,17 @@ const Items = styled.div`
 `;
 
 const Brand = styled(ListItem)`
-  font-size: ${(props) => props.theme.typography.h5.fontSize};
-  font-weight: ${(props) => props.theme.typography.fontWeightMedium};
-  color: ${(props) => props.theme.sidebar.header.color};
   background-color: ${(props) => props.theme.sidebar.header.background};
-  font-family: ${(props) => props.theme.typography.fontFamily};
-  min-height: 56px;
-  padding-left: ${(props) => props.theme.spacing(6)}px;
-  padding-right: ${(props) => props.theme.spacing(6)}px;
+  color: ${(props) => props.theme.sidebar.header.color};
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 64px;
+  padding-left: ${(props) => props.theme.spacing(3)}px;
+  padding-right: ${(props) => props.theme.spacing(3)}px;
+  padding-top: ${(props) => props.theme.spacing(0.5)}px;
+  padding-bottom: ${(props) => props.theme.spacing(0.5)}px;
   cursor: default;
-
-  ${(props) => props.theme.breakpoints.up("sm")} {
-    min-height: 64px;
-  }
 
   &:hover {
     background-color: ${(props) => props.theme.sidebar.header.background};
@@ -133,11 +124,6 @@ const CategoryIconMore = styled(ExpandMore)`
   color: ${(props) => rgba(props.theme.sidebar.color, 0.5)};
 `;
 
-const Subtitle = styled.div`
-  color: #4aa5ff;
-  font-weight: bold;
-  font-size: 12px;
-`;
 
 const Link = styled(ListItem)`
   padding-left: ${(props) => props.theme.spacing(15)}px;
@@ -199,7 +185,6 @@ const CategoryBadge = styled(LinkBadge)`
 const SidebarCategory = ({
   name,
   icon,
-  classes,
   isOpen,
   isCollapsable,
   badge,
@@ -226,8 +211,14 @@ const SidebarLink = ({ name, to, badge }) => (
   </Link>
 );
 
-const Sidebar = ({ classes, staticContext, location, ...rest }) => {
+const Sidebar = ({ location, ...rest }) => {
   const { t } = useTranslation();
+  
+  // Dynamic branding based on language
+  const currentLanguage = i18next.language;
+  const isHebrew = currentLanguage === 'he';
+  
+  const logoImage = isHebrew ? LogoImageHe : LogoImageEn;
 
   const initOpenRoutes = () => {
     /* Open collapse element that matches current url */
@@ -267,13 +258,18 @@ const Sidebar = ({ classes, staticContext, location, ...rest }) => {
     <Drawer variant="permanent" {...rest}>
       <Brand>
         <Link button component={NavLink} exact to={DASHBOARD_ROOT}>
-          <Logo alt="Logo" src={LogoImage} />
-          <Box ml={1}>
-            <b>BNEI BARUCH</b>
-            <Subtitle>VIRTUAL HOME</Subtitle>
-          </Box>
+          <img
+            src={logoImage}
+            alt="Bnei Baruch Logo"
+            style={{
+              width: "180px",
+              height: "auto",
+              maxHeight: "60px",
+            }}
+          />
         </Link>
       </Brand>
+
       <Scrollbar>
         <List disablePadding>
           <Items>

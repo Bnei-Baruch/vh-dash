@@ -60,8 +60,8 @@ const App = ({ theme }) => {
   return (
     <Auth>
       <Helmet
-        titleTemplate="%s | Our Virtual Home"
-        defaultTitle="Our Virtual Home"
+        titleTemplate="%s | Kabbalah Community"
+        defaultTitle="Kabbalah Community"
       />
       <StylesProvider jss={jss}>
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
