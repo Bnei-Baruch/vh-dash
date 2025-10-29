@@ -4,8 +4,8 @@ import { darken, rgba } from "polished";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 import { NavLink as RouterNavLink, withRouter } from "react-router-dom";
-import LogoImageEn from "../asset/logo/en-logo.png";
-import LogoImageHe from "../asset/logo/heb-logo.png";
+import LogoImageEn from "../asset/logo/kc-en-logo-light.png";
+import LogoImageHe from "../asset/logo/kc-heb-logo-light.png";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import "../vendor/perfect-scrollbar.css";
 
