@@ -1,4 +1,4 @@
-FROM node:21 as builder
+FROM node:24 as builder
 
 ARG PUBLIC_URL=""
 ARG REACT_APP_COMMIT_SHA="dynamic"
