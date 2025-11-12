@@ -7,6 +7,7 @@ import {
   REQUEST_HEARTBEAT,
   RECEIVE_HEARTBEAT,
   CHANGE_LANGUAGE,
+  CHANGE_STREAMING_MODE,
 } from "../constants";
 
 const API_URL = "https://kab.tv/live/api/";
@@ -30,6 +31,14 @@ export const changeVolume = (volume) => {
   return {
     type: CHANGE_VOLUME,
     volume: volume,
+  };
+};
+
+export const changeStreamingMode = (mode) => {
+  localStorage.setItem("live.streamingMode", mode);
+  return {
+    type: CHANGE_STREAMING_MODE,
+    mode: mode,
   };
 };
 
