@@ -16,11 +16,9 @@ import {
 import {
   Close as CloseIcon,
   ExpandMore as ExpandMoreIcon,
-  Description as DescriptionIcon,
   School as SchoolIcon,
 } from "@material-ui/icons";
 import { useTranslation } from "react-i18next";
-import axios from "axios";
 import styled from "styled-components";
 
 const useStyles = makeStyles((theme) => ({
@@ -122,31 +120,18 @@ const HomerLimud = ({ open, onClose }) => {
     setError(null);
     
           try {
-        // const response = await axios.get(window.APP_CONFIG.STUDY_MATERIALS_API_URL);
-        //  const response = await axios.get('https://stmat.kab.sh/api/units');
-        //  console.log("Study Materials API response:", response.data);
-        //  setMaterials(response.data.materials || []);
-      
-        // Using fetch instead of axios because the external domain (stmat.kab.sh) 
-        // doesn't support CORS preflight requests with Authorization headers
-        const response = await fetch(window.APP_CONFIG.STUDY_MATERIALS_API_URL);
+      const response = await fetch(window.APP_CONFIG.STUDY_MATERIALS_API_URL);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
-      console.log("Study Materials API response:", data);
       setMaterials(data || []);
     } catch (err) {
-      console.error("Error fetching study materials:", err);
       setError(t("Dashboard.BroadcastArea.HomerLimud.errorLoading"));
       setMaterials([]);
     } finally {
       setLoading(false);
     }
-  };
-
-  const handleMaterialClick = (url) => {
-    window.open(url, "_blank", "noopener,noreferrer");
   };
 
   return (
