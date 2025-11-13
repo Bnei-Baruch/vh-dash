@@ -43,7 +43,10 @@ const Auth = (props) => {
             profile,
           });
         });
-      });
+      }).catch((err) => {
+        console.error("Keycloak initialization failed:", err);
+        setAuth({ keycloak, authenticated: false });
+      })  ;
   }, [dispatch]);
 
   if (auth.keycloak) {

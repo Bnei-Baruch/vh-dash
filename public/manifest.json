@@ -1,11 +1,16 @@
 {
-  "short_name": "Virtual Home",
-  "name": "Virtual Home",
+  "short_name": "Kabbalah Community",
+  "name": "Kabbalah Community",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "apple-icon.png",
+      "type": "image/png",
+      "sizes": "180x180"
     }
   ],
   "start_url": ".",
