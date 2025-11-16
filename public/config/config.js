@@ -6,5 +6,5 @@ window.APP_CONFIG = {
         url: 'https://auth.2serv.eu/auth/',
         clientId: 'membership_pay_dev'
     },
-
+    STUDY_MATERIALS_API_URL: "https://stmat.kab.sh/api/units"
 };
