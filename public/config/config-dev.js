@@ -1,13 +1,25 @@
+// staging
+// window.APP_CONFIG = {
+//   PROFILE_URL: "https://api.eurokab.info/profile/v1/profile",
+//   VH_BASE_URL: 'http://eurokab.info',
+//   VH_API_BASE_URL: 'https://api.eurokab.info',
+//   KEYCLOAK_CONFIG: {
+//     realm: "master",
+//     url: "https://auth.2serv.eu/auth/",
+//     clientId: "membership_pay_dev",
+//   }, 
+//   GLASSIX_API_KEY: 'glassix-api-key
+// };
+
+// production
 window.APP_CONFIG = {
-    BASE_STATIC_PATH: "/static",
-    PROFILE_URL: "https://api.eurokab.info/profile/v1/profile",
-    KEYCLOAK_URL: "https://api.eurokab.info/",
-    VH_BASE_URL: "https://eurokab.info",
-    VH_API_BASE_URL: "https://api.eurokab.info",
+    PROFILE_URL: "https://api.kli.one/profile/v1/profile",
+    VH_BASE_URL: 'https://kli.one',
+    VH_API_BASE_URL: 'https://api.kli.one',
     KEYCLOAK_CONFIG: {
-        realm: 'master',
-        url: 'https://auth.2serv.eu/auth/',
-        clientId: 'membership_pay_dev'
+        realm: "main",
+        url: "https://accounts.kab.info/auth/",
+        clientId: "membership_pay",
     },
-    isMembershipV2: true,
+    GLASSIX_API_KEY: 'glassix-api-key'
 };
