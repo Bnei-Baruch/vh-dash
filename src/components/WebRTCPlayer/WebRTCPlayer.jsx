@@ -8,6 +8,8 @@ import mqtt from "../../shared/mqtt-client";
 import { keycloakData } from "../../redux/selectors/user";
 import log from "loglevel";
 
+log.setLevel("info");
+
 const useStyles = makeStyles({
   container: {
     width: "100%",
@@ -47,17 +49,24 @@ const WebRTCPlayer = ({ language, onError }) => {
   const [errorMessage, setErrorMessage] = useState(null);
   const janusStreamRef = useRef(null);
   const mqttInitializedRef = useRef(false);
+  const initializedRef = useRef(false);
 
   const keycloak = useSelector(keycloakData);
   console.log("[WebRTCPlayer] keycloak:", keycloak);
 
   // Initialize MQTT and JanusStream
   useEffect(() => {
+    // Only run once on mount
+    if (initializedRef.current) {
+      return;
+    }
     
     if (!keycloak || !keycloak.subject) {
       log.warn("[WebRTCPlayer] Keycloak not available");
       return;
     }
+
+    initializedRef.current = true;
 
     let isMounted = true;
     let timeoutId = null;
@@ -149,11 +158,13 @@ const WebRTCPlayer = ({ language, onError }) => {
               } else if (reconnected) {
                 log.info("[WebRTCPlayer] MQTT reconnected");
                 if (timeoutId) clearTimeout(timeoutId);
+                mqtt.watch();
                 resolve();
               } else {
                 // First connection
                 if (timeoutId) clearTimeout(timeoutId);
                 log.info("[WebRTCPlayer] MQTT connected successfully");
+                mqtt.watch();
                 resolve();
               }
             });
@@ -206,12 +217,14 @@ const WebRTCPlayer = ({ language, onError }) => {
         stream.setStreamIds(streamIds.video, streamIds.audio);
         
         stream.onInitializedCallback(() => {
+          if (!isMounted) return;
           setConnectionStatus("connected");
           setErrorMessage(null);
           log.info("[WebRTCPlayer] Stream initialized");
         });
 
         stream.onErrorCallback((error) => {
+          if (!isMounted) return;
           setConnectionStatus("error");
           setErrorMessage(error.message || "Stream error occurred");
           log.error("[WebRTCPlayer] Stream error:", error);
@@ -227,8 +240,8 @@ const WebRTCPlayer = ({ language, onError }) => {
         stream.initStreaming(serverConfig.server);
 
       } catch (error) {
-        if (!isMounted) return;
         log.error("[WebRTCPlayer] Initialization error:", error);
+        if (!isMounted) return;
         setConnectionStatus("error");
         setErrorMessage(error.message || "Failed to initialize streaming");
         if (onError) {
@@ -255,7 +268,8 @@ const WebRTCPlayer = ({ language, onError }) => {
         janusStreamRef.current = null;
       }
     };
-  }, [keycloak, onError]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // Run only once on mount
 
   // Handle language changes
   useEffect(() => {
