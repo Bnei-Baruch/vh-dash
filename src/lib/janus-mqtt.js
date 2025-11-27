@@ -29,6 +29,10 @@ export class JanusMqtt {
     console.log('[janus-mqtt] Server:', this.srv);
     console.log('[janus-mqtt] MQTT client exists:', !!mqtt.mq);
     console.log('[janus-mqtt] MQTT connected:', mqtt.isConnected);
+    console.log('[janus-mqtt] Subscribing to topics:');
+    console.log('  - rxTopic (user-specific):', this.rxTopic + "/" + this.user.id);
+    console.log('  - rxTopic (general):', this.rxTopic);
+    console.log('  - stTopic (status):', this.stTopic);
     
     this.token = token
     mqtt.sub(this.rxTopic + "/" + this.user.id, 0);
@@ -315,10 +319,11 @@ export class JanusMqtt {
       console.log("[janus-mqtt] Janus Server - " + this.srv + " - Online");
       console.log("[janus-mqtt] Status message:", json);
       if(typeof this.connect === "function") {
-        console.log("[janus-mqtt] Calling connect() function");
+        console.log("[janus-mqtt] Calling connect() function to create session");
         this.connect()
       } else {
-        console.warn("[janus-mqtt] connect() is not a function!");
+        console.warn("[janus-mqtt] connect() is not a function! Cannot create session.");
+        console.warn("[janus-mqtt] This means the session creation promise was not set up correctly.");
       }
       if(typeof this.onStatus === "function")
         this.onStatus(this.srv, "online")

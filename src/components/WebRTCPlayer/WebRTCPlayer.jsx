@@ -49,36 +49,144 @@ const WebRTCPlayer = ({ language, onError }) => {
   const mqttInitializedRef = useRef(false);
 
   const keycloak = useSelector(keycloakData);
+  console.log("[WebRTCPlayer] keycloak:", keycloak);
 
   // Initialize MQTT and JanusStream
   useEffect(() => {
+    
     if (!keycloak || !keycloak.subject) {
       log.warn("[WebRTCPlayer] Keycloak not available");
       return;
     }
 
+    let isMounted = true;
+    let timeoutId = null;
+    let intervalId = null;
+
     const initStreaming = async () => {
+      console.log("[WebRTCPlayer] initStreaming START");
       try {
+        // Check and refresh token if expired
+        if (keycloak.isTokenExpired && keycloak.isTokenExpired()) {
+          log.info("[WebRTCPlayer] Token expired, refreshing...");
+          try {
+            await keycloak.updateToken(30);
+            log.info("[WebRTCPlayer] Token refreshed successfully");
+          } catch (error) {
+            log.error("[WebRTCPlayer] Failed to refresh token:", error);
+            if (isMounted) {
+              setConnectionStatus("error");
+              setErrorMessage("Failed to refresh authentication token");
+            }
+            return;
+          }
+        }
+
+        // Get fresh token after potential refresh
+        const token = keycloak.token;
+        if (!token) {
+          log.error("[WebRTCPlayer] No token available");
+          if (isMounted) {
+            setConnectionStatus("error");
+            setErrorMessage("No authentication token available");
+          }
+          return;
+        }
+
+        log.info("[WebRTCPlayer] Token available:", token ? "***" : "(empty)");
+        log.info("[WebRTCPlayer] User ID:", keycloak.subject);
+        log.info("[WebRTCPlayer] User email:", keycloak.profile?.email || "(not available)");
+
         // Format user object for Janus
         const user = {
           id: keycloak.subject,
           email: keycloak.profile?.email || keycloak.subject,
           username: keycloak.profile?.username || keycloak.subject,
-          token: keycloak.token,
+          token: token,
         };
 
         // Initialize MQTT first if not already done
-        if (!mqttInitializedRef.current) {
-          mqtt.setToken(keycloak.token);
-          mqtt.init(user, (reconnected, disconnected) => {
-            if (disconnected) {
-              setConnectionStatus("disconnected");
-              setErrorMessage("Lost connection to server");
-            } else if (reconnected) {
-              log.info("[WebRTCPlayer] MQTT reconnected");
-            }
+        // Check if MQTT is actually connected, not just initialized
+        const isMqttReallyConnected = mqtt.isConnected && mqtt.mq && mqtt.mq.connected;
+        log.info("[WebRTCPlayer] MQTT state check:", {
+          mqttInitialized: mqttInitializedRef.current,
+          mqttIsConnected: mqtt.isConnected,
+          mqttClientExists: !!mqtt.mq,
+          mqttClientConnected: mqtt.mq?.connected,
+          isMqttReallyConnected: isMqttReallyConnected
+        });
+        
+        if (!mqttInitializedRef.current || !isMqttReallyConnected) {
+          mqtt.setToken(token);
+          log.info("[WebRTCPlayer] Token set for MQTT");
+          log.info("[WebRTCPlayer] Current MQTT connection state:", mqtt.isConnected);
+          
+          // Always try to initialize MQTT, even if isConnected is true
+          // This ensures we have a fresh connection with the current token
+          log.info("[WebRTCPlayer] Initializing MQTT connection...");
+          log.info("[WebRTCPlayer] Calling mqtt.init() with user:", { id: user.id, email: user.email });
+          
+          // Wait for MQTT connection before proceeding
+          await new Promise((resolve, reject) => {
+            timeoutId = setTimeout(() => {
+              if (isMounted) {
+                log.error("[WebRTCPlayer] MQTT connection timeout");
+                reject(new Error("MQTT connection timeout - check your network and MQTT server configuration"));
+              }
+            }, 10000); // 10 second timeout
+
+            log.info("[WebRTCPlayer] About to call mqtt.init()");
+            mqtt.init(user, (reconnected, disconnected) => {
+              log.info("[WebRTCPlayer] MQTT init callback called:", { reconnected, disconnected });
+              if (!isMounted) return;
+              
+              if (disconnected) {
+                if (timeoutId) clearTimeout(timeoutId);
+                log.error("[WebRTCPlayer] MQTT connection failed - Not authorized. Check token and MQTT server configuration.");
+                setConnectionStatus("disconnected");
+                setErrorMessage("Lost connection to MQTT server - Authentication failed");
+                reject(new Error("MQTT connection failed - Not authorized"));
+              } else if (reconnected) {
+                log.info("[WebRTCPlayer] MQTT reconnected");
+                if (timeoutId) clearTimeout(timeoutId);
+                resolve();
+              } else {
+                // First connection
+                if (timeoutId) clearTimeout(timeoutId);
+                log.info("[WebRTCPlayer] MQTT connected successfully");
+                resolve();
+              }
+            });
+            log.info("[WebRTCPlayer] mqtt.init() called, waiting for callback...");
           });
+          
           mqttInitializedRef.current = true;
+        } else if (!mqtt.isConnected) {
+          // Update token in case it was refreshed
+          mqtt.setToken(token);
+          
+          // MQTT was initialized but not connected - wait for connection
+          await new Promise((resolve, reject) => {
+            timeoutId = setTimeout(() => {
+              if (isMounted) {
+                log.error("[WebRTCPlayer] MQTT connection timeout (waiting for existing connection)");
+                reject(new Error("MQTT connection timeout"));
+              }
+            }, 10000);
+
+            intervalId = setInterval(() => {
+              if (!isMounted) {
+                if (intervalId) clearInterval(intervalId);
+                if (timeoutId) clearTimeout(timeoutId);
+                return;
+              }
+              if (mqtt.isConnected) {
+                if (intervalId) clearInterval(intervalId);
+                if (timeoutId) clearTimeout(timeoutId);
+                resolve();
+              }
+            }, 100);
+          });
         }
 
         // Fetch streaming server config
@@ -119,6 +227,7 @@ const WebRTCPlayer = ({ language, onError }) => {
         stream.initStreaming(serverConfig.server);
 
       } catch (error) {
+        if (!isMounted) return;
         log.error("[WebRTCPlayer] Initialization error:", error);
         setConnectionStatus("error");
         setErrorMessage(error.message || "Failed to initialize streaming");
@@ -132,6 +241,15 @@ const WebRTCPlayer = ({ language, onError }) => {
 
     // Cleanup on unmount
     return () => {
+      isMounted = false;
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+        timeoutId = null;
+      }
+      if (intervalId) {
+        clearInterval(intervalId);
+        intervalId = null;
+      }
       if (janusStreamRef.current) {
         janusStreamRef.current.destroy();
         janusStreamRef.current = null;

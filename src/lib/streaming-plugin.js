@@ -42,10 +42,18 @@ export class StreamingPlugin extends EventEmitter {
   watch (id, restart = false) {
     this.streamId = id
     const body = { request: 'watch', id, restart}
+    log.info(`[streaming] Attempting to watch stream ID: ${id}, restart: ${restart}`);
     return new Promise((resolve, reject) => {
       this.transaction('message', { body }, 'event').then((param) => {
-        log.info("[streaming] watch: ", param)
+        log.info("[streaming] watch response received: ", param)
         const {session_id, json } = param
+        
+        // Log if there's an error in the response
+        if (json?.error) {
+          log.error(`[streaming] Janus returned error for stream ID ${id}:`, json.error);
+          reject(new Error(`Stream ID ${id} error: ${json.error.message || json.error.reason || JSON.stringify(json.error)}`));
+          return;
+        }
 
         let audioTransceiver = null, videoTransceiver = null;
         let transceivers = this.pc.getTransceivers();

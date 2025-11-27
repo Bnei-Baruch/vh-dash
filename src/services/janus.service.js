@@ -44,6 +44,7 @@ class JanusService {
             { timeout: TIMEOUT }
           );
           console.log(`[janus-service] Successfully fetched from: ${endpoint}`);
+          console.log(`[janus-service] Server config response:`, JSON.stringify(response.data, null, 2));
           return response.data;
         } catch (err) {
           lastError = err;
