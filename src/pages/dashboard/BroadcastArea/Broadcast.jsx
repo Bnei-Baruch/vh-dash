@@ -145,7 +145,7 @@ export default function Broadcast() {
                         return (
                           <MenuItem value={keys} key={keys}>
                             <img
-                              src={`/static/img/flags/${getCountryCode(keys)}.png`}
+                              src={`${process.env.PUBLIC_URL}/static/img/flags/${getCountryCode(keys)}.png`}
                               width="15"
                               alt={"map"}
                             />
