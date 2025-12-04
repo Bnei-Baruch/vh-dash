@@ -153,7 +153,7 @@ class JanusStream {
    */
   getDefaultConfig = (serverName) => {
     // Default STUN server - can be overridden
-    const stunServer = process.env.REACT_APP_STUN_SRV_STR || "stun:stun.l.google.com:19302";
+    const stunServer = (window.APP_CONFIG && window.APP_CONFIG.STUN_SRV_STR) || "stun:stun.l.google.com:19302";
     
     return {
       server: serverName,

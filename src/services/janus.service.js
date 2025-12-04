@@ -3,17 +3,17 @@ import janusConfig from "../shared/janus-config";
 
 // Normalize API URL - remove trailing slash and add it when needed
 const getApiUrl = () => {
-  const url = process.env.REACT_APP_STRDB_BACKEND || "https://kab.tv/live/api/";
+  const url = (window.APP_CONFIG && window.APP_CONFIG.STRDB_BACKEND) || "https://kab.tv/live/api/";
   return url.endsWith('/') ? url.slice(0, -1) : url;
 };
 
 const API_URL = getApiUrl();
 const TIMEOUT = 10000;
 
-// Debug: Check if environment variables are loaded
-console.log('[janus-service] Environment variables check:');
-console.log('  REACT_APP_STRDB_BACKEND:', process.env.REACT_APP_STRDB_BACKEND || '(not set, using default)');
-console.log('  REACT_APP_JANUS_SRV_STR:', process.env.REACT_APP_JANUS_SRV_STR || '(not set)');
+// Debug: Check if configuration is loaded
+console.log('[janus-service] Configuration check:');
+console.log('  STRDB_BACKEND:', (window.APP_CONFIG && window.APP_CONFIG.STRDB_BACKEND) || '(not set, using default)');
+console.log('  JANUS_SRV_STR:', (window.APP_CONFIG && window.APP_CONFIG.JANUS_SRV_STR) || '(not set)');
 console.log('  API_URL (resolved):', API_URL);
 
 /**
@@ -73,11 +73,11 @@ class JanusService {
    * @returns {Object} Default server config
    */
   getDefaultServerConfig() {
-    // REACT_APP_JANUS_SRV_STR can be either:
+    // JANUS_SRV_STR can be either:
     // 1. A gateway name (e.g., "str") - used for MQTT topics
     // 2. A URL (e.g., "janus.example.com") - used for Janus connection
     // If it looks like a URL (contains dots or starts with http), extract name from it
-    const janusSrvStr = process.env.REACT_APP_JANUS_SRV_STR || "str";
+    const janusSrvStr = (window.APP_CONFIG && window.APP_CONFIG.JANUS_SRV_STR) || "str";
     
     // If it's a URL, use "str" as default gateway name (for MQTT topics)
     // Otherwise, use it as the gateway name

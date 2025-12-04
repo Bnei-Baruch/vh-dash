@@ -5,16 +5,16 @@ import log from "loglevel";
 const mqttTimeout = 30 // Seconds
 const mqttKeepalive = 10 // Seconds
 
-// Environment variables - should be set in .env
-const MQTT_URL = process.env.REACT_APP_MQTT_URL || "";
-const MSG_URL = process.env.REACT_APP_MSG_URL || "";
+// Configuration from window.APP_CONFIG
+const MQTT_URL = (window.APP_CONFIG && window.APP_CONFIG.MQTT_URL) || "";
+const MSG_URL = (window.APP_CONFIG && window.APP_CONFIG.MSG_URL) || "";
 // Try MSG_URL first, but if it fails, fallback to MQTT_URL
 // This allows us to try msg.kab.info if msg.kab.sh doesn't work
 
-// Debug: Check if environment variables are loaded
-console.log('[mqtt-client] Environment variables check:');
-console.log('  REACT_APP_MQTT_URL:', process.env.REACT_APP_MQTT_URL || '(not set)');
-console.log('  REACT_APP_MSG_URL:', process.env.REACT_APP_MSG_URL || '(not set)');
+// Debug: Check if configuration is loaded
+console.log('[mqtt-client] Configuration check:');
+console.log('  MQTT_URL:', (window.APP_CONFIG && window.APP_CONFIG.MQTT_URL) || '(not set)');
+console.log('  MSG_URL:', (window.APP_CONFIG && window.APP_CONFIG.MSG_URL) || '(not set)');
 console.log('  MQTT_URL (resolved):', MQTT_URL || '(empty)');
 console.log('  MSG_URL (resolved):', MSG_URL || '(empty)');
 

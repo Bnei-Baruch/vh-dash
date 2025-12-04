@@ -1,9 +1,13 @@
 import axios from "axios";
 
 export const getMembershipStatusV2 = (kc_id) => {
-
-    if (process.env.NODE_ENV === "development" || window.location.hostname === "localhost") {
-        console.warn("[membership.service] Development mode: Returning mock active membership");
+    // Check if mock membership is enabled via config
+    const enableMockMembership = (window.APP_CONFIG && window.APP_CONFIG.ENABLE_MOCK_MEMBERSHIP === "true") || 
+                                  process.env.NODE_ENV === "development" || 
+                                  window.location.hostname === "localhost";
+    
+    if (enableMockMembership) {
+        console.warn("[membership.service] Mock membership enabled: Returning mock active membership");
         return Promise.resolve({ active: true });
     }
     

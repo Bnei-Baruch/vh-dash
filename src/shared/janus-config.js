@@ -59,8 +59,8 @@ class JanusConfig {
    * @param {string} gatewayName 
    */
   getDefaultConfig(gatewayName) {
-    const serverUrl = process.env.REACT_APP_JANUS_SRV_STR || "";
-    const stunServer = process.env.REACT_APP_STUN_SRV_STR || DEFAULT_STUN_SERVER;
+    const serverUrl = (window.APP_CONFIG && window.APP_CONFIG.JANUS_SRV_STR) || "";
+    const stunServer = (window.APP_CONFIG && window.APP_CONFIG.STUN_SRV_STR) || DEFAULT_STUN_SERVER;
 
     return {
       name: gatewayName || "str",
@@ -103,3 +103,4 @@ class JanusConfig {
 const defaultJanusConfig = new JanusConfig();
 
 export default defaultJanusConfig;
+
