@@ -129,8 +129,11 @@ export class StreamingPlugin extends EventEmitter {
     const body = { request: 'switch', id }
 
     return this.transaction('message', { body }, 'event').catch((error) => {
-      log.error('[streaming] StreamingJanusPlugin, cannot switch stream', error)
-      captureException(error, { context: 'StreamingPlugin.switch', id });
+      // Log as warning instead of error - switch failures are often recoverable
+      log.warn('[streaming] StreamingJanusPlugin, cannot switch stream', error)
+      // Don't capture as exception - switch failures are expected in some cases
+      // (e.g., when stream is paused or connection is temporarily unstable)
+      // captureException(error, { context: 'StreamingPlugin.switch', id });
       throw error
     })
   }

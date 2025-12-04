@@ -175,15 +175,22 @@ export class JanusMqtt {
     const transactionId = randomString(12);
 
     return new Promise((resolve, reject) => {
+      let timeoutId = null;
+      
       if (timeoutMs) {
-        setTimeout(() => {
-          const error = new Error('[janus] Transaction timed out after ' + timeoutMs + ' ms');
-          captureException(error, { type, payload, timeoutMs });
-          reject(error)
-        }, timeoutMs)
+        timeoutId = setTimeout(() => {
+          // Check if transaction was already resolved
+          if (this.transactions[transactionId]) {
+            const error = new Error('[janus] Transaction timed out after ' + timeoutMs + ' ms');
+            captureException(error, { type, payload, timeoutMs });
+            delete this.transactions[transactionId];
+            reject(error);
+          }
+        }, timeoutMs);
       }
 
       if (!this.isConnected) {
+        if (timeoutId) clearTimeout(timeoutId);
         const error = new Error('[janus] Janus is not connected');
         captureException(error, { type, payload });
         reject(error)
@@ -201,7 +208,25 @@ export class JanusMqtt {
         request.user = this.user
       }
 
-      this.transactions[request.transaction] = {resolve, reject, replyType, request}
+      // Wrap resolve/reject to clear timeout
+      const wrappedResolve = (value) => {
+        if (timeoutId) clearTimeout(timeoutId);
+        resolve(value);
+      };
+      
+      const wrappedReject = (error) => {
+        if (timeoutId) clearTimeout(timeoutId);
+        reject(error);
+      };
+
+      this.transactions[request.transaction] = {
+        resolve: wrappedResolve,
+        reject: wrappedReject,
+        replyType,
+        request,
+        timeoutId // Store timeout ID for cleanup
+      };
+      
       mqtt.send(JSON.stringify(request), false, this.txTopic, this.rxTopic + "/" + this.user.id, this.user)
     })
   }
@@ -286,6 +311,10 @@ export class JanusMqtt {
   _cleanupTransactions () {
     Object.keys(this.transactions).forEach((transactionId) => {
       const transaction = this.transactions[transactionId]
+      // Clear timeout if exists
+      if (transaction.timeoutId) {
+        clearTimeout(transaction.timeoutId);
+      }
       if (transaction.reject) {
         transaction.reject()
       }
@@ -300,7 +329,7 @@ export class JanusMqtt {
 
     mqtt.mq.removeListener(this.srv, this.onMessage);
     if(this.user.mit) mqtt.mq.removeListener(this.user.mit, this.onMessage);
-    mqtt.mq.removeListener(this.sessionId, this.onMessage);
+    if(this.sessionId) mqtt.mq.removeListener(this.sessionId, this.onMessage);
   }
 
   onMessage(message, tD) {

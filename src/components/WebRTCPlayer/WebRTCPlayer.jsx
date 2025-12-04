@@ -284,10 +284,34 @@ const WebRTCPlayer = ({ language, onError }) => {
     );
   }, [language]);
 
-  // Attach video element
+  // Attach video element and sync audio with video controls
   useEffect(() => {
     if (janusStreamRef.current && videoRef.current) {
       janusStreamRef.current.attachVideoStream(videoRef.current);
+      
+      const videoElement = videoRef.current;
+      
+      // Sync audio with video play/pause
+      const handlePlay = () => {
+        if (janusStreamRef.current) {
+          janusStreamRef.current.playAudio();
+        }
+      };
+      
+      const handlePause = () => {
+        if (janusStreamRef.current) {
+          janusStreamRef.current.pauseAudio();
+        }
+      };
+      
+      videoElement.addEventListener('play', handlePlay);
+      videoElement.addEventListener('pause', handlePause);
+      
+      // Cleanup listeners
+      return () => {
+        videoElement.removeEventListener('play', handlePlay);
+        videoElement.removeEventListener('pause', handlePause);
+      };
     }
   }, [connectionStatus]);
 

@@ -288,7 +288,21 @@ class JanusStream {
     if (this.janus) {
       if (videoChanged && videoStreamId) {
         if (this.videoJanusStream) {
-          this.videoJanusStream.switch(videoStreamId);
+          this.videoJanusStream.switch(videoStreamId).catch((error) => {
+            console.warn("[janus-stream] Video switch failed, reinitializing video stream:", error);
+            // If switch fails, reinitialize the stream
+            this.janus.detach(this.videoJanusStream).then(() => {
+              this.videoJanusStream = null;
+              this.videoMediaStream = null;
+              this.initVideoStream();
+            }).catch((detachError) => {
+              console.error("[janus-stream] Error detaching video stream:", detachError);
+              // Force reinitialize even if detach fails
+              this.videoJanusStream = null;
+              this.videoMediaStream = null;
+              this.initVideoStream();
+            });
+          });
         } else {
           this.initVideoStream();
         }
@@ -303,7 +317,28 @@ class JanusStream {
 
       if (audioChanged && audioStreamId) {
         if (this.audioJanusStream) {
-          this.audioJanusStream.switch(audioStreamId);
+          // Try switch first - it's faster and less disruptive
+          this.audioJanusStream.switch(audioStreamId).catch((error) => {
+            console.warn("[janus-stream] Audio switch failed, will retry with reinitialize:", error);
+            // If switch fails, wait a bit and then reinitialize
+            // This gives the connection time to stabilize
+            setTimeout(() => {
+              if (this.audioJanusStream && this.janus) {
+                console.log("[janus-stream] Reinitializing audio stream after switch failure");
+                this.janus.detach(this.audioJanusStream).then(() => {
+                  this.audioJanusStream = null;
+                  this.audioMediaStream = null;
+                  this.initAudioStream();
+                }).catch((detachError) => {
+                  console.error("[janus-stream] Error detaching audio stream:", detachError);
+                  // Force reinitialize even if detach fails
+                  this.audioJanusStream = null;
+                  this.audioMediaStream = null;
+                  this.initAudioStream();
+                });
+              }
+            }, 500); // Wait 500ms before reinitializing
+          });
         } else {
           this.initAudioStream();
         }
@@ -363,40 +398,126 @@ class JanusStream {
   };
 
   /**
+   * Pause audio playback
+   */
+  pauseAudio = () => {
+    if (this.audioElement) {
+      this.audioElement.pause();
+      console.log("[janus-stream] Audio paused");
+    }
+  };
+
+  /**
+   * Play audio playback
+   */
+  playAudio = () => {
+    if (this.audioElement) {
+      this.audioElement.play().catch(error => {
+        console.error("[janus-stream] Error playing audio", error);
+      });
+      console.log("[janus-stream] Audio playing");
+    }
+  };
+
+  /**
    * Clean up resources
    */
   clean() {
-    if (this.janus) {
-      if (this.videoElement) {
+    console.log("[janus-stream] clean() called - cleaning up all resources");
+    
+    // Stop and cleanup video element
+    if (this.videoElement) {
+      if (this.videoElement.srcObject) {
+        // Stop all tracks in the video stream
+        const videoStream = this.videoElement.srcObject;
+        if (videoStream && videoStream.getTracks) {
+          videoStream.getTracks().forEach(track => {
+            track.stop();
+            console.log("[janus-stream] Stopped video track:", track.kind, track.id);
+          });
+        }
         this.videoElement.srcObject = null;
       }
-      if (this.audioElement) {
+      this.videoElement.pause();
+      this.videoElement = null;
+    }
+
+    // Stop and cleanup audio element
+    if (this.audioElement) {
+      // Stop the audio element playback
+      this.audioElement.pause();
+      if (this.audioElement.srcObject) {
+        // Stop all tracks in the audio stream
+        const audioStream = this.audioElement.srcObject;
+        if (audioStream && audioStream.getTracks) {
+          audioStream.getTracks().forEach(track => {
+            track.stop();
+            console.log("[janus-stream] Stopped audio track:", track.kind, track.id);
+          });
+        }
         this.audioElement.srcObject = null;
       }
+      // Reset audio element properties
+      this.audioElement.currentTime = 0;
+    }
 
-      if (this.videoJanusStream) {
-        this.janus.detach(this.videoJanusStream);
+    // Stop media streams directly if they exist
+    if (this.videoMediaStream) {
+      if (this.videoMediaStream.getTracks) {
+        this.videoMediaStream.getTracks().forEach(track => {
+          track.stop();
+          console.log("[janus-stream] Stopped video media stream track:", track.kind, track.id);
+        });
       }
-      if (this.audioJanusStream) {
-        this.janus.detach(this.audioJanusStream);
-      }
-
-      this.videoJanusStream = null;
       this.videoMediaStream = null;
-      this.audioJanusStream = null;
+    }
+
+    if (this.audioMediaStream) {
+      if (this.audioMediaStream.getTracks) {
+        this.audioMediaStream.getTracks().forEach(track => {
+          track.stop();
+          console.log("[janus-stream] Stopped audio media stream track:", track.kind, track.id);
+        });
+      }
       this.audioMediaStream = null;
     }
+
+    // Detach Janus plugins (this will close peer connections)
+    if (this.janus) {
+      if (this.videoJanusStream) {
+        try {
+          this.janus.detach(this.videoJanusStream);
+          console.log("[janus-stream] Detached video Janus stream");
+        } catch (error) {
+          console.error("[janus-stream] Error detaching video stream:", error);
+        }
+      }
+      if (this.audioJanusStream) {
+        try {
+          this.janus.detach(this.audioJanusStream);
+          console.log("[janus-stream] Detached audio Janus stream");
+        } catch (error) {
+          console.error("[janus-stream] Error detaching audio stream:", error);
+        }
+      }
+    }
+
+    this.videoJanusStream = null;
+    this.audioJanusStream = null;
+    console.log("[janus-stream] clean() completed");
   }
 
   /**
    * Destroy Janus connection
    */
   destroy() {
+    console.log("[janus-stream] destroy() called - cleaning up all resources");
     this.clean();
     if (this.janus) {
       this.janus.destroy();
       this.janus = null;
     }
+    console.log("[janus-stream] destroy() completed");
   }
 
   /**
