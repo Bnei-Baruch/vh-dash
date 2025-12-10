@@ -2,10 +2,10 @@ import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { Box, makeStyles, Typography } from "@material-ui/core";
 import "webrtc-adapter"; // Browser compatibility for WebRTC
-import JanusStream from "../../shared/janus-stream";
-import janusService from "../../services/janus.service";
-import mqtt from "../../shared/mqtt-client";
-import { keycloakData } from "../../redux/selectors/user";
+import JanusStream from "../../../shared/janus-stream";
+import janusService from "../../../services/janus.service";
+import mqtt from "../../../shared/mqtt-client";
+import { keycloakData } from "../../../redux/selectors/user";
 import log from "loglevel";
 
 log.setLevel("info");
@@ -406,3 +406,4 @@ const WebRTCPlayer = ({ language, onError }) => {
 };
 
 export default WebRTCPlayer;
+

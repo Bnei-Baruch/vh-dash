@@ -21,7 +21,7 @@ import axios from "axios";
 import { getCountryCode, getCustomCodeFromCoutryCode } from "../../../utils";
 import HomerLimud from "./HomerLimud";
 import { School as SchoolIcon } from "@material-ui/icons";
-import WebRTCPlayer from "../../../components/WebRTCPlayer/WebRTCPlayer";
+import WebRTCPlayer from "./WebRTCPlayer";
 import { changeStreamingMode } from "../../../redux/actions/streamActions";
 const useStyles = makeStyles((theme) => ({
   rootFirstSelect: {
