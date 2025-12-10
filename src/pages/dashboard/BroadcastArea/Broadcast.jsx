@@ -53,11 +53,23 @@ const getBroadCast = (lang) => {
     .then((res) => res.data);
 };
 
+// Initialize selectedLang from localStorage before component mounts
+const getInitialLanguage = () => {
+  const broadCastLag = localStorage.getItem("VH_BROADCAST_LANG");
+  const vhLang = localStorage.getItem("VH_LANG");
+  if (broadCastLag || vhLang) {
+    return getCustomCodeFromCoutryCode(
+      broadCastLag || vhLang.toLowerCase()
+    );
+  }
+  return "eng";
+};
+
 export default function Broadcast() {
   const classes = useStyles();
   const dispatch = useDispatch();
   const [languages, setLanguages] = React.useState([]);
-  const [selectedLang, setSelectedLang] = React.useState("eng");
+  const [selectedLang, setSelectedLang] = React.useState(getInitialLanguage);
   const [webrtcError, setWebrtcError] = React.useState(null);
   const { t } = useTranslation();
   
@@ -74,15 +86,8 @@ export default function Broadcast() {
   const getSourceURL = (lang) => {
     return `https://edge3.uk.kab.tv/live/${lang}-medium/playlist.m3u8`;
   };
+  
   React.useEffect(() => {
-    const broadCastLag = localStorage.getItem("VH_BROADCAST_LANG");
-    if (broadCastLag || localStorage.getItem("VH_LANG")) {
-      setSelectedLang(
-        getCustomCodeFromCoutryCode(
-          broadCastLag || localStorage.getItem("VH_LANG").toLowerCase()
-        )
-      );
-    }
     getBroadCast(selectedLang).then((res) => {
       if (res.Languages) {
         setLanguages(res.Languages);
