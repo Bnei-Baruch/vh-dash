@@ -242,6 +242,10 @@ class JanusStream {
         console.log("[janus-stream] Audio stream watch successful! Stream:", stream);
         this.audioMediaStream = stream;
         this.attachAudioStream_(this.audioElement, false);
+        // Update video element with combined stream (video + audio)
+        if (this.videoElement) {
+          this.attachVideoStream_(this.videoElement, this.videoElement);
+        }
         this.checkInitialized();
       }).catch((error) => {
         console.error("[janus-stream] Audio watch error - Stream ID may not exist:", this.audioStreamId);
@@ -361,10 +365,41 @@ class JanusStream {
       if (prev && next !== prev && prev.srcObject) {
         next.srcObject = prev.srcObject;
       } else if (this.videoMediaStream) {
-        next.srcObject = this.videoMediaStream;
-        next.play().catch(error => {
-          console.error("[janus-stream] Error playing video", error);
-        });
+        // Combine video and audio streams so video element has audio track
+        // This allows the volume control to work properly
+        const combinedStream = new MediaStream();
+        
+        // Add video tracks
+        if (this.videoMediaStream) {
+          this.videoMediaStream.getTracks().forEach(track => {
+            if (track.kind === 'video') {
+              combinedStream.addTrack(track);
+            }
+          });
+        }
+        
+        // Add audio tracks from audio stream
+        if (this.audioMediaStream) {
+          this.audioMediaStream.getTracks().forEach(track => {
+            if (track.kind === 'audio') {
+              combinedStream.addTrack(track);
+            }
+          });
+        }
+        
+        // If we have at least video, set the stream
+        if (combinedStream.getVideoTracks().length > 0) {
+          next.srcObject = combinedStream;
+          next.play().catch(error => {
+            console.error("[janus-stream] Error playing video", error);
+          });
+        } else {
+          // Fallback to video only if no combined stream
+          next.srcObject = this.videoMediaStream;
+          next.play().catch(error => {
+            console.error("[janus-stream] Error playing video", error);
+          });
+        }
       }
     }
   }

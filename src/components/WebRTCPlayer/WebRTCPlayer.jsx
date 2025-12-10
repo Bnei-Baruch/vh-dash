@@ -286,33 +286,81 @@ const WebRTCPlayer = ({ language, onError }) => {
 
   // Attach video element and sync audio with video controls
   useEffect(() => {
-    if (janusStreamRef.current && videoRef.current) {
-      janusStreamRef.current.attachVideoStream(videoRef.current);
-      
-      const videoElement = videoRef.current;
-      
-      // Sync audio with video play/pause
-      const handlePlay = () => {
-        if (janusStreamRef.current) {
-          janusStreamRef.current.playAudio();
-        }
-      };
-      
-      const handlePause = () => {
-        if (janusStreamRef.current) {
-          janusStreamRef.current.pauseAudio();
-        }
-      };
-      
-      videoElement.addEventListener('play', handlePlay);
-      videoElement.addEventListener('pause', handlePause);
-      
-      // Cleanup listeners
-      return () => {
-        videoElement.removeEventListener('play', handlePlay);
-        videoElement.removeEventListener('pause', handlePause);
-      };
+    // Only run when stream is ready, video element exists, and connection is established
+    if (
+      !janusStreamRef.current ||
+      !videoRef.current ||
+      connectionStatus !== "connected"
+    ) {
+      return;
     }
+  
+    const stream = janusStreamRef.current;
+    const video = videoRef.current;
+    const audio = stream.audioElement;
+  
+    if (!audio) return;
+  
+    // 1) Attach the remote video track to the video element 
+    stream.attachVideoStream(video);
+  
+    // 2) Initial sync: copy audio state → video state 
+    // Ensures the UI (video controls) represent the actual audio track
+    video.volume = audio.volume ?? 1;
+    video.muted = audio.muted ?? false;
+  
+    // 3) Sync PLAY and PAUSE (Video → Audio) 
+    // When the user presses play/pause on the video, we also control the audio track
+    const handlePlay = () => {
+      stream.playAudio();
+    };
+  
+    const handlePause = () => {
+      stream.pauseAudio();
+    };
+  
+    // 4) VIDEO volume change (Video → Audio) 
+    // User changes volume/mute in the video UI, so update the audio element + Janus API
+    const handleVideoVolumeChange = () => {
+      const vol = video.volume;
+      const muted = video.muted;
+  
+      // Prevent infinite feedback loop: only update if different
+      if (audio.volume !== vol) audio.volume = vol;
+      if (audio.muted !== muted) audio.muted = muted;
+  
+      // Update Janus stream logic
+      stream.setVolume(vol);
+      stream.setMuted(muted);
+    };
+  
+    // 5) AUDIO volume change (Audio → Video) 
+    // If Janus or the backend changes audio volume, sync UI to reflect the actual state
+    const handleAudioVolumeChange = () => {
+      if (video.volume !== audio.volume) {
+        video.volume = audio.volume;
+      }
+      if (video.muted !== audio.muted) {
+        video.muted = audio.muted;
+      }
+    };
+  
+    // Register event listeners 
+    video.addEventListener("play", handlePlay);
+    video.addEventListener("pause", handlePause);
+    video.addEventListener("volumechange", handleVideoVolumeChange);
+    audio.addEventListener("volumechange", handleAudioVolumeChange);
+  
+    // Initial sync so UI displays correct volume state 
+    handleAudioVolumeChange();
+  
+    // Cleanup on unmount 
+    return () => {
+      video.removeEventListener("play", handlePlay);
+      video.removeEventListener("pause", handlePause);
+      video.removeEventListener("volumechange", handleVideoVolumeChange);
+      audio.removeEventListener("volumechange", handleAudioVolumeChange);
+    };
   }, [connectionStatus]);
 
   const getStatusMessage = () => {
