@@ -271,6 +271,8 @@
         "noText": "Please input question",
         "successPosted": "Question successfully posted",
         "studyMaterialsButton": "Study Materials",
+        "streamingWithDelay": "Broadcast with delay",
+        "streamingWithoutDelay": "Broadcast without delay",
         "Question": {
           "title": "Send a Question",
           "label": "What is your question?",

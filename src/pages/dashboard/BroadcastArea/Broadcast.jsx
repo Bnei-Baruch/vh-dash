@@ -5,10 +5,8 @@ import {
   MenuItem,
   Select,
   Button,
-  Radio,
-  RadioGroup,
+  Switch,
   FormControlLabel,
-  FormLabel,
 } from "@material-ui/core";
 import React from "react";
 import Helmet from "react-helmet";
@@ -16,7 +14,6 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import ReactHlsPlayer from "react-hls-player";
-import PublicIcon from "@material-ui/icons/Public";
 import axios from "axios";
 import { getCountryCode, getCustomCodeFromCoutryCode } from "../../../utils";
 import HomerLimud from "./HomerLimud";
@@ -35,13 +32,12 @@ const PlayerContainer = styled.div`
   max-width: 800px;
   width: 100%;
 `;
-const WorldIcon = styled(PublicIcon)``;
 const LangugaeContainer = styled(Grid)`
   padding: 0px 20px !important;
 `;
-const LiveLang = styled.span`
-  position: relative;
-  top: -2px;
+const StudyMaterialsButton = styled(Button)`
+  white-space: nowrap;
+  min-width: fit-content;
 `;
 
 const getBroadCast = (lang) => {
@@ -101,7 +97,8 @@ export default function Broadcast() {
   };
 
   const handleStreamingModeChange = (event) => {
-    const mode = event.target.value;
+    const isWebRTC = event.target.checked;
+    const mode = isWebRTC ? "webrtc" : "hls";
     dispatch(changeStreamingMode(mode));
     setWebrtcError(null); // Clear any previous errors when switching modes
   };
@@ -133,10 +130,6 @@ export default function Broadcast() {
                   gap: 16
                 }}
               >
-                <WorldIcon />
-                <LiveLang>
-                  &nbsp; {t("Dashboard.BroadcastArea.liveLanguage")}
-                </LiveLang>
                 <span>
                   <FormControl variant="outlined">
                     <Select
@@ -161,37 +154,28 @@ export default function Broadcast() {
                     </Select>
                   </FormControl>
                 </span>
-                <Button
+                <StudyMaterialsButton
                   variant="contained"
                   color="primary"
                   startIcon={<SchoolIcon />}
                   onClick={handleHomerLimudToggle}
                 >
                   {t("Dashboard.BroadcastArea.studyMaterialsButton")}
-                </Button>
-                <span style={{ marginLeft: "20px" }}>
-                  <FormControl component="fieldset">
-                    <FormLabel component="legend" style={{ fontSize: "0.875rem", marginBottom: "8px" }}>
-                      {t("Dashboard.BroadcastArea.streamingMode") || "Streaming Mode"}
-                    </FormLabel>
-                    <RadioGroup
-                      row
-                      value={streamingMode}
+                </StudyMaterialsButton>
+                <FormControlLabel
+                  control={
+                    <Switch
+                      checked={streamingMode === "webrtc"}
                       onChange={handleStreamingModeChange}
-                    >
-                      <FormControlLabel
-                        value="hls"
-                        control={<Radio size="small" />}
-                        label={t("Dashboard.BroadcastArea.hlsMode") || "Delayed (HLS)"}
-                      />
-                      <FormControlLabel
-                        value="webrtc"
-                        control={<Radio size="small" />}
-                        label={t("Dashboard.BroadcastArea.webrtcMode") || "Live (WebRTC)"}
-                      />
-                    </RadioGroup>
-                  </FormControl>
-                </span>
+                      color="primary"
+                    />
+                  }
+                  label={
+                    streamingMode === "webrtc"
+                      ? t("Dashboard.BroadcastArea.streamingWithoutDelay")
+                      : t("Dashboard.BroadcastArea.streamingWithDelay")
+                  }
+                />
               </LangugaeContainer>
               <Grid item xs={12} sm={12}>
                 {streamingMode === "webrtc" ? (
