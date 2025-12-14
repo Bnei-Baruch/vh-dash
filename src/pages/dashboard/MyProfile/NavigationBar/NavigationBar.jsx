@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     width: "100%",
-    backgroundColor: "#F2F2F2",
+    backgroundColor: "#f9fafc",
     "& .MuiTab-root": {
       "@media (min-width: 600px) and (max-width: 1100px)": {
         minWidth: "100px",

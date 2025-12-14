@@ -20,7 +20,7 @@ import swal from "sweetalert";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: "#F2F2F2",
+    backgroundColor: "#f9fafc",
     paddingBottom: 76,
   },
   breadcrumbs: {

@@ -24,17 +24,17 @@ const blueVariant = {
   },
   sidebar: {
     color: "#FFF",
-    background: blue[700],
+    background: "#213e5f",
     header: {
       color: "#FFF",
-      background: blue[800],
+      background: "#213e5f",
       brand: {
         color: "#FFFFFF",
       },
     },
     footer: {
       color: "#FFF",
-      background: blue[800],
+      background: "#213e5f",
       online: {
         background: "#FFF",
       },
@@ -76,17 +76,17 @@ const greenVariant = {
   },
   sidebar: {
     color: "#FFF",
-    background: green[700],
+    background: "#213e5f",
     header: {
       color: "#FFF",
-      background: green[800],
+      background: "#213e5f",
       brand: {
         color: "#FFFFFF",
       },
     },
     footer: {
       color: "#FFF",
-      background: green[800],
+      background: "#213e5f",
       online: {
         background: "#FFF",
       },
@@ -128,17 +128,17 @@ const indigoVariant = {
   },
   sidebar: {
     color: "#FFF",
-    background: indigo[600],
+    background: "#213e5f",
     header: {
       color: "#FFF",
-      background: indigo[700],
+      background: "#213e5f",
       brand: {
         color: "#FFFFFF",
       },
     },
     footer: {
       color: "#FFF",
-      background: indigo[700],
+      background: "#213e5f",
       online: {
         background: "#FFF",
       },
@@ -180,17 +180,17 @@ const tealVariant = {
   },
   sidebar: {
     color: "#FFF",
-    background: teal[700],
+    background: "#213e5f",
     header: {
       color: "#FFF",
-      background: teal[800],
+      background: "#213e5f",
       brand: {
         color: "#FFFFFF",
       },
     },
     footer: {
       color: "#FFF",
-      background: teal[800],
+      background: "#213e5f",
       online: {
         background: "#FFF",
       },
@@ -231,18 +231,18 @@ const lightVariant = {
     },
   },
   sidebar: {
-    color: grey[900],
-    background: "#FFF",
+    color: "#FFF",
+    background: "#213e5f",
     header: {
       color: "#FFF",
-      background: blue[800],
+      background: "#213e5f",
       brand: {
         color: "#FFFFFF",
       },
     },
     footer: {
-      color: grey[900],
-      background: grey[100],
+      color: "#FFF",
+      background: "#213e5f",
       online: {
         background: green[500],
       },
@@ -283,18 +283,18 @@ const darkVariant = {
     },
   },
   sidebar: {
-    color: grey[200],
-    background: "#1B2430",
+    color: "#FFF",
+    background: "#213e5f",
     header: {
-      color: grey[200],
-      background: "#232f3e",
+      color: "#FFF",
+      background: "#213e5f",
       brand: {
-        color: blue[500],
+        color: "#FFFFFF",
       },
     },
     footer: {
-      color: grey[200],
-      background: "#232f3e",
+      color: "#FFF",
+      background: "#213e5f",
       online: {
         background: green[500],
       },
