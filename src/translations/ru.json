@@ -299,7 +299,7 @@
     "Membership": {
       "name": "Абонемент",
       "information": "Информация об абонементе",
-      "myMembership": "Статус абонемента",
+      "myMembership": "Абонемент",
       "active": "активный",
       "inactive": "Неактивный",
       "new": "New",
