@@ -92,12 +92,11 @@ const Category = styled(ListItem)`
   }
 
   &:hover {
-    background: rgba(0, 0, 0, 0.08);
+    background: rgba(255, 255, 255, 0.08);
   }
 
   &.${(props) => props.activeClassName} {
-    background-color: ${(props) =>
-      darken(0.05, props.theme.sidebar.background)};
+    background-color: #003F73;
 
     span {
       color: ${(props) => props.theme.sidebar.color};
@@ -135,13 +134,16 @@ const Link = styled(ListItem)`
     color: ${(props) => rgba(props.theme.sidebar.color, 0.7)};
   }
 
-  &:hover span {
-    color: ${(props) => rgba(props.theme.sidebar.color, 0.9)};
+  &:hover {
+    background: rgba(255, 255, 255, 0.08);
+    
+    span {
+      color: ${(props) => rgba(props.theme.sidebar.color, 0.9)};
+    }
   }
 
   &.${(props) => props.activeClassName} {
-    background-color: ${(props) =>
-      darken(0.06, props.theme.sidebar.background)};
+    background-color: #003F73;
 
     span {
       color: ${(props) => props.theme.sidebar.color};
