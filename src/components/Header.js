@@ -36,8 +36,15 @@ import { membershipDataV2 } from "../redux/selectors/user";
 const AppBar = styled(MuiAppBar)`
   background: ${(props) => props.theme.header.background};
   color: ${(props) => props.theme.header.color};
-  box-shadow: ${(props) => props.theme.shadows[1]};
   background-color: #fff !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.01);
+`;
+
+const StyledToolbar = styled(Toolbar)`
+  min-height: 72px !important;
+  height: 72px !important;
+  padding-top: 2px !important;
 `;
 
 const IconButton = styled(MuiIconButton)`
@@ -301,7 +308,7 @@ const Header = ({ onDrawerToggle }) => {
   return (
     <>
       <AppBar position="sticky" elevation={0}>
-        <Toolbar>
+        <StyledToolbar>
           <Grid container alignItems="center">
             <Hidden mdUp>
               <Grid item>
@@ -357,7 +364,7 @@ const Header = ({ onDrawerToggle }) => {
               <UserMenu />
             </Grid>
           </Grid>
-        </Toolbar>
+        </StyledToolbar>
       </AppBar>
     </>
   );

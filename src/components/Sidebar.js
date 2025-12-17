@@ -60,12 +60,15 @@ const Brand = styled(ListItem)`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  min-height: 64px;
+  min-height: 72px;
+  height: 72px;
   padding-left: ${(props) => props.theme.spacing(3)}px;
   padding-right: ${(props) => props.theme.spacing(3)}px;
-  padding-top: ${(props) => props.theme.spacing(0.5)}px;
-  padding-bottom: ${(props) => props.theme.spacing(0.5)}px;
+  padding-top: 6px;
+  padding-bottom: 2px;
   cursor: default;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  // box-shadow: 0 1px 2px rgba(255, 255, 255, 0.4);
 
   &:hover {
     background-color: ${(props) => props.theme.sidebar.header.background};
