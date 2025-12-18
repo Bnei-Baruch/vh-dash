@@ -23,12 +23,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#f9fafc",
     paddingBottom: 76,
   },
-  breadcrumbs: {
-    marginBottom: theme.spacing(6),
-    "& .MuiTypography-colorInherit": {
-      color: "#1E88E5",
-    },
-  },
 }));
 
 const initialErrorFields = {

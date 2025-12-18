@@ -37,7 +37,6 @@ const dashboardRoutes = [
     id: "Profile",
     icon: <FileText />,
     enableHeader: true,
-    breadcrumbs: [{ name: "Profile", path: DASHBOARD_ROUTES.Profile }],
     component: MyProfile,
     children: null,
   },
@@ -46,7 +45,6 @@ const dashboardRoutes = [
     id: "Membership",
     icon: <VerifiedUserIcon />,
     enableHeader: true,
-    breadcrumbs: [{ name: "Membership", path: DASHBOARD_ROUTES.membership }],
     component: MembershipStatus,
     children: [
       {
@@ -54,10 +52,6 @@ const dashboardRoutes = [
         id: "Status",
         icon: <VerifiedUserIcon />,
         enableHeader: true,
-        breadcrumbs: [
-          { name: "Membership", path: DASHBOARD_ROUTES.membership },
-          { name: "Status", path: DASHBOARD_ROUTES.membership },
-        ],
         component: MembershipStatus,
       },
       {
@@ -65,10 +59,6 @@ const dashboardRoutes = [
         id: "PreviousPayment",
         icon: <VerifiedUserIcon />,
         enableHeader: true,
-        breadcrumbs: [
-          { name: "Membership", path: DASHBOARD_ROUTES.membership },
-          { name: "PreviousPayment", path: DASHBOARD_ROUTES.previousPayment },
-        ],
         component: PreviousPayments,
       },
     ],
@@ -78,7 +68,6 @@ const dashboardRoutes = [
     id: "Events",
     icon: <EventIcon />,
     enableHeader: true,
-    breadcrumbs: [{ name: "Events", path: DASHBOARD_ROUTES.events }],
     component: Events,
   },
   {
@@ -86,9 +75,6 @@ const dashboardRoutes = [
     id: "BroadcastArea",
     icon: <Youtube />,
     enableHeader: true,
-    breadcrumbs: [
-      { name: "BroadcastArea", path: DASHBOARD_ROUTES.broadcastArea },
-    ],
     component: BroadcastArea,
     children: null,
   },
@@ -97,9 +83,6 @@ const dashboardRoutes = [
     id: "ArvutSystem",
     icon: <ViewComfyIcon />,
     enableHeader: true,
-    breadcrumbs: [
-      { name: "BroadcastArea", path: DASHBOARD_ROUTES.arvutSystem },
-    ],
     component: ArvutSystem,
     children: null,
     isExternalLink: true,
@@ -109,7 +92,6 @@ const dashboardRoutes = [
     id: "Archive",
     icon: <FolderOpenIcon />,
     enableHeader: true,
-    breadcrumbs: [{ name: "BroadcastArea", path: DASHBOARD_ROUTES.archive }],
     component: Archive,
     children: null,
     isExternalLink: true,
@@ -119,7 +101,6 @@ const dashboardRoutes = [
     id: "PayKliOne",
     icon: <PaymentIcon />,
     enableHeader: true,
-    breadcrumbs: [{ name: "PayKliOne", path: PAY_KLI_ONE_URL }],
     component: null,
     children: null,
     isExternalLink: true,
