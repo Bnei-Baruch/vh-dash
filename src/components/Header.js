@@ -32,6 +32,7 @@ import { setLoggedInUser } from "../redux/actions/userActions";
 import ModalWindow from "../pages/dashboard/MyProfile/ui/ModalWindow";
 import { DASHBOARD_ROUTES } from "../routes/dashboardRoutes";
 import { membershipDataV2 } from "../redux/selectors/user";
+import { pageTitle } from "../redux/selectors/layout";
 
 /* ---------- styled ---------- */
 
@@ -56,7 +57,7 @@ const IconButton = styled(MuiIconButton)`
   }
 `;
 
-/* 🔹 Membership pill */
+/*  Membership pill */
 
 const MembershipStatusContainer = styled(Box)`
   cursor: pointer;
@@ -74,9 +75,6 @@ const MembershipStatusContainer = styled(Box)`
     ${({ active }) =>
       active ? "#BDEBD0" : "#F5B5B5"};
 `;
-
-
-
 
 const MembershipStatusText = styled(Typography)`
   display: inline-flex;
@@ -180,6 +178,14 @@ const VerticalDivider = styled.span`
   vertical-align: middle;
 `;
 
+const PageTitle = styled(Typography)`
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+  margin-left: 16px;
+  margin-right: 16px;
+`;
+
 
 
 /* ---------- LanguageMenu ---------- */
@@ -267,7 +273,7 @@ const Header = ({ onDrawerToggle }) => {
   const { t } = useTranslation();
   const membership = useSelector((state) => membershipDataV2(state));
   const active = membership.active;
-
+  const currentPageTitle = useSelector((state) => pageTitle(state));
   return (
     <AppBar position="sticky" elevation={0}>
       <StyledToolbar>
@@ -286,7 +292,9 @@ const Header = ({ onDrawerToggle }) => {
               <Input placeholder="Search topics" />
             </Search>
           )}
-  
+          {currentPageTitle && (
+            <PageTitle>{currentPageTitle}</PageTitle>
+          )}
           {/* spacer */}
           <Grid item xs />
   

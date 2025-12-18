@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import { useTranslation } from "react-i18next";
+import { useDispatch } from "react-redux";
 import { Breadcrumbs, Link, Typography } from "@material-ui/core";
 import { DASHBOARD_ROOT } from "../../../../routes/dashboardRoutes";
+import { setPageTitle } from "../../../../redux/actions/layoutActions";
 
 const useStyles = makeStyles((theme) => ({
   breadcrumbs: {
@@ -19,6 +21,16 @@ const DashboardHeader = ({ name, breadcrumbs }) => {
   const classes = useStyles();
   const history = useHistory();
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+
+  const pageTitleText = t(`Dashboard.${name}.title`);
+
+  useEffect(() => {
+    dispatch(setPageTitle(pageTitleText));
+    return () => {
+      dispatch(setPageTitle(""));
+    };
+  }, [dispatch, pageTitleText]);
 
   const handleClick = (event, path) => {
     event.preventDefault();
@@ -27,7 +39,7 @@ const DashboardHeader = ({ name, breadcrumbs }) => {
 
   return (
     <div>
-      <Typography variant="h3">{t(`Dashboard.${name}.title`)}</Typography>
+      <Typography variant="h3" style={{ display: "none" }}>{pageTitleText}</Typography>
       {breadcrumbs.length ? (
         <Breadcrumbs aria-label="breadcrumb" className={classes.breadcrumbs}>
           <Link

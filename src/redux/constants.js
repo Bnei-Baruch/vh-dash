@@ -23,3 +23,6 @@ export const SET_LAST_NAME = "SET_LAST_NAME";
 export const SET_KEYCLOAK_DATA = "SET_KEYCLOAK_DATA";
 export const SET_MEMBERSHIP_DATA_V2 = "SET_MEMBERSHIP_DATA_V2";
 export const UPDATE_MODIFY_MODE = "UPDATE_MODIFY_MODE";
+
+// Layout Reducers
+export const SET_PAGE_TITLE = "SET_PAGE_TITLE";
