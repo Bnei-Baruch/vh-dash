@@ -256,6 +256,9 @@ function UserMenu() {
 
       <ModalWindow
         open={isModalOpen}
+        contentText={t("UserMenu.logOutText")}
+        confirmBtnText={t("UserMenu.yesBtn")}
+        closeBtnText={t("UserMenu.cancelBtn")}
         handleClose={() => setIsModalOpen(false)}
         onConfirmation={() => {
           state.keycloak.logout();
