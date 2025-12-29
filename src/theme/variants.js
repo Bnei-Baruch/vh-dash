@@ -76,17 +76,17 @@ const greenVariant = {
   },
   sidebar: {
     color: "#FFF",
-    background: "#00447c",
+    background: green[700],
     header: {
       color: "#FFF",
-      background: "#00447c",
+      background: green[800],
       brand: {
         color: "#FFFFFF",
       },
     },
     footer: {
       color: "#FFF",
-      background: "#00447c",
+      background: green[800],
       online: {
         background: "#FFF",
       },
@@ -128,17 +128,17 @@ const indigoVariant = {
   },
   sidebar: {
     color: "#FFF",
-    background: "#00447c",
+    background: indigo[600],
     header: {
       color: "#FFF",
-      background: "#00447c",
+      background: indigo[700],
       brand: {
         color: "#FFFFFF",
       },
     },
     footer: {
       color: "#FFF",
-      background: "#00447c",
+      background: indigo[700],
       online: {
         background: "#FFF",
       },
@@ -180,17 +180,17 @@ const tealVariant = {
   },
   sidebar: {
     color: "#FFF",
-    background: "#00447c",
+    background: teal[700],
     header: {
       color: "#FFF",
-      background: "#00447c",
+      background: teal[800],
       brand: {
         color: "#FFFFFF",
       },
     },
     footer: {
       color: "#FFF",
-      background: "#00447c",
+      background: teal[800],
       online: {
         background: "#FFF",
       },
@@ -231,18 +231,18 @@ const lightVariant = {
     },
   },
   sidebar: {
-    color: "#FFF",
-    background: "#00447c",
+    color: grey[900],
+    background: "#FFF",
     header: {
       color: "#FFF",
-      background: "#00447c",
+      background: blue[800],
       brand: {
         color: "#FFFFFF",
       },
     },
     footer: {
-      color: "#FFF",
-      background: "#00447c",
+      color: grey[900],
+      background: grey[100],
       online: {
         background: green[500],
       },
@@ -283,18 +283,18 @@ const darkVariant = {
     },
   },
   sidebar: {
-    color: "#FFF",
-    background: "#00447c",
+    color: grey[200],
+    background: "#1B2430",
     header: {
-      color: "#FFF",
-      background: "#00447c",
+      color: grey[200],
+      background: "#232f3e",
       brand: {
-        color: "#FFFFFF",
+        color: blue[500],
       },
     },
     footer: {
-      color: "#FFF",
-      background: "#00447c",
+      color: grey[200],
+      background: "#232f3e",
       online: {
         background: green[500],
       },
@@ -313,9 +313,9 @@ const darkVariant = {
 };
 
 const variants = [
+  blueVariant,
   darkVariant,
   lightVariant,
-  blueVariant,
   greenVariant,
   indigoVariant,
   tealVariant,
