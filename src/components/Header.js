@@ -39,9 +39,8 @@ import { pageTitle } from "../redux/selectors/layout";
 const AppBar = styled(MuiAppBar)`
   background: ${(props) => props.theme.header.background};
   color: ${(props) => props.theme.header.color};
-  background-color: #fff !important;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.01);
+  border-bottom: 1px solid ${(props) => props.theme.palette.divider};
+
 `;
 
 const StyledToolbar = styled(Toolbar)`
@@ -173,7 +172,7 @@ const VerticalDivider = styled.span`
   display: inline-block;
   width: 1px;
   height: 24px;
-  background-color: rgba(0, 0, 0, 0.12);
+  background-color: ${(props) => props.theme.palette.divider};
   margin: 0 12px;
   vertical-align: middle;
 `;
