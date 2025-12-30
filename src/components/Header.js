@@ -56,14 +56,11 @@ const IconButton = styled(MuiIconButton)`
   }
 `;
 
-/*  Membership pill */
-
 const MembershipStatusContainer = styled(Box)`
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  margin-left: 12px;
-
+  margin-inline-end: 12px;
   padding: 6px 14px;
   border-radius: 999px;
 
@@ -73,13 +70,18 @@ const MembershipStatusContainer = styled(Box)`
   border: 1px solid
     ${({ active }) =>
       active ? "#BDEBD0" : "#F5B5B5"};
+
+  /* Hide membership pill on screens smaller than xs (600px) */
+  ${(props) => props.theme.breakpoints.down("xs")} {
+    display: none;
+  }
 `;
 
 const MembershipStatusText = styled(Typography)`
   display: inline-flex;
   align-items: center;
   gap: 8px;
-
+  
   font-size: 14px;
   font-weight: 600;
 
@@ -99,8 +101,8 @@ const MembershipStatusText = styled(Typography)`
 
 const FlagButton = styled(MuiIconButton)`
   svg {
-    width: 22px;
-    height: 22px;
+    width: 30px;
+    height: 30px;
   }
   span {
     color: #747474;
@@ -108,6 +110,18 @@ const FlagButton = styled(MuiIconButton)`
   }
   :hover {
     background-color: transparent !important;
+  }
+
+  /* Hide language text on screens smaller than sm (600px) */
+  ${(props) => props.theme.breakpoints.down("sm")} {
+    .language-text {
+      display: none;
+    }
+  }
+
+  /* Reduce padding on screens smaller than xs (600px) */
+  ${(props) => props.theme.breakpoints.down("xs")} {
+    padding: 6px !important;
   }
 `;
 
@@ -123,6 +137,25 @@ const UserIconButton = styled(MuiIconButton)`
   svg {
     width: 30px;
     height: 30px;
+  }
+
+  /* Hide user name and arrow on screens smaller than sm (600px) */
+  ${(props) => props.theme.breakpoints.down("sm")} {
+    .user-name {
+      display: none;
+    }
+    .user-arrow {
+      display: none;
+    }
+  }
+
+  /* Change icon color and reduce padding on screens smaller than xs (600px) */
+  ${(props) => props.theme.breakpoints.down("xs")} {
+    padding: 6px !important;
+    svg {
+      color: ${({ membershipActive }) =>
+        membershipActive ? "#2E7D5A" : "#C24A4A"};
+    }
   }
 `;
 
@@ -173,19 +206,40 @@ const VerticalDivider = styled.span`
   width: 1px;
   height: 24px;
   background-color: ${(props) => props.theme.palette.divider};
-  margin: 0 12px;
   vertical-align: middle;
+
+   ${(props) => props.theme.breakpoints.down("xs")} {
+    display: none;
+  }
 `;
 
 const PageTitle = styled(Typography)`
-  font-size: 20px;
+  font-size: 1.25rem; 
   font-weight: 600;
   color: #333;
-  margin-left: 16px;
-  margin-right: 16px;
+  margin-inline-start: 16px;
+  margin-inline-end: 16px;
+
+  ${(props) => props.theme.breakpoints.down("md")} {
+    font-size: 1.125rem; 
+  }
 `;
 
+const StartSection = styled(Box)`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+`;
 
+const EndSection = styled(Box)`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  ${(props) => props.theme.breakpoints.down("md")} {
+    gap: 4px;
+  }
+`;
 
 /* ---------- LanguageMenu ---------- */
 
@@ -212,7 +266,8 @@ function LanguageMenu() {
   return (
     <>
       <FlagButton onClick={(e) => setAnchorMenu(e.currentTarget)}>
-        <LanguageIcon /> {i18next.language?.toUpperCase()}
+        <LanguageIcon />
+        <span className="language-text">{i18next.language?.toUpperCase()}</span>
       </FlagButton>
       <Menu anchorEl={anchorMenu} open={Boolean(anchorMenu)} onClose={() => closeMenu()}>
         {languages.map((l) => (
@@ -230,6 +285,8 @@ function LanguageMenu() {
 function UserMenu() {
   const { t } = useTranslation();
   const state = useSelector((state) => state.userReducer.info);
+  const membership = useSelector((state) => membershipDataV2(state));
+  const membershipActive = membership?.active || false;
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -238,10 +295,15 @@ function UserMenu() {
 
   return (
     <>
-      <UserIconButton onClick={(e) => setAnchorMenu(e.currentTarget)}>
+      <UserIconButton 
+        onClick={(e) => setAnchorMenu(e.currentTarget)}
+        membershipActive={membershipActive}
+      >
         <AccountCircleIcon />
-        {state.keycloak.profile.firstName} {state.keycloak.profile.lastName}
-        <KeyboardArrowDownIcon />
+        <span className="user-name">
+          {state.keycloak.profile.firstName} {state.keycloak.profile.lastName}
+        </span>
+        <KeyboardArrowDownIcon className="user-arrow" />
       </UserIconButton>
 
       <Menu anchorEl={anchorMenu} open={Boolean(anchorMenu)} onClose={() => setAnchorMenu(null)}>
@@ -274,33 +336,52 @@ const Header = ({ onDrawerToggle }) => {
   const history = useHistory();
   const { t } = useTranslation();
   const membership = useSelector((state) => membershipDataV2(state));
-  const active = membership.active;
+  const active = membership?.active || false;
   const currentPageTitle = useSelector((state) => pageTitle(state));
   return (
     <AppBar position="sticky" elevation={0}>
       <StyledToolbar>
-        <Grid container alignItems="center">
-          <Hidden mdUp>
-            <IconButton onClick={onDrawerToggle}>
-              <MenuIcon />
-            </IconButton>
-          </Hidden>
-  
+        <Grid container alignItems="center" wrap="nowrap">
+          <StartSection>
+            <Hidden mdUp>
+              <IconButton onClick={onDrawerToggle}>
+                <MenuIcon />
+              </IconButton>
+            </Hidden>
+
+            {currentPageTitle && (
+              <PageTitle>{currentPageTitle}</PageTitle>
+            )}
+          </StartSection>
+
           {SEARCH_BAR && (
-            <Search>
-              <SearchIconWrapper>
-                <SearchIcon />
-              </SearchIconWrapper>
-              <Input placeholder="Search topics" />
-            </Search>
+              <Search>
+                <SearchIconWrapper>
+                  <SearchIcon />
+                </SearchIconWrapper>
+                <Input placeholder="Search topics" />
+              </Search>
           )}
-          {currentPageTitle && (
-            <PageTitle>{currentPageTitle}</PageTitle>
-          )}
+          
           {/* spacer */}
           <Grid item xs />
   
-          <Grid item>
+          <EndSection>
+            {CHAT_AND_NOTIFICATION_ICONS && (
+                <>
+                  <IconButton>
+                    <Indicator badgeContent={3}>
+                      <MessageSquare />
+                    </Indicator>
+                  </IconButton>
+                  <IconButton>
+                    <Indicator badgeContent={7}>
+                      <Bell />
+                    </Indicator>
+                  </IconButton>
+                </>
+              )}  
+
             <MembershipStatusContainer
               active={active}
               onClick={() => history.push(DASHBOARD_ROUTES.membership)}
@@ -316,25 +397,9 @@ const Header = ({ onDrawerToggle }) => {
             </MembershipStatusContainer>
 
             <VerticalDivider />
-            
-            {CHAT_AND_NOTIFICATION_ICONS && (
-              <>
-                <IconButton>
-                  <Indicator badgeContent={3}>
-                    <MessageSquare />
-                  </Indicator>
-                </IconButton>
-                <IconButton>
-                  <Indicator badgeContent={7}>
-                    <Bell />
-                  </Indicator>
-                </IconButton>
-              </>
-            )}
-  
             <LanguageMenu />
             <UserMenu />
-          </Grid>
+          </EndSection>
         </Grid>
       </StyledToolbar>
     </AppBar>
