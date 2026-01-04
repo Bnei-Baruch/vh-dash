@@ -6,6 +6,7 @@ import { Grid } from "@material-ui/core";
 // import Arvut from "./Arvut";
 import Calendar from "./Calendar";
 import Header from "./Header";
+import QuickActions from "./QuickActions.jsx";
 // import Convention from "./Convention";
 import { setPageTitle } from "../../../redux/actions/layoutActions";
 
@@ -28,7 +29,7 @@ const Home = () => {
 
   return (
     <>
-      <Header />
+      <QuickActions />
 
       <Grid container spacing={6}>
         <Grid item xs={12} lg={6}>

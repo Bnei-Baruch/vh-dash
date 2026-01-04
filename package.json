@@ -36,6 +36,7 @@
     "jss-rtl": "^0.3.0",
     "keycloak-js": "^26.2.0",
     "lodash": "^4.17.21",
+    "lucide-react": "^0.562.0",
     "material-ui-phone-number": "^2.2.6",
     "moment": "^2.29.1",
     "mui-datatables": "^3.8.0",
