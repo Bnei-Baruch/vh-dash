@@ -27,9 +27,11 @@ const blueVariant = {
   sidebar: {
     color: "#FFF",
     background: "#00447c",
+    borderRight: "1px solid rgba(0, 0, 0, 0.12)",
     header: {
       color: "#FFF",
       background: "#00447c",
+      borderBottom: "1px solid rgba(255, 255, 255, 0.3)",
       brand: {
         color: "#FFFFFF",
       },
@@ -43,6 +45,8 @@ const blueVariant = {
     },
     category: {
       fontWeight: 400,
+      hoverBackground: "rgba(255, 255, 255, 0.08)",
+      activeBackground: "#003F73",
     },
     badge: {
       color: "#000",
