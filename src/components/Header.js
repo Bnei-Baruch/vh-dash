@@ -39,7 +39,7 @@ import { pageTitle } from "../redux/selectors/layout";
 const AppBar = styled(MuiAppBar)`
   background: ${(props) => props.theme.header.background};
   color: ${(props) => props.theme.header.color};
-  border-bottom: 1px solid ${(props) => props.theme.palette.divider};
+  border-bottom: ${(props) => props.theme.header.borderBottom};
 
 `;
 
@@ -139,12 +139,9 @@ const UserIconButton = styled(MuiIconButton)`
     height: 30px;
   }
 
-  /* Hide user name and arrow on screens smaller than sm (600px) */
+  /* Hide user name on screens smaller than sm (600px) */
   ${(props) => props.theme.breakpoints.down("sm")} {
     .user-name {
-      display: none;
-    }
-    .user-arrow {
       display: none;
     }
   }
@@ -205,7 +202,7 @@ const VerticalDivider = styled.span`
   display: inline-block;
   width: 1px;
   height: 24px;
-  background-color: ${(props) => props.theme.palette.divider};
+  background-color: ${(props) => props.theme.header.dividerColor};
   vertical-align: middle;
 
    ${(props) => props.theme.breakpoints.down("xs")} {

@@ -42,7 +42,7 @@ const ExternalLink = styled.a`
 `;
 const Scrollbar = styled(PerfectScrollbar)`
   background-color: ${(props) => props.theme.sidebar.background};
-  border-right: 1px solid rgba(0, 0, 0, 0.12);
+  border-right: ${(props) => props.theme.sidebar.borderRight};
 `;
 
 const List = styled(MuiList)`
@@ -52,6 +52,18 @@ const List = styled(MuiList)`
 const Items = styled.div`
   padding-top: ${(props) => props.theme.spacing(2.5)}px;
   padding-bottom: ${(props) => props.theme.spacing(2.5)}px;
+`;
+
+const LogoLink = styled(RouterNavLink)`
+  padding: 0;
+  display: block;
+  text-decoration: none;
+  
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: transparent !important;
+  }
 `;
 
 const Brand = styled(ListItem)`
@@ -67,15 +79,11 @@ const Brand = styled(ListItem)`
   padding-top: 6px;
   padding-bottom: 2px;
   cursor: default;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-  // box-shadow: 0 1px 2px rgba(255, 255, 255, 0.4);
+  border-bottom: ${(props) => props.theme.sidebar.header.borderBottom};
+ 
 
   &:hover {
     background-color: ${(props) => props.theme.sidebar.header.background};
-  }
-
-  a {
-    padding: 0;
   }
 `;
 
@@ -95,11 +103,11 @@ const Category = styled(ListItem)`
   }
 
   &:hover {
-    background: rgba(255, 255, 255, 0.08);
+    background: ${(props) => props.theme.sidebar.category.hoverBackground};
   }
 
   &.${(props) => props.activeClassName} {
-    background-color: #003F73;
+    background-color: ${(props) => props.theme.sidebar.category.activeBackground};
 
     span {
       color: ${(props) => props.theme.sidebar.color};
@@ -138,7 +146,7 @@ const Link = styled(ListItem)`
   }
 
   &:hover {
-    background: rgba(255, 255, 255, 0.08);
+    background: ${(props) => props.theme.sidebar.category.hoverBackground};
     
     span {
       color: ${(props) => rgba(props.theme.sidebar.color, 0.9)};
@@ -146,7 +154,7 @@ const Link = styled(ListItem)`
   }
 
   &.${(props) => props.activeClassName} {
-    background-color: #003F73;
+    background-color: ${(props) => props.theme.sidebar.category.activeBackground};
 
     span {
       color: ${(props) => props.theme.sidebar.color};
@@ -262,7 +270,7 @@ const Sidebar = ({ location, ...rest }) => {
   return (
     <Drawer variant="permanent" {...rest}>
       <Brand>
-        <Link button component={NavLink} exact to={DASHBOARD_ROOT}>
+        <LogoLink exact to={DASHBOARD_ROOT}>
           <img
             src={logoImage}
             alt="Bnei Baruch Logo"
@@ -272,7 +280,7 @@ const Sidebar = ({ location, ...rest }) => {
               maxHeight: "60px",
             }}
           />
-        </Link>
+        </LogoLink>
       </Brand>
 
       <Scrollbar>
