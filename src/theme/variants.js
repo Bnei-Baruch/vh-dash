@@ -15,6 +15,8 @@ const blueVariant = {
   header: {
     color: grey[500],
     background: "#FFF",
+    borderBottom: "1px solid rgba(0, 0, 0, 0.1)",
+    dividerColor: "rgba(0, 0, 0, 0.12)",
     search: {
       color: grey[800],
     },
