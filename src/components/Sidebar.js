@@ -42,7 +42,7 @@ const ExternalLink = styled.a`
 `;
 const Scrollbar = styled(PerfectScrollbar)`
   background-color: ${(props) => props.theme.sidebar.background};
-  border-right: ${(props) => props.theme.sidebar.borderRight};
+  border-right: 1px solid ${(props) => props.theme.palette.divider};
 `;
 
 const List = styled(MuiList)`
@@ -79,7 +79,7 @@ const Brand = styled(ListItem)`
   padding-top: 6px;
   padding-bottom: 2px;
   cursor: default;
-  border-bottom: ${(props) => props.theme.sidebar.header.borderBottom};
+  border-bottom: 1px solid ${(props) => props.theme.sidebar.header.borderColor};
  
 
   &:hover {

@@ -11,12 +11,11 @@ const blueVariant = {
       main: blue[600],
       contrastText: "#FFF",
     },
+    divider: "rgba(0, 0, 0, 0.12)",
   },
   header: {
     color: grey[500],
     background: "#FFF",
-    borderBottom: "1px solid rgba(0, 0, 0, 0.1)",
-    dividerColor: "rgba(0, 0, 0, 0.12)",
     search: {
       color: grey[800],
     },
@@ -27,11 +26,10 @@ const blueVariant = {
   sidebar: {
     color: "#FFF",
     background: "#00447c",
-    borderRight: "1px solid rgba(0, 0, 0, 0.12)",
     header: {
       color: "#FFF",
       background: "#00447c",
-      borderBottom: "1px solid rgba(255, 255, 255, 0.3)",
+      borderColor: "rgba(255, 255, 255, 0.3)",
       brand: {
         color: "#FFFFFF",
       },
