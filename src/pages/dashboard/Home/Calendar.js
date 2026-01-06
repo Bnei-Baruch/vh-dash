@@ -3,12 +3,8 @@ import styled from "styled-components";
 import {
   Button,
   ButtonGroup,
-  Card,
-  CardContent,
-  CardHeader,
   Chip,
   CircularProgress,
-  Icon,
   IconButton,
   Table,
   TableBody,
@@ -16,8 +12,9 @@ import {
   TableRow,
   Typography,
 } from "@material-ui/core";
-import { Calendar as CalendarIcon, RefreshCw } from "react-feather";
-import { grey, red } from "@material-ui/core/colors";
+import { RefreshCw } from "react-feather";
+import { Calendar as CalendarIcon } from "lucide-react";
+import { red } from "@material-ui/core/colors";
 import { useTranslation } from "react-i18next";
 import { connect } from "react-redux";
 import {
@@ -32,21 +29,51 @@ const TODAY = 0;
 const TOMORROW = 1;
 const YESTERDAY = -1;
 
-const StaticIcon = styled(Icon)`
-  color: ${grey[500]};
+const Wrapper = styled.div`
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`;
+
+const Header = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  flex: 1;
+`;
+
+const HeaderTitle = styled.h3`
+  font-size: 20px;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0;
+`;
+
+const HeaderIcon = styled.div`
+  color: #6366f1;
+  display: flex;
+  align-items: center;
 `;
 
 const CardActionHeader = styled.div`
   display: flex;
   align-items: center;
+  gap: 8px;
 `;
 
 const CalendarButtonGroup = styled(ButtonGroup)`
-  margin: 0 16px;
+  margin: 0 8px;
 `;
 
 const Spinner = styled.div`
   text-align: center;
+  padding: 40px 0;
 `;
 
 const LiveChip = styled(Chip)`
@@ -55,24 +82,12 @@ const LiveChip = styled(Chip)`
   width: 50px;
 `;
 
-const CardHead = styled(CardHeader)`
-  @media (max-width: 600px) {
-    display: block;
-    > div {
-      margin: 15px 0px;
-    }
-    .MuiButton-root {
-      padding: 5px 10px !important;
-    }
-  }
-`;
-
 const TableWrapper = styled.div`
   overflow-y: auto;
   max-height: 500px;
   background-color: #f7f9fc;
   border: 1px solid #e0e0e0;
-  border-radius: 4px;
+  border-radius: 8px;
 `;
 
 const TimeCell = styled(TableCell)`
@@ -264,56 +279,47 @@ const Calendar = ({ onLiveEvent, settings: { language } }) => {
   }, [language]);
 
   return (
-    <Card mb={6}>
-      <CardHead
-        action={
-          <CardActionHeader>
-            <StaticIcon aria-label="calendar">
-              <CalendarIcon />
-            </StaticIcon>
+    <Wrapper>
+      <div style={{ display: 'flex', alignItems: 'center', marginBottom: 20, width: '100%' }}>
+        <Header>
+          <HeaderIcon>
+            <CalendarIcon size={24} />
+          </HeaderIcon>
+          <HeaderTitle>{t("Home.events")}</HeaderTitle>
+        </Header>
 
-            <CalendarButtonGroup
-              color="primary"
-              onClick={onDayChange}
-              aria-label="primary button group"
+        <CardActionHeader>
+          <CalendarButtonGroup
+            color="primary"
+            onClick={onDayChange}
+            aria-label="primary button group"
+          >
+            <Button
+              variant={day === TODAY ? "contained" : "outlined"}
+              color={day === TODAY ? "primary" : "default"}
+              value={TODAY}
             >
-              <Button
-                variant={day === TODAY ? "contained" : "outlined"}
-                color={day === TODAY ? "primary" : "default"}
-                value={TODAY}
-              >
-                {t("Home.today")}
-              </Button>
-              <Button
-                variant={day === TOMORROW ? "contained" : "outlined"}
-                color={day === TOMORROW ? "primary" : "default"}
-                value={TOMORROW}
-              >
-                {t("Home.tomorrow")}
-              </Button>
-              <Button
-                variant={day === YESTERDAY ? "contained" : "outlined"}
-                color={day === YESTERDAY ? "primary" : "default"}
-                value={YESTERDAY}
-              >
-                {t("Home.yesterday")}
-              </Button>
-            </CalendarButtonGroup>
-
-            <IconButton
-              aria-label="refresh"
-              color="primary"
-              disabled={loading || refresh}
-              onClick={() => setRefresh(true)}
+              {t("Home.today")}
+            </Button>
+            <Button
+              variant={day === TOMORROW ? "contained" : "outlined"}
+              color={day === TOMORROW ? "primary" : "default"}
+              value={TOMORROW}
             >
-              <RefreshCw />
-            </IconButton>
-          </CardActionHeader>
-        }
-        title={t("Home.events")}
-      />
+              {t("Home.tomorrow")}
+            </Button>
+            <Button
+              variant={day === YESTERDAY ? "contained" : "outlined"}
+              color={day === YESTERDAY ? "primary" : "default"}
+              value={YESTERDAY}
+            >
+              {t("Home.yesterday")}
+            </Button>
+          </CalendarButtonGroup>
+        </CardActionHeader>
+      </div>
 
-      <CardContent>
+      <div>
         {loading ? (
           <Spinner>
             <CircularProgress />
@@ -340,12 +346,18 @@ const Calendar = ({ onLiveEvent, settings: { language } }) => {
             </Table>
           </TableWrapper>
         ) : (
-          <Typography variant="h3">{t("Home.noEvent")}</Typography>
+          <Typography variant="h3" style={{ padding: '20px 0', color: '#6b7280' }}>
+            {t("Home.noEvent")}
+          </Typography>
         )}
 
-        <Typography variant="h3">{errorMessage}</Typography>
-      </CardContent>
-    </Card>
+        {errorMessage && (
+          <Typography variant="h3" style={{ padding: '20px 0', color: '#dc2626' }}>
+            {errorMessage}
+          </Typography>
+        )}
+      </div>
+    </Wrapper>
   );
 };
 

@@ -7,6 +7,9 @@ import { Grid } from "@material-ui/core";
 import Calendar from "./Calendar";
 import Header from "./Header";
 import QuickActions from "./QuickActions.jsx";
+import ConventionCard from "./ConventionCard.jsx";
+import StudyArea from "./StudyArea.jsx";
+import GivingSection from "./GivingSection.jsx";
 // import Convention from "./Convention";
 import { setPageTitle } from "../../../redux/actions/layoutActions";
 
@@ -29,11 +32,32 @@ const Home = () => {
 
   return (
     <>
-      <QuickActions />
+      {/* 1️⃣ Top Section – Convention Banner (Full Width) */}
+      <Grid container spacing={6} style={{ marginBottom: 24, marginTop: -40 }}>
+        <Grid item xs={12}>
+          <ConventionCard />
+        </Grid>
+      </Grid>
 
-      <Grid container spacing={6}>
+      {/* 2️⃣ Main Content Section – Events + Study (50% / 50%) */}
+      <Grid container spacing={6} style={{ marginBottom: 24 }}>
         <Grid item xs={12} lg={6}>
           <Calendar onLiveEvent={onLiveEvent} />
+        </Grid>
+        <Grid item xs={12} lg={6}>
+          <StudyArea />
+        </Grid>
+      </Grid>
+
+      {/* 3️⃣ Quick Actions – Compact Strip (Secondary Navigation) */}
+      <div style={{ marginBottom: 24 }}>
+        <QuickActions />
+      </div>
+
+      {/* 4️⃣ Bottom Section – Giving & Mutual Responsibility (Full Width) */}
+      <Grid container spacing={6}>
+        <Grid item xs={12}>
+          <GivingSection />
         </Grid>
       </Grid>
     </>
