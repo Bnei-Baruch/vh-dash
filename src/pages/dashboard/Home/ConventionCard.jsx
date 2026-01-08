@@ -5,15 +5,21 @@ import { useTranslation } from "react-i18next";
 /* ===== Styled Components ===== */
 
 const CardWrapper = styled.div`
-  background: #004d40;
+  background: linear-gradient(
+    to bottom,
+    #00447c 0%,
+    #0f5d8a 45%,
+    #2d8fb0 75%,
+    #51caca 100%
+  );
   border-radius: 16px;
   overflow: hidden;
   position: relative;
-  min-height: 200px;
+  min-height: 110px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  padding: 24px;
+  justify-content: center;
+  padding: 16px 20px;
   color: white;
   cursor: pointer;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -25,13 +31,13 @@ const CardWrapper = styled.div`
   }
 
   @media (max-width: 960px) {
-    min-height: 180px;
-    padding: 20px;
+    min-height: 130px;
+    padding: 14px 18px;
   }
 
   @media (max-width: 600px) {
-    min-height: 160px;
-    padding: 16px;
+    min-height: 120px;
+    padding: 12px 16px;
   }
 `;
 
@@ -53,26 +59,35 @@ const BackgroundImage = styled.div`
 const GradientOverlay = styled.div`
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to top,
-    #004d40 0%,
-    rgba(0, 77, 64, 0.8) 50%,
-    transparent 100%
-  );
+  background: transparent;
 `;
 
 const ContentWrapper = styled.div`
   position: relative;
   z-index: 10;
   width: 100%;
+  display: flex;
+  flex-direction: column;
 `;
 
+const TitleDateWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  margin-bottom: 8px;
+`;
 
 const Title = styled.h3`
+  font-family: 'Assistant', sans-serif;
   font-size: 28px;
   font-weight: 700;
-  margin-bottom: 8px;
-  line-height: 1.2;
+  margin-bottom: 0px;
+  line-height: 1.1;
+  color: white;
+  margin: 0;
+  position: relative;
+  display: inline-block;
 
   @media (max-width: 960px) {
     font-size: 24px;
@@ -81,6 +96,23 @@ const Title = styled.h3`
   @media (max-width: 600px) {
     font-size: 20px;
   }
+`;
+
+const DateButtonRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  margin-top: -2px;
+`;
+
+const DateText = styled.div`
+  font-family: 'Assistant', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+  white-space: nowrap;
 `;
 
 const Description = styled.p`
@@ -100,27 +132,38 @@ const Description = styled.p`
 `;
 
 const RegisterButton = styled.button`
-  background: #f97316;
+  font-family: 'Assistant', sans-serif;
+  background: linear-gradient(135deg, #FFA07A 0%, #FF4500 100%);
   color: white;
-  padding: 10px 24px;
-  border-radius: 8px;
+  padding: 10px 32px;
+  border-radius: 50px;
   font-weight: 700;
   font-size: 14px;
   border: none;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(255, 131, 62, 0.3);
+  width: fit-content;
+  height: fit-content;
 
   &:hover {
-    background: #ea580c;
+    background: linear-gradient(135deg, #FF8C00 0%, #E94E1B 100%);
+    box-shadow: 0 4px 12px rgba(255, 131, 62, 0.5);
+    transform: translateY(-2px);
   }
 
   &:active {
-    transform: scale(0.98);
+    transform: translateY(0) scale(0.98);
+  }
+
+  @media (max-width: 960px) {
+    padding: 9px 28px;
+    font-size: 13px;
   }
 
   @media (max-width: 600px) {
-    padding: 8px 20px;
-    font-size: 13px;
+    padding: 8px 24px;
+    font-size: 12px;
   }
 `;
 
@@ -169,14 +212,18 @@ const ConventionCard = () => {
     <CardWrapper onClick={handleClick}>
       <GradientOverlay />
       <ContentWrapper>
-        <Title>{eventTitle}</Title>
-        <Title style={{ fontSize: '18px', marginBottom: '12px', fontWeight: '500' }}>{eventDate}</Title>
-        <RegisterButton onClick={(e) => {
-          e.stopPropagation();
-          handleClick();
-        }}>
-          {t("Home.conventionSite") || "לפרטים והרשמה"}
-        </RegisterButton>
+        <TitleDateWrapper>
+          <Title>{eventTitle}</Title>
+        </TitleDateWrapper>
+        <DateButtonRow>
+          <DateText>{eventDate}</DateText>
+          <RegisterButton onClick={(e) => {
+            e.stopPropagation();
+            handleClick();
+          }}>
+            {t("Home.conventionSite") || "לפרטים והרשמה"}
+          </RegisterButton>
+        </DateButtonRow>
       </ContentWrapper>
     </CardWrapper>
   );

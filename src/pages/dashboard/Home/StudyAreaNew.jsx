@@ -2,15 +2,45 @@ import React from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Play, Users, BookOpen, LibraryBig, ChevronLeft, ChevronRight } from "lucide-react";
+import bannerTestImage from "../../../asset/logo/banner-test.jpeg";
 
 /* ===== Styled Components ===== */
 
 const Wrapper = styled.div`
   background: #ffffff;
   border-radius: 16px;
-  padding: 24px;
+  padding: 0;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   border: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  overflow: hidden;
+
+  @media (max-width: 960px) {
+    flex-direction: column;
+  }
+`;
+
+const ImageSection = styled.div`
+  flex: 0 0 60%;
+  min-height: 300px;
+   background-image: url('https://kabbalahmedia.info/imaginary/thumbnail?url=http%3A%2F%2Fnginx%2Fassets%2Fapi%2Fthumbnail%2FEwafKd5f&width=800&stripmeta=true');
+  /* background-image: url(${bannerTestImage}); */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+
+  @media (max-width: 960px) {
+    flex: 0 0 200px;
+    width: 100%;
+  }
+`;
+
+const ContentSection = styled.div`
+  flex: 1;
+  padding: 24px;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -97,25 +127,9 @@ const ChevronIcon = styled.div`
   }
 `;
 
-const FooterLink = styled.a`
-  margin-top: auto;
-  padding-top: 16px;
-  color: #6366f1;
-  font-weight: 700;
-  font-size: 14px;
-  text-decoration: none;
-  align-self: flex-start;
-  transition: color 0.2s ease;
-
-  &:hover {
-    color: #4f46e5;
-    text-decoration: underline;
-  }
-`;
-
 /* ===== Component ===== */
 
-const StudyArea = () => {
+const StudyAreaNew = () => {
   const { i18n } = useTranslation();
   const isRTL = i18n.language === "he" || i18n.language === "ar";
   
@@ -157,38 +171,38 @@ const StudyArea = () => {
 
   return (
     <Wrapper>
-      <Header>
-        <HeaderIcon>
-          <BookOpen size={24} />
-        </HeaderIcon>
-        <HeaderTitle>אזור לימוד</HeaderTitle>
-      </Header>
+      <ImageSection />
+      <ContentSection>
+        <Header>
+          <HeaderIcon>
+            <BookOpen size={24} />
+          </HeaderIcon>
+          <HeaderTitle>אזור לימוד</HeaderTitle>
+        </Header>
 
-      {studyLinks.map((link) => {
-        const IconComponent = link.icon;
-        const ChevronComponent = isRTL ? ChevronLeft : ChevronRight;
-        return (
-          <StudyLinkRow
-            key={link.id}
-            isRTL={isRTL}
-            onClick={(e) => handleLinkClick(link.href, e)}
-          >
-            <LinkIcon>
-              <IconComponent size={20} strokeWidth={2} />
-            </LinkIcon>
-            <LinkText>{link.text}</LinkText>
-            <ChevronIcon>
-              <ChevronComponent size={16} />
-            </ChevronIcon>
-          </StudyLinkRow>
-        );
-      })}
-
-     
-    
+        {studyLinks.map((link) => {
+          const IconComponent = link.icon;
+          const ChevronComponent = isRTL ? ChevronLeft : ChevronRight;
+          return (
+            <StudyLinkRow
+              key={link.id}
+              isRTL={isRTL}
+              onClick={(e) => handleLinkClick(link.href, e)}
+            >
+              <LinkIcon>
+                <IconComponent size={20} strokeWidth={2} />
+              </LinkIcon>
+              <LinkText>{link.text}</LinkText>
+              <ChevronIcon>
+                <ChevronComponent size={16} />
+              </ChevronIcon>
+            </StudyLinkRow>
+          );
+        })}
+      </ContentSection>
     </Wrapper>
   );
 };
 
-export default StudyArea;
+export default StudyAreaNew;
 

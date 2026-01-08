@@ -26,8 +26,10 @@
 
 // local backend, production keycloak
 window.APP_CONFIG = {
-  VH_API_BASE_URL: 'http://localhost:9000',
-  PROFILE_URL: 'http://localhost:9000/profile/v1/profile',
+  VH_API_BASE_URL: 'https://api.kli.one',
+  PROFILE_URL: 'https://api.kli.one/profile/v1/profile',
+  // VH_API_BASE_URL: 'http://localhost:9000',
+  // PROFILE_URL: 'http://localhost:9000/profile/v1/profile',
   KEYCLOAK_CONFIG: {
     realm: 'main',
     url: 'https://accounts.kab.info/auth/',

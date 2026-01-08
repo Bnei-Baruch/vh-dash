@@ -6,12 +6,15 @@ import { Grid } from "@material-ui/core";
 // import Arvut from "./Arvut";
 import Calendar from "./Calendar";
 import Header from "./Header";
-import QuickActions from "./QuickActions.jsx";
-import ConventionCard from "./ConventionCard.jsx";
 import StudyArea from "./StudyArea.jsx";
-import GivingSection from "./GivingSection.jsx";
+import StudyAreaNew from "./StudyAreaNew.jsx";
+import ConventionCard from "./ConventionCard.jsx";
+import QuickActions from "./QuickActions.jsx";
+import GivingSectionNew from "./GivingSectionNew.jsx";
+import RegistrationsAndPayments from "./RegistrationsAndPayments.jsx";
 // import Convention from "./Convention";
 import { setPageTitle } from "../../../redux/actions/layoutActions";
+import StudyAreaBanner from "./StudyAreaBanner.jsx";
 
 const Home = () => {
   const [liveEvent, setLiveEvent] = useState();
@@ -32,32 +35,29 @@ const Home = () => {
 
   return (
     <>
-      {/* 1️⃣ Top Section – Convention Banner (Full Width) */}
-      <Grid container spacing={6} style={{ marginBottom: 24, marginTop: -40 }}>
-        <Grid item xs={12}>
-          <ConventionCard />
-        </Grid>
-      </Grid>
-
-      {/* 2️⃣ Main Content Section – Events + Study (50% / 50%) */}
-      <Grid container spacing={6} style={{ marginBottom: 24 }}>
-        <Grid item xs={12} lg={6}>
-          <Calendar onLiveEvent={onLiveEvent} />
-        </Grid>
-        <Grid item xs={12} lg={6}>
-          <StudyArea />
-        </Grid>
-      </Grid>
-
-      {/* 3️⃣ Quick Actions – Compact Strip (Secondary Navigation) */}
+      {/* 1️⃣ Quick Actions */}
       <div style={{ marginBottom: 24 }}>
         <QuickActions />
       </div>
 
-      {/* 4️⃣ Bottom Section – Giving & Mutual Responsibility (Full Width) */}
+      {/* 2️⃣ Main Content Section – Study + Events + Convention Banner */}
+      <Grid container spacing={6} style={{ marginBottom: 24 }}>
+        <Grid item xs={12} lg={7}>
+          <StudyAreaBanner />
+        </Grid>
+        <Grid item xs={12} lg={5}>
+          <Calendar onLiveEvent={onLiveEvent} />
+        </Grid>
+       
+      </Grid>
+
+      {/* 3️⃣ Registrations and Payments + Giving Section New (50% / 50%) */}
       <Grid container spacing={6}>
-        <Grid item xs={12}>
-          <GivingSection />
+        <Grid item xs={12} lg={6}>
+          <RegistrationsAndPayments />
+        </Grid>
+        <Grid item xs={12} lg={6}>
+          <GivingSectionNew />
         </Grid>
       </Grid>
     </>
