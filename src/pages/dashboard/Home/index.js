@@ -1,26 +1,25 @@
 import React, { useCallback, useState, useEffect } from "react";
 import { withTheme } from "styled-components";
-import { useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { Grid } from "@material-ui/core";
 // import Arvut from "./Arvut";
 import Calendar from "./Calendar";
 import Header from "./Header";
 // import Convention from "./Convention";
-import { setPageTitle } from "../../../redux/actions/layoutActions";
+import { usePageTitle } from "../../../contexts/PageTitleContext";
 
 const Home = () => {
   const [liveEvent, setLiveEvent] = useState();
-  const dispatch = useDispatch();
+  const { setTitle } = usePageTitle();
   const { t } = useTranslation();
 
+  // Reset title immediately when component mounts
   useEffect(() => {
-    // No page title for home page
-    dispatch(setPageTitle(""));
+    setTitle("");
     return () => {
-      dispatch(setPageTitle(""));
+      setTitle("");
     };
-  }, [dispatch]);
+  }, [setTitle]);
 
   const onLiveEvent = useCallback((event) => {
     setLiveEvent(event);

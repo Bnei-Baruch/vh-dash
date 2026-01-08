@@ -6,28 +6,27 @@ import {
   Switch,
 } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { useDispatch } from "react-redux";
 import { dashboardLayoutRoutes } from "./index";
 
 import DashboardLayout from "../layouts/Dashboard";
 import Page404 from "../pages/auth/Page404";
 import Auth from "../config/Auth";
-import { setPageTitle } from "../redux/actions/layoutActions";
+import { usePageTitle } from "../contexts/PageTitleContext";
 
-// Component to set page title in Redux
+// Component to set page title using Context
 const PageTitleSetter = ({ name }) => {
   const { t } = useTranslation();
-  const dispatch = useDispatch();
+  const { setTitle } = usePageTitle();
 
   useEffect(() => {
     if (name) {
       const pageTitleText = t(`Dashboard.${name}.title`);
-      dispatch(setPageTitle(pageTitleText));
+      setTitle(pageTitleText);
     }
     return () => {
-      dispatch(setPageTitle(""));
+      setTitle("");
     };
-  }, [dispatch, name, t]);
+  }, [setTitle, name, t]);
 
   return null;
 };
