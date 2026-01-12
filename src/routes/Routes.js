@@ -12,9 +12,7 @@ import Page404 from "../pages/auth/Page404";
 import Auth from "../config/Auth";
 import DashboardPageLayout from "./DashboardPageLayout";
 
-/**
- * יוצר Route יחיד
- */
+
 const renderRoute = (Layout, route) => {
   const { path, id, enableHeader, component: Component } = route;
 
@@ -38,9 +36,7 @@ const renderRoute = (Layout, route) => {
   );
 };
 
-/**
- * הופך routes + children לרשימת Route-ים
- */
+
 const renderRoutes = (Layout, routes) =>
   routes.flatMap((route) =>
     route.children
