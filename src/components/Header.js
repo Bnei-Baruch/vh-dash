@@ -32,7 +32,7 @@ import { setLoggedInUser } from "../redux/actions/userActions";
 import ModalWindow from "../pages/dashboard/MyProfile/ui/ModalWindow";
 import { DASHBOARD_ROUTES } from "../routes/dashboardRoutes";
 import { membershipDataV2 } from "../redux/selectors/user";
-import { pageTitle } from "../redux/selectors/layout";
+import { usePageTitle } from "../contexts/PageTitleContext";
 
 /* ---------- styled ---------- */
 
@@ -334,7 +334,7 @@ const Header = ({ onDrawerToggle }) => {
   const { t } = useTranslation();
   const membership = useSelector((state) => membershipDataV2(state));
   const active = membership?.active || false;
-  const currentPageTitle = useSelector((state) => pageTitle(state));
+  const { title: currentPageTitle } = usePageTitle();
   return (
     <AppBar position="sticky" elevation={0}>
       <StyledToolbar>

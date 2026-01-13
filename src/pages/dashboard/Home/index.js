@@ -1,6 +1,5 @@
 import React, { useCallback, useState, useEffect } from "react";
 import { withTheme } from "styled-components";
-import { useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { Grid } from "@material-ui/core";
 // import Arvut from "./Arvut";
@@ -13,21 +12,22 @@ import QuickActions from "./QuickActions.jsx";
 import GivingSectionNew from "./GivingSectionNew.jsx";
 import RegistrationsAndPayments from "./RegistrationsAndPayments.jsx";
 // import Convention from "./Convention";
-import { setPageTitle } from "../../../redux/actions/layoutActions";
 import StudyAreaBanner from "./StudyAreaBanner.jsx";
+import { usePageTitle } from "../../../contexts/PageTitleContext";
+
 
 const Home = () => {
   const [liveEvent, setLiveEvent] = useState();
-  const dispatch = useDispatch();
+  const { setTitle } = usePageTitle();
   const { t } = useTranslation();
 
+  // Reset title immediately when component mounts
   useEffect(() => {
-    // No page title for home page
-    dispatch(setPageTitle(""));
+    setTitle("");
     return () => {
-      dispatch(setPageTitle(""));
+      setTitle("");
     };
-  }, [dispatch]);
+  }, [setTitle]);
 
   const onLiveEvent = useCallback((event) => {
     setLiveEvent(event);
