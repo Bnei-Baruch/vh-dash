@@ -17,6 +17,7 @@ import Auth from "./config/Auth";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
 import { setSettings } from "./redux/actions/settingsActions";
+import { PageTitleProvider } from "./contexts/PageTitleContext";
 
 const jss = create({
   plugins: [...jssPreset().plugins, rtl()],
@@ -77,7 +78,9 @@ const App = ({ theme }) => {
                 direction: i18n.dir(i18n.language),
               }}
             >
-              <Routes />
+              <PageTitleProvider>
+                <Routes />
+              </PageTitleProvider>
             </ThemeProvider>
           </MuiThemeProvider>
         </MuiPickersUtilsProvider>

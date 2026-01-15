@@ -37,7 +37,7 @@ const Header = () => {
   return (
     <>
       <Grid>
-        <Typography variant="h3">
+        <Typography variant="h3" style={{ display: "none" }}>
           {t("Home.welcomeBack")},{" "}
           {profileData ? profileData.first_name_vernacular : ""}
         </Typography>

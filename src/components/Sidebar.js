@@ -42,7 +42,7 @@ const ExternalLink = styled.a`
 `;
 const Scrollbar = styled(PerfectScrollbar)`
   background-color: ${(props) => props.theme.sidebar.background};
-  border-right: 1px solid rgba(0, 0, 0, 0.12);
+  border-right: 1px solid ${(props) => props.theme.palette.divider};
 `;
 
 const List = styled(MuiList)`
@@ -54,25 +54,36 @@ const Items = styled.div`
   padding-bottom: ${(props) => props.theme.spacing(2.5)}px;
 `;
 
+const LogoLink = styled(RouterNavLink)`
+  padding: 0;
+  display: block;
+  text-decoration: none;
+  
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: transparent !important;
+  }
+`;
+
 const Brand = styled(ListItem)`
   background-color: ${(props) => props.theme.sidebar.header.background};
   color: ${(props) => props.theme.sidebar.header.color};
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  min-height: 64px;
+  min-height: 72px;
+  height: 72px;
   padding-left: ${(props) => props.theme.spacing(3)}px;
   padding-right: ${(props) => props.theme.spacing(3)}px;
-  padding-top: ${(props) => props.theme.spacing(0.5)}px;
-  padding-bottom: ${(props) => props.theme.spacing(0.5)}px;
+  padding-top: 6px;
+  padding-bottom: 2px;
   cursor: default;
+  border-bottom: 1px solid ${(props) => props.theme.sidebar.header.borderColor};
+ 
 
   &:hover {
     background-color: ${(props) => props.theme.sidebar.header.background};
-  }
-
-  a {
-    padding: 0;
   }
 `;
 
@@ -92,12 +103,11 @@ const Category = styled(ListItem)`
   }
 
   &:hover {
-    background: rgba(0, 0, 0, 0.08);
+    background: ${(props) => props.theme.sidebar.category.hoverBackground};
   }
 
   &.${(props) => props.activeClassName} {
-    background-color: ${(props) =>
-      darken(0.05, props.theme.sidebar.background)};
+    background-color: ${(props) => props.theme.sidebar.category.activeBackground};
 
     span {
       color: ${(props) => props.theme.sidebar.color};
@@ -135,13 +145,16 @@ const Link = styled(ListItem)`
     color: ${(props) => rgba(props.theme.sidebar.color, 0.7)};
   }
 
-  &:hover span {
-    color: ${(props) => rgba(props.theme.sidebar.color, 0.9)};
+  &:hover {
+    background: ${(props) => props.theme.sidebar.category.hoverBackground};
+    
+    span {
+      color: ${(props) => rgba(props.theme.sidebar.color, 0.9)};
+    }
   }
 
   &.${(props) => props.activeClassName} {
-    background-color: ${(props) =>
-      darken(0.06, props.theme.sidebar.background)};
+    background-color: ${(props) => props.theme.sidebar.category.activeBackground};
 
     span {
       color: ${(props) => props.theme.sidebar.color};
@@ -257,7 +270,7 @@ const Sidebar = ({ location, ...rest }) => {
   return (
     <Drawer variant="permanent" {...rest}>
       <Brand>
-        <Link button component={NavLink} exact to={DASHBOARD_ROOT}>
+        <LogoLink exact to={DASHBOARD_ROOT}>
           <img
             src={logoImage}
             alt="Bnei Baruch Logo"
@@ -267,7 +280,7 @@ const Sidebar = ({ location, ...rest }) => {
               maxHeight: "60px",
             }}
           />
-        </Link>
+        </LogoLink>
       </Brand>
 
       <Scrollbar>

@@ -11,6 +11,7 @@ const blueVariant = {
       main: blue[600],
       contrastText: "#FFF",
     },
+    divider: "rgba(0, 0, 0, 0.12)",
   },
   header: {
     color: grey[500],
@@ -24,23 +25,26 @@ const blueVariant = {
   },
   sidebar: {
     color: "#FFF",
-    background: blue[700],
+    background: "#00447c",
     header: {
       color: "#FFF",
-      background: blue[800],
+      background: "#00447c",
+      borderColor: "rgba(255, 255, 255, 0.3)",
       brand: {
         color: "#FFFFFF",
       },
     },
     footer: {
       color: "#FFF",
-      background: blue[800],
+      background: "#00447c",
       online: {
         background: "#FFF",
       },
     },
     category: {
       fontWeight: 400,
+      hoverBackground: "rgba(255, 255, 255, 0.08)",
+      activeBackground: "#003F73",
     },
     badge: {
       color: "#000",
@@ -313,9 +317,9 @@ const darkVariant = {
 };
 
 const variants = [
+  blueVariant,
   darkVariant,
   lightVariant,
-  blueVariant,
   greenVariant,
   indigoVariant,
   tealVariant,

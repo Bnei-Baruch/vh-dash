@@ -56,8 +56,8 @@ const Paper = styled(MuiPaper)(spacing);
 
 const MainContent = styled(Paper)`
   flex: 1;
-  background: #f2f2f2 !important;
-  background-color: #f2f2f2 !important;
+  background: #f9fafc !important;
+  background-color: #f9fafc !important;
 
   @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
     flex: none;
@@ -68,7 +68,7 @@ const MainContent = styled(Paper)`
   }
 `;
 
-const Dashboard = ({ children, routes, width }) => {
+const Dashboard = ({ children, routes, width, pageTitle }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleDrawerToggle = () => {
@@ -97,7 +97,7 @@ const Dashboard = ({ children, routes, width }) => {
         </Hidden>
       </Drawer>
       <AppContent>
-        <Header onDrawerToggle={handleDrawerToggle} />
+        <Header onDrawerToggle={handleDrawerToggle} pageTitle={pageTitle} />
         <MainContent p={isWidthUp("lg", width) ? 10 : 5}>
           {children}
         </MainContent>
