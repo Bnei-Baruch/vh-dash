@@ -5,13 +5,31 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import { dashboardLayoutRoutes } from "./index";
 import DashboardLayout from "../layouts/Dashboard";
 import Page404 from "../pages/auth/Page404";
 import Auth from "../config/Auth";
-import DashboardPageLayout from "./DashboardPageLayout";
 
+const RoutedPage = ({
+  Layout,
+  Component,
+  enableHeader,
+  id,
+  routeProps,
+}) => {
+  const { t } = useTranslation();
+
+  const pageTitle =
+    enableHeader && id ? t(`Dashboard.${id}.title`) : "";
+
+  return (
+    <Layout pageTitle={pageTitle}>
+      <Component {...routeProps} />
+    </Layout>
+  );
+};
 
 const renderRoute = (Layout, route) => {
   const { path, id, enableHeader, component: Component } = route;
@@ -23,13 +41,13 @@ const renderRoute = (Layout, route) => {
       key={path}
       path={path}
       exact
-      render={(props) => (
-        <DashboardPageLayout
+      render={(routeProps) => (
+        <RoutedPage
           Layout={Layout}
           Component={Component}
-          routeId={id}
           enableHeader={enableHeader}
-          routeProps={props}
+          id={id}
+          routeProps={routeProps}
         />
       )}
     />
