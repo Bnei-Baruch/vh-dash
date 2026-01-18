@@ -20,14 +20,8 @@ import swal from "sweetalert";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: "#F2F2F2",
+    backgroundColor: "#f9fafc",
     paddingBottom: 76,
-  },
-  breadcrumbs: {
-    marginBottom: theme.spacing(6),
-    "& .MuiTypography-colorInherit": {
-      color: "#1E88E5",
-    },
   },
 }));
 
