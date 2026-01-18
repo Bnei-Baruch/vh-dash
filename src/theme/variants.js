@@ -225,10 +225,10 @@ const lightVariant = {
     },
   },
   header: {
-    color: grey[200],
-    background: blue[800],
+    color: grey[500],
+    background: "#FFF",
     search: {
-      color: grey[100],
+      color: grey[800],
     },
     indicator: {
       background: red[700],
