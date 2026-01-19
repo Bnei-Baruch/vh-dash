@@ -36,7 +36,7 @@ import { membershipDataV2 } from "../redux/selectors/user";
 /* ---------- styled ---------- */
 
 const AppBar = styled(MuiAppBar)`
-  background: ${(props) => props.theme.header.background};
+  background-color: ${(props) => props.theme.header.background} !important;
   color: ${(props) => props.theme.header.color};
   border-bottom: 1px solid ${(props) => props.theme.palette.divider};
 
