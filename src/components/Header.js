@@ -334,7 +334,7 @@ const Header = ({ onDrawerToggle, pageTitle }) => {
   const membership = useSelector((state) => membershipDataV2(state));
   const active = membership?.active || false;
   return (
-    <AppBar position="sticky" elevation={0}>
+    <AppBar position="sticky" elevation={0} color="default">
       <StyledToolbar>
         <Grid container alignItems="center" wrap="nowrap">
           <StartSection>
