@@ -210,9 +210,7 @@ const VerticalDivider = styled.span`
 `;
 
 const PageTitle = styled(Typography)`
-  font-size: 1.25rem; 
   font-weight: 600;
-  color: #333;
   margin-inline-start: 16px;
   margin-inline-end: 16px;
 
@@ -345,7 +343,7 @@ const Header = ({ onDrawerToggle, pageTitle }) => {
             </Hidden>
 
             {pageTitle && (
-              <PageTitle>{pageTitle}</PageTitle>
+              <PageTitle variant="h6">{pageTitle}</PageTitle>
             )}
           </StartSection>
 
