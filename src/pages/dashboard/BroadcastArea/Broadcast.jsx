@@ -278,10 +278,12 @@ export default function Broadcast() {
                   gap: 16
                 }}
               >
-                <WorldIcon />
-                <LiveLang>
-                  &nbsp; {t("Dashboard.BroadcastArea.liveLanguage")}
-                </LiveLang>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                  <WorldIcon />
+                  <LiveLang>
+                    {t("Dashboard.BroadcastArea.liveLanguage")}
+                  </LiveLang>
+                </div>
                 <span>
                   <FormControl variant="outlined" style={{ width: "auto", minWidth: "140px" }}>
                     <Select
