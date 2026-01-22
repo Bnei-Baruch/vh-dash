@@ -199,11 +199,13 @@ export default function Broadcast() {
   // Update HLS URL when quality changes
   React.useEffect(() => {
     if (!streamsData?.languages?.[selectedLangName] || !selectedQuality) return;
-    
+
     const languageData = streamsData.languages[selectedLangName];
+
     const qualityData = languageData.find(
-      (q) => (q.quiality === selectedQuality || q.quality === selectedQuality)
+      (q) => q.quality === selectedQuality
     );
+
     if (qualityData) {
       setHlsUrl(qualityData.hlsUrl);
     }
