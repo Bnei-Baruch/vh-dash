@@ -12,6 +12,7 @@ import ErrorLogin from "../views/ErrorLogin";
 import LoadingScreen from "../views/LoadingScreen";
 import { fetchProfile } from "../redux/actions/profileActions";
 import { getMembershipStatusV2 } from "../services/membership.service";
+import { getDebugUser } from "../shared/featureFlags";
 
 const Auth = (props) => {
   const [auth, setAuth] = useState({ keycloak: null, authenticated: false });
@@ -23,6 +24,21 @@ const Auth = (props) => {
       .init({ onLoad: "login-required", checkLoginIframe: false })
       .then((authenticated) => {
         keycloak.loadUserProfile().then(async function () {
+          // Debug mode: Override keycloak subject if debug_user is set
+          const debugUser = getDebugUser();
+          if (debugUser) {
+            console.warn('[Debug Mode] 🔧 Overriding keycloak.subject globally');
+            console.warn('[Debug Mode] 📝 Original:', keycloak.subject);
+            console.warn('[Debug Mode] 📝 Debug User:', debugUser);
+            console.warn('[Debug Mode] ⚠️  Backend will reject this unless bypass is enabled!');
+
+            // Override the subject property
+            Object.defineProperty(keycloak, 'subject', {
+              get: () => debugUser,
+              configurable: true
+            });
+          }
+
           dispatch(setKeycloakData(keycloak));
 
           const membership = await getMembershipStatusV2(keycloak.subject);

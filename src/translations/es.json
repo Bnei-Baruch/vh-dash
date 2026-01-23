@@ -581,6 +581,14 @@
       "Broadcast": {
         "membershipRequired": "La transmisión en vivo es solo para miembros",
         "membershipRequiredDescription": "Para ver transmisiones en vivo, necesitas una membresía activa. La membresía te da acceso a todas las transmisiones en vivo y nuestro contenido especial."
+      },
+      "CountryPrompt": {
+        "title": "Completa tu perfil",
+        "description": "Por favor completa tu perfil y selecciona tu país.",
+        "selectCountry": "País",
+        "save": "Guardar",
+        "later": "Recordármelo más tarde",
+        "dontShowAgain": "No mostrar esto de nuevo"
       }
     },
     "Membership": {

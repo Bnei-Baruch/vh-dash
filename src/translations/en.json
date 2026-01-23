@@ -296,6 +296,14 @@
       "Broadcast": {
         "membershipRequired": "Live Broadcast is for Members Only",
         "membershipRequiredDescription": "To watch live broadcasts, you need an active membership. Membership gives you access to all live broadcasts and our special content."
+      },
+      "CountryPrompt": {
+        "title": "Complete Your Profile",
+        "description": "Please complete your profile and select your country.",
+        "selectCountry": "Country",
+        "save": "Save",
+        "later": "Remind Me Later",
+        "dontShowAgain": "Don't show this again"
       }
     },
     "Membership": {
