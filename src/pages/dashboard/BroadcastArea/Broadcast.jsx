@@ -12,9 +12,9 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import ReactHlsPlayer from "react-hls-player";
 import PublicIcon from "@material-ui/icons/Public";
-import axios from "axios";
 import { getCountryCode, getCustomCodeFromCoutryCode } from "../../../utils";
-import { getFlag, handleFlagError, getLanguageCode, findLanguageNameByCode } from "../../../utils/flag";
+import { getFlag, handleFlagError, getLanguageCode, findLanguageNameByCode } from "../../../utils/flags";
+import { fetchStreamsJSON, getDefaultQuality } from "../../../services/broadcast-hls.service";
 import HomerLimud from "./HomerLimud";
 import { School as SchoolIcon } from "@material-ui/icons";
 
@@ -46,77 +46,6 @@ const LiveLang = styled.span`
   position: relative;
   top: -2px;
 `;
-
-const STREAMS_CACHE_KEY = "VH_STREAMS_CACHE";
-const STREAMS_CACHE_TIMESTAMP_KEY = "VH_STREAMS_CACHE_TIMESTAMP";
-const CACHE_DURATION_MS = 5 * 60 * 1000; // 5 minutes
-
-const publicAxios = axios.create();
-
-const fetchStreamsJSON = async () => {
-  // Check cache
-  const cachedData = localStorage.getItem(STREAMS_CACHE_KEY);
-  const cachedTimestamp = localStorage.getItem(STREAMS_CACHE_TIMESTAMP_KEY);
-  
-  if (cachedData && cachedTimestamp) {
-    const cacheAge = Date.now() - parseInt(cachedTimestamp, 10);
-    if (cacheAge < CACHE_DURATION_MS) {
-      try {
-        return JSON.parse(cachedData);
-      } catch {
-        localStorage.removeItem(STREAMS_CACHE_KEY);
-        localStorage.removeItem(STREAMS_CACHE_TIMESTAMP_KEY);
-      }
-    }
-  }
-  
-  // Fetch fresh data
-  try {
-    const response = await publicAxios.get("https://streams.kab.tv/live1.json", {
-      responseType: "text",
-    });
-    
-    let data = response.data;
-    
-    // Parse JSON or JavaScript object literal
-    if (typeof data === 'string') {
-      try {
-        data = JSON.parse(data);
-      } catch {
-        // Try parsing as JavaScript object literal
-        if (data.trim().startsWith('{') && data.includes('languages')) {
-          data = new Function('return ' + data)();
-        } else {
-          throw new Error("Invalid data format");
-        }
-      }
-    }
-    
-    // Cache the result
-    localStorage.setItem(STREAMS_CACHE_KEY, JSON.stringify(data));
-    localStorage.setItem(STREAMS_CACHE_TIMESTAMP_KEY, Date.now().toString());
-    
-    return data;
-  } catch (error) {
-    console.error("Failed to fetch streams JSON:", error);
-    // Fallback to expired cache if available
-    if (cachedData) {
-      try {
-        return JSON.parse(cachedData);
-      } catch {
-        throw error;
-      }
-    }
-    throw error;
-  }
-};
-
-// Find default quality (360p if available, otherwise first)
-const getDefaultQuality = (qualities) => {
-  if (!qualities || qualities.length === 0) return null;
-  const quality360p = qualities.find((q) => q.quiality === "360p" || q.quality === "360p");
-  return quality360p || qualities[0];
-};
 
 export default function Broadcast() {
   const classes = useStyles();
