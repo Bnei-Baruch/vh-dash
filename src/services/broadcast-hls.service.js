@@ -35,25 +35,9 @@ export const fetchStreamsJSON = async () => {
 
   // Fetch fresh data
   try {
-    const response = await publicAxios.get("https://streams.kab.tv/live1.json", {
-      responseType: "text",
-    });
+    const response = await publicAxios.get("https://streams.kab.tv/live1.json");
 
     let data = response.data;
-
-    // Parse JSON or JavaScript object literal
-    if (typeof data === 'string') {
-      try {
-        data = JSON.parse(data);
-      } catch {
-        // Try parsing as JavaScript object literal
-        if (data.trim().startsWith('{') && data.includes('languages')) {
-          data = new Function('return ' + data)();
-        } else {
-          throw new Error("Invalid data format");
-        }
-      }
-    }
 
     // Cache the result
     localStorage.setItem(STREAMS_CACHE_KEY, JSON.stringify(data));
