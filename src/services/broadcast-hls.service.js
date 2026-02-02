@@ -1,9 +1,9 @@
 import axios from "axios";
 
 // Constants
-const STREAMS_CACHE_KEY = "VH_STREAMS_CACHE";
-const STREAMS_CACHE_TIMESTAMP_KEY = "VH_STREAMS_CACHE_TIMESTAMP";
+const STREAMS_STORAGE_KEY = "VH_STREAMS";
 const CACHE_DURATION_MS = 5 * 60 * 1000; // 5 minutes
+const DEFAULT_QUALITY = "360p";
 
 // IMPORTANT:
 // We intentionally create a separate axios instance without auth interceptors
@@ -14,22 +14,25 @@ const publicAxios = axios.create();
 
 /**
  * Fetch streams JSON with caching
- * Returns streams data from cache if valid, otherwise fetches fresh data
  */
-export const fetchStreamsJSON = async () => {
+export const getStreams = async () => {
   // Check cache
-  const cachedData = localStorage.getItem(STREAMS_CACHE_KEY);
-  const cachedTimestamp = localStorage.getItem(STREAMS_CACHE_TIMESTAMP_KEY);
+  let cachedData = null;
+  let cachedTimestamp = null;
 
-  if (cachedData && cachedTimestamp) {
-    const cacheAge = Date.now() - parseInt(cachedTimestamp, 10);
+  try {
+    const cache = JSON.parse(localStorage.getItem(STREAMS_STORAGE_KEY));
+    cachedData = cache?.data;
+    cachedTimestamp = cache?.timestamp;
+  } catch {
+    localStorage.removeItem(STREAMS_STORAGE_KEY);
+  }
+
+  // Check if cache is valid
+  if (cachedData && typeof cachedTimestamp === "number") {
+    const cacheAge = Date.now() - cachedTimestamp;
     if (cacheAge < CACHE_DURATION_MS) {
-      try {
-        return JSON.parse(cachedData);
-      } catch {
-        localStorage.removeItem(STREAMS_CACHE_KEY);
-        localStorage.removeItem(STREAMS_CACHE_TIMESTAMP_KEY);
-      }
+      return cachedData;
     }
   }
 
@@ -39,20 +42,18 @@ export const fetchStreamsJSON = async () => {
 
     let data = response.data;
 
-    // Cache the result
-    localStorage.setItem(STREAMS_CACHE_KEY, JSON.stringify(data));
-    localStorage.setItem(STREAMS_CACHE_TIMESTAMP_KEY, Date.now().toString());
+    // Cache the result as a single object
+    const cacheObject = {
+      data,
+      timestamp: Date.now()
+    };
+    localStorage.setItem(STREAMS_STORAGE_KEY, JSON.stringify(cacheObject));
 
     return data;
   } catch (error) {
-    console.error("Failed to fetch streams JSON:", error);
     // Fallback to expired cache if available
     if (cachedData) {
-      try {
-        return JSON.parse(cachedData);
-      } catch {
-        throw error;
-      }
+      return cachedData;
     }
     throw error;
   }
@@ -62,7 +63,7 @@ export const fetchStreamsJSON = async () => {
  * Find default quality (360p if available, otherwise first)
  */
 export const getDefaultQuality = (qualities) => {
-  if (!qualities || qualities.length === 0) return null;
-  const quality360p = qualities.find((q) => q.quiality === "360p" || q.quality === "360p");
+  if (!Array.isArray(qualities) || qualities.length === 0) return null;
+  const quality360p = qualities.find((q) => q.quality === DEFAULT_QUALITY);
   return quality360p || qualities[0];
 };

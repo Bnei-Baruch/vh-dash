@@ -1,95 +1,45 @@
-import { getCountryCode } from "./index";
 import { IMAGE_URL } from "../shared/constants";
 
-// Map language names to language codes
-const languageNameToCode = {
-  "Arabic": "ara",
-  "Bulgarian": "bul",
-  "Chinese": "chn",
-  "Croatian": "hrv",
-  "Dutch": "dut",
-  "English": "eng",
-  "French": "fre",
-  "Georgian": "geo",
-  "German": "ger",
-  "Hebrew": "heb",
-  "Hungarian": "hun",
-  "Italian": "ita",
-  "Japanese": "jpn",
-  "Latvian": "lav",
-  "Lithuanian": "lit",
-  "Norwegian": "nor",
-  "Polish": "pol",
-  "Portuguese": "por",
-  "Romanian": "rum",
-  "Russian": "rus",
-  "Slovene": "slv",
-  "Spanish": "spa",
-  "Swedish": "swe",
-  "Turkish": "tur",
-  "Ukrainian": "ukr",
-};
+// Map full language names directly to flag country codes (2-letter codes)
+// This is the only conversion needed: language name → flag code
+const languageNameToFlagCode = Object.freeze({
+  Arabic: "sa",
+  Bulgarian: "bg",
+  Chinese: "cn",
+  Croatian: "hr",
+  Dutch: "nl",
+  English: "en",
+  French: "fr",
+  Georgian: "ge",
+  German: "de",
+  Hebrew: "he",
+  Hungarian: "hu",
+  Italian: "it",
+  Japanese: "jp",
+  Latvian: "lv",
+  Lithuanian: "lt",
+  Norwegian: "no",
+  Polish: "pl",
+  Portuguese: "pt", 
+  Romanian: "ro",
+  Russian: "ru",
+  Slovene: "si",
+  Spanish: "es",
+  Swedish: "se",
+  Turkish: "tr",
+  Ukrainian: "ua",
+});
 
-// Map language codes to country codes for flags
-const getFlagCode = (langCode) => {
-  if (!langCode) return null;
-  
-  const flagMappings = {
-    "ara": "sa",
-    "chn": "cn",
-    "eng": "en",
-    "bul": "bg",
-    "hrv": "hr",
-    "dut": "nl",
-    "fre": "fr",
-    "geo": "ge",
-    "ger": "de",
-    "heb": "he",
-    "hun": "hu",
-    "ita": "it",
-    "jpn": "jp",
-    "lav": "lv",
-    "lit": "lt",
-    "nor": "no",
-    "pol": "pl",
-    "por": "pt",
-    "rum": "ro",
-    "rus": "ru",
-    "slv": "si",
-    "spa": "es",
-    "swe": "se",
-    "tur": "tr",
-    "ukr": "ua",
-  };
-  
-  if (flagMappings[langCode]) {
-    return flagMappings[langCode];
-  }
-  
-  const standardCode = getCountryCode(langCode);
-  if (standardCode && standardCode !== "en") {
-    return standardCode;
-  }
-  
-  return null;
-};
-
-// Get language code from language name
-export const getLanguageCode = (langName) => {
-  return languageNameToCode[langName] || null;
-};
-
-// Find language name by code
-export const findLanguageNameByCode = (code) => {
-  return Object.keys(languageNameToCode).find(
-    (name) => languageNameToCode[name] === code
-  ) || null;
-};
-
-// Get flag URL for a language name
+/**
+ * Get flag URL for a full language name
+ * Converts language name (e.g., "Hebrew") directly to flag URL
+ * @param {string} langName - Full language name (e.g., "Hebrew", "English")
+ * @returns {string|null} - Flag URL or null if not found
+ */
 export const getFlag = (langName) => {
-  const langCode = languageNameToCode[langName];
-  const flagCode = langCode ? getFlagCode(langCode) : null;
+  if (!langName) return null;
+  
+  const flagCode = languageNameToFlagCode[langName];
   if (!flagCode) return null;
   
   let flagPath = IMAGE_URL;

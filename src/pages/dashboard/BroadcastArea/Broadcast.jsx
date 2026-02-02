@@ -12,9 +12,8 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import ReactHlsPlayer from "react-hls-player";
 import PublicIcon from "@material-ui/icons/Public";
-import { getCountryCode, getCustomCodeFromCoutryCode } from "../../../utils";
-import { getFlag, handleFlagError, getLanguageCode, findLanguageNameByCode } from "../../../utils/flags";
-import { fetchStreamsJSON, getDefaultQuality } from "../../../services/broadcast-hls.service";
+import { getFlag, handleFlagError } from "../../../utils/flags";
+import { useBroadcastStream } from "./hooks/useBroadcastStream";
 import HomerLimud from "./HomerLimud";
 import { School as SchoolIcon } from "@material-ui/icons";
 
@@ -49,14 +48,23 @@ const LiveLang = styled.span`
 
 export default function Broadcast() {
   const classes = useStyles();
-  const [streamsData, setStreamsData] = React.useState(null);
-  const [selectedLangName, setSelectedLangName] = React.useState("");
-  const [selectedQuality, setSelectedQuality] = React.useState(null);
-  const [hlsUrl, setHlsUrl] = React.useState("");
-  const [hasUserStartedPlayback, setHasUserStartedPlayback] = React.useState(false);
-  const playerRef = React.useRef(null);
-  const previousHlsUrlRef = React.useRef("");
   const { t } = useTranslation();
+
+  // Use custom hook for all broadcast stream logic
+  const {
+    hlsUrl,
+    selectedLanguage,
+    selectedQuality,
+    availableLanguages,
+    availableQualities,
+    setLanguage,
+    setQuality,
+    playerRef,
+    hasUserStartedPlayback,
+    handlePlay,
+  } = useBroadcastStream();
+
+  // UI-only state for Homer Limud dialog
   const [homerLimudOpen, setHomerLimudOpen] = React.useState(false);
 
   const handleHomerLimudToggle = () => {
@@ -65,130 +73,6 @@ export default function Broadcast() {
   const handleHomerLimudClose = () => {
     setHomerLimudOpen(false);
   };
-
-  // Load streams data on mount
-  React.useEffect(() => {
-    const loadStreams = async () => {
-      try {
-        const data = await fetchStreamsJSON();
-        const languagesData = data?.languages || data;
-        
-        if (!languagesData || typeof languagesData !== 'object' || Object.keys(languagesData).length === 0) {
-          console.error("No languages found in data");
-          return;
-        }
-        
-        setStreamsData(data);
-  
-        // Restore language from localStorage or use default
-        const broadCastLang = localStorage.getItem("VH_BROADCAST_LANG");
-        const savedLang = localStorage.getItem("VH_LANG");
-        const langCode = broadCastLang || (savedLang ? savedLang.toLowerCase() : null);
-  
-        let resolvedLang = null;
-        if (langCode) {
-          const customCode = getCustomCodeFromCoutryCode(langCode);
-          resolvedLang = findLanguageNameByCode(customCode);
-        }
-  
-        // Set selected language: resolved from localStorage, or English, or first available
-        if (resolvedLang && languagesData[resolvedLang]) {
-          setSelectedLangName(resolvedLang);
-        } else if (languagesData["English"]) {
-          setSelectedLangName("English");
-        } else {
-          const firstLang = Object.keys(languagesData)[0];
-          if (firstLang) {
-            setSelectedLangName(firstLang);
-          }
-        }
-      } catch (error) {
-        console.error("Error loading streams:", error);
-      }
-    };
-  
-    loadStreams();
-  }, []);
-  
-
-  // Update quality and HLS URL when language changes
-  React.useEffect(() => {
-    if (!streamsData?.languages || !selectedLangName) return;
-    
-    const languageData = streamsData.languages[selectedLangName];
-    if (Array.isArray(languageData) && languageData.length > 0) {
-      const defaultQuality = getDefaultQuality(languageData);
-      if (defaultQuality) {
-        setSelectedQuality(defaultQuality.quiality || defaultQuality.quality);
-        setHlsUrl(defaultQuality.hlsUrl);
-      }
-    }
-  }, [selectedLangName, streamsData]);
-
-  // Update HLS URL when quality changes
-  React.useEffect(() => {
-    if (!streamsData?.languages?.[selectedLangName] || !selectedQuality) return;
-
-    const languageData = streamsData.languages[selectedLangName];
-
-    const qualityData = languageData.find(
-      (q) => q.quality === selectedQuality
-    );
-
-    if (qualityData) {
-      setHlsUrl(qualityData.hlsUrl);
-    }
-  }, [selectedQuality, selectedLangName, streamsData]);
-
-  // Continue playback when URL changes if user has already started playback
-  React.useEffect(() => {
-    if (!hasUserStartedPlayback || !hlsUrl || hlsUrl === previousHlsUrlRef.current) {
-      previousHlsUrlRef.current = hlsUrl;
-      return;
-    }
-
-    const videoElement = playerRef.current;
-    if (!videoElement?.play) {
-      previousHlsUrlRef.current = hlsUrl;
-      return;
-    }
-
-    const handleCanPlay = () => {
-      if (videoElement && !videoElement.paused) {
-        videoElement.play().catch(() => {});
-      }
-      videoElement.removeEventListener('canplay', handleCanPlay);
-    };
-
-    videoElement.addEventListener('canplay', handleCanPlay);
-    
-    setTimeout(() => {
-      if (videoElement && !videoElement.paused && videoElement.readyState >= 2) {
-        videoElement.play().catch(() => {});
-      }
-    }, 300);
-
-    previousHlsUrlRef.current = hlsUrl;
-  }, [hlsUrl, hasUserStartedPlayback]);
-
-
-  const updateBroadcastLang = (langName) => {
-    setSelectedLangName(langName);
-    const langCode = getLanguageCode(langName);
-    if (langCode) {
-      localStorage.setItem("VH_BROADCAST_LANG", getCountryCode(langCode));
-    }
-  };
-
-  const updateQuality = (quality) => {
-    setSelectedQuality(quality);
-  };
-
-  // Computed values
-  const languagesData = streamsData?.languages;
-  const currentLanguageData = languagesData?.[selectedLangName];
-  const availableQualities = Array.isArray(currentLanguageData) ? currentLanguageData : [];
-  const availableLanguages = languagesData ? Object.keys(languagesData) : [];
 
   return (
     <>
@@ -221,8 +105,8 @@ export default function Broadcast() {
                       classes={{ root: classes.rootFirstSelect }}
                       labelId="language-select-label"
                       id="language-select"
-                      value={selectedLangName}
-                      onChange={(e) => updateBroadcastLang(e.target.value)}
+                      value={selectedLanguage}
+                      onChange={(e) => setLanguage(e.target.value)}
                       renderValue={(value) => {
                         const flagUrl = getFlag(value);
                         return (
@@ -275,7 +159,7 @@ export default function Broadcast() {
                         labelId="quality-select-label"
                         id="quality-select"
                         value={selectedQuality || ""}
-                        onChange={(e) => updateQuality(e.target.value)}
+                        onChange={(e) => setQuality(e.target.value)}
                       >
                         {availableQualities.map((quality) => {
                           const qualityValue = quality.quiality || quality.quality || quality;
@@ -307,11 +191,7 @@ export default function Broadcast() {
                     controls={true}
                     width="100%"
                     height="100%"
-                    onPlay={() => {
-                      if (!hasUserStartedPlayback) {
-                        setHasUserStartedPlayback(true);
-                      }
-                    }}
+                    onPlay={handlePlay}
                   />
                 )}
               </Grid>
