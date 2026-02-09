@@ -12,7 +12,7 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import ReactHlsPlayer from "react-hls-player";
 import PublicIcon from "@material-ui/icons/Public";
-import { getFlag, handleFlagError } from "../../../utils/flags";
+import { getFlagUrl, handleFlagError } from "../../../utils/flags";
 import { useBroadcastStream } from "./hooks/useBroadcastStream";
 import HomerLimud from "./HomerLimud";
 import { School as SchoolIcon } from "@material-ui/icons";
@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     padding: "6px 16px",
     display: "flex",
     alignItems: "center",
-    gap: "8px",
+    gap: "12px",
     whiteSpace: "nowrap",
   },
 }));
@@ -107,27 +107,27 @@ export default function Broadcast() {
                       id="language-select"
                       value={selectedLanguage}
                       onChange={(e) => setLanguage(e.target.value)}
-                      renderValue={(value) => {
-                        const flagUrl = getFlag(value);
+                      renderValue={() => {
+                        const flagUrl = getFlagUrl(selectedLanguage);
                         return (
-                          <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                          <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
                             {flagUrl && (
                               <img
                                 src={flagUrl}
                                 width="20"
                                 height="15"
-                                alt={value}
+                                alt={selectedLanguage}
                                 style={{ display: "block", flexShrink: 0 }}
                                 onError={handleFlagError}
                               />
                             )}
-                            <span>{value}</span>
+                            <span>{selectedLanguage}</span>
                           </div>
                         );
                       }}
                     >
                       {availableLanguages.map((langName) => {
-                        const flagUrl = getFlag(langName);
+                        const flagUrl = getFlagUrl(langName);
                         return (
                           <MenuItem 
                             value={langName} 

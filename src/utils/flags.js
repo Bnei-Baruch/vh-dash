@@ -30,23 +30,13 @@ const languageNameToFlagCode = Object.freeze({
   Ukrainian: "ua",
 });
 
-/**
- * Get flag URL for a full language name
- * Converts language name (e.g., "Hebrew") directly to flag URL
- * @param {string} langName - Full language name (e.g., "Hebrew", "English")
- * @returns {string|null} - Flag URL or null if not found
- */
-export const getFlag = (langName) => {
+export const getFlagUrl = (langName) => {
   if (!langName) return null;
   
   const flagCode = languageNameToFlagCode[langName];
   if (!flagCode) return null;
   
-  let flagPath = IMAGE_URL;
-  if (process.env.NODE_ENV === 'development' && IMAGE_URL === '/static') {
-    flagPath = '/dash/static';
-  }
-  return `${flagPath}/img/flags/${flagCode}.png`;
+  return `${IMAGE_URL}/img/flags/${flagCode}.png`;
 };
 
 // Handle flag image error - hide the flag if it fails to load
