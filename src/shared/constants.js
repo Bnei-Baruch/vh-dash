@@ -13,4 +13,4 @@ export const SEARCH_BAR =
   process.env.NODE_ENV === "development" ? false : false;
 
 // Variable for the flag images located in src/img
-export const IMAGE_URL = "/dash/static";
+export const IMAGE_URL = process.env.NODE_ENV === "development" ? "/static" : "/dash/static";

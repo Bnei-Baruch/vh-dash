@@ -133,6 +133,11 @@ export function useBroadcastStream() {
     }, 300);
 
     previousHlsUrlRef.current = hlsUrl;
+
+    // Cleanup: remove event listener if component unmounts or effect re-runs
+    return () => {
+      videoElement.removeEventListener('canplay', handleCanPlay);
+    };
   }, [hlsUrl, hasUserStartedPlayback]);
 
   // Handler to update selected language
