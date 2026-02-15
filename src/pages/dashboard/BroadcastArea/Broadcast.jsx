@@ -12,19 +12,27 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import ReactHlsPlayer from "react-hls-player";
 import PublicIcon from "@material-ui/icons/Public";
-import axios from "axios";
-import { getCountryCode, getCustomCodeFromCoutryCode } from "../../../utils";
+import { getFlagUrl, handleFlagError } from "../../../utils/flags";
+import { useBroadcastStream } from "./hooks/useBroadcastStream";
 import HomerLimud from "./HomerLimud";
 import { School as SchoolIcon } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   rootFirstSelect: {
-    padding: "10px",
+    padding: "10px 8px",
   },
   rootSecondSelect: {
-    padding: "10px 80px",
+    padding: "10px 8px",
+  },
+  menuItem: {
+    padding: "6px 16px",
+    display: "flex",
+    alignItems: "center",
+    gap: "12px",
+    whiteSpace: "nowrap",
   },
 }));
+
 const PlayerContainer = styled.div`
   max-width: 800px;
   width: 100%;
@@ -38,20 +46,25 @@ const LiveLang = styled.span`
   top: -2px;
 `;
 
-const getBroadCast = (lang) => {
-  return axios
-    .post(`https://kab.tv/live/api/heartbeat`, {
-      lang: lang,
-      bitrate: 500,
-    })
-    .then((res) => res.data);
-};
-
 export default function Broadcast() {
   const classes = useStyles();
-  const [languages, setLanguages] = React.useState([]);
-  const [selectedLang, setSelectedLang] = React.useState("eng");
   const { t } = useTranslation();
+
+  // Use custom hook for all broadcast stream logic
+  const {
+    hlsUrl,
+    selectedLanguage,
+    selectedQuality,
+    availableLanguages,
+    availableQualities,
+    setLanguage,
+    setQuality,
+    playerRef,
+    hasUserStartedPlayback,
+    handlePlay,
+  } = useBroadcastStream();
+
+  // UI-only state for Homer Limud dialog
   const [homerLimudOpen, setHomerLimudOpen] = React.useState(false);
 
   const handleHomerLimudToggle = () => {
@@ -61,29 +74,6 @@ export default function Broadcast() {
     setHomerLimudOpen(false);
   };
 
-  const getSourceURL = (lang) => {
-    return `https://edge3.uk.kab.tv/live/${lang}-medium/playlist.m3u8`;
-  };
-  React.useEffect(() => {
-    const broadCastLag = localStorage.getItem("VH_BROADCAST_LANG");
-    if (broadCastLag || localStorage.getItem("VH_LANG")) {
-      setSelectedLang(
-        getCustomCodeFromCoutryCode(
-          broadCastLag || localStorage.getItem("VH_LANG").toLowerCase()
-        )
-      );
-    }
-    getBroadCast(selectedLang).then((res) => {
-      if (res.Languages) {
-        setLanguages(res.Languages);
-      }
-    });
-  }, [selectedLang]);
-
-  const updateBroadcastLang = (code) => {
-    setSelectedLang(code);
-    localStorage.setItem("VH_BROADCAST_LANG", getCountryCode(code));
-  };
   return (
     <>
       <Helmet title={t("Dashboard.BroadcastArea.name")} />
@@ -103,34 +93,86 @@ export default function Broadcast() {
                   gap: 16
                 }}
               >
-                <WorldIcon />
-                <LiveLang>
-                  &nbsp; {t("Dashboard.BroadcastArea.liveLanguage")}
-                </LiveLang>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                  <WorldIcon />
+                  <LiveLang>
+                    {t("Dashboard.BroadcastArea.liveLanguage")}
+                  </LiveLang>
+                </div>
                 <span>
-                  <FormControl variant="outlined">
+                  <FormControl variant="outlined" style={{ width: "auto", minWidth: "140px" }}>
                     <Select
                       classes={{ root: classes.rootFirstSelect }}
-                      labelId="demo-simple-select-label"
-                      id="demo-simple-select"
-                      value={selectedLang}
-                      onChange={(e) => updateBroadcastLang(e.target.value)}
-                    >
-                      {Object.keys(languages).map((keys) => {
+                      labelId="language-select-label"
+                      id="language-select"
+                      value={selectedLanguage}
+                      onChange={(e) => setLanguage(e.target.value)}
+                      renderValue={() => {
+                        const flagUrl = getFlagUrl(selectedLanguage);
                         return (
-                          <MenuItem value={keys} key={keys}>
-                            <img
-                              src={`/static/img/flags/${getCountryCode(keys)}.png`}
-                              width="15"
-                              alt={"map"}
-                            />
-                            &nbsp; {languages[keys].Name}
+                          <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                            {flagUrl && (
+                              <img
+                                src={flagUrl}
+                                width="20"
+                                height="15"
+                                alt={selectedLanguage}
+                                style={{ display: "block", flexShrink: 0 }}
+                                onError={handleFlagError}
+                              />
+                            )}
+                            <span>{selectedLanguage}</span>
+                          </div>
+                        );
+                      }}
+                    >
+                      {availableLanguages.map((langName) => {
+                        const flagUrl = getFlagUrl(langName);
+                        return (
+                          <MenuItem 
+                            value={langName} 
+                            key={langName} 
+                            classes={{ root: classes.menuItem }}
+                          >
+                            {flagUrl && (
+                              <img
+                                src={flagUrl}
+                                width="20"
+                                height="15"
+                                alt={langName}
+                                style={{ display: "block", flexShrink: 0 }}
+                                onError={handleFlagError}
+                              />
+                            )}
+                            <span>{langName}</span>
                           </MenuItem>
                         );
                       })}
                     </Select>
                   </FormControl>
                 </span>
+                {availableQualities.length > 0 && (
+                  <span>
+                    <FormControl variant="outlined" style={{ width: "auto", minWidth: "140px" }}>
+                      <Select
+                        classes={{ root: classes.rootSecondSelect }}
+                        labelId="quality-select-label"
+                        id="quality-select"
+                        value={selectedQuality || ""}
+                        onChange={(e) => setQuality(e.target.value)}
+                      >
+                        {availableQualities.map((quality) => {
+                          const qualityValue = quality.quiality || quality.quality || quality;
+                          return (
+                            <MenuItem value={qualityValue} key={qualityValue}>
+                              {qualityValue}
+                            </MenuItem>
+                          );
+                        })}
+                      </Select>
+                    </FormControl>
+                  </span>
+                )}
                 <Button
                   variant="contained"
                   color="primary"
@@ -141,13 +183,17 @@ export default function Broadcast() {
                 </Button>
               </LangugaeContainer>
               <Grid item xs={12} sm={12}>
-                <ReactHlsPlayer
-                  src={getSourceURL(selectedLang)}
-                  autoPlay={false}
-                  controls={true}
-                  width="100%"
-                  height="100%"
-                />
+                {hlsUrl && (
+                  <ReactHlsPlayer
+                    playerRef={playerRef}
+                    src={hlsUrl}
+                    autoPlay={hasUserStartedPlayback}
+                    controls={true}
+                    width="100%"
+                    height="100%"
+                    onPlay={handlePlay}
+                  />
+                )}
               </Grid>
             </Grid>
           </PlayerContainer>
