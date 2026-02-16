@@ -34,5 +34,7 @@ window.APP_CONFIG = {
     clientId: 'membership_pay',
   },
   GLASSIX_API_KEY: 'glassix-api-key',
-  STUDY_MATERIALS_API_URL: 'https://stmat.kab.sh/api/units'
+  REACT_APP_STUDY_MATERIALS_WIDGET_URL:'https://study.kli.one/widget/widget.js',
+  REACT_APP_STUDY_MATERIALS_API_URL:'https://study.kli.one/'
+
 };
