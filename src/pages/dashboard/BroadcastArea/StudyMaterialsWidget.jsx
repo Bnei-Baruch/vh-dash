@@ -1,8 +1,9 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   Drawer as MuiDrawer,
   Box as MuiBox,
   IconButton as MuiIconButton,
+  Typography,
 } from "@material-ui/core";
 import { Close as CloseIcon } from "@material-ui/icons";
 import { useTranslation } from "react-i18next";
@@ -45,8 +46,15 @@ const Content = styled(MuiBox)`
   padding: ${(props) => props.theme.spacing(2)}px;
 `;
 
+const ErrorText = styled(Typography)`
+  text-align: center;
+  padding: ${(props) => props.theme.spacing(4)}px;
+  color: ${(props) => props.theme.palette.error.main};
+`;
+
 const StudyMaterialsWidget = ({ open, onClose }) => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const [error, setError] = useState(false);
 
   const containerRef = useRef(null);
   const widgetInstanceRef = useRef(null);
@@ -58,13 +66,18 @@ const StudyMaterialsWidget = ({ open, onClose }) => {
         widgetInstanceRef.current.destroy();
         widgetInstanceRef.current = null;
       }
+      setError(false);
       return;
     }
 
+    let timeoutId;
+    let cancelled = false;
+
     const loadScript = () => {
-      return new Promise((resolve) => {
+      return new Promise((resolve, reject) => {
+        const scriptUrl = window.APP_CONFIG.STUDY_MATERIALS_WIDGET_URL;
         const existing = document.querySelector(
-          'script[src*="widget.js"]'
+          `script[src="${scriptUrl}"]`
         );
         if (existing) {
           resolve();
@@ -72,52 +85,64 @@ const StudyMaterialsWidget = ({ open, onClose }) => {
         }
 
         const script = document.createElement("script");
-        script.src =
-          window.APP_CONFIG?.REACT_APP_STUDY_MATERIALS_WIDGET_URL ||
-          'https://study.kli.one/widget/widget.js';
+        script.src = scriptUrl;
         script.onload = resolve;
-        script.onerror = resolve;
+        script.onerror = () => reject(new Error("Failed to load study materials widget script"));
         document.head.appendChild(script);
       });
     };
 
     const initWidget = async () => {
-      await loadScript();
+      try {
+        await loadScript();
+      } catch {
+        if (!cancelled) {
+          setError(true);
+        }
+        return;
+      }
+
+      if (cancelled) return;
 
       // Small delay to ensure script is fully executed
-      setTimeout(() => {
+      timeoutId = setTimeout(() => {
         if (
-          containerRef.current &&
-          window.StudyMaterialsWidget &&
-          window.StudyMaterialsWidget.load
+          cancelled ||
+          !containerRef.current ||
+          !window.StudyMaterialsWidget?.load
         ) {
-          containerRef.current.innerHTML = "";
-
-          const apiUrl = window.APP_CONFIG?.REACT_APP_STUDY_MATERIALS_API_URL;
-          
-          if (!apiUrl) {
-            console.error('Study Materials API URL is not configured');
-            return;
-          }
-
-          const instance = window.StudyMaterialsWidget.load(
-            null,
-            i18n.language,
-            {
-              apiUrl: apiUrl,
-              limit: 5,
-              target: containerRef.current,
-            }
-          );
-
-          widgetInstanceRef.current = instance;
+          return;
         }
+
+        containerRef.current.innerHTML = "";
+
+        const apiUrl = window.APP_CONFIG?.STUDY_MATERIALS_API_URL;
+
+        if (!apiUrl) {
+          console.error("Study Materials API URL is not configured");
+          setError(true);
+          return;
+        }
+
+        const instance = window.StudyMaterialsWidget.load(
+          null,
+          i18n.language,
+          {
+            apiUrl: apiUrl,
+            limit: 5,
+            target: containerRef.current,
+          }
+        );
+
+        widgetInstanceRef.current = instance;
       }, 100);
     };
 
     initWidget();
 
     return () => {
+      cancelled = true;
+      clearTimeout(timeoutId);
       if (widgetInstanceRef.current?.destroy) {
         widgetInstanceRef.current.destroy();
         widgetInstanceRef.current = null;
@@ -141,10 +166,16 @@ const StudyMaterialsWidget = ({ open, onClose }) => {
       </DrawerHeader>
 
       <Content>
-        <div
-          ref={containerRef}
-          style={{ width: "100%", height: "100%" }}
-        />
+        {error ? (
+          <ErrorText>
+            {t("Dashboard.BroadcastArea.studyMaterialsError")}
+          </ErrorText>
+        ) : (
+          <div
+            ref={containerRef}
+            style={{ width: "100%", height: "100%" }}
+          />
+        )}
       </Content>
     </Drawer>
   );

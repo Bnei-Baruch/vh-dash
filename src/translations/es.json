@@ -556,6 +556,7 @@
         "noText": "Please input question",
         "successPosted": "Question successfully posted",
         "studyMaterialsButton": "Materiales de Estudio",
+        "studyMaterialsError": "Error al cargar los materiales de estudio",
         "Question": {
           "title": "Send a Question",
           "label": "What is your question?",
@@ -563,12 +564,6 @@
           "button": "Ask",
           "successMsg": "Sent successfully!",
           "errorMsg": "Unexpected error. Please, try again!"
-        },
-        "HomerLimud": {
-          "title": "Materiales de Estudio",
-          "loading": "Cargando materiales de estudio...",
-          "noMaterials": "No hay materiales de estudio disponibles en este momento",
-          "errorLoading": "Error al cargar los materiales de estudio"
         },
         "Annoucements": {
           "title": "Announcements",

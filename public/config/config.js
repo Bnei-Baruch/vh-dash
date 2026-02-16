@@ -6,6 +6,6 @@ window.APP_CONFIG = {
         url: 'https://auth.2serv.eu/auth/',
         clientId: 'membership_pay_dev'
     },
-    REACT_APP_STUDY_MATERIALS_WIDGET_URL: "https://study.kli.one/widget/widget.js",
-    REACT_APP_STUDY_MATERIALS_API_URL: "https://study.kli.one/"
+    STUDY_MATERIALS_WIDGET_URL: "https://study.kli.one/widget/widget.js",
+    STUDY_MATERIALS_API_URL: "https://study.kli.one/"
 };

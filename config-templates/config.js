@@ -11,6 +11,6 @@ window.APP_CONFIG = {
     clientId: '{{env.Getenv "KEYCLOAK_CLIENT_ID" "membership_pay_dev"}}',
   },
   GLASSIX_API_KEY: '{{env.Getenv "GLASSIX_API_KEY" ""}}',
-  REACT_APP_STUDY_MATERIALS_WIDGET_URL: '{{env.Getenv "REACT_APP_STUDY_MATERIALS_WIDGET_URL" "https://study.kli.one/widget/widget.js"}}',
-  REACT_APP_STUDY_MATERIALS_API_URL: '{{env.Getenv "REACT_APP_STUDY_MATERIALS_API_URL" "https://study.kli.one/"}}'
+  STUDY_MATERIALS_WIDGET_URL: '{{env.Getenv "STUDY_MATERIALS_WIDGET_URL" "https://study.kli.one/widget/widget.js"}}',
+  STUDY_MATERIALS_API_URL: '{{env.Getenv "STUDY_MATERIALS_API_URL" "https://study.kli.one/"}}'
 };
