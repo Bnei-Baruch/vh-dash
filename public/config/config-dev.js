@@ -36,8 +36,4 @@ window.APP_CONFIG = {
   GLASSIX_API_KEY: 'glassix-api-key',
   STUDY_MATERIALS_WIDGET_URL: 'https://study.kli.one/widget/widget.js',
   STUDY_MATERIALS_API_URL: 'https://study.kli.one/'
-<<<<<<< HEAD
 };
-=======
-};
->>>>>>> master
