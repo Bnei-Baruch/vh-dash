@@ -34,10 +34,12 @@ const DrawerHeader = styled(MuiBox)`
 `;
 
 const CloseButton = styled(MuiIconButton)`
-  color: ${(props) => props.theme.sidebar.header.color};
+   && {
+    color: ${(props) => props.theme.sidebar.header.color};
+  }
 
-  &:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+  &&:hover {
+    background-color: rgba(255, 255, 255, 0.15);
   }
 `;
 
