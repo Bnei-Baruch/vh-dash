@@ -72,12 +72,17 @@ const StudyMaterialsWidget = ({ open, onClose }) => {
       return;
     }
 
-    let timeoutId;
+    let pollId;
     let cancelled = false;
 
     const loadScript = () => {
       return new Promise((resolve, reject) => {
-        const scriptUrl = window.APP_CONFIG.STUDY_MATERIALS_WIDGET_URL;
+        const scriptUrl = window.APP_CONFIG?.STUDY_MATERIALS_WIDGET_URL;
+        if (!scriptUrl) {
+          reject(new Error("STUDY_MATERIALS_WIDGET_URL is not configured"));
+          return;
+        }
+
         const existing = document.querySelector(
           `script[src="${scriptUrl}"]`
         );
@@ -89,7 +94,10 @@ const StudyMaterialsWidget = ({ open, onClose }) => {
         const script = document.createElement("script");
         script.src = scriptUrl;
         script.onload = resolve;
-        script.onerror = () => reject(new Error("Failed to load study materials widget script"));
+        script.onerror = () => {
+          script.remove();
+          reject(new Error("Failed to load study materials widget script"));
+        };
         document.head.appendChild(script);
       });
     };
@@ -106,15 +114,27 @@ const StudyMaterialsWidget = ({ open, onClose }) => {
 
       if (cancelled) return;
 
-      // Small delay to ensure script is fully executed
-      timeoutId = setTimeout(() => {
-        if (
-          cancelled ||
-          !containerRef.current ||
-          !window.StudyMaterialsWidget?.load
-        ) {
+      // Poll for widget availability (script may need time to execute after load)
+      const MAX_POLL_ATTEMPTS = 20;
+      let attempts = 0;
+      pollId = setInterval(() => {
+        attempts++;
+        if (cancelled) {
+          clearInterval(pollId);
           return;
         }
+
+        if (!window.StudyMaterialsWidget?.load) {
+          if (attempts >= MAX_POLL_ATTEMPTS) {
+            clearInterval(pollId);
+            setError(true);
+          }
+          return;
+        }
+
+        clearInterval(pollId);
+
+        if (!containerRef.current) return;
 
         containerRef.current.innerHTML = "";
 
@@ -137,14 +157,14 @@ const StudyMaterialsWidget = ({ open, onClose }) => {
         );
 
         widgetInstanceRef.current = instance;
-      }, 100);
+      }, 50);
     };
 
     initWidget();
 
     return () => {
       cancelled = true;
-      clearTimeout(timeoutId);
+      clearInterval(pollId);
       if (widgetInstanceRef.current?.destroy) {
         widgetInstanceRef.current.destroy();
         widgetInstanceRef.current = null;
