@@ -271,6 +271,7 @@
         "noText": "Please input question",
         "successPosted": "Question successfully posted",
         "studyMaterialsButton": "Study Materials",
+        "studyMaterialsError": "Error loading study materials",
         "Question": {
           "title": "Send a Question",
           "label": "What is your question?",
@@ -278,12 +279,6 @@
           "button": "Ask",
           "successMsg": "Sent successfully!",
           "errorMsg": "Unexpected error. Please, try again!"
-        },
-        "HomerLimud": {
-          "title": "Study Materials",
-          "loading": "Loading study materials...",
-          "noMaterials": "No study materials available at the moment",
-          "errorLoading": "Error loading study materials"
         },
         "Annoucements": {
           "title": "Announcements",

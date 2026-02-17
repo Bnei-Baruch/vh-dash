@@ -14,7 +14,7 @@ import ReactHlsPlayer from "react-hls-player";
 import PublicIcon from "@material-ui/icons/Public";
 import { getFlagUrl, handleFlagError } from "../../../utils/flags";
 import { useBroadcastStream } from "./hooks/useBroadcastStream";
-import HomerLimud from "./HomerLimud";
+import StudyMaterialsWidget from "./StudyMaterialsWidget";
 import { School as SchoolIcon } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
@@ -64,14 +64,14 @@ export default function Broadcast() {
     handlePlay,
   } = useBroadcastStream();
 
-  // UI-only state for Homer Limud dialog
-  const [homerLimudOpen, setHomerLimudOpen] = React.useState(false);
+  // UI-only state for Study Materials widget
+  const [studyMaterialOpen, setStudyMaterialOpen] = React.useState(false);
 
-  const handleHomerLimudToggle = () => {
-    setHomerLimudOpen(!homerLimudOpen);
+  const handleStudyMaterialToggle = () => {
+    setStudyMaterialOpen(!studyMaterialOpen);
   };
-  const handleHomerLimudClose = () => {
-    setHomerLimudOpen(false);
+  const handleStudyMaterialClose = () => {
+    setStudyMaterialOpen(false);
   };
 
   return (
@@ -177,7 +177,7 @@ export default function Broadcast() {
                   variant="contained"
                   color="primary"
                   startIcon={<SchoolIcon />}
-                  onClick={handleHomerLimudToggle}
+                  onClick={handleStudyMaterialToggle}
                 >
                   {t("Dashboard.BroadcastArea.studyMaterialsButton")}
                 </Button>
@@ -199,7 +199,7 @@ export default function Broadcast() {
           </PlayerContainer>
         </Grid>
       </Grid>
-      <HomerLimud open={homerLimudOpen} onClose={handleHomerLimudClose} />
+      <StudyMaterialsWidget open={studyMaterialOpen} onClose={handleStudyMaterialClose} />
     </>
   );
 }
