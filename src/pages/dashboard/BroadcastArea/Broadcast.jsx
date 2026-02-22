@@ -3,6 +3,7 @@ import {
   Menu,
   MenuItem,
 } from "@material-ui/core";
+import { grey } from "@material-ui/core/colors";
 import React from "react";
 import Helmet from "react-helmet";
 import { useTranslation } from "react-i18next";
@@ -32,24 +33,24 @@ const StudyButtonContainer = styled.div`
   margin: 0 auto;
   display: flex;
   justify-content: flex-start;
-  padding: 18px 0;
+  padding: ${(props) => props.theme.spacing(4.5)}px 0;
   
   @media (max-width: 600px) {
-    padding: 12px 0;
+    padding: ${(props) => props.theme.spacing(3)}px 0;
   }
 `;
 
 const StudyButton = styled(Button)`
-  padding: 10px 16px;
-  font-size: 14px;
+  padding: ${(props) => props.theme.spacing(1.25)}px ${(props) => props.theme.spacing(2)}px;
+  font-size: ${(props) => props.theme.typography.body2.fontSize}px;
   
   @media (max-width: 600px) {
-    padding: 6px 10px;
+    padding: ${(props) => props.theme.spacing(0.75)}px ${(props) => props.theme.spacing(1.25)}px;
     font-size: 12px;
     min-width: auto;
     
     .MuiButton-startIcon {
-      margin-right: 4px;
+      margin-right: ${(props) => props.theme.spacing(0.5)}px;
       margin-left: 0;
       
       svg {
@@ -59,11 +60,11 @@ const StudyButton = styled(Button)`
   }
 
   @media (max-width: 360px) {
-    padding: 4px 8px;
+    padding: ${(props) => props.theme.spacing(0.5)}px ${(props) => props.theme.spacing(1)}px;
     font-size: 12px;
 
     .MuiButton-startIcon {
-      margin-right: 3px;
+      margin-right: ${(props) => props.theme.spacing(0.375)}px;
 
       svg {
         font-size: 14px;
@@ -72,23 +73,20 @@ const StudyButton = styled(Button)`
   }
 `;
 
-// justify-content: ${(props) => (props.theme.direction === "rtl" ? "flex-end" : "flex-start")};
 /* ---- Player container (Controls + Video) ---- */
 
 const PlayerContainer = styled.div`
   width: 100%;
   max-width: 1280px;  
   margin: 0 auto;
-  border-radius: 8px;
+  border-radius: ${(props) => props.theme.spacing(1)}px;
   overflow: hidden;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  box-shadow: ${(props) => props.theme.shadows[4]};
   display: flex;
   flex-direction: column;
   
   min-height: 0;
-  background: #0f0f10;
-
-  
+  background: ${grey[900]};
 `;
 
 /* ---- Controls bar (above video) ---- */
@@ -97,42 +95,41 @@ const ControlsBar = styled.div`
   height: 40px;
   display: flex;
   align-items: center;
-  padding: 0 24px;
-  background: #0f0f10;
+  padding: 0 ${(props) => props.theme.spacing(3)}px;
+  background: ${grey[900]};
 `;
 
 const LeftGroup = styled.div`
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: ${(props) => props.theme.spacing(2)}px;
 `;
 
 const Action = styled.span`
   cursor: pointer;
-  color: #ccc;
+  color: ${grey[400]};
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: ${(props) => props.theme.spacing(0.5)}px;
 
   &:hover {
-    color: #fff;
+    color: ${(props) => props.theme.palette.common.white};
   }
 `;
 
 /* ---- Video section ---- */
 
 const VideoSection = styled.div`
-  
   min-height: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8px;
+  padding: ${(props) => props.theme.spacing(1)}px;
 `;
 
 const PlayerWrapper = styled.div`
   width: 100%;
-  background: black;
+  background: ${grey[900]};
   overflow: hidden;
 
   video {
@@ -175,7 +172,7 @@ export default function Broadcast() {
           {/* Controls (above video) */}
           <ControlsBar>
             <LeftGroup>
-              <PublicIcon style={{ color: "#ccc" }} fontSize="small" />
+              <PublicIcon style={{ color: grey[400] }} fontSize="small" />
 
               <Action onClick={(e) => setLangAnchor(e.currentTarget)}>
                 {selectedLanguage} ▾
