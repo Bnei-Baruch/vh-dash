@@ -1,10 +1,7 @@
 import {
-  FormControl,
-  Grid,
-  makeStyles,
-  MenuItem,
-  Select,
   Button,
+  Menu,
+  MenuItem,
 } from "@material-ui/core";
 import React from "react";
 import Helmet from "react-helmet";
@@ -12,45 +9,144 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import ReactHlsPlayer from "react-hls-player";
 import PublicIcon from "@material-ui/icons/Public";
-import { getFlagUrl, handleFlagError } from "../../../utils/flags";
+import SchoolIcon from "@material-ui/icons/School";
 import { useBroadcastStream } from "./hooks/useBroadcastStream";
 import StudyMaterialsWidget from "./StudyMaterialsWidget";
-import { School as SchoolIcon } from "@material-ui/icons";
 
-const useStyles = makeStyles((theme) => ({
-  rootFirstSelect: {
-    padding: "10px 8px",
-  },
-  rootSecondSelect: {
-    padding: "10px 8px",
-  },
-  menuItem: {
-    padding: "6px 16px",
-    display: "flex",
-    alignItems: "center",
-    gap: "12px",
-    whiteSpace: "nowrap",
-  },
-}));
+/* ---------- layout ---------- */
+
+const BroadcastLayout = styled.div`
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  
+`;
+
+/* ---- Study materials button (below player) ---- */
+
+const StudyButtonContainer = styled.div`
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-start;
+  padding: 18px 0;
+  
+  @media (max-width: 600px) {
+    padding: 12px 0;
+  }
+`;
+
+const StudyButton = styled(Button)`
+  padding: 10px 16px;
+  font-size: 14px;
+  
+  @media (max-width: 600px) {
+    padding: 6px 10px;
+    font-size: 12px;
+    min-width: auto;
+    
+    .MuiButton-startIcon {
+      margin-right: 4px;
+      margin-left: 0;
+      
+      svg {
+        font-size: 16px;
+      }
+    }
+  }
+
+  @media (max-width: 360px) {
+    padding: 4px 8px;
+    font-size: 12px;
+
+    .MuiButton-startIcon {
+      margin-right: 3px;
+
+      svg {
+        font-size: 14px;
+      }
+    }
+  }
+`;
+
+// justify-content: ${(props) => (props.theme.direction === "rtl" ? "flex-end" : "flex-start")};
+/* ---- Player container (Controls + Video) ---- */
 
 const PlayerContainer = styled.div`
-  max-width: 800px;
   width: 100%;
+  max-width: 1280px;  
+  margin: 0 auto;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  
+  min-height: 0;
+  background: #0f0f10;
+
+  
 `;
-const WorldIcon = styled(PublicIcon)``;
-const LangugaeContainer = styled(Grid)`
-  padding: 0px 20px !important;
+
+/* ---- Controls bar (above video) ---- */
+
+const ControlsBar = styled.div`
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  background: #0f0f10;
 `;
-const LiveLang = styled.span`
-  position: relative;
-  top: -2px;
+
+const LeftGroup = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 16px;
 `;
+
+const Action = styled.span`
+  cursor: pointer;
+  color: #ccc;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  &:hover {
+    color: #fff;
+  }
+`;
+
+/* ---- Video section ---- */
+
+const VideoSection = styled.div`
+  
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+`;
+
+const PlayerWrapper = styled.div`
+  width: 100%;
+  background: black;
+  overflow: hidden;
+
+  video {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+`;
+
+/* ---------- component ---------- */
 
 export default function Broadcast() {
-  const classes = useStyles();
   const { t } = useTranslation();
 
-  // Use custom hook for all broadcast stream logic
   const {
     hlsUrl,
     selectedLanguage,
@@ -64,142 +160,112 @@ export default function Broadcast() {
     handlePlay,
   } = useBroadcastStream();
 
-  // UI-only state for Study Materials widget
   const [studyMaterialOpen, setStudyMaterialOpen] = React.useState(false);
-
-  const handleStudyMaterialToggle = () => {
-    setStudyMaterialOpen(!studyMaterialOpen);
-  };
-  const handleStudyMaterialClose = () => {
-    setStudyMaterialOpen(false);
-  };
+  const [langAnchor, setLangAnchor] = React.useState(null);
+  const [qualityAnchor, setQualityAnchor] = React.useState(null);
 
   return (
     <>
       <Helmet title={t("Dashboard.BroadcastArea.name")} />
 
-      <Grid container spacing={10}>
-        <Grid item xs={12} sm={12}>
-          <PlayerContainer>
-            <Grid container spacing={10} alignItems="center">
-              <LangugaeContainer
-                item
-                xs={12}
-                sm={12}
-                style={{
-                  marginTop: 32,
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 16
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-                  <WorldIcon />
-                  <LiveLang>
-                    {t("Dashboard.BroadcastArea.liveLanguage")}
-                  </LiveLang>
-                </div>
-                <span>
-                  <FormControl variant="outlined" style={{ width: "auto", minWidth: "140px" }}>
-                    <Select
-                      classes={{ root: classes.rootFirstSelect }}
-                      labelId="language-select-label"
-                      id="language-select"
-                      value={selectedLanguage}
-                      onChange={(e) => setLanguage(e.target.value)}
-                      renderValue={() => {
-                        const flagUrl = getFlagUrl(selectedLanguage);
-                        return (
-                          <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-                            {flagUrl && (
-                              <img
-                                src={flagUrl}
-                                width="20"
-                                height="15"
-                                alt={selectedLanguage}
-                                style={{ display: "block", flexShrink: 0 }}
-                                onError={handleFlagError}
-                              />
-                            )}
-                            <span>{selectedLanguage}</span>
-                          </div>
-                        );
-                      }}
-                    >
-                      {availableLanguages.map((langName) => {
-                        const flagUrl = getFlagUrl(langName);
-                        return (
-                          <MenuItem 
-                            value={langName} 
-                            key={langName} 
-                            classes={{ root: classes.menuItem }}
-                          >
-                            {flagUrl && (
-                              <img
-                                src={flagUrl}
-                                width="20"
-                                height="15"
-                                alt={langName}
-                                style={{ display: "block", flexShrink: 0 }}
-                                onError={handleFlagError}
-                              />
-                            )}
-                            <span>{langName}</span>
-                          </MenuItem>
-                        );
-                      })}
-                    </Select>
-                  </FormControl>
-                </span>
-                {availableQualities.length > 0 && (
-                  <span>
-                    <FormControl variant="outlined" style={{ width: "auto", minWidth: "140px" }}>
-                      <Select
-                        classes={{ root: classes.rootSecondSelect }}
-                        labelId="quality-select-label"
-                        id="quality-select"
-                        value={selectedQuality || ""}
-                        onChange={(e) => setQuality(e.target.value)}
-                      >
-                        {availableQualities.map((quality) => {
-                          const qualityValue = quality.quiality || quality.quality || quality;
-                          return (
-                            <MenuItem value={qualityValue} key={qualityValue}>
-                              {qualityValue}
-                            </MenuItem>
-                          );
-                        })}
-                      </Select>
-                    </FormControl>
-                  </span>
-                )}
-                <Button
-                  variant="contained"
-                  color="primary"
-                  startIcon={<SchoolIcon />}
-                  onClick={handleStudyMaterialToggle}
-                >
-                  {t("Dashboard.BroadcastArea.studyMaterialsButton")}
-                </Button>
-              </LangugaeContainer>
-              <Grid item xs={12} sm={12}>
-                {hlsUrl && (
-                  <ReactHlsPlayer
-                    playerRef={playerRef}
-                    src={hlsUrl}
-                    autoPlay={hasUserStartedPlayback}
-                    controls={true}
-                    width="100%"
-                    height="100%"
-                    onPlay={handlePlay}
-                  />
-                )}
-              </Grid>
-            </Grid>
-          </PlayerContainer>
-        </Grid>
-      </Grid>
-      <StudyMaterialsWidget open={studyMaterialOpen} onClose={handleStudyMaterialClose} />
+      <BroadcastLayout>
+
+        {/* Player Container (Controls + Video) */}
+        <PlayerContainer>
+          {/* Controls (above video) */}
+          <ControlsBar>
+            <LeftGroup>
+              <PublicIcon style={{ color: "#ccc" }} fontSize="small" />
+
+              <Action onClick={(e) => setLangAnchor(e.currentTarget)}>
+                {selectedLanguage} ▾
+              </Action>
+
+              {availableQualities.length > 0 && (
+                <Action onClick={(e) => setQualityAnchor(e.currentTarget)}>
+                  {selectedQuality} ▾
+                </Action>
+              )}
+            </LeftGroup>
+          </ControlsBar>
+
+          {/* Video */}
+          <VideoSection>
+            {hlsUrl && (
+              <PlayerWrapper>
+                <ReactHlsPlayer
+                  playerRef={playerRef}
+                  src={hlsUrl}
+                  autoPlay={hasUserStartedPlayback}
+                  controls
+                  onPlay={handlePlay}
+                />
+              </PlayerWrapper>
+            )}
+          </VideoSection>
+        </PlayerContainer>
+
+        {/* Study Materials Button (below player) */}
+        <StudyButtonContainer>
+          <StudyButton
+            variant="contained"
+            color="primary"
+            startIcon={<SchoolIcon />}
+            onClick={() => setStudyMaterialOpen(true)}
+          >
+            {t("Dashboard.BroadcastArea.studyMaterialsButton")}
+          </StudyButton>
+        </StudyButtonContainer>
+
+      </BroadcastLayout>
+
+      {/* Language Menu */}
+      <Menu
+        anchorEl={langAnchor}
+        open={Boolean(langAnchor)}
+        onClose={() => setLangAnchor(null)}
+      >
+        {availableLanguages.map((langName) => (
+          <MenuItem
+            key={langName}
+            onClick={() => {
+              setLanguage(langName);
+              setLangAnchor(null);
+            }}
+          >
+            {langName}
+          </MenuItem>
+        ))}
+      </Menu>
+
+      {/* Quality Menu */}
+      <Menu
+        anchorEl={qualityAnchor}
+        open={Boolean(qualityAnchor)}
+        onClose={() => setQualityAnchor(null)}
+      >
+        {availableQualities.map((quality) => {
+          const qualityValue =
+            quality.quiality || quality.quality || quality;
+
+          return (
+            <MenuItem
+              key={qualityValue}
+              onClick={() => {
+                setQuality(qualityValue);
+                setQualityAnchor(null);
+              }}
+            >
+              {qualityValue}
+            </MenuItem>
+          );
+        })}
+      </Menu>
+
+      <StudyMaterialsWidget
+        open={studyMaterialOpen}
+        onClose={() => setStudyMaterialOpen(false)}
+      />
     </>
   );
 }
