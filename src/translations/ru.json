@@ -271,6 +271,7 @@
         "studyMaterialsError": "Ошибка загрузки учебных материалов",
         "searchLanguage": "Поиск языка...",
         "noLanguagesFound": "Языки не найдены",
+        "askQuestion": "Задать вопрос",
         "Question": {
           "title": "Отправить вопрос",
           "label": "Какой у Вас вопрос?",

@@ -11,9 +11,11 @@ import styled from "styled-components";
 import ReactHlsPlayer from "react-hls-player";
 import PublicIcon from "@material-ui/icons/Public";
 import SchoolIcon from "@material-ui/icons/School";
+import QuestionAnswerIcon from "@material-ui/icons/QuestionAnswer";
 import { useBroadcastStream } from "./hooks/useBroadcastStream";
 import StudyMaterialsWidget from "./StudyMaterialsWidget";
 import LanguageSelector from "./LanguageSelector";
+import QuestionDrawer from "./QuestionDrawer";
 
 /* ---------- layout ---------- */
 
@@ -162,6 +164,7 @@ export default function Broadcast() {
   } = useBroadcastStream();
 
   const [studyMaterialOpen, setStudyMaterialOpen] = React.useState(false);
+  const [questionDrawerOpen, setQuestionDrawerOpen] = React.useState(false);
   const [langAnchor, setLangAnchor] = React.useState(null);
   const [qualityAnchor, setQualityAnchor] = React.useState(null);
 
@@ -187,6 +190,11 @@ export default function Broadcast() {
                   {selectedQuality} ▾
                 </Action>
               )}
+
+              <Action onClick={() => setQuestionDrawerOpen(true)}>
+                <QuestionAnswerIcon fontSize="small" />
+                {t("Dashboard.BroadcastArea.askQuestion")}
+              </Action>
             </LeftGroup>
           </ControlsBar>
 
@@ -272,6 +280,12 @@ export default function Broadcast() {
       <StudyMaterialsWidget
         open={studyMaterialOpen}
         onClose={() => setStudyMaterialOpen(false)}
+      />
+
+      {/* Question Drawer */}
+      <QuestionDrawer
+        open={questionDrawerOpen}
+        onClose={() => setQuestionDrawerOpen(false)}
       />
     </>
   );

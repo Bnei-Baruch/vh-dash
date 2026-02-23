@@ -274,6 +274,7 @@
         "studyMaterialsError": "שגיאה בטעינת חומרי הלימוד",
         "searchLanguage": "חפש שפה...",
         "noLanguagesFound": "לא נמצאו שפות",
+        "askQuestion": "שאל שאלה",
         "Question": {
           "title": "שלח שאלה",
           "label": "מה השאלה שלך?",

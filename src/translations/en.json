@@ -274,6 +274,7 @@
         "studyMaterialsError": "Error loading study materials",
         "searchLanguage": "Search language...",
         "noLanguagesFound": "No languages found",
+        "askQuestion": "Ask Question",
         "Question": {
           "title": "Send a Question",
           "label": "What is your question?",
