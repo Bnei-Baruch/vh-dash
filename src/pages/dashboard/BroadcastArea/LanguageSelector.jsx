@@ -108,9 +108,12 @@ const LanguageSelector = ({
   anchorEl,
   onClose,
 }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [searchQuery, setSearchQuery] = React.useState("");
   const searchInputRef = React.useRef(null);
+  
+  // Detect RTL direction
+  const isRTL = i18n.dir() === "rtl";
 
   // Filter languages based on search query
   const filteredLanguages = React.useMemo(() => {
@@ -150,13 +153,14 @@ const LanguageSelector = ({
       anchorEl={anchorEl}
       open={Boolean(anchorEl)}
       onClose={handleClose}
+      disableScrollLock
       anchorOrigin={{
         vertical: 'bottom',
-        horizontal: 'left',
+        horizontal: isRTL ? 'right' : 'left',
       }}
       transformOrigin={{
         vertical: 'top',
-        horizontal: 'left',
+        horizontal: isRTL ? 'right' : 'left',
       }}
       getContentAnchorEl={null}
       PaperProps={{
@@ -173,7 +177,11 @@ const LanguageSelector = ({
       {/* Search Input */}
       <SearchContainer onClick={(e) => e.stopPropagation()}>
         <SearchInputWrapper>
-          <SearchIcon style={{ fontSize: 20, marginRight: 8, opacity: 0.6 }} />
+          <SearchIcon style={{ 
+            fontSize: 20, 
+            ...(isRTL ? { marginLeft: 8 } : { marginRight: 8 }),
+            opacity: 0.6 
+          }} />
           <SearchInput
             inputRef={searchInputRef}
             placeholder={t("Dashboard.BroadcastArea.searchLanguage") || "Search language..."}
@@ -200,7 +208,10 @@ const LanguageSelector = ({
             >
               <span>{langName}</span>
               {langName === selectedLanguage && (
-                <CheckIcon style={{ fontSize: 18, marginLeft: 8 }} />
+                <CheckIcon style={{ 
+                  fontSize: 18, 
+                  ...(isRTL ? { marginRight: 8 } : { marginLeft: 8 })
+                }} />
               )}
             </StyledMenuItem>
           ))

@@ -33,10 +33,11 @@ const StudyButtonContainer = styled.div`
   margin: 0 auto;
   display: flex;
   justify-content: flex-start;
-  padding: ${(props) => props.theme.spacing(4.5)}px 0;
+  flex-shrink: 0;
+  padding: ${(props) => props.theme.spacing(2)}px 0;
 
   @media (max-width: 600px) {
-    padding: ${(props) => props.theme.spacing(3)}px 0;
+    padding: ${(props) => props.theme.spacing(1.5)}px 0;
   }
 `;
 
@@ -84,7 +85,7 @@ const PlayerContainer = styled.div`
   box-shadow: ${(props) => props.theme.shadows[4]};
   display: flex;
   flex-direction: column;
-
+  flex: 1;
   min-height: 0;
   background: ${grey[900]};
 `;
@@ -142,7 +143,10 @@ const PlayerWrapper = styled.div`
 /* ---------- component ---------- */
 
 export default function Broadcast() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  
+  // Detect RTL direction
+  const isRTL = i18n.dir() === "rtl";
 
   const {
     hlsUrl,
@@ -230,13 +234,14 @@ export default function Broadcast() {
         anchorEl={qualityAnchor}
         open={Boolean(qualityAnchor)}
         onClose={() => setQualityAnchor(null)}
+        disableScrollLock
         anchorOrigin={{
           vertical: 'bottom',
-          horizontal: 'left',
+          horizontal: isRTL ? 'right' : 'left',
         }}
         transformOrigin={{
           vertical: 'top',
-          horizontal: 'left',
+          horizontal: isRTL ? 'right' : 'left',
         }}
         getContentAnchorEl={null}
         PaperProps={{
