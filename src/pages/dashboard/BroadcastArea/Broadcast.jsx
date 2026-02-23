@@ -100,12 +100,26 @@ const ControlsBar = styled.div`
   align-items: center;
   padding: 0 ${(props) => props.theme.spacing(3)}px;
   background: ${grey[900]};
+
+  @media (max-width: 400px) {
+    padding: 0 ${(props) => props.theme.spacing(1.5)}px;
+  }
 `;
 
 const LeftGroup = styled.div`
   display: flex;
   align-items: center;
   gap: ${(props) => props.theme.spacing(3)}px;
+
+  @media (max-width: 400px) {
+    gap: ${(props) => props.theme.spacing(1.5)}px;
+  }
+`;
+
+const LanguageIcon = styled(PublicIcon)`
+  @media (max-width: 400px) {
+    display: none;
+  }
 `;
 
 const Action = styled.span`
@@ -114,9 +128,26 @@ const Action = styled.span`
   display: flex;
   align-items: center;
   gap: ${(props) => props.theme.spacing(0.5)}px;
+  font-size: 14px;
+  white-space: nowrap;
 
   &:hover {
     color: ${(props) => props.theme.palette.common.white};
+  }
+
+  @media (max-width: 400px) {
+    font-size: 12px;
+    gap: ${(props) => props.theme.spacing(0.25)}px;
+
+    svg {
+      font-size: 16px;
+    }
+  }
+`;
+
+const ActionText = styled.span`
+  @media (max-width: 400px) {
+    display: none;
   }
 `;
 
@@ -179,7 +210,7 @@ export default function Broadcast() {
           {/* Controls (above video) */}
           <ControlsBar>
             <LeftGroup>
-              <PublicIcon style={{ color: grey[400] }} fontSize="small" />
+              <LanguageIcon style={{ color: grey[400] }} fontSize="small" />
 
               <Action onClick={(e) => setLangAnchor(e.currentTarget)}>
                 {selectedLanguage} ▾
@@ -193,7 +224,7 @@ export default function Broadcast() {
 
               <Action onClick={() => setQuestionDrawerOpen(true)}>
                 <QuestionAnswerIcon fontSize="small" />
-                {t("Dashboard.BroadcastArea.askQuestion")}
+                <ActionText>{t("Dashboard.BroadcastArea.askQuestion")}</ActionText>
               </Action>
             </LeftGroup>
           </ControlsBar>
