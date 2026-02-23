@@ -269,6 +269,8 @@
         "successPosted": "успешно отправлено!",
         "studyMaterialsButton": "Учебные материалы",
         "studyMaterialsError": "Ошибка загрузки учебных материалов",
+        "searchLanguage": "Поиск языка...",
+        "noLanguagesFound": "Языки не найдены",
         "Question": {
           "title": "Отправить вопрос",
           "label": "Какой у Вас вопрос?",

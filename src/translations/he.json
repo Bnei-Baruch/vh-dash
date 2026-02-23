@@ -272,6 +272,8 @@
         "successPosted": "השאלה פורסמה בהצלחה",
         "studyMaterialsButton": "חומר לימוד",
         "studyMaterialsError": "שגיאה בטעינת חומרי הלימוד",
+        "searchLanguage": "חפש שפה...",
+        "noLanguagesFound": "לא נמצאו שפות",
         "Question": {
           "title": "שלח שאלה",
           "label": "מה השאלה שלך?",

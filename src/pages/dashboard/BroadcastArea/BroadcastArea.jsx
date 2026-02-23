@@ -34,8 +34,6 @@ const BroadcastArea = () => {
           <Grid item xs={12} sm={12} md={12} style={{ height: "100%", padding: 0 }}>
             <Broadcast />
           </Grid>
-          <Grid item xs={12} sm={12} md={4}>
-          </Grid>
         </Grid>
       </BroadcastAreaContainer>
     </>

@@ -13,6 +13,7 @@ import PublicIcon from "@material-ui/icons/Public";
 import SchoolIcon from "@material-ui/icons/School";
 import { useBroadcastStream } from "./hooks/useBroadcastStream";
 import StudyMaterialsWidget from "./StudyMaterialsWidget";
+import LanguageSelector from "./LanguageSelector";
 
 /* ---------- layout ---------- */
 
@@ -22,7 +23,6 @@ const BroadcastLayout = styled.div`
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  
 `;
 
 /* ---- Study materials button (below player) ---- */
@@ -34,7 +34,7 @@ const StudyButtonContainer = styled.div`
   display: flex;
   justify-content: flex-start;
   padding: ${(props) => props.theme.spacing(4.5)}px 0;
-  
+
   @media (max-width: 600px) {
     padding: ${(props) => props.theme.spacing(3)}px 0;
   }
@@ -43,16 +43,16 @@ const StudyButtonContainer = styled.div`
 const StudyButton = styled(Button)`
   padding: ${(props) => props.theme.spacing(1.25)}px ${(props) => props.theme.spacing(2)}px;
   font-size: ${(props) => props.theme.typography.body2.fontSize}px;
-  
+
   @media (max-width: 600px) {
     padding: ${(props) => props.theme.spacing(0.75)}px ${(props) => props.theme.spacing(1.25)}px;
     font-size: 12px;
     min-width: auto;
-    
+
     .MuiButton-startIcon {
       margin-right: ${(props) => props.theme.spacing(0.5)}px;
       margin-left: 0;
-      
+
       svg {
         font-size: 16px;
       }
@@ -77,14 +77,14 @@ const StudyButton = styled(Button)`
 
 const PlayerContainer = styled.div`
   width: 100%;
-  max-width: 1280px;  
+  max-width: 1280px;
   margin: 0 auto;
   border-radius: ${(props) => props.theme.spacing(1)}px;
   overflow: hidden;
   box-shadow: ${(props) => props.theme.shadows[4]};
   display: flex;
   flex-direction: column;
-  
+
   min-height: 0;
   background: ${grey[900]};
 `;
@@ -102,7 +102,7 @@ const ControlsBar = styled.div`
 const LeftGroup = styled.div`
   display: flex;
   align-items: center;
-  gap: ${(props) => props.theme.spacing(2)}px;
+  gap: ${(props) => props.theme.spacing(3)}px;
 `;
 
 const Action = styled.span`
@@ -216,30 +216,34 @@ export default function Broadcast() {
 
       </BroadcastLayout>
 
-      {/* Language Menu */}
-      <Menu
+      {/* Language Selector */}
+      <LanguageSelector
+        selectedLanguage={selectedLanguage}
+        availableLanguages={availableLanguages}
+        onLanguageChange={setLanguage}
         anchorEl={langAnchor}
-        open={Boolean(langAnchor)}
         onClose={() => setLangAnchor(null)}
-      >
-        {availableLanguages.map((langName) => (
-          <MenuItem
-            key={langName}
-            onClick={() => {
-              setLanguage(langName);
-              setLangAnchor(null);
-            }}
-          >
-            {langName}
-          </MenuItem>
-        ))}
-      </Menu>
+      />
 
       {/* Quality Menu */}
       <Menu
         anchorEl={qualityAnchor}
         open={Boolean(qualityAnchor)}
         onClose={() => setQualityAnchor(null)}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'left',
+        }}
+        getContentAnchorEl={null}
+        PaperProps={{
+          style: {
+            marginTop: '4px',
+          },
+        }}
       >
         {availableQualities.map((quality) => {
           const qualityValue =
@@ -259,6 +263,7 @@ export default function Broadcast() {
         })}
       </Menu>
 
+      {/* Study Materials Widget */}
       <StudyMaterialsWidget
         open={studyMaterialOpen}
         onClose={() => setStudyMaterialOpen(false)}

@@ -272,6 +272,8 @@
         "successPosted": "Question successfully posted",
         "studyMaterialsButton": "Study Materials",
         "studyMaterialsError": "Error loading study materials",
+        "searchLanguage": "Search language...",
+        "noLanguagesFound": "No languages found",
         "Question": {
           "title": "Send a Question",
           "label": "What is your question?",
