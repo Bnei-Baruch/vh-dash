@@ -95,12 +95,11 @@ const ControlsBar = styled.div`
   height: 40px;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
   padding: 0 ${(props) => props.theme.spacing(3)}px;
   background: ${grey[900]};
 `;
 
-const ControlsGroup = styled.div`
+const LeftGroup = styled.div`
   display: flex;
   align-items: center;
   gap: ${(props) => props.theme.spacing(3)}px;
@@ -143,8 +142,7 @@ const PlayerWrapper = styled.div`
 /* ---------- component ---------- */
 
 export default function Broadcast() {
-  const { t, i18n } = useTranslation();
-  const isRTL = i18n.dir() === 'rtl';
+  const { t } = useTranslation();
 
   const {
     hlsUrl,
@@ -173,7 +171,7 @@ export default function Broadcast() {
         <PlayerContainer>
           {/* Controls (above video) */}
           <ControlsBar>
-            <ControlsGroup>
+            <LeftGroup>
               <PublicIcon style={{ color: grey[400] }} fontSize="small" />
 
               <Action onClick={(e) => setLangAnchor(e.currentTarget)}>
@@ -185,7 +183,7 @@ export default function Broadcast() {
                   {selectedQuality} ▾
                 </Action>
               )}
-            </ControlsGroup>
+            </LeftGroup>
           </ControlsBar>
 
           {/* Video */}
@@ -234,11 +232,11 @@ export default function Broadcast() {
         onClose={() => setQualityAnchor(null)}
         anchorOrigin={{
           vertical: 'bottom',
-          horizontal: isRTL ? 'right' : 'left',
+          horizontal: 'left',
         }}
         transformOrigin={{
           vertical: 'top',
-          horizontal: isRTL ? 'right' : 'left',
+          horizontal: 'left',
         }}
         getContentAnchorEl={null}
         PaperProps={{
