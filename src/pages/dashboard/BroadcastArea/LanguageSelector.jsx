@@ -108,7 +108,8 @@ const LanguageSelector = ({
   anchorEl,
   onClose,
 }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.dir() === 'rtl';
   const [searchQuery, setSearchQuery] = React.useState("");
   const searchInputRef = React.useRef(null);
 
@@ -152,11 +153,11 @@ const LanguageSelector = ({
       onClose={handleClose}
       anchorOrigin={{
         vertical: 'bottom',
-        horizontal: 'left',
+        horizontal: isRTL ? 'right' : 'left',
       }}
       transformOrigin={{
         vertical: 'top',
-        horizontal: 'left',
+        horizontal: isRTL ? 'right' : 'left',
       }}
       getContentAnchorEl={null}
       PaperProps={{
