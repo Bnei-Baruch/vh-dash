@@ -87,9 +87,8 @@ const PlayerContainer = styled.div`
   box-shadow: ${(props) => props.theme.shadows[4]};
   display: flex;
   flex-direction: column;
-  flex: 1;
   min-height: 0;
-  background: ${grey[900]};
+  background: #000;
 `;
 
 /* ---- Controls bar (above video) ---- */
@@ -99,7 +98,7 @@ const ControlsBar = styled.div`
   display: flex;
   align-items: center;
   padding: 0 ${(props) => props.theme.spacing(3)}px;
-  background: ${grey[900]};
+  background: #000;
 
   @media (max-width: 400px) {
     padding: 0 ${(props) => props.theme.spacing(1.5)}px;
@@ -163,7 +162,7 @@ const VideoSection = styled.div`
 
 const PlayerWrapper = styled.div`
   width: 100%;
-  background: ${grey[900]};
+  background: #000;
   overflow: hidden;
 
   video {
