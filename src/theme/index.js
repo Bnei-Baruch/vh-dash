@@ -20,6 +20,7 @@ const theme = (variant) =>
       header: variant.header,
       palette: variant.palette,
       sidebar: variant.sidebar,
+      broadcast: variant.broadcast,
     },
     variant.name
   );
