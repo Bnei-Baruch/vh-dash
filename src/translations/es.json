@@ -555,6 +555,7 @@
         "noBroadcast": "No broadcast now",
         "noText": "Please input question",
         "successPosted": "Question successfully posted",
+        "errorPosting": "Error al enviar la pregunta. Por favor, inténtalo de nuevo.",
         "studyMaterialsButton": "Materiales de Estudio",
         "studyMaterialsError": "Error al cargar los materiales de estudio",
         "searchLanguage": "Buscar idioma...",

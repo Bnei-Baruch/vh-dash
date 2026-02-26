@@ -270,6 +270,7 @@
         "noBroadcast": "אין שידור עכשיו",
         "noText": "נא להזין שאלה",
         "successPosted": "השאלה פורסמה בהצלחה",
+        "errorPosting": "שליחת השאלה נכשלה. אנא נסה שנית.",
         "studyMaterialsButton": "חומר לימוד",
         "studyMaterialsError": "שגיאה בטעינת חומרי הלימוד",
         "searchLanguage": "חפש שפה...",

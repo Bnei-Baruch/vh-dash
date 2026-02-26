@@ -270,6 +270,7 @@
         "noBroadcast": "No broadcast now",
         "noText": "Please input question",
         "successPosted": "Question successfully posted",
+        "errorPosting": "Failed to send question. Please try again.",
         "studyMaterialsButton": "Study Materials",
         "studyMaterialsError": "Error loading study materials",
         "searchLanguage": "Search language...",

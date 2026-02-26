@@ -7,12 +7,12 @@ import {
   Button,
   Typography,
 } from "@material-ui/core";
+import MuiAlert from "@material-ui/lab/Alert";
 import { Close as CloseIcon } from "@material-ui/icons";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import axios from "axios";
-import Snackbar from "../../../components/SnackBar";
 
 /* ---------- Styled Components ---------- */
 
@@ -114,9 +114,7 @@ const QuestionDrawer = ({ open, onClose }) => {
   const [qText, setQText] = useState("");
   const [disabled, setDisabled] = useState(true);
   const [posting, setPosting] = useState(false);
-  const [type, setType] = useState("success");
-  const [snackbarMessage, setSnackbarMessage] = useState("");
-  const [showSnackbar, setShowSnackbar] = useState(false);
+  const [feedback, setFeedback] = useState(null); // { type: 'success'|'error', message: string } | null
 
   // Reset state when drawer closes
   React.useEffect(() => {
@@ -124,7 +122,7 @@ const QuestionDrawer = ({ open, onClose }) => {
       setQText("");
       setDisabled(true);
       setPosting(false);
-      setShowSnackbar(false);
+      setFeedback(null);
     }
   }, [open]);
 
@@ -132,18 +130,18 @@ const QuestionDrawer = ({ open, onClose }) => {
     const value = e.target.value;
     setQText(value);
     setDisabled(value.trim() === "");
+    if (feedback) setFeedback(null);
   };
 
   const postQuestion = () => {
     if (qText.trim() === "") {
-      setSnackbarMessage(t("Dashboard.BroadcastArea.noText"));
-      setType("error");
-      setShowSnackbar(true);
+      setFeedback({ type: "error", message: t("Dashboard.BroadcastArea.noText") });
       return;
     }
 
     setDisabled(true);
     setPosting(true);
+    setFeedback(null);
 
     const body = {
       askForMe: true,
@@ -159,61 +157,59 @@ const QuestionDrawer = ({ open, onClose }) => {
     postBroadcastQuestion(body)
       .then(() => {
         setQText("");
-        setSnackbarMessage(t("Dashboard.BroadcastArea.successPosted"));
-        setType("success");
-        setShowSnackbar(true);
+        setFeedback({ type: "success", message: t("Dashboard.BroadcastArea.successPosted") });
         setPosting(false);
         setDisabled(true);
       })
       .catch(() => {
-        setSnackbarMessage(t("Dashboard.BroadcastArea.errorPosting") || "Failed to post question");
-        setType("error");
-        setShowSnackbar(true);
+        setFeedback({ type: "error", message: t("Dashboard.BroadcastArea.errorPosting") || "Failed to post question" });
         setPosting(false);
         setDisabled(false);
       });
   };
 
   return (
-    <>
-      <Drawer anchor="right" open={open} onClose={onClose}>
-        <DrawerHeader>
-          <HeaderTitle variant="h6">
-            {t("Dashboard.BroadcastArea.questions")}
-          </HeaderTitle>
-          <CloseButton onClick={onClose} aria-label="close">
-            <CloseIcon />
-          </CloseButton>
-        </DrawerHeader>
+    <Drawer anchor="right" open={open} onClose={onClose}>
+      <DrawerHeader>
+        <HeaderTitle variant="h6">
+          {t("Dashboard.BroadcastArea.questions")}
+        </HeaderTitle>
+        <CloseButton onClick={onClose} aria-label="close">
+          <CloseIcon />
+        </CloseButton>
+      </DrawerHeader>
 
-        <Content>
-          <QuestionTextField
-            label={t("Dashboard.BroadcastArea.yourQuestion")}
-            variant="outlined"
-            multiline
-            fullWidth
-            maxRows={4}
-            value={qText}
-            onChange={handleTextChange}
-            disabled={posting}
-          />
+      <Content>
+        <QuestionTextField
+          label={t("Dashboard.BroadcastArea.yourQuestion")}
+          variant="outlined"
+          multiline
+          fullWidth
+          maxRows={4}
+          value={qText}
+          onChange={handleTextChange}
+          disabled={posting}
+        />
 
-          <Button
-            variant="contained"
-            color="primary"
-            disabled={disabled}
-            onClick={postQuestion}
-            fullWidth
-          >
-            {posting
-              ? t("Dashboard.BroadcastArea.posting")
-              : t("Dashboard.BroadcastArea.postYourQuestion")}
-          </Button>
-        </Content>
-      </Drawer>
+        <Button
+          variant="contained"
+          color="primary"
+          disabled={disabled}
+          onClick={postQuestion}
+          fullWidth
+        >
+          {posting
+            ? t("Dashboard.BroadcastArea.posting")
+            : t("Dashboard.BroadcastArea.postYourQuestion")}
+        </Button>
 
-      <Snackbar show={showSnackbar} type={type} message={snackbarMessage} />
-    </>
+        {feedback && (
+          <MuiAlert severity={feedback.type} onClose={() => setFeedback(null)}>
+            {feedback.message}
+          </MuiAlert>
+        )}
+      </Content>
+    </Drawer>
   );
 };
 
