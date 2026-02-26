@@ -5,7 +5,6 @@ import {
 } from "@material-ui/core";
 import { grey } from "@material-ui/core/colors";
 import React from "react";
-import Helmet from "react-helmet";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import ReactHlsPlayer from "react-hls-player";
@@ -200,7 +199,6 @@ export default function Broadcast() {
 
   return (
     <>
-      <Helmet title={t("Dashboard.BroadcastArea.name")} />
 
       <BroadcastLayout>
 
@@ -290,7 +288,7 @@ export default function Broadcast() {
       >
         {availableQualities.map((quality) => {
           const qualityValue =
-            quality.quiality || quality.quality || quality;
+            quality.quality || quality;
 
           return (
             <MenuItem

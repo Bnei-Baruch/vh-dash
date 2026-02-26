@@ -162,7 +162,7 @@ const QuestionDrawer = ({ open, onClose }) => {
         setDisabled(true);
       })
       .catch(() => {
-        setFeedback({ type: "error", message: t("Dashboard.BroadcastArea.errorPosting") || "Failed to post question" });
+        setFeedback({ type: "error", message: t("Dashboard.BroadcastArea.errorPosting") });
         setPosting(false);
         setDisabled(false);
       });
