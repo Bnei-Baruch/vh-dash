@@ -15,9 +15,18 @@ const Drawer = styled(MuiDrawer)`
 
   .MuiDrawer-paper {
     width: 400px;
+    max-width: 100vw;
     box-sizing: border-box;
     background-color: #fff;
     border-left: 1px solid rgba(0, 0, 0, 0.12);
+  }
+
+  @media (max-width: 400px) {
+    width: 100vw;
+
+    .MuiDrawer-paper {
+      width: 100vw;
+    }
   }
 `;
 
@@ -31,6 +40,10 @@ const DrawerHeader = styled(MuiBox)`
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
   background-color: ${(props) => props.theme.sidebar.header.background};
   color: ${(props) => props.theme.sidebar.header.color};
+
+  @media (max-width: 400px) {
+    padding: ${(props) => props.theme.spacing(1.5)}px;
+  }
 `;
 
 const CloseButton = styled(MuiIconButton)`
