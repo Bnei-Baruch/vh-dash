@@ -54,6 +54,9 @@ const blueVariant = {
   body: {
     background: "#F7F9FC",
   },
+  broadcast: {
+    background: "#000",
+  },
 };
 
 const greenVariant = {
@@ -105,6 +108,9 @@ const greenVariant = {
   },
   body: {
     background: "#F9F9FC",
+  },
+  broadcast: {
+    background: "#000",
   },
 };
 
@@ -158,6 +164,9 @@ const indigoVariant = {
   body: {
     background: "#F9F9FC",
   },
+  broadcast: {
+    background: "#000",
+  },
 };
 
 const tealVariant = {
@@ -209,6 +218,9 @@ const tealVariant = {
   },
   body: {
     background: "#F7F9FC",
+  },
+  broadcast: {
+    background: "#000",
   },
 };
 
@@ -262,6 +274,9 @@ const lightVariant = {
   body: {
     background: "#F7F9FC",
   },
+  broadcast: {
+    background: "#000",
+  },
 };
 
 const darkVariant = {
@@ -313,6 +328,9 @@ const darkVariant = {
   },
   body: {
     background: "#F7F9FC",
+  },
+  broadcast: {
+    background: "#000",
   },
 };
 

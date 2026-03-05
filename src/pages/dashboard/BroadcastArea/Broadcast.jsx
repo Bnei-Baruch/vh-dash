@@ -1,56 +1,184 @@
 import {
-  FormControl,
-  Grid,
-  makeStyles,
-  MenuItem,
-  Select,
   Button,
+  Menu,
+  MenuItem,
 } from "@material-ui/core";
+import { grey } from "@material-ui/core/colors";
 import React from "react";
-import Helmet from "react-helmet";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import ReactHlsPlayer from "react-hls-player";
 import PublicIcon from "@material-ui/icons/Public";
-import { getFlagUrl, handleFlagError } from "../../../utils/flags";
+import SchoolIcon from "@material-ui/icons/School";
+import QuestionAnswerIcon from "@material-ui/icons/QuestionAnswer";
 import { useBroadcastStream } from "./hooks/useBroadcastStream";
 import StudyMaterialsWidget from "./StudyMaterialsWidget";
-import { School as SchoolIcon } from "@material-ui/icons";
+import LanguageSelector from "./LanguageSelector";
+import QuestionDrawer from "./QuestionDrawer";
 
-const useStyles = makeStyles((theme) => ({
-  rootFirstSelect: {
-    padding: "10px 8px",
-  },
-  rootSecondSelect: {
-    padding: "10px 8px",
-  },
-  menuItem: {
-    padding: "6px 16px",
-    display: "flex",
-    alignItems: "center",
-    gap: "12px",
-    whiteSpace: "nowrap",
-  },
-}));
+/* ---------- layout ---------- */
+
+const BroadcastLayout = styled.div`
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+`;
+
+/* ---- Study materials button (below player) ---- */
+
+const StudyButtonContainer = styled.div`
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  padding: ${(props) => props.theme.spacing(2)}px 0;
+
+  @media (max-width: 600px) {
+    padding: ${(props) => props.theme.spacing(1.5)}px 0;
+  }
+`;
+
+const StudyButton = styled(Button)`
+  padding: ${(props) => props.theme.spacing(1.25)}px ${(props) => props.theme.spacing(2)}px;
+  font-size: ${(props) => props.theme.typography.body2.fontSize}px;
+
+  @media (max-width: 600px) {
+    padding: ${(props) => props.theme.spacing(0.75)}px ${(props) => props.theme.spacing(1.25)}px;
+    font-size: 12px;
+    min-width: auto;
+
+    .MuiButton-startIcon {
+      margin-right: ${(props) => props.theme.spacing(0.5)}px;
+      margin-left: 0;
+
+      svg {
+        font-size: 16px;
+      }
+    }
+  }
+
+  @media (max-width: 360px) {
+    padding: ${(props) => props.theme.spacing(0.5)}px ${(props) => props.theme.spacing(1)}px;
+    font-size: 12px;
+
+    .MuiButton-startIcon {
+      margin-right: ${(props) => props.theme.spacing(0.375)}px;
+
+      svg {
+        font-size: 14px;
+      }
+    }
+  }
+`;
+
+/* ---- Player container (Controls + Video) ---- */
 
 const PlayerContainer = styled.div`
-  max-width: 800px;
   width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  border-radius: ${(props) => props.theme.spacing(1)}px;
+  overflow: hidden;
+  box-shadow: ${(props) => props.theme.shadows[4]};
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: ${(props) => props.theme.broadcast.background};
 `;
-const WorldIcon = styled(PublicIcon)``;
-const LangugaeContainer = styled(Grid)`
-  padding: 0px 20px !important;
+
+/* ---- Controls bar (above video) ---- */
+
+const ControlsBar = styled.div`
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding: 0 ${(props) => props.theme.spacing(3)}px;
+  background: ${(props) => props.theme.broadcast.background};
+
+  @media (max-width: 400px) {
+    padding: 0 ${(props) => props.theme.spacing(1.5)}px;
+  }
 `;
-const LiveLang = styled.span`
-  position: relative;
-  top: -2px;
+
+const LeftGroup = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${(props) => props.theme.spacing(3)}px;
+
+  @media (max-width: 400px) {
+    gap: ${(props) => props.theme.spacing(1.5)}px;
+  }
 `;
+
+const LanguageIcon = styled(PublicIcon)`
+  @media (max-width: 400px) {
+    display: none;
+  }
+`;
+
+const Action = styled.span`
+  cursor: pointer;
+  color: ${grey[400]};
+  display: flex;
+  align-items: center;
+  gap: ${(props) => props.theme.spacing(0.5)}px;
+  font-size: 14px;
+  white-space: nowrap;
+
+  &:hover {
+    color: ${(props) => props.theme.palette.common.white};
+  }
+
+  @media (max-width: 400px) {
+    font-size: 12px;
+    gap: ${(props) => props.theme.spacing(0.25)}px;
+
+    svg {
+      font-size: 16px;
+    }
+  }
+`;
+
+const ActionText = styled.span`
+  @media (max-width: 400px) {
+    display: none;
+  }
+`;
+
+/* ---- Video section ---- */
+
+const VideoSection = styled.div`
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: ${(props) => props.theme.spacing(1)}px;
+`;
+
+const PlayerWrapper = styled.div`
+  width: 100%;
+  background: ${(props) => props.theme.broadcast.background};
+  overflow: hidden;
+
+  video {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+`;
+
+/* ---------- component ---------- */
 
 export default function Broadcast() {
-  const classes = useStyles();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  
+  // Detect RTL direction
+  const isRTL = i18n.dir() === "rtl";
 
-  // Use custom hook for all broadcast stream logic
   const {
     hlsUrl,
     selectedLanguage,
@@ -64,142 +192,129 @@ export default function Broadcast() {
     handlePlay,
   } = useBroadcastStream();
 
-  // UI-only state for Study Materials widget
   const [studyMaterialOpen, setStudyMaterialOpen] = React.useState(false);
-
-  const handleStudyMaterialToggle = () => {
-    setStudyMaterialOpen(!studyMaterialOpen);
-  };
-  const handleStudyMaterialClose = () => {
-    setStudyMaterialOpen(false);
-  };
+  const [questionDrawerOpen, setQuestionDrawerOpen] = React.useState(false);
+  const [langAnchor, setLangAnchor] = React.useState(null);
+  const [qualityAnchor, setQualityAnchor] = React.useState(null);
 
   return (
     <>
-      <Helmet title={t("Dashboard.BroadcastArea.name")} />
 
-      <Grid container spacing={10}>
-        <Grid item xs={12} sm={12}>
-          <PlayerContainer>
-            <Grid container spacing={10} alignItems="center">
-              <LangugaeContainer
-                item
-                xs={12}
-                sm={12}
-                style={{
-                  marginTop: 32,
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 16
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-                  <WorldIcon />
-                  <LiveLang>
-                    {t("Dashboard.BroadcastArea.liveLanguage")}
-                  </LiveLang>
-                </div>
-                <span>
-                  <FormControl variant="outlined" style={{ width: "auto", minWidth: "140px" }}>
-                    <Select
-                      classes={{ root: classes.rootFirstSelect }}
-                      labelId="language-select-label"
-                      id="language-select"
-                      value={selectedLanguage}
-                      onChange={(e) => setLanguage(e.target.value)}
-                      renderValue={() => {
-                        const flagUrl = getFlagUrl(selectedLanguage);
-                        return (
-                          <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-                            {flagUrl && (
-                              <img
-                                src={flagUrl}
-                                width="20"
-                                height="15"
-                                alt={selectedLanguage}
-                                style={{ display: "block", flexShrink: 0 }}
-                                onError={handleFlagError}
-                              />
-                            )}
-                            <span>{selectedLanguage}</span>
-                          </div>
-                        );
-                      }}
-                    >
-                      {availableLanguages.map((langName) => {
-                        const flagUrl = getFlagUrl(langName);
-                        return (
-                          <MenuItem 
-                            value={langName} 
-                            key={langName} 
-                            classes={{ root: classes.menuItem }}
-                          >
-                            {flagUrl && (
-                              <img
-                                src={flagUrl}
-                                width="20"
-                                height="15"
-                                alt={langName}
-                                style={{ display: "block", flexShrink: 0 }}
-                                onError={handleFlagError}
-                              />
-                            )}
-                            <span>{langName}</span>
-                          </MenuItem>
-                        );
-                      })}
-                    </Select>
-                  </FormControl>
-                </span>
-                {availableQualities.length > 0 && (
-                  <span>
-                    <FormControl variant="outlined" style={{ width: "auto", minWidth: "140px" }}>
-                      <Select
-                        classes={{ root: classes.rootSecondSelect }}
-                        labelId="quality-select-label"
-                        id="quality-select"
-                        value={selectedQuality || ""}
-                        onChange={(e) => setQuality(e.target.value)}
-                      >
-                        {availableQualities.map((quality) => {
-                          const qualityValue = quality.quiality || quality.quality || quality;
-                          return (
-                            <MenuItem value={qualityValue} key={qualityValue}>
-                              {qualityValue}
-                            </MenuItem>
-                          );
-                        })}
-                      </Select>
-                    </FormControl>
-                  </span>
-                )}
-                <Button
-                  variant="contained"
-                  color="primary"
-                  startIcon={<SchoolIcon />}
-                  onClick={handleStudyMaterialToggle}
-                >
-                  {t("Dashboard.BroadcastArea.studyMaterialsButton")}
-                </Button>
-              </LangugaeContainer>
-              <Grid item xs={12} sm={12}>
-                {hlsUrl && (
-                  <ReactHlsPlayer
-                    playerRef={playerRef}
-                    src={hlsUrl}
-                    autoPlay={hasUserStartedPlayback}
-                    controls={true}
-                    width="100%"
-                    height="100%"
-                    onPlay={handlePlay}
-                  />
-                )}
-              </Grid>
-            </Grid>
-          </PlayerContainer>
-        </Grid>
-      </Grid>
-      <StudyMaterialsWidget open={studyMaterialOpen} onClose={handleStudyMaterialClose} />
+      <BroadcastLayout>
+
+        {/* Player Container (Controls + Video) */}
+        <PlayerContainer>
+          {/* Controls (above video) */}
+          <ControlsBar>
+            <LeftGroup>
+              <LanguageIcon style={{ color: grey[400] }} fontSize="small" />
+
+              <Action onClick={(e) => setLangAnchor(e.currentTarget)}>
+                {selectedLanguage} ▾
+              </Action>
+
+              {availableQualities.length > 0 && (
+                <Action onClick={(e) => setQualityAnchor(e.currentTarget)}>
+                  {selectedQuality} ▾
+                </Action>
+              )}
+
+              <Action onClick={() => setQuestionDrawerOpen(true)}>
+                <QuestionAnswerIcon fontSize="small" />
+                <ActionText>{t("Dashboard.BroadcastArea.askQuestion")}</ActionText>
+              </Action>
+            </LeftGroup>
+          </ControlsBar>
+
+          {/* Video */}
+          <VideoSection>
+            {hlsUrl && (
+              <PlayerWrapper>
+                <ReactHlsPlayer
+                  playerRef={playerRef}
+                  src={hlsUrl}
+                  autoPlay={hasUserStartedPlayback}
+                  controls
+                  onPlay={handlePlay}
+                />
+              </PlayerWrapper>
+            )}
+          </VideoSection>
+        </PlayerContainer>
+
+        {/* Study Materials Button (below player) */}
+        <StudyButtonContainer>
+          <StudyButton
+            variant="contained"
+            color="primary"
+            startIcon={<SchoolIcon />}
+            onClick={() => setStudyMaterialOpen(true)}
+          >
+            {t("Dashboard.BroadcastArea.studyMaterialsButton")}
+          </StudyButton>
+        </StudyButtonContainer>
+
+      </BroadcastLayout>
+
+      {/* Language Selector */}
+      <LanguageSelector
+        selectedLanguage={selectedLanguage}
+        availableLanguages={availableLanguages}
+        onLanguageChange={setLanguage}
+        anchorEl={langAnchor}
+        onClose={() => setLangAnchor(null)}
+      />
+
+      {/* Quality Menu */}
+      <Menu
+        anchorEl={qualityAnchor}
+        open={Boolean(qualityAnchor)}
+        onClose={() => setQualityAnchor(null)}
+        disableScrollLock
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: isRTL ? 'right' : 'left',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: isRTL ? 'right' : 'left',
+        }}
+        getContentAnchorEl={null}
+        PaperProps={{
+          style: {
+            marginTop: '4px',
+          },
+        }}
+      >
+        {availableQualities.map((quality) => {
+          const qualityValue =
+            quality.quality || quality;
+
+          return (
+            <MenuItem
+              key={qualityValue}
+              onClick={() => {
+                setQuality(qualityValue);
+                setQualityAnchor(null);
+              }}
+            >
+              {qualityValue}
+            </MenuItem>
+          );
+        })}
+      </Menu>
+
+      {/* Study Materials Widget */}
+      <StudyMaterialsWidget
+        open={studyMaterialOpen}
+        onClose={() => setStudyMaterialOpen(false)}
+      />
+
+      {/* Question Drawer */}
+      <QuestionDrawer
+        open={questionDrawerOpen}
+        onClose={() => setQuestionDrawerOpen(false)}
+      />
     </>
   );
 }
