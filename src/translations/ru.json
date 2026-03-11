@@ -273,8 +273,9 @@
         "searchLanguage": "Поиск языка...",
         "noLanguagesFound": "Языки не найдены",
         "askQuestion": "Задать вопрос",
-        "streamingWithDelay": "Трансляция с задержкой",
-        "streamingWithoutDelay": "Трансляция без задержки",
+        "streamMode": "Режим трансляции",
+        "streamingWithDelay": "С задержкой",
+        "streamingWithoutDelay": "Без задержки",
         "Question": {
           "title": "Отправить вопрос",
           "label": "Какой у Вас вопрос?",

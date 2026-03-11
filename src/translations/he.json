@@ -276,8 +276,9 @@
         "searchLanguage": "חפש שפה...",
         "noLanguagesFound": "לא נמצאו שפות",
         "askQuestion": "שאל שאלה",
-        "streamingWithDelay": "שידור עם השהייה",
-        "streamingWithoutDelay": "שידור ללא השהייה",
+        "streamMode": "מצב שידור",
+        "streamingWithDelay": "עם השהייה",
+        "streamingWithoutDelay": "ללא השהייה",
         "Question": {
           "title": "שלח שאלה",
           "label": "מה השאלה שלך?",

@@ -561,8 +561,9 @@
         "searchLanguage": "Buscar idioma...",
         "noLanguagesFound": "No se encontraron idiomas",
         "askQuestion": "Hacer una Pregunta",
-        "streamingWithDelay": "Transmisión con retraso",
-        "streamingWithoutDelay": "Transmisión sin retraso",
+        "streamMode": "Modo de Transmisión",
+        "streamingWithDelay": "Con Retraso",
+        "streamingWithoutDelay": "Sin Retraso",
         "Question": {
           "title": "Send a Question",
           "label": "What is your question?",

@@ -276,8 +276,9 @@
         "searchLanguage": "Search language...",
         "noLanguagesFound": "No languages found",
         "askQuestion": "Ask Question",
-        "streamingWithDelay": "Broadcast with delay",
-        "streamingWithoutDelay": "Broadcast without delay",
+        "streamMode": "Stream Mode",
+        "streamingWithDelay": "With Delay",
+        "streamingWithoutDelay": "No Delay",
         "Question": {
           "title": "Send a Question",
           "label": "What is your question?",

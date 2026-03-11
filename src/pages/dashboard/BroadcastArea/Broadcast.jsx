@@ -212,17 +212,23 @@ export default function Broadcast() {
   const [questionDrawerOpen, setQuestionDrawerOpen] = React.useState(false);
   const [langAnchor, setLangAnchor] = React.useState(null);
   const [qualityAnchor, setQualityAnchor] = React.useState(null);
-
-  const handleStreamingModeToggle = () => {
-    const next = streamingMode === "webrtc" ? "hls" : "webrtc";
-    dispatch(changeStreamingMode(next));
-    setWebrtcError(null);
-  };
+  const [modeAnchor, setModeAnchor] = React.useState(null);
 
   const handleWebRTCError = (error) => {
     setWebrtcError(error);
     dispatch(changeStreamingMode("hls"));
   };
+
+  const menuProps = (anchor, onClose) => ({
+    anchorEl: anchor,
+    open: Boolean(anchor),
+    onClose,
+    disableScrollLock: true,
+    anchorOrigin: { vertical: 'bottom', horizontal: isRTL ? 'right' : 'left' },
+    transformOrigin: { vertical: 'top', horizontal: isRTL ? 'right' : 'left' },
+    getContentAnchorEl: null,
+    PaperProps: { style: { marginTop: '4px' } },
+  });
 
   return (
     <>
@@ -246,17 +252,13 @@ export default function Broadcast() {
                 </Action>
               )}
 
+              <Action onClick={(e) => setModeAnchor(e.currentTarget)}>
+                <ActionText>{t("Dashboard.BroadcastArea.streamMode")}</ActionText> ▾
+              </Action>
+
               <Action onClick={() => setQuestionDrawerOpen(true)}>
                 <QuestionAnswerIcon fontSize="small" />
                 <ActionText>{t("Dashboard.BroadcastArea.askQuestion")}</ActionText>
-              </Action>
-
-              <Action onClick={handleStreamingModeToggle}>
-                <ActionText>
-                  {streamingMode === "webrtc"
-                    ? t("Dashboard.BroadcastArea.streamingWithoutDelay")
-                    : t("Dashboard.BroadcastArea.streamingWithDelay")}
-                </ActionText>
               </Action>
             </LeftGroup>
           </ControlsBar>
@@ -314,33 +316,13 @@ export default function Broadcast() {
       />
 
       {/* Quality Menu */}
-      <Menu
-        anchorEl={qualityAnchor}
-        open={Boolean(qualityAnchor)}
-        onClose={() => setQualityAnchor(null)}
-        disableScrollLock
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: isRTL ? 'right' : 'left',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: isRTL ? 'right' : 'left',
-        }}
-        getContentAnchorEl={null}
-        PaperProps={{
-          style: {
-            marginTop: '4px',
-          },
-        }}
-      >
+      <Menu {...menuProps(qualityAnchor, () => setQualityAnchor(null))}>
         {availableQualities.map((quality) => {
-          const qualityValue =
-            quality.quality || quality;
-
+          const qualityValue = quality.quality || quality;
           return (
             <MenuItem
               key={qualityValue}
+              selected={qualityValue === selectedQuality}
               onClick={() => {
                 setQuality(qualityValue);
                 setQualityAnchor(null);
@@ -350,6 +332,30 @@ export default function Broadcast() {
             </MenuItem>
           );
         })}
+      </Menu>
+
+      {/* Stream Mode Menu */}
+      <Menu {...menuProps(modeAnchor, () => setModeAnchor(null))}>
+        <MenuItem
+          selected={streamingMode === "hls"}
+          onClick={() => {
+            dispatch(changeStreamingMode("hls"));
+            setWebrtcError(null);
+            setModeAnchor(null);
+          }}
+        >
+          {t("Dashboard.BroadcastArea.streamingWithDelay")}
+        </MenuItem>
+        <MenuItem
+          selected={streamingMode === "webrtc"}
+          onClick={() => {
+            dispatch(changeStreamingMode("webrtc"));
+            setWebrtcError(null);
+            setModeAnchor(null);
+          }}
+        >
+          {t("Dashboard.BroadcastArea.streamingWithoutDelay")}
+        </MenuItem>
       </Menu>
 
       {/* Study Materials Widget */}
