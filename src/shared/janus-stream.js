@@ -49,23 +49,23 @@ class JanusStream {
    * @param {string} serverName - Optional server name, otherwise will fetch from API
    */
   initStreaming = (serverName) => {
-    console.log("[janus-stream] initStreaming called with server:", serverName);
-    console.log("[janus-stream] Current stream IDs - video:", this.videoStreamId, "audio:", this.audioStreamId);
+    log.info("[janus-stream] initStreaming called with server:", serverName);
+    log.info("[janus-stream] Current stream IDs - video:", this.videoStreamId, "audio:", this.audioStreamId);
     this.clean();
     this.initStrServer(serverName, () => {
-      console.log("[janus-stream] initStrServer callback - videoStreamId:", this.videoStreamId, "audioStreamId:", this.audioStreamId);
-      console.log("[janus-stream] Streams status - videoJanusStream:", !!this.videoJanusStream, "audioJanusStream:", !!this.audioJanusStream);
+      log.info("[janus-stream] initStrServer callback - videoStreamId:", this.videoStreamId, "audioStreamId:", this.audioStreamId);
+      log.info("[janus-stream] Streams status - videoJanusStream:", !!this.videoJanusStream, "audioJanusStream:", !!this.audioJanusStream);
       if (this.videoStreamId && !this.videoJanusStream) {
-        console.log("[janus-stream] Initializing video stream...");
+        log.info("[janus-stream] Initializing video stream...");
         this.initVideoStream();
       } else {
-        console.warn("[janus-stream] Skipping video stream - videoStreamId:", this.videoStreamId, "videoJanusStream exists:", !!this.videoJanusStream);
+        log.warn("[janus-stream] Skipping video stream - videoStreamId:", this.videoStreamId, "videoJanusStream exists:", !!this.videoJanusStream);
       }
       if (this.audioStreamId && !this.audioJanusStream) {
-        console.log("[janus-stream] Initializing audio stream...");
+        log.info("[janus-stream] Initializing audio stream...");
         this.initAudioStream();
       } else {
-        console.warn("[janus-stream] Skipping audio stream - audioStreamId:", this.audioStreamId, "audioJanusStream exists:", !!this.audioJanusStream);
+        log.warn("[janus-stream] Skipping audio stream - audioStreamId:", this.audioStreamId, "audioJanusStream exists:", !!this.audioJanusStream);
       }
     });
   };
@@ -89,7 +89,7 @@ class JanusStream {
     if (this.config && this.config.server) {
       this.initJanus(this.config.server, cb);
     } else {
-      console.error("[janus-stream] No server configured");
+      log.error("[janus-stream] No server configured");
       if (cb) cb();
     }
   };
@@ -99,47 +99,47 @@ class JanusStream {
    */
   initJanus = (serverName, cb) => {
     if (!this.user) {
-      console.error("[janus-stream] User not set");
+      log.error("[janus-stream] User not set");
       if (cb) cb();
       return;
     }
 
-    console.log("[janus-stream] Initializing Janus connection with server:", serverName);
-    console.log("[janus-stream] User ID:", this.user.id);
+    log.info("[janus-stream] Initializing Janus connection with server:", serverName);
+    log.info("[janus-stream] User ID:", this.user.id);
 
     // Get config for this server
     if (!this.config) {
       this.config = this.getDefaultConfig(serverName);
-      console.log("[janus-stream] Using default config:", this.config);
+      log.info("[janus-stream] Using default config:", this.config);
     } else {
-      console.log("[janus-stream] Using provided config:", this.config);
+      log.info("[janus-stream] Using provided config:", this.config);
     }
 
     const janus = new JanusMqtt(this.user, serverName);
 
     janus.onStatus = (srv, status) => {
-      console.log("[janus-stream] Janus status update:", { server: srv, status });
+      log.info("[janus-stream] Janus status update:", { server: srv, status });
       if (status !== "online") {
-        console.warn("[janus-stream] Janus status is not online:", status);
+        log.warn("[janus-stream] Janus status is not online:", status);
         if (this.janus) this.janus.destroy();
         this.janus = null;
         setTimeout(() => {
           this.initStrServer(serverName);
         }, 7000);
       } else {
-        console.log("[janus-stream] Janus is online!");
+        log.info("[janus-stream] Janus is online!");
       }
     };
 
     // Initialize with token from user
     const token = this.user.token || "";
-    console.log("[janus-stream] Initializing JanusMqtt with token:", token ? "***" : "(no token)");
+    log.info("[janus-stream] Initializing JanusMqtt with token:", token ? "***" : "(no token)");
     janus.init(token).then((data) => {
-      console.log("[janus-stream] JanusMqtt initialized successfully:", data);
+      log.info("[janus-stream] JanusMqtt initialized successfully:", data);
       this.janus = janus;
       if (typeof cb === "function") cb();
     }).catch((error) => {
-      console.error("[janus-stream] JanusMqtt init error:", error);
+      log.error("[janus-stream] JanusMqtt init error:", error);
       if (this.onError) {
         this.onError(error);
       }
@@ -173,17 +173,17 @@ class JanusStream {
    */
   initVideoStream = () => {
     if (!this.videoStreamId || !this.janus) {
-      console.warn("[janus-stream] Cannot init video stream - missing videoStreamId or janus connection");
-      console.warn("[janus-stream] videoStreamId:", this.videoStreamId, "janus:", !!this.janus);
+      log.warn("[janus-stream] Cannot init video stream - missing videoStreamId or janus connection");
+      log.warn("[janus-stream] videoStreamId:", this.videoStreamId, "janus:", !!this.janus);
       return;
     }
 
-    console.log("[janus-stream] Initializing video stream with ID:", this.videoStreamId);
+    log.info("[janus-stream] Initializing video stream with ID:", this.videoStreamId);
     this.videoJanusStream = new StreamingPlugin(this.config?.iceServers);
     this.videoJanusStream.onStatus = (status) => {
-      console.log("[janus-stream] Video stream status:", status);
+      log.info("[janus-stream] Video stream status:", status);
       if (status === "failed" && this.janus) {
-        console.warn("[janus-stream] Video stream failed, reinitializing...");
+        log.warn("[janus-stream] Video stream failed, reinitializing...");
         setTimeout(() => {
           this.initVideoStream();
         }, 2000);
@@ -191,22 +191,22 @@ class JanusStream {
     };
 
     this.janus.attach(this.videoJanusStream).then((data) => {
-      console.log("[janus-stream] Video plugin attached successfully", data);
-      console.log("[janus-stream] Attempting to watch video stream ID:", this.videoStreamId);
+      log.info("[janus-stream] Video plugin attached successfully", data);
+      log.info("[janus-stream] Attempting to watch video stream ID:", this.videoStreamId);
       this.videoJanusStream.watch(this.videoStreamId).then((stream) => {
-        console.log("[janus-stream] Video stream watch successful! Stream:", stream);
+        log.info("[janus-stream] Video stream watch successful! Stream:", stream);
         this.videoMediaStream = stream;
         this.attachVideoStream_(this.videoElement, false);
         this.checkInitialized();
       }).catch((error) => {
-        console.error("[janus-stream] Video watch error - Stream ID may not exist:", this.videoStreamId);
-        console.error("[janus-stream] Error details:", error);
+        log.error("[janus-stream] Video watch error - Stream ID may not exist:", this.videoStreamId);
+        log.error("[janus-stream] Error details:", error);
         if (this.onError) {
           this.onError(new Error(`Video stream ID ${this.videoStreamId} not found: ${error.message || error}`));
         }
       });
     }).catch((error) => {
-      console.error("[janus-stream] Video attach error:", error);
+      log.error("[janus-stream] Video attach error:", error);
       if (this.onError) {
         this.onError(error);
       }
@@ -218,17 +218,17 @@ class JanusStream {
    */
   initAudioStream = () => {
     if (!this.audioStreamId || !this.janus) {
-      console.warn("[janus-stream] Cannot init audio stream - missing audioStreamId or janus connection");
-      console.warn("[janus-stream] audioStreamId:", this.audioStreamId, "janus:", !!this.janus);
+      log.warn("[janus-stream] Cannot init audio stream - missing audioStreamId or janus connection");
+      log.warn("[janus-stream] audioStreamId:", this.audioStreamId, "janus:", !!this.janus);
       return;
     }
 
-    console.log("[janus-stream] Initializing audio stream with ID:", this.audioStreamId);
+    log.info("[janus-stream] Initializing audio stream with ID:", this.audioStreamId);
     this.audioJanusStream = new StreamingPlugin(this.config?.iceServers);
     this.audioJanusStream.onStatus = (status) => {
-      console.log("[janus-stream] Audio stream status:", status);
+      log.info("[janus-stream] Audio stream status:", status);
       if (status === "failed" && this.janus) {
-        console.warn("[janus-stream] Audio stream failed, reinitializing...");
+        log.warn("[janus-stream] Audio stream failed, reinitializing...");
         setTimeout(() => {
           this.initAudioStream();
         }, 2000);
@@ -236,10 +236,10 @@ class JanusStream {
     };
 
     this.janus.attach(this.audioJanusStream).then((data) => {
-      console.log("[janus-stream] Audio plugin attached successfully", data);
-      console.log("[janus-stream] Attempting to watch audio stream ID:", this.audioStreamId);
+      log.info("[janus-stream] Audio plugin attached successfully", data);
+      log.info("[janus-stream] Attempting to watch audio stream ID:", this.audioStreamId);
       this.audioJanusStream.watch(this.audioStreamId).then((stream) => {
-        console.log("[janus-stream] Audio stream watch successful! Stream:", stream);
+        log.info("[janus-stream] Audio stream watch successful! Stream:", stream);
         this.audioMediaStream = stream;
         this.attachAudioStream_(this.audioElement, false);
         // Update video element with combined stream (video + audio)
@@ -248,14 +248,14 @@ class JanusStream {
         }
         this.checkInitialized();
       }).catch((error) => {
-        console.error("[janus-stream] Audio watch error - Stream ID may not exist:", this.audioStreamId);
-        console.error("[janus-stream] Error details:", error);
+        log.error("[janus-stream] Audio watch error - Stream ID may not exist:", this.audioStreamId);
+        log.error("[janus-stream] Error details:", error);
         if (this.onError) {
           this.onError(new Error(`Audio stream ID ${this.audioStreamId} not found: ${error.message || error}`));
         }
       });
     }).catch((error) => {
-      console.error("[janus-stream] Audio attach error:", error);
+      log.error("[janus-stream] Audio attach error:", error);
       if (this.onError) {
         this.onError(error);
       }
@@ -280,27 +280,27 @@ class JanusStream {
    * @param {number} audioStreamId - Janus stream ID for audio
    */
   setStreamIds = (videoStreamId, audioStreamId) => {
-    console.log("[janus-stream] setStreamIds called - video:", videoStreamId, "audio:", audioStreamId);
-    console.log("[janus-stream] Previous IDs - video:", this.videoStreamId, "audio:", this.audioStreamId);
+    log.info("[janus-stream] setStreamIds called - video:", videoStreamId, "audio:", audioStreamId);
+    log.info("[janus-stream] Previous IDs - video:", this.videoStreamId, "audio:", this.audioStreamId);
     const videoChanged = this.videoStreamId !== videoStreamId;
     const audioChanged = this.audioStreamId !== audioStreamId;
 
     this.videoStreamId = videoStreamId;
     this.audioStreamId = audioStreamId;
-    console.log("[janus-stream] Stream IDs updated - video:", this.videoStreamId, "audio:", this.audioStreamId);
+    log.info("[janus-stream] Stream IDs updated - video:", this.videoStreamId, "audio:", this.audioStreamId);
 
     if (this.janus) {
       if (videoChanged && videoStreamId) {
         if (this.videoJanusStream) {
           this.videoJanusStream.switch(videoStreamId).catch((error) => {
-            console.warn("[janus-stream] Video switch failed, reinitializing video stream:", error);
+            log.warn("[janus-stream] Video switch failed, reinitializing video stream:", error);
             // If switch fails, reinitialize the stream
             this.janus.detach(this.videoJanusStream).then(() => {
               this.videoJanusStream = null;
               this.videoMediaStream = null;
               this.initVideoStream();
             }).catch((detachError) => {
-              console.error("[janus-stream] Error detaching video stream:", detachError);
+              log.error("[janus-stream] Error detaching video stream:", detachError);
               // Force reinitialize even if detach fails
               this.videoJanusStream = null;
               this.videoMediaStream = null;
@@ -323,18 +323,18 @@ class JanusStream {
         if (this.audioJanusStream) {
           // Try switch first - it's faster and less disruptive
           this.audioJanusStream.switch(audioStreamId).catch((error) => {
-            console.warn("[janus-stream] Audio switch failed, will retry with reinitialize:", error);
+            log.warn("[janus-stream] Audio switch failed, will retry with reinitialize:", error);
             // If switch fails, wait a bit and then reinitialize
             // This gives the connection time to stabilize
             setTimeout(() => {
               if (this.audioJanusStream && this.janus) {
-                console.log("[janus-stream] Reinitializing audio stream after switch failure");
+                log.info("[janus-stream] Reinitializing audio stream after switch failure");
                 this.janus.detach(this.audioJanusStream).then(() => {
                   this.audioJanusStream = null;
                   this.audioMediaStream = null;
                   this.initAudioStream();
                 }).catch((detachError) => {
-                  console.error("[janus-stream] Error detaching audio stream:", detachError);
+                  log.error("[janus-stream] Error detaching audio stream:", detachError);
                   // Force reinitialize even if detach fails
                   this.audioJanusStream = null;
                   this.audioMediaStream = null;
@@ -391,13 +391,13 @@ class JanusStream {
         if (combinedStream.getVideoTracks().length > 0) {
           next.srcObject = combinedStream;
           next.play().catch(error => {
-            console.error("[janus-stream] Error playing video", error);
+            log.error("[janus-stream] Error playing video", error);
           });
         } else {
           // Fallback to video only if no combined stream
           next.srcObject = this.videoMediaStream;
           next.play().catch(error => {
-            console.error("[janus-stream] Error playing video", error);
+            log.error("[janus-stream] Error playing video", error);
           });
         }
       }
@@ -438,7 +438,7 @@ class JanusStream {
   pauseAudio = () => {
     if (this.audioElement) {
       this.audioElement.pause();
-      console.log("[janus-stream] Audio paused");
+      log.info("[janus-stream] Audio paused");
     }
   };
 
@@ -448,9 +448,9 @@ class JanusStream {
   playAudio = () => {
     if (this.audioElement) {
       this.audioElement.play().catch(error => {
-        console.error("[janus-stream] Error playing audio", error);
+        log.error("[janus-stream] Error playing audio", error);
       });
-      console.log("[janus-stream] Audio playing");
+      log.info("[janus-stream] Audio playing");
     }
   };
 
@@ -458,7 +458,7 @@ class JanusStream {
    * Clean up resources
    */
   clean() {
-    console.log("[janus-stream] clean() called - cleaning up all resources");
+    log.info("[janus-stream] clean() called - cleaning up all resources");
     
     // Stop and cleanup video element
     if (this.videoElement) {
@@ -468,7 +468,7 @@ class JanusStream {
         if (videoStream && videoStream.getTracks) {
           videoStream.getTracks().forEach(track => {
             track.stop();
-            console.log("[janus-stream] Stopped video track:", track.kind, track.id);
+            log.info("[janus-stream] Stopped video track:", track.kind, track.id);
           });
         }
         this.videoElement.srcObject = null;
@@ -487,7 +487,7 @@ class JanusStream {
         if (audioStream && audioStream.getTracks) {
           audioStream.getTracks().forEach(track => {
             track.stop();
-            console.log("[janus-stream] Stopped audio track:", track.kind, track.id);
+            log.info("[janus-stream] Stopped audio track:", track.kind, track.id);
           });
         }
         this.audioElement.srcObject = null;
@@ -501,7 +501,7 @@ class JanusStream {
       if (this.videoMediaStream.getTracks) {
         this.videoMediaStream.getTracks().forEach(track => {
           track.stop();
-          console.log("[janus-stream] Stopped video media stream track:", track.kind, track.id);
+          log.info("[janus-stream] Stopped video media stream track:", track.kind, track.id);
         });
       }
       this.videoMediaStream = null;
@@ -511,7 +511,7 @@ class JanusStream {
       if (this.audioMediaStream.getTracks) {
         this.audioMediaStream.getTracks().forEach(track => {
           track.stop();
-          console.log("[janus-stream] Stopped audio media stream track:", track.kind, track.id);
+          log.info("[janus-stream] Stopped audio media stream track:", track.kind, track.id);
         });
       }
       this.audioMediaStream = null;
@@ -522,37 +522,37 @@ class JanusStream {
       if (this.videoJanusStream) {
         try {
           this.janus.detach(this.videoJanusStream);
-          console.log("[janus-stream] Detached video Janus stream");
+          log.info("[janus-stream] Detached video Janus stream");
         } catch (error) {
-          console.error("[janus-stream] Error detaching video stream:", error);
+          log.error("[janus-stream] Error detaching video stream:", error);
         }
       }
       if (this.audioJanusStream) {
         try {
           this.janus.detach(this.audioJanusStream);
-          console.log("[janus-stream] Detached audio Janus stream");
+          log.info("[janus-stream] Detached audio Janus stream");
         } catch (error) {
-          console.error("[janus-stream] Error detaching audio stream:", error);
+          log.error("[janus-stream] Error detaching audio stream:", error);
         }
       }
     }
 
     this.videoJanusStream = null;
     this.audioJanusStream = null;
-    console.log("[janus-stream] clean() completed");
+    log.info("[janus-stream] clean() completed");
   }
 
   /**
    * Destroy Janus connection
    */
   destroy() {
-    console.log("[janus-stream] destroy() called - cleaning up all resources");
+    log.info("[janus-stream] destroy() called - cleaning up all resources");
     this.clean();
     if (this.janus) {
       this.janus.destroy();
       this.janus = null;
     }
-    console.log("[janus-stream] destroy() completed");
+    log.info("[janus-stream] destroy() completed");
   }
 
   /**

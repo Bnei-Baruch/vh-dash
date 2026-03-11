@@ -279,6 +279,10 @@
         "streamMode": "מצב שידור",
         "streamingWithDelay": "עם השהייה",
         "streamingWithoutDelay": "ללא השהייה",
+        "webrtcConnecting": "מתחבר לשידור החי...",
+        "webrtcConnected": "שידור חי מחובר",
+        "webrtcError": "שגיאת חיבור",
+        "webrtcDisconnected": "מנותק מהשרת",
         "Question": {
           "title": "שלח שאלה",
           "label": "מה השאלה שלך?",

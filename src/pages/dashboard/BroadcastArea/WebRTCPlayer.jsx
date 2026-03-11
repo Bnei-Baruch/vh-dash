@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 import { Box, makeStyles, Typography } from "@material-ui/core";
 import "webrtc-adapter"; // Browser compatibility for WebRTC
 import JanusStream from "../../../shared/janus-stream";
@@ -21,12 +22,6 @@ const useStyles = makeStyles({
     height: "auto",
     backgroundColor: "#000",
   },
-  status: {
-    padding: "10px",
-    textAlign: "center",
-    fontSize: "0.9rem",
-    color: "#666",
-  },
   error: {
     padding: "10px",
     textAlign: "center",
@@ -44,6 +39,7 @@ const useStyles = makeStyles({
 
 const WebRTCPlayer = ({ language, onError }) => {
   const classes = useStyles();
+  const { t } = useTranslation();
   const videoRef = useRef(null);
   const [connectionStatus, setConnectionStatus] = useState("connecting"); // connecting, connected, error, disconnected
   const [errorMessage, setErrorMessage] = useState(null);
@@ -72,7 +68,7 @@ const WebRTCPlayer = ({ language, onError }) => {
     let intervalId = null;
 
     const initStreaming = async () => {
-      console.log("[WebRTCPlayer] initStreaming START");
+      log.info("[WebRTCPlayer] initStreaming START");
       try {
         // Check and refresh token if expired
         if (keycloak.isTokenExpired && keycloak.isTokenExpired()) {
@@ -201,11 +197,11 @@ const WebRTCPlayer = ({ language, onError }) => {
 
         // Fetch streaming server config
         const serverConfig = await janusService.fetchStreamingServer(user);
-        console.log('[WebRTCPlayer] Server config received:', serverConfig);
-        
+        log.info('[WebRTCPlayer] Server config received:', serverConfig);
+
         // Get stream IDs for the current language
         const streamIds = janusService.getStreamIdsForLanguageName(language);
-        console.log('[WebRTCPlayer] Stream IDs for language', language, ':', streamIds);
+        log.info('[WebRTCPlayer] Stream IDs for language', language, ':', streamIds);
         
         // Create JanusStream instance
         const stream = new JanusStream();
@@ -235,7 +231,7 @@ const WebRTCPlayer = ({ language, onError }) => {
         janusStreamRef.current = stream;
 
         // Initialize streaming
-        console.log('[WebRTCPlayer] Initializing streaming with server:', serverConfig.server);
+        log.info('[WebRTCPlayer] Initializing streaming with server:', serverConfig.server);
         stream.initStreaming(serverConfig.server);
 
       } catch (error) {
@@ -365,13 +361,13 @@ const WebRTCPlayer = ({ language, onError }) => {
   const getStatusMessage = () => {
     switch (connectionStatus) {
       case "connecting":
-        return "Connecting to live stream...";
+        return t("Dashboard.BroadcastArea.webrtcConnecting");
       case "connected":
-        return "Live stream connected";
+        return t("Dashboard.BroadcastArea.webrtcConnected");
       case "error":
-        return errorMessage || "Connection error";
+        return errorMessage || t("Dashboard.BroadcastArea.webrtcError");
       case "disconnected":
-        return "Disconnected from server";
+        return t("Dashboard.BroadcastArea.webrtcDisconnected");
       default:
         return "";
     }

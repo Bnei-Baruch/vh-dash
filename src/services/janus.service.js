@@ -1,5 +1,6 @@
 import axios from "axios";
 import janusConfig from "../shared/janus-config";
+import log from "loglevel";
 
 // Normalize API URL - remove trailing slash and add it when needed
 const getApiUrl = () => {
@@ -10,11 +11,6 @@ const getApiUrl = () => {
 const API_URL = getApiUrl();
 const TIMEOUT = 10000;
 
-// Debug: Check if configuration is loaded
-console.log('[janus-service] Configuration check:');
-console.log('  STRDB_BACKEND:', (window.APP_CONFIG && window.APP_CONFIG.STRDB_BACKEND) || '(not set, using default)');
-console.log('  JANUS_SRV_STR:', (window.APP_CONFIG && window.APP_CONFIG.JANUS_SRV_STR) || '(not set)');
-console.log('  API_URL (resolved):', API_URL);
 
 /**
  * Service for Janus Gateway configuration and stream management
@@ -43,14 +39,14 @@ class JanusService {
             { userId: user.id },
             { timeout: TIMEOUT }
           );
-          console.log(`[janus-service] Successfully fetched from: ${endpoint}`);
-          console.log(`[janus-service] Server config response:`, JSON.stringify(response.data, null, 2));
+          log.info(`[janus-service] Successfully fetched from: ${endpoint}`);
+          log.debug(`[janus-service] Server config response:`, JSON.stringify(response.data, null, 2));
           return response.data;
         } catch (err) {
           lastError = err;
           // If 404, try next endpoint
           if (err.response?.status === 404) {
-            console.log(`[janus-service] Endpoint ${endpoint} returned 404, trying next...`);
+            log.info(`[janus-service] Endpoint ${endpoint} returned 404, trying next...`);
             continue;
           }
           // For other errors, throw immediately
@@ -61,8 +57,8 @@ class JanusService {
       // If all endpoints failed, throw last error
       throw lastError;
     } catch (error) {
-      console.error("[janus-service] Error fetching streaming server:", error);
-      console.log("[janus-service] Using fallback default config");
+      log.error("[janus-service] Error fetching streaming server:", error);
+      log.info("[janus-service] Using fallback default config");
       // Fallback to default config
       return this.getDefaultServerConfig();
     }
@@ -156,7 +152,7 @@ class JanusService {
     
     // If language not found, fallback to Hebrew (original) - same as galaxy3 behavior
     if (audioStreamId === undefined) {
-      console.warn(`[janus-service] No audio stream mapping for language: ${langCode}, using Hebrew (original)`);
+      log.warn(`[janus-service] No audio stream mapping for language: ${langCode}, using Hebrew (original)`);
       return {
         video: VIDEO_STREAM_ID,
         audio: audioStreamMapping.heb || 15  // Hebrew is the original source
@@ -208,7 +204,7 @@ class JanusService {
 
     const code = fullNameToCode[fullName];
     if (!code) {
-      console.warn(`[janus-service] No language code mapping for: "${fullName}", using Hebrew (original)`);
+      log.warn(`[janus-service] No language code mapping for: "${fullName}", using Hebrew (original)`);
       return this.getStreamIdsForLanguage("heb");
     }
     return this.getStreamIdsForLanguage(code);

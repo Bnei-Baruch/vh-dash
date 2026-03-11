@@ -564,6 +564,10 @@
         "streamMode": "Modo de Transmisión",
         "streamingWithDelay": "Con Retraso",
         "streamingWithoutDelay": "Sin Retraso",
+        "webrtcConnecting": "Conectando a la transmisión en vivo...",
+        "webrtcConnected": "Transmisión en vivo conectada",
+        "webrtcError": "Error de conexión",
+        "webrtcDisconnected": "Desconectado del servidor",
         "Question": {
           "title": "Send a Question",
           "label": "What is your question?",

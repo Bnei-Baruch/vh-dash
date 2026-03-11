@@ -11,12 +11,6 @@ const MSG_URL = (window.APP_CONFIG && window.APP_CONFIG.MSG_URL) || "";
 // Try MSG_URL first, but if it fails, fallback to MQTT_URL
 // This allows us to try msg.kab.info if msg.kab.sh doesn't work
 
-// Debug: Check if configuration is loaded
-console.log('[mqtt-client] Configuration check:');
-console.log('  MQTT_URL:', (window.APP_CONFIG && window.APP_CONFIG.MQTT_URL) || '(not set)');
-console.log('  MSG_URL:', (window.APP_CONFIG && window.APP_CONFIG.MSG_URL) || '(not set)');
-console.log('  MQTT_URL (resolved):', MQTT_URL || '(empty)');
-console.log('  MSG_URL (resolved):', MSG_URL || '(empty)');
 
 class MqttMsg {
   constructor() {

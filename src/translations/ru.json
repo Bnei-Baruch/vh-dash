@@ -276,6 +276,10 @@
         "streamMode": "Режим трансляции",
         "streamingWithDelay": "С задержкой",
         "streamingWithoutDelay": "Без задержки",
+        "webrtcConnecting": "Подключение к прямой трансляции...",
+        "webrtcConnected": "Прямая трансляция подключена",
+        "webrtcError": "Ошибка подключения",
+        "webrtcDisconnected": "Отключено от сервера",
         "Question": {
           "title": "Отправить вопрос",
           "label": "Какой у Вас вопрос?",
