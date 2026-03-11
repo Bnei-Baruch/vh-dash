@@ -253,7 +253,7 @@ export default function Broadcast() {
               )}
 
               <Action onClick={(e) => setModeAnchor(e.currentTarget)}>
-                <ActionText>{t("Dashboard.BroadcastArea.streamMode")}</ActionText> ▾
+                {t("Dashboard.BroadcastArea.streamMode")} ▾
               </Action>
 
               <Action onClick={() => setQuestionDrawerOpen(true)}>
