@@ -160,6 +160,7 @@ const WebRTCFallbackBanner = styled.div`
   text-align: center;
 `;
 
+
 /* ---- Video section ---- */
 
 const VideoSection = styled.div`
@@ -194,6 +195,7 @@ export default function Broadcast() {
 
   const streamingMode = useSelector((state) => state.streamReducer.streamingMode);
   const [webrtcError, setWebrtcError] = React.useState(null);
+
 
   const {
     hlsUrl,
@@ -255,6 +257,7 @@ export default function Broadcast() {
               <Action onClick={(e) => setModeAnchor(e.currentTarget)}>
                 {t("Dashboard.BroadcastArea.streamMode")} ▾
               </Action>
+
 
               <Action onClick={() => setQuestionDrawerOpen(true)}>
                 <QuestionAnswerIcon fontSize="small" />
@@ -357,6 +360,7 @@ export default function Broadcast() {
           {t("Dashboard.BroadcastArea.streamingWithoutDelay")}
         </MenuItem>
       </Menu>
+
 
       {/* Study Materials Widget */}
       <StudyMaterialsWidget
