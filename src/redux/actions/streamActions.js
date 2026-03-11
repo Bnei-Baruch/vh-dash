@@ -1,4 +1,5 @@
 import axios from "axios";
+import log from "loglevel";
 import {
   CHANGE_BITRATE,
   CHANGE_VOLUME,
@@ -10,7 +11,7 @@ import {
   CHANGE_STREAMING_MODE,
 } from "../constants";
 
-const API_URL = "https://kab.tv/live/api/";
+const API_URL = (window.APP_CONFIG && window.APP_CONFIG.STRDB_BACKEND) || "https://kab.tv/live/api/";
 const TIMEOUT = 10000;
 
 export const changeLanguage = (lang) => {
@@ -81,12 +82,12 @@ const apiRequest = (path, payload) => {
 };
 
 export const asyncHeartbeat = (lang, bitrate) => {
-  console.log("Heartbeat:", lang, bitrate);
+  log.info("Heartbeat:", lang, bitrate);
   return (dispatch) => {
     dispatch(requestHeartbeat(lang, bitrate));
 
     return apiRequest("heartbeat", { lang, bitrate }).then((res) => {
-      console.log(res);
+      log.debug("[streamActions] heartbeat response:", res);
       return dispatch(receiveHeartbeat(lang, bitrate, res.body));
     });
   };

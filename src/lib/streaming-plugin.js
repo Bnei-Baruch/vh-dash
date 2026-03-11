@@ -55,21 +55,13 @@ export class StreamingPlugin extends EventEmitter {
           return;
         }
 
-        let audioTransceiver = null, videoTransceiver = null;
         let transceivers = this.pc.getTransceivers();
         if(transceivers && transceivers.length > 0) {
           for(let t of transceivers) {
-            if(t?.receiver?.track?.kind === "audio") {
-              if (audioTransceiver?.setDirection) {
-                audioTransceiver.setDirection("recvonly");
+            if(t?.receiver?.track?.kind === "audio" || t?.receiver?.track?.kind === "video") {
+              if (t.setDirection) {
+                t.setDirection("recvonly");
               }
-              continue;
-            }
-            if(t?.receiver?.track?.kind === "video") {
-              if (videoTransceiver?.setDirection) {
-                videoTransceiver.setDirection("recvonly");
-              }
-              continue;
             }
           }
         }
@@ -211,7 +203,7 @@ export class StreamingPlugin extends EventEmitter {
       let count = 0;
       let chk = setInterval(() => {
         count++;
-        if (count < 10 && this.iceState !== "disconnected" || !this.janus?.isConnected) {
+        if (count < 10 && (this.iceState !== "disconnected" || !this.janus?.isConnected)) {
           clearInterval(chk);
         } else if (mqtt.mq && mqtt.mq.connected) {
           log.debug("[streaming] - Trigger ICE Restart - ");
