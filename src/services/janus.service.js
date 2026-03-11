@@ -168,6 +168,51 @@ class JanusService {
       audio: audioStreamId     // Different audio per language
     };
   }
+
+  /**
+   * Get stream IDs using a full language name (e.g. "English", "Russian")
+   * as provided by useBroadcastStream / the streams JSON.
+   * Maps full name → 3-letter code → stream IDs.
+   *
+   * @param {string} fullName - Full language name (e.g. "English", "Hebrew")
+   * @returns {Object} { video: videoStreamId, audio: audioStreamId }
+   */
+  getStreamIdsForLanguageName(fullName) {
+    const fullNameToCode = {
+      Arabic: "ara",
+      Bulgarian: "bul",
+      Chinese: "chi",
+      Croatian: "hrv",
+      Dutch: "dut",
+      English: "eng",
+      French: "fre",
+      Georgian: "geo",
+      German: "ger",
+      Hebrew: "heb",
+      Hungarian: "hun",
+      Italian: "ita",
+      Japanese: "jpn",
+      Latvian: "lav",
+      Lithuanian: "lit",
+      Norwegian: "nor",
+      Polish: "pol",
+      Portuguese: "por",
+      Romanian: "rum",
+      Russian: "rus",
+      Slovene: "slv",
+      Spanish: "spa",
+      Swedish: "swe",
+      Turkish: "tur",
+      Ukrainian: "ukr",
+    };
+
+    const code = fullNameToCode[fullName];
+    if (!code) {
+      console.warn(`[janus-service] No language code mapping for: "${fullName}", using Hebrew (original)`);
+      return this.getStreamIdsForLanguage("heb");
+    }
+    return this.getStreamIdsForLanguage(code);
+  }
 }
 
 export default new JanusService();

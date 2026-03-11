@@ -555,7 +555,12 @@
         "noBroadcast": "No broadcast now",
         "noText": "Please input question",
         "successPosted": "Question successfully posted",
+        "errorPosting": "Error al enviar la pregunta. Por favor, inténtalo de nuevo.",
         "studyMaterialsButton": "Materiales de Estudio",
+        "studyMaterialsError": "Error al cargar los materiales de estudio",
+        "searchLanguage": "Buscar idioma...",
+        "noLanguagesFound": "No se encontraron idiomas",
+        "askQuestion": "Hacer una Pregunta",
         "streamingWithDelay": "Transmisión con retraso",
         "streamingWithoutDelay": "Transmisión sin retraso",
         "Question": {
@@ -565,12 +570,6 @@
           "button": "Ask",
           "successMsg": "Sent successfully!",
           "errorMsg": "Unexpected error. Please, try again!"
-        },
-        "HomerLimud": {
-          "title": "Materiales de Estudio",
-          "loading": "Cargando materiales de estudio...",
-          "noMaterials": "No hay materiales de estudio disponibles en este momento",
-          "errorLoading": "Error al cargar los materiales de estudio"
         },
         "Annoucements": {
           "title": "Announcements",
@@ -589,7 +588,7 @@
     "Membership": {
       "name": "Membresía",
       "information": "Información de la membresía",
-      "myMembership": "Estado de la membresía",
+      "myMembership": "Membresía",
       "active": "Activo",
       "inactive": "Inactivo",
       "new": "New",

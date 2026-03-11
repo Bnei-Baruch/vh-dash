@@ -12,6 +12,3 @@ export const CHAT_AND_NOTIFICATION_ICONS =
 export const SEARCH_BAR =
   process.env.NODE_ENV === "development" ? false : false;
 
-// Variable for the flag images located in src/img
-export const IMAGE_URL =
-  process.env.NODE_ENV === "development" ? "/static" : "/dash/static";

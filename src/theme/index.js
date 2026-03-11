@@ -1,4 +1,4 @@
-import { createMuiTheme } from "@material-ui/core/styles";
+import { createTheme } from "@material-ui/core/styles";
 
 import variants from "./variants";
 import typography from "./typography";
@@ -8,7 +8,7 @@ import props from "./props";
 import shadows from "./shadows";
 
 const theme = (variant) =>
-  createMuiTheme(
+  createTheme(
     {
       spacing: 4,
       breakpoints,
@@ -20,6 +20,7 @@ const theme = (variant) =>
       header: variant.header,
       palette: variant.palette,
       sidebar: variant.sidebar,
+      broadcast: variant.broadcast,
     },
     variant.name
   );

@@ -5,72 +5,79 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
-import { dashboardLayoutRoutes } from "./index";
+import { useTranslation } from "react-i18next";
 
+import { dashboardLayoutRoutes } from "./index";
 import DashboardLayout from "../layouts/Dashboard";
 import Page404 from "../pages/auth/Page404";
-import DashboardHeader from "../pages/dashboard/Home/DashboardHeader";
 import Auth from "../config/Auth";
 
-const childRoutes = (Layout, routes) =>
-  routes.map(
-    (
-      { children, path, id, breadcrumbs, enableHeader, component: Component },
-      index
-    ) =>
-      children ? (
-        // Route item with children
-        children.map(
-          (
-            { path, id, enableHeader, breadcrumbs, component: Component },
-            index
-          ) => (
-            <Route
-              key={index}
-              path={path}
-              exact
-              render={(props) => (
-                <Layout>
-                  {enableHeader && (
-                    <DashboardHeader name={id} breadcrumbs={breadcrumbs} />
-                  )}
-                  <Component {...props} />
-                </Layout>
-              )}
-            />
-          )
-        )
-      ) : (
-        // Route item without children
+const RoutedPage = ({
+  Layout,
+  Component,
+  enableHeader,
+  id,
+  routeProps,
+}) => {
+  const { t } = useTranslation();
+
+  const pageTitle =
+    enableHeader && id ? t(`Dashboard.${id}.title`) : "";
+
+  return (
+    <Layout pageTitle={pageTitle}>
+      <Component {...routeProps} />
+    </Layout>
+  );
+};
+
+const renderRoute = (Layout, route) => {
+  const { path, id, enableHeader, component: Component } = route;
+
+  if (!Component) return null;
+
+  return (
+    <Route
+      key={path}
+      path={path}
+      exact
+      render={(routeProps) => (
+        <RoutedPage
+          Layout={Layout}
+          Component={Component}
+          enableHeader={enableHeader}
+          id={id}
+          routeProps={routeProps}
+        />
+      )}
+    />
+  );
+};
+
+
+const renderRoutes = (Layout, routes) =>
+  routes.flatMap((route) =>
+    route.children
+      ? route.children.map((child) => renderRoute(Layout, child))
+      : renderRoute(Layout, route)
+  );
+
+const Routes = () => {
+  return (
+    <Router>
+      <Switch>
+        {renderRoutes(DashboardLayout, dashboardLayoutRoutes)}
+        <Redirect to="/dash" />
         <Route
-          key={index}
-          path={path}
-          exact
-          render={(props) => (
-            <Layout>
-              {enableHeader && (
-                <DashboardHeader name={id} breadcrumbs={breadcrumbs} />
-              )}
-              <Component {...props} />
-            </Layout>
+          render={() => (
+            <Auth>
+              <Page404 />
+            </Auth>
           )}
         />
-      )
+      </Switch>
+    </Router>
   );
-const Routes = () => {
-  return <Router>
-    <Switch>
-      {childRoutes(DashboardLayout, dashboardLayoutRoutes)}
-      <Redirect to="/dash" />
-      <Route
-        render={() => (
-          <Auth>
-            <Page404 />
-          </Auth>
-        )}
-      />
-    </Switch>
-  </Router>
 };
 
 export default Routes;

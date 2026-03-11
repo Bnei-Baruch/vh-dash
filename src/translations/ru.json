@@ -267,7 +267,12 @@
         "noBroadcast": "Сейчас нет трансляции",
         "noText": "Пожалуйста, напишите свой вопрос",
         "successPosted": "успешно отправлено!",
+        "errorPosting": "Не удалось отправить вопрос. Пожалуйста, попробуйте ещё раз.",
         "studyMaterialsButton": "Учебные материалы",
+        "studyMaterialsError": "Ошибка загрузки учебных материалов",
+        "searchLanguage": "Поиск языка...",
+        "noLanguagesFound": "Языки не найдены",
+        "askQuestion": "Задать вопрос",
         "streamingWithDelay": "Трансляция с задержкой",
         "streamingWithoutDelay": "Трансляция без задержки",
         "Question": {
@@ -277,12 +282,6 @@
           "button": "Спросить",
           "successMsg": "Успешно отправлено!",
           "errorMsg": "Неожиданная ошибка. Пожалуйста, попробуйте еще раз!"
-        },
-        "HomerLimud": {
-          "title": "Учебные материалы",
-          "loading": "Загрузка учебных материалов...",
-          "noMaterials": "В данный момент нет учебных материалов",
-          "errorLoading": "Ошибка загрузки учебных материалов"
         },
         "Annoucements": {
           "title": "Announcements",
@@ -301,7 +300,7 @@
     "Membership": {
       "name": "Абонемент",
       "information": "Информация об абонементе",
-      "myMembership": "Статус абонемента",
+      "myMembership": "Абонемент",
       "active": "активный",
       "inactive": "Неактивный",
       "new": "New",

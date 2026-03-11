@@ -52,7 +52,6 @@ const WebRTCPlayer = ({ language, onError }) => {
   const initializedRef = useRef(false);
 
   const keycloak = useSelector(keycloakData);
-  console.log("[WebRTCPlayer] keycloak:", keycloak);
 
   // Initialize MQTT and JanusStream
   useEffect(() => {
@@ -205,7 +204,7 @@ const WebRTCPlayer = ({ language, onError }) => {
         console.log('[WebRTCPlayer] Server config received:', serverConfig);
         
         // Get stream IDs for the current language
-        const streamIds = janusService.getStreamIdsForLanguage(language);
+        const streamIds = janusService.getStreamIdsForLanguageName(language);
         console.log('[WebRTCPlayer] Stream IDs for language', language, ':', streamIds);
         
         // Create JanusStream instance
@@ -277,7 +276,7 @@ const WebRTCPlayer = ({ language, onError }) => {
       return;
     }
 
-    const streamIds = janusService.getStreamIdsForLanguage(language);
+    const streamIds = janusService.getStreamIdsForLanguageName(language);
     janusStreamRef.current.setStreamIds(
       streamIds.video,
       streamIds.audio

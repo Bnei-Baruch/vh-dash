@@ -20,7 +20,7 @@ const useStyles = makeStyles({
     padding: 20,
     display: "flex",
     justifyContent: "flex-end",
-    backgroundColor: "rgb(242, 242, 242) !important",
+    backgroundColor: "#f9fafc !important",
   },
 });
 

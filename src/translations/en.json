@@ -270,7 +270,12 @@
         "noBroadcast": "No broadcast now",
         "noText": "Please input question",
         "successPosted": "Question successfully posted",
+        "errorPosting": "Failed to send question. Please try again.",
         "studyMaterialsButton": "Study Materials",
+        "studyMaterialsError": "Error loading study materials",
+        "searchLanguage": "Search language...",
+        "noLanguagesFound": "No languages found",
+        "askQuestion": "Ask Question",
         "streamingWithDelay": "Broadcast with delay",
         "streamingWithoutDelay": "Broadcast without delay",
         "Question": {
@@ -280,12 +285,6 @@
           "button": "Ask",
           "successMsg": "Sent successfully!",
           "errorMsg": "Unexpected error. Please, try again!"
-        },
-        "HomerLimud": {
-          "title": "Study Materials",
-          "loading": "Loading study materials...",
-          "noMaterials": "No study materials available at the moment",
-          "errorLoading": "Error loading study materials"
         },
         "Annoucements": {
           "title": "Announcements",
@@ -305,7 +304,7 @@
       "name": "Membership",
       "title": "Membership",
       "information": "Information",
-      "myMembership": "My Membership status",
+      "myMembership": "Membership",
       "active": "Active",
       "inactive": "Inactive",
       "new": "New",
