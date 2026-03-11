@@ -246,7 +246,7 @@ export default function Broadcast() {
                 {selectedLanguage} ▾
               </Action>
 
-              {availableQualities.length > 0 && (
+              {streamingMode === "hls" && availableQualities.length > 0 && (
                 <Action onClick={(e) => setQualityAnchor(e.currentTarget)}>
                   {selectedQuality} ▾
                 </Action>
