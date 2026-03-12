@@ -283,6 +283,7 @@
         "webrtcConnected": "Live stream connected",
         "webrtcError": "Connection error",
         "webrtcDisconnected": "Disconnected from server",
+        "webrtcFailed": "WebRTC connection failed. Switched to delayed stream.",
         "Question": {
           "title": "Send a Question",
           "label": "What is your question?",

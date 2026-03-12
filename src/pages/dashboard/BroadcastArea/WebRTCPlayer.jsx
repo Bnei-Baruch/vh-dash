@@ -48,6 +48,10 @@ const WebRTCPlayer = ({ language, onError }) => {
   const initializedRef = useRef(false);
 
   const keycloak = useSelector(keycloakData);
+  const keycloakRef = useRef(null);
+  useEffect(() => {
+    keycloakRef.current = keycloak;
+  }, [keycloak]);
 
   // Initialize MQTT and JanusStream
   useEffect(() => {
@@ -55,7 +59,7 @@ const WebRTCPlayer = ({ language, onError }) => {
     if (initializedRef.current) {
       return;
     }
-    
+
     if (!keycloak || !keycloak.subject) {
       log.warn("[WebRTCPlayer] Keycloak not available");
       return;
@@ -68,13 +72,16 @@ const WebRTCPlayer = ({ language, onError }) => {
     let intervalId = null;
 
     const initStreaming = async () => {
-      log.info("[WebRTCPlayer] initStreaming START");
+      log.debug("[WebRTCPlayer] initStreaming START");
       try {
+        // Use the ref to get the latest keycloak instance (avoids stale closure)
+        const kc = keycloakRef.current;
+
         // Check and refresh token if expired
-        if (keycloak.isTokenExpired && keycloak.isTokenExpired()) {
+        if (kc.isTokenExpired && kc.isTokenExpired()) {
           log.info("[WebRTCPlayer] Token expired, refreshing...");
           try {
-            await keycloak.updateToken(30);
+            await kc.updateToken(30);
             log.info("[WebRTCPlayer] Token refreshed successfully");
           } catch (error) {
             log.error("[WebRTCPlayer] Failed to refresh token:", error);
@@ -87,7 +94,7 @@ const WebRTCPlayer = ({ language, onError }) => {
         }
 
         // Get fresh token after potential refresh
-        const token = keycloak.token;
+        const token = kc.token;
         if (!token) {
           log.error("[WebRTCPlayer] No token available");
           if (isMounted) {
@@ -97,22 +104,18 @@ const WebRTCPlayer = ({ language, onError }) => {
           return;
         }
 
-        log.info("[WebRTCPlayer] Token available:", token ? "***" : "(empty)");
-        log.info("[WebRTCPlayer] User ID:", keycloak.subject);
-        log.info("[WebRTCPlayer] User email:", keycloak.profile?.email || "(not available)");
-
         // Format user object for Janus
         const user = {
-          id: keycloak.subject,
-          email: keycloak.profile?.email || keycloak.subject,
-          username: keycloak.profile?.username || keycloak.subject,
+          id: kc.subject,
+          email: kc.profile?.email || kc.subject,
+          username: kc.profile?.username || kc.subject,
           token: token,
         };
 
         // Initialize MQTT first if not already done
         // Check if MQTT is actually connected, not just initialized
         const isMqttReallyConnected = mqtt.isConnected && mqtt.mq && mqtt.mq.connected;
-        log.info("[WebRTCPlayer] MQTT state check:", {
+        log.debug("[WebRTCPlayer] MQTT state check:", {
           mqttInitialized: mqttInitializedRef.current,
           mqttIsConnected: mqtt.isConnected,
           mqttClientExists: !!mqtt.mq,
@@ -122,13 +125,7 @@ const WebRTCPlayer = ({ language, onError }) => {
         
         if (!mqttInitializedRef.current || !isMqttReallyConnected) {
           mqtt.setToken(token);
-          log.info("[WebRTCPlayer] Token set for MQTT");
-          log.info("[WebRTCPlayer] Current MQTT connection state:", mqtt.isConnected);
-          
-          // Always try to initialize MQTT, even if isConnected is true
-          // This ensures we have a fresh connection with the current token
           log.info("[WebRTCPlayer] Initializing MQTT connection...");
-          log.info("[WebRTCPlayer] Calling mqtt.init() with user:", { id: user.id, email: user.email });
           
           // Wait for MQTT connection before proceeding
           await new Promise((resolve, reject) => {
@@ -139,9 +136,8 @@ const WebRTCPlayer = ({ language, onError }) => {
               }
             }, 10000); // 10 second timeout
 
-            log.info("[WebRTCPlayer] About to call mqtt.init()");
             mqtt.init(user, (reconnected, disconnected) => {
-              log.info("[WebRTCPlayer] MQTT init callback called:", { reconnected, disconnected });
+              log.debug("[WebRTCPlayer] MQTT init callback called:", { reconnected, disconnected });
               if (!isMounted) return;
               
               if (disconnected) {
@@ -163,7 +159,7 @@ const WebRTCPlayer = ({ language, onError }) => {
                 resolve();
               }
             });
-            log.info("[WebRTCPlayer] mqtt.init() called, waiting for callback...");
+            log.debug("[WebRTCPlayer] mqtt.init() called, waiting for callback...");
           });
           
           mqttInitializedRef.current = true;
@@ -197,11 +193,11 @@ const WebRTCPlayer = ({ language, onError }) => {
 
         // Fetch streaming server config
         const serverConfig = await janusService.fetchStreamingServer(user);
-        log.info('[WebRTCPlayer] Server config received:', serverConfig);
+        log.debug('[WebRTCPlayer] Server config received:', serverConfig);
 
         // Get stream IDs for the current language
         const streamIds = janusService.getStreamIdsForLanguageName(language);
-        log.info('[WebRTCPlayer] Stream IDs for language', language, ':', streamIds);
+        log.debug('[WebRTCPlayer] Stream IDs for language', language, ':', streamIds);
         
         // Create JanusStream instance
         const stream = new JanusStream();
@@ -231,7 +227,7 @@ const WebRTCPlayer = ({ language, onError }) => {
         janusStreamRef.current = stream;
 
         // Initialize streaming
-        log.info('[WebRTCPlayer] Initializing streaming with server:', serverConfig.server);
+        log.debug('[WebRTCPlayer] Initializing streaming with server:', serverConfig.server);
         stream.initStreaming(serverConfig.server);
 
       } catch (error) {

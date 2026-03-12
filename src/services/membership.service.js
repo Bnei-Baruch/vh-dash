@@ -2,12 +2,9 @@ import axios from "axios";
 
 export const getMembershipStatusV2 = (kc_id) => {
     // Check if mock membership is enabled via config
-    const enableMockMembership = (window.APP_CONFIG && window.APP_CONFIG.ENABLE_MOCK_MEMBERSHIP === "true") || 
-                                  process.env.NODE_ENV === "development" || 
-                                  window.location.hostname === "localhost";
-    
+    const enableMockMembership = window.APP_CONFIG && window.APP_CONFIG.ENABLE_MOCK_MEMBERSHIP === "true";
+
     if (enableMockMembership) {
-        console.warn("[membership.service] Mock membership enabled: Returning mock active membership");
         return Promise.resolve({ active: true });
     }
     

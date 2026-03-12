@@ -42,10 +42,10 @@ export class StreamingPlugin extends EventEmitter {
   watch (id, restart = false) {
     this.streamId = id
     const body = { request: 'watch', id, restart}
-    log.info(`[streaming] Attempting to watch stream ID: ${id}, restart: ${restart}`);
+    log.debug(`[streaming] Attempting to watch stream ID: ${id}, restart: ${restart}`);
     return new Promise((resolve, reject) => {
       this.transaction('message', { body }, 'event').then((param) => {
-        log.info("[streaming] watch response received: ", param)
+        log.debug("[streaming] watch response received: ", param)
         const {session_id, json } = param
         
         // Log if there's an error in the response
@@ -67,7 +67,7 @@ export class StreamingPlugin extends EventEmitter {
         }
 
         if (json?.jsep) {
-          log.info('[streaming] sdp: ', json);
+          log.debug('[streaming] sdp: ', json);
           this.sdpExchange(json.jsep)
         }
 
@@ -186,7 +186,7 @@ export class StreamingPlugin extends EventEmitter {
 
     this.pc.ontrack = (e) => {
       try {
-        log.info("[streaming] Got track: ", e)
+        log.debug("[streaming] Got track: ", e)
         let stream = new MediaStream([e.track]);
         if (resolve) {
           resolve(stream);
@@ -237,7 +237,7 @@ export class StreamingPlugin extends EventEmitter {
 
   onmessage (data) {
     try {
-      log.info('[streaming] onmessage: ', data)
+      log.debug('[streaming] onmessage: ', data)
     } catch (error) {
       captureException(error, { context: 'StreamingPlugin.onmessage', data });
       throw error;
@@ -260,17 +260,17 @@ export class StreamingPlugin extends EventEmitter {
 
   slowLink (uplink, lost, mid) {
     const direction = uplink ? "sending" : "receiving";
-    log.info("[streaming] slowLink on " + direction + " packets on mid " + mid + " (" + lost + " lost packets)");
+    log.debug("[streaming] slowLink on " + direction + " packets on mid " + mid + " (" + lost + " lost packets)");
     //this.emit('slowlink')
   }
 
   mediaState (media, on) {
-    log.info('[streaming] mediaState: Janus ' + (on ? "start" : "stop") + " receiving our " + media)
+    log.debug('[streaming] mediaState: Janus ' + (on ? "start" : "stop") + " receiving our " + media)
     //this.emit('mediaState', medium, on)
   }
 
   webrtcState (isReady) {
-    log.info('[streaming] webrtcState: RTCPeerConnection is: ' + (isReady ? "up" : "down"))
+    log.debug('[streaming] webrtcState: RTCPeerConnection is: ' + (isReady ? "up" : "down"))
     //this.emit('webrtcState', isReady, cause)
   }
 

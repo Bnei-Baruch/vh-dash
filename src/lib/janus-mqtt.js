@@ -25,14 +25,7 @@ export class JanusMqtt {
   }
 
   init(token) {
-    log.info('[janus-mqtt] init called with token:', token ? '***' : '(no token)');
-    log.info('[janus-mqtt] Server:', this.srv);
-    log.info('[janus-mqtt] MQTT client exists:', !!mqtt.mq);
-    log.info('[janus-mqtt] MQTT connected:', mqtt.isConnected);
-    log.info('[janus-mqtt] Subscribing to topics:');
-    log.info('  - rxTopic (user-specific):', this.rxTopic + "/" + this.user.id);
-    log.info('  - rxTopic (general):', this.rxTopic);
-    log.info('  - stTopic (status):', this.stTopic);
+    log.debug('[janus-mqtt] init - server:', this.srv, '| token:', token ? '***' : '(no token)');
     
     this.token = token
     mqtt.sub(this.rxTopic + "/" + this.user.id, 0);
@@ -49,11 +42,9 @@ export class JanusMqtt {
     return new Promise((resolve, reject) => {
       const transaction = randomString(12);
       const msg = { janus: 'create', transaction, token }
-      log.info('[janus-mqtt] Creating session with transaction:', transaction);
-
       this.transactions[transaction] = {
         resolve: (json) => {
-          log.info('[janus-mqtt] Transaction resolved with:', json);
+          log.debug('[janus-mqtt] Session create transaction resolved:', json.janus);
           if (json.janus !== 'success') {
             log.error('[janus-mqtt] Cannot connect to Janus', json)
             const error = new Error('Cannot connect to Janus');
@@ -84,8 +75,7 @@ export class JanusMqtt {
       }
 
       this.connect = function () {
-        log.info('[janus-mqtt] connect() called - sending create session message');
-        log.info('[janus-mqtt] Topics - tx:', this.txTopic, 'rx:', this.rxTopic + "/" + this.user.id);
+        log.debug('[janus-mqtt] Sending create session message');
         mqtt.send(JSON.stringify(msg), false, this.txTopic, this.rxTopic + "/" + this.user.id, this.user)
       }
 
@@ -320,7 +310,6 @@ export class JanusMqtt {
       }
     })
     this.transactions = {}
-    this.sessionId = null
     this.isConnected = false
 
     mqtt.exit(this.rxTopic + "/" + this.user.id);
@@ -330,6 +319,7 @@ export class JanusMqtt {
     mqtt.mq.removeListener(this.srv, this.onMessage);
     if(this.user.mit) mqtt.mq.removeListener(this.user.mit, this.onMessage);
     if(this.sessionId) mqtt.mq.removeListener(this.sessionId, this.onMessage);
+    this.sessionId = null;
   }
 
   onMessage(message, tD) {
@@ -346,9 +336,8 @@ export class JanusMqtt {
 
     if(tD === "status" && json.online) {
       log.info("[janus-mqtt] Janus Server - " + this.srv + " - Online");
-      log.debug("[janus-mqtt] Status message:", json);
       if(typeof this.connect === "function") {
-        log.info("[janus-mqtt] Calling connect() function to create session");
+        log.debug("[janus-mqtt] Calling connect() to create session");
         this.connect()
       } else {
         log.warn("[janus-mqtt] connect() is not a function! Cannot create session.");

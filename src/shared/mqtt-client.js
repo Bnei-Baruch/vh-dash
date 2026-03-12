@@ -60,13 +60,12 @@ class MqttMsg {
     const token = this.token || user.token || "";
     
     // Log connection details (without exposing sensitive data)
-    log.info('[mqtt] Connection details:');
-    log.info('  URL:', MSG_URL || MQTT_URL);
-    log.info('  Client ID:', id);
-    log.info('  Username:', user.email || user.username || user.id);
+    log.debug('[mqtt] Connection details:');
+    log.debug('  URL:', MSG_URL || MQTT_URL);
+    log.debug('  Client ID:', id);
+    log.debug('  Username:', user.email || user.username || user.id);
     log.info('  Token available:', token ? "yes" : "no");
-    log.info('  Token length:', token ? token.length : 0);
-    log.info('  Token starts with:', token ? token.substring(0, 20) + "..." : "(empty)");
+    log.debug('  Token length:', token ? token.length : 0);
 
     if (!token) {
       log.error('[mqtt] No token available for authentication');
@@ -117,18 +116,14 @@ class MqttMsg {
       return;
     }
     
-    log.info('[mqtt] Connecting to:', `wss://${url}`);
-    log.info('[mqtt] MSG_URL:', MSG_URL || '(not set)');
-    log.info('[mqtt] MQTT_URL:', MQTT_URL || '(not set)');
-    log.info('[mqtt] Using URL:', url);
-    log.info('[mqtt] Using username:', username);
-    log.info('[mqtt] Using client ID:', id);
-    log.info('[mqtt] Connection timeout:', options.connectTimeout, 'ms');
+    log.debug('[mqtt] MSG_URL:', MSG_URL || '(not set)');
+    log.debug('[mqtt] MQTT_URL:', MQTT_URL || '(not set)');
+    log.debug('[mqtt] Using username:', username);
     
     try {
       // Try connecting with the URL
       const wsUrl = `wss://${url}`;
-      log.info('[mqtt] Attempting WebSocket connection to:', wsUrl);
+      log.info('[mqtt] Connecting to:', wsUrl);
       this.mq = mqtt.connect(wsUrl, options);
     } catch (error) {
       log.error('[mqtt] Failed to create MQTT connection:', error);
@@ -139,20 +134,17 @@ class MqttMsg {
     this.mq.setMaxListeners(50)
 
     this.mq.on("connect", (data) => {
-      log.info('[mqtt] Connect event received:', data);
       if (data && !this.isConnected) {
-        log.info('[mqtt] Connected to server (first time): ', data);
+        log.info('[mqtt] Connected to server');
         this.isConnected = true;
         if (typeof callback === "function") {
-          log.info('[mqtt] Calling callback with connected=true');
           callback(false, false);
         }
       } else {
-        log.info("[mqtt] Connected (reconnection): ", data);
+        log.info("[mqtt] Reconnected to server");
         this.isConnected = true;
         if (this.reconnect_count > RC) {
           if (typeof callback === "function") {
-            log.info('[mqtt] Calling callback with reconnected=true');
             callback(true, false);
           }
         }
@@ -176,24 +168,11 @@ class MqttMsg {
                                errorMessage.includes('connack timeout') ||
                                errorMessage.includes('CONNACK');
       
-      log.info('[mqtt] Checking if error is WebSocket/CONNACK error:', isWebSocketError);
-      log.info('[mqtt] Error message contains:', {
-        'WebSocket is closed': errorMessage.includes('WebSocket is closed'),
-        'WebSocket connection': errorMessage.includes('WebSocket connection'),
-        'connack timeout': errorMessage.includes('connack timeout'),
-        'CONNACK': errorMessage.includes('CONNACK')
-      });
-      
       if (isWebSocketError) {
-        log.error('[mqtt] WebSocket/CONNACK error - MQTT broker connection failed');
-        log.error('[mqtt] Current URL:', `wss://${url}`);
-        log.info('[mqtt] MSG_URL:', MSG_URL || '(not set)');
-        log.info('[mqtt] MQTT_URL:', MQTT_URL || '(not set)');
-        log.info('[mqtt] Fallback attempted flag:', this._fallbackAttempted);
-        
+        log.error('[mqtt] WebSocket/CONNACK error - MQTT broker connection failed at:', `wss://${url}`);
+
         // Try fallback URL if current one failed
         const fallbackUrl = (url === MSG_URL && MQTT_URL) ? MQTT_URL : null;
-        log.info('[mqtt] Fallback URL determined:', fallbackUrl || '(none)');
         
         if (fallbackUrl && fallbackUrl !== url && !this._fallbackAttempted) {
           this._fallbackAttempted = true; // Prevent infinite retry loop
@@ -217,11 +196,7 @@ class MqttMsg {
           }, 1000);
           return;
         } else {
-          log.warn('[mqtt] Cannot use fallback:', {
-            hasFallbackUrl: !!fallbackUrl,
-            fallbackDifferent: fallbackUrl !== url,
-            notAttempted: !this._fallbackAttempted
-          });
+          log.debug('[mqtt] No fallback URL available or fallback already attempted');
         }
         
         log.error('[mqtt] Possible causes:');
@@ -337,22 +312,20 @@ class MqttMsg {
   };
 
   watch = (callback) => {
+    this.mq.removeAllListeners("message");
     this.mq.on("message", (topic, data, packet) => {
       log.trace("[mqtt] <-- receive packet: ", packet)
       let cd = packet?.properties?.correlationData ? " | transaction: " + packet?.properties?.correlationData?.toString() : ""
-      log.info("[mqtt] <-- receive message" + cd + " | topic : " + topic);
-      log.info("[mqtt] Message data (first 200 chars):", data.toString().substring(0, 200));
+      log.debug("[mqtt] <-- receive message" + cd + " | topic : " + topic);
       const t = topic.split("/")
       if (t[0] === "msg") t.shift()
       const [root, service, id, target] = t
-      log.info("[mqtt] Parsed topic - root:", root, "service:", service, "id:", id, "target:", target);
       switch (root) {
         case "janus":
           try {
             const json = JSON.parse(data)
-            log.info("[mqtt] Janus message parsed - janus type:", json.janus, "session_id:", json.session_id);
+            log.debug("[mqtt] Janus message - type:", json.janus);
             const mit = json?.session_id || packet?.properties?.userProperties?.mit || service
-            log.info("[mqtt] Emitting to:", mit, "with data type:", json.janus);
             this.mq.emit(mit, data, id);
           } catch (e) {
             log.error("[mqtt] Error parsing Janus message:", e);

@@ -568,6 +568,7 @@
         "webrtcConnected": "Transmisión en vivo conectada",
         "webrtcError": "Error de conexión",
         "webrtcDisconnected": "Desconectado del servidor",
+        "webrtcFailed": "Conexión WebRTC fallida. Cambiado a transmisión con retraso.",
         "Question": {
           "title": "Send a Question",
           "label": "What is your question?",

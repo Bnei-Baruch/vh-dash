@@ -288,8 +288,7 @@ export default function Broadcast() {
             </PlayerWrapper>
             {webrtcError && streamingMode === "hls" && (
               <WebRTCFallbackBanner>
-                {t("Dashboard.BroadcastArea.streamingWithDelay")} —{" "}
-                WebRTC connection failed. Using HLS stream.
+                {t("Dashboard.BroadcastArea.webrtcFailed")}
               </WebRTCFallbackBanner>
             )}
           </VideoSection>
