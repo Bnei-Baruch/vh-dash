@@ -4,6 +4,7 @@ import {
   CHANGE_BITRATE,
   CHANGE_VOLUME,
   CHANGE_LANGUAGE,
+  CHANGE_STREAMING_MODE,
 } from "../constants";
 
 const initialState = {
@@ -12,6 +13,7 @@ const initialState = {
   selectedBitrate: localStorage.getItem("live.selectedBitrate") || 500,
   selectedVolume: localStorage.getItem("live.selectedVolume") || 80,
   selectedLanguage: localStorage.getItem("live.selectedLanguage") || "eng",
+  streamingMode: localStorage.getItem("live.streamingMode") || "hls", // "hls" or "webrtc"
 };
 
 const streamReducer = (state = initialState, action) => {
@@ -33,6 +35,11 @@ const streamReducer = (state = initialState, action) => {
       return {
         ...state,
         selectedVolume: action.volume,
+      };
+    case CHANGE_STREAMING_MODE:
+      return {
+        ...state,
+        streamingMode: action.mode,
       };
     case RECEIVE_HEARTBEAT:
       return {

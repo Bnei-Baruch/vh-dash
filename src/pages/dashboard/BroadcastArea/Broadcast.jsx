@@ -6,6 +6,7 @@ import {
 import { grey } from "@material-ui/core/colors";
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import ReactHlsPlayer from "react-hls-player";
 import PublicIcon from "@material-ui/icons/Public";
@@ -15,6 +16,8 @@ import { useBroadcastStream } from "./hooks/useBroadcastStream";
 import StudyMaterialsWidget from "./StudyMaterialsWidget";
 import LanguageSelector from "./LanguageSelector";
 import QuestionDrawer from "./QuestionDrawer";
+import WebRTCPlayer from "./WebRTCPlayer";
+import { changeStreamingMode } from "../../../redux/actions/streamActions";
 
 /* ---------- layout ---------- */
 
@@ -149,11 +152,21 @@ const ActionText = styled.span`
   }
 `;
 
+const WebRTCFallbackBanner = styled.div`
+  padding: ${(props) => props.theme.spacing(1)}px ${(props) => props.theme.spacing(2)}px;
+  background-color: #fff3cd;
+  color: #856404;
+  font-size: 13px;
+  text-align: center;
+`;
+
+
 /* ---- Video section ---- */
 
 const VideoSection = styled.div`
   min-height: 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: ${(props) => props.theme.spacing(1)}px;
@@ -175,9 +188,14 @@ const PlayerWrapper = styled.div`
 
 export default function Broadcast() {
   const { t, i18n } = useTranslation();
-  
+  const dispatch = useDispatch();
+
   // Detect RTL direction
   const isRTL = i18n.dir() === "rtl";
+
+  const streamingMode = useSelector((state) => state.streamReducer.streamingMode);
+  const [webrtcError, setWebrtcError] = React.useState(null);
+
 
   const {
     hlsUrl,
@@ -196,6 +214,23 @@ export default function Broadcast() {
   const [questionDrawerOpen, setQuestionDrawerOpen] = React.useState(false);
   const [langAnchor, setLangAnchor] = React.useState(null);
   const [qualityAnchor, setQualityAnchor] = React.useState(null);
+  const [modeAnchor, setModeAnchor] = React.useState(null);
+
+  const handleWebRTCError = (error) => {
+    setWebrtcError(error);
+    dispatch(changeStreamingMode("hls"));
+  };
+
+  const menuProps = (anchor, onClose) => ({
+    anchorEl: anchor,
+    open: Boolean(anchor),
+    onClose,
+    disableScrollLock: true,
+    anchorOrigin: { vertical: 'bottom', horizontal: isRTL ? 'right' : 'left' },
+    transformOrigin: { vertical: 'top', horizontal: isRTL ? 'right' : 'left' },
+    getContentAnchorEl: null,
+    PaperProps: { style: { marginTop: '4px' } },
+  });
 
   return (
     <>
@@ -213,11 +248,16 @@ export default function Broadcast() {
                 {selectedLanguage} ▾
               </Action>
 
-              {availableQualities.length > 0 && (
+              {streamingMode === "hls" && availableQualities.length > 0 && (
                 <Action onClick={(e) => setQualityAnchor(e.currentTarget)}>
                   {selectedQuality} ▾
                 </Action>
               )}
+
+              <Action onClick={(e) => setModeAnchor(e.currentTarget)}>
+                {t("Dashboard.BroadcastArea.streamMode")} ▾
+              </Action>
+
 
               <Action onClick={() => setQuestionDrawerOpen(true)}>
                 <QuestionAnswerIcon fontSize="small" />
@@ -228,16 +268,28 @@ export default function Broadcast() {
 
           {/* Video */}
           <VideoSection>
-            {hlsUrl && (
-              <PlayerWrapper>
-                <ReactHlsPlayer
-                  playerRef={playerRef}
-                  src={hlsUrl}
-                  autoPlay={hasUserStartedPlayback}
-                  controls
-                  onPlay={handlePlay}
+            <PlayerWrapper>
+              {streamingMode === "webrtc" ? (
+                <WebRTCPlayer
+                  language={selectedLanguage}
+                  onError={handleWebRTCError}
                 />
-              </PlayerWrapper>
+              ) : (
+                hlsUrl && (
+                  <ReactHlsPlayer
+                    playerRef={playerRef}
+                    src={hlsUrl}
+                    autoPlay={hasUserStartedPlayback}
+                    controls
+                    onPlay={handlePlay}
+                  />
+                )
+              )}
+            </PlayerWrapper>
+            {webrtcError && streamingMode === "hls" && (
+              <WebRTCFallbackBanner>
+                {t("Dashboard.BroadcastArea.webrtcFailed")}
+              </WebRTCFallbackBanner>
             )}
           </VideoSection>
         </PlayerContainer>
@@ -266,33 +318,13 @@ export default function Broadcast() {
       />
 
       {/* Quality Menu */}
-      <Menu
-        anchorEl={qualityAnchor}
-        open={Boolean(qualityAnchor)}
-        onClose={() => setQualityAnchor(null)}
-        disableScrollLock
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: isRTL ? 'right' : 'left',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: isRTL ? 'right' : 'left',
-        }}
-        getContentAnchorEl={null}
-        PaperProps={{
-          style: {
-            marginTop: '4px',
-          },
-        }}
-      >
+      <Menu {...menuProps(qualityAnchor, () => setQualityAnchor(null))}>
         {availableQualities.map((quality) => {
-          const qualityValue =
-            quality.quality || quality;
-
+          const qualityValue = quality.quality || quality;
           return (
             <MenuItem
               key={qualityValue}
+              selected={qualityValue === selectedQuality}
               onClick={() => {
                 setQuality(qualityValue);
                 setQualityAnchor(null);
@@ -303,6 +335,31 @@ export default function Broadcast() {
           );
         })}
       </Menu>
+
+      {/* Stream Mode Menu */}
+      <Menu {...menuProps(modeAnchor, () => setModeAnchor(null))}>
+        <MenuItem
+          selected={streamingMode === "hls"}
+          onClick={() => {
+            dispatch(changeStreamingMode("hls"));
+            setWebrtcError(null);
+            setModeAnchor(null);
+          }}
+        >
+          {t("Dashboard.BroadcastArea.streamingWithDelay")}
+        </MenuItem>
+        <MenuItem
+          selected={streamingMode === "webrtc"}
+          onClick={() => {
+            dispatch(changeStreamingMode("webrtc"));
+            setWebrtcError(null);
+            setModeAnchor(null);
+          }}
+        >
+          {t("Dashboard.BroadcastArea.streamingWithoutDelay")}
+        </MenuItem>
+      </Menu>
+
 
       {/* Study Materials Widget */}
       <StudyMaterialsWidget
