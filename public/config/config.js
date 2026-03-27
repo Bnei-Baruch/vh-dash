@@ -11,7 +11,7 @@ window.APP_CONFIG = {
     MQTT_URL: " ",
     MSG_URL: " ",
     JANUS_SRV_STR: " ",
-    STRDB_BACKEND: 'https://strdb.kab.sh/',
-    STUN_SRV_STR: 'stun:stun1.kab.sh:3478',
+    STRDB_BACKEND: 'https://kab.tv/live/api/',
+    STUN_SRV_STR: 'stun:stun.l.google.com:19302',
     ENABLE_MOCK_MEMBERSHIP: 'false'
 };
