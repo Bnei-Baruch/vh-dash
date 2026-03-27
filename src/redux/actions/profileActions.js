@@ -19,7 +19,7 @@ const apiProfile = (method, url, data, token) => {
 
 export const updateProfile = (data) => {
   return (dispatch, getState) => {
-    const { subject, token } = getState().userReducer.info.keycloak;
+    const { subject, token } = getState().userReducer.keycloak;
     const { isProfileExist } = getState().profileReducer;
     const patchURL = `${window.APP_CONFIG.PROFILE_URL}/${subject}`;
 
@@ -75,7 +75,8 @@ export const updateModifyEnabled = (value) => {
 
 export const fetchProfile = () => {
   return (dispatch, getState) => {
-    const { subject, token, profile } = getState().userReducer.info.keycloak;
+    const keycloak = getState().userReducer.keycloak;
+    const { subject, token, profile } = keycloak || {};
 
     return axios
       .get(`${window.APP_CONFIG.PROFILE_URL}/${subject}`, {

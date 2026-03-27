@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useLocation } from "react-router-dom";
 import styled, { createGlobalStyle } from "styled-components";
 
 import { spacing } from "@material-ui/system";
@@ -12,8 +14,14 @@ import { isWidthUp } from "@material-ui/core/withWidth";
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
 import GlassixWidget from "../components/Glassix";
+import CountryPromptModal from "../components/CountryPromptModal";
+import { updateProfile } from "../redux/actions/profileActions";
 
 const drawerWidth = 260;
+
+// Storage keys for country prompt modal
+const COUNTRY_PROMPT_DISMISSED_KEY = 'VH_COUNTRY_PROMPT_DISMISSED';
+const COUNTRY_PROMPT_SESSION_DISMISSED_KEY = 'VH_COUNTRY_PROMPT_SESSION_DISMISSED';
 
 const GlobalStyle = createGlobalStyle`
   html,
@@ -68,11 +76,42 @@ const MainContent = styled(Paper)`
   }
 `;
 
-const Dashboard = ({ children, routes, width }) => {
+const Dashboard = ({ children, routes, width, pageTitle }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [countryModalOpen, setCountryModalOpen] = useState(false);
+
+  const profile = useSelector((state) => state.profileReducer.info);
+  const dispatch = useDispatch();
+  const location = useLocation();
+
+  // Check if we should show the country prompt
+  useEffect(() => {
+    if (profile && Object.keys(profile).length > 0) {
+      const isPermanentlyDismissed = localStorage.getItem(COUNTRY_PROMPT_DISMISSED_KEY) === 'true';
+      const isSessionDismissed = sessionStorage.getItem(COUNTRY_PROMPT_SESSION_DISMISSED_KEY) === 'true';
+
+      const shouldShow = !isPermanentlyDismissed && !isSessionDismissed;
+      setCountryModalOpen(shouldShow);
+    }
+  }, [profile, location.pathname]);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
+  };
+
+  const handleSaveCountry = (countryISO) => {
+    dispatch(updateProfile({ country: countryISO }));
+    localStorage.setItem(COUNTRY_PROMPT_DISMISSED_KEY, 'true');
+    setCountryModalOpen(false);
+  };
+
+  const handleDismissCountryPrompt = () => {
+    localStorage.setItem(COUNTRY_PROMPT_DISMISSED_KEY, 'true');
+  };
+
+  const handleCloseCountryPrompt = () => {
+    sessionStorage.setItem(COUNTRY_PROMPT_SESSION_DISMISSED_KEY, 'true');
+    setCountryModalOpen(false);
   };
 
   return (
@@ -97,12 +136,19 @@ const Dashboard = ({ children, routes, width }) => {
         </Hidden>
       </Drawer>
       <AppContent>
-        <Header onDrawerToggle={handleDrawerToggle} />
+        <Header onDrawerToggle={handleDrawerToggle} pageTitle={pageTitle} />
         <MainContent p={isWidthUp("lg", width) ? 10 : 5}>
           {children}
         </MainContent>
         <GlassixWidget/>
       </AppContent>
+      <CountryPromptModal
+        open={countryModalOpen}
+        onClose={handleCloseCountryPrompt}
+        onSave={handleSaveCountry}
+        onDismiss={handleDismissCountryPrompt}
+        currentCountry={profile?.country || ''}
+      />
     </Root>
   );
 };

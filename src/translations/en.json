@@ -270,7 +270,20 @@
         "noBroadcast": "No broadcast now",
         "noText": "Please input question",
         "successPosted": "Question successfully posted",
+        "errorPosting": "Failed to send question. Please try again.",
         "studyMaterialsButton": "Study Materials",
+        "studyMaterialsError": "Error loading study materials",
+        "searchLanguage": "Search language...",
+        "noLanguagesFound": "No languages found",
+        "askQuestion": "Ask Question",
+        "streamMode": "Stream Mode",
+        "streamingWithDelay": "With Delay",
+        "streamingWithoutDelay": "No Delay",
+        "webrtcConnecting": "Connecting to live stream...",
+        "webrtcConnected": "Live stream connected",
+        "webrtcError": "Connection error",
+        "webrtcDisconnected": "Disconnected from server",
+        "webrtcFailed": "WebRTC connection failed. Switched to delayed stream.",
         "Question": {
           "title": "Send a Question",
           "label": "What is your question?",
@@ -278,12 +291,6 @@
           "button": "Ask",
           "successMsg": "Sent successfully!",
           "errorMsg": "Unexpected error. Please, try again!"
-        },
-        "HomerLimud": {
-          "title": "Study Materials",
-          "loading": "Loading study materials...",
-          "noMaterials": "No study materials available at the moment",
-          "errorLoading": "Error loading study materials"
         },
         "Annoucements": {
           "title": "Announcements",
@@ -297,6 +304,14 @@
       "Broadcast": {
         "membershipRequired": "Live Broadcast is for Members Only",
         "membershipRequiredDescription": "To watch live broadcasts, you need an active membership. Membership gives you access to all live broadcasts and our special content."
+      },
+      "CountryPrompt": {
+        "title": "Complete Your Profile",
+        "description": "Please complete your profile and select your country.",
+        "selectCountry": "Country",
+        "save": "Save",
+        "later": "Remind Me Later",
+        "dontShowAgain": "Don't show this again"
       }
     },
     "Membership": {

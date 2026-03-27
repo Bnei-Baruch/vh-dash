@@ -15,7 +15,6 @@ import RegistrationsAndPayments from "./RegistrationsAndPayments.jsx";
 import StudyAreaBanner from "./StudyAreaBanner.jsx";
 import { usePageTitle } from "../../../contexts/PageTitleContext";
 
-
 const Home = () => {
   const [liveEvent, setLiveEvent] = useState();
   const { setTitle } = usePageTitle();

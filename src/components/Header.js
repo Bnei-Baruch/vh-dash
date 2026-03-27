@@ -36,8 +36,10 @@ import { usePageTitle } from "../contexts/PageTitleContext";
 
 /* ---------- styled ---------- */
 
+/* ---------- styled ---------- */
+
 const AppBar = styled(MuiAppBar)`
-  background: ${(props) => props.theme.header.background};
+  background-color: ${(props) => props.theme.header.background} !important;
   color: ${(props) => props.theme.header.color};
   border-bottom: 1px solid ${(props) => props.theme.palette.divider};
 
@@ -211,7 +213,7 @@ const VerticalDivider = styled.span`
 `;
 
 const PageTitle = styled(Typography)`
-  font-size: 1.25rem; 
+  font-size: 1.25rem;
   font-weight: 600;
   color: #333;
   margin-inline-start: 16px;
@@ -336,7 +338,7 @@ const Header = ({ onDrawerToggle }) => {
   const active = membership?.active || false;
   const { title: currentPageTitle } = usePageTitle();
   return (
-    <AppBar position="sticky" elevation={0}>
+    <AppBar position="sticky" elevation={0} color="default">
       <StyledToolbar>
         <Grid container alignItems="center" wrap="nowrap">
           <StartSection>
