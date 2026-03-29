@@ -14,7 +14,11 @@ import { getStreams, getDefaultQuality } from "../../../../services/broadcast-hl
  */
 const getInitialLanguage = () => {
   const saved = localStorage.getItem("VH_BROADCAST_LANG");
-  if (saved) return saved;
+  if (saved) {
+    // Handle legacy storage: older versions stored 2-letter codes (e.g. "he") instead of full names ("Hebrew")
+    const converted = getLanguageNameFromAppCode(saved);
+    return converted || saved;
+  }
 
   const appLang = localStorage.getItem("i18nextLng");
   if (appLang) {
