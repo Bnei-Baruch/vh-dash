@@ -3,12 +3,35 @@ import { getLanguageNameFromAppCode } from "../../../../utils";
 import { getStreams, getDefaultQuality } from "../../../../services/broadcast-hls.service";
 
 /**
+ * Resolve initial broadcast language synchronously (before first render).
+ *
+ * Priority:
+ * 1. User-selected language (localStorage)
+ * 2. App UI language (i18next)
+ * 3. Fallback: Hebrew
+ *
+ * Ensures WebRTC initializes with a valid language (avoids empty state).
+ */
+const getInitialLanguage = () => {
+  const saved = localStorage.getItem("VH_BROADCAST_LANG");
+  if (saved) return saved;
+
+  const appLang = localStorage.getItem("i18nextLng");
+  if (appLang) {
+    const resolved = getLanguageNameFromAppCode(appLang);
+    if (resolved) return resolved;
+  }
+
+  return "Hebrew";
+};
+
+/**
  * Custom hook to manage broadcast stream state and behavior
  * Handles stream data fetching, language/quality selection, and video playback
  */
 export function useBroadcastStream() {
   const [streamsData, setStreamsData] = React.useState(null);
-  const [selectedLangName, setSelectedLangName] = React.useState("");
+  const [selectedLangName, setSelectedLangName] = React.useState(getInitialLanguage);
   const [selectedQuality, setSelectedQuality] = React.useState(null);
   const [hlsUrl, setHlsUrl] = React.useState("");
   const [hasUserStartedPlayback, setHasUserStartedPlayback] = React.useState(false);
