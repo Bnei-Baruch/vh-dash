@@ -57,7 +57,7 @@ export class JanusMqtt {
           this.isConnected = true
           this.keepAlive(false)
 
-          log.info('[janus-mqtt] Janus connected successfully! SessionId:', this.sessionId)
+          log.debug('[janus-mqtt] Janus connected successfully! SessionId:', this.sessionId)
 
           // this.user.mit - actually trigger once and after that we use
           // session id as emit. In case we not using multiple session on same server

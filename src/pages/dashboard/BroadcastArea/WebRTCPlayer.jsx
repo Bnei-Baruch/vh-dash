@@ -9,8 +9,6 @@ import mqtt from "../../../shared/mqtt-client";
 import { keycloakData } from "../../../redux/selectors/user";
 import log from "loglevel";
 
-log.setLevel("info");
-
 const useStyles = makeStyles({
   container: {
     width: "100%",
@@ -125,7 +123,7 @@ const WebRTCPlayer = ({ language, onError }) => {
         
         if (!mqttInitializedRef.current || !isMqttReallyConnected) {
           mqtt.setToken(token);
-          log.info("[WebRTCPlayer] Initializing MQTT connection...");
+          log.debug("[WebRTCPlayer] Initializing MQTT connection...");
           
           // Wait for MQTT connection before proceeding
           await new Promise((resolve, reject) => {
@@ -147,14 +145,14 @@ const WebRTCPlayer = ({ language, onError }) => {
                 setErrorMessage("Lost connection to MQTT server - Authentication failed");
                 reject(new Error("MQTT connection failed - Not authorized"));
               } else if (reconnected) {
-                log.info("[WebRTCPlayer] MQTT reconnected");
+                log.debug("[WebRTCPlayer] MQTT reconnected");
                 if (timeoutId) clearTimeout(timeoutId);
                 mqtt.watch();
                 resolve();
               } else {
                 // First connection
                 if (timeoutId) clearTimeout(timeoutId);
-                log.info("[WebRTCPlayer] MQTT connected successfully");
+                log.debug("[WebRTCPlayer] MQTT connected successfully");
                 mqtt.watch();
                 resolve();
               }
