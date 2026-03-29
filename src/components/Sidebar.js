@@ -224,7 +224,7 @@ const SidebarLink = ({ name, to, badge }) => (
   </Link>
 );
 
-const Sidebar = ({ location, ...rest }) => {
+const Sidebar = ({ location, history, match, staticContext, ...rest }) => {
   const { t } = useTranslation();
   
   // Dynamic branding based on language
