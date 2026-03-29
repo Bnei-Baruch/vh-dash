@@ -49,29 +49,29 @@ export function useBroadcastStream() {
     }
   };
 
-  const initStreams = async () => {
-    try {
-      const data = await getStreams();
-      const languagesData = extractLanguagesData(data);
-
-      if (!languagesData) {
-        console.error("No languages found in streams data");
-        return;
-      }
-
-      setStreamsData(data);
-
-      const initialLanguage = resolveInitialLanguage(languagesData);
-      if (initialLanguage) {
-        setSelectedLangName(initialLanguage);
-      }
-    } catch (error) {
-      console.error("Error loading streams:", error);
-    }
-  };
-
   // Load streams data on mount
   React.useEffect(() => {
+    const initStreams = async () => {
+      try {
+        const data = await getStreams();
+        const languagesData = extractLanguagesData(data);
+
+        if (!languagesData) {
+          console.error("No languages found in streams data");
+          return;
+        }
+
+        setStreamsData(data);
+
+        const initialLanguage = resolveInitialLanguage(languagesData);
+        if (initialLanguage) {
+          setSelectedLangName(initialLanguage);
+        }
+      } catch (error) {
+        console.error("Error loading streams:", error);
+      }
+    };
+
     initStreams();
   }, []);
 

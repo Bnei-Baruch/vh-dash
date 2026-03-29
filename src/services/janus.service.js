@@ -211,4 +211,5 @@ class JanusService {
   }
 }
 
-export default new JanusService();
+const janusService = new JanusService();
+export default janusService;

@@ -332,7 +332,7 @@ export class JanusMqtt {
     }
 
     log.debug("[janus-mqtt] On message - type:", tD, "janus:", json.janus, "data:", json);
-    const {session_id, janus, data, jsep} = json;
+    const { janus } = json;
 
     if(tD === "status" && json.online) {
       log.info("[janus-mqtt] Janus Server - " + this.srv + " - Online");

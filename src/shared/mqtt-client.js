@@ -319,7 +319,7 @@ class MqttMsg {
       log.debug("[mqtt] <-- receive message" + cd + " | topic : " + topic);
       const t = topic.split("/")
       if (t[0] === "msg") t.shift()
-      const [root, service, id, target] = t
+      const [root, service, id] = t
       switch (root) {
         case "janus":
           try {

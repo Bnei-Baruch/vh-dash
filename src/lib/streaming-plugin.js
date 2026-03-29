@@ -46,7 +46,7 @@ export class StreamingPlugin extends EventEmitter {
     return new Promise((resolve, reject) => {
       this.transaction('message', { body }, 'event').then((param) => {
         log.debug("[streaming] watch response received: ", param)
-        const {session_id, json } = param
+        const { json } = param
         
         // Log if there's an error in the response
         if (json?.error) {
