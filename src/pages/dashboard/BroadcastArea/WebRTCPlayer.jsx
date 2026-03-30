@@ -7,9 +7,8 @@ import JanusStream from "../../../shared/janus-stream";
 import janusService from "../../../services/janus.service";
 import mqtt from "../../../shared/mqtt-client";
 import { keycloakData } from "../../../redux/selectors/user";
+import { getLanguageNameFromAppCode } from "../../../utils";
 import log from "loglevel";
-
-log.setLevel("info");
 
 const useStyles = makeStyles({
   container: {
@@ -125,7 +124,7 @@ const WebRTCPlayer = ({ language, onError }) => {
         
         if (!mqttInitializedRef.current || !isMqttReallyConnected) {
           mqtt.setToken(token);
-          log.info("[WebRTCPlayer] Initializing MQTT connection...");
+          log.debug("[WebRTCPlayer] Initializing MQTT connection...");
           
           // Wait for MQTT connection before proceeding
           await new Promise((resolve, reject) => {
@@ -147,14 +146,14 @@ const WebRTCPlayer = ({ language, onError }) => {
                 setErrorMessage("Lost connection to MQTT server - Authentication failed");
                 reject(new Error("MQTT connection failed - Not authorized"));
               } else if (reconnected) {
-                log.info("[WebRTCPlayer] MQTT reconnected");
+                log.debug("[WebRTCPlayer] MQTT reconnected");
                 if (timeoutId) clearTimeout(timeoutId);
                 mqtt.watch();
                 resolve();
               } else {
                 // First connection
                 if (timeoutId) clearTimeout(timeoutId);
-                log.info("[WebRTCPlayer] MQTT connected successfully");
+                log.debug("[WebRTCPlayer] MQTT connected successfully");
                 mqtt.watch();
                 resolve();
               }
@@ -196,7 +195,9 @@ const WebRTCPlayer = ({ language, onError }) => {
         log.debug('[WebRTCPlayer] Server config received:', serverConfig);
 
         // Get stream IDs for the current language
-        const streamIds = janusService.getStreamIdsForLanguageName(language);
+        // Normalize: convert 2-letter codes (e.g. i18nextLng "he") to full names ("Hebrew")
+        const resolvedLanguage = getLanguageNameFromAppCode(language) || language;
+        const streamIds = janusService.getStreamIdsForLanguageName(resolvedLanguage);
         log.debug('[WebRTCPlayer] Stream IDs for language', language, ':', streamIds);
         
         // Create JanusStream instance
@@ -268,7 +269,8 @@ const WebRTCPlayer = ({ language, onError }) => {
       return;
     }
 
-    const streamIds = janusService.getStreamIdsForLanguageName(language);
+    const resolvedLanguage = getLanguageNameFromAppCode(language) || language;
+    const streamIds = janusService.getStreamIdsForLanguageName(resolvedLanguage);
     janusStreamRef.current.setStreamIds(
       streamIds.video,
       streamIds.audio

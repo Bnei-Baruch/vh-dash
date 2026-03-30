@@ -57,7 +57,7 @@ export class JanusMqtt {
           this.isConnected = true
           this.keepAlive(false)
 
-          log.info('[janus-mqtt] Janus connected successfully! SessionId:', this.sessionId)
+          log.debug('[janus-mqtt] Janus connected successfully! SessionId:', this.sessionId)
 
           // this.user.mit - actually trigger once and after that we use
           // session id as emit. In case we not using multiple session on same server
@@ -332,7 +332,7 @@ export class JanusMqtt {
     }
 
     log.debug("[janus-mqtt] On message - type:", tD, "janus:", json.janus, "data:", json);
-    const {session_id, janus, data, jsep} = json;
+    const { janus } = json;
 
     if(tD === "status" && json.online) {
       log.info("[janus-mqtt] Janus Server - " + this.srv + " - Online");
