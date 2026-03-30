@@ -33,14 +33,14 @@ class MqttMsg {
     // Only reset if this is the first attempt (no existing connection)
     if (!this.mq) {
       this._fallbackAttempted = false;
-      log.info('[mqtt] Starting fresh MQTT connection attempt, fallback flag reset');
+      log.debug('[mqtt] Starting fresh MQTT connection attempt, fallback flag reset');
     }
 
     // Close existing connection if it exists
     if (this.mq) {
-      log.info('[mqtt] Closing existing connection before creating new one');
-      log.info('[mqtt] Previous connection state - isConnected:', this.isConnected);
-      log.info('[mqtt] Fallback attempted flag:', this._fallbackAttempted);
+      log.debug('[mqtt] Closing existing connection before creating new one');
+      log.debug('[mqtt] Previous connection state - isConnected:', this.isConnected);
+      log.debug('[mqtt] Fallback attempted flag:', this._fallbackAttempted);
       try {
         this.mq.removeAllListeners();
         this.mq.end(true); // Force close
@@ -49,7 +49,7 @@ class MqttMsg {
       }
       this.mq = null;
       this.isConnected = false; // Reset connection state
-      log.info('[mqtt] Connection state reset - isConnected:', this.isConnected);
+      log.debug('[mqtt] Connection state reset - isConnected:', this.isConnected);
     }
 
     this.user = user;
@@ -64,7 +64,7 @@ class MqttMsg {
     log.debug('  URL:', MSG_URL || MQTT_URL);
     log.debug('  Client ID:', id);
     log.debug('  Username:', user.email || user.username || user.id);
-    log.info('  Token available:', token ? "yes" : "no");
+    log.debug('  Token available:', token ? "yes" : "no");
     log.debug('  Token length:', token ? token.length : 0);
 
     if (!token) {
@@ -250,7 +250,7 @@ class MqttMsg {
 
   join = (topic, chat) => {
     if (!this.mq) return;
-    log.info("[mqtt] Subscribe to: ", topic);
+    log.debug("[mqtt] Subscribe to: ", topic);
     let options = chat ? {qos: 0, nl: false} : {qos: 1, nl: true};
     this.mq.subscribe(topic, {...options}, (err) => {
       err && log.error("[mqtt] Error: ", err);
@@ -266,7 +266,7 @@ class MqttMsg {
       log.warn("[mqtt] Cannot subscribe - MQTT not connected. Topic:", topic);
       return;
     }
-    log.info("[mqtt] Subscribe to: ", topic);
+    log.debug("[mqtt] Subscribe to: ", topic);
     let options = {qos, nl: true};
     this.mq.subscribe(topic, {...options}, (err) => {
       err && log.error("[mqtt] Error: ", err);
@@ -276,7 +276,7 @@ class MqttMsg {
   exit = (topic) => {
     if (!this.mq) return;
     let options = {};
-    log.info("[mqtt] Unsubscribe from: ", topic);
+    log.debug("[mqtt] Unsubscribe from: ", topic);
     this.mq.unsubscribe(topic, {...options}, (err) => {
       err && log.error("[mqtt] Error: ", err);
     });
@@ -319,7 +319,7 @@ class MqttMsg {
       log.debug("[mqtt] <-- receive message" + cd + " | topic : " + topic);
       const t = topic.split("/")
       if (t[0] === "msg") t.shift()
-      const [root, service, id, target] = t
+      const [root, service, id] = t
       switch (root) {
         case "janus":
           try {
