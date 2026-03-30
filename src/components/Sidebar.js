@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { darken, rgba } from "polished";
+import { rgba } from "polished";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 import { NavLink as RouterNavLink, withRouter } from "react-router-dom";
@@ -224,7 +224,7 @@ const SidebarLink = ({ name, to, badge }) => (
   </Link>
 );
 
-const Sidebar = ({ location, ...rest }) => {
+const Sidebar = ({ location, history, match, staticContext, ...rest }) => {
   const { t } = useTranslation();
   
   // Dynamic branding based on language

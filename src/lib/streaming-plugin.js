@@ -46,7 +46,7 @@ export class StreamingPlugin extends EventEmitter {
     return new Promise((resolve, reject) => {
       this.transaction('message', { body }, 'event').then((param) => {
         log.debug("[streaming] watch response received: ", param)
-        const {session_id, json } = param
+        const { json } = param
         
         // Log if there's an error in the response
         if (json?.error) {
@@ -165,7 +165,11 @@ export class StreamingPlugin extends EventEmitter {
 
     this.pc.onconnectionstatechange = (e) => {
       try {
-        log.info("[streaming] ICE State: ", e.target.connectionState)
+        if (e.target.connectionState === "connected") {
+          log.info("[streaming] ICE State: connected");
+        } else {
+          log.debug("[streaming] ICE State: ", e.target.connectionState);
+        }
         this.iceState = e.target.connectionState
         if(this.iceState === "disconnected") {
           this.iceRestart()
