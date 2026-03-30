@@ -269,7 +269,7 @@ export default function Broadcast() {
           {/* Video */}
           <VideoSection>
             <PlayerWrapper>
-              {streamingMode === "webrtc" ? (
+              {streamingMode === "webrtc" && selectedLanguage ? (
                 <WebRTCPlayer
                   language={selectedLanguage}
                   onError={handleWebRTCError}

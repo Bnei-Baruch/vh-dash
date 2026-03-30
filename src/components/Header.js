@@ -63,12 +63,12 @@ const MembershipStatusContainer = styled(Box)`
   padding: 6px 14px;
   border-radius: 999px;
 
-  background-color: ${({ active }) =>
-    active ? "#EAF9F0" : "#FDECEC"};
+  background-color: ${({ $active }) =>
+    $active ? "#EAF9F0" : "#FDECEC"};
 
   border: 1px solid
-    ${({ active }) =>
-      active ? "#BDEBD0" : "#F5B5B5"};
+    ${({ $active }) =>
+      $active ? "#BDEBD0" : "#F5B5B5"};
 
   /* Hide membership pill on screens smaller than xs (600px) */
   ${(props) => props.theme.breakpoints.down("xs")} {
@@ -84,14 +84,14 @@ const MembershipStatusText = styled(Typography)`
   font-size: 14px;
   font-weight: 600;
 
-  color: ${({ active }) =>
-    active ? "#2E7D5A" : "#C62828"};
+  color: ${({ $active }) =>
+    $active ? "#2E7D5A" : "#C62828"};
 
   svg {
     width: 8px;
     height: 8px;
-    color: ${({ active }) =>
-      active ? "#2E7D5A" : "#C62828"};
+    color: ${({ $active }) =>
+      $active ? "#2E7D5A" : "#C62828"};
   }
 
   /* RTL / LTR */
@@ -149,8 +149,8 @@ const UserIconButton = styled(MuiIconButton)`
   ${(props) => props.theme.breakpoints.down("xs")} {
     padding: 6px !important;
     svg {
-      color: ${({ membershipActive }) =>
-        membershipActive ? "#2E7D5A" : "#C24A4A"};
+      color: ${({ $membershipActive }) =>
+        $membershipActive ? "#2E7D5A" : "#C24A4A"};
     }
   }
 `;
@@ -291,7 +291,7 @@ function UserMenu() {
     <>
       <UserIconButton 
         onClick={(e) => setAnchorMenu(e.currentTarget)}
-        membershipActive={membershipActive}
+        $membershipActive={membershipActive}
       >
         <AccountCircleIcon />
         <span className="user-name">
@@ -376,10 +376,10 @@ const Header = ({ onDrawerToggle, pageTitle }) => {
               )}  
 
             <MembershipStatusContainer
-              active={active}
+              $active={active}
               onClick={() => history.push(DASHBOARD_ROUTES.membership)}
             >
-              <MembershipStatusText active={active}>
+              <MembershipStatusText $active={active}>
                 <FiberManualRecordIcon />
                 {`${t("Membership.myMembership")} ${
                   active

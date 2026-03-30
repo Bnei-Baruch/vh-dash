@@ -46,7 +46,7 @@ class JanusService {
           lastError = err;
           // If 404, try next endpoint
           if (err.response?.status === 404) {
-            log.info(`[janus-service] Endpoint ${endpoint} returned 404, trying next...`);
+            log.debug(`[janus-service] Endpoint ${endpoint} returned 404, trying next...`);
             continue;
           }
           // For other errors, throw immediately
@@ -211,4 +211,5 @@ class JanusService {
   }
 }
 
-export default new JanusService();
+const janusService = new JanusService();
+export default janusService;

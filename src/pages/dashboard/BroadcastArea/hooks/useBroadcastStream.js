@@ -3,12 +3,39 @@ import { getLanguageNameFromAppCode } from "../../../../utils";
 import { getStreams, getDefaultQuality } from "../../../../services/broadcast-hls.service";
 
 /**
+ * Resolve initial broadcast language synchronously (before first render).
+ *
+ * Priority:
+ * 1. User-selected language (localStorage)
+ * 2. App UI language (i18next)
+ * 3. Fallback: Hebrew
+ *
+ * Ensures WebRTC initializes with a valid language (avoids empty state).
+ */
+const getInitialLanguage = () => {
+  const saved = localStorage.getItem("VH_BROADCAST_LANG");
+  if (saved) {
+    // Handle legacy storage: older versions stored 2-letter codes (e.g. "he") instead of full names ("Hebrew")
+    const converted = getLanguageNameFromAppCode(saved);
+    return converted || saved;
+  }
+
+  const appLang = localStorage.getItem("i18nextLng");
+  if (appLang) {
+    const resolved = getLanguageNameFromAppCode(appLang);
+    if (resolved) return resolved;
+  }
+
+  return "Hebrew";
+};
+
+/**
  * Custom hook to manage broadcast stream state and behavior
  * Handles stream data fetching, language/quality selection, and video playback
  */
 export function useBroadcastStream() {
   const [streamsData, setStreamsData] = React.useState(null);
-  const [selectedLangName, setSelectedLangName] = React.useState("");
+  const [selectedLangName, setSelectedLangName] = React.useState(getInitialLanguage);
   const [selectedQuality, setSelectedQuality] = React.useState(null);
   const [hlsUrl, setHlsUrl] = React.useState("");
   const [hasUserStartedPlayback, setHasUserStartedPlayback] = React.useState(false);
@@ -49,29 +76,29 @@ export function useBroadcastStream() {
     }
   };
 
-  const initStreams = async () => {
-    try {
-      const data = await getStreams();
-      const languagesData = extractLanguagesData(data);
-
-      if (!languagesData) {
-        console.error("No languages found in streams data");
-        return;
-      }
-
-      setStreamsData(data);
-
-      const initialLanguage = resolveInitialLanguage(languagesData);
-      if (initialLanguage) {
-        setSelectedLangName(initialLanguage);
-      }
-    } catch (error) {
-      console.error("Error loading streams:", error);
-    }
-  };
-
   // Load streams data on mount
   React.useEffect(() => {
+    const initStreams = async () => {
+      try {
+        const data = await getStreams();
+        const languagesData = extractLanguagesData(data);
+
+        if (!languagesData) {
+          console.error("No languages found in streams data");
+          return;
+        }
+
+        setStreamsData(data);
+
+        const initialLanguage = resolveInitialLanguage(languagesData);
+        if (initialLanguage) {
+          setSelectedLangName(initialLanguage);
+        }
+      } catch (error) {
+        console.error("Error loading streams:", error);
+      }
+    };
+
     initStreams();
   }, []);
 
