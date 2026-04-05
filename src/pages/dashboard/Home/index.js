@@ -2,15 +2,10 @@ import React, { useCallback, useState, useEffect } from "react";
 import { withTheme } from "styled-components";
 import { Grid } from "@material-ui/core";
 import Calendar from "./Calendar";
-import Header from "./Header";
 import StudyArea from "./StudyArea.jsx";
-import StudyAreaNew from "./StudyAreaNew.jsx";
-import ConventionCard from "./ConventionCard.jsx";
 import QuickActions from "./QuickActions.jsx";
 import GivingSectionNew from "./GivingSectionNew.jsx";
 import RegistrationsAndPayments from "./RegistrationsAndPayments.jsx";
-// import Convention from "./Convention";
-import StudyAreaBanner from "./StudyAreaBanner.jsx";
 import { usePageTitle } from "../../../contexts/PageTitleContext";
 
 const Home = () => {
@@ -31,6 +26,7 @@ const Home = () => {
 
   return (
     <>
+   
       {/* 1️⃣ Quick Actions */}
       <div style={{ marginBottom: 24 }}>
         <QuickActions />
@@ -39,7 +35,7 @@ const Home = () => {
       {/* 2️⃣ Main Content Section – Study + Events + Convention Banner */}
       <Grid container spacing={6} style={{ marginBottom: 24 }}>
         <Grid item xs={12} lg={7}>
-          <StudyAreaBanner />
+          <StudyArea />
         </Grid>
         <Grid item xs={12} lg={5}>
           <Calendar onLiveEvent={onLiveEvent} />
