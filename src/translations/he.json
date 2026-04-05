@@ -305,6 +305,12 @@
         "membershipRequired": "השידור החי זמין למנויים בלבד",
         "membershipRequiredDescription": "כדי לצפות בשידור חי, יש לרכוש מנוי פעיל. המנוי מאפשר לך גישה לכל השידורים החיים והתוכן המיוחד שלנו."
       },
+      "StudyArea": {
+        "title": "אזור לימוד",
+        "liveBroadcastAlone": "שידור חי – לצפות לבד",
+        "liveBroadcastWithTen": "שידור חי – עם העשירייה",
+        "kabbalaMedia": "קבלה מדיה"
+      },
       "CountryPrompt": {
         "title": "השלם את הפרופיל שלך",
         "description": "אנא השלם את הפרופיל שלך ובחר את המדינה שלך.",

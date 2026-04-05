@@ -305,6 +305,12 @@
         "membershipRequired": "Live Broadcast is for Members Only",
         "membershipRequiredDescription": "To watch live broadcasts, you need an active membership. Membership gives you access to all live broadcasts and our special content."
       },
+      "StudyArea": {
+        "title": "Study Area",
+        "liveBroadcastAlone": "Live Broadcast – Watch Alone",
+        "liveBroadcastWithTen": "Live Broadcast – With the Ten",
+        "kabbalaMedia": "Kabbalah Media"
+      },
       "CountryPrompt": {
         "title": "Complete Your Profile",
         "description": "Please complete your profile and select your country.",

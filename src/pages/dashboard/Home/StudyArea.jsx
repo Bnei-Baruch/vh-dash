@@ -82,7 +82,7 @@ const StudyLinkRow = styled.div`
   cursor: pointer;
   transition: background-color 0.2s ease;
   border-bottom: 1px solid #f3f4f6;
-  flex-direction: ${({ isRTL }) => (isRTL ? "row" : "row-reverse")};
+  flex-direction: row;
 
   &:last-child {
     border-bottom: none;
@@ -238,9 +238,9 @@ const StudyArea = () => {
   }, [i18n.language]);
 
   const studyLinks = [
-    { id: 1, text: "שידור חי – לצפות לבד", icon: Play, href: "/dash/broadcast" },
-    { id: 2, text: "שידור חי – עם העשירייה", icon: Users, href: "https://arvut.kli.one/user/" },
-    { id: 3, text: "קבלה מדיה", icon: BookOpen, href: "https://kabbalahmedia.info" },
+    { id: 1, text: t("Dashboard.StudyArea.liveBroadcastAlone"), icon: Play, href: "/dash/broadcast" },
+    { id: 2, text: t("Dashboard.StudyArea.liveBroadcastWithTen"), icon: Users, href: "https://arvut.kli.one/user/" },
+    { id: 3, text: t("Dashboard.StudyArea.kabbalaMedia"), icon: BookOpen, href: "https://kabbalahmedia.info" },
   ];
 
   const handleLinkClick = (href, e) => {
@@ -270,7 +270,7 @@ const StudyArea = () => {
         <HeaderIcon>
           <BookOpen size={24} />
         </HeaderIcon>
-        <HeaderTitle>אזור לימוד</HeaderTitle>
+        <HeaderTitle>{t("Dashboard.StudyArea.title")}</HeaderTitle>
       </SectionHeader>
 
       {studyLinks.map((link) => {
@@ -279,7 +279,6 @@ const StudyArea = () => {
         return (
           <StudyLinkRow
             key={link.id}
-            isRTL={isRTL}
             onClick={(e) => handleLinkClick(link.href, e)}
           >
             <LinkIcon>
