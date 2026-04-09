@@ -6,6 +6,7 @@ import StudyArea from "./StudyArea.jsx";
 import QuickActions from "./QuickActions.jsx";
 import GivingSectionNew from "./GivingSectionNew.jsx";
 import RegistrationsAndPayments from "./RegistrationsAndPayments.jsx";
+import Messages from "./Messages.jsx";
 import { usePageTitle } from "../../../contexts/PageTitleContext";
 
 const Home = () => {
@@ -43,7 +44,14 @@ const Home = () => {
        
       </Grid>
 
-      {/* 3️⃣ Registrations and Payments + Giving Section New (50% / 50%) */}
+      {/* 3️⃣ Messages (full width) */}
+      <Grid container spacing={6} style={{ marginBottom: 24 }}>
+        <Grid item xs={12}>
+          <Messages />
+        </Grid>
+      </Grid>
+
+      {/* 4️⃣ Registrations and Payments + Giving Section New (50% / 50%) */}
       <Grid container spacing={6}>
         <Grid item xs={12}>
           {/* Placeholder for live broadcast indication */}
