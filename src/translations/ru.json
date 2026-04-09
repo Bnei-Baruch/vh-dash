@@ -306,7 +306,8 @@
         "title": "Учебная зона",
         "liveBroadcastAlone": "Прямая трансляция – Смотреть одному",
         "liveBroadcastWithTen": "Прямая трансляция – С Десяткой",
-        "kabbalaMedia": "Каббала Медиа"
+        "kabbalaMedia": "Каббала Медиа",
+        "studyMaterials": "Учебные материалы"
       },
       "CountryPrompt": {
         "title": "Завершите ваш профиль",

@@ -309,7 +309,8 @@
         "title": "Study Area",
         "liveBroadcastAlone": "Live Broadcast – Watch Alone",
         "liveBroadcastWithTen": "Live Broadcast – With the Ten",
-        "kabbalaMedia": "Kabbalah Media"
+        "kabbalaMedia": "Kabbalah Media",
+        "studyMaterials": "Study Materials"
       },
       "CountryPrompt": {
         "title": "Complete Your Profile",

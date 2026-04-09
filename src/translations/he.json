@@ -309,7 +309,8 @@
         "title": "אזור לימוד",
         "liveBroadcastAlone": "שידור חי – לצפות לבד",
         "liveBroadcastWithTen": "שידור חי – עם העשירייה",
-        "kabbalaMedia": "קבלה מדיה"
+        "kabbalaMedia": "קבלה מדיה",
+        "studyMaterials": "חומר לימוד"
       },
       "CountryPrompt": {
         "title": "השלם את הפרופיל שלך",

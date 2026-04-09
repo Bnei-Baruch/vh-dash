@@ -594,7 +594,8 @@
         "title": "Área de Estudio",
         "liveBroadcastAlone": "Transmisión en vivo – Ver solo",
         "liveBroadcastWithTen": "Transmisión en vivo – Con la Decena",
-        "kabbalaMedia": "Kabbalah Media"
+        "kabbalaMedia": "Kabbalah Media",
+        "studyMaterials": "Materiales de Estudio"
       },
       "CountryPrompt": {
         "title": "Completa tu perfil",
