@@ -49,7 +49,7 @@ const NavControls = styled.div`
 
 const Counter = styled.span`
   font-size: 13px;
-  color: ${grey[500]};
+  color: ${(p) => p.theme.palette.text.secondary};
   min-width: 36px;
   text-align: center;
 `;
@@ -92,15 +92,16 @@ const ErrorText = styled(Typography)`
 `;
 
 const PostDate = styled.div`
-  font-size: 12px;
-  color: ${grey[500]};
+  font-size: 14px;
+  color: ${(p) => p.theme.palette.text.secondary};
   margin-bottom: ${(p) => p.theme.spacing(1)}px;
 `;
 
 const PostText = styled.div`
-  font-size: 14px;
-  color: ${(p) => p.theme.palette.text.secondary};
-  line-height: 1.6;
+  font-size: 15px;
+  color: ${(p) => p.theme.palette.text.primary};
+  line-height: 1.75;
+  font-weight:600;
   white-space: pre-line;
 `;
 
@@ -108,10 +109,10 @@ const PostLink = styled.a`
   color: ${(p) => p.theme.palette.primary.main};
   text-decoration: underline;
   word-break: break-all;
-
-  &:hover {
+  font-size:14px;
+    &:hover {
     color: ${(p) => p.theme.palette.primary.dark};
-  }
+    }
 `;
 
 const PostMedia = styled.img`
@@ -135,6 +136,11 @@ const formatDate = (dateStr, locale) => {
     day: "numeric",
   });
 };
+
+const LEADING_SYMBOLS_REGEX = /^[\p{Emoji}\p{S}\p{P}\s]+/u;
+
+const stripLeadingSymbols = (text) =>
+  text ? text.replace(LEADING_SYMBOLS_REGEX, "") : text;
 
 const URL_REGEX = /(https:\/\/[^\s]+)/g;
 
@@ -228,7 +234,7 @@ const Messages = () => {
       {!loading && !errorMessage && post && (
         <>
           <PostDate>{formatDate(post.date, i18n.language)}</PostDate>
-          <PostText>{renderTextWithLinks(post.text)}</PostText>
+          <PostText>{renderTextWithLinks(stripLeadingSymbols(post.text))}</PostText>
           {post.mediaUrl && (
             <PostMedia src={post.mediaUrl} alt="" loading="lazy" />
           )}
