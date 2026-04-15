@@ -15,6 +15,9 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   overflow: hidden;
+  height: 100%;
+  box-sizing: border-box;
+  width: 100%;
 
   @media (max-width: 960px) {
     flex-direction: column;

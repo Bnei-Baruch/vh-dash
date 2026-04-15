@@ -593,7 +593,8 @@
       "Messages": {
         "title": "Mensajes",
         "empty": "No hay mensajes para mostrar",
-        "error": "Error al cargar los mensajes"
+        "error": "Error al cargar los mensajes",
+        "hebrewOnly": "Los mensajes están disponibles actualmente solo en hebreo"
       },
       "StudyArea": {
         "title": "Área de Estudio",

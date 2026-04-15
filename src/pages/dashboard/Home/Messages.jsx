@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { CircularProgress, IconButton, Typography } from "@material-ui/core";
 import { grey } from "@material-ui/core/colors";
 import { fade } from "@material-ui/core/styles";
-import { MessageSquare, ChevronLeft, ChevronRight } from "lucide-react";
+import { MessageSquare, ChevronLeft, ChevronRight, Info } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { getPosts } from "../../../services/messages.service";
 
@@ -17,6 +17,32 @@ const Wrapper = styled.div`
   border: 1px solid ${grey[200]};
   display: flex;
   flex-direction: column;
+  height: 100%;
+  max-height: 440px;
+  box-sizing: border-box;
+`;
+
+const ContentArea = styled.div`
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+  padding-inline-end: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: ${grey[300]} transparent;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: ${grey[300]};
+    border-radius: 4px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: ${grey[400]};
+  }
 `;
 
 const Header = styled.div`
@@ -91,6 +117,22 @@ const ErrorText = styled(Typography)`
   }
 `;
 
+const LanguageNotice = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${(p) => p.theme.spacing(1)}px;
+  background: ${(p) => fade(p.theme.palette.primary.main, 0.08)};
+  color: ${(p) => p.theme.palette.text.primary};
+  padding: ${(p) => p.theme.spacing(1)}px ${(p) => p.theme.spacing(1.5)}px;
+  border-radius: ${(p) => p.theme.spacing(1)}px;
+  font-size: 13px;
+  margin-bottom: ${(p) => p.theme.spacing(2)}px;
+`;
+
+const PostContent = styled.div`
+  direction: ${(p) => (p.$rtl ? "rtl" : "ltr")};
+`;
+
 const PostDate = styled.div`
   font-size: 14px;
   color: ${(p) => p.theme.palette.text.secondary};
@@ -136,6 +178,9 @@ const formatDate = (dateStr, locale) => {
     day: "numeric",
   });
 };
+
+const HEBREW_REGEX = /[\u0590-\u05FF]/;
+const isHebrewText = (text) => !!text && HEBREW_REGEX.test(text);
 
 const LEADING_SYMBOLS_REGEX = /^[\p{Emoji}\p{S}\p{P}\s]+/u;
 
@@ -217,29 +262,40 @@ const Messages = () => {
         )}
       </Header>
 
-      {loading && (
-        <Spinner>
-          <CircularProgress size={32} />
-        </Spinner>
+      {i18n.language !== "he" && (
+        <LanguageNotice>
+          <Info size={14} />
+          {t("Dashboard.Messages.hebrewOnly")}
+        </LanguageNotice>
       )}
 
-      {!loading && errorMessage && (
-        <ErrorText>{errorMessage}</ErrorText>
-      )}
+      <ContentArea>
+        {loading && (
+          <Spinner>
+            <CircularProgress size={32} />
+          </Spinner>
+        )}
 
-      {!loading && !errorMessage && posts.length === 0 && (
-        <EmptyText>{t("Dashboard.Messages.empty")}</EmptyText>
-      )}
+        {!loading && errorMessage && (
+          <ErrorText>{errorMessage}</ErrorText>
+        )}
 
-      {!loading && !errorMessage && post && (
-        <>
+        {!loading && !errorMessage && posts.length === 0 && (
+          <EmptyText>{t("Dashboard.Messages.empty")}</EmptyText>
+        )}
+
+        {!loading && !errorMessage && post && (
+          <>
           <PostDate>{formatDate(post.date, i18n.language)}</PostDate>
-          <PostText>{renderTextWithLinks(stripLeadingSymbols(post.text))}</PostText>
-          {post.mediaUrl && (
-            <PostMedia src={post.mediaUrl} alt="" loading="lazy" />
-          )}
-        </>
-      )}
+          <PostContent $rtl={isHebrewText(post.text)}>
+            <PostText>{renderTextWithLinks(stripLeadingSymbols(post.text))}</PostText>
+            {post.mediaUrl && (
+              <PostMedia src={post.mediaUrl} alt="" loading="lazy" />
+            )}
+          </PostContent>
+          </>
+        )}
+      </ContentArea>
     </Wrapper>
   );
 };

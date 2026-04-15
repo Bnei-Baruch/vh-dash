@@ -308,7 +308,8 @@
       "Messages": {
         "title": "Messages",
         "empty": "No messages to display",
-        "error": "Error loading messages"
+        "error": "Error loading messages",
+        "hebrewOnly": "Messages are currently available in Hebrew only"
       },
       "StudyArea": {
         "title": "Study Area",

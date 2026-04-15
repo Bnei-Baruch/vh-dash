@@ -14,7 +14,7 @@ import {
 } from "@material-ui/core";
 import { RefreshCw } from "react-feather";
 import { Calendar as CalendarIcon } from "lucide-react";
-import { red } from "@material-ui/core/colors";
+import { red, grey } from "@material-ui/core/colors";
 import { useTranslation } from "react-i18next";
 import { connect } from "react-redux";
 import {
@@ -38,6 +38,8 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
+  max-height: 440px;
+  box-sizing: border-box;
 `;
 
 const Header = styled.div`
@@ -84,10 +86,27 @@ const LiveChip = styled(Chip)`
 
 const TableWrapper = styled.div`
   overflow-y: auto;
-  max-height: 500px;
+  max-height: 320px;
   background-color: #f7f9fc;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
+  padding-right: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: ${grey[300]} transparent;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: ${grey[300]};
+    border-radius: 4px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: ${grey[400]};
+  }
 `;
 
 const TimeCell = styled(TableCell)`

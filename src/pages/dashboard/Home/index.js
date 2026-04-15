@@ -33,25 +33,20 @@ const Home = () => {
         <QuickActions />
       </div>
 
-      {/* 2️⃣ Main Content Section – Study + Events + Convention Banner */}
-      <Grid container spacing={6} style={{ marginBottom: 24 }}>
-        <Grid item xs={12} lg={7}>
-          <StudyArea />
-        </Grid>
+      {/* 2️⃣ Messages + Study Area + Calendar */}
+      <Grid container spacing={6} style={{ marginBottom: 24 }} alignItems="stretch">
         <Grid item xs={12} lg={5}>
-          <Calendar onLiveEvent={onLiveEvent} />
-        </Grid>
-       
-      </Grid>
-
-      {/* 3️⃣ Messages (full width) */}
-      <Grid container spacing={6} style={{ marginBottom: 24 }}>
-        <Grid item xs={12}>
           <Messages />
         </Grid>
+        <Grid item xs={12} lg={3}>
+          <StudyArea />
+        </Grid>
+        <Grid item xs={12} lg={4}>
+          <Calendar onLiveEvent={onLiveEvent} />
+        </Grid>
       </Grid>
 
-      {/* 4️⃣ Registrations and Payments + Giving Section New (50% / 50%) */}
+      {/* 3️⃣ Registrations and Payments + Giving Section New (50% / 50%) */}
       <Grid container spacing={6}>
         <Grid item xs={12}>
           {/* Placeholder for live broadcast indication */}
