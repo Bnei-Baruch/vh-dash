@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { grey } from "@material-ui/core/colors";
 import { useSelector } from "react-redux";
 import { Coffee, ChevronLeft, Calendar, CreditCard, Check, Shield, Plus, ArrowRight } from "lucide-react";
 import { DASHBOARD_ROUTES } from "../../../routes/dashboardRoutes";
@@ -24,7 +25,7 @@ const Header = styled.div`
 const HeaderTitle = styled.h3`
   font-size: 20px;
   font-weight: 700;
-  color: #1f2937;
+  color: ${(p) => p.theme.palette.text.primary};
   margin: 0;
 `;
 
@@ -82,14 +83,14 @@ const CardContent = styled.div`
 
 const CardTitle = styled.div`
   font-weight: 700;
-  color: #1f2937;
+  color: ${(p) => p.theme.palette.text.primary};
   font-size: 18px;
   margin-bottom: 8px;
 `;
 
 const CardDescription = styled.div`
   font-size: 14px;
-  color: #6b7280;
+  color: ${(p) => p.theme.palette.text.secondary};
   margin-bottom: 16px;
   line-height: 1.5;
 `;
@@ -98,7 +99,7 @@ const RegisterLink = styled.a`
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  color: #2563eb;
+  color: ${(p) => p.theme.palette.primary.main};
   font-weight: 600;
   font-size: 14px;
   text-decoration: none;
@@ -106,7 +107,7 @@ const RegisterLink = styled.a`
   transition: color 0.2s ease;
 
   &:hover {
-    color: #1d4ed8;
+    color: ${(p) => p.theme.palette.primary.dark};
     text-decoration: underline;
   }
 `;
@@ -158,20 +159,20 @@ const WideCardContent = styled.div`
 
 const WideCardTitle = styled.div`
   font-weight: 700;
-  color: #1f2937;
+  color: ${(p) => p.theme.palette.text.primary};
   font-size: 18px;
   margin-bottom: 4px;
 `;
 
 const WideCardDescription = styled.div`
   font-size: 14px;
-  color: #6b7280;
+  color: ${(p) => p.theme.palette.text.secondary};
   line-height: 1.5;
 `;
 
 const WideCardButton = styled.button`
   background: #f3f4f6;
-  color: #374151;
+  color: ${(p) => p.theme.palette.text.primary};
   border: 1px solid #e5e7eb;
   border-radius: 8px;
   padding: 10px 20px;

@@ -35,7 +35,7 @@ const ActionButton = styled.a`
   gap: 8px;
   min-width: 80px;
   text-decoration: none;
-  color: #374151;
+  color: ${(p) => p.theme.palette.text.primary};
   background: transparent;
   border: none;
   outline: none;

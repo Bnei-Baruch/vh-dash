@@ -79,7 +79,7 @@ const EmptyText = styled(Typography)`
   && {
     text-align: center;
     padding: ${(p) => p.theme.spacing(4)}px 0;
-    color: ${grey[500]};
+    color: ${(p) => p.theme.palette.text.secondary};
   }
 `;
 
@@ -100,8 +100,8 @@ const PostDate = styled.div`
 const PostText = styled.div`
   font-size: 15px;
   color: ${(p) => p.theme.palette.text.primary};
-  line-height: 1.75;
-  font-weight:600;
+  line-height: 1.6;
+  font-weight: 400;
   white-space: pre-line;
 `;
 

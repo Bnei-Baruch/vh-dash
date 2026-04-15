@@ -51,12 +51,12 @@ const Header = styled.div`
 const HeaderTitle = styled.h3`
   font-size: 20px;
   font-weight: 700;
-  color: #1f2937;
+  color: ${(p) => p.theme.palette.text.primary};
   margin: 0;
 `;
 
 const HeaderIcon = styled.div`
-  color: #6366f1;
+  color: ${(p) => p.theme.palette.primary.main};
   display: flex;
   align-items: center;
 `;
@@ -97,9 +97,25 @@ const TimeCell = styled(TableCell)`
 `;
 
 const TitleCell = styled(TableCell)`
-  font-size: 18px;
+  font-size: 15px;
+  font-weight: 500;
+  color: ${(p) => p.theme.palette.text.primary};
   padding: 12px 8px;
   border: none;
+`;
+
+const EmptyText = styled(Typography)`
+  && {
+    padding: 20px 0;
+    color: ${(p) => p.theme.palette.text.secondary};
+  }
+`;
+
+const ErrorText = styled(Typography)`
+  && {
+    padding: 20px 0;
+    color: ${(p) => p.theme.palette.error.main};
+  }
 `;
 
 const CALENDAR_LANGUAGE = {
@@ -346,15 +362,11 @@ const Calendar = ({ onLiveEvent, settings: { language } }) => {
             </Table>
           </TableWrapper>
         ) : (
-          <Typography variant="h3" style={{ padding: '20px 0', color: '#6b7280' }}>
-            {t("Home.noEvent")}
-          </Typography>
+          <EmptyText variant="h3">{t("Home.noEvent")}</EmptyText>
         )}
 
         {errorMessage && (
-          <Typography variant="h3" style={{ padding: '20px 0', color: '#dc2626' }}>
-            {errorMessage}
-          </Typography>
+          <ErrorText variant="h3">{errorMessage}</ErrorText>
         )}
       </div>
     </Wrapper>

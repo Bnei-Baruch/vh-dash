@@ -89,8 +89,8 @@ const LinkIcon = styled.div`
 
 const LinkText = styled.div`
   flex: 1;
-  font-weight: 600;
-  color: ${(p) => p.theme.palette.text.secondary};
+  font-weight: 500;
+  color: ${(p) => p.theme.palette.text.primary};
   font-size: 15px;
 
   ${StudyLinkRow}:hover & {

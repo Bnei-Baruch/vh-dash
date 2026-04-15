@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { grey } from "@material-ui/core/colors";
 import { Gift, Users, Hand } from "lucide-react";
 
 /* ===== Styled Components ===== */
@@ -23,7 +24,7 @@ const HeaderSection = styled.div`
 const HeaderTitle = styled.h3`
   font-size: 20px;
   font-weight: 700;
-  color: #1f2937;
+  color: ${(p) => p.theme.palette.text.primary};
   margin: 0;
 `;
 
@@ -35,8 +36,8 @@ const HeaderLine = styled.div`
 `;
 
 const Subtitle = styled.p`
-  font-size: 16px;
-  color: #6b7280;
+  font-size: 15px;
+  color: ${(p) => p.theme.palette.text.secondary};
   margin: 0 0 32px 0;
   line-height: 1.6;
   font-style: italic;
@@ -86,19 +87,19 @@ const CardContent = styled.div`
 
 const CardTitle = styled.div`
   font-weight: 700;
-  color: #1f2937;
+  color: ${(p) => p.theme.palette.text.primary};
   font-size: 18px;
   margin-bottom: 6px;
 `;
 
 const CardDescription = styled.div`
   font-size: 14px;
-  color: #6b7280;
+  color: ${(p) => p.theme.palette.text.secondary};
   line-height: 1.5;
 `;
 
 const ArrowIcon = styled.div`
-  color: #9ca3af;
+  color: ${grey[400]};
   display: flex;
   align-items: center;
   flex-shrink: 0;
