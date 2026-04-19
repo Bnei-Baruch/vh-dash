@@ -603,6 +603,15 @@
         "kabbalaMedia": "Kabbalah Media",
         "studyMaterials": "Materiales de Estudio"
       },
+      "PlatformsNavigation": {
+        "arvut": "Sistema Arvut",
+        "media": "Kabbalah Media",
+        "study": "Materiales de Estudio",
+        "events": "Eventos",
+        "payments": "Pagos",
+        "donations": "Donaciones",
+        "convention": "Convención"
+      },
       "CountryPrompt": {
         "title": "Completa tu perfil",
         "description": "Por favor completa tu perfil y selecciona tu país.",

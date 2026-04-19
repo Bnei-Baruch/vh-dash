@@ -30,11 +30,11 @@ const TOMORROW = 1;
 const YESTERDAY = -1;
 
 const Wrapper = styled.div`
-  background: #ffffff;
+  background: ${(p) => p.theme.palette.background.paper};
   border-radius: 16px;
   padding: 24px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e5e7eb;
+  border: 1px solid ${grey[200]};
   display: flex;
   flex-direction: column;
   height: 100%;

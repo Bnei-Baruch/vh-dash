@@ -318,6 +318,15 @@
         "kabbalaMedia": "קבלה מדיה",
         "studyMaterials": "חומר לימוד"
       },
+      "PlatformsNavigation": {
+        "arvut": "מערכת הערבות",
+        "media": "קבלה מדיה",
+        "study": "חומר לימוד",
+        "events": "אירועים",
+        "payments": "תשלומים",
+        "donations": "תרומות",
+        "convention": "כנס"
+      },
       "CountryPrompt": {
         "title": "השלם את הפרופיל שלך",
         "description": "אנא השלם את הפרופיל שלך ובחר את המדינה שלך.",

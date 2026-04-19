@@ -315,6 +315,15 @@
         "kabbalaMedia": "Каббала Медиа",
         "studyMaterials": "Учебные материалы"
       },
+      "PlatformsNavigation": {
+        "arvut": "Система Арвут",
+        "media": "Каббала Медиа",
+        "study": "Учебные материалы",
+        "events": "Мероприятия",
+        "payments": "Оплата",
+        "donations": "Пожертвования",
+        "convention": "Конгресс"
+      },
       "CountryPrompt": {
         "title": "Завершите ваш профиль",
         "description": "Пожалуйста, заполните свой профиль и выберите вашу страну.",

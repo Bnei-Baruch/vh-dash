@@ -3,7 +3,7 @@ import { withTheme } from "styled-components";
 import { Grid } from "@material-ui/core";
 import Calendar from "./Calendar";
 import StudyArea from "./StudyArea.jsx";
-import QuickActions from "./QuickActions.jsx";
+import PlatformsNavigation from "./PlatformsNavigation.jsx";
 import GivingSectionNew from "./GivingSectionNew.jsx";
 import RegistrationsAndPayments from "./RegistrationsAndPayments.jsx";
 import Messages from "./Messages.jsx";
@@ -32,7 +32,7 @@ const Home = () => {
       <Grid container spacing={6} style={{ marginBottom: 24 }} alignItems="stretch">
         {/* md: row 1 left (5/12) — lg: full width above */}
         <Grid item xs={12} md={5} lg={12}>
-          <QuickActions />
+          <PlatformsNavigation />
         </Grid>
         {/* md: row 1 right (7/12) — lg: 4/12 */}
         <Grid item xs={12} md={7} lg={4}>
