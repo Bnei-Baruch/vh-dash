@@ -11,7 +11,7 @@ import { getPosts } from "../../../services/messages.service";
 
 const Wrapper = styled.div`
   background: ${(p) => p.theme.palette.background.paper};
-  border-radius: ${(p) => p.theme.spacing(2)}px;
+  border-radius: ${(p) => p.theme.spacing(3)}px;
   padding: ${(p) => p.theme.spacing(6)}px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   border: 1px solid ${grey[200]};

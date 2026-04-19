@@ -69,7 +69,7 @@ const PLATFORMS = [
 
 const Wrapper = styled.div`
   background: ${(p) => p.theme.palette.background.paper};
-  border-radius: 16px;
+  border-radius: ${(p) => p.theme.spacing(3)}px;
   padding: 24px;
   height: 100%;
   box-sizing: border-box;

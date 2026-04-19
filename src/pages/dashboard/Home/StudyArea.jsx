@@ -9,7 +9,7 @@ import { Play, Users, BookOpen, LibraryBig } from "lucide-react";
 
 const Wrapper = styled.div`
   background: ${(p) => p.theme.palette.background.paper};
-  border-radius: 16px;
+  border-radius: ${(p) => p.theme.spacing(3)}px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   border: 1px solid ${grey[200]};
   display: flex;
