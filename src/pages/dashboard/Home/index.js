@@ -28,35 +28,37 @@ const Home = () => {
   return (
     <>
    
-      {/* 1️⃣ Quick Actions */}
-      <div style={{ marginBottom: 24 }}>
-        <QuickActions />
-      </div>
-
-      {/* 2️⃣ Messages + Study Area + Calendar */}
+      {/* 1️⃣ Quick Actions + Messages + Study Area + Calendar */}
       <Grid container spacing={6} style={{ marginBottom: 24 }} alignItems="stretch">
-        <Grid item xs={12} lg={5}>
+        {/* md: row 1 left (5/12) — lg: full width above */}
+        <Grid item xs={12} md={5} lg={12}>
+          <QuickActions />
+        </Grid>
+        {/* md: row 1 right (7/12) — lg: 4/12 */}
+        <Grid item xs={12} md={7} lg={4}>
           <Messages />
         </Grid>
-        <Grid item xs={12} lg={3}>
+        {/* md: row 2 left (5/12) — lg: 4/12 */}
+        <Grid item xs={12} md={5} lg={4}>
           <StudyArea />
         </Grid>
-        <Grid item xs={12} lg={4}>
+        {/* md: row 2 right (7/12) — lg: 4/12 */}
+        <Grid item xs={12} md={7} lg={4}>
           <Calendar onLiveEvent={onLiveEvent} />
         </Grid>
       </Grid>
 
-      {/* 3️⃣ Registrations and Payments + Giving Section New (50% / 50%) */}
+      {/* 2️⃣ Registrations and Payments + Giving Section New (50% / 50%) */}
       <Grid container spacing={6}>
         <Grid item xs={12}>
           {/* Placeholder for live broadcast indication */}
           {liveEvent && console.log("Live event active")}
         </Grid>
 
-        <Grid item xs={12} lg={6}>
+        <Grid item xs={12} md={6}>
           <RegistrationsAndPayments />
         </Grid>
-        <Grid item xs={12} lg={6}>
+        <Grid item xs={12} md={6}>
           <GivingSectionNew />
         </Grid>
       </Grid>

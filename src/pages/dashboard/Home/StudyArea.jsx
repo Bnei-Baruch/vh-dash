@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { grey } from "@material-ui/core/colors";
 import { fade } from "@material-ui/core/styles";
-import { Play, Users, BookOpen, LibraryBig, ChevronLeft, ChevronRight } from "lucide-react";
+import { Play, Users, BookOpen, LibraryBig } from "lucide-react";
 
 /* ===== Styled Components ===== */
 
@@ -101,23 +101,11 @@ const LinkText = styled.div`
   }
 `;
 
-const ChevronIcon = styled.div`
-  color: ${grey[300]};
-  transition: color 0.2s ease;
-  display: flex;
-  align-items: center;
-
-  ${StudyLinkRow}:hover & {
-    color: ${(p) => p.theme.palette.primary.main};
-  }
-`;
 
 /* ===== Component ===== */
 
 const StudyArea = () => {
   const { t, i18n } = useTranslation();
-  const isRTL = i18n.dir(i18n.language) === "rtl";
-
   const studyLinks = [
     { id: 1, text: t("Dashboard.StudyArea.liveBroadcastAlone"), icon: Play, href: "/dash/broadcast" },
     { id: 2, text: t("Dashboard.StudyArea.liveBroadcastWithTen"), icon: Users, href: "https://arvut.kli.one/user/" },
@@ -146,7 +134,6 @@ const StudyArea = () => {
 
         {studyLinks.map((link) => {
           const IconComponent = link.icon;
-          const ChevronComponent = isRTL ? ChevronLeft : ChevronRight;
           return (
             <StudyLinkRow
               key={link.id}
@@ -156,9 +143,6 @@ const StudyArea = () => {
                 <IconComponent size={20} strokeWidth={2} />
               </LinkIcon>
               <LinkText>{link.text}</LinkText>
-              <ChevronIcon>
-                <ChevronComponent size={16} />
-              </ChevronIcon>
             </StudyLinkRow>
           );
         })}
