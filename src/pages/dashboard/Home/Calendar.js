@@ -2,17 +2,14 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import {
   Button,
-  ButtonGroup,
   Chip,
   CircularProgress,
-  IconButton,
   Table,
   TableBody,
   TableCell,
   TableRow,
   Typography,
 } from "@material-ui/core";
-import { RefreshCw } from "react-feather";
 import { Calendar as CalendarIcon } from "lucide-react";
 import { red, grey } from "@material-ui/core/colors";
 import { useTranslation } from "react-i18next";
@@ -25,9 +22,6 @@ import {
   GOOGLE_CALENDAR_RU,
 } from "../../../shared/constants";
 
-const TODAY = 0;
-const TOMORROW = 1;
-const YESTERDAY = -1;
 
 const Wrapper = styled.div`
   background: ${(p) => p.theme.palette.background.paper};
@@ -66,11 +60,6 @@ const HeaderIcon = styled.div`
 const CardActionHeader = styled.div`
   display: flex;
   align-items: center;
-  gap: 8px;
-`;
-
-const CalendarButtonGroup = styled(ButtonGroup)`
-  margin: 0 8px;
 `;
 
 const Spinner = styled.div`
@@ -152,7 +141,6 @@ const Calendar = ({ onLiveEvent, settings: { language } }) => {
   const [refresh, setRefresh] = useState(true);
   const [refreshToday, setRefreshToday] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const [day, setDay] = useState(TODAY);
   const [events, setEvents] = useState([]);
   const [eventsForToday, setEventsForToday] = useState([]);
   const [eventsTimeout, setEventsTimeout] = useState(0);
@@ -162,14 +150,6 @@ const Calendar = ({ onLiveEvent, settings: { language } }) => {
     setLoading(false);
     setErrorMessage("Could not load events");
     console.error(err);
-  };
-
-  const onDayChange = ({ target }) => {
-    const newDay = parseInt(
-      target.tagName === "SPAN" ? target.parentNode.value : target.value
-    );
-    setDay(newDay);
-    setRefresh(true);
   };
 
   useEffect(() => {
@@ -210,10 +190,7 @@ const Calendar = ({ onLiveEvent, settings: { language } }) => {
           date.getDate()
         )}`;
 
-      const now = new Date();
-      const currentDate = new Date(
-        now.setDate(now.getDate() + (refreshToday ? 0 : day))
-      );
+      const currentDate = new Date();
 
       const {
         result: { items },
@@ -245,21 +222,15 @@ const Calendar = ({ onLiveEvent, settings: { language } }) => {
         };
       });
 
-      if (day === TODAY || refreshToday) {
-        setEventsForToday(calendarEvents);
-      }
-
-      if (day === TODAY || (day !== TODAY && !refreshToday)) {
-        setEvents(calendarEvents);
-      }
-
+      setEventsForToday(calendarEvents);
+      setEvents(calendarEvents);
       setRefresh(false);
       setRefreshToday(false);
       setLoading(false);
     };
 
     getEvents().catch(eventsErr);
-  }, [authenticated, refresh, refreshToday, day, language]);
+  }, [authenticated, refresh, refreshToday, language]);
 
   useEffect(() => {
     const nowMs = new Date().getTime();
@@ -324,33 +295,17 @@ const Calendar = ({ onLiveEvent, settings: { language } }) => {
         </Header>
 
         <CardActionHeader>
-          <CalendarButtonGroup
+          <Button
+            size="small"
+            variant="outlined"
             color="primary"
-            onClick={onDayChange}
-            aria-label="primary button group"
+            component="a"
+            href="https://events.kli.one/"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <Button
-              variant={day === TODAY ? "contained" : "outlined"}
-              color={day === TODAY ? "primary" : "default"}
-              value={TODAY}
-            >
-              {t("Home.today")}
-            </Button>
-            <Button
-              variant={day === TOMORROW ? "contained" : "outlined"}
-              color={day === TOMORROW ? "primary" : "default"}
-              value={TOMORROW}
-            >
-              {t("Home.tomorrow")}
-            </Button>
-            <Button
-              variant={day === YESTERDAY ? "contained" : "outlined"}
-              color={day === YESTERDAY ? "primary" : "default"}
-              value={YESTERDAY}
-            >
-              {t("Home.yesterday")}
-            </Button>
-          </CalendarButtonGroup>
+            {t("Home.viewAllEvents")}
+          </Button>
         </CardActionHeader>
       </div>
 
