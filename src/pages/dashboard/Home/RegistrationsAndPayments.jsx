@@ -2,7 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { grey } from "@material-ui/core/colors";
 import { useSelector } from "react-redux";
-import { Coffee, ChevronLeft, Calendar, CreditCard, Check, Shield, Plus, ArrowRight } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import { Coffee, ChevronLeft, Calendar, CreditCard, Plus } from "lucide-react";
 import { DASHBOARD_ROUTES } from "../../../routes/dashboardRoutes";
 import { membershipDataV2 } from "../../../redux/selectors/user";
 
@@ -198,14 +199,15 @@ const WideCardButton = styled.button`
 /* ===== Component ===== */
 
 const RegistrationsAndPayments = () => {
+  const { t } = useTranslation();
   const membership = useSelector((state) => membershipDataV2(state));
   const isActive = membership?.active || false;
 
   const cards = [
     {
       id: 1,
-      title: "סעודות",
-      description: "הרשמה לסעודות שישי–שבת במרכז",
+      title: t("Home.payments.meals.title"),
+      description: t("Home.payments.meals.description"),
       icon: Coffee,
       bgColor: "#f0fdfa",
       iconColor: "#0d9488",
@@ -213,8 +215,8 @@ const RegistrationsAndPayments = () => {
     },
     {
       id: 2,
-      title: "הרשמה לאירועים",
-      description: "הרשמה לאירועים וכנסים קרובים",
+      title: t("Home.payments.events.title"),
+      description: t("Home.payments.events.description"),
       icon: Calendar,
       bgColor: "#eff6ff",
       iconColor: "#2563eb",
@@ -222,21 +224,20 @@ const RegistrationsAndPayments = () => {
     },
   ];
 
-  // Membership card content based on status
   const membershipCard = isActive
     ? {
-        title: "מנוי פעיל",
-        description: "הגישה שלך לשידורים החיים ולתכני הלימוד פעילה",
-        buttonText: "ניהול מנוי",
+        title: t("Home.payments.tuition.title"),
+        description: t("Home.payments.tuition.description"),
+        buttonText: t("Home.payments.tuition.button"),
         icon: CreditCard,
         bgColor: "#f3e8ff",
         iconColor: "#9333ea",
         href: "https://kli.one/dash/membership",
       }
     : {
-        title: "הסדרת מנוי",
-        description: "מנוי מאפשר גישה לשידורים החיים, לתכני הלימוד ולפעילות הקהילה",
-        buttonText: "הפעלת מנוי",
+        title: t("Home.payments.membership.title"),
+        description: t("Home.payments.membership.description"),
+        buttonText: t("Home.payments.membership.button"),
         icon: Plus,
         bgColor: "#fef2f2",
         iconColor: "#dc2626",
@@ -254,7 +255,7 @@ const RegistrationsAndPayments = () => {
   return (
     <Wrapper>
       <Header>
-        <HeaderTitle>הרשמה ותשלומים</HeaderTitle>
+        <HeaderTitle>{t("Home.payments.title")}</HeaderTitle>
         <HeaderLine />
       </Header>
 
@@ -276,7 +277,7 @@ const RegistrationsAndPayments = () => {
                     handleCardClick(card.href);
                   }}
                 >
-                  להרשמה
+                  {t("Home.payments.register")}
                   <ChevronLeft size={16} />
                 </RegisterLink>
               </CardContent>

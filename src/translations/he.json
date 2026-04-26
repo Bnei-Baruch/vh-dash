@@ -77,7 +77,48 @@
       "register": "להרשם",
       "conventionSite": "אתר הכנס",
       "conventiontitle": "Rising above ourselves",
-      "conventionsubtitle": "Revealing a new World"
+      "conventionsubtitle": "Revealing a new World",
+      "payments": {
+        "title": "תשלומים",
+        "register": "להרשמה",
+        "meals": {
+          "title": "להירשם לסעודות",
+          "description": "תשלום עבור השתתפות בסעודות"
+        },
+        "events": {
+          "title": "להירשם לאירועים",
+          "description": "תשלום עבור השתתפות באירועים"
+        },
+        "tuition": {
+          "title": "לשלם שכר לימוד",
+          "description": "גישה מלאה לשידורים, לתכני הלימוד ולתחזוקה השוטפת של ערוצי הקהילה",
+          "button": "ניהול מנוי"
+        },
+        "membership": {
+          "title": "הסדרת מנוי",
+          "description": "מנוי מאפשר גישה לשידורים, לתכני הלימוד ולתחזוקה השוטפת של ערוצי הקהילה",
+          "button": "הפעלת מנוי"
+        }
+      },
+      "giving": {
+        "title": "תרומות",
+        "donation": {
+          "title": "לתרום להפצה",
+          "description": "תרומה לתמיכה במפעל ההפצה של חכמת הקבלה"
+        },
+        "tithe": {
+          "title": "להפריש מעשר",
+          "description": "תשלום חודשי בשיעור של 10% מההכנסות, המיועד להפצת חכמת הקבלה"
+        },
+        "help": {
+          "title": "לעזור לחברים",
+          "description": "Help Haver - קרן המסייעת לחברים בתשלום שכר לימוד או בהשתתפות בכנסים ואירועים"
+        },
+        "request": {
+          "title": "לבקש תמיכה",
+          "description": "בקשת תמיכה מקרן Help Haver"
+        }
+      }
     },
     "UserMenu": {
       "logOut": "להתנתק",

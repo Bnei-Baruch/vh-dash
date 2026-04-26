@@ -77,7 +77,48 @@
       "register": "Register",
       "conventionSite": "Convention Site",
       "conventiontitle": "Rising above ourselves",
-      "conventionsubtitle": "Revealing a new World"
+      "conventionsubtitle": "Revealing a new World",
+      "payments": {
+        "title": "Payments",
+        "register": "Register",
+        "meals": {
+          "title": "Register for Meals",
+          "description": "Payment for meal participation"
+        },
+        "events": {
+          "title": "Register for Events",
+          "description": "Payment for event participation"
+        },
+        "tuition": {
+          "title": "Pay Tuition",
+          "description": "Full access to broadcasts, study content, and community channel maintenance",
+          "button": "Manage Membership"
+        },
+        "membership": {
+          "title": "Set Up Membership",
+          "description": "Membership grants access to broadcasts, study content, and community activities",
+          "button": "Activate Membership"
+        }
+      },
+      "giving": {
+        "title": "Donations",
+        "donation": {
+          "title": "Donate for Dissemination",
+          "description": "Support the dissemination of Kabbalah wisdom"
+        },
+        "tithe": {
+          "title": "Give Tithe",
+          "description": "Monthly payment of 10% of income for disseminating Kabbalah wisdom"
+        },
+        "help": {
+          "title": "Help Friends",
+          "description": "Help Haver — fund supporting members with tuition and event participation"
+        },
+        "request": {
+          "title": "Request Support",
+          "description": "Apply for assistance from the Help Haver fund"
+        }
+      }
     },
     "UserMenu": {
       "logOut": "Log Out",

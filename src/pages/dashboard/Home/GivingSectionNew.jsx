@@ -1,14 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 import { grey } from "@material-ui/core/colors";
-import { Gift, Users, Hand } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import { Gift, Users, Hand, HeartHandshake } from "lucide-react";
 
 /* ===== Styled Components ===== */
 
 const Wrapper = styled.div`
   background: #f9fafb;
   border-radius: 16px;
-  padding: 32px;
+  padding: 24px;
   position: relative;
   width: 100%;
 `;
@@ -108,12 +109,13 @@ const ArrowIcon = styled.div`
 /* ===== Component ===== */
 
 const GivingSectionNew = () => {
-  // Using the same data structure and content from the original component
+  const { t } = useTranslation();
+
   const givingCards = [
     {
       id: 1,
-      title: "לתרום להפצה",
-      description: "תמיכה בהפצת החכמה",
+      title: t("Home.giving.donation.title"),
+      description: t("Home.giving.donation.description"),
       icon: Gift,
       bgColor: "#fff7ed",
       iconColor: "#ea580c",
@@ -123,8 +125,19 @@ const GivingSectionNew = () => {
     },
     {
       id: 2,
-      title: "Help Haver",
-      description: "קרן עזרה הדדית",
+      title: t("Home.giving.tithe.title"),
+      description: t("Home.giving.tithe.description"),
+      icon: Hand,
+      bgColor: "#eff6ff",
+      iconColor: "#2563eb",
+      hoverColor: "#bfdbfe",
+      hoverBgColor: "rgba(191, 219, 254, 0.3)",
+      href: "https://pay.kli.one/he/form/tithe",
+    },
+    {
+      id: 3,
+      title: t("Home.giving.help.title"),
+      description: t("Home.giving.help.description"),
       icon: Users,
       bgColor: "#fff1f2",
       iconColor: "#e11d48",
@@ -133,15 +146,15 @@ const GivingSectionNew = () => {
       href: "https://pay.kli.one/he/form/help-haver?utm_source=payment_system_civicrm_login&utm_medium=button&utm_campaign=donations&utm_id=donations&utm_term=heb&utm_content=homepage_button_donate#no-back",
     },
     {
-      id: 3,
-      title: "תשלום מעשר",
-      description: "הוראת קבע או חד פעמי",
-      icon: Hand,
-      bgColor: "#eff6ff",
-      iconColor: "#2563eb",
-      hoverColor: "#bfdbfe",
-      hoverBgColor: "rgba(191, 219, 254, 0.3)",
-      href: "https://pay.kli.one/he/form/tithe",
+      id: 4,
+      title: t("Home.giving.request.title"),
+      description: t("Home.giving.request.description"),
+      icon: HeartHandshake,
+      bgColor: "#f5f3ff",
+      iconColor: "#7c3aed",
+      hoverColor: "#ddd6fe",
+      hoverBgColor: "rgba(221, 214, 254, 0.3)",
+      href: "https://docs.google.com/forms/d/e/1FAIpQLScU0xjKtV4XVJwz2nbv4vTB3p_inw6nhJPNw1-kHG3GzoB6qA/viewform",
     },
   ];
 
@@ -156,13 +169,9 @@ const GivingSectionNew = () => {
   return (
     <Wrapper>
       <HeaderSection>
-        <HeaderTitle>נתינה וערבות הדדית</HeaderTitle>
+        <HeaderTitle>{t("Home.giving.title")}</HeaderTitle>
         <HeaderLine />
       </HeaderSection>
-
-      <Subtitle>
-       הנתינה היא הכלי דרכו אנו בונים את הכלי הרוחני המשותף שלנו. כל תרומה מחזקת את הקשר בינינו.
-      </Subtitle>
 
       <CardsContainer>
         {givingCards.map((card) => {
