@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect } from "react";
-import { withTheme } from "styled-components";
 import { Grid } from "@material-ui/core";
 import Calendar from "./Calendar";
 import StudyArea from "./StudyArea.jsx";
@@ -50,4 +49,4 @@ const Home = () => {
   );
 };
 
-export default withTheme(Home);
+export default Home;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import {
   Button,
@@ -145,12 +145,12 @@ const Calendar = ({ onLiveEvent, settings: { language } }) => {
   const [eventsForToday, setEventsForToday] = useState([]);
   const [eventsTimeout, setEventsTimeout] = useState(0);
 
-  const eventsErr = (err) => {
+  const eventsErr = useCallback((err) => {
     setRefresh(false);
     setLoading(false);
     setErrorMessage(t("Home.calendarError"));
     console.error(err);
-  };
+  }, [t]);
 
   useEffect(() => {
     const gapi = window.gapi;
@@ -174,7 +174,7 @@ const Calendar = ({ onLiveEvent, settings: { language } }) => {
         eventsErr(err);
       });
     });
-  }, []);
+  }, [eventsErr]);
 
   useEffect(() => {
     if (!authenticated || !(refresh || refreshToday)) {
@@ -230,7 +230,7 @@ const Calendar = ({ onLiveEvent, settings: { language } }) => {
     };
 
     getEvents().catch(eventsErr);
-  }, [authenticated, refresh, refreshToday, language]);
+  }, [authenticated, refresh, refreshToday, language, eventsErr]);
 
   useEffect(() => {
     const nowMs = new Date().getTime();

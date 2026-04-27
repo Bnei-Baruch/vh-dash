@@ -36,14 +36,6 @@ const HeaderLine = styled.div`
   margin-right: ${(p) => p.theme.spacing(3)}px;
 `;
 
-const Subtitle = styled.p`
-  font-size: 15px;
-  color: ${(p) => p.theme.palette.text.secondary};
-  margin: 0 0 32px 0;
-  line-height: 1.6;
-  font-style: italic;
-`;
-
 const CardsContainer = styled.div`
   display: flex;
   flex-direction: column;
