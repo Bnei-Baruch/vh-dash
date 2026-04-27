@@ -8,6 +8,5 @@ export const DASHBOARD_ROUTES = {
   arvutSystem: `${DASHBOARD_ROOT}/arvutsytem`,
   archive: `${DASHBOARD_ROOT}/archive`,
   membership: `${DASHBOARD_ROOT}/membership`,
-  events: `${DASHBOARD_ROOT}/events`,
   previousPayment: `${DASHBOARD_ROOT}/membership/payments`,
 };
