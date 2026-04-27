@@ -10,15 +10,15 @@ import { membershipDataV2 } from "../../../redux/selectors/user";
 
 const Wrapper = styled.div`
   background: transparent;
-  border-radius: 16px;
-  padding: 24px;
+  border-radius: ${(p) => p.theme.spacing(3)}px;
+  padding: ${(p) => p.theme.spacing(6)}px;
 `;
 
 const Header = styled.div`
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 24px;
+  gap: ${(p) => p.theme.spacing(3)}px;
+  margin-bottom: ${(p) => p.theme.spacing(6)}px;
   position: relative;
 `;
 
@@ -32,14 +32,14 @@ const HeaderTitle = styled.h3`
 const HeaderLine = styled.div`
   flex: 1;
   height: 1px;
-  background: #e5e7eb;
-  margin-right: 12px;
+  background: ${grey[200]};
+  margin-right: ${(p) => p.theme.spacing(3)}px;
 `;
 
 const CardsGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  gap: 24px;
+  gap: ${(p) => p.theme.spacing(6)}px;
 
   @media (min-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
@@ -47,10 +47,10 @@ const CardsGrid = styled.div`
 `;
 
 const Card = styled.div`
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  padding: 20px;
+  background: ${(p) => p.theme.palette.background.paper};
+  border: 1px solid ${grey[200]};
+  border-radius: ${(p) => p.theme.spacing(3)}px;
+  padding: ${(p) => p.theme.spacing(5)}px;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -64,12 +64,12 @@ const Card = styled.div`
 
 const CardIconWrapper = styled.div`
   position: absolute;
-  top: 16px;
-  right: 20px;
-  background: ${({ bgColor }) => bgColor || "#f0fdfa"};
-  color: ${({ iconColor }) => iconColor || "#0d9488"};
-  padding: 12px;
-  border-radius: 12px;
+  top: ${(p) => p.theme.spacing(4)}px;
+  right: ${(p) => p.theme.spacing(5)}px;
+  background: ${({ bgColor }) => bgColor};
+  color: ${({ iconColor }) => iconColor};
+  padding: ${(p) => p.theme.spacing(3)}px;
+  border-radius: ${(p) => p.theme.spacing(3)}px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -112,17 +112,17 @@ const RegisterLink = styled.a`
 `;
 
 const WideCard = styled.div`
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  padding: 16px 24px;
+  background: ${(p) => p.theme.palette.background.paper};
+  border: 1px solid ${grey[200]};
+  border-radius: ${(p) => p.theme.spacing(3)}px;
+  padding: ${(p) => p.theme.spacing(4)}px ${(p) => p.theme.spacing(6)}px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: ${(p) => p.theme.spacing(4)}px;
   transition: all 0.2s ease;
-  margin-top: 24px;
+  margin-top: ${(p) => p.theme.spacing(6)}px;
 
   &:hover {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -134,15 +134,15 @@ const WideCardLeft = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  gap: 16px;
+  gap: ${(p) => p.theme.spacing(4)}px;
   flex: 1;
 `;
 
 const WideCardIconWrapper = styled.div`
-  background: ${({ bgColor }) => bgColor || "#f0fdfa"};
-  color: ${({ iconColor }) => iconColor || "#0d9488"};
-  padding: 12px;
-  border-radius: 12px;
+  background: ${({ bgColor }) => bgColor};
+  color: ${({ iconColor }) => iconColor};
+  padding: ${(p) => p.theme.spacing(3)}px;
+  border-radius: ${(p) => p.theme.spacing(3)}px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -169,23 +169,23 @@ const WideCardDescription = styled.div`
 `;
 
 const WideCardButton = styled.button`
-  background: #f3f4f6;
+  background: ${grey[100]};
   color: ${(p) => p.theme.palette.text.primary};
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  padding: 10px 20px;
+  border: 1px solid ${grey[200]};
+  border-radius: ${(p) => p.theme.spacing(2)}px;
+  padding: ${(p) => p.theme.spacing(2.5)}px ${(p) => p.theme.spacing(5)}px;
   font-weight: 600;
   font-size: 14px;
   cursor: pointer;
   transition: all 0.2s ease;
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: ${(p) => p.theme.spacing(1)}px;
   flex-shrink: 0;
 
   &:hover {
-    background: #e5e7eb;
-    border-color: #d1d5db;
+    background: ${grey[200]};
+    border-color: ${grey[300]};
   }
 
   &:active {

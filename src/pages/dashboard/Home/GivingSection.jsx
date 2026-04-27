@@ -7,9 +7,9 @@ import { Gift, Users, Hand, HeartHandshake } from "lucide-react";
 /* ===== Styled Components ===== */
 
 const Wrapper = styled.div`
-  background: #f9fafb;
-  border-radius: 16px;
-  padding: 24px;
+  background: transparent;
+  border-radius: ${(p) => p.theme.spacing(3)}px;
+  padding: ${(p) => p.theme.spacing(6)}px;
   position: relative;
   width: 100%;
 `;
@@ -17,8 +17,8 @@ const Wrapper = styled.div`
 const HeaderSection = styled.div`
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 24px;
+  gap: ${(p) => p.theme.spacing(3)}px;
+  margin-bottom: ${(p) => p.theme.spacing(6)}px;
   position: relative;
 `;
 
@@ -32,8 +32,8 @@ const HeaderTitle = styled.h3`
 const HeaderLine = styled.div`
   flex: 1;
   height: 1px;
-  background: #e5e7eb;
-  margin-right: 12px;
+  background: ${grey[200]};
+  margin-right: ${(p) => p.theme.spacing(3)}px;
 `;
 
 const Subtitle = styled.p`
@@ -47,24 +47,24 @@ const Subtitle = styled.p`
 const CardsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: ${(p) => p.theme.spacing(4)}px;
 `;
 
 const SubSectionHeader = styled.div`
-  margin-bottom: 12px;
+  margin-bottom: ${(p) => p.theme.spacing(3)}px;
 `;
 
 const SubSectionTitleRow = styled.div`
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 4px;
+  gap: ${(p) => p.theme.spacing(3)}px;
+  margin-bottom: ${(p) => p.theme.spacing(1)}px;
 `;
 
 const SubSectionLine = styled.div`
   flex: 1;
   height: 1px;
-  background: #e5e7eb;
+  background: ${grey[200]};
 `;
 
 const SubSectionTitle = styled.div`
@@ -83,7 +83,7 @@ const SubSectionSubtitle = styled.div`
 const TwoColumnRow = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  gap: ${(p) => p.theme.spacing(4)}px;
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
@@ -91,21 +91,21 @@ const TwoColumnRow = styled.div`
 `;
 
 const Card = styled.div`
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  padding: 20px;
+  background: ${(p) => p.theme.palette.background.paper};
+  border: 1px solid ${grey[200]};
+  border-radius: ${(p) => p.theme.spacing(3)}px;
+  padding: ${(p) => p.theme.spacing(5)}px;
   cursor: pointer;
   display: flex;
   align-items: ${({ $vertical }) => ($vertical ? "flex-start" : "center")};
   flex-direction: ${({ $vertical }) => ($vertical ? "column" : "row")};
-  gap: 20px;
+  gap: ${(p) => p.theme.spacing(5)}px;
   transition: all 0.2s ease;
   position: relative;
 
   &:hover {
-    border-color: ${({ hoverColor }) => hoverColor || "#e5e7eb"};
-    background-color: ${({ hoverBgColor }) => hoverBgColor || "#ffffff"};
+    border-color: ${({ hoverColor }) => hoverColor || grey[200]};
+    background-color: ${({ hoverBgColor }) => hoverBgColor || "transparent"};
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
 `;
@@ -113,8 +113,8 @@ const Card = styled.div`
 const IconWrapper = styled.div`
   background: ${({ bgColor }) => bgColor};
   color: ${({ iconColor }) => iconColor};
-  padding: 14px;
-  border-radius: 12px;
+  padding: ${(p) => p.theme.spacing(3.5)}px;
+  border-radius: ${(p) => p.theme.spacing(3)}px;
   display: flex;
   align-items: center;
   justify-content: center;
