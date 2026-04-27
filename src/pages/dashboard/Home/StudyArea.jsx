@@ -109,8 +109,9 @@ const StudyArea = () => {
   const studyLinks = [
     { id: 1, text: t("Dashboard.StudyArea.liveBroadcastAlone"), icon: Play, href: "/dash/broadcast" },
     { id: 2, text: t("Dashboard.StudyArea.liveBroadcastWithTen"), icon: Users, href: "https://arvut.kli.one/user/" },
-    { id: 3, text: t("Dashboard.StudyArea.kabbalaMedia"), icon: BookOpen, href: "https://kabbalahmedia.info" },
-    { id: 4, text: t("Dashboard.StudyArea.studyMaterials"), icon: LibraryBig, href: "https://study.kli.one/" },
+    { id: 3, text: t("Dashboard.StudyArea.recordedLessons"), icon: Play, href: "https://kabbalahmedia.info/he/lessons" },
+    { id: 4, text: t("Dashboard.StudyArea.sources"), icon: BookOpen, href: "https://kabbalahmedia.info/he/sources" },
+    { id: 5, text: t("Dashboard.StudyArea.studyMaterials"), icon: LibraryBig, href: "https://study.kli.one/" },
   ];
 
   const handleLinkClick = (href, e) => {
