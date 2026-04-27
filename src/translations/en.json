@@ -69,6 +69,7 @@
       "yesterday": "Yesterday",
       "events": "Events",
       "viewAllEvents": "View all events",
+      "calendarError": "Could not load events",
       "welcomeBack": "Welcome back",
       "convention": "Convention",
       "registered": "You are registered",

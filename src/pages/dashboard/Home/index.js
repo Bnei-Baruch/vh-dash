@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import { withTheme } from "styled-components";
 import { Grid } from "@material-ui/core";
 import Calendar from "./Calendar";
@@ -9,7 +9,6 @@ import Messages from "./Messages.jsx";
 import { usePageTitle } from "../../../contexts/PageTitleContext";
 
 const Home = () => {
-  const [liveEvent, setLiveEvent] = useState();
   const { setTitle } = usePageTitle();
 
   // Reset title immediately when component mounts
@@ -20,9 +19,7 @@ const Home = () => {
     };
   }, [setTitle]);
 
-  const onLiveEvent = useCallback((event) => {
-    setLiveEvent(event);
-  }, []);
+  const onLiveEvent = useCallback(() => {}, []);
 
   return (
     <>
@@ -40,13 +37,8 @@ const Home = () => {
         </Grid>
       </Grid>
 
-      {/* 2️⃣ Registrations and Payments + Giving Section New (50% / 50%) */}
+      {/* 2️⃣ Payments + Giving (50% / 50%) */}
       <Grid container spacing={6}>
-        <Grid item xs={12}>
-          {/* Placeholder for live broadcast indication */}
-          {liveEvent && console.log("Live event active")}
-        </Grid>
-
         <Grid item xs={12} md={6}>
           <PaymentsArea />
         </Grid>

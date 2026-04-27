@@ -148,7 +148,7 @@ const Calendar = ({ onLiveEvent, settings: { language } }) => {
   const eventsErr = (err) => {
     setRefresh(false);
     setLoading(false);
-    setErrorMessage("Could not load events");
+    setErrorMessage(t("Home.calendarError"));
     console.error(err);
   };
 
