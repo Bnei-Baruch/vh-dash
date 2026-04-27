@@ -144,29 +144,7 @@ const ArrowIcon = styled.div`
 const GivingSection = () => {
   const { t } = useTranslation();
 
-  const givingCards = [
-    {
-      id: 1,
-      title: t("Home.giving.request.title"),
-      description: t("Home.giving.request.description"),
-      icon: HeartHandshake,
-      bgColor: "#f5f3ff",
-      iconColor: "#7c3aed",
-      hoverColor: "#ddd6fe",
-      hoverBgColor: "rgba(221, 214, 254, 0.3)",
-      href: "https://docs.google.com/forms/d/e/1FAIpQLScU0xjKtV4XVJwz2nbv4vTB3p_inw6nhJPNw1-kHG3GzoB6qA/viewform",
-    },
-    {
-      id: 2,
-      title: t("Home.giving.help.title"),
-      description: t("Home.giving.help.description"),
-      icon: Users,
-      bgColor: "#fff1f2",
-      iconColor: "#e11d48",
-      hoverColor: "#fecdd3",
-      hoverBgColor: "rgba(254, 205, 211, 0.3)",
-      href: "https://pay.kli.one/he/form/help-haver?utm_source=payment_system_civicrm_login&utm_medium=button&utm_campaign=donations&utm_id=donations&utm_term=heb&utm_content=homepage_button_donate#no-back",
-    },
+  const mainCards = [
     {
       id: 3,
       title: t("Home.giving.donation.title"),
@@ -191,6 +169,31 @@ const GivingSection = () => {
     },
   ];
 
+  const helpHaverCards = [
+    {
+      id: 1,
+      title: t("Home.giving.request.title"),
+      description: t("Home.giving.request.description"),
+      icon: HeartHandshake,
+      bgColor: "#f5f3ff",
+      iconColor: "#7c3aed",
+      hoverColor: "#ddd6fe",
+      hoverBgColor: "rgba(221, 214, 254, 0.3)",
+      href: "https://docs.google.com/forms/d/e/1FAIpQLScU0xjKtV4XVJwz2nbv4vTB3p_inw6nhJPNw1-kHG3GzoB6qA/viewform",
+    },
+    {
+      id: 2,
+      title: t("Home.giving.help.title"),
+      description: t("Home.giving.help.description"),
+      icon: Users,
+      bgColor: "#fff1f2",
+      iconColor: "#e11d48",
+      hoverColor: "#fecdd3",
+      hoverBgColor: "rgba(254, 205, 211, 0.3)",
+      href: "https://pay.kli.one/he/form/help-haver?utm_source=payment_system_civicrm_login&utm_medium=button&utm_campaign=donations&utm_id=donations&utm_term=heb&utm_content=homepage_button_donate#no-back",
+    },
+  ];
+
   const handleCardClick = (href) => {
     if (href.startsWith("http")) {
       window.open(href, "_blank", "noopener,noreferrer");
@@ -207,7 +210,7 @@ const GivingSection = () => {
       </HeaderSection>
 
       <CardsContainer>
-        {givingCards.slice(2).map((card) => {
+        {mainCards.map((card) => {
           const IconComponent = card.icon;
           return (
             <Card
@@ -249,7 +252,7 @@ const GivingSection = () => {
           <SubSectionSubtitle>{t("Home.giving.helpHaverSubtitle")}</SubSectionSubtitle>
         </SubSectionHeader>
         <TwoColumnRow>
-          {givingCards.slice(0, 2).map((card) => {
+          {helpHaverCards.map((card) => {
             const IconComponent = card.icon;
             return (
               <Card
