@@ -12,7 +12,6 @@ import Page404 from "../pages/auth/Page404";
 import Auth from "../config/Auth";
 import DashboardPageLayout from "./DashboardPageLayout";
 
-
 const renderRoute = (Layout, route) => {
   const { path, id, enableHeader, component: Component } = route;
 
@@ -35,7 +34,6 @@ const renderRoute = (Layout, route) => {
     />
   );
 };
-
 
 const renderRoutes = (Layout, routes) =>
   routes.flatMap((route) =>
