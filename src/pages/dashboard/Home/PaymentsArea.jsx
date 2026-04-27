@@ -243,7 +243,7 @@ const PaymentsArea = () => {
 
   const handleCardClick = (href) => {
     if (href.startsWith("http")) {
-      window.open(href, "_blank");
+      window.open(href, "_blank", "noopener,noreferrer");
     } else {
       window.location.href = href;
     }
@@ -269,10 +269,8 @@ const PaymentsArea = () => {
                 <CardDescription>{card.description}</CardDescription>
                 <RegisterLink
                   href={card.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleCardClick(card.href);
-                  }}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   {t("Home.payments.register")}
                   <ChevronLeft size={16} />

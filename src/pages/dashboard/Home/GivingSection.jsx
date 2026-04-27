@@ -193,7 +193,7 @@ const GivingSection = () => {
 
   const handleCardClick = (href) => {
     if (href.startsWith("http")) {
-      window.open(href, "_blank");
+      window.open(href, "_blank", "noopener,noreferrer");
     } else {
       window.location.href = href;
     }

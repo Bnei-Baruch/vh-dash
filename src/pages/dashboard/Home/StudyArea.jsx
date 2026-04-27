@@ -117,7 +117,7 @@ const StudyArea = () => {
   const handleLinkClick = (href, e) => {
     e.preventDefault();
     if (href.startsWith("http")) {
-      window.open(href, "_blank");
+      window.open(href, "_blank", "noopener,noreferrer");
     } else {
       window.location.href = href;
     }
