@@ -1,72 +1,126 @@
 import React from "react";
 import styled from "styled-components";
-import { Heart, Gift, Users, Hand } from "lucide-react";
+import { grey } from "@material-ui/core/colors";
+import { useTranslation } from "react-i18next";
+import { Gift, Users, Hand, HeartHandshake } from "lucide-react";
 
 /* ===== Styled Components ===== */
 
 const Wrapper = styled.div`
-  background: #ffffff;
+  background: #f9fafb;
   border-radius: 16px;
   padding: 24px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e5e7eb;
+  position: relative;
+  width: 100%;
 `;
 
-const Header = styled.div`
+const HeaderSection = styled.div`
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   margin-bottom: 24px;
+  position: relative;
 `;
 
 const HeaderTitle = styled.h3`
   font-size: 20px;
   font-weight: 700;
-  color: #1f2937;
+  color: ${(p) => p.theme.palette.text.primary};
   margin: 0;
 `;
 
-const HeaderIcon = styled.div`
-  color: #e11d48;
-  display: flex;
-  align-items: center;
+const HeaderLine = styled.div`
+  flex: 1;
+  height: 1px;
+  background: #e5e7eb;
+  margin-right: 12px;
 `;
 
-const CardsGrid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
+const Subtitle = styled.p`
+  font-size: 15px;
+  color: ${(p) => p.theme.palette.text.secondary};
+  margin: 0 0 32px 0;
+  line-height: 1.6;
+  font-style: italic;
+`;
 
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(3, 1fr);
+const CardsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+`;
+
+const SubSectionHeader = styled.div`
+  margin-bottom: 12px;
+`;
+
+const SubSectionTitleRow = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 4px;
+`;
+
+const SubSectionLine = styled.div`
+  flex: 1;
+  height: 1px;
+  background: #e5e7eb;
+`;
+
+const SubSectionTitle = styled.div`
+  font-size: 16px;
+  font-weight: 700;
+  color: ${(p) => p.theme.palette.text.primary};
+  white-space: nowrap;
+`;
+
+const SubSectionSubtitle = styled.div`
+  font-size: 13px;
+  color: ${(p) => p.theme.palette.text.secondary};
+  text-align: center;
+`;
+
+const TwoColumnRow = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
   }
 `;
 
 const Card = styled.div`
+  background: #ffffff;
   border: 1px solid #e5e7eb;
   border-radius: 12px;
-  padding: 16px;
+  padding: 20px;
   cursor: pointer;
   display: flex;
-  align-items: center;
-  gap: 16px;
+  align-items: ${({ $vertical }) => ($vertical ? "flex-start" : "center")};
+  flex-direction: ${({ $vertical }) => ($vertical ? "column" : "row")};
+  gap: 20px;
   transition: all 0.2s ease;
+  position: relative;
 
   &:hover {
     border-color: ${({ hoverColor }) => hoverColor || "#e5e7eb"};
-    background-color: ${({ hoverBgColor }) => hoverBgColor || "transparent"};
+    background-color: ${({ hoverBgColor }) => hoverBgColor || "#ffffff"};
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
 `;
 
 const IconWrapper = styled.div`
   background: ${({ bgColor }) => bgColor};
   color: ${({ iconColor }) => iconColor};
-  padding: 12px;
-  border-radius: 50%;
+  padding: 14px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  width: 56px;
+  height: 56px;
 `;
 
 const CardContent = styled.div`
@@ -75,35 +129,45 @@ const CardContent = styled.div`
 
 const CardTitle = styled.div`
   font-weight: 700;
-  color: #1f2937;
-  font-size: 15px;
-  margin-bottom: 4px;
+  color: ${(p) => p.theme.palette.text.primary};
+  font-size: 18px;
+  margin-bottom: 6px;
 `;
 
 const CardDescription = styled.div`
-  font-size: 12px;
-  color: #6b7280;
+  font-size: 14px;
+  color: ${(p) => p.theme.palette.text.secondary};
+  line-height: 1.5;
+`;
+
+const ArrowIcon = styled.div`
+  color: ${grey[400]};
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
 `;
 
 /* ===== Component ===== */
 
 const GivingSection = () => {
+  const { t } = useTranslation();
+
   const givingCards = [
     {
       id: 1,
-      title: "לתרום להפצה",
-      description: "תמיכה בהפצת החכמה",
-      icon: Gift,
-      bgColor: "#fff7ed",
-      iconColor: "#ea580c",
-      hoverColor: "#fed7aa",
-      hoverBgColor: "rgba(254, 215, 170, 0.3)",
-      href: "https://pay.kli.one/he/form/donation?utm_source=payment_system_civicrm_login&utm_medium=button&utm_campaign=donations&utm_id=donations&utm_term=heb&utm_content=homepage_button_donate#no-back",
+      title: t("Home.giving.request.title"),
+      description: t("Home.giving.request.description"),
+      icon: HeartHandshake,
+      bgColor: "#f5f3ff",
+      iconColor: "#7c3aed",
+      hoverColor: "#ddd6fe",
+      hoverBgColor: "rgba(221, 214, 254, 0.3)",
+      href: "https://docs.google.com/forms/d/e/1FAIpQLScU0xjKtV4XVJwz2nbv4vTB3p_inw6nhJPNw1-kHG3GzoB6qA/viewform",
     },
     {
       id: 2,
-      title: "Help Haver",
-      description: "קרן עזרה הדדית",
+      title: t("Home.giving.help.title"),
+      description: t("Home.giving.help.description"),
       icon: Users,
       bgColor: "#fff1f2",
       iconColor: "#e11d48",
@@ -113,14 +177,25 @@ const GivingSection = () => {
     },
     {
       id: 3,
-      title: "תשלום מעשר",
-      description: "הוראת קבע או חד פעמי",
+      title: t("Home.giving.donation.title"),
+      description: t("Home.giving.donation.description"),
+      icon: Gift,
+      bgColor: "#fff7ed",
+      iconColor: "#ea580c",
+      hoverColor: "#fed7aa",
+      hoverBgColor: "rgba(254, 215, 170, 0.3)",
+      href: "https://pay.kli.one/he/form/donation?utm_source=payment_system_civicrm_login&utm_medium=button&utm_campaign=donations&utm_id=donations&utm_term=heb&utm_content=homepage_button_donate#no-back",
+    },
+    {
+      id: 4,
+      title: t("Home.giving.tithe.title"),
+      description: t("Home.giving.tithe.description"),
       icon: Hand,
       bgColor: "#eff6ff",
       iconColor: "#2563eb",
       hoverColor: "#bfdbfe",
       hoverBgColor: "rgba(191, 219, 254, 0.3)",
-      href: "https://pay.kli.one/he/form/tithe",
+      href: "https://pay.kli.one/he/Donation",
     },
   ];
 
@@ -134,15 +209,13 @@ const GivingSection = () => {
 
   return (
     <Wrapper>
-      <Header>
-        <HeaderIcon>
-          <Heart size={24} />
-        </HeaderIcon>
-        <HeaderTitle>נתינה וערבות הדדית</HeaderTitle>
-      </Header>
+      <HeaderSection>
+        <HeaderTitle>{t("Home.giving.title")}</HeaderTitle>
+        <HeaderLine />
+      </HeaderSection>
 
-      <CardsGrid>
-        {givingCards.map((card) => {
+      <CardsContainer>
+        {givingCards.slice(2).map((card) => {
           const IconComponent = card.icon;
           return (
             <Card
@@ -152,16 +225,60 @@ const GivingSection = () => {
               onClick={() => handleCardClick(card.href)}
             >
               <IconWrapper bgColor={card.bgColor} iconColor={card.iconColor}>
-                <IconComponent size={24} strokeWidth={2} />
+                <IconComponent size={28} strokeWidth={2} />
               </IconWrapper>
               <CardContent>
                 <CardTitle>{card.title}</CardTitle>
                 <CardDescription>{card.description}</CardDescription>
               </CardContent>
+              <ArrowIcon>
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M15 18l-6-6 6-6" />
+                </svg>
+              </ArrowIcon>
             </Card>
           );
         })}
-      </CardsGrid>
+        <SubSectionHeader>
+          <SubSectionTitleRow>
+            <SubSectionLine />
+            <SubSectionTitle>{t("Home.giving.helpHaverTitle")}</SubSectionTitle>
+            <SubSectionLine />
+          </SubSectionTitleRow>
+          <SubSectionSubtitle>{t("Home.giving.helpHaverSubtitle")}</SubSectionSubtitle>
+        </SubSectionHeader>
+        <TwoColumnRow>
+          {givingCards.slice(0, 2).map((card) => {
+            const IconComponent = card.icon;
+            return (
+              <Card
+                key={card.id}
+                $vertical
+                hoverColor={card.hoverColor}
+                hoverBgColor={card.hoverBgColor}
+                onClick={() => handleCardClick(card.href)}
+              >
+                <IconWrapper bgColor={card.bgColor} iconColor={card.iconColor}>
+                  <IconComponent size={28} strokeWidth={2} />
+                </IconWrapper>
+                <CardContent>
+                  <CardTitle>{card.title}</CardTitle>
+                  <CardDescription>{card.description}</CardDescription>
+                </CardContent>
+              </Card>
+            );
+          })}
+        </TwoColumnRow>
+      </CardsContainer>
     </Wrapper>
   );
 };

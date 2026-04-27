@@ -4,7 +4,7 @@ import { Grid } from "@material-ui/core";
 import Calendar from "./Calendar";
 import StudyArea from "./StudyArea.jsx";
 import PlatformsNavigation from "./PlatformsNavigation.jsx";
-import GivingSectionNew from "./GivingSectionNew.jsx";
+import GivingSection from "./GivingSection.jsx";
 import RegistrationsAndPayments from "./RegistrationsAndPayments.jsx";
 import Messages from "./Messages.jsx";
 import { usePageTitle } from "../../../contexts/PageTitleContext";
@@ -59,7 +59,7 @@ const Home = () => {
           <RegistrationsAndPayments />
         </Grid>
         <Grid item xs={12} md={6}>
-          <GivingSectionNew />
+          <GivingSection />
         </Grid>
       </Grid>
     </>
