@@ -92,34 +92,34 @@
         },
         "tuition": {
           "title": "לשלם שכר לימוד",
-          "description": "גישה מלאה לשידורים, לתכני הלימוד ולתחזוקה השוטפת של ערוצי הקהילה",
+          "description": "גישה מלאה לשידורים, לתכני הלימוד ותחזוקה שוטפת של ערוצי הקהילה",
           "button": "ניהול מנוי"
         },
         "membership": {
           "title": "הסדרת מנוי",
-          "description": "מנוי מאפשר גישה לשידורים, לתכני הלימוד ולתחזוקה השוטפת של ערוצי הקהילה",
+          "description": "המנוי מאפשר גישה לשידורים, לתכני הלימוד ותחזוקה שוטפת של ערוצי הקהילה",
           "button": "הפעלת מנוי"
         }
       },
       "giving": {
         "title": "תרומות",
-        "helpHaverTitle": "Help Haver",
+        "helpHaverTitle": "קרן Help Haver",
         "helpHaverSubtitle": "קרן לעזרה הדדית בקהילה",
         "donation": {
           "title": "לתרום להפצה",
-          "description": "תרומה לתמיכה במפעל ההפצה של חכמת הקבלה"
+          "description": "תרומה להפצת חכמת הקבלה"
         },
         "tithe": {
-          "title": "להפריש מעשר",
+          "title": "תרומת מעשר",
           "description": "תשלום חודשי בשיעור של 10% מההכנסות, המיועד להפצת חכמת הקבלה"
         },
         "help": {
           "title": "לעזור לחברים",
-          "description": "סיוע בתשלום שכר לימוד והשתתפות בכנסים"
+          "description": "סיוע בתשלום שכר הלימוד והשתתפות בכנסים"
         },
         "request": {
           "title": "לבקש תמיכה",
-          "description": "בקשת סיוע לשכר לימוד או כנסים"
+          "description": "בקשת סיוע בתשלום שכר הלימוד או כנסים"
         }
       }
     },
@@ -358,11 +358,11 @@
       },
       "StudyArea": {
         "title": "אזור לימוד",
-        "liveBroadcastAlone": "שידור חי – לצפות לבד",
-        "liveBroadcastWithTen": "שידור חי – עם העשירייה",
+        "liveBroadcastAlone": "שידור חי - צפייה לבד",
+        "liveBroadcastWithTen": "שידור חי - צפייה עם העשירייה",
         "kabbalaMedia": "קבלה מדיה",
-        "recordedLessons": "לצפות בשיעורים מוקלטים",
-        "sources": "לקרוא כתבי מקובלים",
+        "recordedLessons": "צפייה בשיעורים מוקלטים",
+        "sources": "קריאת כתבי מקובלים",
         "studyMaterials": "חומר לימוד"
       },
       "PlatformsNavigation": {

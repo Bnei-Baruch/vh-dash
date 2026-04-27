@@ -93,30 +93,30 @@
         },
         "tuition": {
           "title": "Pagar matrícula",
-          "description": "Acceso completo a transmisiones, materiales de estudio y canales de la comunidad",
+          "description": "Acceso completo a transmisiones y contenido de estudio, junto con el mantenimiento continuo de los canales comunitarios",
           "button": "Gestionar membresía"
         },
         "membership": {
           "title": "Configurar membresía",
-          "description": "La membresía otorga acceso a transmisiones, materiales de estudio y actividades",
+          "description": "La membresía proporciona acceso a transmisiones y contenido de estudio y apoya el mantenimiento continuo de los canales comunitarios",
           "button": "Activar membresía"
         }
       },
       "giving": {
         "title": "Donaciones",
-        "helpHaverTitle": "Help Haver",
+        "helpHaverTitle": "Fondo Help Haver",
         "helpHaverSubtitle": "Fondo comunitario de ayuda mutua",
         "donation": {
           "title": "Donar para difusión",
-          "description": "Apoyo a la difusión de la sabiduría de la Cabalá"
+          "description": "Apoyo a la difusión de la sabiduría de la Kabbalah"
         },
         "tithe": {
-          "title": "Dar el diezmo",
+          "title": "Donación del diezmo",
           "description": "Pago mensual del 10% de los ingresos para la difusión de la Cabalá"
         },
         "help": {
           "title": "Ayudar a los amigos",
-          "description": "Asistencia con matrícula y participación en eventos"
+          "description": "Asistencia con pagos de matrícula y participación en eventos"
         },
         "request": {
           "title": "Solicitar apoyo",
@@ -644,7 +644,7 @@
       "StudyArea": {
         "title": "Área de Estudio",
         "liveBroadcastAlone": "Transmisión en vivo – Ver solo",
-        "liveBroadcastWithTen": "Transmisión en vivo – Con la Decena",
+        "liveBroadcastWithTen": "Transmisión en vivo – Con la decena",
         "kabbalaMedia": "Kabbalah Media",
         "recordedLessons": "Ver lecciones grabadas",
         "sources": "Leer textos cabalísticos",

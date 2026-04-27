@@ -92,34 +92,34 @@
         },
         "tuition": {
           "title": "Pay Tuition",
-          "description": "Full access to broadcasts, study content, and community channel maintenance",
+          "description": "Full access to broadcasts and study content, along with ongoing support for community channels",
           "button": "Manage Membership"
         },
         "membership": {
           "title": "Set Up Membership",
-          "description": "Membership grants access to broadcasts, study content, and community activities",
+          "description": "Membership provides access to broadcasts and study content, while supporting the ongoing maintenance of community channels",
           "button": "Activate Membership"
         }
       },
       "giving": {
         "title": "Donations",
-        "helpHaverTitle": "Help Haver",
+        "helpHaverTitle": "Help Haver Fund",
         "helpHaverSubtitle": "Community mutual aid fund",
         "donation": {
           "title": "Donate for Dissemination",
-          "description": "Support the dissemination of Kabbalah wisdom"
+          "description": "Support the dissemination of the wisdom of Kabbalah"
         },
         "tithe": {
-          "title": "Give Tithe",
+          "title": "Tithe contribution",
           "description": "Monthly payment of 10% of income for disseminating Kabbalah wisdom"
         },
         "help": {
           "title": "Help Friends",
-          "description": "Assistance with tuition and event participation"
+          "description": "Assistance with tuition payments and participation in events"
         },
         "request": {
           "title": "Request Support",
-          "description": "Request aid for tuition or events"
+          "description": "Request assistance for tuition or events"
         }
       }
     },
