@@ -262,6 +262,7 @@ const Messages = () => {
         )}
       </Header>
 
+      {/* Messages content is Hebrew-only; notice is intentionally hidden for Hebrew users */}
       {i18n.language !== "he" && (
         <LanguageNotice>
           <Info size={14} />
