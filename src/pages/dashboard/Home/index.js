@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Grid } from "@material-ui/core";
 import Calendar from "./Calendar";
 import StudyArea from "./StudyArea.jsx";
@@ -18,8 +18,6 @@ const Home = () => {
     };
   }, [setTitle]);
 
-  const onLiveEvent = useCallback(() => {}, []);
-
   return (
     <>
    
@@ -32,7 +30,7 @@ const Home = () => {
           <StudyArea />
         </Grid>
         <Grid item xs={12} md={4}>
-          <Calendar onLiveEvent={onLiveEvent} />
+          <Calendar />
         </Grid>
       </Grid>
 

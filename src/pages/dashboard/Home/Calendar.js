@@ -139,7 +139,7 @@ const CALENDAR_LANGUAGE = {
   es: GOOGLE_CALENDAR_ES,
 };
 
-const Calendar = ({ onLiveEvent, settings: { language } }) => {
+const Calendar = ({ settings: { language } }) => {
   const { t } = useTranslation();
 
   const [authenticated, setAuthenticated] = useState(false);
@@ -248,12 +248,8 @@ const Calendar = ({ onLiveEvent, settings: { language } }) => {
         el && el.scrollIntoView({ behavior: "smooth", block: "end" });
       });
 
-      onLiveEvent(liveEvent);
-
       timeout = liveEvent.end - nowMs;
     } else {
-      onLiveEvent(null);
-
       const nextEvent = events.find((e) => e.start >= nowMs);
 
       if (nextEvent) {
@@ -266,7 +262,7 @@ const Calendar = ({ onLiveEvent, settings: { language } }) => {
     }
 
     setEventsTimeout(timeout);
-  }, [events, onLiveEvent]);
+  }, [events]);
 
   useEffect(() => {
     if (eventsTimeout < 0) {

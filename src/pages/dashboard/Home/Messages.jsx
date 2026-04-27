@@ -294,6 +294,7 @@ const Messages = () => {
           <PostDate>{formatDate(post.date, i18n.language)}</PostDate>
           <PostContent $rtl={isHebrewText(post.text)}>
             <PostText>{renderTextWithLinks(stripLeadingSymbols(post.text))}</PostText>
+            {/* alt is intentionally empty: post images come from the API with no description */}
             {post.mediaUrl && (
               <PostMedia src={post.mediaUrl} alt="" loading="lazy" />
             )}
