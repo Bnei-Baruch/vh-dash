@@ -187,19 +187,23 @@ const LEADING_SYMBOLS_REGEX = /^[\p{Emoji}\p{S}\p{P}\s]+/u;
 const stripLeadingSymbols = (text) =>
   text ? text.replace(LEADING_SYMBOLS_REGEX, "") : text;
 
-const URL_REGEX = /(https:\/\/[^\s]+)/g;
+const URL_REGEX = /(https?:\/\/[^\s]+)/g;
 
 const renderTextWithLinks = (text) => {
   if (!text) return null;
-  return text.split(URL_REGEX).map((part, i) =>
-    part.startsWith("https://") ? (
-      <PostLink key={i} href={part} target="_blank" rel="noopener noreferrer">
-        {part}
-      </PostLink>
-    ) : (
-      part
-    )
-  );
+  return text.split(URL_REGEX).map((part, i) => {
+    if (!/^https?:\/\//.test(part)) return part;
+    const url = part.replace(/[).,;!?]+$/, "");
+    const trailing = part.slice(url.length);
+    return (
+      <React.Fragment key={i}>
+        <PostLink href={url} target="_blank" rel="noopener noreferrer">
+          {url}
+        </PostLink>
+        {trailing || null}
+      </React.Fragment>
+    );
+  });
 };
 
 /* ===== Component ===== */
