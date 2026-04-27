@@ -26,7 +26,7 @@ import {
 const Wrapper = styled.div`
   background: ${(p) => p.theme.palette.background.paper};
   border-radius: ${(p) => p.theme.spacing(3)}px;
-  padding: 24px;
+  padding: ${(p) => p.theme.spacing(6)}px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   border: 1px solid ${grey[200]};
   display: flex;
@@ -36,11 +36,17 @@ const Wrapper = styled.div`
   box-sizing: border-box;
 `;
 
+const HeaderRow = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: ${(p) => p.theme.spacing(5)}px;
+  width: 100%;
+`;
+
 const Header = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 20px;
   flex: 1;
 `;
 
@@ -76,9 +82,9 @@ const LiveChip = styled(Chip)`
 const TableWrapper = styled.div`
   overflow-y: auto;
   max-height: 320px;
-  background-color: #f7f9fc;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
+  background: ${(p) => p.theme.palette.background.default};
+  border: 1px solid ${grey[200]};
+  border-radius: ${(p) => p.theme.spacing(2)}px;
   padding-right: 10px;
   scrollbar-width: thin;
   scrollbar-color: ${grey[300]} transparent;
@@ -286,7 +292,7 @@ const Calendar = ({ onLiveEvent, settings: { language } }) => {
 
   return (
     <Wrapper>
-      <div style={{ display: 'flex', alignItems: 'center', marginBottom: 20, width: '100%' }}>
+      <HeaderRow>
         <Header>
           <HeaderIcon>
             <CalendarIcon size={24} />
@@ -307,7 +313,7 @@ const Calendar = ({ onLiveEvent, settings: { language } }) => {
             {t("Home.viewAllEvents")}
           </Button>
         </CardActionHeader>
-      </div>
+      </HeaderRow>
 
       <div>
         {loading ? (
