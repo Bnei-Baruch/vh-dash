@@ -145,10 +145,8 @@ const Calendar = ({ onLiveEvent, settings: { language } }) => {
   const [authenticated, setAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
   const [refresh, setRefresh] = useState(true);
-  const [refreshToday, setRefreshToday] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [events, setEvents] = useState([]);
-  const [eventsForToday, setEventsForToday] = useState([]);
   const [eventsTimeout, setEventsTimeout] = useState(0);
 
   const eventsErr = useCallback((err) => {
@@ -183,7 +181,7 @@ const Calendar = ({ onLiveEvent, settings: { language } }) => {
   }, [eventsErr]);
 
   useEffect(() => {
-    if (!authenticated || !(refresh || refreshToday)) {
+    if (!authenticated || !refresh) {
       return;
     }
 
@@ -228,19 +226,17 @@ const Calendar = ({ onLiveEvent, settings: { language } }) => {
         };
       });
 
-      setEventsForToday(calendarEvents);
       setEvents(calendarEvents);
       setRefresh(false);
-      setRefreshToday(false);
       setLoading(false);
     };
 
     getEvents().catch(eventsErr);
-  }, [authenticated, refresh, refreshToday, language, eventsErr]);
+  }, [authenticated, refresh, language, eventsErr]);
 
   useEffect(() => {
     const nowMs = new Date().getTime();
-    const liveEvent = eventsForToday.find(
+    const liveEvent = events.find(
       (e) => nowMs >= e.start && nowMs < e.end
     );
     let timeout;
@@ -258,7 +254,7 @@ const Calendar = ({ onLiveEvent, settings: { language } }) => {
     } else {
       onLiveEvent(null);
 
-      const nextEvent = eventsForToday.find((e) => e.start >= nowMs);
+      const nextEvent = events.find((e) => e.start >= nowMs);
 
       if (nextEvent) {
         timeout = nextEvent.start - nowMs;
@@ -270,7 +266,7 @@ const Calendar = ({ onLiveEvent, settings: { language } }) => {
     }
 
     setEventsTimeout(timeout);
-  }, [eventsForToday, onLiveEvent]);
+  }, [events, onLiveEvent]);
 
   useEffect(() => {
     if (eventsTimeout < 0) {
@@ -278,7 +274,7 @@ const Calendar = ({ onLiveEvent, settings: { language } }) => {
     }
 
     const timer = setTimeout(() => {
-      setRefreshToday(true);
+      setRefresh(true);
     }, eventsTimeout);
 
     return () => {
