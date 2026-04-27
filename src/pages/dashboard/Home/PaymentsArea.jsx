@@ -195,7 +195,7 @@ const WideCardButton = styled.button`
 
 /* ===== Component ===== */
 
-const RegistrationsAndPayments = () => {
+const PaymentsArea = () => {
   const { t } = useTranslation();
   const membership = useSelector((state) => membershipDataV2(state));
   const isActive = membership?.active || false;
@@ -306,5 +306,5 @@ const RegistrationsAndPayments = () => {
   );
 };
 
-export default RegistrationsAndPayments;
+export default PaymentsArea;
 

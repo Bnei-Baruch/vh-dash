@@ -5,7 +5,7 @@ import Calendar from "./Calendar";
 import StudyArea from "./StudyArea.jsx";
 import PlatformsNavigation from "./PlatformsNavigation.jsx";
 import GivingSection from "./GivingSection.jsx";
-import RegistrationsAndPayments from "./RegistrationsAndPayments.jsx";
+import PaymentsArea from "./PaymentsArea.jsx";
 import Messages from "./Messages.jsx";
 import { usePageTitle } from "../../../contexts/PageTitleContext";
 
@@ -56,7 +56,7 @@ const Home = () => {
         </Grid>
 
         <Grid item xs={12} md={6}>
-          <RegistrationsAndPayments />
+          <PaymentsArea />
         </Grid>
         <Grid item xs={12} md={6}>
           <GivingSection />
