@@ -105,7 +105,7 @@ const LinkText = styled.div`
 /* ===== Component ===== */
 
 const StudyArea = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const studyLinks = [
     { id: 1, text: t("Dashboard.StudyArea.liveBroadcastAlone"), icon: Play, href: "/dash/broadcast" },
     { id: 2, text: t("Dashboard.StudyArea.liveBroadcastWithTen"), icon: Users, href: "https://arvut.kli.one/user/" },
