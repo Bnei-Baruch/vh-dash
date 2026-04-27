@@ -195,7 +195,7 @@ const GivingSectionNew = () => {
       iconColor: "#2563eb",
       hoverColor: "#bfdbfe",
       hoverBgColor: "rgba(191, 219, 254, 0.3)",
-      href: "https://pay.kli.one/he/form/tithe",
+      href: "https://pay.kli.one/he/Donation",
     },
   ];
 

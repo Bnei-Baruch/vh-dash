@@ -4,7 +4,6 @@ import { grey } from "@material-ui/core/colors";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { Coffee, ChevronLeft, Calendar, CreditCard, Plus } from "lucide-react";
-import { DASHBOARD_ROUTES } from "../../../routes/dashboardRoutes";
 import { membershipDataV2 } from "../../../redux/selectors/user";
 
 /* ===== Styled Components ===== */
@@ -218,7 +217,7 @@ const RegistrationsAndPayments = () => {
       icon: Calendar,
       bgColor: "#eff6ff",
       iconColor: "#2563eb",
-      href: DASHBOARD_ROUTES.events,
+      href: "https://pay.kli.one/he/Events",
     },
   ];
 
