@@ -3,7 +3,6 @@ import { withTheme } from "styled-components";
 import { Grid } from "@material-ui/core";
 import Calendar from "./Calendar";
 import StudyArea from "./StudyArea.jsx";
-import PlatformsNavigation from "./PlatformsNavigation.jsx";
 import GivingSection from "./GivingSection.jsx";
 import PaymentsArea from "./PaymentsArea.jsx";
 import Messages from "./Messages.jsx";
@@ -28,22 +27,15 @@ const Home = () => {
   return (
     <>
    
-      {/* 1️⃣ Quick Actions + Messages + Study Area + Calendar */}
+      {/* 1️⃣ Messages + Study Area + Calendar */}
       <Grid container spacing={6} style={{ marginBottom: 24 }} alignItems="stretch">
-        {/* md: row 1 left (5/12) — lg: full width above */}
-        <Grid item xs={12} md={5} lg={12}>
-          <PlatformsNavigation />
-        </Grid>
-        {/* md: row 1 right (7/12) — lg: 4/12 */}
-        <Grid item xs={12} md={7} lg={4}>
+        <Grid item xs={12} md={4}>
           <Messages />
         </Grid>
-        {/* md: row 2 left (5/12) — lg: 4/12 */}
-        <Grid item xs={12} md={5} lg={4}>
+        <Grid item xs={12} md={4}>
           <StudyArea />
         </Grid>
-        {/* md: row 2 right (7/12) — lg: 4/12 */}
-        <Grid item xs={12} md={7} lg={4}>
+        <Grid item xs={12} md={4}>
           <Calendar onLiveEvent={onLiveEvent} />
         </Grid>
       </Grid>
