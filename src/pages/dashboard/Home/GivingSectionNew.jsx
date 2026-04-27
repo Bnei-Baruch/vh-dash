@@ -50,6 +50,46 @@ const CardsContainer = styled.div`
   gap: 16px;
 `;
 
+const SubSectionHeader = styled.div`
+  margin-bottom: 12px;
+`;
+
+const SubSectionTitleRow = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 4px;
+`;
+
+const SubSectionLine = styled.div`
+  flex: 1;
+  height: 1px;
+  background: #e5e7eb;
+`;
+
+const SubSectionTitle = styled.div`
+  font-size: 16px;
+  font-weight: 700;
+  color: ${(p) => p.theme.palette.text.primary};
+  white-space: nowrap;
+`;
+
+const SubSectionSubtitle = styled.div`
+  font-size: 13px;
+  color: ${(p) => p.theme.palette.text.secondary};
+  text-align: center;
+`;
+
+const TwoColumnRow = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
 const Card = styled.div`
   background: #ffffff;
   border: 1px solid #e5e7eb;
@@ -57,7 +97,8 @@ const Card = styled.div`
   padding: 20px;
   cursor: pointer;
   display: flex;
-  align-items: center;
+  align-items: ${({ $vertical }) => ($vertical ? "flex-start" : "center")};
+  flex-direction: ${({ $vertical }) => ($vertical ? "column" : "row")};
   gap: 20px;
   transition: all 0.2s ease;
   position: relative;
@@ -114,28 +155,17 @@ const GivingSectionNew = () => {
   const givingCards = [
     {
       id: 1,
-      title: t("Home.giving.donation.title"),
-      description: t("Home.giving.donation.description"),
-      icon: Gift,
-      bgColor: "#fff7ed",
-      iconColor: "#ea580c",
-      hoverColor: "#fed7aa",
-      hoverBgColor: "rgba(254, 215, 170, 0.3)",
-      href: "https://pay.kli.one/he/form/donation?utm_source=payment_system_civicrm_login&utm_medium=button&utm_campaign=donations&utm_id=donations&utm_term=heb&utm_content=homepage_button_donate#no-back",
+      title: t("Home.giving.request.title"),
+      description: t("Home.giving.request.description"),
+      icon: HeartHandshake,
+      bgColor: "#f5f3ff",
+      iconColor: "#7c3aed",
+      hoverColor: "#ddd6fe",
+      hoverBgColor: "rgba(221, 214, 254, 0.3)",
+      href: "https://docs.google.com/forms/d/e/1FAIpQLScU0xjKtV4XVJwz2nbv4vTB3p_inw6nhJPNw1-kHG3GzoB6qA/viewform",
     },
     {
       id: 2,
-      title: t("Home.giving.tithe.title"),
-      description: t("Home.giving.tithe.description"),
-      icon: Hand,
-      bgColor: "#eff6ff",
-      iconColor: "#2563eb",
-      hoverColor: "#bfdbfe",
-      hoverBgColor: "rgba(191, 219, 254, 0.3)",
-      href: "https://pay.kli.one/he/form/tithe",
-    },
-    {
-      id: 3,
       title: t("Home.giving.help.title"),
       description: t("Home.giving.help.description"),
       icon: Users,
@@ -146,15 +176,26 @@ const GivingSectionNew = () => {
       href: "https://pay.kli.one/he/form/help-haver?utm_source=payment_system_civicrm_login&utm_medium=button&utm_campaign=donations&utm_id=donations&utm_term=heb&utm_content=homepage_button_donate#no-back",
     },
     {
+      id: 3,
+      title: t("Home.giving.donation.title"),
+      description: t("Home.giving.donation.description"),
+      icon: Gift,
+      bgColor: "#fff7ed",
+      iconColor: "#ea580c",
+      hoverColor: "#fed7aa",
+      hoverBgColor: "rgba(254, 215, 170, 0.3)",
+      href: "https://pay.kli.one/he/form/donation?utm_source=payment_system_civicrm_login&utm_medium=button&utm_campaign=donations&utm_id=donations&utm_term=heb&utm_content=homepage_button_donate#no-back",
+    },
+    {
       id: 4,
-      title: t("Home.giving.request.title"),
-      description: t("Home.giving.request.description"),
-      icon: HeartHandshake,
-      bgColor: "#f5f3ff",
-      iconColor: "#7c3aed",
-      hoverColor: "#ddd6fe",
-      hoverBgColor: "rgba(221, 214, 254, 0.3)",
-      href: "https://docs.google.com/forms/d/e/1FAIpQLScU0xjKtV4XVJwz2nbv4vTB3p_inw6nhJPNw1-kHG3GzoB6qA/viewform",
+      title: t("Home.giving.tithe.title"),
+      description: t("Home.giving.tithe.description"),
+      icon: Hand,
+      bgColor: "#eff6ff",
+      iconColor: "#2563eb",
+      hoverColor: "#bfdbfe",
+      hoverBgColor: "rgba(191, 219, 254, 0.3)",
+      href: "https://pay.kli.one/he/form/tithe",
     },
   ];
 
@@ -174,7 +215,7 @@ const GivingSectionNew = () => {
       </HeaderSection>
 
       <CardsContainer>
-        {givingCards.map((card) => {
+        {givingCards.slice(2).map((card) => {
           const IconComponent = card.icon;
           return (
             <Card
@@ -207,6 +248,36 @@ const GivingSectionNew = () => {
             </Card>
           );
         })}
+        <SubSectionHeader>
+          <SubSectionTitleRow>
+            <SubSectionLine />
+            <SubSectionTitle>{t("Home.giving.helpHaverTitle")}</SubSectionTitle>
+            <SubSectionLine />
+          </SubSectionTitleRow>
+          <SubSectionSubtitle>{t("Home.giving.helpHaverSubtitle")}</SubSectionSubtitle>
+        </SubSectionHeader>
+        <TwoColumnRow>
+          {givingCards.slice(0, 2).map((card) => {
+            const IconComponent = card.icon;
+            return (
+              <Card
+                key={card.id}
+                $vertical
+                hoverColor={card.hoverColor}
+                hoverBgColor={card.hoverBgColor}
+                onClick={() => handleCardClick(card.href)}
+              >
+                <IconWrapper bgColor={card.bgColor} iconColor={card.iconColor}>
+                  <IconComponent size={28} strokeWidth={2} />
+                </IconWrapper>
+                <CardContent>
+                  <CardTitle>{card.title}</CardTitle>
+                  <CardDescription>{card.description}</CardDescription>
+                </CardContent>
+              </Card>
+            );
+          })}
+        </TwoColumnRow>
       </CardsContainer>
     </Wrapper>
   );

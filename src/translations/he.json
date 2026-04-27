@@ -102,6 +102,8 @@
       },
       "giving": {
         "title": "תרומות",
+        "helpHaverTitle": "Help Haver",
+        "helpHaverSubtitle": "קרן לעזרה הדדית בקהילה",
         "donation": {
           "title": "לתרום להפצה",
           "description": "תרומה לתמיכה במפעל ההפצה של חכמת הקבלה"
@@ -112,11 +114,11 @@
         },
         "help": {
           "title": "לעזור לחברים",
-          "description": "Help Haver - קרן המסייעת לחברים בתשלום שכר לימוד או בהשתתפות בכנסים ואירועים"
+          "description": "סיוע בתשלום שכר לימוד והשתתפות בכנסים"
         },
         "request": {
           "title": "לבקש תמיכה",
-          "description": "בקשת תמיכה מקרן Help Haver"
+          "description": "בקשת סיוע לשכר לימוד או כנסים"
         }
       }
     },

@@ -103,6 +103,8 @@
       },
       "giving": {
         "title": "Donaciones",
+        "helpHaverTitle": "Help Haver",
+        "helpHaverSubtitle": "Fondo comunitario de ayuda mutua",
         "donation": {
           "title": "Donar para difusión",
           "description": "Apoyo a la difusión de la sabiduría de la Cabalá"
@@ -113,11 +115,11 @@
         },
         "help": {
           "title": "Ayudar a los amigos",
-          "description": "Help Haver — fondo de apoyo con matrícula y participación en eventos"
+          "description": "Asistencia con matrícula y participación en eventos"
         },
         "request": {
           "title": "Solicitar apoyo",
-          "description": "Solicitar asistencia del fondo Help Haver"
+          "description": "Solicitar ayuda para matrícula o eventos"
         }
       }
     },

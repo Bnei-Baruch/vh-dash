@@ -102,6 +102,8 @@
       },
       "giving": {
         "title": "Donations",
+        "helpHaverTitle": "Help Haver",
+        "helpHaverSubtitle": "Community mutual aid fund",
         "donation": {
           "title": "Donate for Dissemination",
           "description": "Support the dissemination of Kabbalah wisdom"
@@ -112,11 +114,11 @@
         },
         "help": {
           "title": "Help Friends",
-          "description": "Help Haver — fund supporting members with tuition and event participation"
+          "description": "Assistance with tuition and event participation"
         },
         "request": {
           "title": "Request Support",
-          "description": "Apply for assistance from the Help Haver fund"
+          "description": "Request aid for tuition or events"
         }
       }
     },
