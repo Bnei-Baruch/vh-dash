@@ -32,6 +32,9 @@ import { setLoggedInUser } from "../redux/actions/userActions";
 import ModalWindow from "../pages/dashboard/MyProfile/ui/ModalWindow";
 import { DASHBOARD_ROUTES } from "../routes/dashboardRoutes";
 import { membershipDataV2 } from "../redux/selectors/user";
+import { usePageTitle } from "../contexts/PageTitleContext";
+
+/* ---------- styled ---------- */
 
 /* ---------- styled ---------- */
 
@@ -80,7 +83,7 @@ const MembershipStatusText = styled(Typography)`
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  
+
   font-size: 14px;
   font-weight: 600;
 
@@ -210,7 +213,9 @@ const VerticalDivider = styled.span`
 `;
 
 const PageTitle = styled(Typography)`
+  font-size: 1.25rem;
   font-weight: 600;
+  color: #333;
   margin-inline-start: 16px;
   margin-inline-end: 16px;
 
@@ -326,11 +331,12 @@ function UserMenu() {
 
 /* ---------- Header ---------- */
 
-const Header = ({ onDrawerToggle, pageTitle }) => {
+const Header = ({ onDrawerToggle }) => {
   const history = useHistory();
   const { t } = useTranslation();
   const membership = useSelector((state) => membershipDataV2(state));
   const active = membership?.active || false;
+  const { title: currentPageTitle } = usePageTitle();
   return (
     <AppBar position="sticky" elevation={0} color="default">
       <StyledToolbar>
@@ -342,8 +348,8 @@ const Header = ({ onDrawerToggle, pageTitle }) => {
               </IconButton>
             </Hidden>
 
-            {pageTitle && (
-              <PageTitle variant="h6">{pageTitle}</PageTitle>
+            {currentPageTitle && (
+              <PageTitle>{currentPageTitle}</PageTitle>
             )}
           </StartSection>
 
