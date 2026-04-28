@@ -100,6 +100,11 @@ const Card = styled.div`
     background-color: ${({ hoverBgColor }) => hoverBgColor || "transparent"};
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;
 
 const IconWrapper = styled.div`
