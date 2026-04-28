@@ -14,6 +14,7 @@ import { isWidthUp } from "@material-ui/core/withWidth";
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
 import GlassixWidget from "../components/Glassix";
+import PlatformsNavigation from "../pages/dashboard/Home/PlatformsNavigation";
 import CountryPromptModal from "../components/CountryPromptModal";
 import { updateProfile } from "../redux/actions/profileActions";
 
@@ -76,7 +77,7 @@ const MainContent = styled(Paper)`
   }
 `;
 
-const Dashboard = ({ children, routes, width, pageTitle }) => {
+const Dashboard = ({ children, routes, width }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [countryModalOpen, setCountryModalOpen] = useState(false);
 
@@ -136,7 +137,8 @@ const Dashboard = ({ children, routes, width, pageTitle }) => {
         </Hidden>
       </Drawer>
       <AppContent>
-        <Header onDrawerToggle={handleDrawerToggle} pageTitle={pageTitle} />
+        <Header onDrawerToggle={handleDrawerToggle} />
+        {location.pathname === "/dash" && <PlatformsNavigation />}
         <MainContent p={isWidthUp("lg", width) ? 10 : 5}>
           {children}
         </MainContent>
