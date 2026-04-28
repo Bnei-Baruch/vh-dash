@@ -101,7 +101,7 @@ const Card = styled.div`
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 640px) {
     flex-direction: column;
     align-items: flex-start;
   }

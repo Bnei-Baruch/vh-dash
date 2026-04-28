@@ -65,7 +65,7 @@ const Card = styled.div`
 const CardIconWrapper = styled.div`
   position: absolute;
   top: ${(p) => p.theme.spacing(4)}px;
-  right: ${(p) => p.theme.spacing(5)}px;
+  inset-inline-start: ${(p) => p.theme.spacing(5)}px;
   background: ${({ bgColor }) => bgColor};
   color: ${({ iconColor }) => iconColor};
   padding: ${(p) => p.theme.spacing(3)}px;
@@ -129,7 +129,7 @@ const WideCard = styled.div`
     transform: translateY(-2px);
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 640px) {
     flex-direction: column;
     align-items: flex-start;
   }
@@ -142,7 +142,7 @@ const WideCardLeft = styled.div`
   gap: ${(p) => p.theme.spacing(4)}px;
   flex: 1;
 
-  @media (max-width: 480px) {
+  @media (max-width: 640px) {
     flex-direction: column;
   }
 `;
