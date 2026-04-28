@@ -1,12 +1,13 @@
-import React, { useCallback, useState, useEffect } from "react";
-import { withTheme } from "styled-components";
+import React, { useEffect } from "react";
 import { Grid } from "@material-ui/core";
 import Calendar from "./Calendar";
-import Header from "./Header";
+import StudyArea from "./StudyArea.jsx";
+import GivingSection from "./GivingSection.jsx";
+import PaymentsArea from "./PaymentsArea.jsx";
+import Messages from "./Messages.jsx";
 import { usePageTitle } from "../../../contexts/PageTitleContext";
 
 const Home = () => {
-  const [liveEvent, setLiveEvent] = useState();
   const { setTitle } = usePageTitle();
 
   // Reset title immediately when component mounts
@@ -17,26 +18,33 @@ const Home = () => {
     };
   }, [setTitle]);
 
-  const onLiveEvent = useCallback((event) => {
-    setLiveEvent(event);
-  }, []);
-
   return (
     <>
-      <Header />
-
-      <Grid container spacing={6}>
-        <Grid item xs={12}>
-          {/* Placeholder for live broadcast indication */}
-          {liveEvent && console.log("Live event active")}
+   
+      {/* 1️⃣ Messages + Study Area + Calendar */}
+      <Grid container spacing={6} style={{ marginBottom: 24 }} alignItems="stretch">
+        <Grid item xs={12} md={4}>
+          <Messages />
         </Grid>
+        <Grid item xs={12} md={4}>
+          <StudyArea />
+        </Grid>
+        <Grid item xs={12} md={4}>
+          <Calendar />
+        </Grid>
+      </Grid>
 
-        <Grid item xs={12} lg={6}>
-          <Calendar onLiveEvent={onLiveEvent} />
+      {/* 2️⃣ Payments + Giving (50% / 50%) */}
+      <Grid container spacing={6}>
+        <Grid item xs={12} md={6}>
+          <PaymentsArea />
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <GivingSection />
         </Grid>
       </Grid>
     </>
   );
 };
 
-export default withTheme(Home);
+export default Home;

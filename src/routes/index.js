@@ -19,7 +19,6 @@ const MyProfile = async(() => import("../pages/dashboard/MyProfile"));
 const Archive = async(() => import("../pages/dashboard/Archive"));
 const ArvutSystem = async(() => import("../pages/dashboard/ArvutSystem"));
 const BroadcastArea = async(() => import("../pages/dashboard/BroadcastArea"));
-const Events = async(() => import("../pages/dashboard/Events/Events"));
 const PreviousPayments = async(() => import("../pages/dashboard/MembershipV2/PreviousPayments"));
 const MembershipStatus = async(() =>import("../pages/dashboard/MembershipV2/MembershipStatus"));
 
@@ -64,11 +63,12 @@ const dashboardRoutes = [
     ],
   },
   {
-    path: DASHBOARD_ROUTES.events,
+    path: "https://events.kli.one/",
     id: "Events",
     icon: <EventIcon />,
-    enableHeader: true,
-    component: Events,
+    component: null,
+    children: null,
+    isExternalLink: true,
   },
   {
     path: DASHBOARD_ROUTES.broadcastArea,
@@ -98,7 +98,7 @@ const dashboardRoutes = [
   },
   {
     path: PAY_KLI_ONE_URL,
-    id: "PayKliOne",
+    id: "Payments",
     icon: <PaymentIcon />,
     enableHeader: true,
     component: null,

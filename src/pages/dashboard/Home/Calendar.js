@@ -1,23 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import {
   Button,
-  ButtonGroup,
-  Card,
-  CardContent,
-  CardHeader,
   Chip,
   CircularProgress,
-  Icon,
-  IconButton,
   Table,
   TableBody,
   TableCell,
   TableRow,
   Typography,
 } from "@material-ui/core";
-import { Calendar as CalendarIcon, RefreshCw } from "react-feather";
-import { grey, red } from "@material-ui/core/colors";
+import { Calendar as CalendarIcon } from "lucide-react";
+import { red, grey } from "@material-ui/core/colors";
 import { useTranslation } from "react-i18next";
 import { connect } from "react-redux";
 import {
@@ -28,25 +22,45 @@ import {
   GOOGLE_CALENDAR_RU,
 } from "../../../shared/constants";
 
-const TODAY = 0;
-const TOMORROW = 1;
-const YESTERDAY = -1;
 
-const StaticIcon = styled(Icon)`
-  color: ${grey[500]};
+const Wrapper = styled.div`
+  background: ${(p) => p.theme.palette.background.paper};
+  border-radius: ${(p) => p.theme.spacing(3)}px;
+  padding: ${(p) => p.theme.spacing(6)}px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid ${grey[200]};
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-height: 440px;
+  box-sizing: border-box;
 `;
 
-const CardActionHeader = styled.div`
+const Header = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${(p) => p.theme.spacing(2)}px;
+  margin-bottom: ${(p) => p.theme.spacing(5)}px;
+  width: 100%;
+`;
+
+const HeaderTitle = styled.h3`
+  font-size: 20px;
+  font-weight: 700;
+  color: ${(p) => p.theme.palette.text.primary};
+  margin: 0;
+`;
+
+const HeaderIcon = styled.div`
+  color: ${(p) => p.theme.palette.primary.main};
   display: flex;
   align-items: center;
 `;
 
-const CalendarButtonGroup = styled(ButtonGroup)`
-  margin: 0 16px;
-`;
 
 const Spinner = styled.div`
   text-align: center;
+  padding: 40px 0;
 `;
 
 const LiveChip = styled(Chip)`
@@ -55,24 +69,29 @@ const LiveChip = styled(Chip)`
   width: 50px;
 `;
 
-const CardHead = styled(CardHeader)`
-  @media (max-width: 600px) {
-    display: block;
-    > div {
-      margin: 15px 0px;
-    }
-    .MuiButton-root {
-      padding: 5px 10px !important;
-    }
-  }
-`;
-
 const TableWrapper = styled.div`
   overflow-y: auto;
-  max-height: 500px;
-  background-color: #f7f9fc;
-  border: 1px solid #e0e0e0;
-  border-radius: 4px;
+  max-height: 320px;
+  background: ${(p) => p.theme.palette.background.default};
+  border: 1px solid ${grey[200]};
+  border-radius: ${(p) => p.theme.spacing(2)}px;
+  padding-right: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: ${grey[300]} transparent;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: ${grey[300]};
+    border-radius: 4px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: ${grey[400]};
+  }
 `;
 
 const TimeCell = styled(TableCell)`
@@ -82,9 +101,25 @@ const TimeCell = styled(TableCell)`
 `;
 
 const TitleCell = styled(TableCell)`
-  font-size: 18px;
+  font-size: 15px;
+  font-weight: 500;
+  color: ${(p) => p.theme.palette.text.primary};
   padding: 12px 8px;
   border: none;
+`;
+
+const EmptyText = styled(Typography)`
+  && {
+    padding: 20px 0;
+    color: ${(p) => p.theme.palette.text.secondary};
+  }
+`;
+
+const ErrorText = styled(Typography)`
+  && {
+    padding: 20px 0;
+    color: ${(p) => p.theme.palette.error.main};
+  }
 `;
 
 const CALENDAR_LANGUAGE = {
@@ -94,33 +129,22 @@ const CALENDAR_LANGUAGE = {
   es: GOOGLE_CALENDAR_ES,
 };
 
-const Calendar = ({ onLiveEvent, settings: { language } }) => {
+const Calendar = ({ settings: { language } }) => {
   const { t } = useTranslation();
 
   const [authenticated, setAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
   const [refresh, setRefresh] = useState(true);
-  const [refreshToday, setRefreshToday] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const [day, setDay] = useState(TODAY);
   const [events, setEvents] = useState([]);
-  const [eventsForToday, setEventsForToday] = useState([]);
   const [eventsTimeout, setEventsTimeout] = useState(0);
 
-  const eventsErr = (err) => {
+  const eventsErr = useCallback((err) => {
     setRefresh(false);
     setLoading(false);
-    setErrorMessage("Could not load events");
+    setErrorMessage(t("Home.calendarError"));
     console.error(err);
-  };
-
-  const onDayChange = ({ target }) => {
-    const newDay = parseInt(
-      target.tagName === "SPAN" ? target.parentNode.value : target.value
-    );
-    setDay(newDay);
-    setRefresh(true);
-  };
+  }, [t]);
 
   useEffect(() => {
     const gapi = window.gapi;
@@ -144,10 +168,10 @@ const Calendar = ({ onLiveEvent, settings: { language } }) => {
         eventsErr(err);
       });
     });
-  }, []);
+  }, [eventsErr]);
 
   useEffect(() => {
-    if (!authenticated || !(refresh || refreshToday)) {
+    if (!authenticated || !refresh) {
       return;
     }
 
@@ -160,10 +184,7 @@ const Calendar = ({ onLiveEvent, settings: { language } }) => {
           date.getDate()
         )}`;
 
-      const now = new Date();
-      const currentDate = new Date(
-        now.setDate(now.getDate() + (refreshToday ? 0 : day))
-      );
+      const currentDate = new Date();
 
       const {
         result: { items },
@@ -195,25 +216,17 @@ const Calendar = ({ onLiveEvent, settings: { language } }) => {
         };
       });
 
-      if (day === TODAY || refreshToday) {
-        setEventsForToday(calendarEvents);
-      }
-
-      if (day === TODAY || (day !== TODAY && !refreshToday)) {
-        setEvents(calendarEvents);
-      }
-
+      setEvents(calendarEvents);
       setRefresh(false);
-      setRefreshToday(false);
       setLoading(false);
     };
 
     getEvents().catch(eventsErr);
-  }, [authenticated, refresh, refreshToday, day, language]);
+  }, [authenticated, refresh, language, eventsErr]);
 
   useEffect(() => {
     const nowMs = new Date().getTime();
-    const liveEvent = eventsForToday.find(
+    const liveEvent = events.find(
       (e) => nowMs >= e.start && nowMs < e.end
     );
     let timeout;
@@ -225,13 +238,9 @@ const Calendar = ({ onLiveEvent, settings: { language } }) => {
         el && el.scrollIntoView({ behavior: "smooth", block: "end" });
       });
 
-      onLiveEvent(liveEvent);
-
       timeout = liveEvent.end - nowMs;
     } else {
-      onLiveEvent(null);
-
-      const nextEvent = eventsForToday.find((e) => e.start >= nowMs);
+      const nextEvent = events.find((e) => e.start >= nowMs);
 
       if (nextEvent) {
         timeout = nextEvent.start - nowMs;
@@ -243,7 +252,7 @@ const Calendar = ({ onLiveEvent, settings: { language } }) => {
     }
 
     setEventsTimeout(timeout);
-  }, [eventsForToday, onLiveEvent]);
+  }, [events]);
 
   useEffect(() => {
     if (eventsTimeout < 0) {
@@ -251,7 +260,7 @@ const Calendar = ({ onLiveEvent, settings: { language } }) => {
     }
 
     const timer = setTimeout(() => {
-      setRefreshToday(true);
+      setRefresh(true);
     }, eventsTimeout);
 
     return () => {
@@ -264,56 +273,27 @@ const Calendar = ({ onLiveEvent, settings: { language } }) => {
   }, [language]);
 
   return (
-    <Card mb={6}>
-      <CardHead
-        action={
-          <CardActionHeader>
-            <StaticIcon aria-label="calendar">
-              <CalendarIcon />
-            </StaticIcon>
+    <Wrapper>
+      <Header>
+        <HeaderIcon>
+          <CalendarIcon size={24} />
+        </HeaderIcon>
+        <HeaderTitle>{t("Home.events")}</HeaderTitle>
+        <Button
+          size="small"
+          variant="outlined"
+          color="primary"
+          component="a"
+          href="https://events.kli.one/"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ marginInlineStart: "auto" }}
+        >
+          {t("Home.viewAllEvents")}
+        </Button>
+      </Header>
 
-            <CalendarButtonGroup
-              color="primary"
-              onClick={onDayChange}
-              aria-label="primary button group"
-            >
-              <Button
-                variant={day === TODAY ? "contained" : "outlined"}
-                color={day === TODAY ? "primary" : "default"}
-                value={TODAY}
-              >
-                {t("Home.today")}
-              </Button>
-              <Button
-                variant={day === TOMORROW ? "contained" : "outlined"}
-                color={day === TOMORROW ? "primary" : "default"}
-                value={TOMORROW}
-              >
-                {t("Home.tomorrow")}
-              </Button>
-              <Button
-                variant={day === YESTERDAY ? "contained" : "outlined"}
-                color={day === YESTERDAY ? "primary" : "default"}
-                value={YESTERDAY}
-              >
-                {t("Home.yesterday")}
-              </Button>
-            </CalendarButtonGroup>
-
-            <IconButton
-              aria-label="refresh"
-              color="primary"
-              disabled={loading || refresh}
-              onClick={() => setRefresh(true)}
-            >
-              <RefreshCw />
-            </IconButton>
-          </CardActionHeader>
-        }
-        title={t("Home.events")}
-      />
-
-      <CardContent>
+      <div>
         {loading ? (
           <Spinner>
             <CircularProgress />
@@ -340,12 +320,14 @@ const Calendar = ({ onLiveEvent, settings: { language } }) => {
             </Table>
           </TableWrapper>
         ) : (
-          <Typography variant="h3">{t("Home.noEvent")}</Typography>
+          <EmptyText variant="h3">{t("Home.noEvent")}</EmptyText>
         )}
 
-        <Typography variant="h3">{errorMessage}</Typography>
-      </CardContent>
-    </Card>
+        {errorMessage && (
+          <ErrorText variant="h3">{errorMessage}</ErrorText>
+        )}
+      </div>
+    </Wrapper>
   );
 };
 
