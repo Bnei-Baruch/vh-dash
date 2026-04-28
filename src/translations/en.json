@@ -157,9 +157,6 @@
       "Archive": {
         "name": "Kabbalah Media"
       },
-      "PayKliOne": {
-        "name": "Pay.Kli.One"
-      },
       "Dashboard": {
         "name": "Dashboard"
       },
@@ -277,30 +274,6 @@
           "forgotPassword": "Forgot Password?"
         }
       },
-      "Payments": {
-        "name": "Payments",
-        "title": "My payments",
-        "Tabs": {
-          "transaction": "All Transaction",
-          "myPlan": "My Plan"
-        },
-        "paidOn": "Paid on",
-        "purpose": "Purpose",
-        "paymentMethod": "Payment Method",
-        "paymentType": "Payment Type",
-        "amount": "Amount",
-        "currency": "Currency",
-        "status": "Status",
-        "action": "Action",
-        "cancelPayment": "Cancel payment",
-        "downloadInvoice": "Download invoice as PDF",
-        "newPlan": "New Plan",
-        "edit": "Edit",
-        "editSubscription": "Edit Subscription",
-        "currencyLabel": "Choose your currency",
-        "subscriptionLabel": "Change the status of subscription",
-        "amountLabel": "How much are you paying?"
-      },
       "BroadcastArea": {
         "liveLanguage": "Live Language",
         "questions": "Questions",
@@ -381,6 +354,9 @@
         "save": "Save",
         "later": "Remind Me Later",
         "dontShowAgain": "Don't show this again"
+      },
+      "Payments": {
+        "name": "Payments"
       }
     },
     "Membership": {

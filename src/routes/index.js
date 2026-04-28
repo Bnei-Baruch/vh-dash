@@ -98,7 +98,7 @@ const dashboardRoutes = [
   },
   {
     path: PAY_KLI_ONE_URL,
-    id: "PayKliOne",
+    id: "Payments",
     icon: <PaymentIcon />,
     enableHeader: true,
     component: null,

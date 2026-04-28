@@ -562,30 +562,6 @@
           "name": "Localizacion fisica"
         }
       },
-      "Payments": {
-        "name": "Pagos",
-        "title": "Mis Pagos",
-        "Tabs": {
-          "transaction": "Todas las transacciones",
-          "myPlan": "Mi Plan"
-        },
-        "paidOn": "Paid on",
-        "purpose": "Purpose",
-        "paymentMethod": "Payment Method",
-        "paymentType": "Payment Type",
-        "amount": "Amount",
-        "currency": "Currency",
-        "status": "Status",
-        "action": "Action",
-        "cancelPayment": "Cancel payment",
-        "downloadInvoice": "Download invoice as PDF",
-        "newPlan": "New Plan",
-        "edit": "Edit",
-        "editSubscription": "Edit Subscription",
-        "currencyLabel": "Choose your currency",
-        "subscriptionLabel": "Change the status of subscription",
-        "amountLabel": "How much are you paying?"
-      },
       "BroadcastArea": {
         "liveLanguage": "Live Language",
         "questions": "Questions",
@@ -666,6 +642,9 @@
         "save": "Guardar",
         "later": "Recordármelo más tarde",
         "dontShowAgain": "No mostrar esto de nuevo"
+      },
+      "Payments": {
+        "name": "Pagos"
       }
     },
     "Membership": {

@@ -274,30 +274,6 @@
           "forgotPassword": "Забыли пароль?"
         }
       },
-      "Payments": {
-        "name": "Платежи",
-        "title": "Платежи",
-        "Tabs": {
-          "transaction": "Платежи",
-          "myPlan": "My Plan"
-        },
-        "paidOn": "Оплачено",
-        "purpose": "Цель",
-        "paymentMethod": "Плаежный метод",
-        "paymentType": "Платежный тип",
-        "amount": "Сумма",
-        "currency": "Валюта",
-        "status": "Статус",
-        "action": "Действие",
-        "cancelPayment": "Отменить платеж",
-        "downloadInvoice": "Скачать счет в формате PDF",
-        "newPlan": "Новый план",
-        "edit": "Изменить",
-        "editSubscription": "Изменить подписку",
-        "currencyLabel": "Выберите валюту",
-        "subscriptionLabel": "Изменить статус подписки",
-        "amountLabel": "Сколько вы платите?"
-      },
       "BroadcastArea": {
         "liveLanguage": "язык трансляции",
         "questions": "Вопросы",
@@ -378,6 +354,9 @@
         "save": "Сохранить",
         "later": "Напомнить позже",
         "dontShowAgain": "Больше не показывать"
+      },
+      "Payments": {
+        "name": "Платежи"
       }
     },
     "Membership": {

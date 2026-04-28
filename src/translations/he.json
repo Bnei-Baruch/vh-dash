@@ -157,9 +157,6 @@
       "Archive": {
         "name": "קבלה מדיה"
       },
-      "PayKliOne": {
-        "name": "Pay.Kli.One"
-      },
       "Dashboard": {
         "name": "אזור אישי"
       },
@@ -277,30 +274,6 @@
           "forgotPassword": "שכחת את הסיסמה?"
         }
       },
-      "Payments": {
-        "name": "תשלומים",
-        "title": "התשלומים שלי",
-        "Tabs": {
-          "transaction": "כל התנועה",
-          "myPlan": "התוכנית שלי"
-        },
-        "paidOn": "שולם ב-",
-        "purpose": "תכלית",
-        "paymentMethod": "אמתעי תשלום",
-        "paymentType": "סוג תשלום",
-        "amount": "סכום",
-        "currency": "מטבע",
-        "status": "סטטוס",
-        "action": "פעולה",
-        "cancelPayment": "בטל תשלום",
-        "downloadInvoice": "הורד חשבונית כ- PDF",
-        "newPlan": "תוכנית חדשה",
-        "edit": "ערוך",
-        "editSubscription": "ערוך מנוי",
-        "currencyLabel": "בחר את המטבע שלך",
-        "subscriptionLabel": "שינוי מצב המנוי",
-        "amountLabel": "כמה אתה משלם?"
-      },
       "BroadcastArea": {
         "liveLanguage": "שפת שידור",
         "questions": "שאלות",
@@ -380,6 +353,9 @@
         "save": "שמור",
         "later": "הזכר לי מאוחר יותר",
         "dontShowAgain": "אל תציג זאת שוב"
+      },
+      "Payments": {
+        "name": "תשלומים"
       }
     },
     "Membership": {
