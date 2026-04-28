@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { grey } from "@material-ui/core/colors";
 import { fade } from "@material-ui/core/styles";
-import { Play, Users, BookOpen, LibraryBig } from "lucide-react";
+import { Play, Users, BookOpen, LibraryBig, Film } from "lucide-react";
 
 /* ===== Styled Components ===== */
 
@@ -34,7 +34,7 @@ const LinksPanel = styled.div`
 const SectionHeader = styled.div`
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: ${(p) => p.theme.spacing(2)}px;
   margin-bottom: 20px;
 `;
 
@@ -109,7 +109,7 @@ const StudyArea = () => {
   const studyLinks = [
     { id: 1, text: t("Dashboard.StudyArea.liveBroadcastAlone"), icon: Play, href: "/dash/broadcast" },
     { id: 2, text: t("Dashboard.StudyArea.liveBroadcastWithTen"), icon: Users, href: "https://arvut.kli.one/user/" },
-    { id: 3, text: t("Dashboard.StudyArea.recordedLessons"), icon: Play, href: "https://kabbalahmedia.info/he/lessons" },
+    { id: 3, text: t("Dashboard.StudyArea.recordedLessons"), icon: Film, href: "https://kabbalahmedia.info/he/lessons" },
     { id: 4, text: t("Dashboard.StudyArea.sources"), icon: BookOpen, href: "https://kabbalahmedia.info/he/sources" },
     { id: 5, text: t("Dashboard.StudyArea.studyMaterials"), icon: LibraryBig, href: "https://study.kli.one/" },
   ];

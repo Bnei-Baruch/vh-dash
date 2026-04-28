@@ -73,8 +73,8 @@ const NavItem = styled.a`
   gap: 8px;
   padding: 14px 16px;
   text-decoration: none;
-  color: ${(p) => p.theme.palette.text.secondary};
-  font-size: 14px;
+  color: ${(p) => p.theme.palette.text.primary};
+  font-size: 16px;
   font-weight: 500;
   white-space: nowrap;
   direction: ltr;

@@ -36,18 +36,12 @@ const Wrapper = styled.div`
   box-sizing: border-box;
 `;
 
-const HeaderRow = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: ${(p) => p.theme.spacing(5)}px;
-  width: 100%;
-`;
-
 const Header = styled.div`
   display: flex;
   align-items: center;
-  gap: 8px;
-  flex: 1;
+  gap: ${(p) => p.theme.spacing(2)}px;
+  margin-bottom: ${(p) => p.theme.spacing(5)}px;
+  width: 100%;
 `;
 
 const HeaderTitle = styled.h3`
@@ -63,10 +57,6 @@ const HeaderIcon = styled.div`
   align-items: center;
 `;
 
-const CardActionHeader = styled.div`
-  display: flex;
-  align-items: center;
-`;
 
 const Spinner = styled.div`
   text-align: center;
@@ -284,28 +274,24 @@ const Calendar = ({ settings: { language } }) => {
 
   return (
     <Wrapper>
-      <HeaderRow>
-        <Header>
-          <HeaderIcon>
-            <CalendarIcon size={24} />
-          </HeaderIcon>
-          <HeaderTitle>{t("Home.events")}</HeaderTitle>
-        </Header>
-
-        <CardActionHeader>
-          <Button
-            size="small"
-            variant="outlined"
-            color="primary"
-            component="a"
-            href="https://events.kli.one/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {t("Home.viewAllEvents")}
-          </Button>
-        </CardActionHeader>
-      </HeaderRow>
+      <Header>
+        <HeaderIcon>
+          <CalendarIcon size={24} />
+        </HeaderIcon>
+        <HeaderTitle>{t("Home.events")}</HeaderTitle>
+        <Button
+          size="small"
+          variant="outlined"
+          color="primary"
+          component="a"
+          href="https://events.kli.one/"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ marginInlineStart: "auto" }}
+        >
+          {t("Home.viewAllEvents")}
+        </Button>
+      </Header>
 
       <div>
         {loading ? (

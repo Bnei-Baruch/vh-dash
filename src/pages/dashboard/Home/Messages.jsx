@@ -48,7 +48,7 @@ const ContentArea = styled.div`
 const Header = styled.div`
   display: flex;
   align-items: center;
-  gap: ${(p) => p.theme.spacing(1)}px;
+  gap: ${(p) => p.theme.spacing(2)}px;
   margin-bottom: ${(p) => p.theme.spacing(2.5)}px;
 `;
 
