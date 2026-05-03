@@ -111,8 +111,7 @@
           "description": "Asistencia con pagos de matrícula y participación en eventos"
         },
         "request": {
-          "title": "Solicitar apoyo",
-          "description": "Solicitar ayuda para matrícula o eventos"
+          "title": "Solicitar apoyo"
         },
         "helpTuition": {
           "title": "Solicitar ayuda con matrícula"

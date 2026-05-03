@@ -110,8 +110,7 @@
           "description": "Assistance with tuition payments and participation in events"
         },
         "request": {
-          "title": "Request Support",
-          "description": "Request assistance for tuition or events"
+          "title": "Request Support"
         },
         "helpTuition": {
           "title": "Request tuition support"
