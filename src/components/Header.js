@@ -250,7 +250,7 @@ const languages = [
 ];
 
 function LanguageMenu() {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
   const dispatch = useDispatch();
   const [anchorMenu, setAnchorMenu] = useState(null);
 
@@ -271,7 +271,7 @@ function LanguageMenu() {
       <Menu anchorEl={anchorMenu} open={Boolean(anchorMenu)} onClose={() => closeMenu()}>
         {languages.map((l) => (
           <MenuItem key={l.code} onClick={() => closeMenu(l.code)}>
-            {t(`Languages.${l.name}`)}
+            {l.name}
           </MenuItem>
         ))}
       </Menu>

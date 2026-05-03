@@ -45,14 +45,6 @@
         "cancel": "Отмена"
       }
     },
-    "Languages": {
-      "English": "English",
-      "Russian": "Russian",
-      "Hebrew": "Hebrew",
-      "streetAddressPlaceholder": "Введите вашу улицу",
-      "Spanish": "Spanish",
-      "French": "French"
-    },
     "Home": {
       "notActive": "Нет прямой трансляции",
       "active": "Прямая трансляция",
@@ -120,6 +112,12 @@
         "request": {
           "title": "Запросить поддержку",
           "description": "Запрос помощи на оплату обучения или мероприятий"
+        },
+        "helpTuition": {
+          "title": "Запрос помощи с оплатой обучения"
+        },
+        "helpEvents": {
+          "title": "Запрос помощи с оплатой мероприятий"
         }
       }
     },

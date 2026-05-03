@@ -1,12 +1,12 @@
 {
   "translation": {
     "Global": {
-      "inputPlaceholder": "Enter your {{input}}",
+      "inputPlaceholder": "Ingresa el {{input}}",
       "formErrorMsg": "Please enter your details",
       "saveBtn": "Save changes",
       "cancelBtn": "Cancel",
       "modify": "Modify",
-      "yes": "Yes",
+      "yes": "Sí",
       "no": "No",
       "closeBtn": "Close",
       "requestError": "Ooops! Something went wrong! Please, try again later or contact our support",
@@ -44,14 +44,6 @@
         "pause": "Pause",
         "cancel": "Cancel"
       }
-    },
-    "Languages": {
-      "English": "Inglés",
-      "Russian": "Ruso",
-      "Hebrew": "Hebreo",
-      "Spanish": "Español",
-      "French": "Francés",
-      "streetAddressPlaceholder": "Entra en tu calle"
     },
     "Home": {
       "arvut": "Arvut",
@@ -111,7 +103,7 @@
           "description": "Apoyo a la difusión de la sabiduría de la Kabbalah"
         },
         "tithe": {
-          "title": "Donación del diezmo",
+          "title": "Donación del Maaser (diezmo)",
           "description": "Pago mensual del 10% de los ingresos para la difusión de la Cabalá"
         },
         "help": {
@@ -121,6 +113,12 @@
         "request": {
           "title": "Solicitar apoyo",
           "description": "Solicitar ayuda para matrícula o eventos"
+        },
+        "helpTuition": {
+          "title": "Solicitar ayuda con matrícula"
+        },
+        "helpEvents": {
+          "title": "Solicitar ayuda con eventos"
         }
       }
     },
@@ -230,7 +228,7 @@
           "maritalStatus": {
             "widowed": "Viudo",
             "divorced": "Divorciado",
-            "married": "Casó",
+            "married": "Casado",
             "single": "Soltero",
             "label": "Estado Civil"
           }
@@ -271,8 +269,8 @@
         "OtherInformation": {
           "wantStudyGroup": "¿Quieres tener un grupo de estudio?",
           "studyGroup": "¿Tienes un grupo de estudio?",
-          "tenName": "Nombre de diez, si tiene grupo",
-          "ten": "Diez",
+          "tenName": "Nombre de decena (en caso de tener una)",
+          "ten": "Decena",
           "studyFramework": "Marco de estudio",
           "startYear": "Año de inicio",
           "education": "Educacion"

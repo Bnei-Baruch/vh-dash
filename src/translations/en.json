@@ -45,14 +45,6 @@
         "cancel": "Cancel"
       }
     },
-    "Languages": {
-      "English": "English",
-      "Russian": "Russian",
-      "Hebrew": "Hebrew",
-      "streetAddressPlaceholder": "Enter your street",
-      "Spanish": "Spanish",
-      "French": "French"
-    },
     "Home": {
       "notActive": "NO LIVE BROADCAST",
       "active": "BROADCAST ACTIVE",
@@ -120,6 +112,12 @@
         "request": {
           "title": "Request Support",
           "description": "Request assistance for tuition or events"
+        },
+        "helpTuition": {
+          "title": "Request tuition support"
+        },
+        "helpEvents": {
+          "title": "Request events support"
         }
       }
     },
