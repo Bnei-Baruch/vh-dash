@@ -174,7 +174,7 @@ const RequestRow = styled.div`
   transition: color 0.2s ease;
 
   &:hover {
-    color: ${(p) => p.theme.palette.primary.main};
+    color: #7c3aed;
   }
 `;
 
@@ -238,7 +238,7 @@ const GivingSection = () => {
       bgColor: "#f5f3ff",
       iconColor: "#7c3aed",
       hoverColor: "#ddd6fe",
-      hoverBgColor: "rgba(221, 214, 254, 0.3)",
+      hoverBgColor: "#f5f3ff",
       subRows: [
         {
           id: "tuition",
