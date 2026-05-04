@@ -45,14 +45,6 @@
         "cancel": "Отмена"
       }
     },
-    "Languages": {
-      "English": "English",
-      "Russian": "Russian",
-      "Hebrew": "Hebrew",
-      "streetAddressPlaceholder": "Введите вашу улицу",
-      "Spanish": "Spanish",
-      "French": "French"
-    },
     "Home": {
       "notActive": "Нет прямой трансляции",
       "active": "Прямая трансляция",
@@ -118,8 +110,13 @@
           "description": "Помощь в оплате обучения и участии в мероприятиях"
         },
         "request": {
-          "title": "Запросить поддержку",
-          "description": "Запрос помощи на оплату обучения или мероприятий"
+          "title": "Запросить поддержку"
+        },
+        "helpTuition": {
+          "title": "Запрос помощи с оплатой обучения"
+        },
+        "helpEvents": {
+          "title": "Запрос помощи с оплатой мероприятий"
         }
       }
     },
