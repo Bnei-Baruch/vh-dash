@@ -1,7 +1,7 @@
 {
   "translation": {
     "Global": {
-      "inputPlaceholder": "Enter your {{input}}",
+      "inputPlaceholder": "הזן את {{input}}",
       "formErrorMsg": "Please enter your details",
       "saveBtn": "שמור שינויים",
       "cancelBtn": "בטל",
@@ -44,14 +44,6 @@
         "pause": "הפסקה",
         "cancel": "לבטל"
       }
-    },
-    "Languages": {
-      "English": "English",
-      "Russian": "Russian",
-      "Hebrew": "Hebrew",
-      "streetAddressPlaceholder": "הזן את כתובת הרחוב שלך",
-      "Spanish": "Spanish",
-      "French": "French"
     },
     "Home": {
       "notActive": "אין שידור חי",
@@ -110,16 +102,21 @@
           "description": "תרומה להפצת חכמת הקבלה"
         },
         "tithe": {
-          "title": "תרומת מעשר",
+          "title": "לתרום תרומה ומעשר",
           "description": "תשלום חודשי בשיעור של 10% מההכנסות, המיועד להפצת חכמת הקבלה"
         },
         "help": {
           "title": "לעזור לחברים",
-          "description": "סיוע בתשלום שכר הלימוד והשתתפות בכנסים"
+          "description": "מתן סיוע בתשלום שכר הלימוד והשתתפות בכנסים"
         },
         "request": {
-          "title": "לבקש תמיכה",
-          "description": "בקשת סיוע בתשלום שכר הלימוד או כנסים"
+          "title": "לבקש תמיכה"
+        },
+        "helpTuition": {
+          "title": "בקשת סיוע בתשלום שכר הלימוד"
+        },
+        "helpEvents": {
+          "title": "בקשת סיוע בתשלום כנסים"
         }
       }
     },
