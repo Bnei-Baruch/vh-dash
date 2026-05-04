@@ -72,6 +72,13 @@ const SubSectionSubtitle = styled.div`
   text-align: center;
 `;
 
+const HelpHaverCardHeader = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${(p) => p.theme.spacing(3)}px;
+  width: 100%;
+`;
+
 const TwoColumnRow = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -91,7 +98,7 @@ const Card = styled.div`
   display: flex;
   align-items: ${({ $vertical }) => ($vertical ? "flex-start" : "center")};
   flex-direction: ${({ $vertical }) => ($vertical ? "column" : "row")};
-  gap: ${(p) => p.theme.spacing(5)}px;
+  gap: ${(p) => p.theme.spacing(p.$vertical ? 3 : 5)}px;
   transition: all 0.2s ease;
   position: relative;
 
@@ -144,6 +151,55 @@ const ArrowIcon = styled.div`
   flex-shrink: 0;
 `;
 
+const SubRowsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
+
+const RowDivider = styled.div`
+  height: 1px;
+  background: ${grey[200]};
+`;
+
+const RequestRow = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: ${(p) => p.theme.spacing(3)}px 0;
+  padding-top: ${(p) => p.$first ? 0 : p.theme.spacing(3)}px;
+  padding-bottom: ${(p) => p.$last ? 0 : p.theme.spacing(3)}px;
+  cursor: pointer;
+  color: ${(p) => p.theme.palette.text.secondary};
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: #7c3aed;
+  }
+`;
+
+const RequestRowText = styled.div`
+  font-size: 14px;
+  font-weight: 500;
+  color: inherit;
+`;
+
+const RowArrow = styled.div`
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: inherit;
+`;
+
+const DescriptionRow = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: ${(p) => p.theme.spacing(3)}px;
+  width: 100%;
+  color: ${(p) => p.theme.palette.text.secondary};
+`;
+
 /* ===== Component ===== */
 
 const GivingSection = () => {
@@ -178,13 +234,23 @@ const GivingSection = () => {
     {
       id: 1,
       title: t("Home.giving.request.title"),
-      description: t("Home.giving.request.description"),
       icon: HeartHandshake,
       bgColor: "#f5f3ff",
       iconColor: "#7c3aed",
       hoverColor: "#ddd6fe",
-      hoverBgColor: "rgba(221, 214, 254, 0.3)",
-      href: "https://docs.google.com/forms/d/e/1FAIpQLScU0xjKtV4XVJwz2nbv4vTB3p_inw6nhJPNw1-kHG3GzoB6qA/viewform",
+      hoverBgColor: "#f5f3ff",
+      subRows: [
+        {
+          id: "tuition",
+          label: t("Home.giving.helpTuition.title"),
+          href: "https://kli.one/pay/membership?lang=he",
+        },
+        {
+          id: "events",
+          label: t("Home.giving.helpEvents.title"),
+          href: "https://docs.google.com/forms/d/e/1FAIpQLScU0xjKtV4XVJwz2nbv4vTB3p_inw6nhJPNw1-kHG3GzoB6qA/viewform",
+        },
+      ],
     },
     {
       id: 2,
@@ -259,6 +325,42 @@ const GivingSection = () => {
         <TwoColumnRow>
           {helpHaverCards.map((card) => {
             const IconComponent = card.icon;
+            if (card.subRows) {
+              return (
+                <Card key={card.id} $vertical hoverColor={card.hoverColor} hoverBgColor={card.hoverBgColor}>
+                  <HelpHaverCardHeader>
+                    <IconWrapper bgColor={card.bgColor} iconColor={card.iconColor}>
+                      <IconComponent size={28} strokeWidth={2} />
+                    </IconWrapper>
+                    <CardTitle>{card.title}</CardTitle>
+                  </HelpHaverCardHeader>
+                  <SubRowsContainer>
+                    {card.subRows.map((row, index) => (
+                      <React.Fragment key={row.id}>
+                        <RequestRow $first={index === 0} $last={index === card.subRows.length - 1} onClick={() => handleCardClick(row.href)}>
+                          <RequestRowText>{row.label}</RequestRowText>
+                          <RowArrow>
+                            <svg
+                              width="16"
+                              height="16"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            >
+                              <path d="M15 18l-6-6 6-6" />
+                            </svg>
+                          </RowArrow>
+                        </RequestRow>
+                        {index < card.subRows.length - 1 && <RowDivider />}
+                      </React.Fragment>
+                    ))}
+                  </SubRowsContainer>
+                </Card>
+              );
+            }
             return (
               <Card
                 key={card.id}
@@ -267,13 +369,29 @@ const GivingSection = () => {
                 hoverBgColor={card.hoverBgColor}
                 onClick={() => handleCardClick(card.href)}
               >
-                <IconWrapper bgColor={card.bgColor} iconColor={card.iconColor}>
-                  <IconComponent size={28} strokeWidth={2} />
-                </IconWrapper>
-                <CardContent>
+                <HelpHaverCardHeader>
+                  <IconWrapper bgColor={card.bgColor} iconColor={card.iconColor}>
+                    <IconComponent size={28} strokeWidth={2} />
+                  </IconWrapper>
                   <CardTitle>{card.title}</CardTitle>
+                </HelpHaverCardHeader>
+                <DescriptionRow>
                   <CardDescription>{card.description}</CardDescription>
-                </CardContent>
+                  <RowArrow>
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M15 18l-6-6 6-6" />
+                    </svg>
+                  </RowArrow>
+                </DescriptionRow>
               </Card>
             );
           })}

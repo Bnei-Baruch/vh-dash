@@ -37,11 +37,11 @@ export const commonFormStyles = makeStyles((theme) => ({
 }));
 
 export const systemLanguages = [
-  { code: "en", label: i18next.t("Languages.English") },
-  { code: "fr", label: i18next.t("Languages.French") },
-  { code: "ru", label: i18next.t("Languages.Russian") },
-  { code: "es", label: i18next.t("Languages.Spanish") },
-  { code: "he", label: i18next.t("Languages.Hebrew") },
+  { code: "en", label: "English" },
+  { code: "fr", label: "French" },
+  { code: "ru", label: "Russian" },
+  { code: "es", label: "Spanish" },
+  { code: "he", label: "Hebrew" },
 ];
 
 export const studyGroup = [
