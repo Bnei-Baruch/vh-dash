@@ -46,9 +46,8 @@ const AppBar = styled(MuiAppBar)`
 `;
 
 const StyledToolbar = styled(Toolbar)`
-  min-height: 72px !important;
-  height: 72px !important;
-  padding-top: 2px !important;
+  min-height: 76px !important;
+  height: 76px !important;
 `;
 
 const IconButton = styled(MuiIconButton)`

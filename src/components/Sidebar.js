@@ -4,8 +4,8 @@ import { rgba } from "polished";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 import { NavLink as RouterNavLink, withRouter } from "react-router-dom";
-import LogoImageEn from "../asset/logo/kc-en-logo-light.png";
-import LogoImageHe from "../asset/logo/kc-heb-logo-light.png";
+import LogoImageEn from "../asset/logo/Logo_2026_white_english_03.svg";
+import LogoImageHe from "../asset/logo/Logo_2026_white_heb_09.svg";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import "../vendor/perfect-scrollbar.css";
 
@@ -72,12 +72,12 @@ const Brand = styled(ListItem)`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  min-height: 72px;
-  height: 72px;
+  min-height: 76px;
+  height: 76px;
   padding-left: ${(props) => props.theme.spacing(3)}px;
   padding-right: ${(props) => props.theme.spacing(3)}px;
   padding-top: 6px;
-  padding-bottom: 2px;
+  padding-bottom: 6px;
   cursor: default;
   border-bottom: 1px solid ${(props) => props.theme.sidebar.header.borderColor};
  
@@ -275,9 +275,8 @@ const Sidebar = ({ location, history, match, staticContext, ...rest }) => {
             src={logoImage}
             alt="Bnei Baruch Logo"
             style={{
-              width: "180px",
-              height: "auto",
-              maxHeight: "60px",
+              height: "64px",
+              width: "auto",
             }}
           />
         </LogoLink>
