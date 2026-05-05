@@ -75,7 +75,7 @@
         "title": "Payments",
         "register": "Register",
         "meals": {
-          "title": "Register for Meals",
+          "title": "Sign up for meals",
           "description": "Payment for meal participation"
         },
         "events": {
@@ -98,16 +98,16 @@
         "helpHaverTitle": "Help Haver Fund",
         "helpHaverSubtitle": "Community mutual aid fund",
         "donation": {
-          "title": "Donate for Dissemination",
+          "title": "Donate to Dissemination",
           "description": "Support the dissemination of the wisdom of Kabbalah"
         },
         "tithe": {
-          "title": "Tithe contribution",
-          "description": "Monthly payment of 10% of income for disseminating Kabbalah wisdom"
+          "title": "Separate Maaser",
+          "description": "Monthly payment of 10% of your income"
         },
         "help": {
           "title": "Help Friends",
-          "description": "Assistance with tuition payments and participation in events"
+          "description": "Support with tuition and convention fees"
         },
         "request": {
           "title": "Request Support"
