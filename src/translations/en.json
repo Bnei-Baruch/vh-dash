@@ -75,12 +75,12 @@
         "title": "Payments",
         "register": "Register",
         "meals": {
-          "title": "Sign up for meals",
-          "description": "Payment for meal participation"
+          "title": "Sign Up for Meals",
+          "description": "Payment for Meal Participation"
         },
         "events": {
           "title": "Register for Events",
-          "description": "Payment for event participation"
+          "description": "Payment for Event Participation"
         },
         "tuition": {
           "title": "Pay Tuition",
@@ -95,28 +95,28 @@
       },
       "giving": {
         "title": "Donations",
-        "helpHaverTitle": "Help Haver Fund",
-        "helpHaverSubtitle": "Community mutual aid fund",
+        "helpHaverTitle": "Help a Friend Fund",
+        "helpHaverSubtitle": "Community Mutual Aid Fund",
         "donation": {
           "title": "Donate to Dissemination",
-          "description": "Support the dissemination of the wisdom of Kabbalah"
+          "description": "Support the Dissemination of the Wisdom of Kabbalah"
         },
         "tithe": {
-          "title": "Separate Maaser",
-          "description": "Monthly payment of 10% of your income"
+          "title": "Contribute a Donation and Maaser",
+          "description": "Monthly 10% of your income for the dissemination of the wisdom of Kabbalah"
         },
         "help": {
           "title": "Help Friends",
-          "description": "Support with tuition and convention fees"
+          "description": "Support With Tuition and Convention Fees"
         },
         "request": {
           "title": "Request Support"
         },
         "helpTuition": {
-          "title": "Request tuition support"
+          "title": "Request Tuition Support"
         },
         "helpEvents": {
-          "title": "Request events support"
+          "title": "Request Events Support"
         }
       }
     },

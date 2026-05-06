@@ -64,12 +64,12 @@
       "watchRecordedBtn": "Ver Grabado",
       "active": "ACTIVO",
       "notActive": "No hay eventos en vivo",
-      "convention": "Convención",
+      "convention": "Congreso",
       "registered": "Estas registrado",
       "notRegistered": "No estas registrado",
       "pending": "El registro está en espera de aprobación.",
       "register": "Registrarse",
-      "conventionSite": "Sitio de la convención",
+      "conventionSite": "Sitio de la Congreso",
       "conventionsubtitle": "Descubriendo un nuevo mondo",
       "conventiontitle": "Elevándonos por encima de nosotros mismos",
       "payments": {
@@ -97,13 +97,13 @@
       "giving": {
         "title": "Donaciones",
         "helpHaverTitle": "Fondo Help Haver",
-        "helpHaverSubtitle": "Fondo comunitario de ayuda mutua",
+        "helpHaverSubtitle": "Fondo de ayuda mutua de la comunidad",
         "donation": {
           "title": "Donar para difusión",
-          "description": "Apoyo a la difusión de la sabiduría de la Kabbalah"
+          "description": "Apoyo a la difusión de la Sabiduría de la Cabalá"
         },
         "tithe": {
-          "title": "Donación del Maaser (diezmo)",
+          "title": "Donación y Maaser",
           "description": "Pago mensual del 10% de los ingresos para la difusión de la Cabalá"
         },
         "help": {
