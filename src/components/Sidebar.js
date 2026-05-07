@@ -56,9 +56,12 @@ const Items = styled.div`
 
 const LogoLink = styled(RouterNavLink)`
   padding: 0;
-  display: block;
+  display: flex;              
+  align-items: center;        
+  height: 100%;            
+  line-height: 0;          
   text-decoration: none;
-  
+
   &:hover,
   &:active,
   &:focus {
