@@ -304,9 +304,24 @@ function UserMenu() {
         <KeyboardArrowDownIcon className="user-arrow" />
       </UserIconButton>
 
-      <Menu anchorEl={anchorMenu} open={Boolean(anchorMenu)} onClose={() => setAnchorMenu(null)}>
+      <Menu
+        anchorEl={anchorMenu}
+        open={Boolean(anchorMenu)}
+        onClose={() => setAnchorMenu(null)}
+        getContentAnchorEl={null}
+        disableScrollLock
+        anchorOrigin={{ vertical: "bottom", horizontal: i18next.dir() === "rtl" ? "left" : "right" }}
+        transformOrigin={{ vertical: "top", horizontal: i18next.dir() === "rtl" ? "left" : "right" }}
+        PaperProps={{ style: { marginTop: 2 } }}
+      >
         <MenuItem onClick={() => history.push(DASHBOARD_ROUTES.Profile)}>
           {t("Dashboard.Profile.name")}
+        </MenuItem>
+        <MenuItem onClick={() => history.push(DASHBOARD_ROUTES.membership)}>
+          {t("Membership.myMembership")}
+        </MenuItem>
+        <MenuItem onClick={() => history.push(DASHBOARD_ROUTES.previousPayment)}>
+          {t("Membership.paymentHistory")}
         </MenuItem>
         <MenuItem onClick={() => setIsModalOpen(true)}>
           {t("UserMenu.logOut")}
