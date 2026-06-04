@@ -14,13 +14,7 @@ import { Calendar as CalendarIcon } from "lucide-react";
 import { red, grey } from "@material-ui/core/colors";
 import { useTranslation } from "react-i18next";
 import { connect } from "react-redux";
-import {
-  GOOGLE_CALENDAR_API_KEY,
-  GOOGLE_CALENDAR_EN,
-  GOOGLE_CALENDAR_ES,
-  GOOGLE_CALENDAR_HE,
-  GOOGLE_CALENDAR_RU,
-} from "../../../shared/constants";
+import { EVENTS_API_URL } from "../../../shared/constants";
 
 
 const Wrapper = styled.div`
@@ -122,17 +116,9 @@ const ErrorText = styled(Typography)`
   }
 `;
 
-const CALENDAR_LANGUAGE = {
-  en: GOOGLE_CALENDAR_EN,
-  he: GOOGLE_CALENDAR_HE,
-  ru: GOOGLE_CALENDAR_RU,
-  es: GOOGLE_CALENDAR_ES,
-};
-
 const Calendar = ({ settings: { language } }) => {
   const { t } = useTranslation();
 
-  const [authenticated, setAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
   const [refresh, setRefresh] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
@@ -147,82 +133,53 @@ const Calendar = ({ settings: { language } }) => {
   }, [t]);
 
   useEffect(() => {
-    const gapi = window.gapi;
-
-    gapi.load("client:auth2", () => {
-      const initClient = async () => {
-        const {
-          client: { load, setApiKey },
-        } = gapi;
-
-        setApiKey(GOOGLE_CALENDAR_API_KEY);
-        await load(
-          "https://content.googleapis.com/discovery/v1/apis/calendar/v3/rest"
-        );
-
-        setAuthenticated(true);
-      };
-
-      initClient().catch((err) => {
-        setLoading(false);
-        eventsErr(err);
-      });
-    });
-  }, [eventsErr]);
-
-  useEffect(() => {
-    if (!authenticated || !refresh) {
+    if (!refresh) {
       return;
     }
 
     const getEvents = async () => {
       setErrorMessage("");
 
-      const padDate = (date) => date.toString().padStart(2, "0");
-      const parseDate = (date) =>
-        `${date.getFullYear()}-${padDate(date.getMonth() + 1)}-${padDate(
-          date.getDate()
-        )}`;
+      const pad = (n) => n.toString().padStart(2, "0");
+      const today = new Date();
+      const todayStr = `${today.getFullYear()}-${pad(today.getMonth() + 1)}-${pad(today.getDate())}`;
 
-      const currentDate = new Date();
+      const normalizeTime = (time) => {
+        const [h, m] = time.split(":");
+        return `${pad(h)}:${pad(m)}`;
+      };
 
-      const {
-        result: { items },
-      } = await window.gapi.client.calendar.events.list({
-        calendarId: CALENDAR_LANGUAGE[language] || GOOGLE_CALENDAR_EN,
-        timeMin: `${parseDate(currentDate)}T00:00:00Z`,
-        timeMax: `${parseDate(currentDate)}T23:59:59Z`,
-        timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-        singleEvents: true,
-        orderBy: "startTime",
-      });
+      const response = await fetch(EVENTS_API_URL);
+      if (!response.ok) throw new Error(`Events API error: ${response.status}`);
+      const items = await response.json();
 
-      const nowMs = new Date().getTime();
-      const calendarEvents = items.map((i) => {
-        const start = new Date(i.start.dateTime);
-        const end = new Date(i.end.dateTime);
-        const live = nowMs >= start.getTime() && nowMs < end.getTime();
-        const timeStart = `${padDate(start.getHours())}:${padDate(
-          start.getMinutes()
-        )}`;
+      const todayItems = items.filter((item) => item.date === todayStr);
+      const nowMs = Date.now();
+
+      const calendarEvents = todayItems.map((item) => {
+        const timeStart = normalizeTime(item.startTime);
+        const start = new Date(`${item.date}T${timeStart}`).getTime();
+        const end = new Date(`${item.date}T${normalizeTime(item.endTime)}`).getTime();
+        const live = nowMs >= start && nowMs < end;
 
         return {
-          id: i.id,
-          title: i.summary,
+          id: item.id,
+          title: item.title[language] || item.title.en,
           timeStart,
-          start: start.getTime(),
-          end: end.getTime(),
+          start,
+          end,
           live,
         };
       });
 
+      calendarEvents.sort((a, b) => a.start - b.start);
       setEvents(calendarEvents);
       setRefresh(false);
       setLoading(false);
     };
 
     getEvents().catch(eventsErr);
-  }, [authenticated, refresh, language, eventsErr]);
+  }, [refresh, language, eventsErr]);
 
   useEffect(() => {
     const nowMs = new Date().getTime();

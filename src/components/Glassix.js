@@ -17,7 +17,8 @@ const GlassixWidget = () => {
         snippetId: LanguageSnippetIDs[language] || LanguageSnippetIDs['en'],
         uniqueIdentifier: keycloak?.subject,
         participantName: keycloak?.profile?.firstName + " " + keycloak?.profile?.lastName,
-        participantMailAddress: keycloak?.profile?.email
+        participantMailAddress: keycloak?.profile?.email,
+        mobilePosition: language === 'he' ? 'left' : 'right',
     };
 
     if (GlassixWidgetClient && typeof GlassixWidgetClient == "function") { // eslint-disable-line
