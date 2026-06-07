@@ -323,6 +323,14 @@ function UserMenu() {
         <MenuItem onClick={() => history.push(DASHBOARD_ROUTES.previousPayment)}>
           {t("Membership.paymentHistory")}
         </MenuItem>
+        <MenuItem
+          component="a"
+          href="https://kli.one/terms"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {t("UserMenu.privacyAndTerms")}
+        </MenuItem>
         <MenuItem onClick={() => setIsModalOpen(true)}>
           {t("UserMenu.logOut")}
         </MenuItem>

@@ -122,6 +122,7 @@
       }
     },
     "UserMenu": {
+      "privacyAndTerms": "Privacidad y Términos de Uso",
       "logOut": "Cerrar la sesión",
       "profile": "Perfil",
       "logOutText": "¿Realmente desea cerrar sesión?",
