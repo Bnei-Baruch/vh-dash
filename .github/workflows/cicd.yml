@@ -1,0 +1,91 @@
+name: CI/CD
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to deploy'
+        required: true
+        default: 'staging'
+        type: choice
+        options:
+          - staging
+          - production
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Set environment variables
+        run: |
+          if [[ "${{ inputs.environment }}" == "production" ]]; then
+            echo "PUBLIC_URL=https://kli.one/dash/" >> $GITHUB_ENV
+          else
+            echo "PUBLIC_URL=/dash/" >> $GITHUB_ENV
+          fi
+          echo "SHORT_SHA=${GITHUB_SHA::7}" >> $GITHUB_ENV
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          push: true
+          tags: |
+            ghcr.io/bnei-baruch/vh-dash:latest
+            ghcr.io/bnei-baruch/vh-dash:${{ env.SHORT_SHA }}
+          build-args: |
+            REACT_APP_COMMIT_SHA=${{ env.SHORT_SHA }}
+            PUBLIC_URL=${{ env.PUBLIC_URL }}
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Set environment variables
+        run: |
+          if [[ "${{ inputs.environment }}" == "production" ]]; then
+            echo "SSH_HOST=${{ secrets.VH_HOST_PRODUCTION }}" >> $GITHUB_ENV
+          else
+            echo "SSH_HOST=${{ secrets.VH_HOST_STAGING }}" >> $GITHUB_ENV
+          fi
+          echo "SHORT_SHA=${GITHUB_SHA::7}" >> $GITHUB_ENV
+
+      - name: Copy deployment files to VM
+        uses: appleboy/scp-action@v1
+        with:
+          host: ${{ env.SSH_HOST }}
+          username: root
+          key: ${{ secrets.BBDEPLOYMENT_SSH_PRIVATE_KEY }}
+          source: "docker-compose.yml,config-templates/"
+          target: /opt/vh/vh-dash/
+
+      - name: Deploy to VM
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ env.SSH_HOST }}
+          username: root
+          key: ${{ secrets.BBDEPLOYMENT_SSH_PRIVATE_KEY }}
+          envs: SHORT_SHA
+          script: |
+            cd /opt/vh/vh-dash
+            set -a
+            source .env
+            set +a
+            mkdir -p public/config
+            gomplate --input-dir=config-templates \
+              --output-map="/opt/vh/vh-dash/public/config/{{ .in | strings.ReplaceAll \".js\" \"-$SHORT_SHA.js\" }}"
+            export IMAGE_NAME=ghcr.io/bnei-baruch/vh-dash:$SHORT_SHA
+            docker compose pull
+            docker compose up -d

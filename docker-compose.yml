@@ -1,4 +1,3 @@
-version: '2.2'
 services:
   vh-dash:
     image: "${IMAGE_NAME}"
@@ -7,9 +6,9 @@ services:
     ports:
       - 8080:80
     volumes:
-      - /opt/$CI_PROJECT_PATH/public/config/:/usr/share/nginx/html/config/
+      - /opt/vh/vh-dash/public/config/:/usr/share/nginx/html/config/
     restart: unless-stopped
 networks:
-    default:
-        external:
-            name: vh
+  default:
+    name: vh
+    external: true
