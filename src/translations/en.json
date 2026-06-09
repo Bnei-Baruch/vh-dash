@@ -121,6 +121,7 @@
       }
     },
     "UserMenu": {
+      "privacyAndTerms": "Privacy & Terms of Use",
       "logOut": "Log Out",
       "logOutText": "Do you really want to quit?",
       "unsaved_changes": "You have unsaved changes. Please save or cancel changes before switching tab",
