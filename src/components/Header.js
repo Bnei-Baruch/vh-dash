@@ -370,7 +370,7 @@ const Header = ({ onDrawerToggle }) => {
         <Grid container alignItems="center" wrap="nowrap">
           <StartSection>
             <LogoLink to={DASHBOARD_ROOT}>
-              <img src={logoImage} alt="Bnei Baruch Logo" style={{ height: "64px", width: "auto" }} />
+              <img src={logoImage} alt="Bnei Baruch Logo" style={{ height: "70px", width: "auto" }} />
             </LogoLink>
 
             <Hidden mdUp>
