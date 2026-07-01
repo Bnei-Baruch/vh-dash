@@ -35,7 +35,7 @@ const dashboardRoutes = [
     path: DASHBOARD_ROUTES.Profile,
     id: "Profile",
     icon: <FileText />,
-    enableHeader: true,
+
     component: MyProfile,
     children: null,
   },
@@ -43,21 +43,21 @@ const dashboardRoutes = [
     path: DASHBOARD_ROUTES.membership,
     id: "Membership",
     icon: <VerifiedUserIcon />,
-    enableHeader: true,
+
     component: MembershipStatus,
     children: [
       {
         path: DASHBOARD_ROUTES.membership,
         id: "Status",
         icon: <VerifiedUserIcon />,
-        enableHeader: true,
+    
         component: MembershipStatus,
       },
       {
         path: DASHBOARD_ROUTES.previousPayment,
         id: "PreviousPayment",
         icon: <VerifiedUserIcon />,
-        enableHeader: true,
+    
         component: PreviousPayments,
       },
     ],
@@ -74,7 +74,7 @@ const dashboardRoutes = [
     path: DASHBOARD_ROUTES.broadcastArea,
     id: "BroadcastArea",
     icon: <Youtube />,
-    enableHeader: true,
+
     component: BroadcastArea,
     children: null,
   },
@@ -82,7 +82,7 @@ const dashboardRoutes = [
     path: ARVUT_SYSTEM_URL,
     id: "ArvutSystem",
     icon: <ViewComfyIcon />,
-    enableHeader: true,
+
     component: ArvutSystem,
     children: null,
     isExternalLink: true,
@@ -91,7 +91,7 @@ const dashboardRoutes = [
     path: ARCHIVE_LINK,
     id: "Archive",
     icon: <FolderOpenIcon />,
-    enableHeader: true,
+
     component: Archive,
     children: null,
     isExternalLink: true,
@@ -100,7 +100,7 @@ const dashboardRoutes = [
     path: PAY_KLI_ONE_URL,
     id: "Payments",
     icon: <PaymentIcon />,
-    enableHeader: true,
+
     component: null,
     children: null,
     isExternalLink: true,

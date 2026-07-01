@@ -13,7 +13,7 @@ import Auth from "../config/Auth";
 import DashboardPageLayout from "./DashboardPageLayout";
 
 const renderRoute = (Layout, route) => {
-  const { path, id, enableHeader, component: Component } = route;
+  const { path, component: Component } = route;
 
   if (!Component) return null;
 
@@ -26,8 +26,6 @@ const renderRoute = (Layout, route) => {
         <DashboardPageLayout
           Layout={Layout}
           Component={Component}
-          routeId={id}
-          enableHeader={enableHeader}
           routeProps={props}
         />
       )}

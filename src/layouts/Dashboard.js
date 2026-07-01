@@ -5,20 +5,16 @@ import styled, { createGlobalStyle } from "styled-components";
 
 import { spacing } from "@material-ui/system";
 import {
-  Hidden,
   CssBaseline,
   Paper as MuiPaper,
   withWidth,
 } from "@material-ui/core";
 import { isWidthUp } from "@material-ui/core/withWidth";
-import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
 import GlassixWidget from "../components/Glassix";
 import PlatformsNavigation from "../pages/dashboard/Home/PlatformsNavigation";
 import CountryPromptModal from "../components/CountryPromptModal";
 import { updateProfile } from "../redux/actions/profileActions";
-
-const drawerWidth = 260;
 
 // Storage keys for country prompt modal
 const COUNTRY_PROMPT_DISMISSED_KEY = 'VH_COUNTRY_PROMPT_DISMISSED';
@@ -47,13 +43,6 @@ const Root = styled.div`
   min-height: 100vh;
 `;
 
-const Drawer = styled.div`
-  ${(props) => props.theme.breakpoints.up("md")} {
-    width: ${drawerWidth}px;
-    flex-shrink: 0;
-  }
-`;
-
 const AppContent = styled.div`
   flex: 1;
   display: flex;
@@ -78,7 +67,6 @@ const MainContent = styled(Paper)`
 `;
 
 const Dashboard = ({ children, routes, width }) => {
-  const [mobileOpen, setMobileOpen] = useState(false);
   const [countryModalOpen, setCountryModalOpen] = useState(false);
 
   const profile = useSelector((state) => state.profileReducer.info);
@@ -95,10 +83,6 @@ const Dashboard = ({ children, routes, width }) => {
       setCountryModalOpen(shouldShow);
     }
   }, [profile, location.pathname]);
-
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
 
   const handleSaveCountry = (countryISO) => {
     dispatch(updateProfile({ country: countryISO }));
@@ -119,25 +103,8 @@ const Dashboard = ({ children, routes, width }) => {
     <Root>
       <CssBaseline />
       <GlobalStyle />
-      <Drawer>
-        <Hidden mdUp implementation="js">
-          <Sidebar
-            routes={routes}
-            PaperProps={{ style: { width: drawerWidth } }}
-            variant="temporary"
-            open={mobileOpen}
-            onClose={handleDrawerToggle}
-          />
-        </Hidden>
-        <Hidden smDown implementation="css">
-          <Sidebar
-            routes={routes}
-            PaperProps={{ style: { width: drawerWidth } }}
-          />
-        </Hidden>
-      </Drawer>
       <AppContent>
-        <Header onDrawerToggle={handleDrawerToggle} />
+        <Header />
         {location.pathname === "/dash" && <PlatformsNavigation />}
         <MainContent p={isWidthUp("lg", width) ? 10 : 5}>
           {children}
