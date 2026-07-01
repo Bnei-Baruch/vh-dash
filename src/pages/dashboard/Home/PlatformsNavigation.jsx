@@ -61,7 +61,10 @@ const NavBar = styled.nav`
   padding: 0 16px;
   overflow-x: auto;
   scrollbar-width: none;
-  justify-content: center;
+
+  ${(p) => p.theme.breakpoints.up("md")} {
+    justify-content: center;
+  }
 
   &::-webkit-scrollbar {
     display: none;
