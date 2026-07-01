@@ -16,7 +16,6 @@ import LanguageIcon from "@material-ui/icons/Language";
 import {
   Badge,
   Grid,
-  Hidden,
   InputBase,
   Menu,
   MenuItem,
@@ -26,8 +25,6 @@ import {
   Typography,
   Box,
 } from "@material-ui/core";
-
-import { Menu as MenuIcon } from "@material-ui/icons";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import { CHAT_AND_NOTIFICATION_ICONS, SEARCH_BAR } from "../shared/constants";
 import { setSettings } from "../redux/actions/settingsActions";
@@ -35,8 +32,6 @@ import { setLoggedInUser } from "../redux/actions/userActions";
 import ModalWindow from "../pages/dashboard/MyProfile/ui/ModalWindow";
 import { DASHBOARD_ROUTES, DASHBOARD_ROOT } from "../routes/dashboardRoutes";
 import { membershipDataV2 } from "../redux/selectors/user";
-
-/* ---------- styled ---------- */
 
 /* ---------- styled ---------- */
 
@@ -358,7 +353,7 @@ function UserMenu() {
 
 /* ---------- Header ---------- */
 
-const Header = ({ onDrawerToggle }) => {
+const Header = () => {
   const history = useHistory();
   const { t } = useTranslation();
   const membership = useSelector((state) => membershipDataV2(state));
@@ -372,12 +367,6 @@ const Header = ({ onDrawerToggle }) => {
             <LogoLink to={DASHBOARD_ROOT}>
               <img src={logoImage} alt="Bnei Baruch Logo" style={{ height: "70px", width: "auto" }} />
             </LogoLink>
-
-            <Hidden mdUp>
-              <IconButton onClick={onDrawerToggle}>
-                <MenuIcon />
-              </IconButton>
-            </Hidden>
           </StartSection>
 
           {SEARCH_BAR && (

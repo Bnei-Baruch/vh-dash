@@ -66,7 +66,7 @@ const MainContent = styled(Paper)`
   }
 `;
 
-const Dashboard = ({ children, routes, width }) => {
+const Dashboard = ({ children, width }) => {
   const [countryModalOpen, setCountryModalOpen] = useState(false);
 
   const profile = useSelector((state) => state.profileReducer.info);
