@@ -1,12 +1,3 @@
-import React from "react";
-
-import { FileText, Sliders, Youtube } from "react-feather";
-import ViewComfyIcon from "@material-ui/icons/ViewComfy";
-import FolderOpenIcon from "@material-ui/icons/FolderOpen";
-import VerifiedUserIcon from "@material-ui/icons/VerifiedUser";
-import EventIcon from "@material-ui/icons/Event";
-import PaymentIcon from "@material-ui/icons/Payment";
-// import HelpIcon from "@material-ui/icons/Help";
 import async from "../components/Async";
 import { DASHBOARD_ROUTES } from "./dashboardRoutes";
 import { ARCHIVE_LINK, ARVUT_SYSTEM_URL, PAY_KLI_ONE_URL } from "../constants/common";
@@ -20,44 +11,34 @@ const Archive = async(() => import("../pages/dashboard/Archive"));
 const ArvutSystem = async(() => import("../pages/dashboard/ArvutSystem"));
 const BroadcastArea = async(() => import("../pages/dashboard/BroadcastArea"));
 const PreviousPayments = async(() => import("../pages/dashboard/MembershipV2/PreviousPayments"));
-const MembershipStatus = async(() =>import("../pages/dashboard/MembershipV2/MembershipStatus"));
+const MembershipStatus = async(() => import("../pages/dashboard/MembershipV2/MembershipStatus"));
 
 const dashboardRoutes = [
   {
     id: "Dashboard",
     path: "/dash",
-    icon: <Sliders />,
-    containsHome: true,
     children: null,
     component: Home,
   },
   {
     path: DASHBOARD_ROUTES.Profile,
     id: "Profile",
-    icon: <FileText />,
-    enableHeader: true,
     component: MyProfile,
     children: null,
   },
   {
     path: DASHBOARD_ROUTES.membership,
     id: "Membership",
-    icon: <VerifiedUserIcon />,
-    enableHeader: true,
     component: MembershipStatus,
     children: [
       {
         path: DASHBOARD_ROUTES.membership,
         id: "Status",
-        icon: <VerifiedUserIcon />,
-        enableHeader: true,
         component: MembershipStatus,
       },
       {
         path: DASHBOARD_ROUTES.previousPayment,
         id: "PreviousPayment",
-        icon: <VerifiedUserIcon />,
-        enableHeader: true,
         component: PreviousPayments,
       },
     ],
@@ -65,50 +46,34 @@ const dashboardRoutes = [
   {
     path: "https://events.kli.one/",
     id: "Events",
-    icon: <EventIcon />,
     component: null,
     children: null,
-    isExternalLink: true,
   },
   {
     path: DASHBOARD_ROUTES.broadcastArea,
     id: "BroadcastArea",
-    icon: <Youtube />,
-    enableHeader: true,
     component: BroadcastArea,
     children: null,
   },
   {
     path: ARVUT_SYSTEM_URL,
     id: "ArvutSystem",
-    icon: <ViewComfyIcon />,
-    enableHeader: true,
     component: ArvutSystem,
     children: null,
-    isExternalLink: true,
   },
   {
     path: ARCHIVE_LINK,
     id: "Archive",
-    icon: <FolderOpenIcon />,
-    enableHeader: true,
     component: Archive,
     children: null,
-    isExternalLink: true,
   },
   {
     path: PAY_KLI_ONE_URL,
     id: "Payments",
-    icon: <PaymentIcon />,
-    enableHeader: true,
     component: null,
     children: null,
-    isExternalLink: true,
   },
 ];
 
 // Routes using the Dashboard layout
 export const dashboardLayoutRoutes = [...dashboardRoutes];
-
-// Routes visible in the sidebar
-export const sidebarRoutes = [...dashboardRoutes];

@@ -5,6 +5,9 @@ import { useHistory } from "react-router";
 import { darken } from "polished";
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
+import { Link as RouterLink } from "react-router-dom";
+import LogoImageEn from "../asset/logo/BB_KL_Sites_Logos_2026_Con_en.svg";
+import LogoImageHe from "../asset/logo/BB_KL_Sites_Logos_2026_Con_heb.svg";
 import _ from "lodash";
 import { Bell, MessageSquare, Search as SearchIcon } from "react-feather";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
@@ -13,7 +16,6 @@ import LanguageIcon from "@material-ui/icons/Language";
 import {
   Badge,
   Grid,
-  Hidden,
   InputBase,
   Menu,
   MenuItem,
@@ -23,18 +25,13 @@ import {
   Typography,
   Box,
 } from "@material-ui/core";
-
-import { Menu as MenuIcon } from "@material-ui/icons";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import { CHAT_AND_NOTIFICATION_ICONS, SEARCH_BAR } from "../shared/constants";
 import { setSettings } from "../redux/actions/settingsActions";
 import { setLoggedInUser } from "../redux/actions/userActions";
 import ModalWindow from "../pages/dashboard/MyProfile/ui/ModalWindow";
-import { DASHBOARD_ROUTES } from "../routes/dashboardRoutes";
+import { DASHBOARD_ROUTES, DASHBOARD_ROOT } from "../routes/dashboardRoutes";
 import { membershipDataV2 } from "../redux/selectors/user";
-import { usePageTitle } from "../contexts/PageTitleContext";
-
-/* ---------- styled ---------- */
 
 /* ---------- styled ---------- */
 
@@ -211,15 +208,18 @@ const VerticalDivider = styled.span`
   }
 `;
 
-const PageTitle = styled(Typography)`
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #333;
-  margin-inline-start: 16px;
-  margin-inline-end: 16px;
+const LogoLink = styled(RouterLink)`
+  padding: 0;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  line-height: 0;
+  text-decoration: none;
 
-  ${(props) => props.theme.breakpoints.down("md")} {
-    font-size: 1.125rem; 
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: transparent !important;
   }
 `;
 
@@ -353,26 +353,20 @@ function UserMenu() {
 
 /* ---------- Header ---------- */
 
-const Header = ({ onDrawerToggle }) => {
+const Header = () => {
   const history = useHistory();
   const { t } = useTranslation();
   const membership = useSelector((state) => membershipDataV2(state));
   const active = membership?.active || false;
-  const { title: currentPageTitle } = usePageTitle();
+  const logoImage = i18next.language === "he" ? LogoImageHe : LogoImageEn;
   return (
     <AppBar position="sticky" elevation={0} color="default">
       <StyledToolbar>
         <Grid container alignItems="center" wrap="nowrap">
           <StartSection>
-            <Hidden mdUp>
-              <IconButton onClick={onDrawerToggle}>
-                <MenuIcon />
-              </IconButton>
-            </Hidden>
-
-            {currentPageTitle && (
-              <PageTitle>{currentPageTitle}</PageTitle>
-            )}
+            <LogoLink to={DASHBOARD_ROOT}>
+              <img src={logoImage} alt="Bnei Baruch Logo" style={{ height: "70px", width: "auto" }} />
+            </LogoLink>
           </StartSection>
 
           {SEARCH_BAR && (
