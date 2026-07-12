@@ -122,6 +122,7 @@
     },
     "UserMenu": {
       "privacyAndTerms": "פרטיות ותנאי שימוש",
+      "cancellationPolicy": "תקנון האתר ומדיניות ביטולים",
       "logOut": "להתנתק",
       "logOutText": "האם את/ה באמת רוצה לצאת?",
       "unsaved_changes": "You have unsaved changes. Please save or cancel changes before switching tab",

@@ -281,7 +281,7 @@ function LanguageMenu() {
 /* ---------- UserMenu ---------- */
 
 function UserMenu() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const state = useSelector((state) => state.userReducer.info);
   const membership = useSelector((state) => membershipDataV2(state));
   const membershipActive = membership?.active || false;
@@ -290,6 +290,9 @@ function UserMenu() {
 
   const [anchorMenu, setAnchorMenu] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const LANG_MAP = { he: "il", en: "en", ru: "ru", es: "es" };
+  const vhFrontLang = LANG_MAP[i18n.language] ?? "en";
 
   return (
     <>
@@ -325,11 +328,19 @@ function UserMenu() {
         </MenuItem>
         <MenuItem
           component="a"
-          href="https://kli.one/terms"
+          href={`https://kli.one/terms?lang=${vhFrontLang}`}
           target="_blank"
           rel="noopener noreferrer"
         >
           {t("UserMenu.privacyAndTerms")}
+        </MenuItem>
+        <MenuItem
+          component="a"
+          href={`https://kli.one/cancellation-policy?lang=${vhFrontLang}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {t("UserMenu.cancellationPolicy")}
         </MenuItem>
         <MenuItem onClick={() => setIsModalOpen(true)}>
           {t("UserMenu.logOut")}
