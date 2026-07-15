@@ -34,7 +34,7 @@
     "i18next-browser-languagedetector": "^6.0.1",
     "jss": "10.4.0",
     "jss-rtl": "^0.3.0",
-    "keycloak-js": "^26.2.0",
+    "keycloak-js": "^26.2.4",
     "lodash": "^4.17.21",
     "loglevel": "^1.8.1",
     "lucide-react": "^0.562.0",
