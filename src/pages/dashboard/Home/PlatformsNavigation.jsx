@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Users, Film, BookOpen, Calendar, CreditCard, Gift, Radio } from "lucide-react";
+import { Users, Film, BookOpen, Calendar, CreditCard, Gift, Radio, Globe, Tv, ShoppingBag, Briefcase } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { grey } from "@material-ui/core/colors";
 
@@ -48,6 +48,33 @@ const PLATFORMS = [
     href: "https://convention.kli.one/he",
     icon: Radio,
     color: "#9333ea",
+  },
+];
+
+const HEBREW_ONLY_PLATFORMS = [
+  {
+    id: "kabLaAmSite",
+    href: "https://www.kab.co.il/",
+    icon: Globe,
+    color: "#0284c7",
+  },
+  {
+    id: "kabTv",
+    href: "https://kabtv.co.il",
+    icon: Tv,
+    color: "#dc2626",
+  },
+  {
+    id: "bookStore",
+    href: "https://sefer.kab.co.il",
+    icon: ShoppingBag,
+    color: "#ca8a04",
+  },
+  {
+    id: "distributionJobs",
+    href: "https://hr.kab.co.il/hr/home/",
+    icon: Briefcase,
+    color: "#0f766e",
   },
 ];
 
@@ -105,9 +132,12 @@ const NavIcon = styled.div`
 const PlatformsNavigation = () => {
   const { t, i18n } = useTranslation();
 
+  const platforms =
+    i18n.language === "he" ? [...PLATFORMS, ...HEBREW_ONLY_PLATFORMS] : PLATFORMS;
+
   return (
     <NavBar>
-      {PLATFORMS.map(({ id, href, icon: Icon, color }) => (
+      {platforms.map(({ id, href, icon: Icon, color }) => (
         <NavItem
           key={id}
           href={id === "payments" ? `https://pay.kli.one/${i18n.language}` : href}

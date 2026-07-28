@@ -343,7 +343,11 @@
         "events": "אירועים",
         "payments": "תשלומים",
         "donations": "תרומות",
-        "convention": "כנס"
+        "convention": "כנס",
+        "kabLaAmSite": "אתר קבלה לעם",
+        "kabTv": "KabTV",
+        "bookStore": "חנות ספרים",
+        "distributionJobs": "תפקידים בהפצה"
       },
       "CountryPrompt": {
         "title": "השלם את הפרופיל שלך",
