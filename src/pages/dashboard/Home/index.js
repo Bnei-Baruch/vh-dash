@@ -5,11 +5,13 @@ import StudyArea from "./StudyArea.jsx";
 import GivingSection from "./GivingSection.jsx";
 import PaymentsArea from "./PaymentsArea.jsx";
 import Messages from "./Messages.jsx";
+import HomeBanner from "./HomeBanner.jsx";
 
 const Home = () => {
   return (
     <>
-   
+      <HomeBanner />
+
       {/* 1️⃣ Messages + Study Area + Calendar */}
       <Grid container spacing={6} style={{ marginBottom: 24 }} alignItems="stretch">
         <Grid item xs={12} md={4}>
