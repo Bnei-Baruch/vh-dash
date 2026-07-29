@@ -10,6 +10,7 @@ import {isEmpty} from "lodash";
 import { membershipDataV2 } from "../../../redux/selectors/user";
 import Status from "./Status";
 import Notification from "./Notification";
+import Coupons from "./Coupons";
 import PaymentAction from "./PaymentAction";
 import CancelOutlinedIcon from "@material-ui/icons/CancelOutlined";
 import CheckCircleOutlineOutlinedIcon from "@material-ui/icons/CheckCircleOutlineOutlined";
@@ -268,6 +269,10 @@ function MembershipStatus() {
                   <Notification membershipData={membershipData}/>
                 </NotificationGrid>
               )}
+              {/* member coupons (renders nothing when the member has none) */}
+              <Grid item xs={12}>
+                <Coupons />
+              </Grid>
               <ActionContainer item xs={12}>
                 <PaymentAction membershipData={membershipData} />
               </ActionContainer>
