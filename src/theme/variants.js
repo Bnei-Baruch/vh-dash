@@ -34,22 +34,6 @@ const blueVariant = {
         color: "#FFFFFF",
       },
     },
-    footer: {
-      color: "#FFF",
-      background: "#00447c",
-      online: {
-        background: "#FFF",
-      },
-    },
-    category: {
-      fontWeight: 400,
-      hoverBackground: "rgba(255, 255, 255, 0.08)",
-      activeBackground: "#003F73",
-    },
-    badge: {
-      color: "#000",
-      background: "#FFF",
-    },
   },
   body: {
     background: "#F7F9FC",
@@ -90,20 +74,6 @@ const greenVariant = {
       brand: {
         color: "#FFFFFF",
       },
-    },
-    footer: {
-      color: "#FFF",
-      background: green[800],
-      online: {
-        background: "#FFF",
-      },
-    },
-    category: {
-      fontWeight: 400,
-    },
-    badge: {
-      color: "#000",
-      background: "#FFF",
     },
   },
   body: {
@@ -146,20 +116,6 @@ const indigoVariant = {
         color: "#FFFFFF",
       },
     },
-    footer: {
-      color: "#FFF",
-      background: indigo[700],
-      online: {
-        background: "#FFF",
-      },
-    },
-    category: {
-      fontWeight: 400,
-    },
-    badge: {
-      color: "#000",
-      background: "#FFF",
-    },
   },
   body: {
     background: "#F9F9FC",
@@ -200,20 +156,6 @@ const tealVariant = {
       brand: {
         color: "#FFFFFF",
       },
-    },
-    footer: {
-      color: "#FFF",
-      background: teal[800],
-      online: {
-        background: "#FFF",
-      },
-    },
-    category: {
-      fontWeight: 400,
-    },
-    badge: {
-      color: "#000",
-      background: "#FFF",
     },
   },
   body: {
@@ -256,20 +198,6 @@ const lightVariant = {
         color: "#FFFFFF",
       },
     },
-    footer: {
-      color: grey[900],
-      background: grey[100],
-      online: {
-        background: green[500],
-      },
-    },
-    category: {
-      fontWeight: 600,
-    },
-    badge: {
-      color: "#FFF",
-      background: green[600],
-    },
   },
   body: {
     background: "#F7F9FC",
@@ -310,20 +238,6 @@ const darkVariant = {
       brand: {
         color: blue[500],
       },
-    },
-    footer: {
-      color: grey[200],
-      background: "#232f3e",
-      online: {
-        background: green[500],
-      },
-    },
-    category: {
-      fontWeight: 400,
-    },
-    badge: {
-      color: "#FFF",
-      background: blue[500],
     },
   },
   body: {

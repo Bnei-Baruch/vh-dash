@@ -122,6 +122,7 @@
     },
     "UserMenu": {
       "privacyAndTerms": "Политика и условия",
+      "cancellationPolicy": "Условия сайта и политика отмены",
       "logOut": "Выйти",
       "logOutText": "Вы действительно хотите выйти?",
       "unsaved_changes": "You have unsaved changes. Please save or cancel changes before switching tab",

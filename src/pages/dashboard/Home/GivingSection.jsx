@@ -203,7 +203,7 @@ const DescriptionRow = styled.div`
 /* ===== Component ===== */
 
 const GivingSection = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const mainCards = [
     {
@@ -248,7 +248,7 @@ const GivingSection = () => {
         {
           id: "events",
           label: t("Home.giving.helpEvents.title"),
-          href: "https://docs.google.com/forms/d/e/1FAIpQLScU0xjKtV4XVJwz2nbv4vTB3p_inw6nhJPNw1-kHG3GzoB6qA/viewform",
+          href: `https://pay.kli.one/${i18n.language}/form/help-haver-request#no-back`,
         },
       ],
     },

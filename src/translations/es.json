@@ -123,6 +123,7 @@
     },
     "UserMenu": {
       "privacyAndTerms": "Privacidad y Términos de Uso",
+      "cancellationPolicy": "Términos del sitio y política de cancelación",
       "logOut": "Cerrar la sesión",
       "profile": "Perfil",
       "logOutText": "¿Realmente desea cerrar sesión?",

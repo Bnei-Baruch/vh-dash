@@ -1,23 +1,12 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Grid } from "@material-ui/core";
 import Calendar from "./Calendar";
 import StudyArea from "./StudyArea.jsx";
 import GivingSection from "./GivingSection.jsx";
 import PaymentsArea from "./PaymentsArea.jsx";
 import Messages from "./Messages.jsx";
-import { usePageTitle } from "../../../contexts/PageTitleContext";
 
 const Home = () => {
-  const { setTitle } = usePageTitle();
-
-  // Reset title immediately when component mounts
-  useEffect(() => {
-    setTitle("");
-    return () => {
-      setTitle("");
-    };
-  }, [setTitle]);
-
   return (
     <>
    

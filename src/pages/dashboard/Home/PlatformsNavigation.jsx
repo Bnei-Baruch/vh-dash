@@ -62,6 +62,10 @@ const NavBar = styled.nav`
   overflow-x: auto;
   scrollbar-width: none;
 
+  ${(p) => p.theme.breakpoints.up("md")} {
+    justify-content: center;
+  }
+
   &::-webkit-scrollbar {
     display: none;
   }
@@ -99,12 +103,18 @@ const NavIcon = styled.div`
 /* ===== Component ===== */
 
 const PlatformsNavigation = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   return (
     <NavBar>
       {PLATFORMS.map(({ id, href, icon: Icon, color }) => (
-        <NavItem key={id} href={href} target="_blank" rel="noopener noreferrer" color={color}>
+        <NavItem
+          key={id}
+          href={id === "payments" ? `https://pay.kli.one/${i18n.language}` : href}
+          target="_blank"
+          rel="noopener noreferrer"
+          color={color}
+        >
           <NavIcon color={color}>
             <Icon size={18} />
           </NavIcon>
