@@ -1,25 +1,14 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
-
 ## Project Overview
 
 This is a React-based dashboard for the Kabbalah Community virtual home platform, providing features like events calendar, live broadcasts, membership management, profile management, and study materials.
 
 ## Development Commands
 
-```bash
-# Start development server
-npm start
+Standard `npm` scripts — see `package.json`.
 
-# Build for production
-npm run build
-
-# Run linter
-npm run lint
-```
-
-Note: The project uses `--openssl-legacy-provider` flag for both start and build commands due to Node.js OpenSSL compatibility requirements.
+Gotcha: `start` and `build` both need the `--openssl-legacy-provider` flag (already wired into the scripts) for Node.js OpenSSL compatibility. Don't remove it.
 
 ## Architecture
 
@@ -97,36 +86,10 @@ Note: The project uses `--openssl-legacy-provider` flag for both start and build
 - Membership status V2 API integration
 - Previous payments history
 
-### Project Structure
-```
-src/
-├── components/       # Shared components (Sidebar, Header, Loader, etc.)
-├── config/          # Auth and Keycloak configuration
-├── constants/       # Static data (countries, languages, common values)
-├── contexts/        # React contexts (PageTitleContext)
-├── layouts/         # Layout components (Dashboard, Auth)
-├── pages/           # Page components organized by section
-│   ├── auth/        # Authentication pages
-│   └── dashboard/   # Main dashboard pages
-│       ├── BroadcastArea/
-│       ├── Events/
-│       ├── Home/
-│       ├── MembershipV2/
-│       └── MyProfile/
-├── redux/           # Redux actions, reducers, store
-├── routes/          # Route definitions and routing logic
-├── services/        # API service modules
-├── shared/          # Shared utilities and helpers
-├── theme/           # Material-UI theme configuration
-├── translations/    # i18n JSON files
-└── utils/           # Utility functions
-```
-
 ## Deployment
 
 - Main branch: `master`
-- Workflow:
-  1. Create feature branch from master
-  2. Push and create merge request
-  3. Merge to master deploys to staging
-  4. Create Git tag to deploy to production
+- CI/CD is `.github/workflows/cicd.yml` on GitHub Actions (migrated off GitLab in June 2026).
+- **Deploys are manual only** — `workflow_dispatch` with an `environment` input (`staging` or `production`). There is no push trigger and no tag trigger: merging to `master` deploys nothing, and neither does tagging.
+- The workflow runs from whichever ref you dispatch, so you can deploy a branch without merging it.
+- Build-time `PUBLIC_URL` differs per environment (`/dash/` for staging, `https://kli.one/dash/` for production); everything else is runtime config from `window.APP_CONFIG`.
