@@ -7,14 +7,14 @@ import { getMyCoupons } from "../../../services/coupons.service";
 
 const ENDING_SOON_DAYS = 14;
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   card: {
     padding: "20px",
     margin: "10px 20px",
     boxShadow: "0 0 14px 0 rgb(53 64 82 / 15%) !important",
   },
   endingSoon: {
-    backgroundColor: "#FEF2EF",
+    backgroundColor: theme.palette.warning.light,
   },
   row: {
     marginTop: "8px",
@@ -23,10 +23,10 @@ const useStyles = makeStyles({
     fontWeight: 600,
   },
   notice: {
-    color: "#FF0000",
+    color: theme.palette.warning.main,
     marginTop: "8px",
   },
-});
+}));
 
 // Member-facing coupon list (design §3): client-derived per page load, renders
 // nothing when the member has no coupons. Dates arrive as inclusive Jerusalem

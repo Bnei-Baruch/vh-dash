@@ -4,46 +4,46 @@ import {useTranslation} from "react-i18next";
 import {isEmpty} from "lodash";
 import moment from "moment/moment";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
     default: {
         padding: "20px",
         margin: "10px 20px",
         boxShadow: "0 0 14px 0 rgb(53 64 82 / 15%) !important",
     },
     error: {
-        backgroundColor: "#FEF2EF",
+        backgroundColor: theme.palette.warning.light,
         padding: "20px",
         margin: "10px 20px",
         boxShadow: "0 0 14px 0 rgb(53 64 82 / 15%) !important",
         "& >h6": {
-            color: "#FF0000",
+            color: theme.palette.warning.main,
         },
     },
     mb_expiration_notice: {
-        backgroundColor: "#FEF2EF",
+        backgroundColor: theme.palette.warning.light,
         padding: "20px",
         margin: "10px 20px",
         boxShadow: "0 0 14px 0 rgb(53 64 82 / 15%) !important",
         "& >h6": {
-            color: "#FF0000",
+            color: theme.palette.warning.main,
         },
     },
     mb_has_expired_notice: {
-        backgroundColor: "#FEF2EF",
+        backgroundColor: theme.palette.warning.light,
         padding: "20px",
         margin: "10px 20px",
         boxShadow: "0 0 14px 0 rgb(53 64 82 / 15%) !important",
         "& >h6": {
-            color: "#FF0000",
+            color: theme.palette.warning.main,
         },
     },
     hh_request_refused: {
-        backgroundColor: "#FEF2EF",
+        backgroundColor: theme.palette.warning.light,
         padding: "20px",
         margin: "10px 20px",
         boxShadow: "0 0 14px 0 rgb(53 64 82 / 15%) !important",
         "& >h6": {
-            color: "#FF0000",
+            color: theme.palette.warning.main,
         },
     },
     mb_new: {
@@ -56,21 +56,21 @@ const useStyles = makeStyles({
         },
     },
     mb_cancelled: {
-        backgroundColor: "#FEF2EF",
+        backgroundColor: theme.palette.warning.light,
         padding: "20px",
         margin: "10px 20px",
         boxShadow: "0 0 14px 0 rgb(53 64 82 / 15%) !important",
         "& >h6": {
-            color: "#FF0000",
+            color: theme.palette.warning.main,
         },
     },
     mb_problem_previous_payment: {
-        backgroundColor: "#FEF2EF",
+        backgroundColor: theme.palette.warning.light,
         padding: "20px",
         margin: "10px 20px",
         boxShadow: "0 0 14px 0 rgb(53 64 82 / 15%) !important",
         "& >h6": {
-            color: "#FF0000",
+            color: theme.palette.warning.main,
         },
     },
     success: {
@@ -100,7 +100,7 @@ const useStyles = makeStyles({
             color: "#003728",
         },
     },
-});
+}));
 export default function Notification({membershipData}) {
     const classes = useStyles();
     const {t} = useTranslation();
