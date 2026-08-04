@@ -1,4 +1,5 @@
 import {makeStyles, Paper, Typography} from "@material-ui/core";
+import {fade} from "@material-ui/core/styles";
 import React from "react";
 import {useTranslation} from "react-i18next";
 import {isEmpty} from "lodash";
@@ -11,39 +12,39 @@ const useStyles = makeStyles((theme) => ({
         boxShadow: "0 0 14px 0 rgb(53 64 82 / 15%) !important",
     },
     error: {
-        backgroundColor: theme.palette.warning.light,
+        backgroundColor: fade(theme.palette.error.main, 0.12),
         padding: "20px",
         margin: "10px 20px",
         boxShadow: "0 0 14px 0 rgb(53 64 82 / 15%) !important",
         "& >h6": {
-            color: theme.palette.warning.main,
+            color: theme.palette.error.dark,
         },
     },
     mb_expiration_notice: {
-        backgroundColor: theme.palette.warning.light,
+        backgroundColor: fade(theme.palette.warning.main, 0.12),
         padding: "20px",
         margin: "10px 20px",
         boxShadow: "0 0 14px 0 rgb(53 64 82 / 15%) !important",
         "& >h6": {
-            color: theme.palette.warning.main,
+            color: theme.palette.warning.dark,
         },
     },
     mb_has_expired_notice: {
-        backgroundColor: theme.palette.warning.light,
+        backgroundColor: fade(theme.palette.error.main, 0.12),
         padding: "20px",
         margin: "10px 20px",
         boxShadow: "0 0 14px 0 rgb(53 64 82 / 15%) !important",
         "& >h6": {
-            color: theme.palette.warning.main,
+            color: theme.palette.error.dark,
         },
     },
     hh_request_refused: {
-        backgroundColor: theme.palette.warning.light,
+        backgroundColor: fade(theme.palette.error.main, 0.12),
         padding: "20px",
         margin: "10px 20px",
         boxShadow: "0 0 14px 0 rgb(53 64 82 / 15%) !important",
         "& >h6": {
-            color: theme.palette.warning.main,
+            color: theme.palette.error.dark,
         },
     },
     mb_new: {
@@ -56,21 +57,21 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     mb_cancelled: {
-        backgroundColor: theme.palette.warning.light,
+        backgroundColor: fade(theme.palette.error.main, 0.12),
         padding: "20px",
         margin: "10px 20px",
         boxShadow: "0 0 14px 0 rgb(53 64 82 / 15%) !important",
         "& >h6": {
-            color: theme.palette.warning.main,
+            color: theme.palette.error.dark,
         },
     },
     mb_problem_previous_payment: {
-        backgroundColor: theme.palette.warning.light,
+        backgroundColor: fade(theme.palette.error.main, 0.12),
         padding: "20px",
         margin: "10px 20px",
         boxShadow: "0 0 14px 0 rgb(53 64 82 / 15%) !important",
         "& >h6": {
-            color: theme.palette.warning.main,
+            color: theme.palette.error.dark,
         },
     },
     success: {

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { makeStyles, Paper, Typography } from "@material-ui/core";
+import { fade } from "@material-ui/core/styles";
 import { useTranslation } from "react-i18next";
 import moment from "moment";
 
@@ -14,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: "0 0 14px 0 rgb(53 64 82 / 15%) !important",
   },
   endingSoon: {
-    backgroundColor: theme.palette.warning.light,
+    backgroundColor: fade(theme.palette.warning.main, 0.12),
   },
   row: {
     marginTop: "8px",
@@ -23,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 600,
   },
   notice: {
-    color: theme.palette.warning.main,
+    color: theme.palette.warning.dark,
     marginTop: "8px",
   },
 }));
