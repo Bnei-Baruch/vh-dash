@@ -1,5 +1,11 @@
 {
   "translation": {
+    "Coupons": {
+      "title": "Ваши купоны",
+      "until": "действует до {{date}}",
+      "starts": "начинается {{date}}",
+      "endingSoon": "Срок действия вашей скидки скоро истекает."
+    },
     "Global": {
       "inputPlaceholder": "Введите ваш(-у) {{input}}",
       "formErrorMsg": "Пожалуйста, введите ваши данные",

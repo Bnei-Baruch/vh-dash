@@ -1,5 +1,11 @@
 {
   "translation": {
+    "Coupons": {
+      "title": "הקופונים שלך",
+      "until": "בתוקף עד {{date}}",
+      "starts": "מתחיל בתאריך {{date}}",
+      "endingSoon": "תקופת ההנחה שלך עומדת להסתיים."
+    },
     "Global": {
       "inputPlaceholder": "הזן את {{input}}",
       "formErrorMsg": "Please enter your details",
