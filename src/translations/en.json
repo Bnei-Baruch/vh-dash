@@ -1,5 +1,11 @@
 {
   "translation": {
+    "Coupons": {
+      "title": "Your coupons",
+      "until": "active until {{date}}",
+      "starts": "starts {{date}}",
+      "endingSoon": "Your discount period is ending soon."
+    },
     "Global": {
       "inputPlaceholder": "Enter your {{input}}",
       "formErrorMsg": "Please enter your details",
