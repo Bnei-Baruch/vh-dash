@@ -10,9 +10,7 @@ on:
         type: choice
         options:
           - staging
-          - staging-new
           - production
-          - production-new
 
 jobs:
   build:
@@ -22,14 +20,11 @@ jobs:
 
       - name: Set environment variables
         run: |
-          # PUBLIC_URL is baked into the bundle at build time. The build-out
-          # targets use the relative path so assets load from whichever host is
-          # serving them, rather than from the live production domain.
+          # PUBLIC_URL is baked into the bundle at build time. Staging uses the
+          # relative path so assets load from whichever host serves them.
           case "${{ inputs.environment }}" in
             production)     echo "PUBLIC_URL=https://kli.one/dash/" >> $GITHUB_ENV ;;
-            production-new) echo "PUBLIC_URL=/dash/"                >> $GITHUB_ENV ;;
             staging)        echo "PUBLIC_URL=/dash/"                >> $GITHUB_ENV ;;
-            staging-new)    echo "PUBLIC_URL=/dash/"                >> $GITHUB_ENV ;;
             *) echo "Unknown environment: ${{ inputs.environment }}" >&2; exit 1 ;;
           esac
           echo "SHORT_SHA=${GITHUB_SHA::7}" >> $GITHUB_ENV
@@ -65,9 +60,7 @@ jobs:
           # Explicit per-environment selection with no fall-through.
           case "${{ inputs.environment }}" in
             production)     echo "SSH_HOST=${{ secrets.VH_HOST_PRODUCTION }}"     >> $GITHUB_ENV ;;
-            production-new) echo "SSH_HOST=${{ secrets.VH_HOST_PRODUCTION_NEW }}" >> $GITHUB_ENV ;;
             staging)        echo "SSH_HOST=${{ secrets.VH_HOST_STAGING }}"        >> $GITHUB_ENV ;;
-            staging-new)    echo "SSH_HOST=${{ secrets.VH_HOST_STAGING_NEW }}"    >> $GITHUB_ENV ;;
             *) echo "Unknown environment: ${{ inputs.environment }}" >&2; exit 1 ;;
           esac
           echo "SHORT_SHA=${GITHUB_SHA::7}" >> $GITHUB_ENV
