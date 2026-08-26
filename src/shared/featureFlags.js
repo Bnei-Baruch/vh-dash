@@ -15,23 +15,3 @@ export const getDebugUser = () => {
 
   return debugUser;
 };
-
-/**
- * Get forced pricing version from URL parameter
- * Used to override backend pricing version determination for testing
- *
- * @returns {string|null} Pricing version (v1, v2, t1) or null if not set (backend decides)
- *
- * Note: null (default) means backend determines pricing automatically (recommended approach)
- */
-export const getForcedPricingVersion = () => {
-  const urlParams = new URLSearchParams(window.location.search);
-  const version = urlParams.get("pricing_version");
-
-  if (version) {
-    console.warn('[Debug Mode] Forcing pricing_version:', version);
-    console.warn('[Debug Mode] This overrides backend pricing logic!');
-  }
-
-  return version;
-};
