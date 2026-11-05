@@ -59,7 +59,7 @@ Gotcha: `start` and `build` both need the `--openssl-legacy-provider` flag (alre
 - Config includes:
   - Keycloak realm and client settings
   - API base URLs
-  - Glassix chat widget API key
+  - Crisp chat website ID
   - Study materials API URL
 - Environment variables in `.env` for Google Calendar API integration
 
