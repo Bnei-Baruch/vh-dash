@@ -8,7 +8,7 @@ window.APP_CONFIG = {
     url: '{{env.Getenv "KEYCLOAK_URL" "https://auth.2serv.eu/auth/"}}',
     clientId: '{{env.Getenv "KEYCLOAK_CLIENT_ID" "membership_pay_dev"}}',
   },
-  GLASSIX_API_KEY: '{{env.Getenv "GLASSIX_API_KEY" ""}}',
+  CRISP_WEBSITE_ID: '{{env.Getenv "CRISP_WEBSITE_ID" "a88f7eac-d881-450b-b589-ab82160fb08a"}}',
   STUDY_MATERIALS_WIDGET_URL: '{{env.Getenv "STUDY_MATERIALS_WIDGET_URL" "https://study.kli.one/widget/widget.js"}}',
   STUDY_MATERIALS_API_URL: '{{env.Getenv "STUDY_MATERIALS_API_URL" "https://study.kli.one/"}}',
   MQTT_URL: '{{env.Getenv "REACT_APP_MQTT_URL" "msg.kab.info"}}',

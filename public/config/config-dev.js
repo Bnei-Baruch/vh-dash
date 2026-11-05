@@ -8,7 +8,7 @@
 //         url: 'https://auth.2serv.eu/auth/',
 //         clientId: 'membership_pay_dev'
 //     },
-//     GLASSIX_API_KEY: 'glassix-api-key',
+//     CRISP_WEBSITE_ID: 'a88f7eac-d881-450b-b589-ab82160fb08a',
 //     STUDY_MATERIALS_API_URL: 'https://stmat.kab.sh/api/units',
 //
 //     // WebRTC
@@ -29,7 +29,7 @@
 //     url: 'https://accounts.kab.info/auth/',
 //     clientId: 'membership_pay',
 //   },
-//   GLASSIX_API_KEY: 'glassix-api-key',
+//   CRISP_WEBSITE_ID: 'a88f7eac-d881-450b-b589-ab82160fb08a',
 //   STUDY_MATERIALS_WIDGET_URL: 'https://study.kli.one/widget/widget.js',
 //   STUDY_MATERIALS_API_URL: 'https://study.kli.one/',
 //
@@ -53,7 +53,7 @@ window.APP_CONFIG = {
     clientId: 'membership_pay',
   },
 
-  GLASSIX_API_KEY: 'glassix-api-key',
+  CRISP_WEBSITE_ID: 'a88f7eac-d881-450b-b589-ab82160fb08a',
   STUDY_MATERIALS_WIDGET_URL: 'https://study.kli.one/widget/widget.js',
   STUDY_MATERIALS_API_URL: 'https://study.kli.one/',
 
