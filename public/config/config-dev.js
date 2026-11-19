@@ -8,7 +8,7 @@
 //         url: 'https://auth.2serv.eu/auth/',
 //         clientId: 'membership_pay_dev'
 //     },
-//     CRISP_WEBSITE_ID: 'a88f7eac-d881-450b-b589-ab82160fb08a',
+//     CRISP_WEBSITE_ID: '',
 //     STUDY_MATERIALS_API_URL: 'https://stmat.kab.sh/api/units',
 //
 //     // WebRTC
@@ -53,7 +53,7 @@ window.APP_CONFIG = {
     clientId: 'membership_pay',
   },
 
-  CRISP_WEBSITE_ID: 'a88f7eac-d881-450b-b589-ab82160fb08a',
+  CRISP_WEBSITE_ID: '', // chat off locally; the live ID is in the production block above
   STUDY_MATERIALS_WIDGET_URL: 'https://study.kli.one/widget/widget.js',
   STUDY_MATERIALS_API_URL: 'https://study.kli.one/',
 

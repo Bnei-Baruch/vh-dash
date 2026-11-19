@@ -64,6 +64,11 @@ jobs:
             *) echo "Unknown environment: ${{ inputs.environment }}" >&2; exit 1 ;;
           esac
           echo "SHORT_SHA=${GITHUB_SHA::7}" >> $GITHUB_ENV
+          # Crisp chat runs in production only; the template defaults to off.
+          # The website ID is public (it ships in the page), not a secret.
+          if [ "${{ inputs.environment }}" = production ]; then
+            echo "CRISP_WEBSITE_ID=a88f7eac-d881-450b-b589-ab82160fb08a" >> $GITHUB_ENV
+          fi
 
       - name: Copy deployment files to VM
         uses: appleboy/scp-action@v1
@@ -88,7 +93,7 @@ jobs:
           proxy_host: ${{ secrets.SSH_PROXY_HOST }}
           proxy_username: ${{ secrets.SSH_PROXY_USERNAME }}
           proxy_key: ${{ secrets.BBDEPLOYMENT_SSH_PRIVATE_KEY }}
-          envs: SHORT_SHA
+          envs: SHORT_SHA,CRISP_WEBSITE_ID
           script: |
             cd /root/vh-docker/apps/vh-dash
             set -a
