@@ -11,7 +11,7 @@ import {
 } from "@material-ui/core";
 import { isWidthUp } from "@material-ui/core/withWidth";
 import Header from "../components/Header";
-import GlassixWidget from "../components/Glassix";
+import CrispChat from "../components/CrispChat";
 import PlatformsNavigation from "../pages/dashboard/Home/PlatformsNavigation";
 import CountryPromptModal from "../components/CountryPromptModal";
 import { updateProfile } from "../redux/actions/profileActions";
@@ -109,7 +109,7 @@ const Dashboard = ({ children, width }) => {
         <MainContent p={isWidthUp("lg", width) ? 10 : 5}>
           {children}
         </MainContent>
-        <GlassixWidget/>
+        <CrispChat />
       </AppContent>
       <CountryPromptModal
         open={countryModalOpen}

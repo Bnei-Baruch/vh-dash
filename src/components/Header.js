@@ -28,6 +28,7 @@ import {
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import { CHAT_AND_NOTIFICATION_ICONS, SEARCH_BAR } from "../shared/constants";
 import { setSettings } from "../redux/actions/settingsActions";
+import { resetCrispOnLogout } from "./CrispChat";
 import { setLoggedInUser } from "../redux/actions/userActions";
 import ModalWindow from "../pages/dashboard/MyProfile/ui/ModalWindow";
 import { DASHBOARD_ROUTES, DASHBOARD_ROOT } from "../routes/dashboardRoutes";
@@ -354,6 +355,7 @@ function UserMenu() {
         closeBtnText={t("UserMenu.cancelBtn")}
         handleClose={() => setIsModalOpen(false)}
         onConfirmation={() => {
+          resetCrispOnLogout();
           state.keycloak.logout();
           dispatch(setLoggedInUser(null));
         }}
