@@ -96,13 +96,9 @@ jobs:
           envs: SHORT_SHA,CRISP_WEBSITE_ID
           script: |
             cd /root/vh-docker/apps/vh-dash
-            # The workflow decides the chat: a CRISP_WEBSITE_ID left in the
-            # VM's .env must not override it.
-            crisp_website_id="$CRISP_WEBSITE_ID"
             set -a
             source .env
             set +a
-            export CRISP_WEBSITE_ID="$crisp_website_id"
             mkdir -p public/config
             gomplate --input-dir=config-templates \
               --output-map="/root/vh-docker/apps/vh-dash/public/config/{{ .in | strings.ReplaceAll \".js\" \"-$SHORT_SHA.js\" }}"
