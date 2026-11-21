@@ -30,6 +30,7 @@ import { CHAT_AND_NOTIFICATION_ICONS, SEARCH_BAR } from "../shared/constants";
 import { setSettings } from "../redux/actions/settingsActions";
 import { setLoggedInUser } from "../redux/actions/userActions";
 import ModalWindow from "../pages/dashboard/MyProfile/ui/ModalWindow";
+import CookieSettings from "./CookieSettings";
 import { DASHBOARD_ROUTES, DASHBOARD_ROOT } from "../routes/dashboardRoutes";
 import { membershipDataV2 } from "../redux/selectors/user";
 
@@ -423,6 +424,7 @@ const Header = () => {
             </MembershipStatusContainer>
 
             <VerticalDivider />
+            <CookieSettings />
             <LanguageMenu />
             <UserMenu />
           </EndSection>
