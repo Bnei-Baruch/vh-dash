@@ -19,7 +19,7 @@ const lng =
 i18next
   .use(initReactI18next) // Passes i18n down to react-i18next
   .use(LanguageDetector)
-  .on("languageChanged", (l) => { document.documentElement.lang = l === "il" ? "he" : l; }) // CookieYes picks its banner language from <html lang>
+  .on("languageChanged", (l) => { document.documentElement.lang = ({ il: "he", us: "en" })[l] || l; }) // CookieYes picks its banner language from <html lang>
   .init({
     detection: {
       caches: ["localStorage"],
