@@ -15,7 +15,7 @@ const CookieSettings = () => {
   }, []);
   return loaded && (
     <Tooltip title={t("Global.cookieSettings")}>
-      <IconButton size="small" aria-label={t("Global.cookieSettings")} onClick={() => window.revisitCkyConsent()}>
+      <IconButton size="small" aria-label={t("Global.cookieSettings")} onClick={() => window.revisitCkyConsent?.()}>
         <img src={cookieIcon} alt="" width={22} height={22}/>
       </IconButton>
     </Tooltip>
