@@ -7,6 +7,7 @@
       "endingSoon": "תקופת ההנחה שלך עומדת להסתיים."
     },
     "Global": {
+      "cookieSettings": "הגדרות עוגיות",
       "inputPlaceholder": "הזן את {{input}}",
       "formErrorMsg": "Please enter your details",
       "saveBtn": "שמור שינויים",
